@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Data Science Concepts / Tools",
     "section": "",
-    "text": "Modules Data Science Concepts / Methods\nThese two modules are orchestrated in close cooperation\n\nData Science Concepts (Core module: MSDSSB-DSOC-02)\nData Science Tools (Methods module: MDSSB-MET-01)"
+    "text": "Note\n\n\n\nThis is a developing syllabus! It will be continuously updated."
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,19 @@
     "title": "About",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#week-1",
+    "href": "index.html#week-1",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 1:",
+    "text": "Week 1:"
+  },
+  {
+    "objectID": "index.html#graded-projects",
+    "href": "index.html#graded-projects",
+    "title": "Data Science Concepts / Tools",
+    "section": "Graded Projects",
+    "text": "Graded Projects\nData Science Questions in Week 3 or so. First teaser for student projects.\nGood projects can be listed in Bremen Data Science Lab."
   }
 ]
