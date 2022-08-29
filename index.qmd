@@ -2,10 +2,13 @@
 title: "Data Science Concepts / Tools"
 ---
 
-This is a Quarto website.
+::: callout-note
+This is a developing syllabus! It will be continuously updated.
+:::
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+# Modules Data Science Concepts / Methods
 
-```{r}
-1 + 1
-```
+These two modules are orchestrated in close cooperation
+
+* Data Science Concepts (Core module: MSDSSB-DSOC-02)
+* Data Science Tools (Methods module: MDSSB-MET-01)
