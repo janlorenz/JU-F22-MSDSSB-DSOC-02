@@ -6,15 +6,17 @@ website:
   title: "JU-F22-MSDSSB-DSOC-02"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      # - about.qmd
+      - file: index.qmd
+        text: Syllabus
+      - hw-instructions/hw-01-instr.qmd
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    toc-depth: 3
+    number-sections: true
 
 
 
