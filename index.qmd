@@ -3,7 +3,7 @@ title: "Data Science Concepts / Tools"
 ---
 
 ::: callout-note
-This is a developing syllabus! It will be continuously updated.
+This is a developing syllabus! It will be continuously updated and your main entrance to course material.
 :::
 
 # Basic Information 
@@ -103,7 +103,7 @@ A core resource (for some readings) will be **R for Data Science** <http://r4ds.
 
 [Slides Week 1](https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit?usp=sharring)
 
-Find the homework assignment "Homework 01" on this website. Deadline: Sep 14. The content will be discussed in the Tools course in Week 2 and 3
+Find the homework assignment "Homework 01" on this website. Deadline: Sunday, Sep 18. The content will be discussed in the Tools course in Week 2 and 3
 
 
 ## Week 2, Sep 8 {-}
