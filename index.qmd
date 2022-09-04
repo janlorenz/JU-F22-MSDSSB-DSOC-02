@@ -40,7 +40,7 @@ Our goal in the two modules is to enable you to
 You can build a good basis for your more and more independent the work in the whole program. 
 
 
-## Expectations
+## Expectations for students
 
 We rely on your **engagement**. Taken holistically, engagement is many-faceted and includes
 
@@ -89,7 +89,7 @@ Some week's lectures have readings to review before class. These shall come cont
 A large part of the course will build on or be inspired by material in **Data Science in the Box** <https://datasciencebox.org/> by Mine Çetinkaya-Rundel and the data science education community around. 
 You can also use the website for accompanying self-study on selected topics. 
 
-A core resource (for some readings) will be **R for Data Science** <http://r4ds.hadley.co.nz> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics. 
+A core resource (for some readings) will be **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics. 
 
 *The number of freely available learning resources is increasing rapidly.* 
 

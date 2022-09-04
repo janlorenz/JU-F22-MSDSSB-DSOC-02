@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Data Science Concepts / Tools",
     "section": "",
-    "text": "Note\n\n\n\nThis is a developing syllabus! It will be continuously updated."
+    "text": "Note\n\n\n\nThis is a developing syllabus! It will be continuously updated and your main entrance to course material."
   },
   {
     "objectID": "about.html",
@@ -165,7 +165,7 @@
     "href": "index.html#week-1-sep-1",
     "title": "Data Science Concepts / Tools",
     "section": "Week 1, Sep 1",
-    "text": "Week 1, Sep 1\nSlides Week 1\nFind the homework assignment “Homework 01” on this website. Deadline: Sep 14. The content will be discussed in the Tools course in Week 2 and 3"
+    "text": "Week 1, Sep 1\nSlides Week 1\nFind the homework assignment “Homework 01” on this website. Deadline: Sunday, Sep 18. The content will be discussed in the Tools course in Week 2 and 3"
   },
   {
     "objectID": "index.html#week-2-sep-8",
@@ -173,5 +173,12 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 2, Sep 8",
     "text": "Week 2, Sep 8\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
+  },
+  {
+    "objectID": "index.html#expectations-for-students",
+    "href": "index.html#expectations-for-students",
+    "title": "Data Science Concepts / Tools",
+    "section": "1.4 Expectations for students",
+    "text": "1.4 Expectations for students\nWe rely on your engagement. Taken holistically, engagement is many-faceted and includes\n\nPreparation (looking at readings and material before class, being informed about syllabus and course material)\nFocus (avoid distraction during in class and online activities)\nPresence (listening and responding during group activities)\nAsking questions (in class, out of class, online, offline)\nSpecificity (being specific when referring to ideas from readings and discussions)\nSynthesizing (making connections between concepts from reading and discussion)\n\n(Adapted from Twitter: Mark Sample)"
   }
 ]
