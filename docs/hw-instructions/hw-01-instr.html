@@ -171,8 +171,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow"><span class="toc-section-number">2</span>  Workflow</a>
   <ul class="collapse">
-  <li><a href="#step-1.-get-url-of-repo-to-be-cloned" id="toc-step-1.-get-url-of-repo-to-be-cloned" class="nav-link" data-scroll-target="#step-1.-get-url-of-repo-to-be-cloned"><span class="toc-section-number">2.1</span>  Step 1. Get URL of repo to be cloned</a></li>
-  <li><a href="#step-2.-go-to-rstudio" id="toc-step-2.-go-to-rstudio" class="nav-link" data-scroll-target="#step-2.-go-to-rstudio"><span class="toc-section-number">2.2</span>  Step 2. Go to RStudio</a></li>
+  <li><a href="#step-0.-authenticate-git-to-access-your-github-content" id="toc-step-0.-authenticate-git-to-access-your-github-content" class="nav-link" data-scroll-target="#step-0.-authenticate-git-to-access-your-github-content"><span class="toc-section-number">2.1</span>  Step 0. Authenticate git to access your GitHub content</a></li>
+  <li><a href="#step-1.-get-url-of-repo-to-be-cloned" id="toc-step-1.-get-url-of-repo-to-be-cloned" class="nav-link" data-scroll-target="#step-1.-get-url-of-repo-to-be-cloned"><span class="toc-section-number">2.2</span>  Step 1. Get URL of repo to be cloned</a></li>
+  <li><a href="#step-2.-go-to-rstudio" id="toc-step-2.-go-to-rstudio" class="nav-link" data-scroll-target="#step-2.-go-to-rstudio"><span class="toc-section-number">2.3</span>  Step 2. Go to RStudio</a></li>
   </ul></li>
   <li><a href="#hello-rstudio" id="toc-hello-rstudio" class="nav-link" data-scroll-target="#hello-rstudio"><span class="toc-section-number">3</span>  Hello RStudio!</a></li>
   <li><a href="#warm-up" id="toc-warm-up" class="nav-link" data-scroll-target="#warm-up"><span class="toc-section-number">4</span>  Warm up</a>
@@ -209,6 +210,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Updated Sep 7, 2022 to prevent problems with cloning your repository.</p>
+</div>
+</div>
 <p>The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.</p>
 <section id="getting-started" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Getting started</h1>
@@ -264,14 +278,28 @@ Important
 <p>If there is no GitHub repo created for you for this assignment, it means I didn’t have your GitHub username as of when I assigned the homework. Please let me know your GitHub username asap, and I can create your repo.</p>
 </div>
 </div>
-<section id="step-1.-get-url-of-repo-to-be-cloned" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="step-1.-get-url-of-repo-to-be-cloned"><span class="header-section-number">2.1</span> Step 1. Get URL of repo to be cloned</h2>
+<section id="step-0.-authenticate-git-to-access-your-github-content" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="step-0.-authenticate-git-to-access-your-github-content"><span class="header-section-number">2.1</span> Step 0. Authenticate git to access your GitHub content</h2>
+<p>Before you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.</p>
+<p>There are several ways to do this (e.g.&nbsp;from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.</p>
+<p>Read more about PATs and how to use them in “Happy Git with R” Chapter 9 <a href="https://happygitwithr.com/https-pat.html" class="uri">https://happygitwithr.com/https-pat.html</a> (in particular the TL;DR which describes what we use).</p>
+<p>Open RStudio and install the packages <code>usethis</code> and <code>gitcreds</code> if you haven’t done already: Go to the “Console” pane at the bottom left. Type in</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"usethis"</span>,<span class="st">"gitcreds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and hit Enter. Now the packages should be installed.</p>
+<p>Now, use two commands. Copy them to the console and click Enter:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This opens <a href="http://github.com" class="uri">http://github.com</a> and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)</p>
+</section>
+<section id="step-1.-get-url-of-repo-to-be-cloned" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="step-1.-get-url-of-repo-to-be-cloned"><span class="header-section-number">2.2</span> Step 1. Get URL of repo to be cloned</h2>
 <p>On GitHub <a href="https://github.com/JU-F22-MDSSB-MET-01" class="uri">https://github.com/JU-F22-MDSSB-MET-01</a>, open your repository for Homework 1.</p>
 <p><img src="img/clone-repo-link.png" class="img-fluid"></p>
 <p>On GitHub, click on the green <strong>Code</strong> button, select <strong>HTTPS</strong> (this might already be selected by default, and if it is, you’ll see the text <em>Use Git or checkout with SVN using the web URL</em>). Click on the clipboard icon 📋 to copy the repo URL.</p>
 </section>
-<section id="step-2.-go-to-rstudio" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="step-2.-go-to-rstudio"><span class="header-section-number">2.2</span> Step 2. Go to RStudio</h2>
+<section id="step-2.-go-to-rstudio" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="step-2.-go-to-rstudio"><span class="header-section-number">2.3</span> Step 2. Go to RStudio</h2>
 <p>Go to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.</p>
 <p><img src="img/rstudio-new-project.png" class="img-fluid"></p>
 <p>In the New Project Wizard, click on “Version Control” and then “Git”.</p>
@@ -301,7 +329,7 @@ Important
 <p>RStudio is comprised of four panes.</p>
 <p><img src="img/rstudio-anatomy.png" class="img-fluid"></p>
 <ul>
-<li>On the bottom left is the Console, this is where you can write code that will be evaluated. Try typing <code>2 + 2</code> here and hit enter, what do you get?</li>
+<li>On the bottom left is the Console which we already used, this is where you can write code that will be evaluated. Try typing <code>2 + 2</code> here and hit enter, what do you get?</li>
 <li>On the bottom right is the Files pane, as well as other panes that will come handy as we start our analysis.</li>
 <li>If you click on a file, it will open in the editor, on the top left pane.</li>
 <li>Finally, the top right pane shows your Environment. If you define a variable it would show up there. Try typing <code>x &lt;- 2</code> in the Console and hit enter, what do you get in the <strong>Environment</strong> pane? Importantly, this pane is also where the <strong>Git</strong> interface lives. We will be using that regularly throughout this assignment.</li>
@@ -343,13 +371,7 @@ Note
 <section id="step-3.-push" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="step-3.-push"><span class="header-section-number">4.3</span> Step 3. Push</h2>
 <p>Now that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).</p>
-<p>To do this, you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to RStudio and git on your local machine.</p>
-<p>Fortunately, there are some tools in R to help you. Read more about PATs and how to use them in “Happy Git with R” Chapter 9 <a href="https://happygitwithr.com/https-pat.html" class="uri">https://happygitwithr.com/https-pat.html</a> (in particular the TL;DR). If you have installed the packages <code>usethis</code> and <code>gitcreds</code> thisss can be done by two commands in the console:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This opens <a href="http://github.com" class="uri">http://github.com</a> and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can also go the fast way and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In the dialog in the console paste your PAT from the clipboard and press enter. That should be it and you do not need to repeat these steps until the PAT expires.</p>
-<p>Now you can push your commit to GitHub. Go the Git pane and click on <strong>Push</strong>.</p>
+<p>Go the Git pane and click on <strong>Push</strong>.</p>
 <p><strong>Thought exercise:</strong> Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
 <section id="check-what-you-did" class="level2" data-number="4.4">
@@ -372,9 +394,9 @@ Note
 <p>The dataset is now visible under the name <code>profiles</code> in your Environment pane (top right area). You can view the dataset as a spreadsheet using the <code>View()</code> function.</p>
 <p>Note that you should not put this function in your R Markdown document, but instead type it directly in the Console, as it pops open a new window (and the concept of popping open a window in a static document doesn’t really make sense…).</p>
 <p>When you run this in the console, you’ll see the <strong>data viewer</strong> window pop up. You can also write the object name <code>profiles</code> to the console and get a brief outlook of the data, or you can take a glimpse to get meta-information about dimensions, variable names, and data types. Try all in the Console.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(profiles)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>profiles</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(profiles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(profiles)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>profiles</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(profiles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="graphic" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Graphic</h1>
@@ -447,8 +469,8 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p><em>Copy this code to your Console and read the output:</em></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="st">`</span><span class="at">Social Science</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Machine Learning</span><span class="st">`</span>, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="st">`</span><span class="at">Social Science</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Machine Learning</span><span class="st">`</span>, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Copy the code and write your answer into the outlined places in the document.</em></p>
 </div>
 </div>
@@ -466,9 +488,9 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p><em>Copy this code to your Console and read the output:</em></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">What is the operating system of your computer?</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">What is the operating system of your computer?</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Copy the code and write your answer into the outlined places in the document.</em></p>
 <p><em>Render the document, commit with message “Completed up to Exercise 4”, and push. Check on GitHub that the file “hw-01-R.md” looks good in the browser.</em></p>
 </div>

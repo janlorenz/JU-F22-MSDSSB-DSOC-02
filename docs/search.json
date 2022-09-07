@@ -32,7 +32,7 @@
     "href": "hw-instructions/hw-01-instr.html",
     "title": "Homework 01",
     "section": "",
-    "text": "The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
+    "text": "Note\n\n\n\nUpdated Sep 7, 2022 to prevent problems with cloning your repository.\nThe goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
   },
   {
     "objectID": "hw-instructions/hw-01-instr.html#prerequisites",
@@ -59,15 +59,15 @@
     "objectID": "hw-instructions/hw-01-instr.html#step-1.-get-url-of-repo-to-be-cloned",
     "href": "hw-instructions/hw-01-instr.html#step-1.-get-url-of-repo-to-be-cloned",
     "title": "Homework 01",
-    "section": "2.1 Step 1. Get URL of repo to be cloned",
-    "text": "2.1 Step 1. Get URL of repo to be cloned\nOn GitHub https://github.com/JU-F22-MDSSB-MET-01, open your repository for Homework 1.\n\nOn GitHub, click on the green Code button, select HTTPS (this might already be selected by default, and if it is, you’ll see the text Use Git or checkout with SVN using the web URL). Click on the clipboard icon 📋 to copy the repo URL."
+    "section": "2.2 Step 1. Get URL of repo to be cloned",
+    "text": "2.2 Step 1. Get URL of repo to be cloned\nOn GitHub https://github.com/JU-F22-MDSSB-MET-01, open your repository for Homework 1.\n\nOn GitHub, click on the green Code button, select HTTPS (this might already be selected by default, and if it is, you’ll see the text Use Git or checkout with SVN using the web URL). Click on the clipboard icon 📋 to copy the repo URL."
   },
   {
     "objectID": "hw-instructions/hw-01-instr.html#step-2.-go-to-rstudio",
     "href": "hw-instructions/hw-01-instr.html#step-2.-go-to-rstudio",
     "title": "Homework 01",
-    "section": "2.2 Step 2. Go to RStudio",
-    "text": "2.2 Step 2. Go to RStudio\nGo to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.\n\nIn the New Project Wizard, click on “Version Control” and then “Git”.\n\n\n\n\n\n\nImportant\n\n\n\nIf “Version Control” or “Git” is not available in your RStudio, then either you haven’t installed git on you computer or your RStudio installation has not recognized it properly. In a correct installation RStudio would recognize git on your machine when started and makes the options available automatically. You have to solve this issue first to continue.\n\n\nThen paste the repositories URL (which should still be in your clipboard) into the “Repository URL:” field. Leave directory name as it is automatically chosen, but make sure that you create the directory in a the folder where you want to store the course material on your computer via the “Browse …” button.\nWhen you click “Create Project”\n\ngit will create a new directory in the folder, copies all the files from github to it, and initializes your git repository locally\nRStudio will switch to that the new project"
+    "section": "2.3 Step 2. Go to RStudio",
+    "text": "2.3 Step 2. Go to RStudio\nGo to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.\n\nIn the New Project Wizard, click on “Version Control” and then “Git”.\n\n\n\n\n\n\nImportant\n\n\n\nIf “Version Control” or “Git” is not available in your RStudio, then either you haven’t installed git on you computer or your RStudio installation has not recognized it properly. In a correct installation RStudio would recognize git on your machine when started and makes the options available automatically. You have to solve this issue first to continue.\n\n\nThen paste the repositories URL (which should still be in your clipboard) into the “Repository URL:” field. Leave directory name as it is automatically chosen, but make sure that you create the directory in a the folder where you want to store the course material on your computer via the “Browse …” button.\nWhen you click “Create Project”\n\ngit will create a new directory in the folder, copies all the files from github to it, and initializes your git repository locally\nRStudio will switch to that the new project"
   },
   {
     "objectID": "hw-instructions/hw-01-instr.html#step-1.-update-the-yaml",
@@ -88,7 +88,7 @@
     "href": "hw-instructions/hw-01-instr.html#step-3.-push",
     "title": "Homework 01",
     "section": "4.3 Step 3. Push",
-    "text": "4.3 Step 3. Push\nNow that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).\nTo do this, you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to RStudio and git on your local machine.\nFortunately, there are some tools in R to help you. Read more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR). If you have installed the packages usethis and gitcreds thisss can be done by two commands in the console:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can also go the fast way and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press enter. That should be it and you do not need to repeat these steps until the PAT expires.\nNow you can push your commit to GitHub. Go the Git pane and click on Push.\nThought exercise: Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?1"
+    "text": "4.3 Step 3. Push\nNow that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).\nGo the Git pane and click on Push.\nThought exercise: Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?1"
   },
   {
     "objectID": "hw-instructions/hw-01-instr.html#check-what-you-did",
@@ -180,5 +180,12 @@
     "title": "Data Science Concepts / Tools",
     "section": "1.4 Expectations for students",
     "text": "1.4 Expectations for students\nWe rely on your engagement. Taken holistically, engagement is many-faceted and includes\n\nPreparation (looking at readings and material before class, being informed about syllabus and course material)\nFocus (avoid distraction during in class and online activities)\nPresence (listening and responding during group activities)\nAsking questions (in class, out of class, online, offline)\nSpecificity (being specific when referring to ideas from readings and discussions)\nSynthesizing (making connections between concepts from reading and discussion)\n\n(Adapted from Twitter: Mark Sample)"
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-0.-authenticate-git-to-access-your-github-content",
+    "href": "hw-instructions/hw-01-instr.html#step-0.-authenticate-git-to-access-your-github-content",
+    "title": "Homework 01",
+    "section": "2.1 Step 0. Authenticate git to access your GitHub content",
+    "text": "2.1 Step 0. Authenticate git to access your GitHub content\nBefore you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.\nThere are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.\nRead more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR which describes what we use).\nOpen RStudio and install the packages usethis and gitcreds if you haven’t done already: Go to the “Console” pane at the bottom left. Type in\ninstall.packages(c(\"usethis\",\"gitcreds\"))\nand hit Enter. Now the packages should be installed.\nNow, use two commands. Copy them to the console and click Enter:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)"
   }
 ]

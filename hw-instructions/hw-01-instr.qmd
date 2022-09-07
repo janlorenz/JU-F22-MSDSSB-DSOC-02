@@ -17,6 +17,10 @@ knitr::opts_chunk$set(
 library(tidyverse)
 ```
 
+::: callout-note 
+Updated Sep 7, 2022 to prevent problems with cloning your repository.
+:::
+
 The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.
 
 # Getting started
@@ -79,6 +83,43 @@ If there is no GitHub repo created for you for this assignment, it means I didn'
 Please let me know your GitHub username asap, and I can create your repo.
 :::
 
+## Step 0. Authenticate git to access your GitHub content
+
+Before you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine. 
+
+There are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there. 
+
+Read more about PATs and how to use them in "Happy Git with R" Chapter 9 <https://happygitwithr.com/https-pat.html> (in particular the TL;DR which describes what we use).
+
+Open RStudio and install the packages `usethis` and `gitcreds` if you haven't done already: Go to the "Console" pane at the bottom left. Type in 
+
+```r
+install.packages(c("usethis","gitcreds"))
+```
+
+and hit Enter. Now the packages should be installed. 
+
+Now, use two commands. Copy them to the console and click Enter:
+
+``` r
+usethis::create_github_token()
+```
+
+This opens <http://github.com> and you may need to log in.
+Then you can make the PAT (read more details in "Happy Git with R").
+For today, you can go the fast way and do not think about the options and click "Generate token".
+Use the clipboard icon 📋 to copy the PAT.
+Go back to RStudio and do in the console:
+
+``` r
+gitcreds::gitcreds_set()
+```
+
+In the dialog in the console paste your PAT from the clipboard and press Enter.
+That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)
+
+
+
 ## Step 1. Get URL of repo to be cloned
 
 On GitHub <https://github.com/JU-F22-MDSSB-MET-01>, open your repository for Homework 1.
@@ -117,7 +158,7 @@ RStudio is comprised of four panes.
 
 ![](img/rstudio-anatomy.png)
 
--   On the bottom left is the Console, this is where you can write code that will be evaluated. Try typing `2 + 2` here and hit enter, what do you get?
+-   On the bottom left is the Console which we already used, this is where you can write code that will be evaluated. Try typing `2 + 2` here and hit enter, what do you get?
 -   On the bottom right is the Files pane, as well as other panes that will come handy as we start our analysis.
 -   If you click on a file, it will open in the editor, on the top left pane.
 -   Finally, the top right pane shows your Environment. If you define a variable it would show up there. Try typing `x <- 2` in the Console and hit enter, what do you get in the **Environment** pane? Importantly, this pane is also where the **Git** interface lives. We will be using that regularly throughout this assignment.
@@ -174,31 +215,7 @@ Why?
 So that others can see your changes.
 And by others, we mean the course instructors (your repos in this course are private to you and us, only).
 
-To do this, you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to RStudio and git on your local machine.
-
-Fortunately, there are some tools in R to help you.
-Read more about PATs and how to use them in "Happy Git with R" Chapter 9 <https://happygitwithr.com/https-pat.html> (in particular the TL;DR).
-If you have installed the packages `usethis` and `gitcreds` thisss can be done by two commands in the console:
-
-``` r
-usethis::create_github_token()
-```
-
-This opens <http://github.com> and you may need to log in.
-Then you can make the PAT (read more details in "Happy Git with R").
-For today, you can also go the fast way and click "Generate token".
-Use the clipboard icon 📋 to copy the PAT.
-Go back to RStudio and do:
-
-``` r
-gitcreds::gitcreds_set()
-```
-
-In the dialog in the console paste your PAT from the clipboard and press enter.
-That should be it and you do not need to repeat these steps until the PAT expires. 
-
-Now you can push your commit to GitHub.
-Go the Git pane and click on **Push**.
+Go the Git pane and click on **Push**. 
 
 **Thought exercise:** Which of the steps "updating the YAML", "committing", and "pushing" involves talking to GitHub?[^1]
 
