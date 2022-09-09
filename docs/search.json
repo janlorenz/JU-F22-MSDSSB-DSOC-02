@@ -32,7 +32,7 @@
     "href": "hw-instructions/hw-01-instr.html",
     "title": "Homework 01",
     "section": "",
-    "text": "Note\n\n\n\nUpdated Sep 7, 2022 to prevent problems with cloning your repository.\nThe goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
+    "text": "Note\n\n\n\nUpdated Sep 7, 2022 to prevent problems with cloning your repository.\nSep 9, 2022: Updated the individual repositories on with an updated dataset. All which have already cloned it should do a “Pull” in the Git tab of RStudio.\nThe goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
   },
   {
     "objectID": "hw-instructions/hw-01-instr.html#prerequisites",

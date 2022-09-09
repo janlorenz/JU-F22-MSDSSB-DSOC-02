@@ -18,7 +18,8 @@ library(tidyverse)
 ```
 
 ::: callout-note 
-Updated Sep 7, 2022 to prevent problems with cloning your repository.
+Updated Sep 7, 2022 to prevent problems with cloning your repository.  
+**Sep 9, 2022: Updated the individual repositories on with an updated dataset. All which have already cloned it should do a "Pull" in the Git tab of RStudio. **
 :::
 
 The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.
