@@ -187,5 +187,33 @@
     "title": "Homework 01",
     "section": "2.1 Step 0. Authenticate git to access your GitHub content",
     "text": "2.1 Step 0. Authenticate git to access your GitHub content\nBefore you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.\nThere are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.\nRead more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR which describes what we use).\nOpen RStudio and install the packages usethis and gitcreds if you haven’t done already: Go to the “Console” pane at the bottom left. Type in\ninstall.packages(c(\"usethis\",\"gitcreds\"))\nand hit Enter. Now the packages should be installed.\nNow, use two commands. Copy them to the console and click Enter:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)"
+  },
+  {
+    "objectID": "index.html#week-2-sep-8-what-is-data-science-course-organization",
+    "href": "index.html#week-2-sep-8-what-is-data-science-course-organization",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 2, Sep 8: What is Data Science? Course organization",
+    "text": "Week 2, Sep 8: What is Data Science? Course organization\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
+  },
+  {
+    "objectID": "index.html#week-3-sep-15-data-visualization-data-formats",
+    "href": "index.html#week-3-sep-15-data-visualization-data-formats",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 3, Sep 15: Data visualization, Data formats",
+    "text": "Week 3, Sep 15: Data visualization, Data formats\nSlides Week 3\nLab work on code. Clone from: https://github.com/JU-F22-MDSSB-MET-01/codebase-janlorenz.git"
+  },
+  {
+    "objectID": "index.html#week-1-sep-1-what-is-data-science-course-organization-toolkit",
+    "href": "index.html#week-1-sep-1-what-is-data-science-course-organization-toolkit",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 1, Sep 1: What is Data Science? Course organization, toolkit",
+    "text": "Week 1, Sep 1: What is Data Science? Course organization, toolkit\nSlides Week 1\nFind the homework assignment “Homework 01” on this website. Deadline: Sunday, Sep 18. The content will be discussed in the Tools course in Week 2 and 3"
+  },
+  {
+    "objectID": "index.html#week-2-sep-8-no-lectures",
+    "href": "index.html#week-2-sep-8-no-lectures",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 2, Sep 8: No lectures",
+    "text": "Week 2, Sep 8: No lectures\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
   }
 ]

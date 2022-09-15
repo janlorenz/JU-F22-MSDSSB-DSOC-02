@@ -91,6 +91,16 @@ You can also use the website for accompanying self-study on selected topics.
 
 A core resource (for some readings) will be **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics. 
 
+**Data Visualization**
+
+*ggplot2: Elegant Graphics for Data Analysis* <https://ggplot2-book.org> is a resource on understanding the logic of ggplot better. 
+
+Websites on how to decide for what visualization to choose:   
+<https://www.data-to-viz.com/>   
+<https://datavizcatalogue.com/search.html>
+
+
+
 *The number of freely available learning resources is increasing rapidly.* 
 
 *Everyone has a different learning style and a different background. Thus, different material may be most helpful.*
@@ -99,20 +109,28 @@ A core resource (for some readings) will be **R for Data Science** <https://r4ds
 
 # Course Material and Schedule
 
-## Week 1, Sep 1 {-}
+## Week 1, Sep 1: What is Data Science? Course organization, toolkit {-}
 
 [Slides Week 1](https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit?usp=sharring)
 
 Find the homework assignment "Homework 01" on this website. Deadline: Sunday, Sep 18. The content will be discussed in the Tools course in Week 2 and 3
 
 
-## Week 2, Sep 8 {-}
+## Week 2, Sep 8: No lectures {-}
 
 **There will be no lectures, because of a mandatory central events!**   
 The first Data Science Tools courses in the morning will take place!
 
 Reading instead of lecture:
 [R for Data Science: Chapter 3 on Data Visualization](https://r4ds.had.co.nz/data-visualisation.html)
+
+
+## Week 3, Sep 15: Data visualization, Data formats {-}
+
+[Slides Week 3](https://docs.google.com/presentation/d/12K3c6nwiBcEM84pVfqBjlQ8J3o3x2CkxDf2Jmyz-0z0/edit?usp=sharing)
+
+Lab work on code. Clone from: <https://github.com/JU-F22-MDSSB-MET-01/codebase-janlorenz.git>
+
 
 
 
