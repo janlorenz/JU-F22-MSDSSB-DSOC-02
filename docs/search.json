@@ -215,5 +215,82 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 2, Sep 8: No lectures",
     "text": "Week 2, Sep 8: No lectures\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html",
+    "href": "hw-instructions/hw-02-instr.html",
+    "title": "Homework 02",
+    "section": "",
+    "text": "The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#prerequisites",
+    "href": "hw-instructions/hw-02-instr.html#prerequisites",
+    "title": "Homework 02",
+    "section": "1.1 Prerequisites",
+    "text": "1.1 Prerequisites\nThis assignment assumes that you have reviewed the lectures of week 1 and checked all boxes on the Prerequisites Checklist."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#terminology",
+    "href": "hw-instructions/hw-02-instr.html#terminology",
+    "title": "Homework 02",
+    "section": "1.2 Terminology",
+    "text": "1.2 Terminology\nWe’ve already thrown around a few new terms, so let’s define them before we proceed.\n\nR and python: Names of the programming language we will be using throughout the course.\nRStudio: An integrated development environment developed for R, which can also work with python. In other words, a convenient interface for writing and running code.\nGit: A version control system.\nGitHub: A web platform for hosting version controlled files and facilitating collaboration among users.\nRepository: A Git repository contains all of your project’s files and stores each file’s revision history.\n\nIt’s common to refer to a repository as a repo.\n\nIn this course, each assignment you work on will be contained in a Git repo.\nFor individual assignments, only you will have access to the repo. For team assignments, all team members will have access to a single repo where they work collaboratively.\nAll repos associated with this course are housed in the course GitHub organization. The organization is set up such that students can only see repos they have access to, but the course instructors can see all of them."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#starting-slowly-step-by-step",
+    "href": "hw-instructions/hw-02-instr.html#starting-slowly-step-by-step",
+    "title": "Homework 02",
+    "section": "1.3 Starting slowly step by step",
+    "text": "1.3 Starting slowly step by step\nAs the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better programmer! Before we get to that stage, however, you need to build some basic fluency in the tools and the workflow we use. First, we will explore the fundamental building blocks of all of these tools.\nBefore you can get started with the analysis, you need to make sure you:\n\nhave a GitHub account\nare a member of the course GitHub organization https://github.com/JU-F22-MDSSB-MET-01\nhave the needed software stack installation on your local machine (see the Prerequisites Checklist in the slides of the Week 1 lectures.)\n\nIf you failed to confirm any of these, it means you have not yet completed the prerequisites for this assignment. Please go back to Prerequisites and complete them before continuing the assignment."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#step-0.-authenticate-git-to-access-your-github-content",
+    "href": "hw-instructions/hw-02-instr.html#step-0.-authenticate-git-to-access-your-github-content",
+    "title": "Homework 02",
+    "section": "2.1 Step 0. Authenticate git to access your GitHub content",
+    "text": "2.1 Step 0. Authenticate git to access your GitHub content\nBefore you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.\nThere are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.\nRead more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR which describes what we use).\nOpen RStudio and install the packages usethis and gitcreds if you haven’t done already: Go to the “Console” pane at the bottom left. Type in\ninstall.packages(c(\"usethis\",\"gitcreds\"))\nand hit Enter. Now the packages should be installed.\nNow, use two commands. Copy them to the console and click Enter:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)"
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#step-1.-get-url-of-repo-to-be-cloned",
+    "href": "hw-instructions/hw-02-instr.html#step-1.-get-url-of-repo-to-be-cloned",
+    "title": "Homework 02",
+    "section": "2.2 Step 1. Get URL of repo to be cloned",
+    "text": "2.2 Step 1. Get URL of repo to be cloned\nOn GitHub https://github.com/JU-F22-MDSSB-MET-01, open your repository for Homework 1.\n\nOn GitHub, click on the green Code button, select HTTPS (this might already be selected by default, and if it is, you’ll see the text Use Git or checkout with SVN using the web URL). Click on the clipboard icon 📋 to copy the repo URL."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#step-2.-go-to-rstudio",
+    "href": "hw-instructions/hw-02-instr.html#step-2.-go-to-rstudio",
+    "title": "Homework 02",
+    "section": "2.3 Step 2. Go to RStudio",
+    "text": "2.3 Step 2. Go to RStudio\nGo to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.\n\nIn the New Project Wizard, click on “Version Control” and then “Git”.\n\n\n\n\n\n\nImportant\n\n\n\nIf “Version Control” or “Git” is not available in your RStudio, then either you haven’t installed git on you computer or your RStudio installation has not recognized it properly. In a correct installation RStudio would recognize git on your machine when started and makes the options available automatically. You have to solve this issue first to continue.\n\n\nThen paste the repositories URL (which should still be in your clipboard) into the “Repository URL:” field. Leave directory name as it is automatically chosen, but make sure that you create the directory in a the folder where you want to store the course material on your computer via the “Browse …” button.\nWhen you click “Create Project”\n\ngit will create a new directory in the folder, copies all the files from github to it, and initializes your git repository locally\nRStudio will switch to that the new project"
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#step-1.-update-the-yaml",
+    "href": "hw-instructions/hw-02-instr.html#step-1.-update-the-yaml",
+    "title": "Homework 02",
+    "section": "4.1 Step 1. Update the YAML",
+    "text": "4.1 Step 1. Update the YAML\nOpen the quarto (qmd) file in your project, change the author name to your name, and “Render” the document.\n This calls quarto, and quarto renders the document. In this case, that means, quarto creates a new file “hw-01-R.md” in the gfm format as specified in the YAML. GFM stands for GitHub Flavored Markdown which is a markdown document which can be nicely shown on https://github.com.\nWhen the file was rendered successfully, RStudio shows it in the “Viewer” pane at the bottom right. At the same place you can look in the “Files” pane you can check if the file is there.\n\nIf you do not find the “Render” button in your RStudio installation, then either quarto is not installed or RStudio has not recognized. You have to fix this issue first before you can continue. Another source of error while rendering could be that you haven’t installed the tidyverse package."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#step-2-commit",
+    "href": "hw-instructions/hw-02-instr.html#step-2-commit",
+    "title": "Homework 02",
+    "section": "4.2 Step 2: Commit",
+    "text": "4.2 Step 2: Commit\nGo to the Git pane in your RStudio (top right corner).\nYou should see that your qmd (quarto) file and its output, your md file (Markdown), are listed there as recently changed files.\nNext, click on Diff. This will pop open a new window that shows you the difference between the last committed state of the document and its current state that includes your changes. (Click on the file “hw-01-R.qmd”.) If you’re happy with these changes, click on the checkboxes of all files in the list, and type “Update author name” in the Commit message box and hit Commit and then close the window.\n\nYou don’t have to commit after every change, this would get quite cumbersome. You should consider committing states that are meaningful to you for inspection, comparison, or restoration. In the first few assignments we may tell you exactly when to commit and what commit message to use. As the semester progresses we will let you make these decisions."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#step-3.-push",
+    "href": "hw-instructions/hw-02-instr.html#step-3.-push",
+    "title": "Homework 02",
+    "section": "4.3 Step 3. Push",
+    "text": "4.3 Step 3. Push\nNow that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).\nGo the Git pane and click on Push.\nThought exercise: Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?1"
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#check-what-you-did",
+    "href": "hw-instructions/hw-02-instr.html#check-what-you-did",
+    "title": "Homework 02",
+    "section": "4.4 Check what you did",
+    "text": "4.4 Check what you did\nGo to your repository on https://github.com/JU-F22-MDSSB-MET-01 and click on the file “hw-01-R.md”. You should see a nicely rendered version with your name in the header."
   }
 ]
