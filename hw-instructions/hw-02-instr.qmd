@@ -46,7 +46,7 @@ Render the document to see if it works. More information <https://quarto.org/doc
 
 3. Explore the datasets. Write `View(flights)` in the Console to see the data as a spreadsheet. Write `glimpse(flight)` to see an overview of all variables, their types and first values. As these dataframes come from a package there is also a Help page for each dataframe which you access with `?flights`. There you find short descriptions about each variable. 
 
-TODO
+Write a nicely formatted short description about the variables `origin`, `arr_delay`, and `dep_delay` from `flights` and `engine` and `seat` from `airports`. 
 
 ## Data visualizations
 
