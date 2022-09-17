@@ -1,19 +1,9 @@
 ---
 title: "Homework 02"
 subtitle: "Data Visualization, Data Wrangling, Starting Projects "
-# link-citations: yes
-# editor: 
-#   markdown: 
-#     wrap: sentence
 ---
 
 ```{r include = FALSE}
-# knitr::opts_chunk$set(
-#   eval = FALSE,
-#   out.width = "80%",
-#   fig.asp = 0.618,
-#   fig.width = 10
-# )
 library(tidyverse)
 ```
 
