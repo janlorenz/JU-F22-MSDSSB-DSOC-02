@@ -163,30 +163,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started"><span class="toc-section-number">1</span>  Getting started</a>
+  <li><a href="#data-visualization-and-data-wrangling-with-nycflights13" id="toc-data-visualization-and-data-wrangling-with-nycflights13" class="nav-link active" data-scroll-target="#data-visualization-and-data-wrangling-with-nycflights13"><span class="toc-section-number">1</span>  Data Visualization and Data Wrangling with <code>nycflights13</code></a>
   <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="toc-section-number">1.1</span>  Prerequisites</a></li>
-  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology"><span class="toc-section-number">1.2</span>  Terminology</a></li>
-  <li><a href="#starting-slowly-step-by-step" id="toc-starting-slowly-step-by-step" class="nav-link" data-scroll-target="#starting-slowly-step-by-step"><span class="toc-section-number">1.3</span>  Starting slowly step by step</a></li>
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview"><span class="toc-section-number">1.1</span>  Data overview</a></li>
+  <li><a href="#data-visualizations" id="toc-data-visualizations" class="nav-link" data-scroll-target="#data-visualizations"><span class="toc-section-number">1.2</span>  Data visualizations</a></li>
+  <li><a href="#data-wrangling-pipes-and-visualization" id="toc-data-wrangling-pipes-and-visualization" class="nav-link" data-scroll-target="#data-wrangling-pipes-and-visualization"><span class="toc-section-number">1.3</span>  Data wrangling, pipes, and visualization</a></li>
   </ul></li>
-  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow"><span class="toc-section-number">2</span>  Workflow</a>
+  <li><a href="#starting-a-project-on-the-european-social-survey" id="toc-starting-a-project-on-the-european-social-survey" class="nav-link" data-scroll-target="#starting-a-project-on-the-european-social-survey"><span class="toc-section-number">2</span>  Starting a project on the European Social Survey</a></li>
+  <li><a href="#starting-a-project-on-the-corona-pandemis" id="toc-starting-a-project-on-the-corona-pandemis" class="nav-link" data-scroll-target="#starting-a-project-on-the-corona-pandemis"><span class="toc-section-number">3</span>  Starting a project on the corona pandemis</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="toc-section-number">4</span>  Getting started</a>
   <ul class="collapse">
-  <li><a href="#step-0.-authenticate-git-to-access-your-github-content" id="toc-step-0.-authenticate-git-to-access-your-github-content" class="nav-link" data-scroll-target="#step-0.-authenticate-git-to-access-your-github-content"><span class="toc-section-number">2.1</span>  Step 0. Authenticate git to access your GitHub content</a></li>
-  <li><a href="#step-1.-get-url-of-repo-to-be-cloned" id="toc-step-1.-get-url-of-repo-to-be-cloned" class="nav-link" data-scroll-target="#step-1.-get-url-of-repo-to-be-cloned"><span class="toc-section-number">2.2</span>  Step 1. Get URL of repo to be cloned</a></li>
-  <li><a href="#step-2.-go-to-rstudio" id="toc-step-2.-go-to-rstudio" class="nav-link" data-scroll-target="#step-2.-go-to-rstudio"><span class="toc-section-number">2.3</span>  Step 2. Go to RStudio</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="toc-section-number">4.1</span>  Prerequisites</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology"><span class="toc-section-number">4.2</span>  Terminology</a></li>
+  <li><a href="#starting-slowly-step-by-step" id="toc-starting-slowly-step-by-step" class="nav-link" data-scroll-target="#starting-slowly-step-by-step"><span class="toc-section-number">4.3</span>  Starting slowly step by step</a></li>
   </ul></li>
-  <li><a href="#hello-rstudio" id="toc-hello-rstudio" class="nav-link" data-scroll-target="#hello-rstudio"><span class="toc-section-number">3</span>  Hello RStudio!</a></li>
-  <li><a href="#warm-up" id="toc-warm-up" class="nav-link" data-scroll-target="#warm-up"><span class="toc-section-number">4</span>  Warm up</a>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow"><span class="toc-section-number">5</span>  Workflow</a>
   <ul class="collapse">
-  <li><a href="#step-1.-update-the-yaml" id="toc-step-1.-update-the-yaml" class="nav-link" data-scroll-target="#step-1.-update-the-yaml"><span class="toc-section-number">4.1</span>  Step 1. Update the YAML</a></li>
-  <li><a href="#step-2-commit" id="toc-step-2-commit" class="nav-link" data-scroll-target="#step-2-commit"><span class="toc-section-number">4.2</span>  Step 2: Commit</a></li>
-  <li><a href="#step-3.-push" id="toc-step-3.-push" class="nav-link" data-scroll-target="#step-3.-push"><span class="toc-section-number">4.3</span>  Step 3. Push</a></li>
-  <li><a href="#check-what-you-did" id="toc-check-what-you-did" class="nav-link" data-scroll-target="#check-what-you-did"><span class="toc-section-number">4.4</span>  Check what you did</a></li>
+  <li><a href="#step-0.-authenticate-git-to-access-your-github-content" id="toc-step-0.-authenticate-git-to-access-your-github-content" class="nav-link" data-scroll-target="#step-0.-authenticate-git-to-access-your-github-content"><span class="toc-section-number">5.1</span>  Step 0. Authenticate git to access your GitHub content</a></li>
+  <li><a href="#step-1.-get-url-of-repo-to-be-cloned" id="toc-step-1.-get-url-of-repo-to-be-cloned" class="nav-link" data-scroll-target="#step-1.-get-url-of-repo-to-be-cloned"><span class="toc-section-number">5.2</span>  Step 1. Get URL of repo to be cloned</a></li>
+  <li><a href="#step-2.-go-to-rstudio" id="toc-step-2.-go-to-rstudio" class="nav-link" data-scroll-target="#step-2.-go-to-rstudio"><span class="toc-section-number">5.3</span>  Step 2. Go to RStudio</a></li>
   </ul></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="toc-section-number">5</span>  Packages</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">6</span>  Data</a></li>
-  <li><a href="#graphic" id="toc-graphic" class="nav-link" data-scroll-target="#graphic"><span class="toc-section-number">7</span>  Graphic</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">8</span>  Exercises</a></li>
+  <li><a href="#hello-rstudio" id="toc-hello-rstudio" class="nav-link" data-scroll-target="#hello-rstudio"><span class="toc-section-number">6</span>  Hello RStudio!</a></li>
+  <li><a href="#warm-up" id="toc-warm-up" class="nav-link" data-scroll-target="#warm-up"><span class="toc-section-number">7</span>  Warm up</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-update-the-yaml" id="toc-step-1.-update-the-yaml" class="nav-link" data-scroll-target="#step-1.-update-the-yaml"><span class="toc-section-number">7.1</span>  Step 1. Update the YAML</a></li>
+  <li><a href="#step-2-commit" id="toc-step-2-commit" class="nav-link" data-scroll-target="#step-2-commit"><span class="toc-section-number">7.2</span>  Step 2: Commit</a></li>
+  <li><a href="#step-3.-push" id="toc-step-3.-push" class="nav-link" data-scroll-target="#step-3.-push"><span class="toc-section-number">7.3</span>  Step 3. Push</a></li>
+  <li><a href="#check-what-you-did" id="toc-check-what-you-did" class="nav-link" data-scroll-target="#check-what-you-did"><span class="toc-section-number">7.4</span>  Check what you did</a></li>
+  </ul></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="toc-section-number">8</span>  Packages</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">9</span>  Data</a></li>
+  <li><a href="#graphic" id="toc-graphic" class="nav-link" data-scroll-target="#graphic"><span class="toc-section-number">10</span>  Graphic</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">11</span>  Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -210,15 +218,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.</p>
-<section id="getting-started" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Getting started</h1>
-<section id="prerequisites" class="level2" data-link="Prerequisites" data-number="1.1">
-<h2 data-link="Prerequisites" data-number="1.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">1.1</span> Prerequisites</h2>
+<p>The goals of this assignment are</p>
+<ol type="1">
+<li>to introduce you to Data Visualization and Data Wrangling with R and python, and</li>
+<li>to let you start with two projects we will pursue in following homeworks - one on the European Social Survey and one on the corona pandemic.</li>
+</ol>
+<p>To that end, we provide three repositories with starter documents which you should clone and push your solutions to:</p>
+<ul>
+<li>hw-02-USERNAME</li>
+<li>ess-USERNAME</li>
+<li>corona-USERNAME</li>
+</ul>
+<section id="data-visualization-and-data-wrangling-with-nycflights13" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data Visualization and Data Wrangling with <code>nycflights13</code></h1>
+<p>Clone your repository and find the two files:</p>
+<ul>
+<li>hw-02-R.qmd</li>
+<li>hw-02-python.qmd</li>
+</ul>
+<p>Fill in you name in the YAML and render both. Stage the modified .qmd files and add the two html-files in Git and make a commit with message “Rendering to html works”. Push this commit to GitHub.</p>
+<section id="data-overview" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="data-overview"><span class="header-section-number">1.1</span> Data overview</h2>
+<ol type="1">
+<li><p>Run the first chunk <code>packages-data</code> such that the lines are executed in the console to load the tidyverse functions and the ny3cflight13 data. See which dataframes are available in the Environment tab. The environment should be empty, but you can select “package:nycflights13” instead of “Global Environment” and you see values markes as <code>&lt;Promise&gt;</code>. Once you click on one or call it in the Console you see basic information there.</p></li>
+<li><p>Replace the “??” in the text with the actual numbers. Don’t write the numbers your self, but write <em>inline code</em> in which you output the number of rows of each data frame. In the document this already done for the <code>airlines</code>. Render the document to see if it works. More information <a href="https://quarto.org/docs/get-started/computations/rstudio.html#inline-code" class="uri">https://quarto.org/docs/get-started/computations/rstudio.html#inline-code</a></p></li>
+<li><p>Explore the datasets. Write <code>View(flights)</code> in the Console to see the data as a spreadsheet. Write <code>glimpse(flight)</code> to see an overview of all variables, their types and first values. As these dataframes come from a package there is also a Help page for each dataframe which you access with <code>?flights</code>. There you find short descriptions about each variable.</p></li>
+</ol>
+<p>TODO</p>
+</section>
+<section id="data-visualizations" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="data-visualizations"><span class="header-section-number">1.2</span> Data visualizations</h2>
+<ol type="1">
+<li>We first want to know the distribution of values of the categorical variable <code>origin</code> in <code>flights</code>. To that end, make a bar chart. Read the Help <code>?geom_bar</code> and decide if you need to use <code>geom_bar</code> or <code>geom_col</code>. You can use the template below. Write your solution in the chunk <code>flights$origin</code>. Test your line by sending it the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message “First Visualization!” and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> __________, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ________) <span class="sc">+</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_TOSELECT</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><p>Now, we want to know the distribution of values of the numerical variable <code>distance</code> in <code>flights</code>. A common visualization is a histogram. Use <code>geom-histogram</code> with the same template, write the solution in the respective chunk, and test it. Notice, the red comment in the console. It advises to specify a binwidth. Test <code>bin-width = 5</code>, <code>bin-width = 50</code>, and <code>bin-width = 500</code> in <code>geom_histogram</code>, notice the difference (consult <code>?geom_histogram</code>) for details, and decide which shows the distribution best.</p></li>
+<li><p>In chunk <code>distributions</code> you see two ways to visualize the distribution of the number of <code>seats</code> in <code>airplanes</code> - points for each observation and a boxplot. (Read <code>?geom_boxplot</code> for more information). Note, that there are three ggplot objects (<code>g1</code>, <code>g2</code>, <code>g3</code>) which are shown combined with <code>g1 + g2 + g3</code> (using the <code>patchwork</code> package). Make the empty <code>g3</code> into a vertical histogram for the same data following the exercise before. Hint: For the vertical histogram assign <code>distance</code> to the <code>y</code> aesthetic and leave out the <code>x</code> aesthetic. Think about the advantages and disadvantages of each visualization.</p></li>
+<li><p>Now, we make the first plot which visualizes two variables, the categorical variable <code>engine</code>, and the numerical variable <code>seats</code> in <code>airplanes</code>. Use the template and with aesthetics <code>x</code> and <code>y</code> and the <code>geom_boxplot</code> and put the solution into the chunk <code>engine-seats</code></p></li>
+<li><p>Two numerical variables can be visualized with a scatter plot using <code>geom_point</code> and the aesthetics <code>x</code> and <code>y</code>. Let us look at <code>dep_delay</code> and <code>arr_delay</code> of <code>flights</code>. Warning: The <code>flights</code> is very large! So, do not use <code>flights</code> in <code>data = _____</code> but a random sample of 10,000 flights <code>sample_n(flights, 10000)</code>. Now, let us add information about the categorical variable <code>origin</code> and assign it to the <code>color</code> aesthetic. Put your solution into the chunk <code>delays</code>. Test your solution several times and observe the changes in the visualization because of the random sampling. In which region are the changes most <em>substantial</em>? (This is a qualitative judgment.)</p></li>
+<li><p>Finally, let us visualize the location of <code>airports</code> as points at their <em>longitude</em> and <em>latitude</em> (look up the variable names) and color them with the timezone <code>tzone</code> they are in. Put the solution into the chunk <code>airportlocations</code>.</p></li>
+</ol>
+</section>
+<section id="data-wrangling-pipes-and-visualization" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="data-wrangling-pipes-and-visualization"><span class="header-section-number">1.3</span> Data wrangling, pipes, and visualization</h2>
+<p>In the following, you have to solve some data wrangling tasks</p>
+</section>
+</section>
+<section id="starting-a-project-on-the-european-social-survey" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Starting a project on the European Social Survey</h1>
+</section>
+<section id="starting-a-project-on-the-corona-pandemis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Starting a project on the corona pandemis</h1>
+</section>
+<section id="getting-started" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Getting started</h1>
+<section id="prerequisites" class="level2" data-link="Prerequisites" data-number="4.1">
+<h2 data-link="Prerequisites" data-number="4.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">4.1</span> Prerequisites</h2>
 <p>This assignment assumes that you have reviewed the lectures of week 1 and checked all boxes on the Prerequisites Checklist.</p>
 </section>
-<section id="terminology" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="terminology"><span class="header-section-number">1.2</span> Terminology</h2>
+<section id="terminology" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="terminology"><span class="header-section-number">4.2</span> Terminology</h2>
 <p>We’ve already thrown around a few new terms, so let’s define them before we proceed.</p>
 <ul>
 <li><p><strong>R</strong> and <strong>python</strong>: Names of the programming language we will be using throughout the course.</p></li>
@@ -235,8 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </section>
-<section id="starting-slowly-step-by-step" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="starting-slowly-step-by-step"><span class="header-section-number">1.3</span> Starting slowly step by step</h2>
+<section id="starting-slowly-step-by-step" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="starting-slowly-step-by-step"><span class="header-section-number">4.3</span> Starting slowly step by step</h2>
 <p>As the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better programmer! Before we get to that stage, however, you need to build some basic fluency in the tools and the workflow we use. First, we will explore the fundamental building blocks of all of these tools.</p>
 <p>Before you can get started with the analysis, you need to make sure you:</p>
 <ul>
@@ -247,8 +308,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you failed to confirm any of these, it means you have not yet completed the prerequisites for this assignment. Please go back to <a href="#prerequisites">Prerequisites</a> and complete them before continuing the assignment.</p>
 </section>
 </section>
-<section id="workflow" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Workflow</h1>
+<section id="workflow" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Workflow</h1>
 <p>For each assignment in this course you will start with a GitHub repo that we create for you. This contains the starter documents you will build upon when working on your assignment. The first step is always to bring these files into RStudio so that you can edit them, run them, view your results, and interpret them. This action of bringing the repos content to your machine is called <strong>cloning</strong>.</p>
 <p>Then you will work in RStudio on the data analysis, making <strong>commits</strong> along the way (snapshots of your changes) and finally <strong>push</strong> all your work back to GitHub.</p>
 <p>The next few steps will walk you through the process of getting information of the repo to be cloned, cloning your repo in a new RStudio Cloud project, and getting started with the analysis.</p>
@@ -265,28 +326,28 @@ Important
 <p>If there is no GitHub repo created for you for this assignment, it means I didn’t have your GitHub username as of when I assigned the homework. Please let me know your GitHub username asap, and I can create your repo.</p>
 </div>
 </div>
-<section id="step-0.-authenticate-git-to-access-your-github-content" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="step-0.-authenticate-git-to-access-your-github-content"><span class="header-section-number">2.1</span> Step 0. Authenticate git to access your GitHub content</h2>
+<section id="step-0.-authenticate-git-to-access-your-github-content" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="step-0.-authenticate-git-to-access-your-github-content"><span class="header-section-number">5.1</span> Step 0. Authenticate git to access your GitHub content</h2>
 <p>Before you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.</p>
 <p>There are several ways to do this (e.g.&nbsp;from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.</p>
 <p>Read more about PATs and how to use them in “Happy Git with R” Chapter 9 <a href="https://happygitwithr.com/https-pat.html" class="uri">https://happygitwithr.com/https-pat.html</a> (in particular the TL;DR which describes what we use).</p>
 <p>Open RStudio and install the packages <code>usethis</code> and <code>gitcreds</code> if you haven’t done already: Go to the “Console” pane at the bottom left. Type in</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"usethis"</span>,<span class="st">"gitcreds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"usethis"</span>,<span class="st">"gitcreds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and hit Enter. Now the packages should be installed.</p>
 <p>Now, use two commands. Copy them to the console and click Enter:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This opens <a href="http://github.com" class="uri">http://github.com</a> and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)</p>
 </section>
-<section id="step-1.-get-url-of-repo-to-be-cloned" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="step-1.-get-url-of-repo-to-be-cloned"><span class="header-section-number">2.2</span> Step 1. Get URL of repo to be cloned</h2>
+<section id="step-1.-get-url-of-repo-to-be-cloned" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="step-1.-get-url-of-repo-to-be-cloned"><span class="header-section-number">5.2</span> Step 1. Get URL of repo to be cloned</h2>
 <p>On GitHub <a href="https://github.com/JU-F22-MDSSB-MET-01" class="uri">https://github.com/JU-F22-MDSSB-MET-01</a>, open your repository for Homework 1.</p>
 <p><img src="img/clone-repo-link.png" class="img-fluid"></p>
 <p>On GitHub, click on the green <strong>Code</strong> button, select <strong>HTTPS</strong> (this might already be selected by default, and if it is, you’ll see the text <em>Use Git or checkout with SVN using the web URL</em>). Click on the clipboard icon 📋 to copy the repo URL.</p>
 </section>
-<section id="step-2.-go-to-rstudio" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="step-2.-go-to-rstudio"><span class="header-section-number">2.3</span> Step 2. Go to RStudio</h2>
+<section id="step-2.-go-to-rstudio" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="step-2.-go-to-rstudio"><span class="header-section-number">5.3</span> Step 2. Go to RStudio</h2>
 <p>Go to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.</p>
 <p><img src="img/rstudio-new-project.png" class="img-fluid"></p>
 <p>In the New Project Wizard, click on “Version Control” and then “Git”.</p>
@@ -311,8 +372,8 @@ Important
 </ul>
 </section>
 </section>
-<section id="hello-rstudio" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Hello RStudio!</h1>
+<section id="hello-rstudio" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Hello RStudio!</h1>
 <p>RStudio is comprised of four panes.</p>
 <p><img src="img/rstudio-anatomy.png" class="img-fluid"></p>
 <ul>
@@ -322,8 +383,8 @@ Important
 <li>Finally, the top right pane shows your Environment. If you define a variable it would show up there. Try typing <code>x &lt;- 2</code> in the Console and hit enter, what do you get in the <strong>Environment</strong> pane? Importantly, this pane is also where the <strong>Git</strong> interface lives. We will be using that regularly throughout this assignment.</li>
 </ul>
 </section>
-<section id="warm-up" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Warm up</h1>
+<section id="warm-up" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Warm up</h1>
 <p>Before we introduce the data, let’s warm up with some simple exercises.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -338,8 +399,8 @@ Note
 <p>The top portion of your R Markdown file (between the three dashed lines) is called <strong>YAML</strong>. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.</p>
 </div>
 </div>
-<section id="step-1.-update-the-yaml" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="step-1.-update-the-yaml"><span class="header-section-number">4.1</span> Step 1. Update the YAML</h2>
+<section id="step-1.-update-the-yaml" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="step-1.-update-the-yaml"><span class="header-section-number">7.1</span> Step 1. Update the YAML</h2>
 <p>Open the quarto (qmd) file in your project, change the author name to your name, and “Render” the document.</p>
 <p><img src="img/quarto-render.png" class="img-fluid"> This calls <code>quarto</code>, and quarto renders the document. In this case, that means, quarto creates a new file “hw-01-R.md” in the gfm format as specified in the YAML. GFM stands for <em>GitHub Flavored Markdown</em> which is a markdown document which can be nicely shown on <a href="https://github.com" class="uri">https://github.com</a>.</p>
 <p>When the file was rendered successfully, RStudio shows it in the “Viewer” pane at the bottom right. At the same place you can look in the “Files” pane you can check if the file is there.</p>
@@ -347,27 +408,27 @@ Note
 <p>If you do not find the “Render” button in your RStudio installation, then either quarto is not installed or RStudio has not recognized. You have to fix this issue first before you can continue. Another source of error while rendering could be that you haven’t installed the <code>tidyverse</code> package.</p>
 </div>
 </section>
-<section id="step-2-commit" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="step-2-commit"><span class="header-section-number">4.2</span> Step 2: Commit</h2>
+<section id="step-2-commit" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="step-2-commit"><span class="header-section-number">7.2</span> Step 2: Commit</h2>
 <p>Go to the <strong>Git pane</strong> in your RStudio (top right corner).</p>
 <p>You should see that your qmd (quarto) file and its output, your md file (Markdown), are listed there as recently changed files.</p>
 <p>Next, click on <strong>Diff</strong>. This will pop open a new window that shows you the <strong>diff</strong>erence between the last committed state of the document and its current state that includes your changes. (Click on the file “hw-01-R.qmd”.) If you’re happy with these changes, click on the checkboxes of all files in the list, and type <em>“Update author name”</em> in the <strong>Commit message</strong> box and hit <strong>Commit</strong> and then close the window.</p>
 <p><img src="img/commit-window.png" class="img-fluid"></p>
 <p>You don’t have to commit after every change, this would get quite cumbersome. You should consider committing states that are <em>meaningful to you</em> for inspection, comparison, or restoration. In the first few assignments we may tell you exactly when to commit and what commit message to use. As the semester progresses we will let you make these decisions.</p>
 </section>
-<section id="step-3.-push" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="step-3.-push"><span class="header-section-number">4.3</span> Step 3. Push</h2>
+<section id="step-3.-push" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="step-3.-push"><span class="header-section-number">7.3</span> Step 3. Push</h2>
 <p>Now that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).</p>
 <p>Go the Git pane and click on <strong>Push</strong>.</p>
 <p><strong>Thought exercise:</strong> Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
-<section id="check-what-you-did" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="check-what-you-did"><span class="header-section-number">4.4</span> Check what you did</h2>
+<section id="check-what-you-did" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="check-what-you-did"><span class="header-section-number">7.4</span> Check what you did</h2>
 <p>Go to your repository on <a href="https://github.com/JU-F22-MDSSB-MET-01" class="uri">https://github.com/JU-F22-MDSSB-MET-01</a> and click on the file “hw-01-R.md”. You should see a nicely rendered version with your name in the header.</p>
 </section>
 </section>
-<section id="packages" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Packages</h1>
+<section id="packages" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Packages</h1>
 <p>R is an open-source language, and developers contribute functionality to R via packages.</p>
 <p>In this assignment we will use the following packages <strong>tidyverse</strong>, a collection of packages for doing data analysis in a “tidy” way.</p>
 <p>We use the <code>library()</code> function to load packages.</p>
@@ -376,17 +437,17 @@ Note
 <p>You should also load these packages in your Console, which you can do by sending the code to your Console by clicking on the <strong>Run Current Chunk</strong> icon (small green triangle pointing right icon).</p>
 <p><img src="img/run-chunk.png" class="img-fluid"></p>
 </section>
-<section id="data" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Data</h1>
+<section id="data" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Data</h1>
 <p>The dataset is now visible under the name <code>profiles</code> in your Environment pane (top right area). You can view the dataset as a spreadsheet using the <code>View()</code> function.</p>
 <p>Note that you should not put this function in your R Markdown document, but instead type it directly in the Console, as it pops open a new window (and the concept of popping open a window in a static document doesn’t really make sense…).</p>
 <p>When you run this in the console, you’ll see the <strong>data viewer</strong> window pop up. You can also write the object name <code>profiles</code> to the console and get a brief outlook of the data, or you can take a glimpse to get meta-information about dimensions, variable names, and data types. Try all in the Console.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(profiles)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>profiles</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(profiles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(profiles)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>profiles</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(profiles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="graphic" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Graphic</h1>
+<section id="graphic" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Graphic</h1>
 <p>There is another chunk called <code>my-data-science-profile</code>. It has code which</p>
 <ul>
 <li>tidies the data by making it longer and less wide such that the data from the seven dimensions, go to two variables “Dimension” and “value”.</li>
@@ -395,8 +456,8 @@ Note
 </ul>
 <p>Run the code in this chunk in the Console and see how the Plots pane pops up to show the graphic.</p>
 </section>
-<section id="exercises" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Exercises</h1>
+<section id="exercises" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Exercises</h1>
 <ol type="1">
 <li>Show your data science profile!</li>
 </ol>
@@ -456,8 +517,8 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p><em>Copy this code to your Console and read the output:</em></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="st">`</span><span class="at">Social Science</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Machine Learning</span><span class="st">`</span>, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="st">`</span><span class="at">Social Science</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Machine Learning</span><span class="st">`</span>, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Copy the code and write your answer into the outlined places in the document.</em></p>
 </div>
 </div>
@@ -475,9 +536,9 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p><em>Copy this code to your Console and read the output:</em></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">What is the operating system of your computer?</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>profiles <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">What is the operating system of your computer?</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Copy the code and write your answer into the outlined places in the document.</em></p>
 <p><em>Render the document, commit with message “Completed up to Exercise 4”, and push. Check on GitHub that the file “hw-01-R.md” looks good in the browser.</em></p>
 </div>

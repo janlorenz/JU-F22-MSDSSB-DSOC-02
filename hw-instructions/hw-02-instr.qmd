@@ -17,7 +17,79 @@ subtitle: "Data Visualization, Data Wrangling, Starting Projects "
 library(tidyverse)
 ```
 
-The goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.
+The goals of this assignment are
+
+1. to introduce you to Data Visualization and Data Wrangling with R and python, and
+2. to let you start with two projects we will pursue in following homeworks - one on the European Social Survey and one on the corona pandemic. 
+
+To that end, we provide three repositories with starter documents which you should clone and push your solutions to: 
+
+* hw-02-USERNAME
+* ess-USERNAME
+* corona-USERNAME
+
+# Data Visualization and Data Wrangling with `nycflights13`
+
+Clone your repository and find the two files: 
+
+* hw-02-R.qmd
+* hw-02-python.qmd
+
+Fill in you name in the YAML and render both. Stage the modified .qmd files and add the two html-files in Git and make a commit with message "Rendering to html works". Push this commit to GitHub. 
+
+## Data overview
+
+1. Run the first chunk `packages-data` such that the lines are executed in the console to load the tidyverse functions and the ny3cflight13 data. 
+See which dataframes are available in the Environment tab. The environment should be empty, but you can select "package:nycflights13" instead of "Global Environment" and you see values markes as `<Promise>`. Once you click on one or call it in the Console you see basic information there. 
+
+2. Replace the "??" in the text with the actual numbers. Don't write the numbers your self, but write *inline code* in which you output the number of rows of each data frame. In the document this already done for the `airlines`.
+Render the document to see if it works. More information <https://quarto.org/docs/get-started/computations/rstudio.html#inline-code>
+
+3. Explore the datasets. Write `View(flights)` in the Console to see the data as a spreadsheet. Write `glimpse(flight)` to see an overview of all variables, their types and first values. As these dataframes come from a package there is also a Help page for each dataframe which you access with `?flights`. There you find short descriptions about each variable. 
+
+TODO
+
+## Data visualizations
+
+1. We first want to know the distribution of values of the categorical variable `origin` in `flights`. To that end,  make a bar chart. Read the Help `?geom_bar` and decide if you need to use `geom_bar` or `geom_col`. You can use the template below. Write your solution in the chunk `flights$origin`. Test your line by sending it the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message "First Visualization!" and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template. 
+```R
+ggplot(data = __________, mapping = aes(x = ________) + 
+  geom_TOSELECT()
+``` 
+
+2. Now, we want to know the distribution of values of the numerical variable `distance` in `flights`. A common visualization is a histogram. Use `geom-histogram` with the same template, write the solution in the respective chunk, and test it. Notice, the red comment in the console. It advises to specify a binwidth. Test `bin-width = 5`, `bin-width = 50`, and `bin-width = 500` in `geom_histogram`, notice the difference (consult `?geom_histogram`) for details, and decide which shows the distribution best. 
+
+3. In chunk `distributions` you see two ways to visualize the distribution of the number of `seats` in `airplanes` -  points for each observation and a boxplot. (Read `?geom_boxplot` for more information). Note, that there are three ggplot objects (`g1`, `g2`, `g3`) which are shown combined with `g1 + g2 + g3` (using the `patchwork` package). Make the empty `g3` into a vertical histogram for the same data following the exercise before. Hint: For the vertical histogram assign `distance` to the `y` aesthetic and leave out the `x` aesthetic. Think about the advantages and disadvantages of each visualization. 
+
+4. Now, we make the first plot which visualizes two variables, the categorical variable `engine`, and the numerical variable `seats` in `airplanes`. Use the template and with aesthetics `x` and `y` and the `geom_boxplot` and put the solution into the chunk `engine-seats`
+
+5. Two numerical variables can be visualized with a scatter plot using `geom_point` and the aesthetics `x` and `y`. Let us look at `dep_delay` and `arr_delay` of `flights`. Warning: The `flights` is very large! So, do not use `flights` in `data = _____` but a random sample of 10,000 flights `sample_n(flights, 10000)`. Now, let us add information about the categorical variable `origin` and assign it to the `color` aesthetic. Put your solution into the chunk `delays`. Test your solution several times and observe the changes in the visualization because of the random sampling. In which region are the changes most *substantial*? (This is a qualitative judgment.)
+
+6. Finally, let us visualize the location of `airports` as points at their *longitude* and *latitude* (look up the variable names) and color them with the timezone `tzone` they are in. Put the solution into the chunk `airportlocations`.
+
+## Data wrangling, pipes, and visualization
+
+In the following, you have to solve some data wrangling tasks 
+
+
+
+
+
+# Starting a project on the European Social Survey
+
+# Starting a project on the corona pandemis
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Getting started
 
