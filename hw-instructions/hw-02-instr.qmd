@@ -27,11 +27,13 @@ Clone your repository **hw-02-ind-USERNAME** and find the two files:
 
 Fill in you name in the YAML and render both. Stage the modified .qmd files and add the html-files in Git and make a commit with message "Rendering to html works". Push this commit to GitHub.
 
+
+## Data overview
+
 :::{.callout-note}
 First do the exercises in R in **hw-02-R.qmd**. 
-Afterwards go through **hw-02-py.qmd**. This documents contains some tips how to do the same operations in python. Exercises which are not about coding can be omitted there. 
+Afterwards go through **hw-02-py.qmd**. This documents contains some tips how to do the same operations in python. Exercises which are not about coding are omitted there. 
 :::
-## Data overview
 
 1. Run the first chunk `packages-data` such that the lines are executed in the console to load the tidyverse functions and the ny3cflight13 data. 
 See which dataframes are available in the Environment tab. The environment should be empty, but you can select "package:nycflights13" instead of "Global Environment" and you see values markes as `<Promise>`. Once you click on one or call it in the Console you see basic information there. 
