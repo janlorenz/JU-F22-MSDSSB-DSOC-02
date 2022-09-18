@@ -1,0 +1,27 @@
+::: {style="color: red;"}
+---
+title: "Info for late coming students"
+---
+:::
+
+We know there are reasons for coming late which may not lie in your hands. We try to help you to get into the course in this situation. The following checklist should guide you.
+
+# Check list for late coming students {-}
+
+1.  Read this Syllabus
+2.  Most urgent
+
+-   Look at slides 30 to 32 of the Week 1: <https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit#slide=id.g14992662fb0_0_115> and start to build your data science toolkit on your computer.
+-   Part of it is that you should submit your GitHub-username in a Google Form. [To speed up thing, also send your GitHub-username to **Jan Lorenz** via Teams!]{style="color:red;"}
+
+2.  Work through the materials of the Sessions you have missed.
+
+-   You find the materials in the Section "Course Material and Schedule" at the end of the syllabus.
+-   There are links to the slides.
+-   On MS Teams you find recordings in the Team F22_MDSSB-DSOC-02_Data Science Concepts in the General Channel -\> Files -\> Recordings
+
+3.  Do the Homework you have missed even if you are beyond the deadline. You find the Homework instructions on this website. **Homework 01 introduces you to the workflow needed for further Homework.**
+
+4.  Visit the next lectures in *Data Science Concepts* and the sessions in the two *Data Science Tools* course. When you cannot be there in person visit via Teams. Meetings will be started in the General Channel when the course starts.
+
+5.  When you get stuck or lost, ask your fellow students or contact us!
