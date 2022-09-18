@@ -3,7 +3,7 @@ title: "Data Science Concepts / Tools"
 ---
 
 ::: callout-note
-This is a developing syllabus! It will be continuously updated and your main entrance to course material.
+This is a developing syllabus! It will be continuously updated and your main entrance to course material. 
 :::
 
 # Basic Information 
