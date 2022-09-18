@@ -31,7 +31,7 @@ Fill in you name in the YAML and render both. Stage the modified .qmd files and 
 ## Data overview
 
 :::{.callout-note}
-First do the exercises in R in **hw-02-R.qmd**. 
+First do the following exercises in R in **hw-02-R.qmd**. 
 Afterwards go through **hw-02-py.qmd**. This documents contains some tips how to do the same operations in python. Exercises which are not about coding are omitted there. 
 :::
 
