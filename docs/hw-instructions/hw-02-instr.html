@@ -199,10 +199,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>to introduce you to Data Visualization and Data Wrangling with R and python, and</li>
 <li>to let you start with two projects we will pursue in following homeworks - one on the European Social Survey and one on the corona pandemic.</li>
 </ol>
-<p>To that end, we provide three repositories with starter documents which you should clone and push your solutions to: * hw-02-USERNAME * ess-USERNAME * corona-USERNAME</p>
+<p>To that end, we provide three repositories with starter documents which you should clone and push your solutions to:</p>
+<ul>
+<li>hw-02-ind-USERNAME</li>
+<li>ess-ind-USERNAME</li>
+<li>corona-ind-USERNAME</li>
+</ul>
 <section id="data-visualization-and-data-wrangling-with-nycflights13" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Data Visualization and Data Wrangling with <code>nycflights13</code></h1>
-<p>Clone your repository <strong>hw-02-USERNAME</strong> and find the two files:</p>
+<p>Clone your repository <strong>hw-02-ind-USERNAME</strong> and find the two files:</p>
 <ul>
 <li>hw-02-R.qmd</li>
 <li>hw-02-python.qmd</li>
@@ -281,7 +286,7 @@ Now, make a histogram of speed. Add another pipe after the <code>select</code> s
 <li><p>Create a new quarto file for analysis with python. Use the title “European Social Survey”.</p></li>
 <li><p>Create one chunk where you import the data set into a dataframe <code>ESS</code>. Make a histogram of the variable <code>lrscale</code>. (Note: Would it be good to filter out certain observations before? If yes, go ahead?)</p></li>
 </ol>
-<p>Commit all files, <strong>except for the data file</strong>! Push to GitHub.</p>
+<p>Commit all files, <strong>except for the data file</strong>!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Push to GitHub.</p>
 </section>
 <section id="starting-a-project-on-the-corona-pandemic" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Starting a project on the corona pandemic</h1>
@@ -292,7 +297,13 @@ Now, make a histogram of speed. Add another pipe after the <code>select</code> s
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Why not commit and push the data in this case? Two reasons: First, versioning is designed for files with line-based code. Sometimes versioning other files like figures or dataset is OK. It may even be necessary, e.g.&nbsp;when the repo also produces a website. Large files consume a lot of space. Even worse: When large versioned files change and the file structure is not line based, every commit can be of a similar size and thus blow up the repository locally, as well as remotely. GitHub provides the infrastructure GitHub LFS for put such files in a repo but not version it. <a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files" class="uri">https://docs.github.com/en/repositories/working-with-files/managing-large-files</a> We don’t need this here. In the case of ESS, the second reason is more important. Often it is not allowed to make the data publicly accessible. For the ESS data you had to register and only then you are allowed to use the data for non-commercial purposes, so it should not be in raw form on a public repository. Your repository is private, so it would not be an issue now, but let’s get used to the fact that not every file in your local repository needs to be versioned.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

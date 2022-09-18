@@ -12,17 +12,18 @@ The goals of this assignment are
 1. to introduce you to Data Visualization and Data Wrangling with R and python, and
 2. to let you start with two projects we will pursue in following homeworks - one on the European Social Survey and one on the corona pandemic. 
 
-To that end, we provide three repositories with starter documents which you should clone and push your solutions to: 
-* hw-02-USERNAME
-* ess-USERNAME
-* corona-USERNAME
+To that end, we provide three repositories with starter documents which you should clone and push your solutions to:
+
+- hw-02-ind-USERNAME
+- ess-ind-USERNAME
+- corona-ind-USERNAME
 
 # Data Visualization and Data Wrangling with `nycflights13`
 
-Clone your repository **hw-02-USERNAME** and find the two files: 
+Clone your repository **hw-02-ind-USERNAME** and find the two files: 
 
-* hw-02-R.qmd
-* hw-02-python.qmd
+- hw-02-R.qmd
+- hw-02-python.qmd
 
 Fill in you name in the YAML and render both. Stage the modified .qmd files and add the html-files in Git and make a commit with message "Rendering to html works". Push this commit to GitHub.
 
@@ -109,7 +110,7 @@ Click on step 3 **Download** and **Login to Download**, select the CSV format. S
 
 3. Create one chunk where you import the data set into a dataframe `ESS`. Make a histogram of the variable `lrscale`. (Note: Would it be good to filter out certain observations before? If yes, go ahead?)
 
-Commit all files, **except for the data file**! Push to GitHub. 
+Commit all files, **except for the data file**!^[Why not commit and push the data in this case? Two reasons: First, versioning is designed for files with line-based code. Sometimes versioning other files like figures or dataset is OK. It may even be necessary, e.g. when the repo also produces a website. Large files consume a lot of space. Even worse: When large versioned files change and the file structure is not line based, every commit can be of a similar size and thus blow up the repository locally, as well as remotely. GitHub provides the infrastructure GitHub LFS for put such files in a repo but not version it. <https://docs.github.com/en/repositories/working-with-files/managing-large-files> We don't need this here. In the case of ESS, the second reason is more important. Often it is not allowed to make the data publicly accessible. For the ESS data you had to register and only then you are allowed to use the data for non-commercial purposes, so it should not be in raw form on a public repository. Your repository is private, so it would not be an issue now, but let's get used to the fact that not every file in your local repository needs to be versioned.] Push to GitHub. 
 
 
 
@@ -119,7 +120,8 @@ Clone your repository **corona-USERNAME**. This repository is empty. It shall de
 
 Create a quarto file with the title "Corona", your name, html, and engine "Knitr". Find data through internet research. Download the data, ideally within you first a chunk using `download.file`. Import the data and make a plot which shows the evolution of new corona cases over time for one country of your choice. 
 
-Commit all files, **except for the data file**! Push to GitHub. 
+Commit all files, **except for the data file**! Push to GitHub.
+
 
 
 
