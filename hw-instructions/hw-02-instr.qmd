@@ -47,7 +47,7 @@ Write a nicely formatted short description about the variables `origin`, `arr_de
 
 ## Data visualizations
 
-1. We first want to know the distribution of values of the categorical variable `origin` in `flights`. To that end,  make a bar chart. Read the Help `?geom_bar` and decide if you need to use `geom_bar` or `geom_col`. You can use the template below. Write your solution in the chunk `flightsorigin`. Test your line by sending it the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message "First Visualization!" and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template. 
+1. We first want to know the distribution of values of the categorical variable `origin` in `flights`. To that end,  make a bar chart. Read the Help `?geom_bar` and decide if you need to use `geom_bar` or `geom_col`. You can use the template below. Write your solution in the chunk `flightsorigin`. Test your line by sending it to the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message "First Visualization!" and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template. 
 ```R
 ggplot(data = __________, mapping = aes(x = ________) + 
   geom_TOSELECT()

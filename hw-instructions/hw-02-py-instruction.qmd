@@ -1,0 +1,149 @@
+---
+title: "Additional python instruction Homework 02"
+format:   
+  html:                     
+    code-fold: true         # We enable the code folding such that we only need to look at code if we want
+                            # More info at https://quarto.org/docs/output-formats/html-publishing.html
+    number-sections: true
+---
+Note: 
+
+ - Read and do the homework in R first. There you find more instructions and exercises. 
+ - You can also copy each chunk into a notebook cell within jupyter notebook template file and work with the .ipynb file
+ - quarto can also render .ipynb files. (Actually quarto converts .qmd files into .ipynb files and renders them afterwards)
+ - There is also a .ipynb Template in the python Codebase provided.
+
+This analysis works with datasets in the package `nycflights13` about flights, specifically a sample of domestic flights that departed from the three major New York City airport in 2013. 
+
+# Data overview
+```{.python}
+#| label: packages-data
+#| message: false  # We do not want to see the common tidyverse message in our document
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from nycflights13 import flights, planes,airports
+```
+
+Run the first chunk to import the packages, by running the command as:
+
+ - from nycflights import ... 
+
+You can deliberately choose which dataset you want to import from nycflights13.
+The nameing convension seems to be identical with the dataset in R.
+
+```{.python}
+#| output: false
+flights.info()
+```
+Explore the datasets. If you are running the code in VSCode you can see the variable in the "JUPYTER: VARIABLES" window.
+Write <code>flights.info()</code> in the Console or in a chunk and remove it afterwards to see an overview of all variables, their types. 
+(Write a short note about the differences to the R <code>glimpse</code> command)
+
+# Whats the differences between R:glimpse and pandas:info
+
+...
+
+# Data visualization
+
+1. We first want to know the distribution of values of the categorical variable origin in flights. To that end, make a bar chart.
+Use the seaborn command <code>displot</code>.  
+```{.python}
+sns.displot(data=flights,x = .. y= ..,height=.., aspect=..)
+```
+ <code>geom_bar</code> or <code>geom_col</code> is just a variation between the usage of variable x and y. Use  <code>height=.., aspect=..</code> to adjust the size of the plot.
+
+
+2. Now, we want to know the distribution of values of the numerical variable distance in flights. A common visualization is a histogram. Use <code>sns.histplot</code> with the same template, write the solution in the chunk flightsdistance, and test it. The command <code>binwidth</code> is equivalent to  <code>bin-width</code> in R. Use it inside the seaborn function.
+
+<code>fig,ax = plt.subplots(figsize=(12,6))</code> is used to vary the size of the plot.
+
+```{.python}
+fig,ax = plt.subplots(figsize=(12,6))
+sns.histplot(data=flights,x='distance',ax=ax, ...)
+```
+
+In chunk distributions you see two ways to visualize the distribution of the number of seats in airplanes - points for each observation and a boxplot. Different to ggplot you define the output first. With <code>ncols= .. ,nrows =..</code> you specify the layout and access it with </code> ax </code> similar to an array.
+
+
+```{.python}
+#| label: distributions
+fig,ax = plt.subplots(nrows=1,ncols=3,figsize=(8,6))
+#fig,[ax1,ax2,ax3] = plt.subplots(nrows=1,ncols=3,figsize=(24,12)) ## Or define the array elements
+ax[0].plot(np.zeros(len(planes)),planes['seats'],'k.')
+sns.boxplot(data=planes,y='seats',
+    boxprops={'facecolor':'None'},
+    ax=ax[1])
+#sns.boxplot(data=planes
+    #boxprops={'facecolor':'None'},
+    #ax=..)
+    # )
+```
+
+Now, we make the first plot in python which visualizes two variables, the categorical variable engine, and the numerical variable seats in airplanes
+
+```{.python}
+#| label: engine-seats
+fig,ax = plt.subplots(figsize=(24,12))
+
+sns.boxplot(data=planes,x = .. , y = ..
+    boxprops={'facecolor':'None'},
+    ax=ax)
+```
+
+So, do not use <code>flights</code> in <code>data = ..</code> but a random sample of 10,000 flights <code>flights.sample(n=10000)</code>. To visualize a scatterplot use <code>sns.scatterplot()</code>.
+To add an information about the categorical variable <code>origin</code> and assign it to the color aesthetica variation, include <code> ..,hue= .. ,</code> in the scatterplot command.
+
+```{.python}
+#| label: delays
+fig,ax = plt.subplots(figsize=(12,10))
+sns.scatterplot(data= flights.., x='dep_delay',y='arr_delay',..,ax=ax)
+```
+Finally, let us visualize the location of airports as points at their longitude and latitude (look up the variable names) and color them with the timezone tzone they are in. Put the solution into the chunk airportlocations.
+
+```{.python}
+#| label: airportlocations
+fig,ax = plt.subplots(figsize=(12,10))
+sns.scatterplot()
+```
+
+# Data Wrangling
+In the following, you have to solve some data wrangling tasks. For data wrangling, you use different commands onto a DataFrame devided by a "." . There is not equivalent to "pipes" in the pandas or python programming language.
+Here the easiest way is to creat a new column in our DataFrame with the average speed in it. The pandas specific <code>.div()</code> command allows for a fast division of two columns.
+Also modify the equation such that the values are in km/h.
+
+```{.python}
+#| label: flightsaveragespeed
+flights['speed'] = flights['distance'].div(flights['air_time'])
+```
+
+
+
+The filter function is not available in python. IMHO the .loc function is the most comprehensive function the filter a DataFrame by using logical expressions.
+
+Practice .loc operations, which subsets certain observations of a dataframe. Write a line which filters the flights which
+
+ a.  had an arrival delay of two or more hours
+ b.  flew to Houston (IAH or HOU)
+ c.  arrived more than two hours late, but didn’t leave late
+ d.  started with a delay of at least an hour, but made up over 30 minutes in flight.
+ 
+use individual lines for each filter. In the end use <code>.describe()</code> on the flights DataFrame. Now, we want to know the average delay at departue for each of the three airports of <code>origin</code>. This is done with a <code>groupby(..)</code> applied to the filtered DataFrame. additionally apply <code>mean()</code> and select the correct column. Find out how and modify the code in the chunk accordingly.
+
+
+```{.python}
+#| label: flightsaveragespeed
+flights = flights.loc[flights['arr_delay']>=120] # 120 minutes
+
+```
+NOTE: If you do not choose a new variable name for the DataFrame, data is lost, until you reload the complete DataFrame
+
+
+Finally, look at the plot of airportlocations. The airport locations show the shape of the United States of America, but there are four airports on the right hand side which do not fit that pattern. Filter airports such that you only see these four airport. Write your solution into the chunk stangeairportlocations. Check with internet research where these airports are located. Why are the locations from the data as they are? List your hypotheses for each airport under the chunk.
+
+```{.python}
+#| label: strangeairportlocations
+plt.figure(figsize=(20,6))
+plt.plot( airports[..],airports[..] ,'.')
+```

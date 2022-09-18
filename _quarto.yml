@@ -10,6 +10,7 @@ website:
         text: Syllabus
       - hw-instructions/hw-01-instr.qmd
       - hw-instructions/hw-02-instr.qmd
+      - hw-instructions/hw-02-py-instruction.qmd
 
 format:
   html:
