@@ -2,6 +2,13 @@
 title: "Data Science Concepts / Tools"
 ---
 
+::: callout-important
+## Information for late coming students
+
+Welcome! You are in the right place to get into the course. There is a lot of material. Here we provide a [checklist for late coming students](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/late.html)
+:::
+
+
 ::: callout-note
 This is a developing syllabus! It will be continuously updated and your main entrance to course material. 
 :::
@@ -130,6 +137,10 @@ Reading instead of lecture:
 [Slides Week 3](https://docs.google.com/presentation/d/12K3c6nwiBcEM84pVfqBjlQ8J3o3x2CkxDf2Jmyz-0z0/edit?usp=sharing)
 
 Lab work on code. Clone from: <https://github.com/JU-F22-MDSSB-MET-01/codebase-janlorenz.git>
+In RStudio, work through
+
+- 2022-09-15_ggplot_and_pipe.R
+- 2022-09-15_profiles.qmd 
 
 
 
