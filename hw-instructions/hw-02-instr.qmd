@@ -23,10 +23,14 @@ To that end, we provide three repositories with starter documents which you shou
 Clone your repository **hw-02-ind-USERNAME** and find the two files: 
 
 - hw-02-R.qmd
-- hw-02-python.qmd
+- hw-02-py.qmd
 
 Fill in you name in the YAML and render both. Stage the modified .qmd files and add the html-files in Git and make a commit with message "Rendering to html works". Push this commit to GitHub.
 
+:::{.callout-note}
+First do the exercises in R in **hw-02-R.qmd**. 
+Afterwards go through **hw-02-py.qmd**. This documents contains some tips how to do the same operations in python. Exercises which are not about coding can be omitted there. 
+:::
 ## Data overview
 
 1. Run the first chunk `packages-data` such that the lines are executed in the console to load the tidyverse functions and the ny3cflight13 data. 
