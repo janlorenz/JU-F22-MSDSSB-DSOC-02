@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Data Science Concepts / Tools",
-    "section": "",
-    "text": "Note\n\n\n\nThis is a developing syllabus! It will be continuously updated and your main entrance to course material."
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -14,88 +7,18 @@
     "text": "1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "index.html#week-1",
-    "href": "index.html#week-1",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Data Science Concepts / Tools",
-    "section": "8.1 Week 1:",
-    "text": "8.1 Week 1:"
-  },
-  {
-    "objectID": "index.html#graded-projects",
-    "href": "index.html#graded-projects",
-    "title": "Data Science Concepts / Tools",
-    "section": "8.1 Graded Projects",
-    "text": "8.1 Graded Projects\nData Science Questions in Week 3 or so. First teaser for student projects.\nGood projects can be listed in Bremen Data Science Lab."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html",
-    "href": "hw-instructions/hw-01-instr.html",
-    "title": "Homework 01",
     "section": "",
-    "text": "Note\n\n\n\nUpdated Sep 7, 2022 to prevent problems with cloning your repository.\nSep 9, 2022: Updated the individual repositories on with an updated dataset. All which have already cloned it should do a “Pull” in the Git tab of RStudio.\nThe goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
+    "text": "Note\n\n\n\nThis is a developing syllabus! It will be continuously updated and your main entrance to course material."
   },
   {
-    "objectID": "hw-instructions/hw-01-instr.html#prerequisites",
-    "href": "hw-instructions/hw-01-instr.html#prerequisites",
-    "title": "Homework 01",
-    "section": "1.1 Prerequisites",
-    "text": "1.1 Prerequisites\nThis assignment assumes that you have reviewed the lectures of week 1 and checked all boxes on the Prerequisites Checklist."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#terminology",
-    "href": "hw-instructions/hw-01-instr.html#terminology",
-    "title": "Homework 01",
-    "section": "1.2 Terminology",
-    "text": "1.2 Terminology\nWe’ve already thrown around a few new terms, so let’s define them before we proceed.\n\nR and python: Names of the programming language we will be using throughout the course.\nRStudio: An integrated development environment developed for R, which can also work with python. In other words, a convenient interface for writing and running code.\nGit: A version control system.\nGitHub: A web platform for hosting version controlled files and facilitating collaboration among users.\nRepository: A Git repository contains all of your project’s files and stores each file’s revision history.\n\nIt’s common to refer to a repository as a repo.\n\nIn this course, each assignment you work on will be contained in a Git repo.\nFor individual assignments, only you will have access to the repo. For team assignments, all team members will have access to a single repo where they work collaboratively.\nAll repos associated with this course are housed in the course GitHub organization. The organization is set up such that students can only see repos they have access to, but the course instructors can see all of them."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#starting-slowly-step-by-step",
-    "href": "hw-instructions/hw-01-instr.html#starting-slowly-step-by-step",
-    "title": "Homework 01",
-    "section": "1.3 Starting slowly step by step",
-    "text": "1.3 Starting slowly step by step\nAs the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better programmer! Before we get to that stage, however, you need to build some basic fluency in the tools and the workflow we use. First, we will explore the fundamental building blocks of all of these tools.\nBefore you can get started with the analysis, you need to make sure you:\n\nhave a GitHub account\nare a member of the course GitHub organization https://github.com/JU-F22-MDSSB-MET-01\nhave the needed software stack installation on your local machine (see the Prerequisites Checklist in the slides of the Week 1 lectures.)\n\nIf you failed to confirm any of these, it means you have not yet completed the prerequisites for this assignment. Please go back to Prerequisites and complete them before continuing the assignment."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#step-1.-get-url-of-repo-to-be-cloned",
-    "href": "hw-instructions/hw-01-instr.html#step-1.-get-url-of-repo-to-be-cloned",
-    "title": "Homework 01",
-    "section": "2.2 Step 1. Get URL of repo to be cloned",
-    "text": "2.2 Step 1. Get URL of repo to be cloned\nOn GitHub https://github.com/JU-F22-MDSSB-MET-01, open your repository for Homework 1.\n\nOn GitHub, click on the green Code button, select HTTPS (this might already be selected by default, and if it is, you’ll see the text Use Git or checkout with SVN using the web URL). Click on the clipboard icon 📋 to copy the repo URL."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#step-2.-go-to-rstudio",
-    "href": "hw-instructions/hw-01-instr.html#step-2.-go-to-rstudio",
-    "title": "Homework 01",
-    "section": "2.3 Step 2. Go to RStudio",
-    "text": "2.3 Step 2. Go to RStudio\nGo to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.\n\nIn the New Project Wizard, click on “Version Control” and then “Git”.\n\n\n\n\n\n\nImportant\n\n\n\nIf “Version Control” or “Git” is not available in your RStudio, then either you haven’t installed git on you computer or your RStudio installation has not recognized it properly. In a correct installation RStudio would recognize git on your machine when started and makes the options available automatically. You have to solve this issue first to continue.\n\n\nThen paste the repositories URL (which should still be in your clipboard) into the “Repository URL:” field. Leave directory name as it is automatically chosen, but make sure that you create the directory in a the folder where you want to store the course material on your computer via the “Browse …” button.\nWhen you click “Create Project”\n\ngit will create a new directory in the folder, copies all the files from github to it, and initializes your git repository locally\nRStudio will switch to that the new project"
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#step-1.-update-the-yaml",
-    "href": "hw-instructions/hw-01-instr.html#step-1.-update-the-yaml",
-    "title": "Homework 01",
-    "section": "4.1 Step 1. Update the YAML",
-    "text": "4.1 Step 1. Update the YAML\nOpen the quarto (qmd) file in your project, change the author name to your name, and “Render” the document.\n This calls quarto, and quarto renders the document. In this case, that means, quarto creates a new file “hw-01-R.md” in the gfm format as specified in the YAML. GFM stands for GitHub Flavored Markdown which is a markdown document which can be nicely shown on https://github.com.\nWhen the file was rendered successfully, RStudio shows it in the “Viewer” pane at the bottom right. At the same place you can look in the “Files” pane you can check if the file is there.\n\nIf you do not find the “Render” button in your RStudio installation, then either quarto is not installed or RStudio has not recognized. You have to fix this issue first before you can continue. Another source of error while rendering could be that you haven’t installed the tidyverse package."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#step-2-commit",
-    "href": "hw-instructions/hw-01-instr.html#step-2-commit",
-    "title": "Homework 01",
-    "section": "4.2 Step 2: Commit",
-    "text": "4.2 Step 2: Commit\nGo to the Git pane in your RStudio (top right corner).\nYou should see that your qmd (quarto) file and its output, your md file (Markdown), are listed there as recently changed files.\nNext, click on Diff. This will pop open a new window that shows you the difference between the last committed state of the document and its current state that includes your changes. (Click on the file “hw-01-R.qmd”.) If you’re happy with these changes, click on the checkboxes of all files in the list, and type “Update author name” in the Commit message box and hit Commit and then close the window.\n\nYou don’t have to commit after every change, this would get quite cumbersome. You should consider committing states that are meaningful to you for inspection, comparison, or restoration. In the first few assignments we may tell you exactly when to commit and what commit message to use. As the semester progresses we will let you make these decisions."
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#step-3.-push",
-    "href": "hw-instructions/hw-01-instr.html#step-3.-push",
-    "title": "Homework 01",
-    "section": "4.3 Step 3. Push",
-    "text": "4.3 Step 3. Push\nNow that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).\nGo the Git pane and click on Push.\nThought exercise: Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?1"
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#check-what-you-did",
-    "href": "hw-instructions/hw-01-instr.html#check-what-you-did",
-    "title": "Homework 01",
-    "section": "4.4 Check what you did",
-    "text": "4.4 Check what you did\nGo to your repository on https://github.com/JU-F22-MDSSB-MET-01 and click on the file “hw-01-R.md”. You should see a nicely rendered version with your name in the header."
+    "objectID": "index.html#modules-data-science-concepts-methods",
+    "href": "index.html#modules-data-science-concepts-methods",
+    "title": "Data Science Concepts / Tools",
+    "section": "1.1 Modules Data Science Concepts / Methods",
+    "text": "1.1 Modules Data Science Concepts / Methods\nThese two modules are orchestrated in close cooperation\n\nData Science Concepts (Core module: MSDSSB-DSOC-02)\nData Science Tools (Methods module: MDSSB-MET-01)\n\nYou should know how the courses are integrated in the overall Master program and the module descriptions from the DSSB Handbook."
   },
   {
     "objectID": "index.html#courses-and-instructors",
@@ -112,11 +35,11 @@
     "text": "1.3 Goal\nOur goal in the two modules is to enable you to\n\ncreate and maintain a digital working environment on your computer to do data science\nlearn core concepts in data science, that means\n\nlearn concepts to explore data (visualize, import, wrangle)\nlearn or refresh some mathematics and statistics concepts through the data science lens\nlearn concepts to model and draw conclusions from data (model, infer, predict)\n\nlearn to program in the data science languages R and python, and become able to learn new skills in these independently\ndo a data science project of your own interest\n\nYou can build a good basis for your more and more independent the work in the whole program."
   },
   {
-    "objectID": "index.html#expectations",
-    "href": "index.html#expectations",
+    "objectID": "index.html#expectations-for-students",
+    "href": "index.html#expectations-for-students",
     "title": "Data Science Concepts / Tools",
-    "section": "1.4 Expectations",
-    "text": "1.4 Expectations\nWe rely on your engagement. Taken holistically, engagement is many-faceted and includes\n\nPreparation (looking at readings and material before class, being informed about syllabus and course material)\nFocus (avoid distraction during in class and online activities)\nPresence (listening and responding during group activities)\nAsking questions (in class, out of class, online, offline)\nSpecificity (being specific when referring to ideas from readings and discussions)\nSynthesizing (making connections between concepts from reading and discussion)\n\n(Adapted from Twitter: Mark Sample)"
+    "section": "1.4 Expectations for students",
+    "text": "1.4 Expectations for students\nWe rely on your engagement. Taken holistically, engagement is many-faceted and includes\n\nPreparation (looking at readings and material before class, being informed about syllabus and course material)\nFocus (avoid distraction during in class and online activities)\nPresence (listening and responding during group activities)\nAsking questions (in class, out of class, online, offline)\nSpecificity (being specific when referring to ideas from readings and discussions)\nSynthesizing (making connections between concepts from reading and discussion)\n\n(Adapted from Twitter: Mark Sample)"
   },
   {
     "objectID": "index.html#online-infrastructure",
@@ -140,69 +63,6 @@
     "text": "1.7 Grading\nThis will be updated and made more specific later.\nData Science Concepts: Grading is based on an exam of 120 minutes.\nData Science Tools: Grading is based on team project of approximately 4000-5000 words. As a requirement, enough homework assignment tasks need to be correctly solved. These do not determine the grade, but can improve it. See handbook for details."
   },
   {
-    "objectID": "index.html#modules-data-science-concepts-methods",
-    "href": "index.html#modules-data-science-concepts-methods",
-    "title": "Data Science Concepts / Tools",
-    "section": "1.1 Modules Data Science Concepts / Methods",
-    "text": "1.1 Modules Data Science Concepts / Methods\nThese two modules are orchestrated in close cooperation\n\nData Science Concepts (Core module: MSDSSB-DSOC-02)\nData Science Tools (Methods module: MDSSB-MET-01)\n\nYou should know how the courses are integrated in the overall Master program and the module descriptions from the DSSB Handbook."
-  },
-  {
-    "objectID": "index.html#learning-resources",
-    "href": "index.html#learning-resources",
-    "title": "Data Science Concepts / Tools",
-    "section": "2.1 Learning Resources",
-    "text": "2.1 Learning Resources\nSome week’s lectures have readings to review before class. These shall come continuously updated in the schedule below. Check the schedule regularly.\nA large part of the course will build on or be inspired by material in Data Science in the Box https://datasciencebox.org/ by Mine Çetinkaya-Rundel and the data science education community around. You can also use the website for accompanying self-study on selected topics.\nA core resource (for some readings) will be R for Data Science http://r4ds.hadley.co.nz by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics.\nThe number of freely available learning resources is increasing rapidly.\nEveryone has a different learning style and a different background. Thus, different material may be most helpful.\nThis list shall be extended. Good self-study resources for data science with python, mathematics, statistics, data visualization, etc. shall be added here. Contact me if you find something useful to share. Ideally, with a short description when it may be most helpful."
-  },
-  {
-    "objectID": "index.html#schedule",
-    "href": "index.html#schedule",
-    "title": "Data Science Concepts / Tools",
-    "section": "2.2 Schedule",
-    "text": "2.2 Schedule\n\nWeek 1: Sep 1\nSlides Week 1\nFind the homework assignment “Homework 01” on this website. Deadline: Sep 14.\n###Week 2:: Sep 8 {-}"
-  },
-  {
-    "objectID": "index.html#week-1-sep-1",
-    "href": "index.html#week-1-sep-1",
-    "title": "Data Science Concepts / Tools",
-    "section": "Week 1, Sep 1",
-    "text": "Week 1, Sep 1\nSlides Week 1\nFind the homework assignment “Homework 01” on this website. Deadline: Sunday, Sep 18. The content will be discussed in the Tools course in Week 2 and 3"
-  },
-  {
-    "objectID": "index.html#week-2-sep-8",
-    "href": "index.html#week-2-sep-8",
-    "title": "Data Science Concepts / Tools",
-    "section": "Week 2, Sep 8",
-    "text": "Week 2, Sep 8\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
-  },
-  {
-    "objectID": "index.html#expectations-for-students",
-    "href": "index.html#expectations-for-students",
-    "title": "Data Science Concepts / Tools",
-    "section": "1.4 Expectations for students",
-    "text": "1.4 Expectations for students\nWe rely on your engagement. Taken holistically, engagement is many-faceted and includes\n\nPreparation (looking at readings and material before class, being informed about syllabus and course material)\nFocus (avoid distraction during in class and online activities)\nPresence (listening and responding during group activities)\nAsking questions (in class, out of class, online, offline)\nSpecificity (being specific when referring to ideas from readings and discussions)\nSynthesizing (making connections between concepts from reading and discussion)\n\n(Adapted from Twitter: Mark Sample)"
-  },
-  {
-    "objectID": "hw-instructions/hw-01-instr.html#step-0.-authenticate-git-to-access-your-github-content",
-    "href": "hw-instructions/hw-01-instr.html#step-0.-authenticate-git-to-access-your-github-content",
-    "title": "Homework 01",
-    "section": "2.1 Step 0. Authenticate git to access your GitHub content",
-    "text": "2.1 Step 0. Authenticate git to access your GitHub content\nBefore you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.\nThere are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.\nRead more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR which describes what we use).\nOpen RStudio and install the packages usethis and gitcreds if you haven’t done already: Go to the “Console” pane at the bottom left. Type in\ninstall.packages(c(\"usethis\",\"gitcreds\"))\nand hit Enter. Now the packages should be installed.\nNow, use two commands. Copy them to the console and click Enter:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)"
-  },
-  {
-    "objectID": "index.html#week-2-sep-8-what-is-data-science-course-organization",
-    "href": "index.html#week-2-sep-8-what-is-data-science-course-organization",
-    "title": "Data Science Concepts / Tools",
-    "section": "Week 2, Sep 8: What is Data Science? Course organization",
-    "text": "Week 2, Sep 8: What is Data Science? Course organization\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
-  },
-  {
-    "objectID": "index.html#week-3-sep-15-data-visualization-data-formats",
-    "href": "index.html#week-3-sep-15-data-visualization-data-formats",
-    "title": "Data Science Concepts / Tools",
-    "section": "Week 3, Sep 15: Data visualization, Data formats",
-    "text": "Week 3, Sep 15: Data visualization, Data formats\nSlides Week 3\nLab work on code. Clone from: https://github.com/JU-F22-MDSSB-MET-01/codebase-janlorenz.git"
-  },
-  {
     "objectID": "index.html#week-1-sep-1-what-is-data-science-course-organization-toolkit",
     "href": "index.html#week-1-sep-1-what-is-data-science-course-organization-toolkit",
     "title": "Data Science Concepts / Tools",
@@ -217,116 +77,11 @@
     "text": "Week 2, Sep 8: No lectures\nThere will be no lectures, because of a mandatory central events!\nThe first Data Science Tools courses in the morning will take place!\nReading instead of lecture: R for Data Science: Chapter 3 on Data Visualization"
   },
   {
-    "objectID": "hw-instructions/hw-02-instr.html",
-    "href": "hw-instructions/hw-02-instr.html",
-    "title": "Homework 02",
-    "section": "",
-    "text": "The goals of this assignment are\nTo that end, we provide three repositories with starter documents which you should clone and push your solutions to:"
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#prerequisites",
-    "href": "hw-instructions/hw-02-instr.html#prerequisites",
-    "title": "Homework 02",
-    "section": "4.1 Prerequisites",
-    "text": "4.1 Prerequisites\nThis assignment assumes that you have reviewed the lectures of week 1 and checked all boxes on the Prerequisites Checklist."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#terminology",
-    "href": "hw-instructions/hw-02-instr.html#terminology",
-    "title": "Homework 02",
-    "section": "4.2 Terminology",
-    "text": "4.2 Terminology\nWe’ve already thrown around a few new terms, so let’s define them before we proceed.\n\nR and python: Names of the programming language we will be using throughout the course.\nRStudio: An integrated development environment developed for R, which can also work with python. In other words, a convenient interface for writing and running code.\nGit: A version control system.\nGitHub: A web platform for hosting version controlled files and facilitating collaboration among users.\nRepository: A Git repository contains all of your project’s files and stores each file’s revision history.\n\nIt’s common to refer to a repository as a repo.\n\nIn this course, each assignment you work on will be contained in a Git repo.\nFor individual assignments, only you will have access to the repo. For team assignments, all team members will have access to a single repo where they work collaboratively.\nAll repos associated with this course are housed in the course GitHub organization. The organization is set up such that students can only see repos they have access to, but the course instructors can see all of them."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#starting-slowly-step-by-step",
-    "href": "hw-instructions/hw-02-instr.html#starting-slowly-step-by-step",
-    "title": "Homework 02",
-    "section": "4.3 Starting slowly step by step",
-    "text": "4.3 Starting slowly step by step\nAs the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better programmer! Before we get to that stage, however, you need to build some basic fluency in the tools and the workflow we use. First, we will explore the fundamental building blocks of all of these tools.\nBefore you can get started with the analysis, you need to make sure you:\n\nhave a GitHub account\nare a member of the course GitHub organization https://github.com/JU-F22-MDSSB-MET-01\nhave the needed software stack installation on your local machine (see the Prerequisites Checklist in the slides of the Week 1 lectures.)\n\nIf you failed to confirm any of these, it means you have not yet completed the prerequisites for this assignment. Please go back to Prerequisites and complete them before continuing the assignment."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#step-0.-authenticate-git-to-access-your-github-content",
-    "href": "hw-instructions/hw-02-instr.html#step-0.-authenticate-git-to-access-your-github-content",
-    "title": "Homework 02",
-    "section": "5.1 Step 0. Authenticate git to access your GitHub content",
-    "text": "5.1 Step 0. Authenticate git to access your GitHub content\nBefore you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.\nThere are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.\nRead more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR which describes what we use).\nOpen RStudio and install the packages usethis and gitcreds if you haven’t done already: Go to the “Console” pane at the bottom left. Type in\ninstall.packages(c(\"usethis\",\"gitcreds\"))\nand hit Enter. Now the packages should be installed.\nNow, use two commands. Copy them to the console and click Enter:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)"
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#step-1.-get-url-of-repo-to-be-cloned",
-    "href": "hw-instructions/hw-02-instr.html#step-1.-get-url-of-repo-to-be-cloned",
-    "title": "Homework 02",
-    "section": "5.2 Step 1. Get URL of repo to be cloned",
-    "text": "5.2 Step 1. Get URL of repo to be cloned\nOn GitHub https://github.com/JU-F22-MDSSB-MET-01, open your repository for Homework 1.\n\nOn GitHub, click on the green Code button, select HTTPS (this might already be selected by default, and if it is, you’ll see the text Use Git or checkout with SVN using the web URL). Click on the clipboard icon 📋 to copy the repo URL."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#step-2.-go-to-rstudio",
-    "href": "hw-instructions/hw-02-instr.html#step-2.-go-to-rstudio",
-    "title": "Homework 02",
-    "section": "5.3 Step 2. Go to RStudio",
-    "text": "5.3 Step 2. Go to RStudio\nGo to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.\n\nIn the New Project Wizard, click on “Version Control” and then “Git”.\n\n\n\n\n\n\nImportant\n\n\n\nIf “Version Control” or “Git” is not available in your RStudio, then either you haven’t installed git on you computer or your RStudio installation has not recognized it properly. In a correct installation RStudio would recognize git on your machine when started and makes the options available automatically. You have to solve this issue first to continue.\n\n\nThen paste the repositories URL (which should still be in your clipboard) into the “Repository URL:” field. Leave directory name as it is automatically chosen, but make sure that you create the directory in a the folder where you want to store the course material on your computer via the “Browse …” button.\nWhen you click “Create Project”\n\ngit will create a new directory in the folder, copies all the files from github to it, and initializes your git repository locally\nRStudio will switch to that the new project"
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#step-1.-update-the-yaml",
-    "href": "hw-instructions/hw-02-instr.html#step-1.-update-the-yaml",
-    "title": "Homework 02",
-    "section": "7.1 Step 1. Update the YAML",
-    "text": "7.1 Step 1. Update the YAML\nOpen the quarto (qmd) file in your project, change the author name to your name, and “Render” the document.\n This calls quarto, and quarto renders the document. In this case, that means, quarto creates a new file “hw-01-R.md” in the gfm format as specified in the YAML. GFM stands for GitHub Flavored Markdown which is a markdown document which can be nicely shown on https://github.com.\nWhen the file was rendered successfully, RStudio shows it in the “Viewer” pane at the bottom right. At the same place you can look in the “Files” pane you can check if the file is there.\n\nIf you do not find the “Render” button in your RStudio installation, then either quarto is not installed or RStudio has not recognized. You have to fix this issue first before you can continue. Another source of error while rendering could be that you haven’t installed the tidyverse package."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#step-2-commit",
-    "href": "hw-instructions/hw-02-instr.html#step-2-commit",
-    "title": "Homework 02",
-    "section": "7.2 Step 2: Commit",
-    "text": "7.2 Step 2: Commit\nGo to the Git pane in your RStudio (top right corner).\nYou should see that your qmd (quarto) file and its output, your md file (Markdown), are listed there as recently changed files.\nNext, click on Diff. This will pop open a new window that shows you the difference between the last committed state of the document and its current state that includes your changes. (Click on the file “hw-01-R.qmd”.) If you’re happy with these changes, click on the checkboxes of all files in the list, and type “Update author name” in the Commit message box and hit Commit and then close the window.\n\nYou don’t have to commit after every change, this would get quite cumbersome. You should consider committing states that are meaningful to you for inspection, comparison, or restoration. In the first few assignments we may tell you exactly when to commit and what commit message to use. As the semester progresses we will let you make these decisions."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#step-3.-push",
-    "href": "hw-instructions/hw-02-instr.html#step-3.-push",
-    "title": "Homework 02",
-    "section": "7.3 Step 3. Push",
-    "text": "7.3 Step 3. Push\nNow that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).\nGo the Git pane and click on Push.\nThought exercise: Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?1"
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#check-what-you-did",
-    "href": "hw-instructions/hw-02-instr.html#check-what-you-did",
-    "title": "Homework 02",
-    "section": "7.4 Check what you did",
-    "text": "7.4 Check what you did\nGo to your repository on https://github.com/JU-F22-MDSSB-MET-01 and click on the file “hw-01-R.md”. You should see a nicely rendered version with your name in the header."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#data-overview",
-    "href": "hw-instructions/hw-02-instr.html#data-overview",
-    "title": "Homework 02",
-    "section": "1.1 Data overview",
-    "text": "1.1 Data overview\n\n\n\n\n\n\nNote\n\n\n\nFirst do the following exercises in R in hw-02-R.qmd. Afterwards go through hw-02-py.qmd. This documents contains some tips how to do the same operations in python. Exercises which are not about coding are omitted there.\n\n\n\nRun the first chunk packages-data such that the lines are executed in the console to load the tidyverse functions and the ny3cflight13 data. See which dataframes are available in the Environment tab. The environment should be empty, but you can select “package:nycflights13” instead of “Global Environment” and you see values markes as <Promise>. Once you click on one or call it in the Console you see basic information there.\nReplace the “??” in the text with the actual numbers. Don’t write the numbers your self, but write inline code in which you output the number of rows of each data frame. In the document this already done for the airlines. Render the document to see if it works. More information https://quarto.org/docs/get-started/computations/rstudio.html#inline-code\nExplore the datasets. Write View(flights) in the Console to see the data as a spreadsheet. Write glimpse(flight) to see an overview of all variables, their types and first values. As these dataframes come from a package there is also a Help page for each dataframe which you access with ?flights. There you find short descriptions about each variable.\n\nWrite a nicely formatted short description about the variables origin, arr_delay, and dep_delay from flights and engine and seat from airports."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#data-visualizations",
-    "href": "hw-instructions/hw-02-instr.html#data-visualizations",
-    "title": "Homework 02",
-    "section": "1.2 Data visualizations",
-    "text": "1.2 Data visualizations\n\nWe first want to know the distribution of values of the categorical variable origin in flights. To that end, make a bar chart. Read the Help ?geom_bar and decide if you need to use geom_bar or geom_col. You can use the template below. Write your solution in the chunk flightsorigin. Test your line by sending it to the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message “First Visualization!” and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template.\n\nggplot(data = __________, mapping = aes(x = ________) + \n  geom_TOSELECT()\n\nNow, we want to know the distribution of values of the numerical variable distance in flights. A common visualization is a histogram. Use geom-histogram with the same template, write the solution in the chunk flightsdistance, and test it. Notice, the red comment in the console. It advises to specify a binwidth. Test bin-width = 5, bin-width = 50, and bin-width = 500 in geom_histogram, notice the difference (consult ?geom_histogram) for details, and decide which shows the distribution best.\nIn chunk distributions you see two ways to visualize the distribution of the number of seats in airplanes - points for each observation and a boxplot. (Read ?geom_boxplot for more information). Note, that there are three ggplot objects (g1, g2, g3) which are shown combined with g1 + g2 + g3 (using the patchwork package). Make the empty g3 into a vertical histogram for the same data following the exercise before. Hint: For the vertical histogram assign distance to the y aesthetic and leave out the x aesthetic. Think about the advantages and disadvantages of each visualization.\nNow, we make the first plot which visualizes two variables, the categorical variable engine, and the numerical variable seats in airplanes. Use the template and with aesthetics x and y and the geom_boxplot and put the solution into the chunk engine-seats\nTwo numerical variables can be visualized with a scatter plot using geom_point and the aesthetics x and y. Let us look at dep_delay and arr_delay of flights. Warning: The flights is very large! So, do not use flights in data = _____ but a random sample of 10,000 flights sample_n(flights, 10000). Now, let us add information about the categorical variable origin and assign it to the color aesthetic. Put your solution into the chunk delays. Test your solution several times and observe the changes in the visualization because of the random sampling. In which region are the changes most substantial? (This is a qualitative judgment.)\nFinally, let us visualize the location of airports as points at their longitude and latitude (look up the variable names) and color them with the timezone tzone they are in. Put the solution into the chunk airportlocations."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-instr.html#data-wrangling-pipes-and-visualization",
-    "href": "hw-instructions/hw-02-instr.html#data-wrangling-pipes-and-visualization",
-    "title": "Homework 02",
-    "section": "1.3 Data wrangling, pipes, and visualization",
-    "text": "1.3 Data wrangling, pipes, and visualization\nIn the following, you have to solve some data wrangling tasks. For data wrangling, the usage of the pipe, or a chain of pipes, is convenient. You can also use the pipe to finish with a visualization.\n\nPut the code snippet below into the chunk flightsaveragespeed and test it. The mutate line makes a new variable called speed which is the distance of the flight divided by the time in the air. The select line selects variables from the dataset. In this case, it selects air_time as the first, distance as the second, and the new speed as the third variable. All other variables are dropped.\nThe values in the new speed variable do not look like speeds of airplanes in km/h. Why? Because they are in miles/minute which we know from the variable descriptions. Modify the equation in the mutate command such that the values are in km/h. To that end, you have to divide air time by 60 and multiply distance by a certain factor. Look up the factor. Be careful with the order of mathematical operations and maybe use brackets (). Test your computation. Are the speed values reasonable?\nNow, make a histogram of speed. Add another pipe after the select statement and write ggplot(mapping = aes()) in the next line. Note, that you should not put data = flights into the argument of ggplot()! It is the mission of the pipe to do this. Fill out the aes() command accordingly, and add the geom for a histogram.\n\nflights |> \n  mutate(speed = distance / air_time ) |> \n  select(air_time, distance, speed)\n\nPractice filter operations, which subsets certain observations of a dataframe. Write a line which filters the flights which\n\n\nhad an arrival delay of two or more hours\nflew to Houston (IAH or HOU)\narrived more than two hours late, but didn’t leave late\nstarted with a delay of at least an hour, but made up over 30 minutes in flight. Put all four lines into the chunk filtering.\n\n\nAnother common operation is summarizing data. Put the code below into the chunk summarizing and test it. You see the average delay at departure. (See ?mean to learn what na.rm = TRUE is doing). Now, we want to know the average delay at departue for each of the three airports of origin. This is done with a group_by applied to the flights. Find out how and modify the code in the chunk accordingly.\n\nflights |> \n  summarize(mean_dep_deplay = mean(dep_delay, na.rm = TRUE))\n\nFinally, look at the plot of airportlocations. The airport locations show the shape of the United States of America, but there are four airports on the right hand side which do not fit that pattern. Filter airports such that you only see these four airport. Write your solution into the chunk stangeairportlocations. Check with internet research where these airports are located. Why are the locations from the data as they are? List your hypotheses for each airport under the chunk."
-  },
-  {
-    "objectID": "hw-instructions/hw-02-py-instruction.html",
-    "href": "hw-instructions/hw-02-py-instruction.html",
-    "title": "Additional python instruction Homework 02",
-    "section": "",
-    "text": "Read and do the homework in R first. There you find more instructions and exercises.\nYou can also copy each chunk into a notebook cell within jupyter notebook template file and work with the .ipynb file\nquarto can also render .ipynb files. (Actually quarto converts .qmd files into .ipynb files and renders them afterwards)\nThere is also a .ipynb Template in the python Codebase provided.\n\nThis analysis works with datasets in the package nycflights13 about flights, specifically a sample of domestic flights that departed from the three major New York City airport in 2013.\n\n1 Data overview\n#| label: packages-data\n#| message: false  # We do not want to see the common tidyverse message in our document\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom nycflights13 import flights, planes,airports\nRun the first chunk to import the packages, by running the command as:\n\nfrom nycflights import …\n\nYou can deliberately choose which dataset you want to import from nycflights13. The nameing convension seems to be identical with the dataset in R.\n#| output: false\nflights.info()\nExplore the datasets. If you are running the code in VSCode you can see the variable in the “JUPYTER: VARIABLES” window. Write flights.info() in the Console or in a chunk and remove it afterwards to see an overview of all variables, their types. (Write a short note about the differences to the R glimpse command)\n\n\n2 Whats the differences between R:glimpse and pandas:info\n…\n\n\n3 Data visualization\n\nWe first want to know the distribution of values of the categorical variable origin in flights. To that end, make a bar chart. Use the seaborn command displot.\n\n\nsns.displot(data=flights,x = .. y= ..,height=.., aspect=..)\ngeom_bar or geom_col is just a variation between the usage of variable x and y. Use height=.., aspect=.. to adjust the size of the plot.\n\nNow, we want to know the distribution of values of the numerical variable distance in flights. A common visualization is a histogram. Use sns.histplot with the same template, write the solution in the chunk flightsdistance, and test it. The command binwidth is equivalent to bin-width in R. Use it inside the seaborn function.\n\nfig,ax = plt.subplots(figsize=(12,6)) is used to vary the size of the plot.\nfig,ax = plt.subplots(figsize=(12,6))\nsns.histplot(data=flights,x='distance',ax=ax, ...)\nIn chunk distributions you see two ways to visualize the distribution of the number of seats in airplanes - points for each observation and a boxplot. Different to ggplot you define the output first. With ncols= .. ,nrows =.. you specify the layout and access it with  ax  similar to an array.\n#| label: distributions\nfig,ax = plt.subplots(nrows=1,ncols=3,figsize=(8,6))\n#fig,[ax1,ax2,ax3] = plt.subplots(nrows=1,ncols=3,figsize=(24,12)) ## Or define the array elements\nax[0].plot(np.zeros(len(planes)),planes['seats'],'k.')\nsns.boxplot(data=planes,y='seats',\n    boxprops={'facecolor':'None'},\n    ax=ax[1])\n#sns.boxplot(data=planes\n    #boxprops={'facecolor':'None'},\n    #ax=..)\n    # )\nNow, we make the first plot in python which visualizes two variables, the categorical variable engine, and the numerical variable seats in airplanes\n#| label: engine-seats\nfig,ax = plt.subplots(figsize=(24,12))\n\nsns.boxplot(data=planes,x = .. , y = ..\n    boxprops={'facecolor':'None'},\n    ax=ax)\nSo, do not use flights in data = .. but a random sample of 10,000 flights flights.sample(n=10000). To visualize a scatterplot use sns.scatterplot(). To add an information about the categorical variable origin and assign it to the color aesthetica variation, include  ..,hue= .. , in the scatterplot command.\n#| label: delays\nfig,ax = plt.subplots(figsize=(12,10))\nsns.scatterplot(data= flights.., x='dep_delay',y='arr_delay',..,ax=ax)\nFinally, let us visualize the location of airports as points at their longitude and latitude (look up the variable names) and color them with the timezone tzone they are in. Put the solution into the chunk airportlocations.\n#| label: airportlocations\nfig,ax = plt.subplots(figsize=(12,10))\nsns.scatterplot()\n\n\n4 Data Wrangling\nIn the following, you have to solve some data wrangling tasks. For data wrangling, you use different commands onto a DataFrame devided by a “.” . There is not equivalent to “pipes” in the pandas or python programming language. Here the easiest way is to creat a new column in our DataFrame with the average speed in it. The pandas specific .div() command allows for a fast division of two columns. Also modify the equation such that the values are in km/h.\n#| label: flightsaveragespeed\nflights['speed'] = flights['distance'].div(flights['air_time'])\nThe filter function is not available in python. IMHO the .loc function is the most comprehensive function the filter a DataFrame by using logical expressions.\nPractice .loc operations, which subsets certain observations of a dataframe. Write a line which filters the flights which\n\nhad an arrival delay of two or more hours\nflew to Houston (IAH or HOU)\narrived more than two hours late, but didn’t leave late\nstarted with a delay of at least an hour, but made up over 30 minutes in flight.\n\nuse individual lines for each filter. In the end use .describe() on the flights DataFrame. Now, we want to know the average delay at departue for each of the three airports of origin. This is done with a groupby(..) applied to the filtered DataFrame. additionally apply mean() and select the correct column. Find out how and modify the code in the chunk accordingly.\n#| label: flightsaveragespeed\nflights = flights.loc[flights['arr_delay']>=120] # 120 minutes\nNOTE: If you do not choose a new variable name for the DataFrame, data is lost, until you reload the complete DataFrame\nFinally, look at the plot of airportlocations. The airport locations show the shape of the United States of America, but there are four airports on the right hand side which do not fit that pattern. Filter airports such that you only see these four airport. Write your solution into the chunk stangeairportlocations. Check with internet research where these airports are located. Why are the locations from the data as they are? List your hypotheses for each airport under the chunk.\n#| label: strangeairportlocations\nplt.figure(figsize=(20,6))\nplt.plot( airports[..],airports[..] ,'.')"
-  },
-  {
-    "objectID": "hw-instructions/hw-02-py-instruction.html#whats-the-differences-between-rglimpse-and-pandasinfo",
-    "href": "hw-instructions/hw-02-py-instruction.html#whats-the-differences-between-rglimpse-and-pandasinfo",
-    "title": "Homework 02 - New York City Flights 2013 - python instructions",
-    "section": "1.1 Whats the differences between R:glimpse and pandas:info",
-    "text": "1.1 Whats the differences between R:glimpse and pandas:info\n…"
+    "objectID": "index.html#week-3-sep-15-data-visualization-data-formats",
+    "href": "index.html#week-3-sep-15-data-visualization-data-formats",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 3, Sep 15: Data visualization, Data formats",
+    "text": "Week 3, Sep 15: Data visualization, Data formats\nSlides Week 3\nLab work on code. Clone from: https://github.com/JU-F22-MDSSB-MET-01/codebase-janlorenz.git"
   },
   {
     "objectID": "W4.html#data-types-statistics",
@@ -390,5 +145,117 @@
     "title": "W#4 Data Wrangling",
     "section": "Joining data frames",
     "text": "Joining data frames"
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html",
+    "href": "hw-instructions/hw-01-instr.html",
+    "title": "Homework 01",
+    "section": "",
+    "text": "Note\n\n\n\nUpdated Sep 7, 2022 to prevent problems with cloning your repository.\nSep 9, 2022: Updated the individual repositories on with an updated dataset. All which have already cloned it should do a “Pull” in the Git tab of RStudio.\nThe goal of this assignment is to introduce you to R, RStudio, Git, and GitHub, which you’ll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#prerequisites",
+    "href": "hw-instructions/hw-01-instr.html#prerequisites",
+    "title": "Homework 01",
+    "section": "1.1 Prerequisites",
+    "text": "1.1 Prerequisites\nThis assignment assumes that you have reviewed the lectures of week 1 and checked all boxes on the Prerequisites Checklist."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#terminology",
+    "href": "hw-instructions/hw-01-instr.html#terminology",
+    "title": "Homework 01",
+    "section": "1.2 Terminology",
+    "text": "1.2 Terminology\nWe’ve already thrown around a few new terms, so let’s define them before we proceed.\n\nR and python: Names of the programming language we will be using throughout the course.\nRStudio: An integrated development environment developed for R, which can also work with python. In other words, a convenient interface for writing and running code.\nGit: A version control system.\nGitHub: A web platform for hosting version controlled files and facilitating collaboration among users.\nRepository: A Git repository contains all of your project’s files and stores each file’s revision history.\n\nIt’s common to refer to a repository as a repo.\n\nIn this course, each assignment you work on will be contained in a Git repo.\nFor individual assignments, only you will have access to the repo. For team assignments, all team members will have access to a single repo where they work collaboratively.\nAll repos associated with this course are housed in the course GitHub organization. The organization is set up such that students can only see repos they have access to, but the course instructors can see all of them."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#starting-slowly-step-by-step",
+    "href": "hw-instructions/hw-01-instr.html#starting-slowly-step-by-step",
+    "title": "Homework 01",
+    "section": "1.3 Starting slowly step by step",
+    "text": "1.3 Starting slowly step by step\nAs the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better programmer! Before we get to that stage, however, you need to build some basic fluency in the tools and the workflow we use. First, we will explore the fundamental building blocks of all of these tools.\nBefore you can get started with the analysis, you need to make sure you:\n\nhave a GitHub account\nare a member of the course GitHub organization https://github.com/JU-F22-MDSSB-MET-01\nhave the needed software stack installation on your local machine (see the Prerequisites Checklist in the slides of the Week 1 lectures.)\n\nIf you failed to confirm any of these, it means you have not yet completed the prerequisites for this assignment. Please go back to Prerequisites and complete them before continuing the assignment."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-0.-authenticate-git-to-access-your-github-content",
+    "href": "hw-instructions/hw-01-instr.html#step-0.-authenticate-git-to-access-your-github-content",
+    "title": "Homework 01",
+    "section": "2.1 Step 0. Authenticate git to access your GitHub content",
+    "text": "2.1 Step 0. Authenticate git to access your GitHub content\nBefore you can clone your repository you need to tell GitHub that you are authorized to do this, and to that end you need to make a Personal Access Token (PAT) in your GitHub account and make this available to git and RStudio on your local machine.\nThere are several ways to do this (e.g. from the command line) but as we will use RStudio anyway, we can use a convenient way provided there.\nRead more about PATs and how to use them in “Happy Git with R” Chapter 9 https://happygitwithr.com/https-pat.html (in particular the TL;DR which describes what we use).\nOpen RStudio and install the packages usethis and gitcreds if you haven’t done already: Go to the “Console” pane at the bottom left. Type in\ninstall.packages(c(\"usethis\",\"gitcreds\"))\nand hit Enter. Now the packages should be installed.\nNow, use two commands. Copy them to the console and click Enter:\nusethis::create_github_token()\nThis opens http://github.com and you may need to log in. Then you can make the PAT (read more details in “Happy Git with R”). For today, you can go the fast way and do not think about the options and click “Generate token”. Use the clipboard icon 📋 to copy the PAT. Go back to RStudio and do in the console:\ngitcreds::gitcreds_set()\nIn the dialog in the console paste your PAT from the clipboard and press Enter. That should be it and you do not need to repeat these steps until the PAT expires. (If the PAT expires you have to make a new one in the same way.)"
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-1.-get-url-of-repo-to-be-cloned",
+    "href": "hw-instructions/hw-01-instr.html#step-1.-get-url-of-repo-to-be-cloned",
+    "title": "Homework 01",
+    "section": "2.2 Step 1. Get URL of repo to be cloned",
+    "text": "2.2 Step 1. Get URL of repo to be cloned\nOn GitHub https://github.com/JU-F22-MDSSB-MET-01, open your repository for Homework 1.\n\nOn GitHub, click on the green Code button, select HTTPS (this might already be selected by default, and if it is, you’ll see the text Use Git or checkout with SVN using the web URL). Click on the clipboard icon 📋 to copy the repo URL."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-2.-go-to-rstudio",
+    "href": "hw-instructions/hw-01-instr.html#step-2.-go-to-rstudio",
+    "title": "Homework 01",
+    "section": "2.3 Step 2. Go to RStudio",
+    "text": "2.3 Step 2. Go to RStudio\nGo to your RStudio. Select “New Project…” either from the File menu or from the special project menu on the top right of the RStudio window.\n\nIn the New Project Wizard, click on “Version Control” and then “Git”.\n\n\n\n\n\n\nImportant\n\n\n\nIf “Version Control” or “Git” is not available in your RStudio, then either you haven’t installed git on you computer or your RStudio installation has not recognized it properly. In a correct installation RStudio would recognize git on your machine when started and makes the options available automatically. You have to solve this issue first to continue.\n\n\nThen paste the repositories URL (which should still be in your clipboard) into the “Repository URL:” field. Leave directory name as it is automatically chosen, but make sure that you create the directory in a the folder where you want to store the course material on your computer via the “Browse …” button.\nWhen you click “Create Project”\n\ngit will create a new directory in the folder, copies all the files from github to it, and initializes your git repository locally\nRStudio will switch to that the new project"
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-1.-update-the-yaml",
+    "href": "hw-instructions/hw-01-instr.html#step-1.-update-the-yaml",
+    "title": "Homework 01",
+    "section": "4.1 Step 1. Update the YAML",
+    "text": "4.1 Step 1. Update the YAML\nOpen the quarto (qmd) file in your project, change the author name to your name, and “Render” the document.\n This calls quarto, and quarto renders the document. In this case, that means, quarto creates a new file “hw-01-R.md” in the gfm format as specified in the YAML. GFM stands for GitHub Flavored Markdown which is a markdown document which can be nicely shown on https://github.com.\nWhen the file was rendered successfully, RStudio shows it in the “Viewer” pane at the bottom right. At the same place you can look in the “Files” pane you can check if the file is there.\n\nIf you do not find the “Render” button in your RStudio installation, then either quarto is not installed or RStudio has not recognized. You have to fix this issue first before you can continue. Another source of error while rendering could be that you haven’t installed the tidyverse package."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-2-commit",
+    "href": "hw-instructions/hw-01-instr.html#step-2-commit",
+    "title": "Homework 01",
+    "section": "4.2 Step 2: Commit",
+    "text": "4.2 Step 2: Commit\nGo to the Git pane in your RStudio (top right corner).\nYou should see that your qmd (quarto) file and its output, your md file (Markdown), are listed there as recently changed files.\nNext, click on Diff. This will pop open a new window that shows you the difference between the last committed state of the document and its current state that includes your changes. (Click on the file “hw-01-R.qmd”.) If you’re happy with these changes, click on the checkboxes of all files in the list, and type “Update author name” in the Commit message box and hit Commit and then close the window.\n\nYou don’t have to commit after every change, this would get quite cumbersome. You should consider committing states that are meaningful to you for inspection, comparison, or restoration. In the first few assignments we may tell you exactly when to commit and what commit message to use. As the semester progresses we will let you make these decisions."
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#step-3.-push",
+    "href": "hw-instructions/hw-01-instr.html#step-3.-push",
+    "title": "Homework 01",
+    "section": "4.3 Step 3. Push",
+    "text": "4.3 Step 3. Push\nNow that you have made an update and committed this change, it’s time to push these changes to the web! Or more specifically, to your repo on GitHub. Why? So that others can see your changes. And by others, we mean the course instructors (your repos in this course are private to you and us, only).\nGo the Git pane and click on Push.\nThought exercise: Which of the steps “updating the YAML”, “committing”, and “pushing” involves talking to GitHub?1"
+  },
+  {
+    "objectID": "hw-instructions/hw-01-instr.html#check-what-you-did",
+    "href": "hw-instructions/hw-01-instr.html#check-what-you-did",
+    "title": "Homework 01",
+    "section": "4.4 Check what you did",
+    "text": "4.4 Check what you did\nGo to your repository on https://github.com/JU-F22-MDSSB-MET-01 and click on the file “hw-01-R.md”. You should see a nicely rendered version with your name in the header."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html",
+    "href": "hw-instructions/hw-02-instr.html",
+    "title": "Homework 02",
+    "section": "",
+    "text": "The goals of this assignment are\nTo that end, we provide three repositories with starter documents which you should clone and push your solutions to:"
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#data-overview",
+    "href": "hw-instructions/hw-02-instr.html#data-overview",
+    "title": "Homework 02",
+    "section": "1.1 Data overview",
+    "text": "1.1 Data overview\n\n\n\n\n\n\nNote\n\n\n\nFirst do the following exercises in R in hw-02-R.qmd. Afterwards go through hw-02-py.qmd. This documents contains some tips how to do the same operations in python. Exercises which are not about coding are omitted there.\n\n\n\nRun the first chunk packages-data such that the lines are executed in the console to load the tidyverse functions and the ny3cflight13 data. See which dataframes are available in the Environment tab. The environment should be empty, but you can select “package:nycflights13” instead of “Global Environment” and you see values markes as <Promise>. Once you click on one or call it in the Console you see basic information there.\nReplace the “??” in the text with the actual numbers. Don’t write the numbers your self, but write inline code in which you output the number of rows of each data frame. In the document this already done for the airlines. Render the document to see if it works. More information https://quarto.org/docs/get-started/computations/rstudio.html#inline-code\nExplore the datasets. Write View(flights) in the Console to see the data as a spreadsheet. Write glimpse(flight) to see an overview of all variables, their types and first values. As these dataframes come from a package there is also a Help page for each dataframe which you access with ?flights. There you find short descriptions about each variable.\n\nWrite a nicely formatted short description about the variables origin, arr_delay, and dep_delay from flights and engine and seat from airports."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#data-visualizations",
+    "href": "hw-instructions/hw-02-instr.html#data-visualizations",
+    "title": "Homework 02",
+    "section": "1.2 Data visualizations",
+    "text": "1.2 Data visualizations\n\nWe first want to know the distribution of values of the categorical variable origin in flights. To that end, make a bar chart. Read the Help ?geom_bar and decide if you need to use geom_bar or geom_col. You can use the template below. Write your solution in the chunk flightsorigin. Test your line by sending it to the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message “First Visualization!” and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template.\n\nggplot(data = __________, mapping = aes(x = ________) + \n  geom_TOSELECT()\n\nNow, we want to know the distribution of values of the numerical variable distance in flights. A common visualization is a histogram. Use geom-histogram with the same template, write the solution in the chunk flightsdistance, and test it. Notice, the red comment in the console. It advises to specify a binwidth. Test bin-width = 5, bin-width = 50, and bin-width = 500 in geom_histogram, notice the difference (consult ?geom_histogram) for details, and decide which shows the distribution best.\nIn chunk distributions you see two ways to visualize the distribution of the number of seats in airplanes - points for each observation and a boxplot. (Read ?geom_boxplot for more information). Note, that there are three ggplot objects (g1, g2, g3) which are shown combined with g1 + g2 + g3 (using the patchwork package). Make the empty g3 into a vertical histogram for the same data following the exercise before. Hint: For the vertical histogram assign distance to the y aesthetic and leave out the x aesthetic. Think about the advantages and disadvantages of each visualization.\nNow, we make the first plot which visualizes two variables, the categorical variable engine, and the numerical variable seats in airplanes. Use the template and with aesthetics x and y and the geom_boxplot and put the solution into the chunk engine-seats\nTwo numerical variables can be visualized with a scatter plot using geom_point and the aesthetics x and y. Let us look at dep_delay and arr_delay of flights. Warning: The flights is very large! So, do not use flights in data = _____ but a random sample of 10,000 flights sample_n(flights, 10000). Now, let us add information about the categorical variable origin and assign it to the color aesthetic. Put your solution into the chunk delays. Test your solution several times and observe the changes in the visualization because of the random sampling. In which region are the changes most substantial? (This is a qualitative judgment.)\nFinally, let us visualize the location of airports as points at their longitude and latitude (look up the variable names) and color them with the timezone tzone they are in. Put the solution into the chunk airportlocations."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-instr.html#data-wrangling-pipes-and-visualization",
+    "href": "hw-instructions/hw-02-instr.html#data-wrangling-pipes-and-visualization",
+    "title": "Homework 02",
+    "section": "1.3 Data wrangling, pipes, and visualization",
+    "text": "1.3 Data wrangling, pipes, and visualization\nIn the following, you have to solve some data wrangling tasks. For data wrangling, the usage of the pipe, or a chain of pipes, is convenient. You can also use the pipe to finish with a visualization.\n\nPut the code snippet below into the chunk flightsaveragespeed and test it. The mutate line makes a new variable called speed which is the distance of the flight divided by the time in the air. The select line selects variables from the dataset. In this case, it selects air_time as the first, distance as the second, and the new speed as the third variable. All other variables are dropped.\nThe values in the new speed variable do not look like speeds of airplanes in km/h. Why? Because they are in miles/minute which we know from the variable descriptions. Modify the equation in the mutate command such that the values are in km/h. To that end, you have to divide air time by 60 and multiply distance by a certain factor. Look up the factor. Be careful with the order of mathematical operations and maybe use brackets (). Test your computation. Are the speed values reasonable?\nNow, make a histogram of speed. Add another pipe after the select statement and write ggplot(mapping = aes()) in the next line. Note, that you should not put data = flights into the argument of ggplot()! It is the mission of the pipe to do this. Fill out the aes() command accordingly, and add the geom for a histogram.\n\nflights |> \n  mutate(speed = distance / air_time ) |> \n  select(air_time, distance, speed)\n\nPractice filter operations, which subsets certain observations of a dataframe. Write a line which filters the flights which\n\n\nhad an arrival delay of two or more hours\nflew to Houston (IAH or HOU)\narrived more than two hours late, but didn’t leave late\nstarted with a delay of at least an hour, but made up over 30 minutes in flight. Put all four lines into the chunk filtering.\n\n\nAnother common operation is summarizing data. Put the code below into the chunk summarizing and test it. You see the average delay at departure. (See ?mean to learn what na.rm = TRUE is doing). Now, we want to know the average delay at departue for each of the three airports of origin. This is done with a group_by applied to the flights. Find out how and modify the code in the chunk accordingly.\n\nflights |> \n  summarize(mean_dep_deplay = mean(dep_delay, na.rm = TRUE))\n\nFinally, look at the plot of airportlocations. The airport locations show the shape of the United States of America, but there are four airports on the right hand side which do not fit that pattern. Filter airports such that you only see these four airport. Write your solution into the chunk stangeairportlocations. Check with internet research where these airports are located. Why are the locations from the data as they are? List your hypotheses for each airport under the chunk."
+  },
+  {
+    "objectID": "hw-instructions/hw-02-py-instruction.html",
+    "href": "hw-instructions/hw-02-py-instruction.html",
+    "title": "Additional python instruction Homework 02",
+    "section": "",
+    "text": "Read and do the homework in R first. There you find more instructions and exercises.\nYou can also copy each chunk into a notebook cell within jupyter notebook template file and work with the .ipynb file\nquarto can also render .ipynb files. (Actually quarto converts .qmd files into .ipynb files and renders them afterwards)\nThere is also a .ipynb Template in the python Codebase provided.\n\nThis analysis works with datasets in the package nycflights13 about flights, specifically a sample of domestic flights that departed from the three major New York City airport in 2013.\n\n1 Data overview\n#| label: packages-data\n#| message: false  # We do not want to see the common tidyverse message in our document\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom nycflights13 import flights, planes,airports\nRun the first chunk to import the packages, by running the command as:\n\nfrom nycflights import …\n\nYou can deliberately choose which dataset you want to import from nycflights13. The nameing convension seems to be identical with the dataset in R.\n#| output: false\nflights.info()\nExplore the datasets. If you are running the code in VSCode you can see the variable in the “JUPYTER: VARIABLES” window. Write flights.info() in the Console or in a chunk and remove it afterwards to see an overview of all variables, their types. (Write a short note about the differences to the R glimpse command)\n\n\n2 Whats the differences between R:glimpse and pandas:info\n…\n\n\n3 Data visualization\n\nWe first want to know the distribution of values of the categorical variable origin in flights. To that end, make a bar chart. Use the seaborn command displot.\n\n\nsns.displot(data=flights,x = .. y= ..,height=.., aspect=..)\ngeom_bar or geom_col is just a variation between the usage of variable x and y. Use height=.., aspect=.. to adjust the size of the plot.\n\nNow, we want to know the distribution of values of the numerical variable distance in flights. A common visualization is a histogram. Use sns.histplot with the same template, write the solution in the chunk flightsdistance, and test it. The command binwidth is equivalent to bin-width in R. Use it inside the seaborn function.\n\nfig,ax = plt.subplots(figsize=(12,6)) is used to vary the size of the plot.\nfig,ax = plt.subplots(figsize=(12,6))\nsns.histplot(data=flights,x='distance',ax=ax, ...)\nIn chunk distributions you see two ways to visualize the distribution of the number of seats in airplanes - points for each observation and a boxplot. Different to ggplot you define the output first. With ncols= .. ,nrows =.. you specify the layout and access it with  ax  similar to an array.\n#| label: distributions\nfig,ax = plt.subplots(nrows=1,ncols=3,figsize=(8,6))\n#fig,[ax1,ax2,ax3] = plt.subplots(nrows=1,ncols=3,figsize=(24,12)) ## Or define the array elements\nax[0].plot(np.zeros(len(planes)),planes['seats'],'k.')\nsns.boxplot(data=planes,y='seats',\n    boxprops={'facecolor':'None'},\n    ax=ax[1])\n#sns.boxplot(data=planes\n    #boxprops={'facecolor':'None'},\n    #ax=..)\n    # )\nNow, we make the first plot in python which visualizes two variables, the categorical variable engine, and the numerical variable seats in airplanes\n#| label: engine-seats\nfig,ax = plt.subplots(figsize=(24,12))\n\nsns.boxplot(data=planes,x = .. , y = ..\n    boxprops={'facecolor':'None'},\n    ax=ax)\nSo, do not use flights in data = .. but a random sample of 10,000 flights flights.sample(n=10000). To visualize a scatterplot use sns.scatterplot(). To add an information about the categorical variable origin and assign it to the color aesthetica variation, include  ..,hue= .. , in the scatterplot command.\n#| label: delays\nfig,ax = plt.subplots(figsize=(12,10))\nsns.scatterplot(data= flights.., x='dep_delay',y='arr_delay',..,ax=ax)\nFinally, let us visualize the location of airports as points at their longitude and latitude (look up the variable names) and color them with the timezone tzone they are in. Put the solution into the chunk airportlocations.\n#| label: airportlocations\nfig,ax = plt.subplots(figsize=(12,10))\nsns.scatterplot()\n\n\n4 Data Wrangling\nIn the following, you have to solve some data wrangling tasks. For data wrangling, you use different commands onto a DataFrame devided by a “.” . There is not equivalent to “pipes” in the pandas or python programming language. Here the easiest way is to creat a new column in our DataFrame with the average speed in it. The pandas specific .div() command allows for a fast division of two columns. Also modify the equation such that the values are in km/h.\n#| label: flightsaveragespeed\nflights['speed'] = flights['distance'].div(flights['air_time'])\nThe filter function is not available in python. IMHO the .loc function is the most comprehensive function the filter a DataFrame by using logical expressions.\nPractice .loc operations, which subsets certain observations of a dataframe. Write a line which filters the flights which\n\nhad an arrival delay of two or more hours\nflew to Houston (IAH or HOU)\narrived more than two hours late, but didn’t leave late\nstarted with a delay of at least an hour, but made up over 30 minutes in flight.\n\nuse individual lines for each filter. In the end use .describe() on the flights DataFrame. Now, we want to know the average delay at departue for each of the three airports of origin. This is done with a groupby(..) applied to the filtered DataFrame. additionally apply mean() and select the correct column. Find out how and modify the code in the chunk accordingly.\n#| label: flightsaveragespeed\nflights = flights.loc[flights['arr_delay']>=120] # 120 minutes\nNOTE: If you do not choose a new variable name for the DataFrame, data is lost, until you reload the complete DataFrame\nFinally, look at the plot of airportlocations. The airport locations show the shape of the United States of America, but there are four airports on the right hand side which do not fit that pattern. Filter airports such that you only see these four airport. Write your solution into the chunk stangeairportlocations. Check with internet research where these airports are located. Why are the locations from the data as they are? List your hypotheses for each airport under the chunk.\n#| label: strangeairportlocations\nplt.figure(figsize=(20,6))\nplt.plot( airports[..],airports[..] ,'.')"
   }
 ]
