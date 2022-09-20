@@ -96,7 +96,11 @@ Some week's lectures have readings to review before class. These shall come cont
 A large part of the course will build on or be inspired by material in **Data Science in the Box** <https://datasciencebox.org/> by Mine Çetinkaya-Rundel and the data science education community around. 
 You can also use the website for accompanying self-study on selected topics. 
 
-A core resource (for some readings) will be **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics. 
+A core resource for self-learning data science with R is **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics. 
+
+A core resource for data science basics with python is the **Python Data Science Handbook** <https://jakevdp.github.io/PythonDataScienceHandbook/> by Jake VanderPlas. Also there is a good video playlist <https://www.youtube.com/playlist?list=PLWKjhJtqVAbkmRvnFmOd4KhDdlK1oIq23> and a 4-hour "full-course" video <https://youtu.be/rfscVS0vtbw>.
+
+
 
 **Data Visualization**
 
