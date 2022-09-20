@@ -49,11 +49,11 @@ Write a nicely formatted short description about the variables `origin`, `arr_de
 
 1. We first want to know the distribution of values of the categorical variable `origin` in `flights`. To that end,  make a bar chart. Read the Help `?geom_bar` and decide if you need to use `geom_bar` or `geom_col`. You can use the template below. Write your solution in the chunk `flightsorigin`. Test your line by sending it to the Console (with Ctrl + Enter). Once you are satisfied, render the document, commit the changes with message "First Visualization!" and push it. In the following, you can commit and push when you want. (Note, that we can provide help directly in your repo when you commit and push before.) This is the template. 
 ```R
-ggplot(data = __________, mapping = aes(x = ________) + 
+ggplot(data = __________, mapping = aes(x = ________)) + 
   geom_TOSELECT()
 ``` 
 
-2. Now, we want to know the distribution of values of the numerical variable `distance` in `flights`. A common visualization is a histogram. Use `geom-histogram` with the same template, write the solution in the chunk `flightsdistance`, and test it. Notice, the red comment in the console. It advises to specify a binwidth. Test `bin-width = 5`, `bin-width = 50`, and `bin-width = 500` in `geom_histogram`, notice the difference (consult `?geom_histogram`) for details, and decide which shows the distribution best. 
+2. Now, we want to know the distribution of values of the numerical variable `distance` in `flights`. A common visualization is a histogram. Use `geom-histogram` with the same template, write the solution in the chunk `flightsdistance`, and test it. Notice, the red comment in the console. It advises to specify a binwidth. Test `binwidth = 5`, `binwidth = 50`, and `binwidth = 500` in `geom_histogram`, notice the difference (consult `?geom_histogram`) for details, and decide which shows the distribution best. 
 
 3. In chunk `distributions` you see two ways to visualize the distribution of the number of `seats` in `airplanes` -  points for each observation and a boxplot. (Read `?geom_boxplot` for more information). Note, that there are three ggplot objects (`g1`, `g2`, `g3`) which are shown combined with `g1 + g2 + g3` (using the `patchwork` package). Make the empty `g3` into a vertical histogram for the same data following the exercise before. Hint: For the vertical histogram assign `distance` to the `y` aesthetic and leave out the `x` aesthetic. Think about the advantages and disadvantages of each visualization. 
 
