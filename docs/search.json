@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "late.html",
+    "href": "late.html",
+    "title": "Info for late coming students",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "We know there are reasons for coming late which may not lie in your hands. We try to help you to get into the course in this situation. The following checklist should guide you.\n\nCheck list for late coming students\n\nRead this Syllabus\nMost urgent\n\n\nLook at slides 30 to 32 of the Week 1: https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit#slide=id.g14992662fb0_0_115 and start to build your data science toolkit on your computer.\nPart of it is that you should submit your GitHub-username in a Google Form. To speed up thing, also send your GitHub-username to Jan Lorenz via Teams!\n\n\nWork through the materials of the Sessions you have missed.\n\n\nYou find the materials in the Section “Course Material and Schedule” at the end of the syllabus.\nThere are links to the slides.\nOn MS Teams you find recordings in the Team F22_MDSSB-DSOC-02_Data Science Concepts in the General Channel -> Files -> Recordings\n\n\nDo the Homework you have missed even if you are beyond the deadline. You find the Homework instructions on this website. Homework 01 introduces you to the workflow needed for further Homework.\nVisit the next lectures in Data Science Concepts and the sessions in the two Data Science Tools course. When you cannot be there in person visit via Teams. Meetings will be started in the General Channel when the course starts.\nWhen you get stuck or lost, ask your fellow students or contact us!"
   },
   {
     "objectID": "index.html",
@@ -84,6 +84,27 @@
     "text": "Week 3, Sep 15: Data visualization, Data formats\nSlides Week 3\nLab work on code. Clone from: https://github.com/JU-F22-MDSSB-MET-01/codebase-janlorenz.git In RStudio, work through\n\n2022-09-15_ggplot_and_pipe.R\n2022-09-15_profiles.qmd"
   },
   {
+    "objectID": "W4.html#feedback-on-homework-01",
+    "href": "W4.html#feedback-on-homework-01",
+    "title": "W#4 Data Wrangling",
+    "section": "Feedback on Homework 01",
+    "text": "Feedback on Homework 01"
+  },
+  {
+    "objectID": "W4.html#programming-languages",
+    "href": "W4.html#programming-languages",
+    "title": "W#4 Data Wrangling",
+    "section": "Programming languages",
+    "text": "Programming languages\nSystems of rules which can process instructions to be executed by the computer.\nOur programming languages are:\n\n   \n\n\n\n\nIn R with function:\ndo_this(to_this)\ndo_that(to_this, with_those)\nto_this |> do_this() |> do_that(with_those) \nstore <- do_that(to_this)\n\nIn python:\nto_this.do_this()\nto_this.do_this(with_those)\nto_this.do_this().do_that(with_those)\nstore = do_that(to_this)\n\n\nWe can use R and python in a standard terminal (write R or python3) and write scripts with any editor (Wordpad)."
+  },
+  {
+    "objectID": "W4.html#integrated-development-environment-ide",
+    "href": "W4.html#integrated-development-environment-ide",
+    "title": "W#4 Data Wrangling",
+    "section": "Integrated development environment (IDE)",
+    "text": "Integrated development environment (IDE)\nProvides terminals, a source code editor, an object browser, output and help view, tools for rendering and version control, and more to help in the workflow. Our IDEs are:\n\n    VS Code\n\n\nEditors delight us with\n\nsyntax highlighting Then we see if code looks good\n\n\nc(10,\"Text\",TRUE)\n\n\ncode completion Start writing, and press Tab to see options\nautomatic indentation, brace matching, keyboard shortcuts, …"
+  },
+  {
     "objectID": "W4.html#data-types-statistics",
     "href": "W4.html#data-types-statistics",
     "title": "W#4 Data Wrangling",
@@ -144,7 +165,7 @@
     "href": "W4.html#joining-data-frames",
     "title": "W#4 Data Wrangling",
     "section": "Joining data frames",
-    "text": "Joining data frames"
+    "text": "Joining data frames\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   },
   {
     "objectID": "hw-instructions/hw-01-instr.html",
@@ -259,10 +280,45 @@
     "text": "Read and do the homework in R first. There you find more instructions and exercises.\nYou can also copy each chunk into a notebook cell within jupyter notebook template file and work with the .ipynb file\nquarto can also render .ipynb files. (Actually quarto converts .qmd files into .ipynb files and renders them afterwards)\nThere is also a .ipynb Template in the python Codebase provided.\n\nThis analysis works with datasets in the package nycflights13 about flights, specifically a sample of domestic flights that departed from the three major New York City airport in 2013.\n\n1 Data overview\n#| label: packages-data\n#| message: false  # We do not want to see the common tidyverse message in our document\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom nycflights13 import flights, planes,airports\nRun the first chunk to import the packages, by running the command as:\n\nfrom nycflights import …\n\nYou can deliberately choose which dataset you want to import from nycflights13. The nameing convension seems to be identical with the dataset in R.\n#| output: false\nflights.info()\nExplore the datasets. If you are running the code in VSCode you can see the variable in the “JUPYTER: VARIABLES” window. Write flights.info() in the Console or in a chunk and remove it afterwards to see an overview of all variables, their types. (Write a short note about the differences to the R glimpse command)\n\n\n2 Whats the differences between R:glimpse and pandas:info\n…\n\n\n3 Data visualization\n\nWe first want to know the distribution of values of the categorical variable origin in flights. To that end, make a bar chart. Use the seaborn command displot.\n\n\nsns.displot(data=flights,x = .. y= ..,height=.., aspect=..)\ngeom_bar or geom_col is just a variation between the usage of variable x and y. Use height=.., aspect=.. to adjust the size of the plot.\n\nNow, we want to know the distribution of values of the numerical variable distance in flights. A common visualization is a histogram. Use sns.histplot with the same template, write the solution in the chunk flightsdistance, and test it. The command binwidth is equivalent to bin-width in R. Use it inside the seaborn function.\n\nfig,ax = plt.subplots(figsize=(12,6)) is used to vary the size of the plot.\nfig,ax = plt.subplots(figsize=(12,6))\nsns.histplot(data=flights,x='distance',ax=ax, ...)\nIn chunk distributions you see two ways to visualize the distribution of the number of seats in airplanes - points for each observation and a boxplot. Different to ggplot you define the output first. With ncols= .. ,nrows =.. you specify the layout and access it with  ax  similar to an array.\n#| label: distributions\nfig,ax = plt.subplots(nrows=1,ncols=3,figsize=(8,6))\n#fig,[ax1,ax2,ax3] = plt.subplots(nrows=1,ncols=3,figsize=(24,12)) ## Or define the array elements\nax[0].plot(np.zeros(len(planes)),planes['seats'],'k.')\nsns.boxplot(data=planes,y='seats',\n    boxprops={'facecolor':'None'},\n    ax=ax[1])\n#sns.boxplot(data=planes\n    #boxprops={'facecolor':'None'},\n    #ax=..)\n    # )\nNow, we make the first plot in python which visualizes two variables, the categorical variable engine, and the numerical variable seats in airplanes\n#| label: engine-seats\nfig,ax = plt.subplots(figsize=(24,12))\n\nsns.boxplot(data=planes,x = .. , y = ..\n    boxprops={'facecolor':'None'},\n    ax=ax)\nSo, do not use flights in data = .. but a random sample of 10,000 flights flights.sample(n=10000). To visualize a scatterplot use sns.scatterplot(). To add an information about the categorical variable origin and assign it to the color aesthetica variation, include  ..,hue= .. , in the scatterplot command.\n#| label: delays\nfig,ax = plt.subplots(figsize=(12,10))\nsns.scatterplot(data= flights.., x='dep_delay',y='arr_delay',..,ax=ax)\nFinally, let us visualize the location of airports as points at their longitude and latitude (look up the variable names) and color them with the timezone tzone they are in. Put the solution into the chunk airportlocations.\n#| label: airportlocations\nfig,ax = plt.subplots(figsize=(12,10))\nsns.scatterplot()\n\n\n4 Data Wrangling\nIn the following, you have to solve some data wrangling tasks. For data wrangling, you use different commands onto a DataFrame devided by a “.” . There is not equivalent to “pipes” in the pandas or python programming language. Here the easiest way is to creat a new column in our DataFrame with the average speed in it. The pandas specific .div() command allows for a fast division of two columns. Also modify the equation such that the values are in km/h.\n#| label: flightsaveragespeed\nflights['speed'] = flights['distance'].div(flights['air_time'])\nThe filter function is not available in python. IMHO the .loc function is the most comprehensive function the filter a DataFrame by using logical expressions.\nPractice .loc operations, which subsets certain observations of a dataframe. Write a line which filters the flights which\n\nhad an arrival delay of two or more hours\nflew to Houston (IAH or HOU)\narrived more than two hours late, but didn’t leave late\nstarted with a delay of at least an hour, but made up over 30 minutes in flight.\n\nuse individual lines for each filter. In the end use .describe() on the flights DataFrame. Now, we want to know the average delay at departue for each of the three airports of origin. This is done with a groupby(..) applied to the filtered DataFrame. additionally apply mean() and select the correct column. Find out how and modify the code in the chunk accordingly.\n#| label: flightsaveragespeed\nflights = flights.loc[flights['arr_delay']>=120] # 120 minutes\nNOTE: If you do not choose a new variable name for the DataFrame, data is lost, until you reload the complete DataFrame\nFinally, look at the plot of airportlocations. The airport locations show the shape of the United States of America, but there are four airports on the right hand side which do not fit that pattern. Filter airports such that you only see these four airport. Write your solution into the chunk stangeairportlocations. Check with internet research where these airports are located. Why are the locations from the data as they are? List your hypotheses for each airport under the chunk.\n#| label: strangeairportlocations\nplt.figure(figsize=(20,6))\nplt.plot( airports[..],airports[..] ,'.')"
   },
   {
-    "objectID": "late.html",
-    "href": "late.html",
-    "title": "Info for late coming students",
-    "section": "",
-    "text": "We know there are reasons for coming late which may not lie in your hands. We try to help you to get into the course in this situation. The following checklist should guide you.\n\nCheck list for late coming students\n\nRead this Syllabus\nMost urgent\n\n\nLook at slides 30 to 32 of the Week 1: https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit#slide=id.g14992662fb0_0_115 and start to build your data science toolkit on your computer.\nPart of it is that you should submit your GitHub-username in a Google Form. To speed up thing, also send your GitHub-username to Jan Lorenz via Teams!\n\n\nWork through the materials of the Sessions you have missed.\n\n\nYou find the materials in the Section “Course Material and Schedule” at the end of the syllabus.\nThere are links to the slides.\nOn MS Teams you find recordings in the Team F22_MDSSB-DSOC-02_Data Science Concepts in the General Channel -> Files -> Recordings\n\n\nDo the Homework you have missed even if you are beyond the deadline. You find the Homework instructions on this website. Homework 01 introduces you to the workflow needed for further Homework.\nVisit the next lectures in Data Science Concepts and the sessions in the two Data Science Tools course. When you cannot be there in person visit via Teams. Meetings will be started in the General Channel when the course starts.\nWhen you get stuck or lost, ask your fellow students or contact us!"
+    "objectID": "W4.html#scientific-and-technical-publishing-system",
+    "href": "W4.html#scientific-and-technical-publishing-system",
+    "title": "W#4 Data Wrangling",
+    "section": "Scientific and technical publishing system",
+    "text": "Scientific and technical publishing system\nWeaves together narrative text and code to produces good-looking formatted output."
+  },
+  {
+    "objectID": "W4.html#publishing-system",
+    "href": "W4.html#publishing-system",
+    "title": "W#4 Data Wrangling",
+    "section": "Publishing system",
+    "text": "Publishing system\nWeaves together text and code to produces good-looking formatted scientific or technical output.\n\n   \n\n\nA YAML header and Markdown text with code chunks is rendered to a document in several formats.\n notebook is a similar concept: text and executable code mixed together in a browser tab. Can be rendered by quarto. Popular in the python world."
+  },
+  {
+    "objectID": "W4.html#integrated-development-environment",
+    "href": "W4.html#integrated-development-environment",
+    "title": "W#4 Data Wrangling",
+    "section": "Integrated development environment",
+    "text": "Integrated development environment\nIDEs provide terminals, a source code editor, an object browser, output and help view, tools for rendering and version control, and more to help in the workflow. Our IDEs are:\n\n    VS Code\n\n\nEditors delight us with\n\nsyntax highlighting Then we see if code looks good\n\nc(1O, Text, true, 10,\"Text\",TRUE)\n\ncode completion Start writing, and press Tab to see options\nautomatic indentation, brace matching, keyboard shortcuts, …"
+  },
+  {
+    "objectID": "W4.html#version-control",
+    "href": "W4.html#version-control",
+    "title": "W#4 Data Wrangling",
+    "section": "Version control",
+    "text": "Version control\n   \ngit manages local versioning of files in a directory1 as repository2, and merging different versions of the repository.\nGitHub provides git server for repositories and collaborative tools.\nDirectory = FolderRepository = A directory including a subfolder .git which stores the history of as commits."
+  },
+  {
+    "objectID": "W4.html#command-line-interfaces",
+    "href": "W4.html#command-line-interfaces",
+    "title": "W#4 Data Wrangling",
+    "section": "Command line interfaces",
+    "text": "Command line interfaces\nIn CLIs you communicate with your computer using the Read-Evaluate-Print-Loop (REPL). Terminal, Shell, Console all mostly synonym to CLI\n\nTerminal to access files and programs via commands in bash or zsh1. Also available in RStudio and VS Code.\nR console provided in RStudio2\npython3 console provided by VS Code3\n\nquarto and git are programs called using the CLI. For example:\nquarto render MyFile.qmd --to docx renders the MyFile.qmd to a Word file git add MyFile.qmd adds MyFile.qmd (or ots changes) to the staging area git commit -m \"Update of code\"\ngit push\nLanguages used in the Terminal with commands like cd=change directory, pwd=print working directory, or ls=list files.Can also be started in Terminal with RCan also be started in Terminal with python3"
+  },
+  {
+    "objectID": "W4.html#publish-what",
+    "href": "W4.html#publish-what",
+    "title": "W#4 Data Wrangling",
+    "section": "Publish what?",
+    "text": "Publish what?\n\nyour project report as (html)\nmake a personal website (using GitHub pages)\nwrite your thesis (pdf)"
   }
 ]
