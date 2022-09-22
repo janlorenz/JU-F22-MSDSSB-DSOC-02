@@ -1,5 +1,5 @@
 ---
-title: "W#4 Data Wrangling"
+title: "W#4 Data import, data wrangling"
 format: 
   revealjs: 
     slide-number: true
