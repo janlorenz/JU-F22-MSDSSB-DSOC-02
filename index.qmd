@@ -146,6 +146,17 @@ In RStudio, work through
 - 2022-09-15_ggplot_and_pipe.R
 - 2022-09-15_profiles.qmd 
 
+## Week 4, Sep 22: Data import, data Wrangling
+
+[Slides Week 4](W4.qmd)
+
+Including some recap of the toolkit.    
+Questions and advice on Homework 02 (mostly in Recording).  
 
 
+## Week 5, Sep 29: Relational Data, Exploratory Data Analysis, Asking Questions
 
+Shall also cover a brief introduction to some dangling topics: Missing values, factors, strings, date and time. 
+
+Homework 02 due next Sunday. 
+Homework 03 comes (or will be close to come). 

@@ -88,7 +88,7 @@
     "href": "W4.html#feedback-on-homework-01",
     "title": "W#4 Data Wrangling",
     "section": "Feedback on Homework 01",
-    "text": "Feedback on Homework 01"
+    "text": "Feedback on Homework 01\nSome of you did not modify the line\n“The dimension with the most experience is … The dimension with the least experience is …”\nor did not replace the line\n“Remove this text and write you answer to Exercise 4.”\nwith your text.\nYou did the programming right, but forgot the textual part. Now, this doesn’t matter. However, the learning goal was not only programming, but also taking care that the rendered output communicates your work well."
   },
   {
     "objectID": "W4.html#programming-languages",
@@ -312,7 +312,7 @@
     "href": "W4.html#command-line-interfaces",
     "title": "W#4 Data Wrangling",
     "section": "Command line interfaces",
-    "text": "Command line interfaces\nIn CLIs you communicate with your computer using the Read-Evaluate-Print-Loop (REPL). Terminal, Shell, Console all mostly synonym to CLI\n\nTerminal to access files and programs via commands in bash or zsh1. Also available in RStudio and VS Code.\nR console provided in RStudio2\npython3 console provided by VS Code3\n\nquarto and git are programs called using the CLI. For example:\nquarto render MyFile.qmd --to docx renders the MyFile.qmd to a Word file git add MyFile.qmd adds MyFile.qmd (or ots changes) to the staging area git commit -m \"Update of code\"\ngit push\nLanguages used in the Terminal with commands like cd=change directory, pwd=print working directory, or ls=list files.Can also be started in Terminal with RCan also be started in Terminal with python3"
+    "text": "Command line interfaces\nIn CLIs you communicate with your computer using the Read-Evaluate-Print-Loop (REPL). Terminal, Shell, Console all mostly synonym to CLI\n\nTerminal to access files and programs via commands in bash or zsh1. Also available in RStudio and VS Code.\nR console provided in RStudio2\npython3 console provided by VS Code3\n\nLanguages used in the Terminal with commands like cd=change directory, pwd=print working directory, or ls=list files.Can also be started in Terminal with RCan also be started in Terminal with python3"
   },
   {
     "objectID": "W4.html#publish-what",
@@ -320,5 +320,411 @@
     "title": "W#4 Data Wrangling",
     "section": "Publish what?",
     "text": "Publish what?\n\nyour project report as (html)\nmake a personal website (using GitHub pages)\nwrite your thesis (pdf)"
+  },
+  {
+    "objectID": "W4.html#data-hotel-bookings",
+    "href": "W4.html#data-hotel-bookings",
+    "title": "W#4 Data Wrangling",
+    "section": "Data: Hotel bookings",
+    "text": "Data: Hotel bookings\n\nData from two hotels: one resort and one city hotel\nObservations: Each row represents a hotel booking\n\n\n\nhotels<- read_csv(\"data/hotels.csv\")\n\nRows: 119390 Columns: 32\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (13): hotel, arrival_date_month, meal, country, market_segment, distrib...\ndbl  (18): is_canceled, lead_time, arrival_date_year, arrival_date_week_numb...\ndate  (1): reservation_status_date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "W4.html#grammar-of-data-wrangling",
+    "href": "W4.html#grammar-of-data-wrangling",
+    "title": "W#4 Data Wrangling",
+    "section": "Grammar of Data Wrangling",
+    "text": "Grammar of Data Wrangling\n\n\n\n\n\nGrammar of data wrangling: Start with a dataset and pipe it through several manipulations with |>\nmpg |> \n  filter(cyl == 8) |> \n  select(manufacturer, hwy) |> \n  group_by(manufacturer) |> \n  summarize(mean_hwy = mean(hwy))\n\n\nIn python: Similar concept making a chain using . to apply pandas methods for data frames one after the other.\nCompare the grammar of graphics ggplot2: Start creating a ggplot object, specifying data, and mapping variables to aesthetics, add graphical layers (geom_ functions) with +\nggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = trans)) + \n  geom_point() + \n  geom_smooth()"
+  },
+  {
+    "objectID": "W4.html#select",
+    "href": "W4.html#select",
+    "title": "W#4 Data Wrangling",
+    "section": "Select",
+    "text": "Select\nBack to the hotel booking data\n\nhotels<- read_csv(\"data/hotels.csv\")\n\nFirst look\n\nnames(hotels)\n\n\n\n [1] \"hotel\"                          \"is_canceled\"                   \n [3] \"lead_time\"                      \"arrival_date_year\"             \n [5] \"arrival_date_month\"             \"arrival_date_week_number\"      \n [7] \"arrival_date_day_of_month\"      \"stays_in_weekend_nights\"       \n [9] \"stays_in_week_nights\"           \"adults\"                        \n[11] \"children\"                       \"babies\"                        \n[13] \"meal\"                           \"country\"                       \n[15] \"market_segment\"                 \"distribution_channel\"          \n[17] \"is_repeated_guest\"              \"previous_cancellations\"        \n[19] \"previous_bookings_not_canceled\" \"reserved_room_type\"            \n[21] \"assigned_room_type\"             \"booking_changes\"               \n[23] \"deposit_type\"                   \"agent\"                         \n[25] \"company\"                        \"days_in_waiting_list\"          \n[27] \"customer_type\"                  \"adr\"                           \n[29] \"required_car_parking_spaces\"    \"total_of_special_requests\"     \n[31] \"reservation_status\"             \"reservation_status_date\""
+  },
+  {
+    "objectID": "W4.html#filter",
+    "href": "W4.html#filter",
+    "title": "W#4 Data Wrangling",
+    "section": "Filter",
+    "text": "Filter"
+  },
+  {
+    "objectID": "W4.html#comma-separated-values-csv-files",
+    "href": "W4.html#comma-separated-values-csv-files",
+    "title": "W#4 Data Wrangling",
+    "section": "Comma-separated values – CSV Files",
+    "text": "Comma-separated values – CSV Files\nDelimited text file\n\nCan be viewed with any text editor\nShow each row of the data frame in a line\nSeparates the content of columns by commas (or the delimiter character)\n\nThe first line is interpreted as a"
+  },
+  {
+    "objectID": "W4.html#logical-operations",
+    "href": "W4.html#logical-operations",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical1 operations",
+    "text": "Logical1 operations\n\n\nx <- c(TRUE, FALSE, TRUE)\ny <- c(TRUE, TRUE, FALSE)  \nx & y\n\n\n[1]  TRUE FALSE FALSE\n\nx | y\n\n[1] TRUE TRUE TRUE\n\n\n\n\n\nx | y\n\n\n\n[1] TRUE TRUE TRUE\n\n\n\nLogical is sometimes called Boolean"
+  },
+  {
+    "objectID": "W4.html#logical-operations-output",
+    "href": "W4.html#logical-operations-output",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical1 operations",
+    "text": "Logical1 operations\n\n[1]  TRUE FALSE FALSE\n\nLogical is sometimes called Boolean"
+  },
+  {
+    "objectID": "W4.html#readr-and-readxl",
+    "href": "W4.html#readr-and-readxl",
+    "title": "W#4 Data Wrangling",
+    "section": "readr and readxl",
+    "text": "readr and readxl\n\n\n\n\nread_csv() - comma delimited files\nread_csv2() - semicolon delimited files (common where “,” is used as decimal place)\nread_tsv() - tab delimited files\nread_delim() - reads in files with any delimiter\n…\n\n\n\n\nread_excel() read xls or xlsx files from MS Excel\n…"
+  },
+  {
+    "objectID": "W4.html#logical6-operations",
+    "href": "W4.html#logical6-operations",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical1 operations",
+    "text": "Logical1 operations\n\n\nx <- c(TRUE, FALSE, TRUE)\ny <- c(TRUE, TRUE, FALSE)  \nx & y\n\n\n[1]  TRUE FALSE FALSE\n\nx | y\n\n[1] TRUE TRUE TRUE\n\n\n\n\n\nx | y\n\n\n\n[1] TRUE TRUE TRUE\n\n\n\nLogical is sometimes called Boolean"
+  },
+  {
+    "objectID": "W4.html#feedback-on-homework-01-1",
+    "href": "W4.html#feedback-on-homework-01-1",
+    "title": "W#4 Data Wrangling",
+    "section": "Feedback on Homework 01",
+    "text": "Feedback on Homework 01\nSome of you did not modify the line\n“The dimension with the most experience is … The dimension with the least experience is …”\nor did not replace the line\n“Remove this text and write you answer to Exercise 4.”"
+  },
+  {
+    "objectID": "W4.html#quarto-and-git-only-use-the-cli",
+    "href": "W4.html#quarto-and-git-only-use-the-cli",
+    "title": "W#4 Data Wrangling",
+    "section": "quarto and git only use the CLI",
+    "text": "quarto and git only use the CLI\nFor example:\n\nquarto render MyFile.qmd --to docx renders the MyFile.qmd to a Word file  git add MyFile.qmd adds MyFile.qmd (or ots changes) to the staging area\ngit commit -m \"Update of code\" creates new commit with staged files\ngit push merge local commit into repository it was cloned from\n\n\nRStudio/VS Code provide buttons and shortcuts for the most common commands\nYou can also do it yourself.\nUse it to solve a problem in an “uncommon” situation, after research about the problem:\n\nread error message carefully (often they give a hint, but not always)\nsearching StackOverflow\nasking others\nfiling an issue in our General Discussion"
+  },
+  {
+    "objectID": "W4.html#other-data-formats",
+    "href": "W4.html#other-data-formats",
+    "title": "W#4 Data Wrangling",
+    "section": "Other data formats",
+    "text": "Other data formats\nR packages, analog libraries will exist for python\n\ngooglesheets4: Google Sheets\nhaven: SPSS, Stata, and SAS files\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\njsonline: JSON\nxml2: xml\nrvest: web scraping\nhttr: web APIs\n…"
+  },
+  {
+    "objectID": "W4.html#comma-separated-values-csv",
+    "href": "W4.html#comma-separated-values-csv",
+    "title": "W#4 Data Wrangling",
+    "section": "Comma-separated values (CSV)",
+    "text": "Comma-separated values (CSV)\nWe use this when there is no certain reason to do otherwise (it is not provided, or storage is an issue).\nCSV files are delimited text file\n\nCan be viewed with any text editor\nShow each row of the data frame in a line\nSeparates the content of columns by commas (or the delimiter character)\nEach cell could be surrounded by quotes (when long text with commas (!) is in cells)\nThe first line is interpreted as listing the variable names by default\n\nreadr tries to guess the data type of variables\nYou can also customize it yourself!"
+  },
+  {
+    "objectID": "W4.html#data-import-workflow",
+    "href": "W4.html#data-import-workflow",
+    "title": "W#4 Data Wrangling",
+    "section": "Data import workflow",
+    "text": "Data import workflow\n\nYou download your CSV file to the data/ directory. You may use download.file() for this, but make sure you do not download large amounts of data each time you render your file! (Comment out # and use again only when needed.)\nRead the data with data <- read_csv(\"data/FILENAME.csv\") and read the report in the console.\nExplore if you are happy and iterate by customizing you data import line using specifications (see the function help) until the data is as you want it to be.\n\nUse this for Homework 02 for the ESS and corona projects.\nSelf-learning:  concepts similar for loading CSV in python."
+  },
+  {
+    "objectID": "W4.html#columns-types",
+    "href": "W4.html#columns-types",
+    "title": "W#4 Data Wrangling",
+    "section": "Columns types",
+    "text": "Columns types\n\n\n\ntype function\ndata type\n\n\n\n\ncol_character()\ncharacter\n\n\ncol_date()\ndate\n\n\ncol_datetime()\nPOSIXct (date-time)\n\n\ncol_double()\ndouble (numeric)\n\n\ncol_factor()\nfactor\n\n\ncol_guess()\nlet readr guess (default)\n\n\ncol_integer()\ninteger\n\n\ncol_logical()\nlogical\n\n\ncol_number()\nnumbers mixed with non-number characters\n\n\ncol_numeric()\ndouble or integer\n\n\ncol_skip()\ndo not read\n\n\ncol_time()\ntime"
+  },
+  {
+    "objectID": "W4.html#dplyr-uses-several-verbs-to-describe-manipulation",
+    "href": "W4.html#dplyr-uses-several-verbs-to-describe-manipulation",
+    "title": "W#4 Data Wrangling",
+    "section": "dplyr uses several verbs to describe manipulation",
+    "text": "dplyr uses several verbs to describe manipulation\n\nselect: pick columns by name\narrange: reorder rows\nslice: pick rows using index(es)\nfilter: pick rows matching criteria\ndistinct: filter for unique rows\nmutate: add new variables\nsummarise: reduce variables to values\ngroup_by: for grouped operations\n… (many more)"
+  },
+  {
+    "objectID": "W4.html#dplyr-uses-verbs-to-describe-manipulation",
+    "href": "W4.html#dplyr-uses-verbs-to-describe-manipulation",
+    "title": "W#4 Data Wrangling",
+    "section": "dplyr uses verbs to describe manipulation",
+    "text": "dplyr uses verbs to describe manipulation\n\nselect: pick columns by name\narrange: reorder rows\nslice: pick rows using index(es)\nfilter: pick rows matching criteria\ndistinct: filter for unique rows\nmutate: add new variables\nsummarise: reduce variables to values\ngroup_by: for grouped operations\n… (many more)"
+  },
+  {
+    "objectID": "W4.html#dplyr-uses-verbs-to-manipulate",
+    "href": "W4.html#dplyr-uses-verbs-to-manipulate",
+    "title": "W#4 Data Wrangling",
+    "section": "dplyr uses verbs to manipulate",
+    "text": "dplyr uses verbs to manipulate\n\nselect: pick columns by name\narrange: reorder rows\nslice: pick rows using index(es)\nfilter: pick rows matching criteria\ndistinct: filter for unique rows\nmutate: add new variables\nsummarise: reduce variables to values\ngroup_by: for grouped operations\n… (many more)\n\nWhy does piping with |> work?\n\nBecause every dplyr function takes a data frame as first argument and outputs a (manipulated) data frame."
+  },
+  {
+    "objectID": "W4.html#back-to-the-hotel-booking-data",
+    "href": "W4.html#back-to-the-hotel-booking-data",
+    "title": "W#4 Data Wrangling",
+    "section": "Back to the hotel booking data",
+    "text": "Back to the hotel booking data\n\nhotels<- read_csv(\"data/hotels.csv\")\n\nFirst look\n\nnames(hotels)\n\n\n\n [1] \"hotel\"                          \"is_canceled\"                   \n [3] \"lead_time\"                      \"arrival_date_year\"             \n [5] \"arrival_date_month\"             \"arrival_date_week_number\"      \n [7] \"arrival_date_day_of_month\"      \"stays_in_weekend_nights\"       \n [9] \"stays_in_week_nights\"           \"adults\"                        \n[11] \"children\"                       \"babies\"                        \n[13] \"meal\"                           \"country\"                       \n[15] \"market_segment\"                 \"distribution_channel\"          \n[17] \"is_repeated_guest\"              \"previous_cancellations\"        \n[19] \"previous_bookings_not_canceled\" \"reserved_room_type\"            \n[21] \"assigned_room_type\"             \"booking_changes\"               \n[23] \"deposit_type\"                   \"agent\"                         \n[25] \"company\"                        \"days_in_waiting_list\"          \n[27] \"customer_type\"                  \"adr\"                           \n[29] \"required_car_parking_spaces\"    \"total_of_special_requests\"     \n[31] \"reservation_status\"             \"reservation_status_date\""
+  },
+  {
+    "objectID": "W4.html#back-to-the-hotel-booking-data-first-look",
+    "href": "W4.html#back-to-the-hotel-booking-data-first-look",
+    "title": "W#4 Data Wrangling",
+    "section": "Back to the hotel booking data: First look",
+    "text": "Back to the hotel booking data: First look\n\nhotels<- read_csv(\"data/hotels.csv\")\n\nFirst look on variables names\n\nnames(hotels)\n\n\n\n [1] \"hotel\"                          \"is_canceled\"                   \n [3] \"lead_time\"                      \"arrival_date_year\"             \n [5] \"arrival_date_month\"             \"arrival_date_week_number\"      \n [7] \"arrival_date_day_of_month\"      \"stays_in_weekend_nights\"       \n [9] \"stays_in_week_nights\"           \"adults\"                        \n[11] \"children\"                       \"babies\"                        \n[13] \"meal\"                           \"country\"                       \n[15] \"market_segment\"                 \"distribution_channel\"          \n[17] \"is_repeated_guest\"              \"previous_cancellations\"        \n[19] \"previous_bookings_not_canceled\" \"reserved_room_type\"            \n[21] \"assigned_room_type\"             \"booking_changes\"               \n[23] \"deposit_type\"                   \"agent\"                         \n[25] \"company\"                        \"days_in_waiting_list\"          \n[27] \"customer_type\"                  \"adr\"                           \n[29] \"required_car_parking_spaces\"    \"total_of_special_requests\"     \n[31] \"reservation_status\"             \"reservation_status_date\""
+  },
+  {
+    "objectID": "W4.html#second-look-glimpse",
+    "href": "W4.html#second-look-glimpse",
+    "title": "W#4 Data Wrangling",
+    "section": "Second look glimpse",
+    "text": "Second look glimpse\n\nglimpse(hotels)\n\n\n\nRows: 119,390\nColumns: 32\n$ hotel                          <chr> \"Resort Hotel\", \"Resort Hotel\", \"Resort…\n$ is_canceled                    <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, …\n$ lead_time                      <dbl> 342, 737, 7, 13, 14, 14, 0, 9, 85, 75, …\n$ arrival_date_year              <dbl> 2015, 2015, 2015, 2015, 2015, 2015, 201…\n$ arrival_date_month             <chr> \"July\", \"July\", \"July\", \"July\", \"July\",…\n$ arrival_date_week_number       <dbl> 27, 27, 27, 27, 27, 27, 27, 27, 27, 27,…\n$ arrival_date_day_of_month      <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ stays_in_weekend_nights        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ stays_in_week_nights           <dbl> 0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 4, …\n$ adults                         <dbl> 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ children                       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ babies                         <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ meal                           <chr> \"BB\", \"BB\", \"BB\", \"BB\", \"BB\", \"BB\", \"BB…\n$ country                        <chr> \"PRT\", \"PRT\", \"GBR\", \"GBR\", \"GBR\", \"GBR…\n$ market_segment                 <chr> \"Direct\", \"Direct\", \"Direct\", \"Corporat…\n$ distribution_channel           <chr> \"Direct\", \"Direct\", \"Direct\", \"Corporat…\n$ is_repeated_guest              <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ previous_cancellations         <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ previous_bookings_not_canceled <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ reserved_room_type             <chr> \"C\", \"C\", \"A\", \"A\", \"A\", \"A\", \"C\", \"C\",…\n$ assigned_room_type             <chr> \"C\", \"C\", \"C\", \"A\", \"A\", \"A\", \"C\", \"C\",…\n$ booking_changes                <dbl> 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ deposit_type                   <chr> \"No Deposit\", \"No Deposit\", \"No Deposit…\n$ agent                          <chr> \"NULL\", \"NULL\", \"NULL\", \"304\", \"240\", \"…\n$ company                        <chr> \"NULL\", \"NULL\", \"NULL\", \"NULL\", \"NULL\",…\n$ days_in_waiting_list           <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ customer_type                  <chr> \"Transient\", \"Transient\", \"Transient\", …\n$ adr                            <dbl> 0.00, 0.00, 75.00, 75.00, 98.00, 98.00,…\n$ required_car_parking_spaces    <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ total_of_special_requests      <dbl> 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 3, …\n$ reservation_status             <chr> \"Check-Out\", \"Check-Out\", \"Check-Out\", …\n$ reservation_status_date        <date> 2015-07-01, 2015-07-01, 2015-07-02, 20…"
+  },
+  {
+    "objectID": "W4.html#select-a-sinlge-colum",
+    "href": "W4.html#select-a-sinlge-colum",
+    "title": "W#4 Data Wrangling",
+    "section": "Select a sinlge colum",
+    "text": "Select a sinlge colum\n\nhotels |> select(lead_time)     \n\n\n\n# A tibble: 119,390 × 1\n   lead_time\n       <dbl>\n 1       342\n 2       737\n 3         7\n 4        13\n 5        14\n 6        14\n 7         0\n 8         9\n 9        85\n10        75\n# … with 119,380 more rows\n\n\nNote: select(hotels, lead_time) is identical.\n\n\nIn hotel business, lead time is the time betweeen booking and arrival."
+  },
+  {
+    "objectID": "W4.html#select-a-more-columns",
+    "href": "W4.html#select-a-more-columns",
+    "title": "W#4 Data Wrangling",
+    "section": "Select a more columns",
+    "text": "Select a more columns\n\nhotels |> select(hotel, lead_time)     \n\n\n\n# A tibble: 119,390 × 2\n   hotel        lead_time\n   <chr>            <dbl>\n 1 Resort Hotel       342\n 2 Resort Hotel       737\n 3 Resort Hotel         7\n 4 Resort Hotel        13\n 5 Resort Hotel        14\n 6 Resort Hotel        14\n 7 Resort Hotel         0\n 8 Resort Hotel         9\n 9 Resort Hotel        85\n10 Resort Hotel        75\n# … with 119,380 more rows\n\n\nNote that hotel is a variable, but hotels the data frame object name"
+  },
+  {
+    "objectID": "W4.html#select-more-columns",
+    "href": "W4.html#select-more-columns",
+    "title": "W#4 Data Wrangling",
+    "section": "Select more columns",
+    "text": "Select more columns\n\nhotels |> select(hotel, lead_time)     \n\n\n\n# A tibble: 119,390 × 2\n   hotel        lead_time\n   <chr>            <dbl>\n 1 Resort Hotel       342\n 2 Resort Hotel       737\n 3 Resort Hotel         7\n 4 Resort Hotel        13\n 5 Resort Hotel        14\n 6 Resort Hotel        14\n 7 Resort Hotel         0\n 8 Resort Hotel         9\n 9 Resort Hotel        85\n10 Resort Hotel        75\n# … with 119,380 more rows\n\n\nNote that hotel is a variable, but hotels the data frame object name"
+  },
+  {
+    "objectID": "W4.html#select-helpers-starts_with-everything",
+    "href": "W4.html#select-helpers-starts_with-everything",
+    "title": "W#4 Data Wrangling",
+    "section": "Select helpers starts_with, everything",
+    "text": "Select helpers starts_with, everything\n\n\n\nhotels |> select(starts_with(\"arrival\"))\n\n# A tibble: 119,390 × 4\n   arrival_date_year arrival_date_month arrival_date_week_number arrival_date_…¹\n               <dbl> <chr>                                 <dbl>           <dbl>\n 1              2015 July                                     27               1\n 2              2015 July                                     27               1\n 3              2015 July                                     27               1\n 4              2015 July                                     27               1\n 5              2015 July                                     27               1\n 6              2015 July                                     27               1\n 7              2015 July                                     27               1\n 8              2015 July                                     27               1\n 9              2015 July                                     27               1\n10              2015 July                                     27               1\n# … with 119,380 more rows, and abbreviated variable name\n#   ¹​arrival_date_day_of_month\n\n\n\n\nBring columns you want to see to the front\n\nhotels |> select(hotel, market_segment, children, everything())\n\n# A tibble: 119,390 × 32\n   hotel marke…¹ child…² is_ca…³ lead_…⁴ arriv…⁵ arriv…⁶ arriv…⁷ arriv…⁸ stays…⁹\n   <chr> <chr>     <dbl>   <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>\n 1 Reso… Direct        0       0     342    2015 July         27       1       0\n 2 Reso… Direct        0       0     737    2015 July         27       1       0\n 3 Reso… Direct        0       0       7    2015 July         27       1       0\n 4 Reso… Corpor…       0       0      13    2015 July         27       1       0\n 5 Reso… Online…       0       0      14    2015 July         27       1       0\n 6 Reso… Online…       0       0      14    2015 July         27       1       0\n 7 Reso… Direct        0       0       0    2015 July         27       1       0\n 8 Reso… Direct        0       0       9    2015 July         27       1       0\n 9 Reso… Online…       0       1      85    2015 July         27       1       0\n10 Reso… Offlin…       0       1      75    2015 July         27       1       0\n# … with 119,380 more rows, 22 more variables: stays_in_week_nights <dbl>,\n#   adults <dbl>, babies <dbl>, meal <chr>, country <chr>,\n#   distribution_channel <chr>, is_repeated_guest <dbl>,\n#   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,\n#   reserved_room_type <chr>, assigned_room_type <chr>, booking_changes <dbl>,\n#   deposit_type <chr>, agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#select-helper-starts_with",
+    "href": "W4.html#select-helper-starts_with",
+    "title": "W#4 Data Wrangling",
+    "section": "Select helper starts_with",
+    "text": "Select helper starts_with\n\nhotels |> select(starts_with(\"arrival\"))\n\n\n\n# A tibble: 119,390 × 4\n   arrival_date_year arrival_date_month arrival_date_week_number arrival_date_…¹\n               <dbl> <chr>                                 <dbl>           <dbl>\n 1              2015 July                                     27               1\n 2              2015 July                                     27               1\n 3              2015 July                                     27               1\n 4              2015 July                                     27               1\n 5              2015 July                                     27               1\n 6              2015 July                                     27               1\n 7              2015 July                                     27               1\n 8              2015 July                                     27               1\n 9              2015 July                                     27               1\n10              2015 July                                     27               1\n# … with 119,380 more rows, and abbreviated variable name\n#   ¹​arrival_date_day_of_month"
+  },
+  {
+    "objectID": "W4.html#bring-columns-you-want-to-see-to-the-front",
+    "href": "W4.html#bring-columns-you-want-to-see-to-the-front",
+    "title": "W#4 Data Wrangling",
+    "section": "Bring columns you want to see to the front",
+    "text": "Bring columns you want to see to the front\n\nhotels |> select(hotel, market_segment, children, everything())\n\n\n\n# A tibble: 119,390 × 32\n   hotel marke…¹ child…² is_ca…³ lead_…⁴ arriv…⁵ arriv…⁶ arriv…⁷ arriv…⁸ stays…⁹\n   <chr> <chr>     <dbl>   <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>\n 1 Reso… Direct        0       0     342    2015 July         27       1       0\n 2 Reso… Direct        0       0     737    2015 July         27       1       0\n 3 Reso… Direct        0       0       7    2015 July         27       1       0\n 4 Reso… Corpor…       0       0      13    2015 July         27       1       0\n 5 Reso… Online…       0       0      14    2015 July         27       1       0\n 6 Reso… Online…       0       0      14    2015 July         27       1       0\n 7 Reso… Direct        0       0       0    2015 July         27       1       0\n 8 Reso… Direct        0       0       9    2015 July         27       1       0\n 9 Reso… Online…       0       1      85    2015 July         27       1       0\n10 Reso… Offlin…       0       1      75    2015 July         27       1       0\n# … with 119,380 more rows, 22 more variables: stays_in_week_nights <dbl>,\n#   adults <dbl>, babies <dbl>, meal <chr>, country <chr>,\n#   distribution_channel <chr>, is_repeated_guest <dbl>,\n#   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,\n#   reserved_room_type <chr>, assigned_room_type <chr>, booking_changes <dbl>,\n#   deposit_type <chr>, agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#bring-columns-to-the-front",
+    "href": "W4.html#bring-columns-to-the-front",
+    "title": "W#4 Data Wrangling",
+    "section": "Bring columns to the front",
+    "text": "Bring columns to the front\n\nhotels |> select(hotel, market_segment, children, everything())\n\n\n\n# A tibble: 119,390 × 32\n   hotel marke…¹ child…² is_ca…³ lead_…⁴ arriv…⁵ arriv…⁶ arriv…⁷ arriv…⁸ stays…⁹\n   <chr> <chr>     <dbl>   <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>\n 1 Reso… Direct        0       0     342    2015 July         27       1       0\n 2 Reso… Direct        0       0     737    2015 July         27       1       0\n 3 Reso… Direct        0       0       7    2015 July         27       1       0\n 4 Reso… Corpor…       0       0      13    2015 July         27       1       0\n 5 Reso… Online…       0       0      14    2015 July         27       1       0\n 6 Reso… Online…       0       0      14    2015 July         27       1       0\n 7 Reso… Direct        0       0       0    2015 July         27       1       0\n 8 Reso… Direct        0       0       9    2015 July         27       1       0\n 9 Reso… Online…       0       1      85    2015 July         27       1       0\n10 Reso… Offlin…       0       1      75    2015 July         27       1       0\n# … with 119,380 more rows, 22 more variables: stays_in_week_nights <dbl>,\n#   adults <dbl>, babies <dbl>, meal <chr>, country <chr>,\n#   distribution_channel <chr>, is_repeated_guest <dbl>,\n#   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,\n#   reserved_room_type <chr>, assigned_room_type <chr>, booking_changes <dbl>,\n#   deposit_type <chr>, agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#slicefor-certain-rows",
+    "href": "W4.html#slicefor-certain-rows",
+    "title": "W#4 Data Wrangling",
+    "section": "slicefor certain rows",
+    "text": "slicefor certain rows\n\nhotels |> slice(2:4)\n\n\n\n# A tibble: 3 × 32\n  hotel   is_ca…¹ lead_…² arriv…³ arriv…⁴ arriv…⁵ arriv…⁶ stays…⁷ stays…⁸ adults\n  <chr>     <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>  <dbl>\n1 Resort…       0     737    2015 July         27       1       0       0      2\n2 Resort…       0       7    2015 July         27       1       0       1      1\n3 Resort…       0      13    2015 July         27       1       0       1      1\n# … with 22 more variables: children <dbl>, babies <dbl>, meal <chr>,\n#   country <chr>, market_segment <chr>, distribution_channel <chr>,\n#   is_repeated_guest <dbl>, previous_cancellations <dbl>,\n#   previous_bookings_not_canceled <dbl>, reserved_room_type <chr>,\n#   assigned_room_type <chr>, booking_changes <dbl>, deposit_type <chr>,\n#   agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#more-select-helpers",
+    "href": "W4.html#more-select-helpers",
+    "title": "W#4 Data Wrangling",
+    "section": "More select helpers",
+    "text": "More select helpers\n\nstarts_with(): Starts with a prefix\nends_with(): Ends with a suffix\ncontains(): Contains a literal string\nnum_range(): Matches a numerical range like x01, x02, x03\none_of(): Matches variable names in a character vector\neverything(): Matches all variables\nlast_col(): Select last variable, possibly with an offset\nmatches(): Matches a regular expression (a sequence of symbols/characters expressing a string/pattern to be searched for within text)\n\n\n\nCheck details with ?one_of"
+  },
+  {
+    "objectID": "W4.html#slice-for-certain-rows",
+    "href": "W4.html#slice-for-certain-rows",
+    "title": "W#4 Data Wrangling",
+    "section": "slice for certain rows",
+    "text": "slice for certain rows\n\nhotels |> slice(2:4)\n\n\n\n# A tibble: 3 × 32\n  hotel   is_ca…¹ lead_…² arriv…³ arriv…⁴ arriv…⁵ arriv…⁶ stays…⁷ stays…⁸ adults\n  <chr>     <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>  <dbl>\n1 Resort…       0     737    2015 July         27       1       0       0      2\n2 Resort…       0       7    2015 July         27       1       0       1      1\n3 Resort…       0      13    2015 July         27       1       0       1      1\n# … with 22 more variables: children <dbl>, babies <dbl>, meal <chr>,\n#   country <chr>, market_segment <chr>, distribution_channel <chr>,\n#   is_repeated_guest <dbl>, previous_cancellations <dbl>,\n#   previous_bookings_not_canceled <dbl>, reserved_room_type <chr>,\n#   assigned_room_type <chr>, booking_changes <dbl>, deposit_type <chr>,\n#   agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#filter-for-rows-with-certain-criteria",
+    "href": "W4.html#filter-for-rows-with-certain-criteria",
+    "title": "W#4 Data Wrangling",
+    "section": "filter for rows with certain criteria",
+    "text": "filter for rows with certain criteria\n\nhotels |> filter(hotel == \"City Hotel\")\n\n\n\n# A tibble: 79,330 × 32\n   hotel  is_ca…¹ lead_…² arriv…³ arriv…⁴ arriv…⁵ arriv…⁶ stays…⁷ stays…⁸ adults\n   <chr>    <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>  <dbl>\n 1 City …       0       6    2015 July         27       1       0       2      1\n 2 City …       1      88    2015 July         27       1       0       4      2\n 3 City …       1      65    2015 July         27       1       0       4      1\n 4 City …       1      92    2015 July         27       1       2       4      2\n 5 City …       1     100    2015 July         27       2       0       2      2\n 6 City …       1      79    2015 July         27       2       0       3      2\n 7 City …       0       3    2015 July         27       2       0       3      1\n 8 City …       1      63    2015 July         27       2       1       3      1\n 9 City …       1      62    2015 July         27       2       2       3      2\n10 City …       1      62    2015 July         27       2       2       3      2\n# … with 79,320 more rows, 22 more variables: children <dbl>, babies <dbl>,\n#   meal <chr>, country <chr>, market_segment <chr>,\n#   distribution_channel <chr>, is_repeated_guest <dbl>,\n#   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,\n#   reserved_room_type <chr>, assigned_room_type <chr>, booking_changes <dbl>,\n#   deposit_type <chr>, agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#filter-for-multiple-criteria",
+    "href": "W4.html#filter-for-multiple-criteria",
+    "title": "W#4 Data Wrangling",
+    "section": "filter for multiple criteria",
+    "text": "filter for multiple criteria\n\nhotels |> filter(\n  babies >= 1,\n  children >= 1, \n  ) |> \n  select(hotel, adults, babies, children)\n\n\n\n# A tibble: 175 × 4\n   hotel        adults babies children\n   <chr>         <dbl>  <dbl>    <dbl>\n 1 Resort Hotel      2      1        1\n 2 Resort Hotel      2      1        1\n 3 Resort Hotel      2      1        1\n 4 Resort Hotel      2      1        1\n 5 Resort Hotel      2      1        1\n 6 Resort Hotel      2      1        1\n 7 Resort Hotel      2      1        1\n 8 Resort Hotel      2      1        2\n 9 Resort Hotel      2      1        2\n10 Resort Hotel      1      1        2\n# … with 165 more rows\n\n\nComma-separated conditions are interpreted as all these should be fulfilled.\nThis is identical to the logical AND &.\nhotels |> filter(babies >= 1 & children >= 1)"
+  },
+  {
+    "objectID": "W4.html#filter-for-multiple-criteria-again",
+    "href": "W4.html#filter-for-multiple-criteria-again",
+    "title": "W#4 Data Wrangling",
+    "section": "filter for multiple criteria again",
+    "text": "filter for multiple criteria again\n\nhotels |> filter(\n  hotel == \"City Hotel\",\n  babies >= 1,\n  children >= 1, \n  ) |> \n  select(hotel, adults, babies, children)\n\n\n\n# A tibble: 72 × 4\n   hotel      adults babies children\n   <chr>       <dbl>  <dbl>    <dbl>\n 1 City Hotel      2      1        1\n 2 City Hotel      2      1        2\n 3 City Hotel      2      1        1\n 4 City Hotel      0      1        2\n 5 City Hotel      2      1        2\n 6 City Hotel      2      1        1\n 7 City Hotel      2      1        1\n 8 City Hotel      2      1        2\n 9 City Hotel      2      1        1\n10 City Hotel      2      1        2\n# … with 62 more rows"
+  },
+  {
+    "objectID": "W4.html#filter-for-complexer-criteria",
+    "href": "W4.html#filter-for-complexer-criteria",
+    "title": "W#4 Data Wrangling",
+    "section": "filter for complexer criteria",
+    "text": "filter for complexer criteria\n\nhotels |> filter(\n  babies >= 1 | children >= 1\n  ) |> \n  select(hotel, adults, babies, children)\n\n\n\n# A tibble: 9,332 × 4\n   hotel        adults babies children\n   <chr>         <dbl>  <dbl>    <dbl>\n 1 Resort Hotel      2      0        1\n 2 Resort Hotel      2      0        2\n 3 Resort Hotel      2      0        2\n 4 Resort Hotel      2      0        2\n 5 Resort Hotel      2      0        1\n 6 Resort Hotel      2      0        1\n 7 Resort Hotel      1      0        2\n 8 Resort Hotel      2      0        2\n 9 Resort Hotel      2      1        0\n10 Resort Hotel      2      1        0\n# … with 9,322 more rows\n\n\n| is the logical OR. Only one criterion needs to be fulfilled."
+  },
+  {
+    "objectID": "W4.html#logical-operators",
+    "href": "W4.html#logical-operators",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical operators1",
+    "text": "Logical operators1\n\n\n\noperator\ndefinition\n\n\n\n\n<\nless than\n\n\n<=\nless than or equal to\n\n\n>\ngreater than\n\n\n>=\ngreater than or equal to\n\n\n==\nexactly equal to\n\n\n!=\nnot equal to\n\n\nx & y\nx AND y\n\n\nx | y\nx OR y\n\n\nis.na(x)\ntest if x is NA (misssing data)\n\n\n!is.na(x)\ntest if x is not NA (not missing data)\n\n\nx %in% y\ntest if x is in y (often used for strings)\n\n\n!(x %in% y)\ntest if x is not in y\n\n\n!x\nnot x\n\n\n\nLogical is sometimes called Boolean"
+  },
+  {
+    "objectID": "W4.html#logical-indexing",
+    "href": "W4.html#logical-indexing",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical indexing",
+    "text": "Logical indexing\nSelect and filter can also be achieved by logical indexing.\nIn R as well as in python.\nSelect ranges of rows and columns\n\nhotels[1:3,5:7]\n\n\n\n# A tibble: 3 × 3\n  arrival_date_month arrival_date_week_number arrival_date_day_of_month\n  <chr>                                 <dbl>                     <dbl>\n1 July                                     27                         1\n2 July                                     27                         1\n3 July                                     27                         1\n\n\nYou can use any vector (with non-overshooting indexes)\n\nhotels[c(1:3,100232),c(5:7,1)]\n\n\n\n# A tibble: 4 × 4\n  arrival_date_month arrival_date_week_number arrival_date_day_of_month hotel   \n  <chr>                                 <dbl>                     <dbl> <chr>   \n1 July                                     27                         1 Resort …\n2 July                                     27                         1 Resort …\n3 July                                     27                         1 Resort …\n4 October                                  44                        23 City Ho…"
+  },
+  {
+    "objectID": "W4.html#python-is-0-indexed-r-is-1-indexed",
+    "href": "W4.html#python-is-0-indexed-r-is-1-indexed",
+    "title": "W#4 Data Wrangling",
+    "section": "python is 0-indexed, R is 1-indexed!",
+    "text": "python is 0-indexed, R is 1-indexed!\npython: indexes go from 0 to n-1\nR: indexes go from 1 to n\nBew aware!\nThere is no correct way. For some use cases one is more natural for others the other.\nAnalog: In mathematics there is an unsettled debate if 0 is the first natural number or 1"
+  },
+  {
+    "objectID": "W4.html#indexing",
+    "href": "W4.html#indexing",
+    "title": "W#4 Data Wrangling",
+    "section": "Indexing",
+    "text": "Indexing\nSelect and filter can also be achieved by indexing.\nIn R as well as in python.\nSelect ranges of rows and columns\n\nhotels[1:3,5:7]\n\n\n\n# A tibble: 3 × 3\n  arrival_date_month arrival_date_week_number arrival_date_day_of_month\n  <chr>                                 <dbl>                     <dbl>\n1 July                                     27                         1\n2 July                                     27                         1\n3 July                                     27                         1\n\n\nYou can use any vector (with non-overshooting indexes)\n\nhotels[c(1:3,100232),c(5:7,1)]\n\n\n\n# A tibble: 4 × 4\n  arrival_date_month arrival_date_week_number arrival_date_day_of_month hotel   \n  <chr>                                 <dbl>                     <dbl> <chr>   \n1 July                                     27                         1 Resort …\n2 July                                     27                         1 Resort …\n3 July                                     27                         1 Resort …\n4 October                                  44                        23 City Ho…"
+  },
+  {
+    "objectID": "W4.html#logical-indexing-with-logical-vectors",
+    "href": "W4.html#logical-indexing-with-logical-vectors",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical indexing with logical vectors",
+    "text": "Logical indexing with logical vectors\n\n\ndata <- tibble(x = LETTERS[1:5], y = letters[6:10])\ndata\n\n\n# A tibble: 5 × 2\n  x     y    \n  <chr> <chr>\n1 A     f    \n2 B     g    \n3 C     h    \n4 D     i    \n5 E     j    \n\n\n\n\n\n\ndata[c(TRUE,FALSE,TRUE,FALSE,TRUE),c(TRUE,FALSE)]\n\n\n# A tibble: 3 × 1\n  x    \n  <chr>\n1 A    \n2 C    \n3 E"
+  },
+  {
+    "objectID": "W4.html#logical-vectors-are-produced-by-conditional-statements",
+    "href": "W4.html#logical-vectors-are-produced-by-conditional-statements",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical vectors are produced by conditional statements",
+    "text": "Logical vectors are produced by conditional statements\n\n\ndata$x\n\n\n[1] \"A\" \"B\" \"C\" \"D\" \"E\"\n\ndata$x %in% c(\"C\",\"E\")\n\n[1] FALSE FALSE  TRUE FALSE  TRUE\n\n\n\n\n\n\ndata[data$x %in% c(\"C\",\"E\"),]\n\n\n# A tibble: 2 × 2\n  x     y    \n  <chr> <chr>\n1 C     h    \n2 E     j"
+  },
+  {
+    "objectID": "W4.html#logical-vectors-from-conditional-statements",
+    "href": "W4.html#logical-vectors-from-conditional-statements",
+    "title": "W#4 Data Wrangling",
+    "section": "Logical vectors from conditional statements",
+    "text": "Logical vectors from conditional statements\n\n\ndata$x\n\n\n[1] \"A\" \"B\" \"C\" \"D\" \"E\"\n\n\n\n\n\n\ndata$x %in% c(\"C\",\"E\")\n\n\n[1] FALSE FALSE  TRUE FALSE  TRUE\n\n\n\n\n\n\n\ndata[data$x %in% c(\"C\",\"E\"),]\n\n\n# A tibble: 2 × 2\n  x     y    \n  <chr> <chr>\n1 C     h    \n2 E     j    \n\n\n\n\n\n\n\ndata[data$x %in% c(\"C\",\"E\") | \n       data$y %in% c(\"h\",\"i\"),]\n\n\n# A tibble: 3 × 2\n  x     y    \n  <chr> <chr>\n1 C     h    \n2 D     i    \n3 E     j    \n\n\n\n\n\n\n\ndata |> \n  filter(\n    x %in% c(\"C\",\"E\") | y %in% c(\"h\",\"i\")\n    )\n\n\n# A tibble: 3 × 2\n  x     y    \n  <chr> <chr>\n1 C     h    \n2 D     i    \n3 E     j"
+  },
+  {
+    "objectID": "W4.html#feedback-on-version-control",
+    "href": "W4.html#feedback-on-version-control",
+    "title": "W#4 Data Wrangling",
+    "section": "Feedback on version control",
+    "text": "Feedback on version control\n\nUsing git and GitHub is one of the most common modes of collaboration involving coding\nIt is a learning goal to get used to it\nIt will probably not go away after this course\ngit problems are sometimes uncomfortable to solve and require concentration and grit (also for experienced people)"
+  },
+  {
+    "objectID": "W4.html#unique-combinations-counting-arranging-sorting",
+    "href": "W4.html#unique-combinations-counting-arranging-sorting",
+    "title": "W#4 Data Wrangling",
+    "section": "Unique combinations, counting, arranging (sorting)",
+    "text": "Unique combinations, counting, arranging (sorting)\ndistinct, count, arrange\n\nhotels |> \n  distinct(hotel, market_segment) |> \n  arrange(hotel, market_segment)\n\n\n\n# A tibble: 14 × 2\n   hotel        market_segment\n   <chr>        <chr>         \n 1 City Hotel   Aviation      \n 2 City Hotel   Complementary \n 3 City Hotel   Corporate     \n 4 City Hotel   Direct        \n 5 City Hotel   Groups        \n 6 City Hotel   Offline TA/TO \n 7 City Hotel   Online TA     \n 8 City Hotel   Undefined     \n 9 Resort Hotel Complementary \n10 Resort Hotel Corporate     \n11 Resort Hotel Direct        \n12 Resort Hotel Groups        \n13 Resort Hotel Offline TA/TO \n14 Resort Hotel Online TA     \n\n\n\n\n\nhotels |> \n  count(hotel, market_segment) |> \n  arrange(n)\n\n\n# A tibble: 14 × 3\n   hotel        market_segment     n\n   <chr>        <chr>          <int>\n 1 City Hotel   Undefined          2\n 2 Resort Hotel Complementary    201\n 3 City Hotel   Aviation         237\n 4 City Hotel   Complementary    542\n 5 Resort Hotel Corporate       2309\n 6 City Hotel   Corporate       2986\n 7 Resort Hotel Groups          5836\n 8 City Hotel   Direct          6093\n 9 Resort Hotel Direct          6513\n10 Resort Hotel Offline TA/TO   7472\n11 City Hotel   Groups         13975\n12 City Hotel   Offline TA/TO  16747\n13 Resort Hotel Online TA      17729\n14 City Hotel   Online TA      38748"
+  },
+  {
+    "objectID": "W4.html#unique-combinations-arranging-sorting",
+    "href": "W4.html#unique-combinations-arranging-sorting",
+    "title": "W#4 Data Wrangling",
+    "section": "Unique combinations, arranging (sorting)",
+    "text": "Unique combinations, arranging (sorting)\ndistinct and arrange\n\nhotels |> \n  distinct(hotel, market_segment) |> \n  arrange(hotel, market_segment)\n\n\n\n# A tibble: 14 × 2\n   hotel        market_segment\n   <chr>        <chr>         \n 1 City Hotel   Aviation      \n 2 City Hotel   Complementary \n 3 City Hotel   Corporate     \n 4 City Hotel   Direct        \n 5 City Hotel   Groups        \n 6 City Hotel   Offline TA/TO \n 7 City Hotel   Online TA     \n 8 City Hotel   Undefined     \n 9 Resort Hotel Complementary \n10 Resort Hotel Corporate     \n11 Resort Hotel Direct        \n12 Resort Hotel Groups        \n13 Resort Hotel Offline TA/TO \n14 Resort Hotel Online TA"
+  },
+  {
+    "objectID": "W4.html#counting",
+    "href": "W4.html#counting",
+    "title": "W#4 Data Wrangling",
+    "section": "Counting",
+    "text": "Counting\ncount\n\nhotels |> \n  count(hotel, market_segment) |>      # This produces a new variable n\n  arrange(n)\n\n\n\n# A tibble: 14 × 3\n   hotel        market_segment     n\n   <chr>        <chr>          <int>\n 1 City Hotel   Undefined          2\n 2 Resort Hotel Complementary    201\n 3 City Hotel   Aviation         237\n 4 City Hotel   Complementary    542\n 5 Resort Hotel Corporate       2309\n 6 City Hotel   Corporate       2986\n 7 Resort Hotel Groups          5836\n 8 City Hotel   Direct          6093\n 9 Resort Hotel Direct          6513\n10 Resort Hotel Offline TA/TO   7472\n11 City Hotel   Groups         13975\n12 City Hotel   Offline TA/TO  16747\n13 Resort Hotel Online TA      17729\n14 City Hotel   Online TA      38748"
+  },
+  {
+    "objectID": "W4.html#create-a-new-variable-with-mutate",
+    "href": "W4.html#create-a-new-variable-with-mutate",
+    "title": "W#4 Data Wrangling",
+    "section": "Create a new variable with mutate",
+    "text": "Create a new variable with mutate\n\nhotels |>\n  mutate(little_ones = children + babies) |>\n  select(children, babies, little_ones) |>\n  arrange(desc(little_ones)) # This sorts in descending order. See the big thing!\n\n\n\n# A tibble: 119,390 × 3\n   children babies little_ones\n      <dbl>  <dbl>       <dbl>\n 1       10      0          10\n 2        0     10          10\n 3        0      9           9\n 4        2      1           3\n 5        2      1           3\n 6        2      1           3\n 7        3      0           3\n 8        2      1           3\n 9        2      1           3\n10        3      0           3\n# … with 119,380 more rows"
+  },
+  {
+    "objectID": "W4.html#more-mutating",
+    "href": "W4.html#more-mutating",
+    "title": "W#4 Data Wrangling",
+    "section": "More mutating",
+    "text": "More mutating\n\nhotels |>\n  mutate(little_ones = children + babies) |>\n  count(hotel, little_ones) |>\n  mutate(prop = n / sum(n))\n\n\n\n# A tibble: 12 × 4\n   hotel        little_ones     n       prop\n   <chr>              <dbl> <int>      <dbl>\n 1 City Hotel             0 73923 0.619     \n 2 City Hotel             1  3263 0.0273    \n 3 City Hotel             2  2056 0.0172    \n 4 City Hotel             3    82 0.000687  \n 5 City Hotel             9     1 0.00000838\n 6 City Hotel            10     1 0.00000838\n 7 City Hotel            NA     4 0.0000335 \n 8 Resort Hotel           0 36131 0.303     \n 9 Resort Hotel           1  2183 0.0183    \n10 Resort Hotel           2  1716 0.0144    \n11 Resort Hotel           3    29 0.000243  \n12 Resort Hotel          10     1 0.00000838"
+  },
+  {
+    "objectID": "W4.html#summarizing",
+    "href": "W4.html#summarizing",
+    "title": "W#4 Data Wrangling",
+    "section": "Summarizing",
+    "text": "Summarizing\n\nhotels |>\n  summarize(mean_adr = mean(adr))\n\n\n\n# A tibble: 1 × 1\n  mean_adr\n     <dbl>\n1     102.\n\n\n\nThat shrinks the data frame to one row!\nDon’t forget to name the new variable (here mean_adr)\nYou can use any function you can apply to a vector!\n(Sometimes you may need to write your own one.)\n\n\n\nIn hoteling, ADR is the average daily rate, the average daily rental income per paid occupied room. A performce indicator."
+  },
+  {
+    "objectID": "W4.html#grouped-operations",
+    "href": "W4.html#grouped-operations",
+    "title": "W#4 Data Wrangling",
+    "section": "Grouped operations",
+    "text": "Grouped operations\n\nhotels |>\n  group_by(hotel) |>\n  summarise(mean_adr = mean(adr))\n\n\n\n# A tibble: 2 × 2\n  hotel        mean_adr\n  <chr>           <dbl>\n1 City Hotel      105. \n2 Resort Hotel     95.0\n\n\nLook at the grouping attributes:\n\nhotels |>\n  group_by(hotel)\n\n\n\n# A tibble: 119,390 × 32\n# Groups:   hotel [2]\n   hotel  is_ca…¹ lead_…² arriv…³ arriv…⁴ arriv…⁵ arriv…⁶ stays…⁷ stays…⁸ adults\n   <chr>    <dbl>   <dbl>   <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>  <dbl>\n 1 Resor…       0     342    2015 July         27       1       0       0      2\n 2 Resor…       0     737    2015 July         27       1       0       0      2\n 3 Resor…       0       7    2015 July         27       1       0       1      1\n 4 Resor…       0      13    2015 July         27       1       0       1      1\n 5 Resor…       0      14    2015 July         27       1       0       2      2\n 6 Resor…       0      14    2015 July         27       1       0       2      2\n 7 Resor…       0       0    2015 July         27       1       0       2      2\n 8 Resor…       0       9    2015 July         27       1       0       2      2\n 9 Resor…       1      85    2015 July         27       1       0       3      2\n10 Resor…       1      75    2015 July         27       1       0       3      2\n# … with 119,380 more rows, 22 more variables: children <dbl>, babies <dbl>,\n#   meal <chr>, country <chr>, market_segment <chr>,\n#   distribution_channel <chr>, is_repeated_guest <dbl>,\n#   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,\n#   reserved_room_type <chr>, assigned_room_type <chr>, booking_changes <dbl>,\n#   deposit_type <chr>, agent <chr>, company <chr>, days_in_waiting_list <dbl>,\n#   customer_type <chr>, adr <dbl>, required_car_parking_spaces <dbl>, …"
+  },
+  {
+    "objectID": "W4.html#grouped-operations-1",
+    "href": "W4.html#grouped-operations-1",
+    "title": "W#4 Data Wrangling",
+    "section": "Grouped operations",
+    "text": "Grouped operations\n\nhotels |>\n  group_by(hotel, arrival_date_week_number) |>\n  summarise(mean_adr = mean(adr))\n\n\n\n# A tibble: 106 × 3\n# Groups:   hotel [2]\n   hotel      arrival_date_week_number mean_adr\n   <chr>                         <dbl>    <dbl>\n 1 City Hotel                        1     93.3\n 2 City Hotel                        2     80.4\n 3 City Hotel                        3     81.4\n 4 City Hotel                        4     80.8\n 5 City Hotel                        5     79.4\n 6 City Hotel                        6     84.4\n 7 City Hotel                        7     88.9\n 8 City Hotel                        8     85.0\n 9 City Hotel                        9     87.4\n10 City Hotel                       10     84.8\n# … with 96 more rows"
+  },
+  {
+    "objectID": "W4.html#grouping-summarizing-visualizing",
+    "href": "W4.html#grouping-summarizing-visualizing",
+    "title": "W#4 Data Wrangling",
+    "section": "Grouping, summarizing, visualizing",
+    "text": "Grouping, summarizing, visualizing\n\nhotels |>\n  group_by(hotel, arrival_date_week_number) |>\n  summarise(mean_adr = mean(adr)) |> \n  ggplot(aes(x = arrival_date_week_number, y = mean_adr, color = hotel)) +\n  geom_line()"
+  },
+  {
+    "objectID": "W4.html#some-advice-for-the-homework-of-starting-projects",
+    "href": "W4.html#some-advice-for-the-homework-of-starting-projects",
+    "title": "W#4 Data Wrangling",
+    "section": "Some advice for the homework of starting projects",
+    "text": "Some advice for the homework of starting projects\n\nData search\n\nAny insights about corona data?\n\nStarting a new quarto markdown document\n\nWhat to write into the YAML?\n\nData import"
+  },
+  {
+    "objectID": "W4.html#resources",
+    "href": "W4.html#resources",
+    "title": "W#4 Data Wrangling",
+    "section": "Resources",
+    "text": "Resources\n\nFor systemic understanding: Learning resources linked in the syllabus\n\nR for Data Science\n\nChapters 3, 5, 9 (short), 10 (short), 11\n\nCorresponding chapters in Python Data Science Handbook\n\nFor quick overview to get inpiration\n\nCheatsheets (find some in RStudio -> Help, other by google)\n\nggplot2 Cheatsheet\ndplyr Cheatsheet\n\n\nFor detailed help with a function\n\nHelp file of the function ?FUNCTION-NAME, or search box in Help tab\nReference page on the package webpage"
+  },
+  {
+    "objectID": "W4.html#questions-and-advice-for-the-homework-of-starting-projects",
+    "href": "W4.html#questions-and-advice-for-the-homework-of-starting-projects",
+    "title": "W#4 Data Wrangling",
+    "section": "Questions and advice for the homework of starting projects",
+    "text": "Questions and advice for the homework of starting projects\n\nData search\n\nAny insights about corona data?\n\nStarting a new quarto markdown document\n\nWhat to write into the YAML?\n\nData import\n\nExpect that some customization is needed!\n\nFirst graph\n\nYou are encouraged to play further!\nThese projects can be the seed for you Data Science Tools module project."
+  },
+  {
+    "objectID": "index.html#week-4-sep-22-data-wrangling",
+    "href": "index.html#week-4-sep-22-data-wrangling",
+    "title": "Data Science Concepts / Tools",
+    "section": "3.1 Week 4, Sep 22: Data Wrangling",
+    "text": "3.1 Week 4, Sep 22: Data Wrangling\nSlides Week 3"
+  },
+  {
+    "objectID": "index.html#week-4-sep-22-data-import-data-wrangling",
+    "href": "index.html#week-4-sep-22-data-import-data-wrangling",
+    "title": "Data Science Concepts / Tools",
+    "section": "3.1 Week 4, Sep 22: Data import, data Wrangling",
+    "text": "3.1 Week 4, Sep 22: Data import, data Wrangling\nSlides Week 4\nIncluding some recap of the toolkit.\nQuestions and advice on Homework 02 (mostly in Recording)."
+  },
+  {
+    "objectID": "index.html#week-5-sep-29-relational-data-exploratory-data-analysis-asking-questions",
+    "href": "index.html#week-5-sep-29-relational-data-exploratory-data-analysis-asking-questions",
+    "title": "Data Science Concepts / Tools",
+    "section": "3.2 Week 5, Sep 29: Relational Data, Exploratory Data Analysis, Asking Questions",
+    "text": "3.2 Week 5, Sep 29: Relational Data, Exploratory Data Analysis, Asking Questions\nShall also cover a brief introduction to some dangling topics: Missing values, factors, strings, date and time.\nHomework 02 due next Sunday. Homework 03 comes (or will be close to come)."
   }
 ]

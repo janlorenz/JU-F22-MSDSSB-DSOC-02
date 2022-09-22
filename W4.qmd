@@ -1,0 +1,697 @@
+---
+title: "W#4 Data Wrangling"
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: false
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# Our toolkit
+
+## Programming languages {.smaller}
+
+Systems of rules which can process instructions to be executed by the computer.\
+Our programming languages are:
+
+. . .
+
+![](img/R_logo.svg.png){height="200"}   ![](img/Python_logo_and_wordmark.svg.png){height="200"}
+
+. . .
+
+::: columns
+::: {.column width="\"50%"}
+In R with function:
+
+``` r
+do_this(to_this)
+do_that(to_this, with_those)
+to_this |> do_this() |> do_that(with_those) 
+store <- do_that(to_this)
+```
+:::
+
+::: column
+In python:
+
+``` r
+to_this.do_this()
+to_this.do_this(with_those)
+to_this.do_this().do_that(with_those)
+store = do_that(to_this)
+```
+:::
+:::
+
+We can use R and python in a standard terminal (write `R` or `python3`) and write scripts with any editor (Wordpad).
+
+## Integrated development environment {.smaller}
+
+IDEs provide *terminals*, a *source code editor*, an object browser, output and help view, tools for *rendering* and *version control*, and more to help in the workflow. Our IDEs are:
+
+. . .
+
+![](img/RStudio_logo_flat.svg.png){height="200"}   ![](img/Visual_Studio_Code_1.35_icon.svg.png){height="200"} VS Code
+
+. . .
+
+Editors delight us with
+
+-   syntax highlighting *Then we see if code looks good*
+
+``` r
+c(1O, Text, true, 10,"Text",TRUE)
+```
+
+-   code completion *Start writing, and press `Tab` to see options*
+-   automatic indentation, brace matching, keyboard shortcuts, ...
+
+## Publishing system
+
+Weaves together text and code to produces good-looking formatted scientific or technical output.
+
+. . .
+
+![](img/quarto.png){width="25%"}   ![](img/rstudio-qmd-how-it-works.png){width="60%"}
+
+. . .
+
+A **YAML** header and **Markdown** text with code **chunks** is **rendered** to a document in several formats.
+
+![](img/jupyter.svg){height="\"15%"} notebook is a similar concept: text and executable code mixed together in a browser tab. Can be rendered by quarto. Popular in the python world.
+
+## Publish what?
+
+-   your project report as (html)
+-   make a personal website (using GitHub pages)
+-   write your thesis (pdf)
+
+## Feedback on Homework 01
+
+Some of you did not modify the line
+
+*"The dimension with the most experience is ... The dimension with the least experience is ..."*
+
+or did not replace the line
+
+*"Remove this text and write you answer to Exercise 4."*
+
+with your text. 
+
+You did the programming right, but forgot the textual part. Now, this doesn't matter. However, the learning goal was not only programming, but also taking care that the rendered output communicates your work well.
+
+
+
+## Version control
+
+![](img/git.png){height="110"}   ![](img/GitHub-Logo.png){height="110"}
+
+**git** manages local versioning of files in a directory[^1] as *repository*[^2], and merging different versions of the repository.
+
+[^1]: Directory = Folder
+
+[^2]: Repository = A directory including a subfolder .git which stores the history of as *commits*.
+
+**GitHub** provides git server for repositories and collaborative tools.
+
+## Command line interfaces {.smaller}
+
+In CLIs you communicate with your computer using the Read-Evaluate-Print-Loop (REPL). **Terminal**, **Shell**, **Console** all mostly synonym to **CLI**
+
+-   **Terminal** to access files and programs via commands in *bash* or *zsh*[^3]. Also available in RStudio and VS Code.
+-   **R console** provided in RStudio[^4]
+-   **python3 console** provided by VS Code[^5]
+
+[^3]: Languages used in the Terminal with commands like `cd`=change directory, `pwd`=print working directory, or `ls`=list files.
+
+[^4]: Can also be started in Terminal with `R`
+
+[^5]: Can also be started in Terminal with `python3`
+
+
+## Feedback on version control
+
+- Using git and GitHub is one of the most common modes of collaboration involving coding
+
+- It is a learning goal to get used to it
+
+- It will probably not go away after this course
+
+- git problems are sometimes uncomfortable to solve and require concentration and grit (also for experienced people)
+
+
+
+## **quarto** and **git** only use the CLI {.smaller}
+
+For example:
+
+:::{.smaller}
+`quarto render MyFile.qmd --to docx` renders the MyFile.qmd to a Word file\  
+`git add MyFile.qmd` adds MyFile.qmd (or ots changes) to the staging area  
+`git commit -m "Update of code"` creates new commit with staged files   
+`git push` merge local commit into repository it was cloned from
+:::
+
+- RStudio/VS Code provide buttons and shortcuts for the most common commands
+
+- You can also do it yourself. 
+
+- Use it to **solve a problem** in an "uncommon" situation, after research about the problem:
+  - read error message carefully (often they give a hint, but not always)
+  - searching [StackOverflow](https://stackoverflow.com/)
+  - asking others
+  - filing an issue in our [General Discussion](https://github.com/JU-F22-MDSSB-MET-01/General-Discussion)
+
+
+
+
+# Data Import - short version {.smaller}
+
+## `readr` and `readxl`
+
+::: columns
+::: {.column width="60%"}
+![](img/readr.png){height=150}
+
+- `read_csv()` - comma delimited files
+- `read_csv2()` - semicolon delimited files (common where "," is used as decimal place)
+- `read_tsv()` - tab delimited files
+- `read_delim()` - reads in files with any delimiter
+- ...
+
+:::
+
+::: {.column width="30%"}
+![](img/readxl.png){height=150}
+
+- `read_excel()` read xls or xlsx files from MS Excel
+- ...
+:::
+:::
+
+## Other data formats
+
+R packages, analog libraries will exist for python
+
+- **googlesheets4:** Google Sheets
+- **haven**: SPSS, Stata, and SAS files
+- **DBI**, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame
+- **jsonline**: JSON
+- **xml2**: xml
+- **rvest**: web scraping
+- **httr**: web APIs
+- ...
+
+
+## Comma-separated values (CSV) {.smaller}
+
+We use this when there is no certain reason to do otherwise (it is not provided, or storage is an issue).
+
+CSV files are delimited text file
+
+- Can be viewed with any text editor
+- Show each row of the data frame in a line
+- Separates the content of columns by commas (or the delimiter character)
+- Each cell could be surrounded by quotes (when long text with commas (!) is in cells)
+- The first line is interpreted as listing the variable names by default
+
+`readr` tries to guess the data type of variables
+
+You can also customize it yourself! 
+
+
+
+## Data import workflow
+
+1. You download your CSV file to the `data/` directory. You may use `download.file()` for this, but make sure you do not download large amounts of data each time you render your file! (Comment out `#` and use again only when needed.) 
+
+2. Read the data with `data <- read_csv("data/FILENAME.csv")` and read the report in the console.
+
+3. Explore if you are happy and iterate by customizing you data import line using specifications (see the function help) until the data is as you want it to be. 
+
+Use this for **Homework 02** for the **ESS** and **corona** projects. 
+
+Self-learning: ![R4DS Chapter 11: Data import](https://r4ds.had.co.nz/data-import.html) concepts similar for loading CSV in python.
+
+## Columns types {.smaller .scrollable}
+
+**type function**  | **data type**
+------------------ | -------------
+`col_character()`  | character
+`col_date()`       | date
+`col_datetime()`   | POSIXct (date-time)
+`col_double()`     | double (numeric)
+`col_factor()`     | factor
+`col_guess()`      | let readr guess (default)
+`col_integer()`    | integer
+`col_logical()`    | logical
+`col_number()`     | numbers mixed with non-number characters
+`col_numeric()`    | double or integer
+`col_skip()`       | do not read
+`col_time()`       | time
+
+
+
+## Data: Hotel bookings
+
+-   Data from two hotels: one resort and one city hotel
+-   Observations: Each row represents a hotel booking
+
+. . .
+
+```{r}
+#| echo: true
+#| message: true
+hotels<- read_csv("data/hotels.csv")
+```
+
+# Data Wrangling
+
+## Grammar of Data Wrangling {.smaller}
+
+:::{.columns{}
+:::{.column width="30%"}
+![](img/dplyr.png) 
+:::
+:::{.column width="69%"}
+Grammar of data wrangling: Start with a dataset and *pipe* it through several manipulations with `|>`
+```R
+mpg |> 
+  filter(cyl == 8) |> 
+  select(manufacturer, hwy) |> 
+  group_by(manufacturer) |> 
+  summarize(mean_hwy = mean(hwy))
+```
+:::
+:::
+
+In `python`: Similar concept making a chain using `.` to apply `pandas` methods for data frames one after the other.
+
+
+Compare the grammar of graphics `ggplot2`: Start creating a ggplot object, specifying data, and mapping variables to aesthetics, 
+add graphical layers (`geom_` functions) with `+`
+
+```R
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = trans)) + 
+  geom_point() + 
+  geom_smooth()
+``` 
+
+## `dplyr` uses verbs to manipulate {.smaller}
+
+- `select`: pick columns by name
+- `arrange`: reorder rows
+- `slice`: pick rows using index(es)
+- `filter`: pick rows matching criteria
+- `distinct`: filter for unique rows
+- `mutate`: add new variables
+- `summarise`: reduce variables to values
+- `group_by`: for grouped operations
+- ... (many more)
+
+Why does piping with `|>` work? 
+
+. . . 
+
+Because every `dplyr` function takes a data frame as first argument and outputs a (manipulated) data frame.
+
+## Back to the hotel booking data: First look
+
+```{r}
+#| echo: true
+hotels<- read_csv("data/hotels.csv")
+```
+
+First look on variables names
+```{r} 
+#| echo: true
+#| output-location: fragment
+names(hotels)
+```
+
+## Second look `glimpse` {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+glimpse(hotels)
+```
+
+# Data subsetting
+
+## Select a sinlge colum 
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> select(lead_time)     
+```
+
+Note: `select(hotels, lead_time)` is identical. 
+
+::: aside
+In hotel business, lead time is the time betweeen booking and arrival.
+:::
+
+## Select more columns
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> select(hotel, lead_time)     
+```
+  
+Note that `hotel` is a variable, but `hotels` the data frame object name
+
+
+## Select helper `starts_with`  {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> select(starts_with("arrival"))
+```
+
+## Bring columns to the front {.smaller}
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> select(hotel, market_segment, children, everything())
+```
+
+## More select helpers {.smaller}
+
+- `starts_with()`: Starts with a prefix
+- `ends_with()`: Ends with a suffix
+- `contains()`: Contains a literal string
+- `num_range()`: Matches a numerical range like x01, x02, x03
+- `one_of()`: Matches variable names in a character vector
+- `everything()`: Matches all variables
+- `last_col()`: Select last variable, possibly with an offset
+- `matches()`: Matches a regular expression (a sequence of symbols/characters expressing a string/pattern to be searched for within text)
+
+:::{.aside}
+Check details with `?one_of`
+:::
+
+
+## `slice` for certain rows {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> slice(2:4)
+```
+
+## `filter` for rows with certain criteria {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> filter(hotel == "City Hotel")
+```
+
+
+## `filter` for multiple criteria {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> filter(
+  babies >= 1,
+  children >= 1, 
+  ) |> 
+  select(hotel, adults, babies, children)
+```
+
+Comma-separated conditions are interpreted as all these should be fulfilled.   
+This is identical to the logical AND `&`.    
+`hotels |> filter(babies >= 1 & children >= 1)`
+
+
+## `filter` for complexer criteria {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> filter(
+  babies >= 1 | children >= 1
+  ) |> 
+  select(hotel, adults, babies, children)
+```
+
+`|` is the logical OR. Only one criterion needs to be fulfilled. 
+
+
+## Logical operators^[Logical is sometimes called **Boolean**] {.smaller .scrollable}
+
+operator      | definition                   
+--------------|------------------------------
+`<`           | less than                    
+`<=`          |	less than or equal to        
+`>`           | greater than                 
+`>=`          |	greater than or equal to     
+`==`          |	exactly equal to             
+`!=`          |	not equal to                 
+`x & y`       | `x` AND `y`                  
+`x | y`       | `x` OR `y` 
+`is.na(x)`    | test if `x` is `NA` (misssing data)
+`!is.na(x)`   | test if `x` is not `NA` (not missing data)
+`x %in% y`    | test if `x` is in `y` (often used for strings)
+`!(x %in% y)` | test if `x` is not in `y`
+`!x`          | not `x`
+
+
+## Indexing {.smaller}
+
+Select and filter can also be achieved by **indexing**.  
+In R as well as in python.  
+
+Select ranges of rows and columns
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels[1:3,5:7]
+```
+
+You can use any vector (with non-overshooting indexes)
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels[c(1:3,100232),c(5:7,1)]
+```
+
+## python is 0-indexed, R is 1-indexed!
+
+python: indexes go from 0 to n-1
+
+R: indexes go from 1 to n
+
+Bew aware!
+
+There is no correct way. For some use cases one is more *natural* for others the other. 
+
+Analog: In mathematics there is an unsettled debate if 0 is the first natural number or 1
+
+
+
+## Logical indexing with logical vectors
+
+```{r} 
+#| echo: true
+#| output-location: column-fragment
+data <- tibble(x = LETTERS[1:5], y = letters[6:10])
+data
+```
+
+. . . 
+
+```{r} 
+#| echo: true
+#| output-location: column-fragment
+data[c(TRUE,FALSE,TRUE,FALSE,TRUE),c(TRUE,FALSE)]
+```
+
+
+## Logical vectors from conditional statements {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+data$x
+```
+. . .
+```{r}
+#| echo: true
+#| output-location: column-fragment
+data$x %in% c("C","E")
+```
+. . .
+```{r} 
+#| echo: true
+#| output-location: column-fragment
+data[data$x %in% c("C","E"),]
+```
+. . .
+```{r} 
+#| echo: true
+#| output-location: column-fragment
+data[data$x %in% c("C","E") | 
+       data$y %in% c("h","i"),]
+```
+. . .
+```{r} 
+#| echo: true
+#| output-location: column-fragment
+data |> 
+  filter(
+    x %in% c("C","E") | y %in% c("h","i")
+    )
+```
+
+## Unique combinations, arranging (sorting) 
+ 
+`distinct` and `arrange`
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> 
+  distinct(hotel, market_segment) |> 
+  arrange(hotel, market_segment)
+```
+. . .
+
+## Counting 
+
+`count`
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |> 
+  count(hotel, market_segment) |>      # This produces a new variable n
+  arrange(n)
+```
+
+
+# Data Transformation
+
+
+## Create a new variable with `mutate`
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |>
+  mutate(little_ones = children + babies) |>
+  select(children, babies, little_ones) |>
+  arrange(desc(little_ones)) # This sorts in descending order. See the big thing!
+```
+
+## More mutating
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |>
+  mutate(little_ones = children + babies) |>
+  count(hotel, little_ones) |>
+  mutate(prop = n / sum(n))
+```
+
+## Summarizing
+
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |>
+  summarize(mean_adr = mean(adr))
+```
+
+- That shrinks the data frame to one row!
+- Don't forget to name the new variable (here `mean_adr`)
+- You can use any function you can apply to a vector!  
+(Sometimes you may need to write your own one.)
+
+:::{.aside}
+In hoteling, ADR is the average daily rate, the average daily rental income per paid occupied room. A performce indicator.
+:::
+
+
+## Grouped operations {.smaller}
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |>
+  group_by(hotel) |>
+  summarise(mean_adr = mean(adr))
+```
+
+Look at the grouping attributes:
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |>
+  group_by(hotel)
+```
+
+
+## Grouping, summarizing, visualizing
+
+```{r} 
+#| echo: true
+#| output-location: fragment
+hotels |>
+  group_by(hotel, arrival_date_week_number) |>
+  summarise(mean_adr = mean(adr)) |> 
+  ggplot(aes(x = arrival_date_week_number, y = mean_adr, color = hotel)) +
+  geom_line()
+```
+
+# Where to find help
+
+## Resources {.smaller}
+
+* For systemic understanding: Learning resources linked in the syllabus
+  * R for Data Science
+    * Chapters 3, 5, 9 (short), 10 (short), 11
+  * Corresponding chapters in Python Data Science Handbook
+* For quick overview to get inpiration
+  * Cheatsheets (find some in RStudio -> Help, other by google)
+    * ggplot2 Cheatsheet
+    * dplyr Cheatsheet
+* For detailed help with a function 
+  * Help file of the function `?FUNCTION-NAME`, or search box in Help tab
+  * Reference page on the package webpage
+  
+
+# Questions
+
+
+## Questions and advice for the homework of starting projects
+
+- Data search
+  - Any insights about corona data?
+- Starting a new quarto markdown document
+  - What to write into the YAML?
+- Data import
+  - Expect that some customization is needed!
+- First graph
+
+
+You are encouraged to play further!
+
+These projects can be the seed for you Data Science Tools module project. 
