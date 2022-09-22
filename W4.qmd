@@ -688,7 +688,7 @@ hotels |>
 # Questions
 
 
-## Questions and advice for the homework of starting projects
+## Questions and advice for the homework of starting projects {.smaller}
 
 - Data search
   - Any insights about corona data?
