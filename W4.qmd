@@ -324,12 +324,18 @@ Why does piping with `|>` work?
 
 Because every `dplyr` function takes a data frame as first argument and outputs a (manipulated) data frame.
 
-## Back to hotel data: First look {.smaller}
+## Back to hotel data: First look {.smaller .scrollable}
 
 ```{r}
 #| echo: true
 hotels<- read_csv("data/hotels.csv")
 ```
+
+:::{.aside}
+To download the data you can use in R: 
+`download.file("https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d06-grammar-wrangle/data/hotels.csv", "data/hotels.csv")`
+:::
+
 
 First look on variables names
 ```{r} 
@@ -338,10 +344,6 @@ First look on variables names
 names(hotels)
 ```
 
-:::{.aside}
-To download the data you can use in R: 
-`download.file("https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d06-grammar-wrangle/data/hotels.csv", "data/hotels.csv")`
-:::
 
 ## Second look `glimpse` {.smaller}
 

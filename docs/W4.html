@@ -705,11 +705,12 @@ date  (1): reservation_status_date
 <p>Because every <code>dplyr</code> function takes a data frame as first argument and outputs a (manipulated) data frame.</p>
 </div>
 </section>
-<section id="back-to-hotel-data-first-look" class="slide level2 smaller">
+<section id="back-to-hotel-data-first-look" class="slide level2 smaller scrollable">
 <h2>Back to hotel data: First look</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>hotels<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hotels.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+
 <p>First look on variables names</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">names</span>(hotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -734,7 +735,6 @@ date  (1): reservation_status_date
 [31] "reservation_status"             "reservation_status_date"       </code></pre>
 </div>
 </div>
-
 <aside><div>
 <p>To download the data you can use in R: <code>download.file("https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d06-grammar-wrangle/data/hotels.csv", "data/hotels.csv")</code></p>
 </div></aside></section>
