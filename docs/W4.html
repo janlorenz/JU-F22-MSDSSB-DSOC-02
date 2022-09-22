@@ -514,11 +514,11 @@ Our programming languages are:</p>
 </ul>
 </section></section>
 <section>
-<section id="data-import---short-version" class="title-slide slide level1 smaller center">
+<section id="data-import---short-version" class="title-slide slide level1 center">
 <h1>Data Import - short version</h1>
 
 </section>
-<section id="readr-and-readxl" class="slide level2">
+<section id="readr-and-readxl" class="slide level2 smaller">
 <h2><code>readr</code> and <code>readxl</code></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -539,7 +539,7 @@ Our programming languages are:</p>
 </div>
 </div>
 </section>
-<section id="other-data-formats" class="slide level2">
+<section id="other-data-formats" class="slide level2 smaller">
 <h2>Other data formats</h2>
 <p>R packages, analog libraries will exist for python</p>
 <ul>
@@ -567,7 +567,7 @@ Our programming languages are:</p>
 <p><code>readr</code> tries to guess the data type of variables</p>
 <p>You can also customize it yourself!</p>
 </section>
-<section id="data-import-workflow" class="slide level2">
+<section id="data-import-workflow" class="slide level2 smaller">
 <h2>Data import workflow</h2>
 <ol type="1">
 <li><p>You download your CSV file to the <code>data/</code> directory. You may use <code>download.file()</code> for this, but make sure you do not download large amounts of data each time you render your file! (Comment out <code>#</code> and use again only when needed.)</p></li>
@@ -705,8 +705,8 @@ date  (1): reservation_status_date
 <p>Because every <code>dplyr</code> function takes a data frame as first argument and outputs a (manipulated) data frame.</p>
 </div>
 </section>
-<section id="back-to-the-hotel-booking-data-first-look" class="slide level2">
-<h2>Back to the hotel booking data: First look</h2>
+<section id="back-to-hotel-data-first-look" class="slide level2 smaller">
+<h2>Back to hotel data: First look</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>hotels<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hotels.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -734,7 +734,10 @@ date  (1): reservation_status_date
 [31] "reservation_status"             "reservation_status_date"       </code></pre>
 </div>
 </div>
-</section>
+
+<aside><div>
+<p>To download the data you can use in R: <code>download.file("https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d06-grammar-wrangle/data/hotels.csv", "data/hotels.csv")</code></p>
+</div></aside></section>
 <section id="second-look-glimpse" class="slide level2 smaller">
 <h2>Second look <code>glimpse</code></h2>
 <div class="cell">
@@ -1237,8 +1240,8 @@ In R as well as in python.</p>
 </div>
 </div>
 </section>
-<section id="unique-combinations-arranging-sorting" class="slide level2">
-<h2>Unique combinations, arranging (sorting)</h2>
+<section id="unique-combinations-arranging" class="slide level2">
+<h2>Unique combinations, arranging</h2>
 <p><code>distinct</code> and <code>arrange</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>hotels <span class="sc">|&gt;</span> </span>

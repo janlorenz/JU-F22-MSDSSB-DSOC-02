@@ -174,9 +174,9 @@ For example:
 
 
 
-# Data Import - short version {.smaller}
+# Data Import - short version
 
-## `readr` and `readxl`
+## `readr` and `readxl`  {.smaller}
 
 ::: columns
 ::: {.column width="60%"}
@@ -198,7 +198,7 @@ For example:
 :::
 :::
 
-## Other data formats
+## Other data formats {.smaller}
 
 R packages, analog libraries will exist for python
 
@@ -230,7 +230,7 @@ You can also customize it yourself!
 
 
 
-## Data import workflow
+## Data import workflow {.smaller}
 
 1. You download your CSV file to the `data/` directory. You may use `download.file()` for this, but make sure you do not download large amounts of data each time you render your file! (Comment out `#` and use again only when needed.) 
 
@@ -324,7 +324,7 @@ Why does piping with `|>` work?
 
 Because every `dplyr` function takes a data frame as first argument and outputs a (manipulated) data frame.
 
-## Back to the hotel booking data: First look
+## Back to hotel data: First look {.smaller}
 
 ```{r}
 #| echo: true
@@ -337,6 +337,11 @@ First look on variables names
 #| output-location: fragment
 names(hotels)
 ```
+
+:::{.aside}
+To download the data you can use in R: 
+`download.file("https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d06-grammar-wrangle/data/hotels.csv", "data/hotels.csv")`
+:::
 
 ## Second look `glimpse` {.smaller}
 
@@ -558,7 +563,7 @@ data |>
     )
 ```
 
-## Unique combinations, arranging (sorting) 
+## Unique combinations, arranging
  
 `distinct` and `arrange`
 

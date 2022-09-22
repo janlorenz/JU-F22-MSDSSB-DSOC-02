@@ -726,5 +726,19 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 5, Sep 29: Relational Data, Exploratory Data Analysis, Asking Questions",
     "text": "Week 5, Sep 29: Relational Data, Exploratory Data Analysis, Asking Questions\nShall also cover a brief introduction to some dangling topics: Missing values, factors, strings, date and time.\nHomework 02 due next Sunday. Homework 03 comes (or will be close to come)."
+  },
+  {
+    "objectID": "W4.html#back-to-hotel-data-first-look",
+    "href": "W4.html#back-to-hotel-data-first-look",
+    "title": "W#4 Data import, data wrangling",
+    "section": "Back to hotel data: First look",
+    "text": "Back to hotel data: First look\n\nhotels<- read_csv(\"data/hotels.csv\")\n\nFirst look on variables names\n\nnames(hotels)\n\n\n\n [1] \"hotel\"                          \"is_canceled\"                   \n [3] \"lead_time\"                      \"arrival_date_year\"             \n [5] \"arrival_date_month\"             \"arrival_date_week_number\"      \n [7] \"arrival_date_day_of_month\"      \"stays_in_weekend_nights\"       \n [9] \"stays_in_week_nights\"           \"adults\"                        \n[11] \"children\"                       \"babies\"                        \n[13] \"meal\"                           \"country\"                       \n[15] \"market_segment\"                 \"distribution_channel\"          \n[17] \"is_repeated_guest\"              \"previous_cancellations\"        \n[19] \"previous_bookings_not_canceled\" \"reserved_room_type\"            \n[21] \"assigned_room_type\"             \"booking_changes\"               \n[23] \"deposit_type\"                   \"agent\"                         \n[25] \"company\"                        \"days_in_waiting_list\"          \n[27] \"customer_type\"                  \"adr\"                           \n[29] \"required_car_parking_spaces\"    \"total_of_special_requests\"     \n[31] \"reservation_status\"             \"reservation_status_date\"       \n\n\n\n\nTo download the data you can use in R: download.file(\"https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d06-grammar-wrangle/data/hotels.csv\", \"data/hotels.csv\")"
+  },
+  {
+    "objectID": "W4.html#unique-combinations-arranging",
+    "href": "W4.html#unique-combinations-arranging",
+    "title": "W#4 Data import, data wrangling",
+    "section": "Unique combinations, arranging",
+    "text": "Unique combinations, arranging\ndistinct and arrange\n\nhotels |> \n  distinct(hotel, market_segment) |> \n  arrange(hotel, market_segment)\n\n\n\n# A tibble: 14 × 2\n   hotel        market_segment\n   <chr>        <chr>         \n 1 City Hotel   Aviation      \n 2 City Hotel   Complementary \n 3 City Hotel   Corporate     \n 4 City Hotel   Direct        \n 5 City Hotel   Groups        \n 6 City Hotel   Offline TA/TO \n 7 City Hotel   Online TA     \n 8 City Hotel   Undefined     \n 9 Resort Hotel Complementary \n10 Resort Hotel Corporate     \n11 Resort Hotel Direct        \n12 Resort Hotel Groups        \n13 Resort Hotel Offline TA/TO \n14 Resort Hotel Online TA"
   }
 ]
