@@ -740,5 +740,12 @@
     "title": "W#4 Data import, data wrangling",
     "section": "Unique combinations, arranging",
     "text": "Unique combinations, arranging\ndistinct and arrange\n\nhotels |> \n  distinct(hotel, market_segment) |> \n  arrange(hotel, market_segment)\n\n\n\n# A tibble: 14 × 2\n   hotel        market_segment\n   <chr>        <chr>         \n 1 City Hotel   Aviation      \n 2 City Hotel   Complementary \n 3 City Hotel   Corporate     \n 4 City Hotel   Direct        \n 5 City Hotel   Groups        \n 6 City Hotel   Offline TA/TO \n 7 City Hotel   Online TA     \n 8 City Hotel   Undefined     \n 9 Resort Hotel Complementary \n10 Resort Hotel Corporate     \n11 Resort Hotel Direct        \n12 Resort Hotel Groups        \n13 Resort Hotel Offline TA/TO \n14 Resort Hotel Online TA"
+  },
+  {
+    "objectID": "hw-instructions/hw-03-instr.html",
+    "href": "hw-instructions/hw-03-instr.html",
+    "title": "Homework 03",
+    "section": "",
+    "text": "to introduce you to Data Visualization and Data Wrangling with R and python, and\nto let you start with two projects we will pursue in following homeworks - one on the European Social Survey and one on the corona pandemic.\n\nTo that end, we provide three repositories with starter documents which you should clone and push your solutions to:\n\nhw-02-ind-USERNAME\ness-ind-USERNAME\ncorona-ind-USERNAME"
   }
 ]

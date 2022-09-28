@@ -96,10 +96,10 @@ flights |>
 
 # Starting a project on the European Social Survey
 
-Clone your repository **ess-USERNAME**. This repository is empty. It shall develop into an analysis report based on data from the ![European Social Survey](https://www.europeansocialsurvey.org/) (ESS). The analysis shall be done with python. 
+Clone your repository **ess-USERNAME**. This repository is empty. It shall develop into an analysis report based on data from the [European Social Survey](https://www.europeansocialsurvey.org/) (ESS). The analysis shall be done with python. 
 
 
-1. First download data from the ESS ![Data Wizard](https://ess-search.nsd.no/CDW/ConceptVariables). You need to register either with a google account or with a newly created account, but data access is free for non-commercial use. 
+1. First download data from the ESS [Data Wizard](https://ess-search.nsd.no/CDW/ConceptVariables). You need to register either with a google account or with a newly created account, but data access is free for non-commercial use. 
 
 In step 1 **"Select Variables"** select the following:  
 (Note, you can click and the variable text to get more context information about the variables.)

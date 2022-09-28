@@ -1,5 +1,6 @@
 ---
 title: "W#4 Data import, data wrangling"
+author: Jan Lorenz
 format: 
   revealjs: 
     slide-number: true
