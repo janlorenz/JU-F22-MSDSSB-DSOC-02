@@ -530,7 +530,7 @@ dates |> inner_join(works)
 
 ```{r}
 #| echo: true
-professions |> left_join(dates) |> inner_join(works)
+professions |> left_join(dates) |> left_join(works)
 ```
 
 :::
