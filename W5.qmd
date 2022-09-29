@@ -1,0 +1,860 @@
+---
+title: "W#5 More under the hood, Relational Data, Exploratory Data Analysis"
+subtitle: "With material adopted from [Data Science in a Box](https://datasciencebox.org) and [R4DS](https://r4ds.hadley.nz)"
+author: Jan Lorenz
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: true
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+bibliography: "/home/janlo/Documents/literature/litlorenz_zot.bib"
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# More under the hood
+
+## Named vectors
+
+All types of vectors can be named upon creation
+```{r}
+#| echo: true
+#| output-location: fragment
+c(Num1 = 4, Second = 7, Last = 8)
+```
+
+. . . 
+
+or names can be set afterward.
+```{r}
+#| echo: true
+#| output-location: fragment
+x <- 1:4
+y <- set_names(x, c("a","b","c","d"))
+y
+```
+
+. . . 
+
+Named vectors can be used for subsetting.
+```{r}
+#| echo: true
+#| output-location: fragment
+y[c("b","d")]
+```
+
+## Reminder: Indexing and vectorized thinking
+
+```{r}
+#| echo: true
+#| output-location: fragment
+x <- set_names(1:10,LETTERS[1:10])
+x
+```
+
+. . . 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+x[c(4,2,1,1,1,1,4,1,5)]
+```
+. . . 
+
+Removing with negative index numbers.
+```{r}
+#| echo: true
+#| output-location: fragment
+x[c(-3,-5,-2)]
+```
+. . . 
+
+Mixing  does not work.
+```R
+x[c(-3,1)]  # Will throw an error
+```
+
+## R objects can have attributes {.smaller}
+
+In a named vector, the names are an attribute.
+```{r}
+#| echo: true
+x
+attributes(x)
+```
+
+. . . 
+
+Attributes can be assigned freely.
+```{r}
+#| echo: true
+#| output-location: fragment
+attr(x, "SayHi") <- "Hi"
+attr(x, "SayBye") <- "Bye"
+attributes(x)
+```
+
+
+## Attributes in data structures {.scrollable}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+library(nycflights13)
+attributes(airports)
+```
+
+## Three important attributes {.smaller}
+
+- **Names** are used to name element of a vector (counting also lists as vectors and therefore also data frames as lists of atomic vectors of the same length)
+- **Dimensions** (`dim()`) is a short numeric vector making a vector behave as a matrix or a higher dimensional array. A vector `1:6` together with `dim` being `c(2,3)` is a matrix with 2 rows and 3 columns  
+$\begin{bmatrix} 1 & 3 & 5 \\ 2 & 4 & 6 \end{bmatrix}$
+- **Class** is used to implement the S3 object oriented system. We don't need to know the details here. The class system makes it for example possible that the same function, e.g. `print()` behaves differently for objects of different a different class.
+
+**Class** plays a role in specifying *augmented vectors* like factors, dates, date-times, or tibbles. 
+
+# Augmented vectors
+
+## Factors {.smaller}
+
+R uses factors to handle categorical variables, variables that have a fixed and known set of possible values
+
+```{r}
+#| echo: true
+#| output-location: fragment
+x <- factor(c("BS", "MS", "PhD", "MS", "BS", "BS"))
+x
+```
+
+. . .
+
+Technically, a factor is vector of integers with a `levels` attribute which specifies the categories for the integers. 
+
+```{r}
+#| echo: true
+typeof(x)
+as.integer(x)
+attributes(x)
+```
+
+. . .
+
+The `class` factor makes R print the level of each element of the vector instead of the underlying integer. 
+
+## Factors for data visualization {.smaller}
+
+We manipulate factors with functions from the [`forcats`](https://forcats.tidyverse.org/) package of the tidyverse core. 
+
+::: {.panel-tabset}
+
+#### Plot
+
+```{r}
+#| echo: true
+#| fig-height: 4
+#| fig-width: 7
+mpg |> ggplot(aes(y = manufacturer)) + geom_bar()
+```
+
+#### Reverse
+
+```{r}
+#| echo: true
+#| fig-height: 4
+#| fig-width: 7
+mpg |> ggplot(aes(y = fct_rev(manufacturer))) + geom_bar()
+```
+
+#### Order by frequency
+
+```{r}
+#| echo: true
+#| fig-height: 4
+#| fig-width: 7
+mpg |> ggplot(aes(y = fct_rev(fct_infreq(manufacturer)))) + geom_bar()
+```
+
+#### Regroup
+
+```{r}
+#| echo: true
+#| fig-height: 4
+#| fig-width: 7
+mpg |> ggplot(aes(y = fct_other(manufacturer, keep = c("dodge", "toyota", "volkswagen")))) + geom_bar()
+```
+
+:::
+
+## Dates {.smaller}
+
+- ISO 8601 standard for dates: **YYYY-MM-DD**. Today: `r Sys.Date()`.
+- Dates in R are numeric vectors that represent the number of days since 1 January 1970.
+
+```{r}
+#| echo: true
+y <- as.Date("2020-01-01"); y
+typeof(y)
+attributes(y)
+as.double(y)
+as.double(as.Date("1970-01-01"))
+as.double(as.Date("1969-01-01"))
+```
+
+
+
+## How many days are you old?
+
+. . .
+
+```{r}
+#| echo: true
+Sys.Date() - as.Date("1976-01-16")  # Sys.Date() gives as the current day your computer is set to
+```
+
+## Date-times  {.smaller}
+
+For date-time manipulation use [`lubridate`](https://lubridate.tidyverse.org/) form the tidyverse. Not in the core so it has to be loaded.^[Instead of loading package `pack` to use its function `func` you can also write `pack::func` all the time. This works when the package is installed even when not loaded.] 
+
+```{r}
+#| echo: true
+x <- lubridate::ymd_hm("1970-01-01 01:00")
+x
+attributes(x)
+as.double(x)
+```
+
+UTC: Coordinated Universal Time. We are in the UTC+1 timezone.    
+POSIXct: Portable Operating System Interface, calendar time. Stores date and time in seconds with the number of seconds beginning at 1 January 1970. 
+
+
+## How many seconds are you old? 
+
+```{r}
+#| echo: true
+as.double(lubridate::now()) - as.double(lubridate::ymd_hm("1976-01-16_12:04"))
+```
+
+
+
+
+## More about ...
+
+- Factors: [R for Data Science Chapter 15](https://r4ds.had.co.nz/factors.html)
+- Dates and times: [R for Data Science Chapter 16](https://r4ds.had.co.nz/dates-and-times.html)
+
+# Strings
+
+## String modification {.smaller}
+
+We modify strings with the [`stringr`](https://stringr.tidyverse.org/) package from the tidyverse core. 
+
+All functions from `stringr` start with `str_`. 
+
+Very few examples:
+
+```{r}
+#| echo: true
+c("x","y")
+str_c("x","y")
+str_c("x","y","z", sep=",")
+length(c("x","y","z"))
+str_length(c("x","y","z"))
+str_length(c("This is a string.","z"))
+```
+
+## String wrangling with variable names {.smaller}
+
+```{r}
+#| echo: true
+data <- tibble(Name = c("A","B","C"), Age_2020 = c(20,30,40), Age_2021 = c(21,31,41), Age_2022 = c(22,32,42))
+data
+```
+
+We tidy that data set by creating a year variable.
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+data |> pivot_longer(c("Age_2020", "Age_2021", "Age_2022"), names_to = "Year", values_to="Age")
+```
+
+. . . 
+
+OK, but the year variable is a string but we want numbers.
+
+## Use `word` {.smaller}
+
+`word` extracts words from a sentence. However, the separator need not be `" "` but can be any character.
+
+```{r}
+#| echo: true
+word("This is a string.", start=2, end=-2) 
+#Selects from the second to the second last word.
+word("Age_2022", start=2, sep = "_")
+```
+
+. . .
+
+It also works vectorized. 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+data |> pivot_longer(c("Age_2020", "Age_2021", "Age_2022"), names_to = "Year", values_to="Age") |> 
+  mutate(Year = word(Year, start = 2, sep = "_") |> as.numeric())
+```
+
+... 
+More on strings and [regular expressions](https://xkcd.com/208/): [R for Data Science Chapter 14](https://r4ds.had.co.nz/strings.html)
+
+<!-- ## String detection and regular expressions -->
+
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- fruits <- c("apple", "pineapple", "Pear", "orange", "peach", "banana") -->
+<!-- str_detect(fruits,"apple") -->
+<!-- str_extract(fruits,"apple") -->
+<!-- ``` -->
+
+<!-- Regular expressions are useful because strings usually contain unstructured or semi-structured data, and regexps are a concise language for describing patterns in strings. When you first look at a regexp, you’ll think a cat walked across your keyboard, but as your understanding improves they will soon start to make sense. -->
+
+
+<!-- "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" -->
+
+
+<!-- # Missing, Empty, NULL, NaN, Infinity -->
+
+<!-- A bare atomic vector has no attributes -->
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| output-location: fragment -->
+<!-- x <- 1:10 -->
+<!-- attributes(x) -->
+<!-- ``` -->
+
+<!-- `NULL` represents the Null object -->
+
+# Relational Data
+
+
+## Working with more data frames {.smaller}
+
+- Data can be distributed in several data frames which have relations which each other. 
+- For example, they share variables as the five data frames in `nycflights13`.
+
+![](img/nycflights13_data.png){height=300}
+
+:::{.aside}
+Often variables in different data frame have the same name, but that need not be the case! See the variable `faa` in `airports` matches `origin` and `dest` in `flights`.
+:::
+
+
+## Data: Women in science {.smaller}
+
+10 women in science who changed the world: 
+`r read_csv("data/scientists/professions.csv") |> pull(name) |> paste(collapse=", ")`
+
+```{r}
+professions <- read_csv("data/scientists/professions.csv")
+dates <- read_csv("data/scientists/dates.csv")
+works <- read_csv("data/scientists/works.csv")
+```
+
+::: {.panel-tabset}
+
+#### Professions
+
+```{r}
+#| echo: true
+professions <- read_csv("data/scientists/professions.csv")
+professions
+```
+
+#### Dates
+
+```{r}
+#| echo: true
+dates <- read_csv("data/scientists/dates.csv")
+dates
+```
+
+#### Works
+
+```{r}
+#| echo: true
+works <- read_csv("data/scientists/works.csv")
+works
+```
+:::
+
+
+:::{.aside}
+Source: [Discover Magazine](https://www.discovermagazine.com/the-sciences/meet-10-women-in-science-who-changed-the-world)
+
+The data can be downloaded: [professions.csv](https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d08-multi-df/data/scientists/professions.csv), [dates.csv](https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d08-multi-df/data/scientists/dates.csv), 
+[works.csv](https://raw.githubusercontent.com/rstudio-education/datascience-box/main/course-materials/_slides/u2-d08-multi-df/data/scientists/works.csv)
+:::
+
+## We want this data frame {.smaller}
+
+```{r}
+professions  |> left_join(dates) |> left_join(works)
+```
+
+## Joining data frames {.smaller}
+
+`something_join(x, y)`^{The notion *join* comes from SQL database. In other data manipulation frameworks joining is called *merging*.} for data frames `x` and `y` which have a *relation*
+
+- `left_join()`: all rows from x
+- `right_join()`: all rows from y
+- `full_join()`: all rows from both x and y
+- `inner_join()`: all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches
+- ...
+
+## Simple setup for `x` and `y`
+
+```{r}
+#| echo: true
+x <- tibble(
+  id = c(1, 2, 3),
+  value_x = c("x1", "x2", "x3")
+  )
+y <- tibble(
+  id = c(1, 2, 4),
+  value_y = c("y1", "y2", "y4")
+  )
+x
+y
+```
+
+## `left_join()`
+
+:::{.columns}
+:::{.column width=50%}
+![](img/left-join.gif)
+:::
+:::{.column}
+```{r}
+#| echo: true
+left_join(x, y)
+```
+:::
+:::
+
+## `right_join()`
+
+:::{.columns}
+:::{.column width=50%}
+![](img/right-join.gif)
+:::
+:::{.column}
+```{r}
+#| echo: true
+right_join(x, y)
+```
+:::
+:::
+
+
+## `full_join()`
+
+:::{.columns}
+:::{.column width=50%}
+![](img/full-join.gif)
+:::
+:::{.column}
+```{r}
+#| echo: true
+full_join(x, y)
+```
+:::
+:::
+
+
+## `inner_join()`
+
+:::{.columns}
+:::{.column width=50%}
+![](img/inner-join.gif)
+:::
+:::{.column}
+```{r}
+#| echo: true
+inner_join(x, y)
+```
+:::
+:::
+
+## Women in science {.smaller}
+
+:::{.panel-tabset}
+
+#### `left_join`
+
+```{r}
+#| echo: true
+professions |> left_join(works)
+```
+
+#### `right_join`
+
+```{r}
+#| echo: true
+professions |> right_join(works)
+```
+
+#### `full_join`
+
+```{r}
+#| echo: true
+dates |> full_join(works)
+```
+
+#### `inner_join`
+
+```{r}
+#| echo: true
+dates |> inner_join(works)
+```
+
+
+#### Final
+
+```{r}
+#| echo: true
+professions |> left_join(dates) |> inner_join(works)
+```
+
+:::
+
+## Keys {.smaller}
+
+- A **key** is a variable or a set of variables which uniquely identifies observations
+- What was the key in the data frame of women in science?
+
+. . . 
+
+- Switching back to `nycflights13` as example
+- In simple cases, a single variable is sufficient to identify an observation, e.g. each plane in `planes` is identified by `tailnum`.
+- Sometimes, multiple variables are needed; e.g. to identify an observation in
+`weather` you need five variables: `year`, `month`, `day`, `hour`, and `origin`
+
+## How can we check? {.scrollable}
+
+Counting observation and filter those more than one
+
+```{r}
+#| echo: true
+library(nycflights13)
+planes |> count(tailnum) |> filter(n > 1)
+weather |> count(year, month, day, hour, origin) |> filter(n > 1) 
+# OK, here 3 observations are twice. Probably a data error.
+# Example: Without hour it is not a key
+weather |> count(year, month, day, origin) |> filter(n > 1) 
+```
+
+## Primary and foreign keys  {.smaller}
+
+- A **primary key** uniquely identifies an observation in its own table. E.g,
+`planes$tailnum` in `planes`. 
+- A **foreign key** uniquely identifies an observation in another data frame E.g.
+`flights$tailnum` is a foreign key in `flights` because it matches each flight to a unique plane in `planes`.
+- Data frames need not have a key and the joins will still do their work. 
+
+- A primary key and a foreign key form a relation. 
+- Relations are typically 1-to-many. Each plane has many flights
+- Relations can also be many-to-many. Airlines can fly to many airports; airport can host many airplanes.
+
+
+## Joining when key names differ? {.smaller .scrollable}
+
+We have to specify the key relation with a named vector in the `by` argument. 
+
+```{r}
+#| echo: true
+dim(flights)
+flights |> left_join(airports, by = c("dest" = "faa"))
+```
+
+**Why does the number of rows stays the same after joining?**
+
+. . .
+
+`faa` is a primary key in `airports`. 
+
+
+
+## `left_join` *essentially* `right_join` with switched data frames {.smaller .scrollable}
+
+```{r}
+#| echo: true
+airportsflights <- airports |> right_join(flights, by = c("faa" = "dest"))
+airportsflights 
+```
+
+Differences 
+
+- In a join where keys have different column names the name of the first data frame survives (unless you use `keep = TRUE`). Here, `faa` instead of `dest`
+- The columns from the first data frame come first
+- The order of rows is taken from the first data frame, while duplication and dropping of variables is determined by the second data frame (because it is a `right_join`)
+
+Using the fact that flights seem to be ordered by `year`, `month`, `day`, `dep_time` we can re-arrange:
+
+```{r}
+#| echo: true
+airportsflights <- 
+  airportsflights |> 
+  rename(dest = faa) |> 
+  select(names(flights)) |> # Use order of flights
+  arrange(year, month, day, dep_time)
+```
+
+Note of caution: A deeper analysis shows that the order is still not exactly the same. 
+
+## `left_join` with reversed data frames {.smaller .scrollable}
+
+
+```{r}
+#| echo: true
+dim(airports)
+dim(flights)
+airports |> left_join(flights, by = c("faa" = "dest"))
+```
+
+**Why does the number of rows changes after joining?**
+
+`dest` is not a primary key in `flights`. There are more flights with the same destination so rows of `airports` get duplicated.  
+
+**Why is the number of rows then less than the number of rows in flights?**
+
+Let us do some checks:
+
+```{r}
+#| echo: true
+length(unique(airports$faa))
+length(unique(flights$dest))
+
+# There are much more airports then destinations in flights!
+# ... but the rows of airports prevail when it is the first in a left_join.
+# So, the data frame should even increase because 
+# we get several rows of airports without flights
+# Let us dig deeper.
+
+setdiff( unique(airportsflights$faa), unique(flights$dest)) |> length()
+# 1,357 airports have no flights. But also:
+setdiff( unique(flights$dest), unique(airportsflights$faa)) |> length()
+# There are four destinations in flights, which are not in the airports list!
+
+# How many flights are to these?
+flights |> 
+  filter(dest %in% setdiff( unique(flights$dest), unique(airportsflights$faa))) |> 
+  nrow()
+# 7,602 flights go to destinations not listed as airport
+
+# Check
+nrow(airports |> left_join(flights, by = c("faa" = "dest"))) == nrow(flights) - 7602 + 1357
+# OK, now we have a clear picture
+```
+
+The new number of observation after a join can be a complex combination of duplication and dropping. 
+
+# Math: Sets and vectors {background-color="aquamarine"}
+
+## Definition: Sets and vectors {background-color="aquamarine"}
+
+A **set** is mathematical model for the collection of *different* things.
+
+Examples:
+
+- $\{3, \text{Hi}, 😀, 🖖 \}$
+- $\{1,3,5\}$
+- The natural numbers $\mathbb{N} = \{1, 2, 3, \dots\}$ (infinite!)
+- $\{\mathtt{"EWR"} \mathtt{"LGA"} \mathtt{"JFK"}\}$   
+these are `origin` airports in `flights`
+
+
+## Math: Sets and vectors {background-color="aquamarine"}
+
+A **vector** is an ordered collection of things (**elements**) of the same type. 
+
+In a set each thing can only be once and the order does not matter!
+
+$\{1,3,5\} = \{3,5,1\} = \{1,1,1,3,5,5\}$
+
+For vectors:
+
+$[1\ 3\ 5] \neq [3\ 5\ 1]$ because we compare component-wise, so we cannot even compare with = $[1\ 1\ 1\ 3\ 5\ 5]$
+
+## Math: Set operations  {background-color="aquamarine"}
+
+For sets $A = \{🐺, 🦊, 🐶\}$ and $B = \{🐶, 🐷, 🐹\}$:
+
+- Set **union** $A \cup B$ = \{🐺, 🦊, 🐶, 🐷, 🐹\}
+- Set **intersection** $A \cap B$ = \{🐶\}
+- Set **different** $A \setminus B$ = \{🐺, 🦊\}$, $B \setminus A$ = \{🐷, 🐹\}
+
+## Set operations in R {.smaller}
+
+`unique` shows the set of elements in a vector
+
+```{r}
+#| echo: true
+unique(flights$origin)
+```
+
+`setequal` tests for set equality
+
+```{r}
+#| echo: true
+setequal(c("EWR","LGA","JFK"), c("EWR","EWR","LGA","JFK"))
+```
+
+`union`, `intersect`, `setdiff` treat vectors as sets and operate as expected
+
+```{r}
+#| echo: true
+union(1:5,3:7)
+intersect(1:5,3:7)
+setdiff(1:5,3:7)
+```
+
+
+
+# Exploratory Data Analysis {background-color="yellow"}
+
+## Exploratory Data Analysis {background-color="yellow" .smaller}
+
+![](img/data-science-explore.png)
+
+EDA is the systematic exploration of data using
+
+- visualization
+- transformation
+- computation of characteristic values
+- modeling
+
+
+:::{.aside}
+We haven't talked much about the latter two, but will do soon.   
+Computation of characteristic values: Functions like mean, median, mode, standard deviation, or interquartile range  
+Modeling: Operations like linear regression or dimensionality reduction
+:::
+
+
+## Systematic but no standard routine {background-color="yellow"}
+
+> “There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox
+
+> “Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey 
+
+## Systematic but no standard routine {background-color="yellow"}
+
+- Goal of EDA: Develop understanding of your data.
+- EDA's iterative cycle
+    1. Generate questions about your data.
+    2. Search for answers by visualizing, transforming, and modelling your data.
+    3. Use what you learn to refine your questions and/or generate new questions.
+- EDA is fundamentally a creative process.
+
+## Questions {background-color="yellow"}
+
+- The way to ask quality questions:
+  - Generate many questions!
+  - You cannot come up with most interesting questions when you start. 
+- There is no rule which questions to ask. These are useful
+    1. What type of **variation** occurs within my variables?  
+    (Barplots, Histograms,...)
+    2. What type of **covariation** occurs between my variables?   
+    (Scatterplots, Timelines,...)
+
+## EDA embedded in a data science project {background-color="yellow"}
+
+1.  Stating and refining the question
+2.  **Exploring the data**
+3.  Building formal statistical models
+4.  Interpreting the results
+5.  Communicating the results
+
+:::{.aside}
+Roger D. Peng and Elizabeth Matsui.
+"The Art of Data Science." A Guide for Anyone Who Works with Data.
+Skybrude Consulting, LLC (2015).
+:::
+
+# Data science projects {background-color="yellow"}
+
+## Six types of questions {background-color="yellow" .smaller}
+
+1.  **Descriptive:** summarize a characteristic of a set of data
+2.  **Exploratory:** analyze to see if there are patterns, trends, or relationships between variables (hypothesis generating)
+3.  **Inferential:** analyze patterns, trends, or relationships in representative data from a population
+4.  **Predictive:** make predictions for individuals or groups of individuals
+5.  **Causal:** whether changing one factor will change another factor, on average, in a population
+6.  **Mechanistic:** explore "how" as opposed to whether
+
+:::{.aside}
+Leek, Jeffery T., and Roger D. Peng. 2015. “What Is the Question?” Science 347 (6228): 1314–15. <https://doi.org/10.1126/science.aaa6146>.
+:::
+
+## Data Analysis Flowchart {background-color="yellow"}
+
+![](img/DataAnalysisFlowChart_LeekPeng.jpeg){fig-align="center" height="550"}
+
+## Example: COVID-19 and Vitamin D  {background-color="yellow" .smaller}
+
+1. **Descriptive:** frequency of hospitalisations due to COVID-19 in a set of data collected from a group of individuals
+2. **Exploratory:** examine relationships between a range of dietary factors and COVID-19 hospitalisations
+3.  **Inferential:** examine whether any relationship between taking Vitamin D supplements and COVID-19 hospitalisations found in the sample hold for the population at large
+4. **Predictive:** what types of people will take Vitamin D supplements during the next year
+5. **Causal:** whether people with COVID-19 who were randomly assigned to take Vitamin D supplements or those who were not are hospitalised 
+6.  **Mechanistic:** how increased vitamin D intake leads to a reduction in the number of viral illnesses
+
+## Questions to data science problems  {background-color="yellow"}
+
+-   Do you have appropriate data to answer your question?
+-   Do you have information on confounding variables?
+-   Was the data you're working with collected in a way that introduces bias?
+
+:::{.aside}
+**Example**  
+I want to estimate the average number of children in households in Bremen.
+I conduct a survey at an elementary school and ask pupils how many children, including themselves, live in their house.
+Then, I take the average of the responses.
+
+- Is this a biased or an unbiased estimate of the number of children in households in Bremen?
+- If biased, will the value be an overestimate or underestimate?
+:::
+
+
+## Context Information and Codebooks {background-color="yellow" .smaller}
+
+- Not all information is in the data!
+- Potential confounding variables you infer from general knowledge
+- Information about data collection you may receive from an accompanying report
+- Information about computed variables you may need to look up in accompanying documentation
+- Information about certain variables you may find in an accompanying **codebook**. For example the exact wording of questions in survey data. 
+
+
+## Next {.smaller}
+
+**Next Week**
+
+- Summarizing functions for data
+- Some more math background (linked to programming)
+
+
+**Homework 03**
+
+- shall come over the weekend, due in two week
+- will move towards 
+  - exploratory data analysis
+  - answering questions (You have some technical tools now at hand.)
+  - asking question
