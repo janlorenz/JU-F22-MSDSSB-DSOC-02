@@ -610,7 +610,6 @@ Using the fact that flights seem to be ordered by `year`, `month`, `day`, `dep_t
 
 ```{r}
 #| echo: true
-airportsflights <- 
   airportsflights |> 
   rename(dest = faa) |> 
   select(names(flights)) |> # Use order of flights
