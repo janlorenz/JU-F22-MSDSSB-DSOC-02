@@ -155,9 +155,29 @@ Including some recap of the toolkit.
 Questions and advice on Homework 02 (mostly in Recording).  
 
 
-## Week 5, Sep 29: Relational Data, Exploratory Data Analysis, Asking Questions {-}
+## Week 5, Sep 29:  More under the hood, Relational Data, Exploratory Data Analysis {-}
 
-Shall also cover a brief introduction to some dangling topics: Missing values, factors, strings, date and time. 
+[Slides Week 5](W5.qmd)
 
-Homework 02 due next Sunday. 
-Homework 03 comes (or will be close to come). 
+Topics: 
+
+- More under the hood
+- Augmented vectors: Factors and Dates
+- Strings
+- Relational Data: Joins, joins, joins ...
+- Math: Sets and vectors
+- Exploratory Data Analysis
+- Data Science Projects
+
+**Homework 02 due next Sunday.**   
+**Homework 03 comes over the weekend.**
+
+
+
+
+<!-- 
+Next things: Data Science Box: Scientific studies and confounding, ends with conditional probability and independence
+
+
+
+-->
