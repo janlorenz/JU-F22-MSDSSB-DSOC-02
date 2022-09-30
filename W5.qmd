@@ -662,6 +662,9 @@ flights |>
 # Check
 nrow(airports |> left_join(flights, by = c("faa" = "dest"))) == nrow(flights) - 7602 + 1357
 # OK, now we have a clear picture
+# airport with left_joined flights duplicates the rows an airports for each flight flying to it
+# So the total number of rows is the number of flights plus the number of airport which do not 
+# appear as a destination minus the flights which go to destinations which are not listed in airports
 ```
 
 The new number of observation after a join can be a complex combination of duplication and dropping. 

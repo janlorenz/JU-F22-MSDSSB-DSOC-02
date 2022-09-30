@@ -823,7 +823,7 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">as.double</span>(lubridate<span class="sc">::</span><span class="fu">now</span>()) <span class="sc">-</span> <span class="fu">as.double</span>(lubridate<span class="sc">::</span><span class="fu">ymd_hm</span>(<span class="st">"1976-01-16_12:04"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1473898070</code></pre>
+<pre><code>[1] 1473898386</code></pre>
 </div>
 </div>
 </section>
@@ -1546,7 +1546,10 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a><span class="co"># OK, now we have a clear picture</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a><span class="co"># OK, now we have a clear picture</span></span>
+<span id="cb139-2"><a href="#cb139-2"></a><span class="co"># airport with left_joined flights duplicates the rows an airports for each flight flying to it</span></span>
+<span id="cb139-3"><a href="#cb139-3"></a><span class="co"># So the total number of rows is the number of flights plus the number of airport which do not </span></span>
+<span id="cb139-4"><a href="#cb139-4"></a><span class="co"># appear as a destination minus the flights which go to destinations which are not listed in airports</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The new number of observation after a join can be a complex combination of duplication and dropping.</p>
 </section></section>
