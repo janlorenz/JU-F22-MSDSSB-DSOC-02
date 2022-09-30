@@ -751,7 +751,7 @@ $class
 <section id="dates" class="slide level2 smaller">
 <h2>Dates</h2>
 <ul>
-<li>ISO 8601 standard for dates: <strong>YYYY-MM-DD</strong>. Today: 2022-09-29.</li>
+<li>ISO 8601 standard for dates: <strong>YYYY-MM-DD</strong>. Today: 2022-09-30.</li>
 <li>Dates in R are numeric vectors that represent the number of days since 1 January 1970.</li>
 </ul>
 <div class="cell">
@@ -788,7 +788,7 @@ $class
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">Sys.Date</span>() <span class="sc">-</span> <span class="fu">as.Date</span>(<span class="st">"1976-01-16"</span>)  <span class="co"># Sys.Date() gives as the current day your computer is set to</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 17058 days</code></pre>
+<pre><code>Time difference of 17059 days</code></pre>
 </div>
 </div>
 </div>
@@ -823,7 +823,7 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">as.double</span>(lubridate<span class="sc">::</span><span class="fu">now</span>()) <span class="sc">-</span> <span class="fu">as.double</span>(lubridate<span class="sc">::</span><span class="fu">ymd_hm</span>(<span class="st">"1976-01-16_12:04"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1473818762</code></pre>
+<pre><code>[1] 1473898070</code></pre>
 </div>
 </div>
 </section>
@@ -1411,8 +1411,8 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <section id="left_join-essentially-right_join-with-switched-data-frames" class="slide level2 smaller scrollable">
 <h2><code>left_join</code> <em>essentially</em> <code>right_join</code> with switched data frames</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>airportsflights <span class="ot">&lt;-</span> airports <span class="sc">|&gt;</span> <span class="fu">right_join</span>(flights, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"faa"</span> <span class="ot">=</span> <span class="st">"dest"</span>))</span>
-<span id="cb117-2"><a href="#cb117-2"></a>airportsflights </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>airports_right_flights <span class="ot">&lt;-</span> airports <span class="sc">|&gt;</span> <span class="fu">right_join</span>(flights, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"faa"</span> <span class="ot">=</span> <span class="st">"dest"</span>))</span>
+<span id="cb117-2"><a href="#cb117-2"></a>airports_right_flights </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 26
    faa   name        lat   lon   alt    tz dst   tzone  year month   day dep_t…¹
@@ -1442,7 +1442,7 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 </ul>
 <p>Using the fact that flights seem to be ordered by <code>year</code>, <code>month</code>, <code>day</code>, <code>dep_time</code> we can re-arrange:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a>  airportsflights <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a>airports_right_flights <span class="sc">|&gt;</span> </span>
 <span id="cb119-2"><a href="#cb119-2"></a>  <span class="fu">rename</span>(<span class="at">dest =</span> faa) <span class="sc">|&gt;</span> </span>
 <span id="cb119-3"><a href="#cb119-3"></a>  <span class="fu">select</span>(<span class="fu">names</span>(flights)) <span class="sc">|&gt;</span> <span class="co"># Use order of flights</span></span>
 <span id="cb119-4"><a href="#cb119-4"></a>  <span class="fu">arrange</span>(year, month, day, dep_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1479,7 +1479,8 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 336776     19</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>airports <span class="sc">|&gt;</span> <span class="fu">left_join</span>(flights, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"faa"</span> <span class="ot">=</span> <span class="st">"dest"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>airports <span class="sc">|&gt;</span> </span>
+<span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">left_join</span>(flights, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"faa"</span> <span class="ot">=</span> <span class="st">"dest"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 330,531 × 26
    faa   name       lat    lon   alt    tz dst   tzone  year month   day dep_t…¹
@@ -1506,7 +1507,7 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <p><strong>Why is the number of rows then less than the number of rows in flights?</strong></p>
 <p>Let us do some checks:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(airports<span class="sc">$</span>faa))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(airports<span class="sc">$</span>faa)) <span class="co"># Unique turns out to be redundant because faa is a primary key</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1458</code></pre>
 </div>
@@ -1520,23 +1521,23 @@ POSIXct: Portable Operating System Interface, calendar time. Stores date and tim
 <span id="cb131-4"><a href="#cb131-4"></a><span class="co"># we get several rows of airports without flights</span></span>
 <span id="cb131-5"><a href="#cb131-5"></a><span class="co"># Let us dig deeper.</span></span>
 <span id="cb131-6"><a href="#cb131-6"></a></span>
-<span id="cb131-7"><a href="#cb131-7"></a><span class="fu">setdiff</span>( <span class="fu">unique</span>(airportsflights<span class="sc">$</span>faa), <span class="fu">unique</span>(flights<span class="sc">$</span>dest)) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb131-7"><a href="#cb131-7"></a><span class="fu">setdiff</span>( <span class="fu">unique</span>(airports<span class="sc">$</span>faa), <span class="fu">unique</span>(flights<span class="sc">$</span>dest)) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 1357</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a><span class="co"># 1,357 airports have no flights. But also:</span></span>
-<span id="cb133-2"><a href="#cb133-2"></a><span class="fu">setdiff</span>( <span class="fu">unique</span>(flights<span class="sc">$</span>dest), <span class="fu">unique</span>(airportsflights<span class="sc">$</span>faa)) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb133-2"><a href="#cb133-2"></a><span class="fu">setdiff</span>( <span class="fu">unique</span>(flights<span class="sc">$</span>dest), <span class="fu">unique</span>(airports<span class="sc">$</span>faa)) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a><span class="co"># There are four destinations in flights, which are not in the airports list!</span></span>
 <span id="cb135-2"><a href="#cb135-2"></a></span>
 <span id="cb135-3"><a href="#cb135-3"></a><span class="co"># How many flights are to these?</span></span>
 <span id="cb135-4"><a href="#cb135-4"></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb135-5"><a href="#cb135-5"></a>  <span class="fu">filter</span>(dest <span class="sc">%in%</span> <span class="fu">setdiff</span>( <span class="fu">unique</span>(flights<span class="sc">$</span>dest), <span class="fu">unique</span>(airportsflights<span class="sc">$</span>faa))) <span class="sc">|&gt;</span> </span>
+<span id="cb135-5"><a href="#cb135-5"></a>  <span class="fu">filter</span>(dest <span class="sc">%in%</span> <span class="fu">setdiff</span>( <span class="fu">unique</span>(flights<span class="sc">$</span>dest), <span class="fu">unique</span>(airports<span class="sc">$</span>faa))) <span class="sc">|&gt;</span> </span>
 <span id="cb135-6"><a href="#cb135-6"></a>  <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 7602</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a><span class="co"># 7,602 flights go to destinations not listed as airport</span></span>
 <span id="cb137-2"><a href="#cb137-2"></a></span>

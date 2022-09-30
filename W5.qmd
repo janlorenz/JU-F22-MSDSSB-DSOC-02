@@ -596,8 +596,8 @@ flights |> left_join(airports, by = c("dest" = "faa"))
 
 ```{r}
 #| echo: true
-airportsflights <- airports |> right_join(flights, by = c("faa" = "dest"))
-airportsflights 
+airports_right_flights <- airports |> right_join(flights, by = c("faa" = "dest"))
+airports_right_flights 
 ```
 
 Differences 
@@ -610,7 +610,7 @@ Using the fact that flights seem to be ordered by `year`, `month`, `day`, `dep_t
 
 ```{r}
 #| echo: true
-  airportsflights |> 
+airports_right_flights |> 
   rename(dest = faa) |> 
   select(names(flights)) |> # Use order of flights
   arrange(year, month, day, dep_time)
@@ -625,7 +625,8 @@ Note of caution: A deeper analysis shows that the order is still not exactly the
 #| echo: true
 dim(airports)
 dim(flights)
-airports |> left_join(flights, by = c("faa" = "dest"))
+airports |> 
+  left_join(flights, by = c("faa" = "dest"))
 ```
 
 **Why does the number of rows changes after joining?**
@@ -638,7 +639,7 @@ Let us do some checks:
 
 ```{r}
 #| echo: true
-length(unique(airports$faa))
+length(unique(airports$faa)) # Unique turns out to be redundant because faa is a primary key
 length(unique(flights$dest))
 
 # There are much more airports then destinations in flights!
@@ -647,14 +648,14 @@ length(unique(flights$dest))
 # we get several rows of airports without flights
 # Let us dig deeper.
 
-setdiff( unique(airportsflights$faa), unique(flights$dest)) |> length()
+setdiff( unique(airports$faa), unique(flights$dest)) |> length()
 # 1,357 airports have no flights. But also:
-setdiff( unique(flights$dest), unique(airportsflights$faa)) |> length()
+setdiff( unique(flights$dest), unique(airports$faa)) |> length()
 # There are four destinations in flights, which are not in the airports list!
 
 # How many flights are to these?
 flights |> 
-  filter(dest %in% setdiff( unique(flights$dest), unique(airportsflights$faa))) |> 
+  filter(dest %in% setdiff( unique(flights$dest), unique(airports$faa))) |> 
   nrow()
 # 7,602 flights go to destinations not listed as airport
 
