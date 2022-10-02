@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.149">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>JU-F22-MSDSSB-DSOC-02 - Homework 03</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">JU-F22-MSDSSB-DSOC-02</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../late.html">Info for late coming students</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../hw-instructions/hw-01-instr.html">Homework 01</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../hw-instructions/hw-02-instr.html">Homework 02</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../hw-instructions/hw-02-py-instruction.html">Additional python instruction Homework 02</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../hw-instructions/hw-03-instr.html" aria-current="page">Homework 03</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#corona" id="toc-corona" class="nav-link active" data-scroll-target="#corona"><span class="toc-section-number">1</span>  Corona</a>
+  <ul class="collapse">
+  <li><a href="#question-1-is-the-data-of-owid-and-who-the-same" id="toc-question-1-is-the-data-of-owid-and-who-the-same" class="nav-link" data-scroll-target="#question-1-is-the-data-of-owid-and-who-the-same"><span class="toc-section-number">1.1</span>  <strong>Question 1:</strong> Is the data of OWiD and WHO the same?</a></li>
+  <li><a href="#question-2-are-there-patterns-in-the-timeline-of-new-cases-which-seem-unrelated-to-the-potential-spread-of-the-virus-in-the-population-how-could-we-smooth-them-best" id="toc-question-2-are-there-patterns-in-the-timeline-of-new-cases-which-seem-unrelated-to-the-potential-spread-of-the-virus-in-the-population-how-could-we-smooth-them-best" class="nav-link" data-scroll-target="#question-2-are-there-patterns-in-the-timeline-of-new-cases-which-seem-unrelated-to-the-potential-spread-of-the-virus-in-the-population-how-could-we-smooth-them-best"><span class="toc-section-number">1.2</span>  <strong>Question 2:</strong> Are there patterns in the timeline of new cases which seem unrelated to the potential spread of the virus in the population? How could we smooth them best?</a></li>
+  <li><a href="#question-3-how-do-deaths-follow-cases" id="toc-question-3-how-do-deaths-follow-cases" class="nav-link" data-scroll-target="#question-3-how-do-deaths-follow-cases"><span class="toc-section-number">1.3</span>  <strong>Question 3:</strong> How do deaths follow cases?</a></li>
+  <li><a href="#question-4-how-is-the-severity-of-the-corona-pandemic-in-countries-related-to-human-development" id="toc-question-4-how-is-the-severity-of-the-corona-pandemic-in-countries-related-to-human-development" class="nav-link" data-scroll-target="#question-4-how-is-the-severity-of-the-corona-pandemic-in-countries-related-to-human-development"><span class="toc-section-number">1.4</span>  <strong>Question 4:</strong> How is the severity of the corona pandemic in countries related to human development?</a></li>
+  <li><a href="#submit-your-report" id="toc-submit-your-report" class="nav-link" data-scroll-target="#submit-your-report"><span class="toc-section-number">1.5</span>  Submit your report</a></li>
+  </ul></li>
+  <li><a href="#european-social-survey" id="toc-european-social-survey" class="nav-link" data-scroll-target="#european-social-survey"><span class="toc-section-number">2</span>  European Social Survey</a>
+  <ul class="collapse">
+  <li><a href="#question-1-what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life" id="toc-question-1-what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life" class="nav-link" data-scroll-target="#question-1-what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life"><span class="toc-section-number">2.1</span>  <strong>Question 1:</strong> What is the ranking of European countries with respect to of average satisfaction with life?</a></li>
+  <li><a href="#question-2-what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe" id="toc-question-2-what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe" class="nav-link" data-scroll-target="#question-2-what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe"><span class="toc-section-number">2.2</span>  <strong>Question 2:</strong> What is the relation of the emotional attachment of Europeans to their own country and to Europe?</a></li>
+  <li><a href="#question-3-what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration" id="toc-question-3-what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration" class="nav-link" data-scroll-target="#question-3-what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration"><span class="toc-section-number">2.3</span>  <strong>Question 3:</strong> What is the relation of the emotional attachment to the own country and the opinion about further of European integration?</a></li>
+  <li><a href="#question-4-how-many-observations-are-there-for-each-country-year-combination" id="toc-question-4-how-many-observations-are-there-for-each-country-year-combination" class="nav-link" data-scroll-target="#question-4-how-many-observations-are-there-for-each-country-year-combination"><span class="toc-section-number">2.4</span>  <strong>Question 4:</strong> How many observations are there for each country-year combination?</a></li>
+  <li><a href="#question-5-answer-your-own-exploratory-question" id="toc-question-5-answer-your-own-exploratory-question" class="nav-link" data-scroll-target="#question-5-answer-your-own-exploratory-question"><span class="toc-section-number">2.5</span>  <strong>Question 5:</strong> Answer your own exploratory question</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Homework 03</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>The goal of this assignment is to do steps of exploratory data analysis (EDA) with the data about corona and the European Social Survey (ESS) from <a href="../hw-instructions/hw-02-instr.html">Homework 02</a>.</p>
+<section id="corona" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="corona"><span class="header-section-number">1</span> Corona</h2>
+<p>Continue to work on your repository <strong>corona-ind-USERNAME</strong> and make the analysis in R-chunks.</p>
+<p>Create a new Quarto-document and save it as “Corona_Analysis.qmd”.</p>
+<ul>
+<li>Customize the YAML with the title “Corona Analysis”, your name, and output format being a standalone html-file with embedded resources. Enable code-folding in the output html file.</li>
+<li>Write a chunk labeled <code>data</code> where you load the <code>tidyverse</code> library and import the data from <em>Our World in Data</em> (OWiD) into a tibble <code>owid</code> and the data from the <em>World Health Organization</em> (WHO) into a tibble called <code>who</code> (use <code>read_csv</code> for both).</li>
+<li>Document what you did: Write a headline <code>## Data</code> before the chunk <code>data</code> and briefly describe the two data sources and link the data files.</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>In <a href="https://github.com/JU-F22-MDSSB-MET-01/corona-ind-janlorenz/blob/main/Download_corona_data.R" class="uri">https://github.com/JU-F22-MDSSB-MET-01/corona-ind-janlorenz/blob/main/Download_corona_data.R</a> you find a script which downloads the corona datasets from OWiD and WHO. You can copy this.</li>
+<li>In <a href="https://github.com/JU-F22-MDSSB-MET-01/corona-ind-janlorenz/blob/main/Corona.qmd" class="uri">https://github.com/JU-F22-MDSSB-MET-01/corona-ind-janlorenz/blob/main/Corona.qmd</a> you find an example for the YAML and the data import chunk.</li>
+</ul>
+</div>
+</div>
+<section id="question-1-is-the-data-of-owid-and-who-the-same" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="question-1-is-the-data-of-owid-and-who-the-same"><span class="header-section-number">1.1</span> <strong>Question 1:</strong> Is the data of OWiD and WHO the same?</h3>
+<p>Write a new headline <code>## Differences between OWiD and WHO data</code>, make the following analysis in a chunk, and write an answer to the question. Guide for the analysis:</p>
+<ul>
+<li>Create a joined tibble. This can be done with a chain of pipes <code>|&gt;</code>.
+<ul>
+<li>Make a new tibble <code>who_owid</code> where you left join <code>owid</code> to <code>who</code>. Use the combination of the data and the country as the key. To that end you have to identify the corresponding columns in <code>who</code> and <code>owid</code> with the named vector <code>c("Date_reported" = "date", "Country" = "location")</code>.</li>
+<li>Use <code>select</code> to select and rename columns in <code>who_owid</code> such that you have columns for <code>Date</code>, <code>Country</code>, <code>New_cases_who</code>, <code>New_cases_owid</code>, <code>Total_cases_who</code>, and <code>Total_cases_owid</code>.</li>
+</ul></li>
+<li>Make a visualization where the new cases in WHO and OWiD appear as two lines. Filter for the time before 2020-07-01 and four countries: Germany, France, India, and a country of your choice (Hint: use <code>%in%</code>). Then facet your visualization by country.</li>
+<li>Repeat the visualization for the comparison of WHO and OWiD data for the total cases.</li>
+<li>Below the visualizations, explain what is visualizaed and then answer the question based on the visualizations. (Some guiding questions: What are the differences? How severe are the differences on a daily basis and in the long run? What data shows more fluctuations?) Bonus: What is the reason for the difference?</li>
+</ul>
+<div class="calloUt-tip">
+<p>For comparing <code>New_cases_who</code> and <code>New_cases_owid</code> you need a to make the tibble longer (<code>pivot_longer</code>) such that you have one column with a categroical variable specifying the data source and one column with the actual value of the new cases in each data set. Then you can make a ggplot with <code>geom_line</code> where you make two lines by assigning the data source to the color aesthetic.</p>
+<p>For faceting, use <code>facet_wrap</code>. It is useful to specify that there should be only one column and that scales are specified such that each facet has its own y-axis scale (called <code>free_y</code>).</p>
+<p>The same advice holds for the visualization of total cases.</p>
+</div>
+</section>
+<section id="question-2-are-there-patterns-in-the-timeline-of-new-cases-which-seem-unrelated-to-the-potential-spread-of-the-virus-in-the-population-how-could-we-smooth-them-best" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="question-2-are-there-patterns-in-the-timeline-of-new-cases-which-seem-unrelated-to-the-potential-spread-of-the-virus-in-the-population-how-could-we-smooth-them-best"><span class="header-section-number">1.2</span> <strong>Question 2:</strong> Are there patterns in the timeline of new cases which seem unrelated to the potential spread of the virus in the population? How could we smooth them best?</h3>
+<p>Write a new headline <code>## Smoothing new cases</code>, make a chunk where you compute three additional columns with smoothed case numbers (see below), make a visualization and explain which is most appropriate to use and why.</p>
+<ul>
+<li>Computed a new tibble <code>who_smoothed</code> from <code>who</code> for this question. (There would be no essential difference with <code>owid</code>.) For each day compute the average of the actual day and some days directly before such that each new value is an average of 3, 7, or 10 days. Call the three new columns <code>New_cases_smooth3</code>, <code>New_cases_smooth7</code>, and <code>New_cases_smooth10</code>. The <em>average</em> is the sum of all values divided by the total number of days. Use <code>mutate</code>. For each column use <code>lag</code> several times for each previous day (see <code>?lag</code>). Don’t forget to group by countries!</li>
+<li>Visualize the timeline for Germany using a time span between 6 and 12 month. Make one panel for <code>New_cases_smooth3</code>, <code>New_cases_smooth7</code>, and <code>New_cases_smooth10</code> respectively. (Hint: Either use <code>pivot_longer</code> and faceting, or three ggplot objects combined using the package <code>patchwork</code>.)</li>
+<li>Answer the question. What is the pattern which seems unrelated to the spread of the virus? Which is the most appropriate smoothing, 3, 7, or 10 days and why?</li>
+</ul>
+</section>
+<section id="question-3-how-do-deaths-follow-cases" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="question-3-how-do-deaths-follow-cases"><span class="header-section-number">1.3</span> <strong>Question 3:</strong> How do deaths follow cases?</h3>
+<p>Make a new headline about this question in your report.</p>
+<p>In <code>owid</code>, there are variables <code>new_cases_smoothed</code> and <code>new_deaths_smoothed</code> which you can use for convenience to explore this question.</p>
+<p>To explore the connection between COVID-19 cases and deaths focus on the first wave in Germany. In <code>owid</code>, filter the data for Germany and dates before 2020-07-01. Plot <code>new_cases_smoothed</code> and <code>new_deaths_smoothed</code> in one line plot using color to distinguish both. (Hint: Use <code>pivot_longer</code>.) Now, produce a new variable <code>scaled_lagged_cases</code> where you do a shift-and-scale transformation of <code>new_cases_smoothed</code>: That means you scale down the number of cases by multiplying a factor <span class="math inline">\(y\)</span>(&lt; 1) and you <code>lag</code> the number of cases along the time axis by <span class="math inline">\(x\)</span> days using <code>y * lag(new_cases_smoothed, x)</code>.</p>
+<ul>
+<li>Play with numerical values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> by plotting <code>scaled_lagged_cases</code> together with <code>new_death_smoothed</code>. Find values for such that both lines overlap as good as possible. Put this visualization into the report.</li>
+<li>Describe what these “visually calibrated” values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> tell us about the relation of cases and deaths of COVID-19?</li>
+<li>Redo the line plot with your calibrated values for all dates in Germany. Describe how the connection between new cases and deaths changes in the course of the pandemic. List potential reasons.</li>
+<li>Repeat this analysis for another country of your choice. To that end find out the time range of the first wave in the country before. Do you get the same <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> by visually calibrating for this country?</li>
+</ul>
+</section>
+<section id="question-4-how-is-the-severity-of-the-corona-pandemic-in-countries-related-to-human-development" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="question-4-how-is-the-severity-of-the-corona-pandemic-in-countries-related-to-human-development"><span class="header-section-number">1.4</span> <strong>Question 4:</strong> How is the severity of the corona pandemic in countries related to human development?</h3>
+<p>Make a new headline about this question in your report.</p>
+<p>Human development is meant to be measured by the human development index of the United Nations Development Programme. Briefly, describe in the report how the Human Development Index (HDI) is composed.</p>
+<p>Use <code>owid</code>. Make a figure which visualizes each country as a point with <code>human_development_index</code> on the horizontal and <code>total_deaths_per_million</code> on the vertical axis. Filter the values for the date 2022-08-31. Filter out all rows which do not represent countries. (Hint: You can take all rows which have a valid value for <code>continent</code>.) Make the size of dots such that the area is proportional to the <code>population</code>. (Hint: Use the <code>scale_size_area()</code> as an additional layer.) Color the dots by <code>continent</code>.</p>
+<p>Describe the visible relation of HDI and total corona related deaths per million. Emphasize what you find interesting, and hypothesize about potential reasons for the finding.</p>
+</section>
+<section id="submit-your-report" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="submit-your-report"><span class="header-section-number">1.5</span> Submit your report</h3>
+<p>Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file and push it to GitHub.</p>
+</section>
+</section>
+<section id="european-social-survey" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="european-social-survey"><span class="header-section-number">2</span> European Social Survey</h2>
+<p>Continue to work on your repository <strong>ess-ind-USERNAME</strong> and make the analysis in python-chunks. <strong>You have to look ESS Data Documentation <a href="https://ess-search.nsd.no/" class="uri">https://ess-search.nsd.no/</a>.</strong></p>
+<ol type="1">
+<li>Create a new Quarto-document and save it as “ESS-analysis.qmd” (alternatively as “ESS-analysis.ipynb” if you can render html-files similarly from it).</li>
+</ol>
+<ul>
+<li>Customize the YAML with the title “European Social Survey Analysis”, your name, and output format being a standalone html-file with embedded resources. Enable code-folding in the output html file.</li>
+<li>Write a chunk labeled <code>data</code> where you load the <code>tidyverse</code> library and import the dataset you downloaded for Homework 02.<br>
+</li>
+<li>Document what you did: Write a headline <code>## Data</code> before the chunk <code>data</code> and briefly describe the data source.</li>
+<li>For each of the following questions write a fitting headline to structure your report.</li>
+</ul>
+<section id="question-1-what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="question-1-what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life"><span class="header-section-number">2.1</span> <strong>Question 1:</strong> What is the ranking of European countries with respect to of average satisfaction with life?</h3>
+<ul>
+<li>Compute the average of <code>stflife</code> for each country-year combination. Make a table with four columns: the country name and the average life satisfaction for the years 2006, 2012, and 2018. Order the table by the values in 2018 and print it nicely in your report.<br>
+To that end, you must create new variables <code>countryname</code> from the two-character ISO-codes in <code>cntyr</code> (use the library <code>pycountry</code>) and a new variable <code>year</code>.<br>
+<strong>Beware:</strong> The ESS variables have coded missing values as large numbers like 77 or 88. Find out these values and recode them as <code>NA</code> before computing averages!<br>
+</li>
+<li>Describe what you find remarkable in the table. (Who is on top? who at the bottom? Any interesting trends? Any geographical patterns?)</li>
+</ul>
+</section>
+<section id="question-2-what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="question-2-what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe"><span class="header-section-number">2.2</span> <strong>Question 2:</strong> What is the relation of the emotional attachment of Europeans to their own country and to Europe?</h3>
+<p>Emotional attachment to Europe may diminish emotional attachment to the country. Test if this is true with the variables <code>atchctr</code> and <code>atcherp</code>. First, look up the wording of the two questions and the answering options and write it into the report.</p>
+<p>Build two visualizations and put them in the report. <strong>Beware:</strong> First recode the missing values as <code>NA</code>! (See above.)</p>
+<ol type="a">
+<li>A visualization where you first count the number of individuals each combination of valid values of <code>atchctr</code> and <code>atcherp</code>. Then plot each combination as a dot with <code>atchctr</code> on the x-axis, <code>atcherp</code> on the y-axis, and the number of individuals represented by size and color and color of the dot.</li>
+<li>Make a lowess (locally weighted scatterplot smoothing) line of <code>atchctr</code> on the x-axis, <code>atcherp</code> on the y-axis using the function <code>regplot</code> from <code>seaborn</code>.</li>
+</ol>
+<p>Answer the question based on the visualization.</p>
+</section>
+<section id="question-3-what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="question-3-what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration"><span class="header-section-number">2.3</span> <strong>Question 3:</strong> What is the relation of the emotional attachment to the own country and the opinion about further of European integration?</h3>
+<p>This is analog to Question 2 with <code>euftf</code> instead of <code>atcherp</code>. First, look up the wording of <code>euftf</code> and the answering options and write it into the report. Beware: First recode the missing values as <code>NA</code>! (See above.)</p>
+<p>Build two visualizations as above.</p>
+<p>Answer the question.</p>
+</section>
+<section id="question-4-how-many-observations-are-there-for-each-country-year-combination" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="question-4-how-many-observations-are-there-for-each-country-year-combination"><span class="header-section-number">2.4</span> <strong>Question 4:</strong> How many observations are there for each country-year combination?</h3>
+<p>Compute the numbers and list them nicely in a table in your report.</p>
+<p>Are the numbers roughly proportional to the population in these countries? Discuss if the answer creates some shortcomings about the answers to Questions 2 and 3. How could these be mitigated?</p>
+</section>
+<section id="question-5-answer-your-own-exploratory-question" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="question-5-answer-your-own-exploratory-question"><span class="header-section-number">2.5</span> <strong>Question 5:</strong> Answer your own exploratory question</h3>
+<p>Look up questions behind the variables in the ESS data set, formulate a question, and answer it with summarizing, and visualization.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
