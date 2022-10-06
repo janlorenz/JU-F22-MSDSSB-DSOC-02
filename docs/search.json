@@ -746,7 +746,7 @@
     "href": "hw-instructions/hw-03-instr.html",
     "title": "Homework 03",
     "section": "",
-    "text": "The goal of this assignment is to do steps of exploratory data analysis (EDA) with the data about corona and the European Social Survey (ESS) from Homework 02."
+    "text": "Important\n\n\n\nHomework 03 is due Oct 16.\nThe goal of this assignment is to do steps of exploratory data analysis (EDA) with the data about corona and the European Social Survey (ESS) from Homework 02."
   },
   {
     "objectID": "W5.html#named-vectors",
@@ -1538,5 +1538,733 @@
     "title": "Homework 03",
     "section": "3 European Social Survey",
     "text": "3 European Social Survey\n\ness-ind-USERNAME"
+  },
+  {
+    "objectID": "W6.html#functions-mathematically",
+    "href": "W6.html#functions-mathematically",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Functions mathematically",
+    "text": "Functions mathematically\nConsider two sets: The domain \\(X\\) and the codomain \\(Y\\).\nA function \\(f\\) assigns each element of \\(X\\) to exactly one element of \\(Y\\).\n\n\nWe write \\(f : X \\to Y\\)\n“\\(f\\) maps from \\(X\\) to \\(Y\\)”\nand \\(x \\mapsto f(x)\\)\n“\\(x\\) maps to \\(f(x)\\)”\nThe yellow set is called the image of \\(f\\).\n\n\n\n\n\n\nPicture from wikipedia."
+  },
+  {
+    "objectID": "W6.html#functions-in-programming",
+    "href": "W6.html#functions-in-programming",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Functions in programming",
+    "text": "Functions in programming"
+  },
+  {
+    "objectID": "W6.html#measures-of-central-tendency",
+    "href": "W6.html#measures-of-central-tendency",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Measures of central tendency",
+    "text": "Measures of central tendency\nMean"
+  },
+  {
+    "objectID": "W6.html#mean",
+    "href": "W6.html#mean",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Mean",
+    "text": "Mean"
+  },
+  {
+    "objectID": "W6.html#the-wisdom-of-the-crowd",
+    "href": "W6.html#the-wisdom-of-the-crowd",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "The Wisdom of the Crowd",
+    "text": "The Wisdom of the Crowd"
+  },
+  {
+    "objectID": "W6.html#measures-of-dispersion",
+    "href": "W6.html#measures-of-dispersion",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Measures of dispersion",
+    "text": "Measures of dispersion\nStandard deviation"
+  },
+  {
+    "objectID": "W6.html#standardization",
+    "href": "W6.html#standardization",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Standardization",
+    "text": "Standardization"
+  },
+  {
+    "objectID": "W6.html#covariance-and-correlation",
+    "href": "W6.html#covariance-and-correlation",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Covariance and Correlation",
+    "text": "Covariance and Correlation"
+  },
+  {
+    "objectID": "W6.html#epidemic-modeling",
+    "href": "W6.html#epidemic-modeling",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Epidemic Modeling",
+    "text": "Epidemic Modeling\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W6.html#conventions-in-mathematical-text",
+    "href": "W6.html#conventions-in-mathematical-text",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Conventions in mathematical text",
+    "text": "Conventions in mathematical text\n\nSets are denoted with capital letters.\nTheir elements with (corresponding) small letters.\nFunctions are often called \\(f\\), \\(g\\), or \\(h\\).\nOther terminology can be used!\n\nResponsibility of the mathematical writer: Define objects.\nResponsibility of the mathematical reader: Keep track of what objects are."
+  },
+  {
+    "objectID": "W6.html#input-and-output",
+    "href": "W6.html#input-and-output",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Input and output",
+    "text": "Input and output\n\n\nMetaphorically, a function is a machine or a blackbox that for each input yields and output.\nThe inputs of a function are also called arguments.\n\n\n\nPicture from wikipedia."
+  },
+  {
+    "objectID": "W6.html#functions-in-programming-r",
+    "href": "W6.html#functions-in-programming-r",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Functions in programming (R)",
+    "text": "Functions in programming (R)\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code. Some functions are written in R, others are not.\n\nsd\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x558fe64a5ec8>\n<environment: namespace:stats>\n\nc\n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot\n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x558fe0f91e68>\n<environment: namespace:ggplot2>"
+  },
+  {
+    "objectID": "W6.html#general",
+    "href": "W6.html#general",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "General",
+    "text": "General\nInput:\n\nFunction: Upload at https://funny.pho.to/lion/\nOutput:"
+  },
+  {
+    "objectID": "W6.html#is-this-a-function",
+    "href": "W6.html#is-this-a-function",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Is this a function?",
+    "text": "Is this a function?\nInput from \\(X = \\{\\text{A picture where a face can be recognized}\\}\\).\nFunction: Upload input at https://funny.pho.to/lion/ and download output.\n \\(\\ \\mapsto\\ \\) \nOutput from \\(Y = \\{\\text{Set of pictures with a specific format.}\\}\\)\n\nYes, it is a function. Important: Output is the same for the same input!"
+  },
+  {
+    "objectID": "W6.html#is-this-a-function-1",
+    "href": "W6.html#is-this-a-function-1",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Is this a function?",
+    "text": "Is this a function?\nInput a text snippet. Function: Enter text at https://www.craiyon.com. Output a picture.\n\n\n\n\nOther examples:\n\n“Nuclear explosion broccoli”\n“The Eye of Sauron reading a newspaper”\n“The legendary attack of Hamster Godzilla wearing a tiny Sombrero”\n\n  \n\n\n\nNo, it is not a function. It has nine outcomes and these change when run again."
+  },
+  {
+    "objectID": "W6.html#function-as-objects-in-programming-r",
+    "href": "W6.html#function-as-objects-in-programming-r",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Function as objects in programming (R)",
+    "text": "Function as objects in programming (R)\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code. Some functions are written in R, others are not.\n\nsd\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x55ac5b91f240>\n<environment: namespace:stats>\n\nc\n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot\n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x55ac56419810>\n<environment: namespace:ggplot2>"
+  },
+  {
+    "objectID": "W6.html#functions-in-r",
+    "href": "W6.html#functions-in-r",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Functions in R",
+    "text": "Functions in R\nDefine your own functions like this\n\nadd_one <- function(x) {\n  x + 1 \n}\n# Test it\nadd_one(10)\n\n[1] 11\n\n\nThe skeleton for a function definition is\nfunction_name <- function(input){\n  # do something with the input(s)\n  # return something as output\n}\n\nfunction_name should be a short but evocative verb.\nThe input can be empty or one or more name or name=expression terms as arguments.\nThe last evaluated expression is returned as output.\nWhen the body or the function is only one line {} can be omitted. For example\nadd_one <- function(x) x + 1"
+  },
+  {
+    "objectID": "W6.html#graphs-of-functions",
+    "href": "W6.html#graphs-of-functions",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Graphs of functions",
+    "text": "Graphs of functions\n\nA function is characterized by the set all possible pairs \\((x,f(x))\\).\nThis is called its graph. Note, this can be infinitely many.\nWhen domain and codomain are real numbers then the graph can be shown in a Cartesian coordinate system. Example \\(f(x) = x^3 - x^2\\)"
+  },
+  {
+    "objectID": "W6.html#more-functions-in-r",
+    "href": "W6.html#more-functions-in-r",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "More functions in R",
+    "text": "More functions in R\nYou can enter arguments"
+  },
+  {
+    "objectID": "W6.html#higher-dimensional-input-and-output",
+    "href": "W6.html#higher-dimensional-input-and-output",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Higher dimensional input and output",
+    "text": "Higher dimensional input and output"
+  },
+  {
+    "objectID": "W6.html#flexibility-of-inputs",
+    "href": "W6.html#flexibility-of-inputs",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Flexibility of inputs",
+    "text": "Flexibility of inputs\n\nArguments can be specified by name=expression or just expression (then they are taken as the next argument)\nDefault values for arguments can be provided. Useful when an argument is a parameter.\n\n\n\nmymult <- \n  function(x = 2, y = 3) x * (y - 1)\nmymult(3,4)\n\n\n[1] 9\n\n\n\n\n\nmymult()\n\n\n[1] 4\n\n\n\n\n\nmymult(y = 3,4)\n\n\n[1] 8\n\n\n\n\n\nmymult(5)\n\n\n[1] 10\n\n\n\n\n\nmymult(y = 2)\n\n\n[1] 2"
+  },
+  {
+    "objectID": "W6.html#function-as-objects-in-r",
+    "href": "W6.html#function-as-objects-in-r",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Function as objects in R",
+    "text": "Function as objects in R\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code or some information.\n\nsd # This function is written in R\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x55fc91ece8e8>\n<environment: namespace:stats>\n\nc  \n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot \n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x55fc8f75beb0>\n<environment: namespace:ggplot2>"
+  },
+  {
+    "objectID": "W6.html#complex-output",
+    "href": "W6.html#complex-output",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Complex output",
+    "text": "Complex output\nor a complex output of many objects construct a list of these in the last line. E.g. list(v1 = output1, v2 = output2)\nYou can enter arguments"
+  },
+  {
+    "objectID": "W6.html#flexibility-of-inputs-and-outputs",
+    "href": "W6.html#flexibility-of-inputs-and-outputs",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Flexibility of inputs and outputs",
+    "text": "Flexibility of inputs and outputs\n\nArguments can be specified by name=expression or just expression (then they are taken as the next argument)\nDefault values for arguments can be provided. Useful when an argument is a parameter.\n\n\n\nmymult <- function(x = 2, y = 3) x * (y - 1)\nmymult(3,4)\n\n\n[1] 9\n\n\n\n\n\nmymult()\n\n\n[1] 4\n\n\n\n\n\nmymult(y = 3,4)\n\n\n[1] 8\n\n\n\n\n\nmymult(5)\n\n\n[1] 10\n\n\n\n\n\nmymult(y = 2)\n\n\n[1] 2\n\n\n\n\nFor complex output use a list\n\n\nmymult <- function(x = 2, y = 3) \n  list(out1 = x * (y - 1), out2 = x * (y - 2))\nmymult()\n\n\n$out1\n[1] 4\n\n$out2\n[1] 2"
+  },
+  {
+    "objectID": "W6.html#standard-deviation",
+    "href": "W6.html#standard-deviation",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Standard Deviation",
+    "text": "Standard Deviation"
+  },
+  {
+    "objectID": "W6.html#correlation-coefficient",
+    "href": "W6.html#correlation-coefficient",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Correlation Coefficient",
+    "text": "Correlation Coefficient"
+  },
+  {
+    "objectID": "W6.html#linear-model",
+    "href": "W6.html#linear-model",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Linear Model",
+    "text": "Linear Model"
+  },
+  {
+    "objectID": "W6.html#lines",
+    "href": "W6.html#lines",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Lines",
+    "text": "Lines\nA line"
+  },
+  {
+    "objectID": "W6.html#palmer-penguins",
+    "href": "W6.html#palmer-penguins",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Palmer Penguins",
+    "text": "Palmer Penguins\nWe use the dataset Palmer Penguins\nChinstrap, Gentoo, and Adélie Penguins\n  \n\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year\n   <fct>   <fct>              <dbl>         <dbl>      <int>   <int> <fct> <int>\n 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007\n 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007\n 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007\n 4 Adelie  Torgersen           NA            NA           NA      NA <NA>   2007\n 5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007\n 6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007\n 7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007\n 8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007\n 9 Adelie  Torgersen           34.1          18.1        193    3475 <NA>   2007\n10 Adelie  Torgersen           42            20.2        190    4250 <NA>   2007\n# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,\n#   ²​body_mass_g"
+  },
+  {
+    "objectID": "W6.html#some-functions-f-mathbbr-to-mathbbr",
+    "href": "W6.html#some-functions-f-mathbbr-to-mathbbr",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Some functions \\(f: \\mathbb{R} \\to \\mathbb{R}\\)",
+    "text": "Some functions \\(f: \\mathbb{R} \\to \\mathbb{R}\\)\n\n\n\\(f(x) = x\\) identity function\n\\(f(x) = x^2\\) square function\n\\(f(x) = \\sqrt{x}\\) square root function\n\\(f(x) = e^x\\) exponential function\n\\(f(x) = \\log(x)\\) natural logarithm\n\nSquare function and square root function are the inverse of each other. Exponential and natural logarithm, too.\n\n\\(\\sqrt[2]{x}^2 = \\sqrt[2]{x^2} = x\\), \\(\\log(e^x) = e^{\\log(x)} = x\\)\n\nTheir graphs reflect each other with identity function graph as mirror axis.\n\n\n\n\n\n\n\n\n\n\n\n\\(e\\) is Euler’s number \\(2.71828\\dots\\). The natural logarithm is also often called \\(\\ln\\). The square root function is \\(\\mathbb{R}_{\\geq 0} \\to \\mathbb{R}\\), the logarithm \\(\\mathbb{R}_{>0} \\to \\mathbb{R}\\)."
+  },
+  {
+    "objectID": "W6.html#shifts-and-scales-for-any-function-f-mathbbr-to-mathbbr",
+    "href": "W6.html#shifts-and-scales-for-any-function-f-mathbbr-to-mathbbr",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Shifts and scales for any function \\(f: \\mathbb{R} \\to \\mathbb{R}\\)",
+    "text": "Shifts and scales for any function \\(f: \\mathbb{R} \\to \\mathbb{R}\\)\nHow can we shift a graph vertically and horizontally? How can we stretch and shrink it vertically and horizontally?\n\nExample \\(f(x) = x^3 - x^2\\)\n\n\\(x\\)-shift"
+  },
+  {
+    "objectID": "W6.html#shifts-and-scales-for-any-function",
+    "href": "W6.html#shifts-and-scales-for-any-function",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Shifts and scales for any function",
+    "text": "Shifts and scales for any function\nHow can we shift a graph vertically and horizontally? How can we stretch and shrink it vertically and horizontally?\n\nExample \\(f(x) = x^3 - x^2\\)\n\n\\(x\\)-shift"
+  },
+  {
+    "objectID": "W6.html#shifts-and-scales",
+    "href": "W6.html#shifts-and-scales",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Shifts and scales",
+    "text": "Shifts and scales\nHow can we shift, stretch, or shrink a graph vertically and horizontally?\n\n\n\\(y\\)-shift\\(x\\)-shift\\(y\\)-scale\\(x\\)-scale\n\n\n\n\nAdd a constant to the function.\n\\(f(x) = x^3 - x^2 \\leadsto\\)\n\\(\\quad f(x) = x^3 - x^2 + a\\)\nFor \\(a =\\) -2, -0.5, 0.5, 2\n\n\n\n\n\n\n\n\n\n\n\n\nSubtract a constant from all \\(x\\) within the function definition.\n\\(f(x) = x^3 - x^2 \\leadsto\\)\n\\(\\quad f(x) = (x - a)^3 - (x - a)^2\\)\nFor \\(a =\\) -2, -0.5, 0.5, 2\nAttention:\nShifting as you think needs subtracting \\(a\\)!\nYou can think of the coordinate system being shifted in direction \\(a\\) while the graph stays.\n\n\n\n\n\n\n\n\n\n\n\n\nMultiply a constant to all \\(x\\) within the function definition.\n\\(f(x) = x^3 - x^2 \\leadsto\\)\n\\(\\quad f(x) = a(x^3 - x^2)\\)\nFor \\(a =\\) -2, -0.5, 0.5, 2\nNegative numbers flip the graph around the \\(x\\)-axis.\n\n\n\n\n\n\n\n\n\n\n\n\nDivide all \\(x\\) within the function definition by a constant.\n\\(f(x) = x^3 - x^2 \\leadsto\\)\n\\(\\quad f(x) = (x/a)^3 - (x/a)^2\\)\nFor \\(a =\\) -2, -0.5, 0.5, 2\nNegative numbers flip the graph around the \\(y\\)-axis.\nAttention: Stretching needs a division by \\(a\\)!\nYou can think of the coordinate system being stretched multiplicatively by \\(a\\) while the graph stays."
+  },
+  {
+    "objectID": "W6.html#polynomials-and-exponentials",
+    "href": "W6.html#polynomials-and-exponentials",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Polynomials and exponentials",
+    "text": "Polynomials and exponentials\nA polynomial is a function which is composed of (many) addends of the form \\(ax^n\\) for different values of \\(a\\) and \\(n\\).\nIn an exponential the \\(x\\) appears in the exponent.\n\\(f(x) = x^3\\) vs. \\(f(x) = e^x\\)\n\nFor \\(x\\to\\infty\\), any exponential will finally “overtake” any polynomial."
+  },
+  {
+    "objectID": "W6.html#polynomials-and-exponentials-.smaller-.background-coloryellow",
+    "href": "W6.html#polynomials-and-exponentials-.smaller-.background-coloryellow",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Polynomials and exponentials {.smaller .background-color=“yellow”}",
+    "text": "Polynomials and exponentials {.smaller .background-color=“yellow”}\nA polynomial is a function which is composed of an arbitrary number addends of the form \\(x^n\\) for different values of \\(n\\).\nIn an exponential the \\(x\\) appears in the exponent.\n\\(f(x) = x^3\\) vs. \\(f(x) = e^x\\)\n\nFor \\(x\\to\\infty\\), any exponential will finally “overtake” any polynomial."
+  },
+  {
+    "objectID": "W6.html#computation-rule-for-exponents-and-logarithms",
+    "href": "W6.html#computation-rule-for-exponents-and-logarithms",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Computation Rule for Exponents and Logarithms",
+    "text": "Computation Rule for Exponents and Logarithms\n$x^0 = $\n\n\\(1\\)"
+  },
+  {
+    "objectID": "W6.html#rules-for-exponents-and-logarithms",
+    "href": "W6.html#rules-for-exponents-and-logarithms",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Rules for Exponents and Logarithms",
+    "text": "Rules for Exponents and Logarithms\n\n\n\\(x^a\\cdot x^b\\)\n\n\n\\(x^a\\cdot x^b = x^{a+b}\\) Multiplication of powers (with same base \\(x\\)) becomes addition of exponents.\n\n\n\n\n\n\n\\((x+y)^a\\)\n\n\nNo “simple” form! For \\(a\\) integer use binomial expansion. \\((x+y)^2 = x^2 + 2xy + y^2\\)\n\\((x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3\\)"
+  },
+  {
+    "objectID": "W6.html#rules-for-exponents",
+    "href": "W6.html#rules-for-exponents",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Rules for Exponents",
+    "text": "Rules for Exponents\n\n\n\\(x^0\\)\n\\(0^x\\)\n\\(0^0\\)\n\\((x\\cdot y)^a\\)\n\\(x^{-a}\\), \\(x^{-1}\\)\n\\(x^\\frac{a}{b}\\), \\(x^\\frac{1}{2}\\)\n\\((x^a)^b\\)\n\n\n\\(x^0 = 1\\)\n\n\n\\(0^x = 0\\) for \\(x\\neq 0\\)\n\n\n\\(0^0 = 1\\) (discontinuity in \\(0^x\\))\n\n\n\\((x\\cdot y)^a = x^a\\cdot x^b\\)\n\n\n\\(x^{-a} = \\frac{1}{x^a}\\), \\(x^{-1} = \\frac{1}{x}\\)\n\n\n\\(x^\\frac{a}{b} = \\sqrt[b]{x^a} = (\\sqrt[b]{x})^a,\\ x^\\frac{1}{2} = \\sqrt{x}\\)\n\n\n\\((x^a)^b = x^{a\\cdot b} = (x^b)^a \\neq x^{a^b} = x^{(a^b)}\\)\nExample: \\((4^3)^2 = 64^2 = 4096 \\qquad 4^{3^2} = 4^9 = 262144\\)"
+  },
+  {
+    "objectID": "W6.html#rules-for-exponents-1",
+    "href": "W6.html#rules-for-exponents-1",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Rules for Exponents",
+    "text": "Rules for Exponents\n\n\n\\(x^a\\cdot x^b\\)\n\\((x+y)^a\\)\n\n\n\\(x^a\\cdot x^b = x^{a+b}\\) Multiplication of powers becomes addition of exponents\n\n\n\\((x+y)^a\\)"
+  },
+  {
+    "objectID": "W6.html#more-rules-for-exponents",
+    "href": "W6.html#more-rules-for-exponents",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "More rules for Exponents",
+    "text": "More rules for Exponents\n\n\n\\(x^a\\cdot x^b\\)\n\n\n\\(x^a\\cdot x^b = x^{a+b}\\) Multiplication of powers (with same base \\(x\\)) becomes addition of exponents.\n\n\n\n\n\n\n\\((x+y)^a\\)\n\n\nNo “simple” form! For \\(a\\) integer use binomial expansion. \\((x+y)^2 = x^2 + 2xy + y^2\\)\n\\((x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3\\)\n\\((x+y)^n = \\sum_{k=0}^n {n \\choose k} x^{n-k}y^k\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n\\({n \\choose 0}\\)\n\\({n \\choose 1}\\)\n\\({n \\choose 2}\\)\n\\({n \\choose 3}\\)\n\\({n \\choose 4}\\)\n\\({n \\choose 5}\\)\n\n\n\n\n1\n1\n1\n\n\n\n\n\n\n2\n1\n2\n1\n\n\n\n\n\n3\n1\n3\n3\n1\n\n\n\n\n4\n1\n4\n6\n4\n1\n\n\n\n5\n1\n5\n10\n10\n5\n1"
+  },
+  {
+    "objectID": "W6.html#rules-for-exponentiation",
+    "href": "W6.html#rules-for-exponentiation",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Rules for exponentiation",
+    "text": "Rules for exponentiation\n\n\n\\(x^0\\)\n\\(0^x\\)\n\\(0^0\\)\n\\((x\\cdot y)^a\\)\n\\(x^{-a}\\), \\(x^{-1}\\)\n\\(x^\\frac{a}{b}\\), \\(x^\\frac{1}{2}\\)\n\\((x^a)^b\\)\n\n\n\\(x^0 = 1\\)\n\n\n\\(0^x = 0\\) for \\(x\\neq 0\\)\n\n\n\\(0^0 = 1\\) (discontinuity in \\(0^x\\))\n\n\n\\((x\\cdot y)^a = x^a\\cdot x^b\\)\n\n\n\\(x^{-a} = \\frac{1}{x^a}\\), \\(x^{-1} = \\frac{1}{x}\\)\n\n\n\\(x^\\frac{a}{b} = \\sqrt[b]{x^a} = (\\sqrt[b]{x})^a,\\ x^\\frac{1}{2} = \\sqrt{x}\\)\n\n\n\\((x^a)^b = x^{a\\cdot b} = (x^b)^a \\neq x^{a^b} = x^{(a^b)}\\)\nExample: \\((4^3)^2 = 64^2 = 4096 \\qquad 4^{3^2} = 4^9 = 262144\\)"
+  },
+  {
+    "objectID": "W6.html#more-rules-for-exponentiation",
+    "href": "W6.html#more-rules-for-exponentiation",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "More rules for exponentiation",
+    "text": "More rules for exponentiation\n\n\n\\(x^a\\cdot x^b\\)\n\n\n\\(x^a\\cdot x^b = x^{a+b}\\) Multiplication of powers (with same base \\(x\\)) becomes addition of exponents.\n\n\n\n\n\n\n\\((x+y)^a\\)\n\n\nNo “simple” form! For \\(a\\) integer use binomial expansion. \\((x+y)^2 = x^2 + 2xy + y^2\\)\n\\((x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3\\)\n\\((x+y)^n = \\sum_{k=0}^n {n \\choose k} x^{n-k}y^k\\)\n\n\n\nPascal’s triangle\n\n\n\n\n\n\n\n\n\n\n\n\nFrom wikipedia\n\n\n\nWe meet it again in Probability. (Binomial distribution, Central Limit Theorem)"
+  },
+  {
+    "objectID": "W6.html#rules-for-logarithms",
+    "href": "W6.html#rules-for-logarithms",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Rules for logarithms",
+    "text": "Rules for logarithms\nUsually only one base is used in the same context, because changing base is easy:\n\\(\\log_c(x) = \\frac{log_b(x)}{\\log_b(c)} = \\frac{\\log(x)}{\\log(c)}\\)\n\n\n\\(\\log(x\\cdot y)\\)\n\n\n\\(= \\log(x) + \\log(y)\\) Multiplication \\(\\to\\) addition.\n\n\n\n\n\n\n\\(\\log(x^y)\\)\n\n\n\\(= y\\cdot\\log(x)\\)\n\n\n\n\n\n\\(\\log(x+y)\\)\n\n\ncomplicated!\n\n\n\n\n\nAlso changing bases for powers is easy: \\(x^y = (e^{\\log(x)})^y = e^{y\\cdot\\log(x)}\\)"
+  },
+  {
+    "objectID": "W6.html#logarithms",
+    "href": "W6.html#logarithms",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Logarithms",
+    "text": "Logarithms\nDefinition: A logarithm of \\(a\\) for some base \\(b\\) is the value of the exponent which brings \\(b\\) to \\(a\\): \\(\\log_b(a) = x\\) means that \\(b^x =a\\)\nMost common:\n\n\\(\\log_{10}\\) for logarithmic axes in plots\n\\(\\log_{e}\\) natural logarithm (also \\(\\log\\) or \\(\\ln\\))\n\n\n\n\n\\(\\log_{10}(100) =\\)\n\n\n\\(2\\)\n\n\n\n\n\n\n\n\\(\\log_{10}(1) =\\)\n\n\n\\(0\\)\n\n\n\n\n\n\n\n\\(\\log_{10}(6590) =\\)\n\n\n\\(3.818885\\)\n\n\n\n\n\n\n\n\\(\\log_{10}(0.02) =\\)\n\n\n\\(-1.69897\\)"
+  },
+  {
+    "objectID": "W6.html#graphs-of-functions-.smaller",
+    "href": "W6.html#graphs-of-functions-.smaller",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Graphs of functions {.smaller}",
+    "text": "Graphs of functions {.smaller}\n\nA function is characterized by the set all possible pairs \\((x,f(x))\\).\nThis is called its graph. Note, this can be infinitely many.\nWhen domain and codomain are real numbers then the graph can be shown in a Cartesian coordinate system. Example \\(f(x) = x^3 - x^2\\)"
+  },
+  {
+    "objectID": "W6.html#input-to-output",
+    "href": "W6.html#input-to-output",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Input \\(\\to\\) output",
+    "text": "Input \\(\\to\\) output\n\n\nMetaphorically, a function is a machine or a blackbox that for each input yields and output.\nThe inputs of a function are also called arguments.\n\n\n\nPicture from wikipedia."
+  },
+  {
+    "objectID": "W6.html#vectorized-functions",
+    "href": "W6.html#vectorized-functions",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Vectorized functions",
+    "text": "Vectorized functions\nMathematical functions in programming are often “vectorized”:\n\nOperations on a single value are applied to each component of the vector.\nOperations on two values are applied “component-wise” (for vectors of the same length)\n\n\nlog10(c(1,10,100,1000,10000))\n\n[1] 0 1 2 3 4\n\nc(1,1,2) + c(3,1,0)\n\n[1] 4 2 2\n\n(0:5)^2\n\n[1]  0  1  4  9 16 25"
+  },
+  {
+    "objectID": "W6.html#plotting-and-transformation",
+    "href": "W6.html#plotting-and-transformation",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Plotting and transformation",
+    "text": "Plotting and transformation\nVector creation and vectorized functions are key for plotting and transformation.\n\nfunc <- function(x) x^3 - x^2    # Create a vectorized function\ndata <- tibble(x = seq(-0.5,1.5,by =0.01)) |>    # Vector creation\n    mutate(y = func(x))        # Vectorized transformation using the function\ndata |> ggplot(aes(x,y)) + geom_line()"
+  },
+  {
+    "objectID": "W6.html#vector-creation-functions",
+    "href": "W6.html#vector-creation-functions",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Vector creation functions",
+    "text": "Vector creation functions\n\n1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\nseq(from=-0.5, to=1.5, by=0.1)\n\n [1] -0.5 -0.4 -0.3 -0.2 -0.1  0.0  0.1  0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9\n[16]  1.0  1.1  1.2  1.3  1.4  1.5\n\nseq(from=0, to=1, length.out=10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000\n\nrep(1:3, times=3)\n\n[1] 1 2 3 1 2 3 1 2 3\n\nrep(1:3, each=3)\n\n[1] 1 1 1 2 2 2 3 3 3"
+  },
+  {
+    "objectID": "W6.html#pascals-triangle",
+    "href": "W6.html#pascals-triangle",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Pascal’s triangle",
+    "text": "Pascal’s triangle\n\n\n\n\n\n\n\n We meet it again in Probability. (Binomial distribution, Central Limit Theorem)"
+  },
+  {
+    "objectID": "W6.html#convenient-function-ggploting",
+    "href": "W6.html#convenient-function-ggploting",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Convenient function ggploting",
+    "text": "Convenient function ggploting\n\nggplot() +\n    geom_function(fun = log) +\n    geom_function(fun = function(x) 3*x - 4, color = \"red\")"
+  },
+  {
+    "objectID": "W6.html#covariance-and-correlation-coefficient",
+    "href": "W6.html#covariance-and-correlation-coefficient",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Covariance and Correlation Coefficient",
+    "text": "Covariance and Correlation Coefficient"
+  },
+  {
+    "objectID": "W6.html#palmer-penguins-1",
+    "href": "W6.html#palmer-penguins-1",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Palmer Penguins",
+    "text": "Palmer Penguins"
+  },
+  {
+    "objectID": "W6.html#penguins-visualization",
+    "href": "W6.html#penguins-visualization",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Penguins visualization",
+    "text": "Penguins visualization"
+  },
+  {
+    "objectID": "W6.html#body-mass-in-grams",
+    "href": "W6.html#body-mass-in-grams",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Body mass in grams",
+    "text": "Body mass in grams\n\npenguins |>\n  ggplot(aes(body_mass_g)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "W6.html#flipper-length-in-millimeters",
+    "href": "W6.html#flipper-length-in-millimeters",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Flipper length in millimeters",
+    "text": "Flipper length in millimeters\n\npenguins |>\n  ggplot(aes(flipper_length_mm)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "W6.html#relationsship-between-variables-as-a-line",
+    "href": "W6.html#relationsship-between-variables-as-a-line",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Relationsship between variables as a line",
+    "text": "Relationsship between variables as a line"
+  },
+  {
+    "objectID": "W6.html#relate-variables-as-a-line",
+    "href": "W6.html#relate-variables-as-a-line",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Relate variables as a line",
+    "text": "Relate variables as a line\nA line is a shift-scale transformation of the identity function usually written in the form\n\\[f(x) = a\\cdot x + b\\]\nwhere \\(a\\) is the slope, \\(b\\) is the intercept.1\n\n\na <- 0.5\nb <- 1\nfunc <- function(x) a*x + b\nggplot() + geom_function(fun = func, size = 2) + \n    xlim(c(0,2)) + ylim(c(0,2)) + coord_fixed() + # Set axis limits and make axis equal\n    # intercept line:\n    geom_line(data=tibble(x=c(0,0),y=c(0,1)), mapping = aes(x,y), color = \"blue\") +\n    # slope:\n    geom_line(data=tibble(x=c(1.5,1.5),y=c(1.25,1.75)), mapping = aes(x,y), color = \"red\") +\n    # x-interval of length one:\n    geom_line(data=tibble(x=c(0.5,1.5),y=c(1.25,1.25)), mapping = aes(x,y), color = \"gray\") +\n    theme_classic(base_size = 24)\n\n\n\n\n\n\nThis a scale and a shift in the \\(y\\) direction. Note: For lines there are always an analog transformations on the \\(x\\) direction."
+  },
+  {
+    "objectID": "W6.html#penguins-linear-model",
+    "href": "W6.html#penguins-linear-model",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Penguins: Linear model",
+    "text": "Penguins: Linear model\nFlipper length as a function of body mass.\n\n\npenguins |>\n ggplot(aes(x = body_mass_g, \n            y = flipper_length_mm)) +\n geom_point() +\n geom_smooth(method = \"lm\", \n             se = FALSE) + \n theme_classic(base_size = 24)"
+  },
+  {
+    "objectID": "W6.html#penguins-other-smoothing-method",
+    "href": "W6.html#penguins-other-smoothing-method",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Penguins: Other smoothing method",
+    "text": "Penguins: Other smoothing method\nFlipper length as a function of body mass with loess1 smoothing.\n\n\npenguins |>\n ggplot(aes(x = body_mass_g, \n            y = flipper_length_mm)) +\n geom_point() +\n geom_smooth(method = \"loess\") + \n theme_classic(base_size = 24)\n\n\n\n\n\n\nThis is a less theory-driven and more data-driven model. Why? We don’t have a simple mathematical form of the function.\nloess = locally estimated scatterplot smoothing"
+  },
+  {
+    "objectID": "W6.html#te",
+    "href": "W6.html#te",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Te",
+    "text": "Te"
+  },
+  {
+    "objectID": "W6.html#terminology",
+    "href": "W6.html#terminology",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Terminology",
+    "text": "Terminology\n\nResponse variable:1 Variable whose behavior or variation you are trying to understand, on the y-axis\nExplanatory variable(s):2 Other variable(s) that you want to use to explain the variation in the response, on the x-axis\nPredicted value: Output of the model function.\n\nThe model function gives the typical (expected) value of the response variable conditioning on the explanatory variables\nResidual(s): A measure of how far away a case is from its predicted value (based on a particular model)\nResidual = Observed value - Predicted value\nThe residual tells how far above/below the expected value each case is\n\n\nAlso dependent variable in statistics or empirical social sciences.Also independent variable(s) in statistics or empirical social sciences."
+  },
+  {
+    "objectID": "W6.html#model-estimation",
+    "href": "W6.html#model-estimation",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Model estimation",
+    "text": "Model estimation"
+  },
+  {
+    "objectID": "W6.html#more-explanatory-variables",
+    "href": "W6.html#more-explanatory-variables",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "More explanatory variables",
+    "text": "More explanatory variables\nHow does the relation between flipper length and body mass change with different species?\n\n\npenguins |>\n ggplot(aes(x = body_mass_g, \n            y = flipper_length_mm, \n            color = species)) +\n geom_point() +\n geom_smooth(method = \"lm\",\n             se = FALSE) + \n theme_classic(base_size = 24)"
+  },
+  {
+    "objectID": "W6.html#technical-how-to-color-penguins-but-keep-one-model",
+    "href": "W6.html#technical-how-to-color-penguins-but-keep-one-model",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Technical: How to color penguins but keep one model?",
+    "text": "Technical: How to color penguins but keep one model?\nPut the mapping of the color aesthetic into the geom_point command.\n\n\npenguins |>\n ggplot(aes(x = body_mass_g, \n                                                y = flipper_length_mm)) +\n geom_point(aes(color = species)) +\n geom_smooth(method = \"lm\",\n                                                    se = FALSE) + \n theme_classic(base_size = 24)"
+  },
+  {
+    "objectID": "W6.html#models---upsides-and-downsides",
+    "href": "W6.html#models---upsides-and-downsides",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Models - upsides and downsides",
+    "text": "Models - upsides and downsides\n\nModels can reveal patterns that are not evident in a graph of the data. This is an advantage of modeling over simple visual inspection of data.\nThe risk is that a model is imposing structure that is not really there in the real world data.\n\nPeople imagined animal shapes in the stars. This is maybe a good model to detect and memorize shapes, but it has nothing to do with these animals.\nEvery model is a simplification of the real world, but there are good and bad models (for particular purposes).\nA skeptical (but constructive) approach to a model is always advisable."
+  },
+  {
+    "objectID": "W6.html#variation-around-a-model",
+    "href": "W6.html#variation-around-a-model",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Variation around a model",
+    "text": "Variation around a model\nis as interesting and important as the model!\nStatistics is the explanation of uncertainty of variation in the context of what remains unexplained.\n\nThe scattered data of flipper length and body mass suggests that there maybe other factors that account for some parts of the variability.\nOr is it randomness?\nAdding more explanatory variables can help (but need not)"
+  },
+  {
+    "objectID": "W6.html#all-models-are-wrong",
+    "href": "W6.html#all-models-are-wrong",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "All models are wrong …",
+    "text": "All models are wrong …\n… but some are useful. (George Box)\nExtending the range of the model:\n\n\npenguins |>\n ggplot(aes(x = body_mass_g, \n            y = flipper_length_mm)) +\n geom_point() +\n geom_smooth(method = \"lm\", \n             se = FALSE, \n                                                fullrange = TRUE) +\n    xlim(c(0,7000)) + ylim(c(0,230)) +\n theme_classic(base_size = 24)\n\n\n\n\n\n\n\nThe model predicts that penguins with zero weight still have flippers of about 140 mm on average.\nIs the model useless?"
+  },
+  {
+    "objectID": "W6.html#two-important-purposes",
+    "href": "W6.html#two-important-purposes",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Two important purposes",
+    "text": "Two important purposes\nModels can be used for:\n\nExplanation: Understand the relations hip of variables in a quantitative way.\nFor a linear model, interpret slope and intercept.\nPrediction: Plug in new values for the explanatory variable(s) and receive the expected response value.\nFor the linear model, predict the flipper length of new penguins by their body mass."
+  },
+  {
+    "objectID": "W6.html#two-model-purposes",
+    "href": "W6.html#two-model-purposes",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Two model purposes",
+    "text": "Two model purposes\nModels can be used for:\n\nExplanation: Understand the relations hip of variables in a quantitative way.\nFor the linear model, interpret slope and intercept.\nPrediction: Plug in new values for the explanatory variable(s) and receive the expected response value.\nFor the linear model, predict the flipper length of new penguins by their body mass."
+  },
+  {
+    "objectID": "W6.html#in-r-tidymodels",
+    "href": "W6.html#in-r-tidymodels",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "In R: tidymodels",
+    "text": "In R: tidymodels\n\n\n\nFrom https://datasciencebox.org"
+  },
+  {
+    "objectID": "W6.html#step-1-specify-model",
+    "href": "W6.html#step-1-specify-model",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Step 1: Specify model",
+    "text": "Step 1: Specify model\n\nlibrary(tidymodels)\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "W6.html#step-2-set-the-model-fitting-engine",
+    "href": "W6.html#step-2-set-the-model-fitting-engine",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Step 2: Set the model fitting engine",
+    "text": "Step 2: Set the model fitting engine\n\nlinear_reg() |> \n    set_engine(\"lm\")\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "W6.html#step-3-fit-model-and-estimate-parameters",
+    "href": "W6.html#step-3-fit-model-and-estimate-parameters",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Step 3: Fit model and estimate parameters",
+    "text": "Step 3: Fit model and estimate parameters\nOnly now, the data and the variable selection comes in.\nUse of formula syntax\n\nlinear_reg() |> \n    set_engine(\"lm\") |> \n    fit(flipper_length_mm ~ body_mass_g, data = penguins)\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = flipper_length_mm ~ body_mass_g, data = data)\n\nCoefficients:\n(Intercept)  body_mass_g  \n  136.72956      0.01528  \n\n\n\n\nNote: The fit command does not follow the tidyverse principle the the data comes first. Instead, the formula comes first. This is to relate to existing traditions of a much older established way of modeling in R."
+  },
+  {
+    "objectID": "W6.html#what-does-the-output-say",
+    "href": "W6.html#what-does-the-output-say",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "What does the output say?",
+    "text": "What does the output say?\n\nlinear_reg() |> \n    set_engine(\"lm\") |> \n    fit(flipper_length_mm ~ body_mass_g, data = penguins)\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = flipper_length_mm ~ body_mass_g, data = data)\n\nCoefficients:\n(Intercept)  body_mass_g  \n  136.72956      0.01528  \n\n\n\naverage flipper_length_mm \\(= 136.72956 + 0.01528\\cdot\\) body_mass_g\n\n\nInterpretation:\nThe penguins have a flipper length of 138 mm plus 0.01528 mm for each gram of body mass (that is 15.28 mm per kg). Penguins with zero mass have a flipper length of 138 mm. However, this is not in the range where the model was fitted …"
+  },
+  {
+    "objectID": "W6.html#checks",
+    "href": "W6.html#checks",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Checks",
+    "text": "Checks"
+  },
+  {
+    "objectID": "W6.html#show-output-in-tidy-form",
+    "href": "W6.html#show-output-in-tidy-form",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Show output in tidy form",
+    "text": "Show output in tidy form\n\nlinear_reg() |> \n    set_engine(\"lm\") |> \n    fit(flipper_length_mm ~ body_mass_g, data = penguins) |> \n    tidy()\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic   p.value\n  <chr>          <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept) 137.      2.00          68.5 5.71e-201\n2 body_mass_g   0.0153  0.000467      32.7 4.37e-107"
+  },
+  {
+    "objectID": "W6.html#our-goal",
+    "href": "W6.html#our-goal",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Our goal",
+    "text": "Our goal\nPredict flipper length from body mass\naverage flipper_length_mm \\(= \\beta_0 + \\beta_1\\cdot\\) body_mass_g"
+  },
+  {
+    "objectID": "W6.html#parameter-estimation",
+    "href": "W6.html#parameter-estimation",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Parameter estimation",
+    "text": "Parameter estimation\nNotation from statistics: \\(\\beta\\)’s for the population parameters and \\(b\\)’s for the parameters estimated from the sample statistics.\n\\[\\hat y = \\beta_0 + \\beta_1 x\\]\nIs what we cannot have. (\\(\\hat y\\) stands for predicted value of \\(y\\). )\n\nWe estimate \\(b_0\\) and \\(b_1\\) in\n\\[\\hat y = b_0 + b_1 x\\]\n\nA typical follow-up data analysis question is what the fitted values \\(b_0\\) and \\(b_1\\) tell us about the population-wide values \\(\\beta_0\\) and \\(\\beta_1\\)?\nWhat type of question is it?\nDescriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic\n\n\n\n\nA typical inferential question."
+  },
+  {
+    "objectID": "W6.html#fitting-method-least-squares-regression",
+    "href": "W6.html#fitting-method-least-squares-regression",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Fitting method: Least squares regression",
+    "text": "Fitting method: Least squares regression\n\nThe regression line shall minimize the sum of the squared residuals (or, identically, their mean).\nMathematically: The residual for case \\(i\\) is \\(e_i = \\hat y_i - y_i\\). Now we want to minimize \\(\\sum_{i=1}^n e_i^2\\) (or $_{i=1}^n e_i^2 the the mean of squared errors)."
+  },
+  {
+    "objectID": "W6.html#visualization-of-residuals",
+    "href": "W6.html#visualization-of-residuals",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Visualization of residuals",
+    "text": "Visualization of residuals\nThe residuals are the gray lines between predictid values on the regression line and the actual values."
+  },
+  {
+    "objectID": "W6.html#proporties-of-least-squares-regression",
+    "href": "W6.html#proporties-of-least-squares-regression",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Proporties of least squares regression",
+    "text": "Proporties of least squares regression\nThe regression lines goes through the point (mean(x), mean(y)).\n\nmean(penguins$body_mass_g, na.rm = TRUE)\n\n[1] 4201.754\n\nmean(penguins$flipper_length_mm, na.rm = TRUE)\n\n[1] 200.9152"
+  },
+  {
+    "objectID": "W6.html#proporties-of-least-squares-regression-1",
+    "href": "W6.html#proporties-of-least-squares-regression-1",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Proporties of least squares regression",
+    "text": "Proporties of least squares regression\nResiduals sum up to zero\n\npengmod <- linear_reg() |>  set_engine(\"lm\") |> fit(flipper_length_mm ~ body_mass_g, data = penguins)\npengmod$fit$residuals |> sum()\n\n[1] -3.765044e-14\n\n\nThere is no correlation between residuals and the explanatory variable\n\ncor(pengmod$fit$residuals, na.omit(penguins$body_mass_g))\n\n[1] -1.353445e-16\n\n\nThe correlation of \\(x\\) and \\(y\\) is the slope \\(b_1\\) corrected by their standard deviations.\n\ncorrelation <- cor(penguins$flipper_length_mm, penguins$body_mass_g, use = \"pairwise.complete.obs\")\nsd_flipper <- sd(penguins$flipper_length_mm, na.rm = T)\nsd_mass <- sd(penguins$body_mass_g, na.rm = T)\nc(correlation, sd_flipper, sd_mass)\n\n[1]   0.8712018  14.0617137 801.9545357\n\ncorrelation * sd_flipper / sd_mass\n\n[1] 0.01527592\n\npengmod$fit$coefficients\n\n (Intercept)  body_mass_g \n136.72955927   0.01527592"
+  },
+  {
+    "objectID": "W6.html#a-non-linear-model",
+    "href": "W6.html#a-non-linear-model",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "A non-linear model",
+    "text": "A non-linear model\nTotal corona cases in Germany in the first wave 2020."
+  },
+  {
+    "objectID": "W6.html#log-transformation",
+    "href": "W6.html#log-transformation",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "\\(\\log\\) transformation",
+    "text": "\\(\\log\\) transformation\nInstead of Cumulative_cases we look at \\(\\log(\\)Cumulative_cases\\()\\)\n\nAlmost perfect fit of a linear model.\nThe model is \\(y=\\beta_0 e^{\\beta_1\\cdot x}\\) (\\(y=\\) Cumulative cases, \\(x=\\) Days).\n\\(\\log(y)=\\log(\\beta_0) + \\beta_1\\cdot x\\) (A linear model!)"
+  },
+  {
+    "objectID": "W6.html#where-a-linear-model-is-bad",
+    "href": "W6.html#where-a-linear-model-is-bad",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Where a linear model is bad",
+    "text": "Where a linear model is bad\nTotal corona cases in Germany in the first wave 2020."
+  },
+  {
+    "objectID": "W6.html#linear-model-when-explanatory-variables-are-categorical",
+    "href": "W6.html#linear-model-when-explanatory-variables-are-categorical",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Linear model when explanatory variables are categorical",
+    "text": "Linear model when explanatory variables are categorical\n\nlinear_reg() |> \n    set_engine(\"lm\") |> \n    fit(flipper_length_mm ~ species, data = penguins) |> \n    tidy()\n\n# A tibble: 3 × 5\n  term             estimate std.error statistic   p.value\n  <chr>               <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept)        190.       0.540    351.   0        \n2 speciesChinstrap     5.87     0.970      6.05 3.79e-  9\n3 speciesGentoo       27.2      0.807     33.8  1.84e-110\n\n\nWhat happened? Two of the three species categories appear as variables now.\n\nCategorical variables are automatically encoded to dummy variables\nEach coefficient describes the expected difference between flipper length of that particular species compared to the baseline level\nWhat is the baseline level?\n\n\n\nThe first category! (Here alphabetically \"Adelie\")"
+  },
+  {
+    "objectID": "W6.html#purpose-of-modeling",
+    "href": "W6.html#purpose-of-modeling",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Purpose of modeling",
+    "text": "Purpose of modeling\nWe use models to\n\nexplain relations between variables\nmake predictions\n\nFirst, we focus on linear models."
+  },
+  {
+    "objectID": "W6.html#how-do-dummy-variables-look",
+    "href": "W6.html#how-do-dummy-variables-look",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "How do dummy variables look",
+    "text": "How do dummy variables look\n\n\n\nspecies\nspeciesChinstrap\nspeciesGentoo\n\n\n\n\nAdelie\n0\n0\n\n\nChinstrap\n1\n0\n\n\nGentoo\n0\n1\n\n\n\nThen the computation is as usual with the zero-one variables."
+  },
+  {
+    "objectID": "W6.html#interpretation",
+    "href": "W6.html#interpretation",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nlinear_reg() |> \n    set_engine(\"lm\") |> \n    fit(flipper_length_mm ~ species, data = penguins) |> \n    tidy()\n\n# A tibble: 3 × 5\n  term             estimate std.error statistic   p.value\n  <chr>               <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept)        190.       0.540    351.   0        \n2 speciesChinstrap     5.87     0.970      6.05 3.79e-  9\n3 speciesGentoo       27.2      0.807     33.8  1.84e-110\n\n\n\nFlipper length of the baseline species is the intercept.\nFlipper length of the two other species add their coefficient"
+  },
+  {
+    "objectID": "W6.html#log-transformation-1",
+    "href": "W6.html#log-transformation-1",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "\\(\\log\\) transformation",
+    "text": "\\(\\log\\) transformation\n\nWhat is the difference to the penguin model?\n\n\n\\(x\\) has an ordered structure and no duplicates\n\nThe fit looks so good. Why?\n\n\nThis shows exponential growth (more later).\nMaybe we can go after a mechanistic explanation here."
+  },
+  {
+    "objectID": "W6.html#however-it-works-only-in-a-certain-range",
+    "href": "W6.html#however-it-works-only-in-a-certain-range",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "However, it works only in a certain range …",
+    "text": "However, it works only in a certain range …"
+  },
+  {
+    "objectID": "W6.html#compare-to-a-visualization",
+    "href": "W6.html#compare-to-a-visualization",
+    "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "section": "Compare to a visualization",
+    "text": "Compare to a visualization\n\n\n# A tibble: 3 × 5\n  term             estimate std.error statistic   p.value\n  <chr>               <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept)        190.       0.540    351.   0        \n2 speciesChinstrap     5.87     0.970      6.05 3.79e-  9\n3 speciesGentoo       27.2      0.807     33.8  1.84e-110\n\n\n\nThe red dots are the average values for species.\nThe rest is a boxplot. More on these later."
+  },
+  {
+    "objectID": "W7.html#measures-of-central-tendency",
+    "href": "W7.html#measures-of-central-tendency",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Measures of central tendency",
+    "text": "Measures of central tendency\nMean"
+  },
+  {
+    "objectID": "W7.html#measures-of-dispersion",
+    "href": "W7.html#measures-of-dispersion",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Measures of dispersion",
+    "text": "Measures of dispersion\nStandard deviation"
+  },
+  {
+    "objectID": "W7.html#covariance-and-correlation-coefficient",
+    "href": "W7.html#covariance-and-correlation-coefficient",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Covariance and Correlation Coefficient",
+    "text": "Covariance and Correlation Coefficient"
+  },
+  {
+    "objectID": "W7.html#measures-of-central-tendency-1",
+    "href": "W7.html#measures-of-central-tendency-1",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Measures of central tendency",
+    "text": "Measures of central tendency"
+  },
+  {
+    "objectID": "W7.html#mean",
+    "href": "W7.html#mean",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Mean",
+    "text": "Mean"
+  },
+  {
+    "objectID": "W7.html#the-wisdom-of-the-crowd",
+    "href": "W7.html#the-wisdom-of-the-crowd",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "The Wisdom of the Crowd",
+    "text": "The Wisdom of the Crowd"
+  },
+  {
+    "objectID": "W7.html#measures-of-dispersion-1",
+    "href": "W7.html#measures-of-dispersion-1",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Measures of dispersion",
+    "text": "Measures of dispersion"
+  },
+  {
+    "objectID": "W7.html#standardization",
+    "href": "W7.html#standardization",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Standardization",
+    "text": "Standardization"
+  },
+  {
+    "objectID": "W7.html#covariance-and-correlation",
+    "href": "W7.html#covariance-and-correlation",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Covariance and Correlation",
+    "text": "Covariance and Correlation"
+  },
+  {
+    "objectID": "W7.html#epidemic-modeling",
+    "href": "W7.html#epidemic-modeling",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Epidemic Modeling",
+    "text": "Epidemic Modeling\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "index.html#week-6-sep-29-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model",
+    "href": "index.html#week-6-sep-29-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 6, Sep 29: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "text": "Week 6, Sep 29: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model\nSlides Week 6\nHomework 03 is due Oct 16."
   }
 ]

@@ -7,6 +7,11 @@ subtitle: ""
 library(tidyverse)
 ```
 
+:::{.callout-important}
+**Homework 03 is due Oct 16.**
+:::
+
+
 The goal of this assignment is to do steps of exploratory data analysis (EDA) with the data about corona and the European Social Survey (ESS) from [Homework 02](hw-02-instr.qmd). 
 
 ## Corona

@@ -172,6 +172,11 @@ Topics:
 **Homework 02 due next Sunday.**   
 **Homework 03 comes over the weekend.**
 
+## Week 6, Sep 29:  Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model {-}
+
+[Slides Week 6](W6.qmd)
+
+**Homework 03 is due Oct 16.**
 
 
 

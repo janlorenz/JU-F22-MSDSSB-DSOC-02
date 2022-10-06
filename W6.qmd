@@ -1,0 +1,1183 @@
+---
+title: "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model"
+author: Jan Lorenz
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: false
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+---
+
+# Functions (Math) {background-color="yellow"}
+
+## Functions mathematically {background-color="yellow"}
+
+Consider two sets: The *domain* $X$ and the *codomain* $Y$. 
+
+A *function* $f$ assigns each element of $X$ to exactly one element of $Y$.
+
+:::{.columns}
+:::{.column width="50%"}
+We write $f : X \to  Y$  
+["$f$ maps from $X$ to $Y$"]{style="color:blue;"}
+
+and $x \mapsto f(x)$   
+["$x$ maps to $f(x)$"]{style="color:blue;"}
+
+The yellow set is called the *image* of $f$.
+:::
+:::{.column }
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Codomain2.SVG/375px-Codomain2.SVG.png)
+:::
+:::
+
+:::{.aside}
+Picture from wikipedia. 
+:::
+
+## Conventions in mathematical text {background-color="yellow"}
+
+- Sets are denoted with capital letters. 
+- Their elements with (corresponding) small letters. 
+- Functions are often called $f$, $g$, or $h$. 
+- Other terminology can be used! 
+
+*Responsibility of the mathematical writer: Define objects.*
+
+*Responsibility of the mathematical reader: Keep track of what objects are.* 
+
+
+## Is this a function? {.smaller}
+
+*Input* from $X = \{\text{A picture where a face can be recognized}\}$. 
+
+*Function:* Upload input at <https://funny.pho.to/lion/> and download output.
+
+![](img/function_lionfilter_input_Jan.jpeg){height=200} $\ \mapsto\ $ ![](img/function_lionfilter_Jan.jpg){height=200} 
+
+*Output* from $Y = \{\text{Set of pictures with a specific format.}\}$ 
+
+. . . 
+
+Yes, it is a function. **Important: Output is the same for the same input!**
+
+
+## Is this a function? {.smaller}
+
+*Input* a text snippet. *Function:* Enter text at <https://www.craiyon.com>. *Output* a picture.
+
+:::{.columns}
+:::{.column width="50%"}
+![](img/craiyon-DataScienceConcepts.png){height=430} 
+:::
+:::{.column }
+Other examples:
+
+- "Nuclear explosion broccoli"
+- "The Eye of Sauron reading a newspaper"
+- "The legendary attack of Hamster Godzilla wearing a tiny Sombrero"
+
+![](img/Nuclear exposion broccoli.png){height=150}
+![](img/The Eye of Sauron reading a newspaper.png){height=150} 
+![](img/The legendary attack of Hamster Godzilla wearing a tiny Sombrero.png){height=150} 
+:::
+:::
+
+. . .
+
+No, it is not a function. It has nine outcomes and these change when run again. 
+
+## Graphs of functions {.smaller background-color="yellow"}
+
+- A function is characterized by the set all possible pairs $(x,f(x))$. 
+- This is called its *graph*. Note, this can be infinitely many.
+- When domain and codomain are real numbers then the graph can be shown in a *Cartesian coordinate system*. Example $f(x) = x^3 - x^2$
+
+```{r}
+library(tidyverse)
+ggplot() + geom_function(fun = function(x) x^3 - x^2) + xlim(c(-0.5,1.5)) + xlab("x") + theme_minimal()
+```
+
+<!-- ## Higher dimensional input and output -->
+
+<!-- Function can take $m$-dimensional input vectors and $n$-dimensional output vectors $f : \mathbb{R}^m \to \mathbb{R}^n$.  -->
+
+
+## Some functions $f: \mathbb{R} \to \mathbb{R}$ {.smaller background-color="yellow"}
+
+:::{.columns}
+:::{.column width="50%"}
+$f(x) = x$ *identity function*   
+[$f(x) = x^2$ *square function*]{style="color:orange;"}  
+[$f(x) = \sqrt{x}$ *square root function*]{style="color:blue;"}   
+[$f(x) = e^x$ *exponential function*]{style="color:red;"}   
+[$f(x) = \log(x)$ *natural logarithm*]{style="color:green;"}
+
+- Square function and square root function are the *inverse* of each other. Exponential and natural logarithm, too. 
+
+$\sqrt[2]{x}^2 = \sqrt[2]{x^2} = x$, $\log(e^x) = e^{\log(x)} = x$
+
+- Their graphs reflect each other with identity function graph as mirror axis. 
+:::
+:::{.column width="50%"}
+```{r}
+#| fig-width: 5
+ggplot() + 
+  geom_function(fun = function(x) x) + 
+  geom_function(fun = function(x) exp(x), color = "red") + 
+  geom_function(fun = function(x) log(x), color = "green") + 
+  geom_function(fun = function(x) x^2, color = "orange") + 
+  geom_function(fun = function(x) sqrt(x), color = "blue") + 
+  coord_fixed() +
+  xlim(c(-3,3))+ ylim(c(-3,3)) + xlab("x") + theme_minimal(base_size = 14)
+```
+:::
+:::
+
+:::{.aside}
+$e$ is *Euler's number* $2.71828\dots$. The natural logarithm is also often called $\ln$. The square root function is $\mathbb{R}_{\geq 0} \to \mathbb{R}$, the logarithm $\mathbb{R}_{>0} \to \mathbb{R}$.   
+:::
+
+
+## Shifts and scales {.smaller background-color="yellow"}
+
+How can we shift, stretch, or shrink a graph vertically and horizontally?
+
+. . . 
+
+:::{.panel-tabset}
+
+### $y$-shift
+:::{.columns}
+:::{.column width="50%"}
+Add a constant to the function. 
+
+$f(x) = x^3 - x^2 \leadsto$
+
+$\quad f(x) = x^3 - x^2 + a$
+
+For $a =$ [-2]{style="color:red;"}, [-0.5]{style="color:darkred;"}, [0.5]{style="color:darkblue;"}, [2]{style="color:blue;"}
+::: 
+:::{.column}
+```{r}
+#| fig-height: 8.5
+a = c(1, 0.5, 2, -0.5, -2)
+ggplot() + geom_function(fun = function(x) x^3 - x^2, size = 2, alpha = 0.5) +
+  geom_function(fun = function(x) x^3 - x^2 +a[2], color = "blue4", size = 2) +
+  geom_function(fun = function(x) x^3 - x^2 +a[3], color = "blue", size = 2) +
+  geom_function(fun = function(x) x^3 - x^2 +a[4], color = "red4") +
+  geom_function(fun = function(x) x^3 - x^2 +a[5], color = "red") +
+  coord_fixed() + xlim(c(-3,3)) + ylim(c(-3,3)) + xlab("x") + theme_minimal(base_size = 18)
+```
+:::
+:::
+
+### $x$-shift
+:::{.columns}
+:::{.column width="50%"}
+**Subtract** a constant from all $x$ within the function definition.
+
+$f(x) = x^3 - x^2 \leadsto$
+
+$\quad f(x) = (x - a)^3 - (x - a)^2$
+
+For $a =$ [-2]{style="color:red;"}, [-0.5]{style="color:darkred;"}, [0.5]{style="color:darkblue;"}, [2]{style="color:blue;"}
+
+**Attention:**  
+Shifting as you think needs subtracting $a$!   
+You can think of the *coordinate system being shifted* in direction $a$ while the graph stays.
+::: 
+:::{.column}
+```{r}
+#| fig-height: 8.5
+a = c(1, 0.5, 2, -0.5, -2)
+ggplot() + geom_function(fun = function(x) x^3 - x^2, size = 2, alpha = 0.5) +
+  geom_function(fun = function(x) (x-a[2])^3 - (x-a[2])^2, color = "blue4", size = 2) +
+  geom_function(fun = function(x) (x-a[3])^3 - (x-a[3])^2, color = "blue", size = 2) +
+  geom_function(fun = function(x) (x-a[4])^3 - (x-a[4])^2, color = "red4") +
+  geom_function(fun = function(x) (x-a[5])^3 - (x-a[5])^2, color = "red") +
+  coord_fixed() + xlim(c(-3,3)) + ylim(c(-3,3)) + xlab("x") + theme_minimal(base_size = 18)
+```
+:::
+:::
+
+### $y$-scale
+:::{.columns}
+:::{.column width="50%"}
+**Multiply** a constant to all $x$ within the function definition.
+
+$f(x) = x^3 - x^2 \leadsto$
+
+$\quad f(x) = a(x^3 - x^2)$
+
+For $a =$ [-2]{style="color:red;"}, [-0.5]{style="color:darkred;"}, [0.5]{style="color:darkblue;"}, [2]{style="color:blue;"}
+
+Negative numbers flip the graph around the $x$-axis. 
+::: 
+:::{.column}
+```{r}
+#| fig-height: 8.5
+a = c(1, 0.5, 2, -0.5, -2)
+ggplot() + geom_function(fun = function(x) x^3 - x^2, size = 2, alpha = 0.5) +
+  geom_function(fun = function(x) a[2]*((x)^3 - (x)^2), color = "blue4", size = 2) +
+  geom_function(fun = function(x) a[3]*((x)^3 - (x)^2), color = "blue", size = 2) +
+  geom_function(fun = function(x) a[4]*((x)^3 - (x)^2), color = "red4") +
+  geom_function(fun = function(x) a[5]*((x)^3 - (x)^2), color = "red") +
+  coord_fixed() + xlim(c(-3,3)) + ylim(c(-3,3)) + xlab("x") + theme_minimal(base_size = 18)
+```
+:::
+:::
+
+### $x$-scale
+:::{.columns}
+:::{.column width="50%"}
+**Divide** all $x$ within the function definition by a constant.
+
+$f(x) = x^3 - x^2 \leadsto$
+
+$\quad f(x) = (x/a)^3 - (x/a)^2$
+
+For $a =$ [-2]{style="color:red;"}, [-0.5]{style="color:darkred;"}, [0.5]{style="color:darkblue;"}, [2]{style="color:blue;"}
+
+Negative numbers flip the graph around the $y$-axis. 
+
+**Attention:**
+Stretching needs a division by $a$!   
+You can think of the *coordinate system being stretched* multiplicatively by $a$ while the graph stays.
+::: 
+:::{.column}
+```{r}
+#| fig-height: 8.5
+a = c(1, 0.5, 2, -0.5, -2)
+ggplot() + geom_function(fun = function(x) x^3 - x^2, size = 2, alpha = 0.5) +
+  geom_function(fun = function(x) (x/a[2])^3 - (x/a[2])^2, color = "blue4", size = 2) +
+  geom_function(fun = function(x) (x/a[3])^3 - (x/a[3])^2, color = "blue", size = 2) +
+  geom_function(fun = function(x) (x/a[4])^3 - (x/a[4])^2, color = "red4") +
+  geom_function(fun = function(x) (x/a[5])^3 - (x/a[5])^2, color = "red") +
+  coord_fixed() + xlim(c(-3,3)) + ylim(c(-3,3)) + xlab("x") + theme_minimal(base_size = 18)
+```
+:::
+:::
+
+::: 
+
+## Polynomials and exponentials {.smaller background-color="yellow"}
+
+A *polynomial* is a function which is composed of (many) addends of the form $ax^n$ for different values of $a$ and $n$. 
+
+In an *exponential* the $x$ appears in the exponent. 
+
+$f(x) = x^3$ vs. [$f(x) = e^x$]{style="color:red;"}
+
+```{r}
+library(patchwork)
+g1 = ggplot() + 
+  geom_function(fun = function(x) x^3) +
+  geom_function(fun = function(x) exp(x)-1, color = "red") +
+  xlim(c(0,2)) + xlab("x") + theme_minimal(base_size = 18)
+g2 = g1 + xlim(c(0,5))
+g1 + g2 + plot_annotation(title = "Same function but different of axis limits!")
+```
+
+**For $x\to\infty$, any exponential will finally "overtake" any polynomial.**
+
+
+# Exponentiations and logarithms {background-color="yellow"}
+
+## Rules for exponentiation {background-color="yellow"}
+
+:::{.columns}
+:::{.column width="20%"}
+$x^0$  
+
+$0^x$  
+
+$0^0$  
+
+$(x\cdot y)^a$  
+
+$x^{-a}$, $x^{-1}$  
+
+$x^\frac{a}{b}$, $x^\frac{1}{2}$  
+
+$(x^a)^b$  
+
+::: 
+:::{.column}
+:::{.fragment fragment-index=1}
+$x^0 = 1$
+:::
+:::{.fragment fragment-index=2}
+$0^x = 0$ for $x\neq 0$
+:::
+:::{.fragment fragment-index=3}
+$0^0 = 1$ (discontinuity in $0^x$)
+:::
+:::{.fragment fragment-index=4}
+$(x\cdot y)^a = x^a\cdot x^b$  
+:::
+:::{.fragment fragment-index=5}
+$x^{-a} = \frac{1}{x^a}$, $x^{-1} = \frac{1}{x}$  
+:::
+:::{.fragment fragment-index=6}
+$x^\frac{a}{b} = \sqrt[b]{x^a} = (\sqrt[b]{x})^a,\ x^\frac{1}{2} = \sqrt{x}$  
+:::
+:::{.fragment fragment-index=7}
+$(x^a)^b = x^{a\cdot b} = (x^b)^a \neq x^{a^b} = x^{(a^b)}$   
+Example: $(4^3)^2 = 64^2 = 4096 \qquad 4^{3^2} = 4^9 = 262144$
+:::
+:::
+:::
+
+
+## More rules for exponentiation {.smaller background-color="yellow"}
+
+:::{.columns}
+:::{.column width="20%"}
+$x^a\cdot x^b$
+::: 
+:::{.column width="79%"}
+:::{.fragment}
+$x^a\cdot x^b = x^{a+b}$  Multiplication of powers (with same base $x$) becomes addition of exponents.
+:::
+:::
+:::
+
+. . . 
+
+:::{.columns}
+:::{.column width="20%"}
+$(x+y)^a$
+::: 
+:::{.column width="79%"}
+:::{.fragment}
+No "simple" form! For $a$ integer use *binomial expansion*.
+$(x+y)^2 = x^2 + 2xy + y^2$  
+$(x+y)^3 = x^3 + 3x^2y + 3xy^2 + y^3$  
+$(x+y)^n = \sum_{k=0}^n {n \choose k} x^{n-k}y^k$
+:::
+:::
+:::
+
+**Pascal's triangle**
+
+<!-- $n$| ${n \choose 0}$ | ${n \choose 1}$ | ${n \choose 2}$ | ${n \choose 3}$ | ${n \choose 4}$ | ${n \choose 5}$  -->
+<!-- ---|-----------------|-----------------|-----------------|-----------------|-----------------|---------------- -->
+<!-- 1  |              1  |              1  |                 |                 |                 |      -->
+<!-- 2  |              1  |              2  |               1 |                 |                 |      -->
+<!-- 3  |              1  |              3  |               3 |               1 |                 |      -->
+<!-- 4  |              1  |              4  |               6 |               4 |              1  |      -->
+<!-- 5  |              1  |              5  |              10 |              10 |              5  |  1   -->
+
+:::{.columns}
+:::{.column width="50%"}
+![From wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif) 
+:::
+:::{.column}
+We meet it again in Probability. 
+(Binomial distribution, Central Limit Theorem)
+:::
+:::
+
+
+## Logarithms {.smaller background-color="yellow"}
+
+**Definition:** A *logarithm* of $a$ for some base $b$ is the value of the exponent which brings $b$ to $a$: 
+$\log_b(a) = x$ means that $b^x =a$
+
+Most common:
+
+- $\log_{10}$ for logarithmic axes in plots
+- $\log_{e}$ *natural logarithm* (also $\log$ or $\ln$)
+
+. . .
+
+:::{.columns}
+:::{.column width="30%"}
+$\log_{10}(100) =$
+::: 
+:::{.column}
+:::{.fragment}
+$2$
+:::
+:::
+:::
+
+. . .
+
+:::{.columns}
+:::{.column width="30%"}
+$\log_{10}(1) =$
+::: 
+:::{.column}
+:::{.fragment}
+$0$
+:::
+:::
+:::
+
+. . .
+
+:::{.columns}
+:::{.column width="30%"}
+$\log_{10}(6590) =$
+::: 
+:::{.column}
+:::{.fragment}
+$3.818885$
+:::
+:::
+:::
+
+. . .
+
+:::{.columns}
+:::{.column width="30%"}
+$\log_{10}(0.02) =$
+::: 
+:::{.column}
+:::{.fragment}
+$-1.69897$
+:::
+:::
+:::
+
+
+## Rules for logarithms {background-color="yellow"}
+
+Usually only one base is used in the same context, because changing base is easy:
+
+$\log_c(x) = \frac{log_b(x)}{\log_b(c)} = \frac{\log(x)}{\log(c)}$
+
+
+
+
+:::{.columns}
+:::{.column width="20%"}
+$\log(x\cdot y)$
+::: 
+:::{.column width="79%"}
+:::{.fragment}
+$= \log(x) + \log(y)$ Multiplication $\to$ addition.
+:::
+:::
+:::
+
+. . .
+
+:::{.columns}
+:::{.column width="20%"}
+$\log(x^y)$
+::: 
+:::{.column width="75%"}
+:::{.fragment}
+$= y\cdot\log(x)$
+:::
+:::
+
+
+:::
+:::{.columns}
+:::{.column width="20%"}
+$\log(x+y)$
+::: 
+:::{.column width="75%"}
+:::{.fragment}
+complicated!
+:::
+:::
+:::
+
+. . . 
+
+Also changing bases for powers is easy: $x^y = (e^{\log(x)})^y = e^{y\cdot\log(x)}$
+
+# Functions (Programming)
+
+## Input $\to$ output
+
+![](https://upload.wikimedia.org/wikipedia/commons/3/3b/Function_machine2.svg)
+
+- Metaphorically, a function is a *machine* or a *blackbox* that for each input yields and output. 
+- The inputs of a function are also called *arguments*. 
+
+
+:::{.aside}
+Picture from wikipedia. 
+:::
+
+## Function as objects in R {.scrollable .smaller}
+
+`function` is a class of an object in R
+
+```{r}
+#| echo: true
+class(c)
+class(ggplot2::ggplot)
+```
+
+Calling the function without brackets writes its code or some information. 
+```{r}
+#| echo: true
+sd # This function is written in R
+c  
+ggplot2::ggplot 
+```
+
+## Functions in R {.smaller}
+
+Define your own functions like this 
+
+```{r}
+#| echo: true
+add_one <- function(x) {
+  x + 1 
+}
+# Test it
+add_one(10)
+```
+
+The skeleton for a function definition is
+
+```R
+function_name <- function(input){
+  # do something with the input(s)
+  # return something as output
+}
+```
+
+- `function_name` should be a short but evocative verb. 
+- The `input` can be empty or one or more `name` or `name=expression` terms as arguments.
+- The last evaluated expression is returned as output. 
+- When the body or the function is only one line `{}` can be omitted. For example   
+`add_one <- function(x) x + 1`
+
+
+## Flexibility of inputs and outputs {.smaller}
+
+- Arguments can be specified by `name=expression` or just `expression` (then they are taken as the next argument)
+- Default values for arguments can be provided. Useful when an argument is a parameter. 
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+mymult <- function(x = 2, y = 3) x * (y - 1)
+mymult(3,4)
+```
+
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+mymult()
+```
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+mymult(y = 3,4)
+```
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+mymult(5)
+```
+```{r}
+#| echo: true
+#| output-location: column-fragment
+mymult(y = 2)
+```
+
+. . . 
+
+For complex output use a list
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+mymult <- function(x = 2, y = 3) 
+  list(out1 = x * (y - 1), out2 = x * (y - 2))
+mymult()
+```
+
+## Vectorized functions {.smaller}
+
+Mathematical functions in programming are often "vectorized": 
+
+- Operations on a single value are applied to each component of the vector. 
+- Operations on two values are applied "component-wise" (for vectors of the same length)
+
+```{r}
+#| echo: true
+log10(c(1,10,100,1000,10000))
+c(1,1,2) + c(3,1,0)
+(0:5)^2
+```
+
+## Vector creation functions
+
+```{r}
+#| echo: true
+1:10
+seq(from=-0.5, to=1.5, by=0.1)
+seq(from=0, to=1, length.out=10)
+rep(1:3, times=3)
+rep(1:3, each=3)
+```
+
+## Plotting and transformation {.smaller}
+
+Vector creation and vectorized functions are key for plotting and transformation. 
+
+```{r}
+#| echo: true
+func <- function(x) x^3 - x^2    # Create a vectorized function
+data <- tibble(x = seq(-0.5,1.5,by =0.01)) |>    # Vector creation
+	mutate(y = func(x))        # Vectorized transformation using the function
+data |> ggplot(aes(x,y)) + geom_line()
+```
+
+## Convenient function `ggplot`ing
+
+```{r}
+#| echo: true
+ggplot() +
+	geom_function(fun = log) +
+	geom_function(fun = function(x) 3*x - 4, color = "red")
+```
+
+
+
+# Modeling
+
+
+## Purpose of modeling 
+
+We use models to 
+
+- **explain** relations between variables
+- make **predictions**
+
+First, we focus on linear models.
+
+## Palmer Penguins {.scrollable .smaller}
+
+We use the dataset [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/)
+
+Chinstrap, Gentoo, and Adélie Penguins
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/08/South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_%28Pygoscelis_antarctica%29_04.jpg){height=200}
+![](https://upload.wikimedia.org/wikipedia/commons/0/00/Brown_Bluff-2016-Tabarin_Peninsula%E2%80%93Gentoo_penguin_%28Pygoscelis_papua%29_03.jpg){height=200}
+![](https://upload.wikimedia.org/wikipedia/commons/e/e3/Hope_Bay-2016-Trinity_Peninsula%E2%80%93Ad%C3%A9lie_penguin_%28Pygoscelis_adeliae%29_04.jpg){height=200}
+
+
+```{r}
+library(palmerpenguins)
+penguins
+```
+
+## Body mass in grams
+
+```{r}
+#| echo: true
+penguins |>
+  ggplot(aes(body_mass_g)) +
+  geom_histogram()
+```
+
+## Flipper length in millimeters
+
+```{r}
+#| echo: true
+penguins |>
+  ggplot(aes(flipper_length_mm)) +
+  geom_histogram()
+```
+
+## Relate variables as a line {.smaller}
+
+A *line* is a shift-scale transformation of the identity function usually written in the form 
+
+$$f(x) = a\cdot x + b$$
+
+where [$a$ is the *slope*]{style="color:red;"}, [$b$ is the *intercept*]{style="color:blue;"}.^[This a scale and a shift in the $y$ direction. Note: For lines there are always an analog transformations on the $x$ direction.]
+
+```{r}
+#| echo: true
+#| output-location: column
+a <- 0.5
+b <- 1
+func <- function(x) a*x + b
+ggplot() + geom_function(fun = func, size = 2) + 
+	xlim(c(0,2)) + ylim(c(0,2)) + coord_fixed() + # Set axis limits and make axis equal
+	# intercept line:
+	geom_line(data=tibble(x=c(0,0),y=c(0,1)), mapping = aes(x,y), color = "blue") +
+	# slope:
+	geom_line(data=tibble(x=c(1.5,1.5),y=c(1.25,1.75)), mapping = aes(x,y), color = "red") +
+	# x-interval of length one:
+	geom_line(data=tibble(x=c(0.5,1.5),y=c(1.25,1.25)), mapping = aes(x,y), color = "gray") +
+	theme_classic(base_size = 24)
+```
+
+## Penguins: Linear model 
+
+**Flipper length** as a function of **body mass**.
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-height: 9
+penguins |>
+ ggplot(aes(x = body_mass_g, 
+            y = flipper_length_mm)) +
+ geom_point() +
+ geom_smooth(method = "lm", 
+             se = FALSE) + 
+ theme_classic(base_size = 24)
+```
+
+## Penguins: Other smoothing method {.smaller}
+
+**Flipper length** as a function of **body mass** with `loess`^[loess = locally estimated scatterplot smoothing] smoothing. 
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-height: 7
+penguins |>
+ ggplot(aes(x = body_mass_g, 
+            y = flipper_length_mm)) +
+ geom_point() +
+ geom_smooth(method = "loess") + 
+ theme_classic(base_size = 24)
+```
+
+This is a less theory-driven and more data-driven model. Why? We don't have a simple mathematical form of the function. 
+
+## Terminology {.smaller}
+
+- **Response variable:**^[Also **dependent variable** in statistics or empirical social sciences.] Variable whose behavior or variation you are trying to understand, on the y-axis
+- **Explanatory variable(s):**^[Also **independent variable(s)** in statistics or empirical social sciences.] Other variable(s) that you want to use to explain the variation in the response, on the x-axis
+- **Predicted value:** Output of the model function. 
+  - The model function gives the typical (expected) value of the response variable conditioning on the explanatory variables
+  - **Residual(s):** A measure of how far away a case is from its predicted value (based on a particular model)  
+    Residual = Observed value - Predicted value  
+    The residual tells how far above/below the expected value each case is
+
+## More explanatory variables
+
+How does the relation between flipper length and body mass change with different species?
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-height: 7
+penguins |>
+ ggplot(aes(x = body_mass_g, 
+            y = flipper_length_mm, 
+            color = species)) +
+ geom_point() +
+ geom_smooth(method = "lm",
+             se = FALSE) + 
+ theme_classic(base_size = 24)
+```
+
+## Technical: How to color penguins but keep one model?
+
+Put the mapping of the color aesthetic into the `geom_point` command. 
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-height: 6
+penguins |>
+ ggplot(aes(x = body_mass_g, 
+												y = flipper_length_mm)) +
+ geom_point(aes(color = species)) +
+ geom_smooth(method = "lm",
+													se = FALSE) + 
+ theme_classic(base_size = 24)
+```
+
+## Models - upsides and downsides {.smaller}
+
+- Models can reveal patterns that are not evident in a graph of the data. This is an advantage of modeling over simple visual inspection of data.
+- The risk is that a model is imposing structure that is not really there in the real world data. 
+  - People imagined animal shapes in the stars. This is maybe a good model to detect and memorize shapes, but it has nothing to do with these animals.
+  - Every model is a simplification of the real world, but there are good and bad models (for particular purposes). 
+  - A skeptical (but constructive) approach to a model is always advisable. 
+  
+  
+## Variation around a model
+
+is as interesting and important as the model!
+
+*Statistics is the explanation of uncertainty of variation in the context of what remains unexplained.*
+
+- The scattered data of flipper length and body mass suggests that there maybe other factors that account for some parts of the variability. 
+- Or is it randomness?
+- Adding more explanatory variables can help (but need not)
+
+## *All models are wrong ...* {.smaller}
+
+*... but some are useful.* (George Box)
+
+
+Extending the range of the model: 
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-height: 5.5
+penguins |>
+ ggplot(aes(x = body_mass_g, 
+            y = flipper_length_mm)) +
+ geom_point() +
+ geom_smooth(method = "lm", 
+             se = FALSE, 
+ 												fullrange = TRUE) +
+	xlim(c(0,7000)) + ylim(c(0,230)) +
+ theme_classic(base_size = 24)
+```
+
+- The model predicts that penguins with zero weight still have flippers of about 140 mm on average.
+- Is the model useless?
+
+## Two model purposes
+
+Models can be used for:
+
+- **Explanation:** Understand the relations hip of variables in a quantitative way.   
+*For the linear model, interpret slope and intercept.*
+- **Prediction:** Plug in new values for the explanatory variable(s) and receive the expected response value.   
+*For the linear model, predict the flipper length of new penguins by their body mass.*
+
+# Fitting Models
+
+Today: The linear model. 
+
+## In R: `tidymodels`
+
+![](https://datasciencebox.org/course-materials/_slides/u4-d02-fitting-interpreting-models/img/tidymodels.png)
+
+:::{.aside}
+From <https://datasciencebox.org>
+:::
+
+## Our goal
+
+Predict flipper length from body mass
+
+average `flipper_length_mm` $= \beta_0 + \beta_1\cdot$ `body_mass_g`
+
+
+## Step 1: Specify model
+
+```{r}
+#| echo: true
+library(tidymodels)
+linear_reg()
+```
+
+## Step 2: Set the model fitting *engine*
+
+```{r}
+#| echo: true
+linear_reg() |> 
+	set_engine("lm")
+```
+
+## Step 3: Fit model and estimate parameters
+
+Only now, the data and the variable selection comes in. 
+
+Use of **formula syntax**
+
+```{r}
+#| echo: true
+linear_reg() |> 
+	set_engine("lm") |> 
+	fit(flipper_length_mm ~ body_mass_g, data = penguins)
+```
+
+:::{.aside}
+Note: The fit command does not follow the tidyverse principle the the data comes first. Instead, the formula comes first. This is to relate to existing traditions of a much older established way of modeling in R. 
+:::
+
+## What does the output say? {.smaller}
+
+```{r}
+#| echo: true
+linear_reg() |> 
+	set_engine("lm") |> 
+	fit(flipper_length_mm ~ body_mass_g, data = penguins)
+```
+
+. . .
+
+average `flipper_length_mm` $= 136.72956 + 0.01528\cdot$ `body_mass_g`
+
+. . .
+
+**Interpretation:**   
+The penguins have a flipper length of 138 mm plus 0.01528 mm for each gram of body mass (that is 15.28 mm per kg).
+Penguins with zero mass have a flipper length of 138 mm. However, this is not in the range where the model was fitted ...
+
+## Show output in *tidy* form
+
+```{r}
+#| echo: true
+linear_reg() |> 
+	set_engine("lm") |> 
+	fit(flipper_length_mm ~ body_mass_g, data = penguins) |> 
+	tidy()
+```
+
+## Parameter estimation {.smaller}
+
+Notation from statistics: $\beta$'s for the population parameters and $b$'s for the parameters estimated from the sample statistics. 
+
+$$\hat y = \beta_0 + \beta_1 x$$
+
+Is what we cannot have. ($\hat y$ stands for *predicted value of $y$*. )
+
+. . .
+
+We estimate $b_0$ and $b_1$ in 
+
+$$\hat y = b_0 + b_1 x$$
+
+:::{style="background-color:aquamarine;"}
+A typical follow-up data analysis question is what the fitted values $b_0$ and $b_1$ tell us about the population-wide values $\beta_0$ and $\beta_1$? 
+
+What type of question is it?   
+Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic
+::: 
+
+. . .
+
+:::{style="background-color:aquamarine;"}
+A typical **inferential** question.
+:::
+
+## Fitting method: Least squares regression
+
+- The regression line shall minimize the sum of the squared residuals (or, identically, their mean). 
+- Mathematically: The residual for case $i$ is $e_i = \hat y_i - y_i$. Now we want to minimize $\sum_{i=1}^n e_i^2$ (or $\frac{1}{n}\sum_{i=1}^n e_i^2 the *the mean of squared errors*). 
+
+## Visualization of residuals
+
+The residuals are the gray lines between predictid values on the regression line and the actual values. 
+
+```{r}
+pengmod <- 
+  linear_reg() |> 
+  set_engine("lm") |> 
+  fit(flipper_length_mm ~ body_mass_g, data = penguins)
+penguins |> bind_cols(predict(pengmod,penguins)) |> 
+  ggplot(aes(body_mass_g, flipper_length_mm)) +
+  geom_segment(aes(x = body_mass_g, y = flipper_length_mm, xend = body_mass_g, yend = .pred), color = "gray") +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method="lm") + 
+  geom_point(aes(y=.pred), color = "red", alpha =  0.3)
+```
+
+## Proporties of least squares regression {.smaller}
+
+The regression lines goes through the point (`mean(x)`, `mean(y)`). 
+
+```{r}
+#| echo: true
+mean(penguins$body_mass_g, na.rm = TRUE)
+mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+```{r}
+penguins |> bind_cols(predict(pengmod,penguins)) |> 
+  ggplot(aes(body_mass_g, flipper_length_mm)) +
+  geom_segment(aes(x = body_mass_g, y = flipper_length_mm, xend = body_mass_g, yend = .pred), color = "gray") +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method="lm") + 
+  geom_point(aes(y=.pred), color = "red", alpha =  0.3) + 
+  geom_point(data = tibble(x = mean(penguins$body_mass_g, na.rm = T), y = mean(penguins$flipper_length_mm, na.rm = T)), 
+  											mapping = aes(x,y), color = "green", size = 5)
+```
+
+
+## Proporties of least squares regression {.smaller}
+
+Residuals sum up to zero 
+
+```{r}
+#| echo: true
+pengmod <- linear_reg() |>  set_engine("lm") |> fit(flipper_length_mm ~ body_mass_g, data = penguins)
+pengmod$fit$residuals |> sum()
+```
+
+There is no correlation between residuals and the explanatory variable 
+
+```{r}
+#| echo: true
+cor(pengmod$fit$residuals, na.omit(penguins$body_mass_g))
+```
+
+The correlation of $x$ and $y$ is the slope $b_1$ corrected by their standard deviations. 
+
+```{r}
+#| echo: true
+correlation <- cor(penguins$flipper_length_mm, penguins$body_mass_g, use = "pairwise.complete.obs")
+sd_flipper <- sd(penguins$flipper_length_mm, na.rm = T)
+sd_mass <- sd(penguins$body_mass_g, na.rm = T)
+c(correlation, sd_flipper, sd_mass)
+
+correlation * sd_flipper / sd_mass
+
+pengmod$fit$coefficients
+```
+
+
+
+## Linear model when explanatory variables are categorical {.smaller}
+
+
+```{r}
+#| echo: true
+linear_reg() |> 
+	set_engine("lm") |> 
+	fit(flipper_length_mm ~ species, data = penguins) |> 
+	tidy()
+```
+
+What happened? Two of the three species categories appear as variables now.
+
+- Categorical variables are automatically encoded to **dummy variables**
+- Each coefficient describes the expected difference between flipper length of that particular species compared to the baseline level
+- What is the baseline level?
+
+. . . 
+
+- The first category! (Here alphabetically `"Adelie"`)
+
+
+## How do dummy variables look
+
+species    | speciesChinstrap | speciesGentoo 
+-----------|------------------|--------------
+Adelie     |      0           | 0
+Chinstrap  |      1           | 0
+Gentoo     |      0           | 1
+
+Then the computation is as usual with the zero-one variables. 
+
+
+## Interpretation
+
+```{r}
+#| echo: true
+linear_reg() |> 
+	set_engine("lm") |> 
+	fit(flipper_length_mm ~ species, data = penguins) |> 
+	tidy()
+```
+
+- Flipper length of the baseline species is the intercept. 
+- Flipper length of the two other species add their coefficient
+
+## Compare to a visualization {.smaller}
+
+```{r}
+linear_reg() |> 
+	set_engine("lm") |> 
+	fit(flipper_length_mm ~ species, data = penguins) |> 
+	tidy()
+```
+
+```{r}
+#| fig-width: 3
+penguins |> 
+  ggplot(aes(species, flipper_length_mm)) + geom_boxplot() +
+ 	stat_summary(fun.y=mean, geom="point", size=5, color="red")
+```
+
+The red dots are the average values for species. 
+
+The rest is a boxplot. More on these later. 
+
+# Nonlinear Models
+
+## Where a linear model is bad
+
+Total corona cases in Germany in the first wave 2020. 
+
+```{r}
+whofull <- read_csv("data/WHO-COVID-19-global-data.csv", show_col_types = FALSE) |> 
+	filter(Country == "Germany") 
+who <- whofull |> 
+	filter(Date_reported < "2020-03-20", Date_reported > "2020-02-25") 
+who |> 
+	ggplot(aes(Date_reported, Cumulative_cases)) + 
+	geom_line() + geom_point() + geom_smooth(method = "lm")
+```
+
+## $\log$ transformation {.smaller}
+
+Instead of `Cumulative_cases` we look at $\log($`Cumulative_cases`$)$
+```{r}
+	who |> 
+	ggplot(aes(Date_reported, log10(Cumulative_cases))) + geom_line() + geom_point() +
+	geom_smooth(method = "lm")
+```
+
+Almost perfect fit of a linear model. 
+
+The model is $y=\beta_0 e^{\beta_1\cdot x}$ ($y=$ `Cumulative cases`, $x=$ Days).
+
+$\log(y)=\log(\beta_0) + \beta_1\cdot x$ (A linear model!)
+
+## $\log$ transformation {.smaller}
+
+```{r}
+	who |> 
+	ggplot(aes(Date_reported, log10(Cumulative_cases))) + geom_line() + geom_point() +
+	geom_smooth(method = "lm") 
+```
+
+What is the difference to the penguin model?
+
+. . . 
+
+- $x$ has an ordered structure and no duplicates
+
+The fit looks so good. Why?
+
+. . . 
+
+This shows exponential growth (more later).   
+Maybe we can go after a **mechanistic** explanation here. 
+
+## However, it works only in a certain range ...
+
+```{r}
+	who |> 
+	ggplot(aes(Date_reported, log10(Cumulative_cases))) + geom_line() + geom_point() +
+	geom_smooth(method = "lm", fullrange = TRUE) +
+	geom_line(data = whofull |> filter(Date_reported < "2020-06-30")) + ylim(c(0,10))
+```
+
+
+
+# Next
+
+- On demand: Q&A on getting up with homework
+
+- More math on summary statistics (Mean, standard deviation, correlation and others)
+
+- A bit of calculus (with data)
+
+- More models (and surroundings like fitting methods, preprocessing, performance measures)
+
+
