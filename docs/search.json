@@ -816,7 +816,7 @@
     "href": "W5.html#dates",
     "title": "W#5 More under the hood, Relational Data, Exploratory Data Analysis",
     "section": "Dates",
-    "text": "Dates\n\nISO 8601 standard for dates: YYYY-MM-DD. Today: 2022-10-01.\nDates in R are numeric vectors that represent the number of days since 1 January 1970.\n\n\ny <- as.Date(\"2020-01-01\"); y\n\n[1] \"2020-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nattributes(y)\n\n$class\n[1] \"Date\"\n\nas.double(y)\n\n[1] 18262\n\nas.double(as.Date(\"1970-01-01\"))\n\n[1] 0\n\nas.double(as.Date(\"1969-01-01\"))\n\n[1] -365"
+    "text": "Dates\n\nISO 8601 standard for dates: YYYY-MM-DD. Today: 2022-10-13.\nDates in R are numeric vectors that represent the number of days since 1 January 1970.\n\n\ny <- as.Date(\"2020-01-01\"); y\n\n[1] \"2020-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nattributes(y)\n\n$class\n[1] \"Date\"\n\nas.double(y)\n\n[1] 18262\n\nas.double(as.Date(\"1970-01-01\"))\n\n[1] 0\n\nas.double(as.Date(\"1969-01-01\"))\n\n[1] -365"
   },
   {
     "objectID": "W5.html#date-times",
@@ -1187,14 +1187,14 @@
     "href": "W5.html#how-many-days-are-you-old",
     "title": "W#5 More under the hood, Relational Data, Exploratory Data Analysis",
     "section": "How many days are you old?",
-    "text": "How many days are you old?\n\n\nSys.Date() - as.Date(\"1976-01-16\")  # Sys.Date() gives as the current day your computer is set to\n\nTime difference of 17060 days"
+    "text": "How many days are you old?\n\n\nSys.Date() - as.Date(\"1976-01-16\")  # Sys.Date() gives as the current day your computer is set to\n\nTime difference of 17072 days"
   },
   {
     "objectID": "W5.html#how-many-seconds-are-you-old",
     "href": "W5.html#how-many-seconds-are-you-old",
     "title": "W#5 More under the hood, Relational Data, Exploratory Data Analysis",
     "section": "How many seconds are you old?",
-    "text": "How many seconds are you old?\n\nas.double(lubridate::now()) - as.double(lubridate::ymd_hm(\"1976-01-16_12:04\"))\n\n[1] 1.474e+09"
+    "text": "How many seconds are you old?\n\nas.double(lubridate::now()) - as.double(lubridate::ymd_hm(\"1976-01-16_12:04\"))\n\n[1] 1475036432"
   },
   {
     "objectID": "W5.html#joining-when-key-names-differ",
@@ -2342,7 +2342,7 @@
     "href": "W7.html#generalized-means",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Generalized means1",
-    "text": "Generalized means1\nFor \\(x_1, \\dots, x_n > 0\\) and \\(p\\in \\mathbb{R}_{\\neq 0}\\) the generalized mean is\n\\[M_p(x_1, \\dots, x_n) = (\\frac{1}{n}\\sum_{i=1}^n x_i^p)^\\frac{1}{p}\\]\nFor \\(p = 0\\) it is \\(M_0(x_1, \\dots, x_n) = (\\prod_{i=1}^n x_i)^\\frac{1}{n}\\).\n\\(M_1\\) is the arithmetic mean. \\(M_0\\) is called the geometric mean. \\(M_{-1}\\) the harmonic mean.\n\n\n\\(M_0\\) can also be expressed as the exponential (\\(\\exp(x) = e^x\\)) of the mean of the the \\(\\log\\)’s of the \\(x_i\\)’s: \\(\\exp(\\log((\\prod_{i=1}^n x_i)^\\frac{1}{n})) = \\exp(\\frac{1}{n}\\sum_{i=1}^n\\log(x_i))\\).\nAlso called power mean or \\(p\\)-mean."
+    "text": "Generalized means1\nFor \\(x_1, \\dots, x_n > 0\\) and \\(p\\in \\mathbb{R}_{\\neq 0}\\) the generalized mean is\n\\[M_p(x_1, \\dots, x_n) = (\\frac{1}{n}\\sum_{i=1}^n x_i^p)^\\frac{1}{p}\\]\nFor \\(p = 0\\) it is \\(M_0(x_1, \\dots, x_n) = (\\prod_{i=1}^n x_i)^\\frac{1}{n}\\).\n\\(M_1\\) is the arithmetic mean. \\(M_0\\) is called the geometric mean. \\(M_{-1}\\) the harmonic mean.\nNote: Generalized means are often only reasonable when all values are positive \\(x_i > 0\\).\n\n\n\\(M_0\\) can also be expressed as the exponential (\\(\\exp(x) = e^x\\)) of the mean of the the \\(\\log\\)’s of the \\(x_i\\)’s: \\(\\exp(\\log((\\prod_{i=1}^n x_i)^\\frac{1}{n})) = \\exp(\\frac{1}{n}\\sum_{i=1}^n\\log(x_i))\\).\nAlso called power mean or \\(p\\)-mean."
   },
   {
     "objectID": "W7.html#transformation-function",
@@ -2384,14 +2384,14 @@
     "href": "W7.html#viertelfest-bremen-2008-1",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Viertelfest Bremen 2008",
-    "text": "Viertelfest Bremen 2008\nHow many lots will be sold by the end of the festival?\n\nviertel <- read_csv(\"data/Viertelfest.csv\")\nviertel |> filter(Schätzung<100000) |> ggplot(aes(`Schätzung`)) + geom_histogram(binwidth = 500) + geom_vline(xintercept = 10788, color = \"green\") + \n geom_vline(xintercept = mean(viertel$Schätzung), color = \"red\") + geom_vline(xintercept = median(viertel$Schätzung), color = \"blue\") + geom_vline(xintercept = Mode(viertel$Schätzung), color = \"purple\") + geom_vline(xintercept = exp(mean(log(viertel$Schätzung))), color = \"orange\")\n\n\n1226 estimates, true value 1198, mean 53163.9, median 9843, mode 10000,\ngeometric mean 10510.1"
+    "text": "Viertelfest Bremen 2008\nHow many lots will be sold by the end of the festival?\n\nviertel <- read_csv(\"data/Viertelfest.csv\")\nviertel |> filter(Schätzung<100000) |> ggplot(aes(`Schätzung`)) + geom_histogram(binwidth = 500) + geom_vline(xintercept = 10788, color = \"green\") + \n geom_vline(xintercept = mean(viertel$Schätzung), color = \"red\") + geom_vline(xintercept = median(viertel$Schätzung), color = \"blue\") + geom_vline(xintercept = Mode(viertel$Schätzung), color = \"purple\") + geom_vline(xintercept = exp(mean(log(viertel$Schätzung))), color = \"orange\")\n\n\n1226 estimates, true value 10788, mean 53163.9, median 9843, mode 10000,\ngeometric mean 10510.1"
   },
   {
     "objectID": "W7.html#log_10-transformation-viertelfest",
     "href": "W7.html#log_10-transformation-viertelfest",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "\\(\\log_{10}\\) transformation Viertelfest",
-    "text": "\\(\\log_{10}\\) transformation Viertelfest\n\nviertel |> mutate(log10Est = log10(Schätzung)) |> ggplot(aes(log10Est)) + geom_histogram(binwidth = 0.05) + geom_vline(xintercept = log10(10788), color = \"green\") + \n geom_vline(xintercept = log10(mean(viertel$Schätzung)), color = \"red\") + geom_vline(xintercept = log10(median(viertel$Schätzung)), color = \"blue\") + geom_vline(xintercept = log10(Mode(viertel$Schätzung)), color = \"purple\") + geom_vline(xintercept = mean(log10(viertel$Schätzung)), color = \"orange\")\n\n\n1226 estimates, true value 1198, mean 53163.9, median 9843, mode 10000,\ngeometric mean 10510.1"
+    "text": "\\(\\log_{10}\\) transformation Viertelfest\n\nviertel |> mutate(log10Est = log10(Schätzung)) |> ggplot(aes(log10Est)) + geom_histogram(binwidth = 0.05) + geom_vline(xintercept = log10(10788), color = \"green\") + \n geom_vline(xintercept = log10(mean(viertel$Schätzung)), color = \"red\") + geom_vline(xintercept = log10(median(viertel$Schätzung)), color = \"blue\") + geom_vline(xintercept = log10(Mode(viertel$Schätzung)), color = \"purple\") + geom_vline(xintercept = mean(log10(viertel$Schätzung)), color = \"orange\")\n\n\n1226 estimates, true value 10788, mean 53163.9, median 9843, mode 10000,\ngeometric mean 10510.1"
   },
   {
     "objectID": "W7.html#wisdom-of-the-crowd",
@@ -2763,5 +2763,26 @@
     "title": "Data Science Concepts / Tools",
     "section": "3.1 Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "text": "3.1 Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models\nSlides Week 7\nHomework 03 is due Oct 16."
+  },
+  {
+    "objectID": "hw-instructions/hw-03-py-instruction.html",
+    "href": "hw-instructions/hw-03-py-instruction.html",
+    "title": "Additional Python Instruction Homework 03",
+    "section": "",
+    "text": "First we import all the relevant packages. We also need the pycountry package which we can simply install via pip in the command line.\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport pycountry\nThe next step is to import the Data.\ndf = pd.read_csv(...)\nIf we take a look at the countries within the dataset and we try to convert it via the pycounty package we run into an error. This error is a result of the Countrycode 'XK which refers to Kosovo but is not officially included as ISO alpha_2 code. Therefore we have to do it manually or use the following function:\ndef CountryConversion(x):\n    if x =='XK':  ## Special Case\n        return 'Kosovo'\n    else: ## otherwise use pycountry package\n        return pycountry.countries.get(alpha_2=x).name  \n        # the name is the country name within the database\n\n\n## Python function can also have multiple returns inside a function\n## if logical expressions are used.\nInstead of using the name you can also use the pycountry.countries.get(alpha_2=x).official_name.\nApply (.aaply()) this function to the cntry column and create a new column in the same step. We also need to create the ['Year'] column by using the essround column. Here round 1 is equivalent to 2002, round 2 to 2004, round 3 to 2006 and so on.\n\n\nInstead of recoding number 77, 88 and 99, you can also remove them from the dataset by utilizing loc in conjunction with a logical expression. After that we have to use the groupby function but with our newly created columns. Additionally, we apply .mean() to this pandas Series. To get a DataFrame out of the Series, we have to reset the index by reset_index() You may remember we utilized melt() in our first homework to create a long format of the DataFrame. In this case we want a wide format with the Country as index and the columns referring to the Year. The correct function is pivot(...) which you have to apply. Last but not least you sort the values by .sort_values(by=...)\n\n\n\n\nTo count the number of individuals each combination of valid values of atchctr and atcherp, you have to create a crosstable by applying the following function\n\nvaluetable = pd.crosstab(df['atchctr'],df['atcherp']).reset_index()[['atchctr',  0.0,  1.0,  2.0,  3.0,  4.0, 5.0,  6.0,  7.0,  8.0,  9.0, 10.0]].loc[0:10]\nThe table that is created looks exactly like the plot we want to recreate. But for plotting python and most other programming languages prefer a long data format. To save time and not wrangle with this table we choose a different way. Therefore we simply use the function value_counts() on both columns\nvaluedf = df[['ColA', 'ColB']].value_counts().reset_index()\nvaluedf = df.rename(columns={0:\"NumIndividuals\"})\nTake a look at the data you created.\nFinally we can plot our data with sns.relplot, define the Dataset with data= , the x and y variable x =  ,y = and use size and hue within relplot\n\nFor this we need the orignal data set. To create a lowess plot in python we simply toggle to lowess inside the regplot function with lowess=True. And don’t show the underlying data by setting scatter=False. Beware of the 77 88 and 99 that may still exist within your data\n\nsns.regplot(data=...,....)\nIf you want to have a seperate plot for each country define a facetgrid:\ng = sns.FacetGrid(Dataframe, col=\"Country\", col_wrap=5 )\n## now we can map a function to each plot in this grid\ng.map_dataframe(sns.regplot,x= .. , y= ,.., ..)\nEverything you want to have inside the regplot function you have to write individually after the function inside the map funciton.\n\n\n\nRepeat everything again for euftf\n\n\n\nYou have to again group the data by country-year combination. To get to number of observations the .size() function should be helpful. Again .reset_index() to create a DataFrame. Now you can rename the column 0 to a more suitable name by using a dictionary. Define a dictionary and apply it to rename the column.\nRenameDict = dict({SizeColumnName: 'MoreSuitableName'})\nYourDataFrame = YourDataFrame.rename(columns=RenameDict)\nNow we have to pivot() again to get wide data format. The index= should be the country and the columns= should be the Year."
+  },
+  {
+    "objectID": "W8.html#test-und-training-set",
+    "href": "W8.html#test-und-training-set",
+    "title": "W#7 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "section": "Test und Training set",
+    "text": "Test und Training set\nCross validation"
+  },
+  {
+    "objectID": "W8.html#decision-trees",
+    "href": "W8.html#decision-trees",
+    "title": "W#7 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "section": "Decision Trees",
+    "text": "Decision Trees\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   }
 ]

@@ -19,6 +19,7 @@ website:
         - hw-instructions/hw-02-instr.qmd
         - hw-instructions/hw-02-py-instruction.qmd
         - hw-instructions/hw-03-instr.qmd
+        - hw-instructions/hw-03-py-instruction.qmd
 
 format:
   html:

@@ -1,0 +1,112 @@
+---
+title: "Additional Python Instruction Homework 03"
+
+format:   
+  html:                     
+    standalone: true        # This time we make quarto render to a html-file you view in your browser which
+                            # can stand alone, that means it has a header and all css javascript needed
+    embed-resources: true   # It also embeds all figures you produce (usually they would be in a directory)
+    code-fold: true         # We enable the code folding such that we only need to look at code if we want
+                            # More info at https://quarto.org/docs/output-formats/html-publishing.html
+    number-sections: true
+
+---
+
+## Homework 3 - ESS in Python 
+First we import all the relevant packages. We also need the `pycountry` package which we can simply install via `pip` in the command line.
+
+```{.python}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import pycountry
+```
+
+The next step is to import the Data.
+
+```{.python}
+df = pd.read_csv(...)
+```
+
+If we take a look at the countries within the dataset and we try to convert it via the pycounty package we run into an error. This error is a result of the Countrycode `'XK` which refers to Kosovo but is not officially included as ISO alpha_2 code. Therefore we have to do it manually or use the following function:
+
+```{.python}
+def CountryConversion(x):
+    if x =='XK':  ## Special Case
+        return 'Kosovo'
+    else: ## otherwise use pycountry package
+        return pycountry.countries.get(alpha_2=x).name  
+        # the name is the country name within the database
+
+
+## Python function can also have multiple returns inside a function
+## if logical expressions are used.
+```
+Instead of using the `name` you can also use the `pycountry.countries.get(alpha_2=x).official_name`. 
+
+Apply (`.aaply()`) this function to the `cntry` column and create a new column in the same step. We also need to create the `['Year']` column by using the `essround` column. Here round 1 is equivalent to 2002, round 2 to 2004, round 3 to 2006 and so on.
+
+### Question 1: What is the ranking of European countries with respect to of average satisfaction with life?
+
+Instead of recoding number 77, 88 and 99, you can also remove them from the dataset by utilizing loc in conjunction with a logical expression.
+After that we have to use the `groupby` function but with our newly created columns. Additionally, we apply `.mean()` to this pandas Series. To get a DataFrame out of the Series, we have to reset the index by `reset_index()`
+You may remember we utilized `melt()` in our first homework to create a long format of the DataFrame. In this case we want a wide format with the `Country` as **index** and the **columns** referring to the `Year`. The correct function is `pivot(...)` which you have to apply.
+Last but not least you sort the values by `.sort_values(by=...)`
+
+
+### Question 2: What is the relation of the emotional attachment of Europeans to their own country and to Europe?
+
+a. 
+To count the number of individuals each combination of valid values of atchctr and atcherp, you have to create a crosstable by applying the following function 
+
+```{.python}
+valuetable = pd.crosstab(df['atchctr'],df['atcherp']).reset_index()[['atchctr',  0.0,  1.0,  2.0,  3.0,  4.0, 5.0,  6.0,  7.0,  8.0,  9.0, 10.0]].loc[0:10]
+```
+The table that is created looks exactly like the plot we want to recreate. But for plotting python and most other programming languages prefer a long data format. To save time and not wrangle with this table we choose a different way. 
+Therefore we simply use the function `value_counts()` on both columns
+
+```{.python}
+valuedf = df[['ColA', 'ColB']].value_counts().reset_index()
+valuedf = df.rename(columns={0:"NumIndividuals"})
+```
+Take a look at the data you created. \
+Finally we can plot our data with [sns.relplot](https://seaborn.pydata.org/generated/seaborn.relplot.html), define the Dataset with `data= ` , the x and y variable `x =  ,y =  ` and use *size* and *hue* within relplot
+
+
+b. 
+For this we need the orignal data set. To create a lowess plot in python we simply toggle to lowess inside the regplot function with `lowess=True`. And don't show the underlying data by setting `scatter=False`. **Beware** of the 77 88 and 99 that may still exist within your data
+
+```{.python}
+sns.regplot(data=...,....)
+```
+
+
+If you want to have a seperate plot for each country define a facetgrid:
+
+```{.python}
+g = sns.FacetGrid(Dataframe, col="Country", col_wrap=5 )
+## now we can map a function to each plot in this grid
+g.map_dataframe(sns.regplot,x= .. , y= ,.., ..)
+```
+Everything you want to have inside the regplot function you have to write individually after the function inside the [map funciton](https://seaborn.pydata.org/generated/seaborn.FacetGrid.map_dataframe.html).
+
+
+
+### Question 3: What is the relation of the emotional attachment to the own country and the opinion about further of European integration?
+
+Repeat everything again for `euftf`
+
+### Question 4: How many observations are there for each country-year combination?
+
+You have to again group the data by country-year combination. To get to number of observations the `.size()` function should be helpful. Again `.reset_index()` to create a DataFrame. 
+Now you can rename the column 0 to a more suitable name by using a dictionary.
+Define a dictionary and apply it to rename the column.
+
+```{.python}
+RenameDict = dict({SizeColumnName: 'MoreSuitableName'})
+YourDataFrame = YourDataFrame.rename(columns=RenameDict)
+``` 
+Now we have to `pivot()` again to get wide data format. The *index=* should be the country and the *columns=* should be the Year.
+
+
+

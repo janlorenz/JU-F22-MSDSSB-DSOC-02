@@ -100,6 +100,8 @@ For $p = 0$ it is $M_0(x_1, \dots, x_n) = (\prod_{i=1}^n x_i)^\frac{1}{n}$.
 
 $M_1$ is the arithmetic mean. $M_0$ is called the **geometric mean**. $M_{-1}$ the **harmonic mean**. 
 
+Note: Generalized means are often only reasonable when all values are positive $x_i > 0$.
+
 ::: aside
 $M_0$ can also be expressed as the exponential ($\exp(x) = e^x$) of the mean of the the $\log$'s of the $x_i$'s: $\exp(\log((\prod_{i=1}^n x_i)^\frac{1}{n})) = \exp(\frac{1}{n}\sum_{i=1}^n\log(x_i))$. 
 :::
@@ -219,7 +221,7 @@ viertel |> filter(Schätzung<100000) |> ggplot(aes(`Schätzung`)) + geom_histogr
  geom_vline(xintercept = mean(viertel$Schätzung), color = "red") + geom_vline(xintercept = median(viertel$Schätzung), color = "blue") + geom_vline(xintercept = Mode(viertel$Schätzung), color = "purple") + geom_vline(xintercept = exp(mean(log(viertel$Schätzung))), color = "orange")
 ```
 
-`r nrow(viertel)` estimates, [true value]{style="color:green;"} 1198, [mean]{style="color:red;"} `r format(round(mean(viertel$Schätzung), digits=1))`, [median]{style="color:blue;"} `r median(viertel$Schätzung)`, [mode]{style="color:purple;"} `r format(Mode(viertel$Schätzung))`,   
+`r nrow(viertel)` estimates, [true value]{style="color:green;"} 10788, [mean]{style="color:red;"} `r format(round(mean(viertel$Schätzung), digits=1))`, [median]{style="color:blue;"} `r median(viertel$Schätzung)`, [mode]{style="color:purple;"} `r format(Mode(viertel$Schätzung))`,   
 [geometric mean]{style="color:orange;"} `r format(round(exp(mean(log(viertel$Schätzung))), digits=1))`
 
 
@@ -232,7 +234,7 @@ viertel |> mutate(log10Est = log10(Schätzung)) |> ggplot(aes(log10Est)) + geom_
  geom_vline(xintercept = log10(mean(viertel$Schätzung)), color = "red") + geom_vline(xintercept = log10(median(viertel$Schätzung)), color = "blue") + geom_vline(xintercept = log10(Mode(viertel$Schätzung)), color = "purple") + geom_vline(xintercept = mean(log10(viertel$Schätzung)), color = "orange")
 ```
 
-`r nrow(viertel)` estimates, [true value]{style="color:green;"} 1198, [mean]{style="color:red;"} `r format(round(mean(viertel$Schätzung), digits=1))`, [median]{style="color:blue;"} `r median(viertel$Schätzung)`, [mode]{style="color:purple;"} `r format(Mode(viertel$Schätzung))`,   
+`r nrow(viertel)` estimates, [true value]{style="color:green;"} 10788, [mean]{style="color:red;"} `r format(round(mean(viertel$Schätzung), digits=1))`, [median]{style="color:blue;"} `r median(viertel$Schätzung)`, [mode]{style="color:purple;"} `r format(Mode(viertel$Schätzung))`,   
 [geometric mean]{style="color:orange;"} `r format(round(exp(mean(log(viertel$Schätzung))), digits=1))`
 
 

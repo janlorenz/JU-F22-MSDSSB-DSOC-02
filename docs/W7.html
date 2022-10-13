@@ -481,6 +481,7 @@
 <p><span class="math display">\[M_p(x_1, \dots, x_n) = (\frac{1}{n}\sum_{i=1}^n x_i^p)^\frac{1}{p}\]</span></p>
 <p>For <span class="math inline">\(p = 0\)</span> it is <span class="math inline">\(M_0(x_1, \dots, x_n) = (\prod_{i=1}^n x_i)^\frac{1}{n}\)</span>.</p>
 <p><span class="math inline">\(M_1\)</span> is the arithmetic mean. <span class="math inline">\(M_0\)</span> is called the <strong>geometric mean</strong>. <span class="math inline">\(M_{-1}\)</span> the <strong>harmonic mean</strong>.</p>
+<p>Note: Generalized means are often only reasonable when all values are positive <span class="math inline">\(x_i &gt; 0\)</span>.</p>
 
 <aside><div>
 <p><span class="math inline">\(M_0\)</span> can also be expressed as the exponential (<span class="math inline">\(\exp(x) = e^x\)</span>) of the mean of the the <span class="math inline">\(\log\)</span>’s of the <span class="math inline">\(x_i\)</span>’s: <span class="math inline">\(\exp(\log((\prod_{i=1}^n x_i)^\frac{1}{n})) = \exp(\frac{1}{n}\sum_{i=1}^n\log(x_i))\)</span>.</p>
@@ -563,7 +564,7 @@ We should filter out the highest values for the histogram…</p>
 <span id="cb3-3"><a href="#cb3-3"></a> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(viertel<span class="sc">$</span>Schätzung), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(viertel<span class="sc">$</span>Schätzung), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">Mode</span>(viertel<span class="sc">$</span>Schätzung), <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(viertel<span class="sc">$</span>Schätzung))), <span class="at">color =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><p>1226 estimates, <span style="color:green;">true value</span> 1198, <span style="color:red;">mean</span> 53163.9, <span style="color:blue;">median</span> 9843, <span style="color:purple;">mode</span> 10000,<br>
+<img data-src="W7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><p>1226 estimates, <span style="color:green;">true value</span> 10788, <span style="color:red;">mean</span> 53163.9, <span style="color:blue;">median</span> 9843, <span style="color:purple;">mode</span> 10000,<br>
 <span style="color:orange;">geometric mean</span> 10510.1</p>
 </section>
 <section id="log_10-transformation-viertelfest" class="slide level2 smaller" data-background-color="aquamarine">
@@ -573,7 +574,7 @@ We should filter out the highest values for the histogram…</p>
 <span id="cb4-2"><a href="#cb4-2"></a> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">log10</span>(<span class="fu">mean</span>(viertel<span class="sc">$</span>Schätzung)), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">log10</span>(<span class="fu">median</span>(viertel<span class="sc">$</span>Schätzung)), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">log10</span>(<span class="fu">Mode</span>(viertel<span class="sc">$</span>Schätzung)), <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(<span class="fu">log10</span>(viertel<span class="sc">$</span>Schätzung)), <span class="at">color =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><p>1226 estimates, <span style="color:green;">true value</span> 1198, <span style="color:red;">mean</span> 53163.9, <span style="color:blue;">median</span> 9843, <span style="color:purple;">mode</span> 10000,<br>
+<img data-src="W7_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><p>1226 estimates, <span style="color:green;">true value</span> 10788, <span style="color:red;">mean</span> 53163.9, <span style="color:blue;">median</span> 9843, <span style="color:purple;">mode</span> 10000,<br>
 <span style="color:orange;">geometric mean</span> 10510.1</p>
 </section>
 <section id="wisdom-of-the-crowd-insights" class="slide level2 smaller" data-background-color="aquamarine">
