@@ -798,6 +798,42 @@ We should filter out the highest values for the histogram…</p>
 <li>All other values outside of box and whiskers are shown as points and often called <strong>outliers</strong>. (There may be none.)</li>
 </ul>
 </section>
+<section id="boxplots-vs.-histograms" class="slide level2 smaller">
+<h2>Boxplots vs.&nbsp;histograms</h2>
+<ul>
+<li>Histograms can show the shape of the distribution well, but not the summary statistics like the median.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>galton <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Estimate)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>galton <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Estimate)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="boxplots-vs.-histograms-1" class="slide level2 smaller">
+<h2>Boxplots vs.&nbsp;histograms</h2>
+<ul>
+<li>Boxplots can not show the patterns of bimodal or multimodal distributions.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</div>
+</div>
+</section>
 <section id="minimizing-proporties-of-mean-and-median" class="slide level2" data-background-color="yellow">
 <h2>Minimizing proporties of Mean and Median</h2>
 <p><em>Mean</em> minimizes the mean of squared deviations from it. No other value <span class="math inline">\(a\)</span> has a lower mean of square distances from the data points. <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n(x_i - a)^2\)</span>.</p>
@@ -805,19 +841,17 @@ We should filter out the highest values for the histogram…</p>
 </section>
 <section id="two-families-of-summary-statistics" class="slide level2 smaller" data-background-color="yellow">
 <h2>Two families of summary statistics</h2>
-<ol type="1">
-<li>Measures based on <strong>sums</strong> (related to <em>mathematical moments</em>)</li>
-</ol>
+<ul>
+<li>Measures based on <strong>sums</strong> (related to <em>mathematical moments</em>)
 <ul>
 <li>Mean</li>
 <li>Standard deviation</li>
-</ul>
-<ol start="2" type="1">
-<li>Measures based on the <strong>ordered</strong> sequence of these observations (<em>order statistics</em>)</li>
-</ol>
+</ul></li>
+<li>Measures based on the <strong>ordered</strong> sequence of these observations (<em>order statistics</em>)
 <ul>
 <li>Median (and all quantiles)</li>
 <li>Interquartile range</li>
+</ul></li>
 </ul>
 </section></section>
 <section>
@@ -856,17 +890,17 @@ We should filter out the highest values for the histogram…</p>
 <li><span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are <em>anticorrelated</em></li>
 </ul></li>
 <li><p>When <span class="math inline">\(r_{xy} \approx 0\)</span> the variables are <em>uncorrelated</em></p></li>
-<li><p>Because of the normalization <span class="math inline">\(r_{xy} = r_{yx}\)</span>.</p></li>
+<li><p><span class="math inline">\(r_{xy} = r_{yx}\)</span></p></li>
 </ul>
 </section>
 <section id="correlation-and-linear-regression" class="slide level2 smaller">
 <h2>Correlation and linear regression</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb44-4"><a href="#cb44-4"></a>    <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb44-5"><a href="#cb44-5"></a>    <span class="fu">fit</span>(flipper_length_mm <span class="sc">~</span> body_mass_g, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb48-3"><a href="#cb48-3"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb48-4"><a href="#cb48-4"></a>    <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb48-5"><a href="#cb48-5"></a>    <span class="fu">fit</span>(flipper_length_mm <span class="sc">~</span> body_mass_g, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic   p.value
@@ -876,12 +910,12 @@ We should filter out the highest values for the histogram…</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>penguins_standardized <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb46-2"><a href="#cb46-2"></a> <span class="fu">mutate</span>(<span class="at">flipper_length_mm_s =</span> <span class="fu">scale</span>(flipper_length_mm)[,<span class="dv">1</span>],</span>
-<span id="cb46-3"><a href="#cb46-3"></a>        <span class="at">body_mass_g_s =</span> <span class="fu">scale</span>(body_mass_g)[,<span class="dv">1</span>])</span>
-<span id="cb46-4"><a href="#cb46-4"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb46-5"><a href="#cb46-5"></a> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-6"><a href="#cb46-6"></a> <span class="fu">fit</span>(flipper_length_mm_s <span class="sc">~</span> body_mass_g_s, <span class="at">data =</span> penguins_standardized) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>penguins_standardized <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a> <span class="fu">mutate</span>(<span class="at">flipper_length_mm_s =</span> <span class="fu">scale</span>(flipper_length_mm)[,<span class="dv">1</span>],</span>
+<span id="cb50-3"><a href="#cb50-3"></a>        <span class="at">body_mass_g_s =</span> <span class="fu">scale</span>(body_mass_g)[,<span class="dv">1</span>])</span>
+<span id="cb50-4"><a href="#cb50-4"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb50-5"><a href="#cb50-5"></a> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb50-6"><a href="#cb50-6"></a> <span class="fu">fit</span>(flipper_length_mm_s <span class="sc">~</span> body_mass_g_s, <span class="at">data =</span> penguins_standardized) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term           estimate std.error statistic   p.value
@@ -891,9 +925,9 @@ We should filter out the highest values for the histogram…</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">cor</span>(penguins_standardized<span class="sc">$</span>body_mass_g_s,</span>
-<span id="cb48-2"><a href="#cb48-2"></a>    penguins_standardized<span class="sc">$</span>flipper_length_mm_s, </span>
-<span id="cb48-3"><a href="#cb48-3"></a>    <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">cor</span>(penguins_standardized<span class="sc">$</span>body_mass_g_s,</span>
+<span id="cb52-2"><a href="#cb52-2"></a>    penguins_standardized<span class="sc">$</span>flipper_length_mm_s, </span>
+<span id="cb52-3"><a href="#cb52-3"></a>    <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8712018</code></pre>
 </div>
@@ -917,13 +951,13 @@ We should filter out the highest values for the histogram…</p>
 <h2>Correlation in exploratory data analysis</h2>
 <p>Using <code>corrr</code> from <code>tidymodels</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">library</span>(corrr)</span>
-<span id="cb50-2"><a href="#cb50-2"></a>ess <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ESS-Data-Wizard-subset-2022-09-17.csv"</span>) </span>
-<span id="cb50-3"><a href="#cb50-3"></a>ess_na <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="cn">NA</span>, x)</span>
-<span id="cb50-4"><a href="#cb50-4"></a>ess_sel <span class="ot">&lt;-</span> ess <span class="sc">|&gt;</span> <span class="fu">select</span>(cntry, essround, euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
-<span id="cb50-5"><a href="#cb50-5"></a> <span class="fu">mutate</span>(<span class="fu">across</span>(euftf<span class="sc">:</span>stflife, ess_na))</span>
-<span id="cb50-6"><a href="#cb50-6"></a>ess_sel <span class="sc">|&gt;</span> <span class="fu">select</span>(euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
-<span id="cb50-7"><a href="#cb50-7"></a> <span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">library</span>(corrr)</span>
+<span id="cb54-2"><a href="#cb54-2"></a>ess <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ESS-Data-Wizard-subset-2022-09-17.csv"</span>) </span>
+<span id="cb54-3"><a href="#cb54-3"></a>ess_na <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="cn">NA</span>, x)</span>
+<span id="cb54-4"><a href="#cb54-4"></a>ess_sel <span class="ot">&lt;-</span> ess <span class="sc">|&gt;</span> <span class="fu">select</span>(cntry, essround, euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
+<span id="cb54-5"><a href="#cb54-5"></a> <span class="fu">mutate</span>(<span class="fu">across</span>(euftf<span class="sc">:</span>stflife, ess_na))</span>
+<span id="cb54-6"><a href="#cb54-6"></a>ess_sel <span class="sc">|&gt;</span> <span class="fu">select</span>(euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
+<span id="cb54-7"><a href="#cb54-7"></a> <span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
   term       euftf  gincdif  lrscale  polintr stflife
@@ -939,9 +973,9 @@ We should filter out the highest values for the histogram…</p>
 <section id="correlation-in-eda" class="slide level2 smaller">
 <h2>Correlation in EDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>ess_sel <span class="sc">|&gt;</span> <span class="fu">filter</span>(cntry <span class="sc">==</span> <span class="st">"DE"</span>, essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb52-2"><a href="#cb52-2"></a> <span class="fu">select</span>(euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
-<span id="cb52-3"><a href="#cb52-3"></a> <span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>ess_sel <span class="sc">|&gt;</span> <span class="fu">filter</span>(cntry <span class="sc">==</span> <span class="st">"DE"</span>, essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb56-2"><a href="#cb56-2"></a> <span class="fu">select</span>(euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
+<span id="cb56-3"><a href="#cb56-3"></a> <span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
   term      euftf gincdif lrscale polintr stflife
@@ -958,17 +992,17 @@ We should filter out the highest values for the histogram…</p>
 <h2>Correlation in EDA</h2>
 <p>Using <code>correlate</code> and <code>see</code> from <code>easystats</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">library</span>(correlation)</span>
-<span id="cb54-2"><a href="#cb54-2"></a><span class="fu">library</span>(see)</span>
-<span id="cb54-3"><a href="#cb54-3"></a>results <span class="ot">&lt;-</span> ess_sel <span class="sc">|&gt;</span> <span class="fu">filter</span>(cntry <span class="sc">==</span> <span class="st">"DE"</span>, essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb54-4"><a href="#cb54-4"></a> <span class="fu">select</span>(euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
-<span id="cb54-5"><a href="#cb54-5"></a> <span class="fu">correlation</span>()</span>
-<span id="cb54-6"><a href="#cb54-6"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb54-7"><a href="#cb54-7"></a>  <span class="fu">summary</span>(<span class="at">redundant =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-8"><a href="#cb54-8"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">library</span>(correlation)</span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="fu">library</span>(see)</span>
+<span id="cb58-3"><a href="#cb58-3"></a>results <span class="ot">&lt;-</span> ess_sel <span class="sc">|&gt;</span> <span class="fu">filter</span>(cntry <span class="sc">==</span> <span class="st">"DE"</span>, essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb58-4"><a href="#cb58-4"></a> <span class="fu">select</span>(euftf<span class="sc">:</span>stflife) <span class="sc">|&gt;</span> </span>
+<span id="cb58-5"><a href="#cb58-5"></a> <span class="fu">correlation</span>()</span>
+<span id="cb58-6"><a href="#cb58-6"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb58-7"><a href="#cb58-7"></a>  <span class="fu">summary</span>(<span class="at">redundant =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-8"><a href="#cb58-8"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="W7_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="calculus" class="title-slide slide level1 center">
 <h1>Calculus</h1>
@@ -1089,39 +1123,39 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <p><span class="math inline">\(I(t) = \frac{N}{1 + (\frac{N}{I(0)} - 1)e^{-\beta t}}\)</span></p>
 <p>Plot the equation for <span class="math inline">\(N = 10000\)</span>, <span class="math inline">\(I_0 = 1\)</span>, and <span class="math inline">\(\beta = 0.3\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a>I0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb55-3"><a href="#cb55-3"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb55-4"><a href="#cb55-4"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb55-5"><a href="#cb55-5"></a> <span class="fu">geom_function</span>( <span class="at">fun =</span> <span class="cf">function</span>(t) N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> (N<span class="sc">/</span>I0 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>beta<span class="sc">*</span>t)) ) <span class="sc">+</span> </span>
-<span id="cb55-6"><a href="#cb55-6"></a> <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>I0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb59-3"><a href="#cb59-3"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb59-4"><a href="#cb59-4"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb59-5"><a href="#cb59-5"></a> <span class="fu">geom_function</span>( <span class="at">fun =</span> <span class="cf">function</span>(t) N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> (N<span class="sc">/</span>I0 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>beta<span class="sc">*</span>t)) ) <span class="sc">+</span> </span>
+<span id="cb59-6"><a href="#cb59-6"></a> <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<img data-src="W7_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
 <section id="si-model-numerical-integration" class="slide level2 smaller" data-background-color="aquamarine">
 <h2>SI-model: Numerical integration</h2>
 <p>Another way of solution using, e.g., using <em>Euler’s method</em>.</p>
 <p>We compute the solution step-by-step using small increments of, e.g.&nbsp;<span class="math inline">\(dt = 0.5\)</span>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a>I0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb56-3"><a href="#cb56-3"></a>dI <span class="ot">&lt;-</span> <span class="cf">function</span>(I,N,b) b<span class="sc">*</span>I<span class="sc">*</span>(N <span class="sc">-</span> I)<span class="sc">/</span>N</span>
-<span id="cb56-4"><a href="#cb56-4"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb56-5"><a href="#cb56-5"></a>dt <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># time increment, supposed to be infinitesimally small</span></span>
-<span id="cb56-6"><a href="#cb56-6"></a>tmax <span class="ot">&lt;-</span> <span class="dv">75</span></span>
-<span id="cb56-7"><a href="#cb56-7"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,tmax,dt) <span class="co"># this is the vector of timesteps</span></span>
-<span id="cb56-8"><a href="#cb56-8"></a>It <span class="ot">&lt;-</span> I0 <span class="co"># this will become the vector of the number infected I(t) over time</span></span>
-<span id="cb56-9"><a href="#cb56-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(t)) { <span class="co"># We iterate over the vector of time steps and incrementally compute It</span></span>
-<span id="cb56-10"><a href="#cb56-10"></a>  It[i] <span class="ot">=</span> It[i<span class="dv">-1</span>] <span class="sc">+</span> dt <span class="sc">*</span> <span class="fu">dI</span>(It[i<span class="dv">-1</span>], N, beta) <span class="co"># This is called Euler's method</span></span>
-<span id="cb56-11"><a href="#cb56-11"></a>}</span>
-<span id="cb56-12"><a href="#cb56-12"></a><span class="fu">tibble</span>(t, It) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(t,It)) <span class="sc">+</span> </span>
-<span id="cb56-13"><a href="#cb56-13"></a> <span class="fu">geom_function</span>( <span class="at">fun =</span> <span class="cf">function</span>(t) N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> (N<span class="sc">/</span>I0 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>beta<span class="sc">*</span>t)) ,</span>
-<span id="cb56-14"><a href="#cb56-14"></a>                <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># Analytical solution for comparison</span></span>
-<span id="cb56-15"><a href="#cb56-15"></a> <span class="fu">geom_line</span>() <span class="co"># The numerical solution in black</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a>I0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a>dI <span class="ot">&lt;-</span> <span class="cf">function</span>(I,N,b) b<span class="sc">*</span>I<span class="sc">*</span>(N <span class="sc">-</span> I)<span class="sc">/</span>N</span>
+<span id="cb60-4"><a href="#cb60-4"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb60-5"><a href="#cb60-5"></a>dt <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># time increment, supposed to be infinitesimally small</span></span>
+<span id="cb60-6"><a href="#cb60-6"></a>tmax <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb60-7"><a href="#cb60-7"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,tmax,dt) <span class="co"># this is the vector of timesteps</span></span>
+<span id="cb60-8"><a href="#cb60-8"></a>It <span class="ot">&lt;-</span> I0 <span class="co"># this will become the vector of the number infected I(t) over time</span></span>
+<span id="cb60-9"><a href="#cb60-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(t)) { <span class="co"># We iterate over the vector of time steps and incrementally compute It</span></span>
+<span id="cb60-10"><a href="#cb60-10"></a>  It[i] <span class="ot">=</span> It[i<span class="dv">-1</span>] <span class="sc">+</span> dt <span class="sc">*</span> <span class="fu">dI</span>(It[i<span class="dv">-1</span>], N, beta) <span class="co"># This is called Euler's method</span></span>
+<span id="cb60-11"><a href="#cb60-11"></a>}</span>
+<span id="cb60-12"><a href="#cb60-12"></a><span class="fu">tibble</span>(t, It) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(t,It)) <span class="sc">+</span> </span>
+<span id="cb60-13"><a href="#cb60-13"></a> <span class="fu">geom_function</span>( <span class="at">fun =</span> <span class="cf">function</span>(t) N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> (N<span class="sc">/</span>I0 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>beta<span class="sc">*</span>t)) ,</span>
+<span id="cb60-14"><a href="#cb60-14"></a>                <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># Analytical solution for comparison</span></span>
+<span id="cb60-15"><a href="#cb60-15"></a> <span class="fu">geom_line</span>() <span class="co"># The numerical solution in black</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1131,24 +1165,24 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <p>We compute the solution step-by-step using small increments of, e.g.&nbsp;<span class="math inline">\(dt = 0.01\)</span>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a>I0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>dI <span class="ot">&lt;-</span> <span class="cf">function</span>(I,N,b) b<span class="sc">*</span>I<span class="sc">*</span>(N <span class="sc">-</span> I)<span class="sc">/</span>N</span>
-<span id="cb57-4"><a href="#cb57-4"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb57-5"><a href="#cb57-5"></a>dt <span class="ot">&lt;-</span> <span class="fl">0.01</span> <span class="co"># time increment, supposed to be infinitesimally small</span></span>
-<span id="cb57-6"><a href="#cb57-6"></a>tmax <span class="ot">&lt;-</span> <span class="dv">75</span></span>
-<span id="cb57-7"><a href="#cb57-7"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,tmax,dt) <span class="co"># this is the vector of timesteps</span></span>
-<span id="cb57-8"><a href="#cb57-8"></a>It <span class="ot">&lt;-</span> I0 <span class="co"># this will become the vector of the number infected I(t) over time</span></span>
-<span id="cb57-9"><a href="#cb57-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(t)) { <span class="co"># We iterate over the vector of time steps and incrementally compute It</span></span>
-<span id="cb57-10"><a href="#cb57-10"></a>  It[i] <span class="ot">=</span> It[i<span class="dv">-1</span>] <span class="sc">+</span> dt <span class="sc">*</span> <span class="fu">dI</span>(It[i<span class="dv">-1</span>], N, beta) <span class="co"># This is called Euler's method</span></span>
-<span id="cb57-11"><a href="#cb57-11"></a>}</span>
-<span id="cb57-12"><a href="#cb57-12"></a><span class="fu">tibble</span>(t, It) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(t,It)) <span class="sc">+</span> </span>
-<span id="cb57-13"><a href="#cb57-13"></a> <span class="fu">geom_function</span>( <span class="at">fun =</span> <span class="cf">function</span>(t) N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> (N<span class="sc">/</span>I0 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>beta<span class="sc">*</span>t)) ,</span>
-<span id="cb57-14"><a href="#cb57-14"></a>                <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># Analytical solution for comparison</span></span>
-<span id="cb57-15"><a href="#cb57-15"></a> <span class="fu">geom_line</span>() <span class="co"># The numerical solution in black</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>I0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a>dI <span class="ot">&lt;-</span> <span class="cf">function</span>(I,N,b) b<span class="sc">*</span>I<span class="sc">*</span>(N <span class="sc">-</span> I)<span class="sc">/</span>N</span>
+<span id="cb61-4"><a href="#cb61-4"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb61-5"><a href="#cb61-5"></a>dt <span class="ot">&lt;-</span> <span class="fl">0.01</span> <span class="co"># time increment, supposed to be infinitesimally small</span></span>
+<span id="cb61-6"><a href="#cb61-6"></a>tmax <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb61-7"><a href="#cb61-7"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,tmax,dt) <span class="co"># this is the vector of timesteps</span></span>
+<span id="cb61-8"><a href="#cb61-8"></a>It <span class="ot">&lt;-</span> I0 <span class="co"># this will become the vector of the number infected I(t) over time</span></span>
+<span id="cb61-9"><a href="#cb61-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(t)) { <span class="co"># We iterate over the vector of time steps and incrementally compute It</span></span>
+<span id="cb61-10"><a href="#cb61-10"></a>  It[i] <span class="ot">=</span> It[i<span class="dv">-1</span>] <span class="sc">+</span> dt <span class="sc">*</span> <span class="fu">dI</span>(It[i<span class="dv">-1</span>], N, beta) <span class="co"># This is called Euler's method</span></span>
+<span id="cb61-11"><a href="#cb61-11"></a>}</span>
+<span id="cb61-12"><a href="#cb61-12"></a><span class="fu">tibble</span>(t, It) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(t,It)) <span class="sc">+</span> </span>
+<span id="cb61-13"><a href="#cb61-13"></a> <span class="fu">geom_function</span>( <span class="at">fun =</span> <span class="cf">function</span>(t) N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> (N<span class="sc">/</span>I0 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>beta<span class="sc">*</span>t)) ,</span>
+<span id="cb61-14"><a href="#cb61-14"></a>                <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># Analytical solution for comparison</span></span>
+<span id="cb61-15"><a href="#cb61-15"></a> <span class="fu">geom_line</span>() <span class="co"># The numerical solution in black</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1160,8 +1194,33 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <li>We produce a vector of length <span class="math inline">\(N\)</span> with entries representing the state of each individual as <code>"S"</code> or <code>"I"</code>.</li>
 <li>We model the random infection process in each step of unit time</li>
 </ul>
-
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>beta <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb62-3"><a href="#cb62-3"></a>randomly_infect <span class="ot">&lt;-</span> <span class="cf">function</span>(N, prob) { <span class="fu">runif</span>(N) <span class="sc">&lt;</span> prob }</span>
+<span id="cb62-4"><a href="#cb62-4"></a><span class="co"># Gives a logical vector of length N where TRUE appears with probability 0.3</span></span>
+<span id="cb62-5"><a href="#cb62-5"></a>init <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"S"</span>,N) <span class="co"># All susceptible</span></span>
+<span id="cb62-6"><a href="#cb62-6"></a>init[<span class="fu">sample.int</span>(N, <span class="at">size=</span><span class="dv">1</span>)] <span class="ot">&lt;-</span> <span class="st">"I"</span> <span class="co"># Infect one individual</span></span>
+<span id="cb62-7"><a href="#cb62-7"></a>tmax <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb62-8"><a href="#cb62-8"></a>sim_run <span class="ot">&lt;-</span> <span class="fu">list</span>(init)</span>
+<span id="cb62-9"><a href="#cb62-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>tmax) {</span>
+<span id="cb62-10"><a href="#cb62-10"></a> contacts <span class="ot">&lt;-</span> <span class="fu">sample</span>(sim_run[[i<span class="dv">-1</span>]], <span class="at">size =</span> N)</span>
+<span id="cb62-11"><a href="#cb62-11"></a> sim_run[[i]] <span class="ot">&lt;-</span> <span class="fu">if_else</span>(contacts <span class="sc">==</span> <span class="st">"I"</span> <span class="sc">&amp;</span> <span class="fu">randomly_infect</span>(N, beta), </span>
+<span id="cb62-12"><a href="#cb62-12"></a>                         <span class="at">true =</span> <span class="st">"I"</span>, </span>
+<span id="cb62-13"><a href="#cb62-13"></a>                         <span class="at">false =</span> sim_run[[i<span class="dv">-1</span>]])</span>
+<span id="cb62-14"><a href="#cb62-14"></a>}</span>
+<span id="cb62-15"><a href="#cb62-15"></a>sim_output <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">t =</span> <span class="dv">0</span><span class="sc">:</span>(tmax<span class="dv">-1</span>), </span>
+<span id="cb62-16"><a href="#cb62-16"></a>       <span class="co"># Compute a vector with length tmax with the count of "I" in sim_run list</span></span>
+<span id="cb62-17"><a href="#cb62-17"></a>       <span class="at">infected =</span> <span class="fu">map_dbl</span>(sim_run, <span class="cf">function</span>(x) <span class="fu">sum</span>(x <span class="sc">==</span> <span class="st">"I"</span>))) </span>
+<span id="cb62-18"><a href="#cb62-18"></a>sim_output <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(t,infected)) <span class="sc">+</span> <span class="fu">geom_line</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
 <section id="questions-on-programming-concepts" class="slide level2">
 <h2>Questions on programming concepts?</h2>
 <p>From base R:</p>
@@ -1195,12 +1254,15 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <h2>Differentiation with data</h2>
 <p>In empirical data we can compute the increase in a vector with the function <code>diff</code>:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">0</span>)</span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="fu">diff</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  1  0 -2 -3</code></pre>
 </div>
 </div>
 <p>More convenient for in a data frame is to use <code>x - lag(x)</code> because the vector has the same length.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>x <span class="sc">-</span> <span class="fu">lag</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA  1  2  1  0 -2 -3</code></pre>
 </div>
@@ -1209,36 +1271,36 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <section id="the-diff-of-our-simulation-output" class="slide level2 smaller">
 <h2>The diff of our simulation output</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>g2 <span class="ot">&lt;-</span> sim_output <span class="sc">|&gt;</span> </span>
-<span id="cb60-2"><a href="#cb60-2"></a> <span class="fu">mutate</span>(<span class="at">derivative_infected =</span> infected <span class="sc">-</span> <span class="fu">lag</span>(infected)) <span class="sc">|&gt;</span> </span>
-<span id="cb60-3"><a href="#cb60-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> derivative_infected))</span>
-<span id="cb60-4"><a href="#cb60-4"></a>g1 <span class="ot">&lt;-</span> sim_output <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> infected))</span>
-<span id="cb60-5"><a href="#cb60-5"></a>g2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>g2 <span class="ot">&lt;-</span> sim_output <span class="sc">|&gt;</span> </span>
+<span id="cb67-2"><a href="#cb67-2"></a> <span class="fu">mutate</span>(<span class="at">derivative_infected =</span> infected <span class="sc">-</span> <span class="fu">lag</span>(infected)) <span class="sc">|&gt;</span> </span>
+<span id="cb67-3"><a href="#cb67-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> derivative_infected))</span>
+<span id="cb67-4"><a href="#cb67-4"></a>g1 <span class="ot">&lt;-</span> sim_output <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> infected))</span>
+<span id="cb67-5"><a href="#cb67-5"></a>g2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>g1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>g1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-27-2.png" width="960"></p>
+<p><img data-src="W7_files/figure-revealjs/unnamed-chunk-31-2.png" width="960"></p>
 </div>
 </div>
 </section>
 <section id="nd-derivative-change-of-change" class="slide level2">
 <h2>2nd derivative: Change of change</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>g3 <span class="ot">&lt;-</span> sim_output <span class="sc">|&gt;</span> </span>
-<span id="cb62-2"><a href="#cb62-2"></a> <span class="fu">mutate</span>(<span class="at">derivative_infected =</span> infected <span class="sc">-</span> <span class="fu">lag</span>(infected),</span>
-<span id="cb62-3"><a href="#cb62-3"></a>        <span class="at">derivative2_infected =</span> derivative_infected <span class="sc">-</span> <span class="fu">lag</span>(derivative_infected)) <span class="sc">|&gt;</span> </span>
-<span id="cb62-4"><a href="#cb62-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> derivative2_infected))</span>
-<span id="cb62-5"><a href="#cb62-5"></a>g3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>g3 <span class="ot">&lt;-</span> sim_output <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a> <span class="fu">mutate</span>(<span class="at">derivative_infected =</span> infected <span class="sc">-</span> <span class="fu">lag</span>(infected),</span>
+<span id="cb69-3"><a href="#cb69-3"></a>        <span class="at">derivative2_infected =</span> derivative_infected <span class="sc">-</span> <span class="fu">lag</span>(derivative_infected)) <span class="sc">|&gt;</span> </span>
+<span id="cb69-4"><a href="#cb69-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> derivative2_infected))</span>
+<span id="cb69-5"><a href="#cb69-5"></a>g3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"><p>In empirical data: Derivatives of higher order tend to show fluctuation</p>
+<img data-src="W7_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"><p>In empirical data: Derivatives of higher order tend to show fluctuation</p>
 </section>
 <section id="interpretation-in-si-model" class="slide level2 smaller" data-background-color="aquamarine">
 <h2>Interpretation in SI-model</h2>
 
-<img data-src="W7_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"><ul>
+<img data-src="W7_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"><ul>
 <li><span class="math inline">\(I(t)\)</span> total number of infected</li>
 <li><span class="math inline">\(I'(t)\)</span> number of new cases per day (time step)</li>
 <li><span class="math inline">\(I''(t)\)</span> how the number of new cases has changes compared to yesterday
@@ -1255,8 +1317,8 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <li>Compute the anti-derivative of data vector with <code>cumsum</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">0</span>)</span>
-<span id="cb63-2"><a href="#cb63-2"></a><span class="fu">cumsum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">0</span>)</span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="fu">cumsum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  3  7 12 17 20 20</code></pre>
 </div>
@@ -1270,14 +1332,14 @@ Note, we need to specify the initial number of infectious individuals <span clas
 <p><strong>The integral of the derivative is the function itself.</strong></p>
 <p>This is not a proof but shows the idea:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">0</span>)</span>
-<span id="cb65-2"><a href="#cb65-2"></a>antiderivative <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(f)</span>
-<span id="cb65-3"><a href="#cb65-3"></a><span class="fu">diff</span>(<span class="fu">c</span>(<span class="dv">0</span>, antiderivative)) <span class="co"># We have to put 0 before to regain the full vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">0</span>)</span>
+<span id="cb72-2"><a href="#cb72-2"></a>antiderivative <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(f)</span>
+<span id="cb72-3"><a href="#cb72-3"></a><span class="fu">diff</span>(<span class="fu">c</span>(<span class="dv">0</span>, antiderivative)) <span class="co"># We have to put 0 before to regain the full vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 4 5 5 3 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>derivative <span class="ot">&lt;-</span> <span class="fu">diff</span>(f)</span>
-<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">cumsum</span>(<span class="fu">c</span>(<span class="dv">1</span>,derivative)) <span class="co"># We have to put in the first value (here 1) manually because it was lost during the diff</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>derivative <span class="ot">&lt;-</span> <span class="fu">diff</span>(f)</span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="fu">cumsum</span>(<span class="fu">c</span>(<span class="dv">1</span>,derivative)) <span class="co"># We have to put in the first value (here 1) manually because it was lost during the diff</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 4 5 5 3 0</code></pre>
 </div>

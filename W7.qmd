@@ -413,6 +413,37 @@ galton |> ggplot(aes(x = Estimate)) + geom_boxplot()
 - Whiskers must end at an observed data point! (So lengths can differ.) 
 - All other values outside of box and whiskers are shown as points and often called **outliers**. (There may be none.)
 
+## Boxplots vs. histograms {.smaller}
+
+- Histograms can show the shape of the distribution well, but not the summary statistics like the median.
+
+```{r}
+#| echo: true
+#| fig-height: 1
+galton |> ggplot(aes(x = Estimate)) + geom_boxplot()
+```
+
+```{r}
+#| echo: true
+#| fig-height: 2
+galton |> ggplot(aes(x = Estimate)) + geom_histogram(binwidth = 5)
+```
+## Boxplots vs. histograms {.smaller}
+
+- Boxplots can not show the patterns of bimodal or multimodal distributions. 
+
+```{r}
+#| echo: true
+#| fig-height: 1
+palmerpenguins::penguins |> ggplot(aes(x = flipper_length_mm)) + geom_boxplot()
+```
+
+```{r}
+#| echo: true
+#| fig-height: 2
+palmerpenguins::penguins |> ggplot(aes(x = flipper_length_mm)) + geom_histogram(binwidth = 1)
+```
+
 
 ## Minimizing proporties of Mean and Median { background-color="yellow"}
 
@@ -423,10 +454,10 @@ galton |> ggplot(aes(x = Estimate)) + geom_boxplot()
 
 ## Two families of summary statistics  {.smaller background-color="yellow"}
 
-1. Measures based on **sums** (related to *mathematical moments*)
+- Measures based on **sums** (related to *mathematical moments*)
   - Mean
   - Standard deviation
-2. Measures based on the **ordered** sequence of these observations (*order statistics*)
+- Measures based on the **ordered** sequence of these observations (*order statistics*)
   - Median (and all quantiles)
   - Interquartile range
 
@@ -473,7 +504,7 @@ Correlation between two vectors $x$ and $y$ is "normalized".
   - $x$ and $y$ are *anticorrelated*
 - When $r_{xy} \approx 0$ the variables are *uncorrelated*
 
-- Because of the normalization $r_{xy} = r_{yx}$.
+- $r_{xy} = r_{yx}$
 
 
 
@@ -779,12 +810,12 @@ Another more basic solution is direct **individual-based simulation**.
 - We model the random infection process in each step of unit time
 
 ```{r}
+#| echo: true
+#| output-location: column
 N <- 10000
 beta <- 0.3
-randomly_infect <- function(N, prob) {
- # Gives a logical vector of length N where TRUE appears with probability 0.3
- runif(N) < prob
-}
+randomly_infect <- function(N, prob) { runif(N) < prob }
+# Gives a logical vector of length N where TRUE appears with probability 0.3
 init <- rep("S",N) # All susceptible
 init[sample.int(N, size=1)] <- "I" # Infect one individual
 tmax <- 75
@@ -798,8 +829,7 @@ for (i in 2:tmax) {
 sim_output <- tibble(t = 0:(tmax-1), 
        # Compute a vector with length tmax with the count of "I" in sim_run list
        infected = map_dbl(sim_run, function(x) sum(x == "I"))) 
-sim_output |> 
- ggplot(aes(t,infected)) + geom_line()  
+sim_output |> ggplot(aes(t,infected)) + geom_line()  
 ```
 
 
@@ -838,6 +868,7 @@ From `purrr`:
 In empirical data we can compute the increase in a vector with the function `diff`:
 
 ```{r}
+#| echo: true
 x <- c(1,2,4,5,5,3,0)
 diff(x)
 ```
@@ -845,6 +876,7 @@ diff(x)
 More convenient for in a data frame is to use `x - lag(x)` because the vector has the same length.
 
 ```{r}
+#| echo: true
 x - lag(x)
 ```
 

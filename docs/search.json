@@ -2300,7 +2300,7 @@
     "href": "W7.html#two-families-of-summary-statistics",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Two families of summary statistics",
-    "text": "Two families of summary statistics\n\nMeasures based on sums (related to mathematical moments)\n\n\nMean\nStandard deviation\n\n\nMeasures based on the ordered sequence of these observations (order statistics)\n\n\nMedian (and all quantiles)\nInterquartile range"
+    "text": "Two families of summary statistics\n\nMeasures based on sums (related to mathematical moments)\n\nMean\nStandard deviation\n\nMeasures based on the ordered sequence of these observations (order statistics)\n\nMedian (and all quantiles)\nInterquartile range"
   },
   {
     "objectID": "W7.html#aggregation-philosophy",
@@ -2531,7 +2531,7 @@
     "href": "W7.html#si-model-simulation",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "SI-model: Simulation",
-    "text": "SI-model: Simulation\nAnother more basic solution is direct individual-based simulation.\n\nWe produce a vector of length \\(N\\) with entries representing the state of each individual as \"S\" or \"I\".\nWe model the random infection process in each step of unit time"
+    "text": "SI-model: Simulation\nAnother more basic solution is direct individual-based simulation.\n\nWe produce a vector of length \\(N\\) with entries representing the state of each individual as \"S\" or \"I\".\nWe model the random infection process in each step of unit time\n\n\n\nN <- 10000\nbeta <- 0.3\nrandomly_infect <- function(N, prob) { runif(N) < prob }\n# Gives a logical vector of length N where TRUE appears with probability 0.3\ninit <- rep(\"S\",N) # All susceptible\ninit[sample.int(N, size=1)] <- \"I\" # Infect one individual\ntmax <- 75\nsim_run <- list(init)\nfor (i in 2:tmax) {\n contacts <- sample(sim_run[[i-1]], size = N)\n sim_run[[i]] <- if_else(contacts == \"I\" & randomly_infect(N, beta), \n                         true = \"I\", \n                         false = sim_run[[i-1]])\n}\nsim_output <- tibble(t = 0:(tmax-1), \n       # Compute a vector with length tmax with the count of \"I\" in sim_run list\n       infected = map_dbl(sim_run, function(x) sum(x == \"I\"))) \nsim_output |> ggplot(aes(t,infected)) + geom_line()"
   },
   {
     "objectID": "W7.html#ordinary-differential-equation",
@@ -2559,7 +2559,7 @@
     "href": "W7.html#differentiation-with-data",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Differentiation with data",
-    "text": "Differentiation with data\nIn empirical data we can compute the increase in a vector with the function diff:\n\n\n[1]  1  2  1  0 -2 -3\n\n\nMore convenient for in a data frame is to use x - lag(x) because the vector has the same length.\n\n\n[1] NA  1  2  1  0 -2 -3"
+    "text": "Differentiation with data\nIn empirical data we can compute the increase in a vector with the function diff:\n\nx <- c(1,2,4,5,5,3,0)\ndiff(x)\n\n[1]  1  2  1  0 -2 -3\n\n\nMore convenient for in a data frame is to use x - lag(x) because the vector has the same length.\n\nx - lag(x)\n\n[1] NA  1  2  1  0 -2 -3"
   },
   {
     "objectID": "W7.html#differential-equation",
@@ -2699,7 +2699,7 @@
     "href": "W7.html#interpretation-of-correlation",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Interpretation of correlation",
-    "text": "Interpretation of correlation\nCorrelation between two vectors \\(x\\) and \\(y\\) is “normalized”.\n\nThe maximal possible values is \\(r_{xy} = 1\\)\n\n\\(x\\) and \\(y\\) are fully correlated\n\nThe minimal values is \\(r_{xy} = -1\\)\n\n\\(x\\) and \\(y\\) are anticorrelated\n\nWhen \\(r_{xy} \\approx 0\\) the variables are uncorrelated\nBecause of the normalization \\(r_{xy} = r_{yx}\\)."
+    "text": "Interpretation of correlation\nCorrelation between two vectors \\(x\\) and \\(y\\) is “normalized”.\n\nThe maximal possible values is \\(r_{xy} = 1\\)\n\n\\(x\\) and \\(y\\) are fully correlated\n\nThe minimal values is \\(r_{xy} = -1\\)\n\n\\(x\\) and \\(y\\) are anticorrelated\n\nWhen \\(r_{xy} \\approx 0\\) the variables are uncorrelated\n\\(r_{xy} = r_{yx}\\)"
   },
   {
     "objectID": "W7.html#correlation-and-linear-regression-1",
@@ -2784,5 +2784,26 @@
     "title": "W#7 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
     "section": "Decision Trees",
     "text": "Decision Trees\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W7.html#boxplots-1",
+    "href": "W7.html#boxplots-1",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Boxplots",
+    "text": "Boxplots\n\ngalton |> ggplot(aes(x = Estimate)) + geom_boxplot()\n\n\n\ngalton |> ggplot(aes(x = Estimate)) + geom_histogram()"
+  },
+  {
+    "objectID": "W7.html#boxplots-vs.-histograms",
+    "href": "W7.html#boxplots-vs.-histograms",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Boxplots vs. histograms",
+    "text": "Boxplots vs. histograms\n\nHistograms can show the shape of the distribution well, but not the summary statistics like the median.\n\n\ngalton |> ggplot(aes(x = Estimate)) + geom_boxplot()\n\n\n\n\n\ngalton |> ggplot(aes(x = Estimate)) + geom_histogram(binwidth = 5)"
+  },
+  {
+    "objectID": "W7.html#boxplots-vs.-histograms-1",
+    "href": "W7.html#boxplots-vs.-histograms-1",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Boxplots vs. histograms",
+    "text": "Boxplots vs. histograms\n\nBoxplots can not show the patterns of bimodal or multimodal distributions.\n\n\npalmerpenguins::penguins |> ggplot(aes(x = flipper_length_mm)) + geom_boxplot()\n\n\n\n\n\npalmerpenguins::penguins |> ggplot(aes(x = flipper_length_mm)) + geom_histogram(binwidth = 1)"
   }
 ]
