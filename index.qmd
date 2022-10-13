@@ -145,11 +145,12 @@ Lab work on code. Clone from: <https://github.com/JU-F22-MDSSB-MET-01/codebase-j
 In RStudio, work through
 
 - 2022-09-15_ggplot_and_pipe.R
-- 2022-09-15_profiles.qmd 
+- 2022-09-15_profiles.qmd
 
 ## Week 4, Sep 22: Data import, data Wrangling {-}
 
-[Slides Week 4](W4.qmd)
+[Slides Week 4](W4.qmd)  
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
 Including some recap of the toolkit.    
 Questions and advice on Homework 02 (mostly in Recording).  
@@ -157,7 +158,8 @@ Questions and advice on Homework 02 (mostly in Recording).
 
 ## Week 5, Sep 29:  More under the hood, Relational Data, Exploratory Data Analysis {-}
 
-[Slides Week 5](W5.qmd)
+[Slides Week 5](W5.qmd)  
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
 Topics: 
 
@@ -174,14 +176,16 @@ Topics:
 
 ## Week 6, Oct 6:  Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model {-}
 
-[Slides Week 6](W6.qmd)
+[Slides Week 6](W6.qmd)  
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
 **Homework 03 is due Oct 16.**
 
 
 ## Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models {-}
 
-[Slides Week 7](W7.qmd)
+[Slides Week 7](W7.qmd)  
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
 **Homework 03 is due Oct 16.**
 

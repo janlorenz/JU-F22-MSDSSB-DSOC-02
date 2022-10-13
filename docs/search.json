@@ -718,7 +718,7 @@
     "href": "index.html#week-4-sep-22-data-import-data-wrangling",
     "title": "Data Science Concepts / Tools",
     "section": "Week 4, Sep 22: Data import, data Wrangling",
-    "text": "Week 4, Sep 22: Data import, data Wrangling\nSlides Week 4\nIncluding some recap of the toolkit.\nQuestions and advice on Homework 02 (mostly in Recording)."
+    "text": "Week 4, Sep 22: Data import, data Wrangling\nSlides Week 4\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nIncluding some recap of the toolkit.\nQuestions and advice on Homework 02 (mostly in Recording)."
   },
   {
     "objectID": "index.html#week-5-sep-29-relational-data-exploratory-data-analysis-asking-questions",
@@ -1173,7 +1173,7 @@
     "href": "index.html#week-5-sep-29-more-under-the-hood-relational-data-exploratory-data-analysis",
     "title": "Data Science Concepts / Tools",
     "section": "Week 5, Sep 29: More under the hood, Relational Data, Exploratory Data Analysis",
-    "text": "Week 5, Sep 29: More under the hood, Relational Data, Exploratory Data Analysis\nSlides Week 5\nTopics:\n\nMore under the hood\nAugmented vectors: Factors and Dates\nStrings\nRelational Data: Joins, joins, joins …\nMath: Sets and vectors\nExploratory Data Analysis\nData Science Projects\n\nHomework 02 due next Sunday.\nHomework 03 comes over the weekend."
+    "text": "Week 5, Sep 29: More under the hood, Relational Data, Exploratory Data Analysis\nSlides Week 5\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nTopics:\n\nMore under the hood\nAugmented vectors: Factors and Dates\nStrings\nRelational Data: Joins, joins, joins …\nMath: Sets and vectors\nExploratory Data Analysis\nData Science Projects\n\nHomework 02 due next Sunday.\nHomework 03 comes over the weekend."
   },
   {
     "objectID": "hw-instructions/hw-03-instr.html#corona",
@@ -2755,14 +2755,14 @@
     "href": "index.html#week-6-oct-6-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model",
     "title": "Data Science Concepts / Tools",
     "section": "Week 6, Oct 6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
-    "text": "Week 6, Oct 6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model\nSlides Week 6\nHomework 03 is due Oct 16."
+    "text": "Week 6, Oct 6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model\nSlides Week 6\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 03 is due Oct 16."
   },
   {
     "objectID": "index.html#week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models",
     "href": "index.html#week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models",
     "title": "Data Science Concepts / Tools",
-    "section": "3.1 Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
-    "text": "3.1 Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models\nSlides Week 7\nHomework 03 is due Oct 16."
+    "section": "Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "text": "Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models\nSlides Week 7\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 03 is due Oct 16."
   },
   {
     "objectID": "hw-instructions/hw-03-py-instruction.html",
