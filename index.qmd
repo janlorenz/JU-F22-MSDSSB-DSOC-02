@@ -179,7 +179,7 @@ Topics:
 **Homework 03 is due Oct 16.**
 
 
-## Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models
+## Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models {-}
 
 [Slides Week 7](W7.qmd)
 
