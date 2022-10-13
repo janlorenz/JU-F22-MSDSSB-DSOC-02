@@ -2195,28 +2195,28 @@
     "href": "W7.html#measures-of-central-tendency",
     "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
     "section": "Measures of central tendency",
-    "text": "Measures of central tendency\nMean"
+    "text": "Measures of central tendency\nGoal: For a sequence of numerical observations \\(x_1,\\dots,x_n\\) we want to measure\n\nthe “typical” value.\na value summarizing the location of values on the numerical axis.\n\nThree different ways:\n\nArithmetic mean (also mean, average): Sum of the all observations divided by the number of observations \\(\\frac{1}{n}\\sum_{i=1}^n x_i\\)\nMedian: Assume \\(x_1 \\leq x_2 \\leq\\dots\\leq x_n\\). Then the median is middlemost values in the sequence \\(x_\\frac{n+1}{2}\\) when \\(n\\) odd. For \\(n\\) even there are two middlemost values and the median is \\(\\frac{x_\\frac{n}{2} + x_\\frac{n+1}{2}}{2}\\)\nMode: The value that appears most often in the sequence."
   },
   {
     "objectID": "W7.html#measures-of-dispersion",
     "href": "W7.html#measures-of-dispersion",
     "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
-    "section": "Measures of dispersion",
-    "text": "Measures of dispersion\nStandard deviation"
+    "section": "Measures of dispersion1",
+    "text": "Measures of dispersion1\nGoal: We want to measure\n\nhow spread out values are around the central tendency.\nHow stretched or squeezed is the distribution?\n\nVariance is the mean of the squared deviation from the mean: \\(\\text{Var}(x) = \\frac{1}{n}\\sum_{i=1}^n(x_i - \\mu)^2\\) where \\(\\mu\\) (mu) is the mean.\nStandard deviation is the square root of the variance \\(\\text{SD}(x) = \\sqrt{\\text{Var}(x)}\\).\nThe standard deviation is often denoted \\(\\sigma\\) (sigma) and the variance \\(\\sigma^2\\).\nMean absolute deviation (MAD) is the mean of the absolute deviation from the mean: \\(\\text{MAD}(x) = \\frac{1}{n}\\sum_{i=1}^n|x_i - \\mu|\\).\nRange is the difference of the maximal and the minimal value \\(\\max(x) - \\min(x)\\).\nAlso called variability, scatter, or spread."
   },
   {
     "objectID": "W7.html#covariance-and-correlation-coefficient",
     "href": "W7.html#covariance-and-correlation-coefficient",
-    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "title": "W#6 Math: Descriptive statistics, Calculus, Derivative and Antiderivative",
     "section": "Covariance and Correlation Coefficient",
-    "text": "Covariance and Correlation Coefficient"
+    "text": "Covariance and Correlation Coefficient\nAnscombe"
   },
   {
     "objectID": "W7.html#measures-of-central-tendency-1",
     "href": "W7.html#measures-of-central-tendency-1",
-    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Measures of central tendency",
-    "text": "Measures of central tendency"
+    "text": "Measures of central tendency\nGoal: For a sequence of numerical observations \\(x_1,\\dots,x_n\\) we want to measure\n\nthe “typical” value.\na value summarizing the location of values on the numerical axis.\n\nThree different ways:\n\nArithmetic mean (also mean, average): Sum of the all observations divided by the number of observations \\(\\frac{1}{n}\\sum_{i=1}^n x_i\\)\nMedian: Assume \\(x_1 \\leq x_2 \\leq\\dots\\leq x_n\\). Then the median is middlemost values in the sequence \\(x_\\frac{n+1}{2}\\) when \\(n\\) odd. For \\(n\\) even there are two middlemost values and the median is \\(\\frac{x_\\frac{n}{2} + x_\\frac{n+1}{2}}{2}\\)\nMode: The value that appears most often in the sequence."
   },
   {
     "objectID": "W7.html#mean",
@@ -2235,16 +2235,16 @@
   {
     "objectID": "W7.html#measures-of-dispersion-1",
     "href": "W7.html#measures-of-dispersion-1",
-    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
-    "section": "Measures of dispersion",
-    "text": "Measures of dispersion"
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Measures of dispersion1",
+    "text": "Measures of dispersion1\nGoal: We want to measure\n\nhow spread out values are around the central tendency.\nHow stretched or squeezed is the distribution?\n\nVariance is the mean of the squared deviation from the mean: \\(\\text{Var}(x) = \\frac{1}{n}\\sum_{i=1}^n(x_i - \\mu)^2\\) where \\(\\mu\\) (mu) is the mean.\nStandard deviation is the square root of the variance \\(\\text{SD}(x) = \\sqrt{\\text{Var}(x)}\\).\nThe standard deviation is often denoted \\(\\sigma\\) (sigma) and the variance \\(\\sigma^2\\).\nMean absolute deviation (MAD) is the mean of the absolute deviation from the mean: \\(\\text{MAD}(x) = \\frac{1}{n}\\sum_{i=1}^n|x_i - \\mu|\\).\nRange is the difference of the maximal and the minimal value \\(\\max(x) - \\min(x)\\).\nAlso called variability, scatter, or spread."
   },
   {
     "objectID": "W7.html#standardization",
     "href": "W7.html#standardization",
-    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Standardization",
-    "text": "Standardization"
+    "text": "Standardization\nVariables are standardized by subtracting their mean and then dividing by their standard deviations.\nA value from a standardized variable is called a standard score or z-score.\n\\(z_i = \\frac{x_i - \\mu}{\\sigma}\\)\nwhere \\(\\mu\\) is the mean and \\(\\sigma\\) the standard deviation of the vector \\(x\\).\n\nThis is a shift-scale transformation. We shift by the mean and scale by the standard deviation.\nA standard score \\(z_i\\) shows how mean standard deviations \\(x_i\\) is away from the mean of \\(x\\)."
   },
   {
     "objectID": "W7.html#covariance-and-correlation",
@@ -2256,9 +2256,9 @@
   {
     "objectID": "W7.html#epidemic-modeling",
     "href": "W7.html#epidemic-modeling",
-    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Epidemic Modeling",
-    "text": "Epidemic Modeling\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+    "text": "Epidemic Modeling\n\nAssume a population of N individuals.\n\nIndividuals can have different states, e.g.: Susceptible, Infectious, Recovered, …\nThe population divides into compartments of these states which change over time, e.g.: \\(S(t), I(t), R(t)\\) number of susceptible, infectious, recovered individuals\n\nNow we define dynamics like\n\nwhere the numbers on the arrows represent transition probabilities."
   },
   {
     "objectID": "index.html#week-6-sep-29-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model",
@@ -2266,5 +2266,502 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 6, Sep 29: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
     "text": "Week 6, Sep 29: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model\nSlides Week 6\nHomework 03 is due Oct 16."
+  },
+  {
+    "objectID": "W7.html#descriptive-vs.-inferential-statistics",
+    "href": "W7.html#descriptive-vs.-inferential-statistics",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Descriptive vs. Inferential Statistics",
+    "text": "Descriptive vs. Inferential Statistics\n\nThe process of using and analyzing summary statistics\n\nSolely concerned with properties of the observed data.\n\nDistinct from inferential statistics:\n\nInference of properties of an underlying distribution given sampled observations from a larger population.\n\n\nSummary Statistics are used to summarize a set of observations to communicate the largest amount of information as simple as possible."
+  },
+  {
+    "objectID": "W7.html#test-und-training-set",
+    "href": "W7.html#test-und-training-set",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Test und Training set",
+    "text": "Test und Training set\nCross validation"
+  },
+  {
+    "objectID": "W7.html#decision-trees",
+    "href": "W7.html#decision-trees",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Decision Trees",
+    "text": "Decision Trees"
+  },
+  {
+    "objectID": "W7.html#summary-statistics",
+    "href": "W7.html#summary-statistics",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Summary statistics",
+    "text": "Summary statistics\nUnivariate (for one variable)\n\nMeasures of location, or central tendency\nMeasures of statistical dispersion\nMeasure of the shape of the distribution like skewness or kurtosis\n\nBivariate (for two variables)\n\nMeasures of statistical dependence or correlation"
+  },
+  {
+    "objectID": "W7.html#two-families-of-summary-statistics",
+    "href": "W7.html#two-families-of-summary-statistics",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Two families of summary statistics",
+    "text": "Two families of summary statistics\n\nMeasures based on sums (related to mathematical moments)\n\n\nMean\nStandard deviation\n\n\nMeasures based on the ordered sequence of these observations (order statistics)\n\n\nMedian (and all quantiles)\nInterquartile range"
+  },
+  {
+    "objectID": "W7.html#aggregation-philosophy",
+    "href": "W7.html#aggregation-philosophy",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Aggregation philosophy",
+    "text": "Aggregation philosophy\n\nThe mean represents total value per value.\nExample: per capita income in a town is the total income per individual\nThe median represents the value such that half of the values are lower and higher.\nIn a democracy where each value is represented by one voter preferring it, the median is the value which is unbeatable in a majority decision. Half of the people prefer higher the other half lower values. (Median voter theorem)"
+  },
+  {
+    "objectID": "W7.html#power-means-based-on-monotone-transformations",
+    "href": "W7.html#power-means-based-on-monotone-transformations",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Power means based on monotone transformations",
+    "text": "Power means based on monotone transformations"
+  },
+  {
+    "objectID": "W7.html#minimizing-proporties-of-mean-and-median",
+    "href": "W7.html#minimizing-proporties-of-mean-and-median",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Minimizing proporties of Mean and Median",
+    "text": "Minimizing proporties of Mean and Median\nMean minimizes the mean of squared deviations from it. No other value \\(a\\) has a lower mean of square distances from the data points. \\(\\frac{1}{n}\\sum_{i=1}^n(x_i - a)^2\\).\nMedian minimizes the sum of the absolute deviation. No other value \\(a\\) has a lower mean of absolute distances from the data points. \\(\\frac{1}{n}\\sum_{i=1}^n|x_i - a|\\)."
+  },
+  {
+    "objectID": "W7.html#philosophy-of-aggregation",
+    "href": "W7.html#philosophy-of-aggregation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Philosophy of aggregation",
+    "text": "Philosophy of aggregation\n\nThe mean represents total value per value.\nExample: per capita income in a town is the total income per individual\nThe median represents the value such that half of the values are lower and higher.\nIn a democracy where each value is represented by one voter preferring it, the median is the value which is unbeatable by an absolute majority. Half of the people prefer higher the other half lower values. (Median voter model)\nThe mode represents the most common value.\nIn a democracy, the mode represents the winner of a plurality vote where each value runs as a candidate and the winner is the one with the most votes."
+  },
+  {
+    "objectID": "W7.html#mean-median-mode-properties",
+    "href": "W7.html#mean-median-mode-properties",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Mean, Median, Mode properties",
+    "text": "Mean, Median, Mode properties\nAre all of these well defined? (That means, they deliver one unambiguous answer for any sequence.)\n\nMean and median, yes. The mode has no rules for a tie.\n\n\nCan they by generalized to variables with ordered or even unordered categories?\n\n\nMean: No. Median: For ordered categories. Mode: For any categorical variable.\n\n\nIs measure always also in the data sequence?\n\n\nMean: No. Median: Yes, for sequences of odd length. Mode: Yes."
+  },
+  {
+    "objectID": "W7.html#generalized-means",
+    "href": "W7.html#generalized-means",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Generalized means1",
+    "text": "Generalized means1\nFor \\(x_1, \\dots, x_n > 0\\) and \\(p\\in \\mathbb{R}_{\\neq 0}\\) the generalized mean is\n\\[M_p(x_1, \\dots, x_n) = (\\frac{1}{n}\\sum_{i=1}^n x_i^p)^\\frac{1}{p}\\]\nFor \\(p = 0\\) it is \\(M_0(x_1, \\dots, x_n) = (\\prod_{i=1}^n x_i)^\\frac{1}{n}\\).\n\\(M_1\\) is the arithmetic mean. \\(M_0\\) is called the geometric mean. \\(M_{-1}\\) the harmonic mean.\n\n\n\\(M_0\\) can also be expressed as the exponential (\\(\\exp(x) = e^x\\)) of the mean of the the \\(\\log\\)’s of the \\(x_i\\)’s: \\(\\exp(\\log((\\prod_{i=1}^n x_i)^\\frac{1}{n})) = \\exp(\\frac{1}{n}\\sum_{i=1}^n\\log(x_i))\\).\nAlso called power mean or \\(p\\)-mean."
+  },
+  {
+    "objectID": "W7.html#transformation-function",
+    "href": "W7.html#transformation-function",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Transformation function",
+    "text": "Transformation function"
+  },
+  {
+    "objectID": "W7.html#application-the-wisdom-of-the-crowd",
+    "href": "W7.html#application-the-wisdom-of-the-crowd",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Application: The Wisdom of the Crowd",
+    "text": "Application: The Wisdom of the Crowd\n\n\n\nThe collective opinion of a diverse group of independent individuals rather than that of a single expert.\nThe classical wisdom-of-the-crowds finding is about point estimation of a continuous quantity.\nPopularized by James Surowiecki (2004).\nThe opening anecdote is about Francis Galton’s1 surprise in 1907 that the crowd at a county fair accurately guessed the weight of an ox’s meat when their individual guesses were averaged.\n\n\n\n\n\n\nGalton (1822-1911) was a half-cousin to Charles Darwin and one of the founding fathers of statistics. He also was a scientific racist, see https://twitter.com/kareem_carr/status/1575506343401775104?s=20&t=8T5TzrayAWNShmOSzJgCJQ.."
+  },
+  {
+    "objectID": "W7.html#box-cox-transformation-function",
+    "href": "W7.html#box-cox-transformation-function",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Box-Cox transformation function",
+    "text": "Box-Cox transformation function\nFor \\(p \\in \\mathbb{R}\\): \\(f(x) = \\begin{cases}\\frac{x^p - 1}{p} & \\text{for $p\\neq 0$} \\\\ \\log(x) & \\text{for $p= 0$}\\end{cases}\\)\n\n\nThe \\(p\\)-mean is\n\\[M_p(x) = f^{-1}(\\frac{1}{n}\\sum_{i=1}^n f(x_i))\\]\nwith \\(x = [x_1, \\dots, x_n]\\). \\(f^{-1}\\) is the inverse1 of \\(f\\).\n\n\n\n\n\n\n\n\nThat means \\(f^-1(f(x)) = x =f(f^-1(x))\\)."
+  },
+  {
+    "objectID": "W7.html#galtons-data",
+    "href": "W7.html#galtons-data",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Galton’s data1",
+    "text": "Galton’s data1\nWhat is the weight of the meat of this ox?\n\n\n\n\nlibrary(readxl)\ngalton <- read_excel(\"data/galton_data.xlsx\")\ngalton |> ggplot(aes(Estimate)) + geom_histogram(binwidth = 5) + geom_vline(xintercept = 1198, color = \"green\") + \n geom_vline(xintercept = mean(galton$Estimate), color = \"red\") + geom_vline(xintercept = median(galton$Estimate), color = \"blue\") + geom_vline(xintercept = Mode(galton$Estimate), color = \"purple\")\n\n\n\n\n787 estimates, true value 1198, mean 1196.7, median 1208, mode 1218\nKenneth Wallis dug out the data from Galton’s notebook and put it here https://warwick.ac.uk/fac/soc/economics/staff/kfwallis/publications/galton_data.xlsx"
+  },
+  {
+    "objectID": "W7.html#viertelfest-bremen-2008",
+    "href": "W7.html#viertelfest-bremen-2008",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Viertelfest Bremen 20081",
+    "text": "Viertelfest Bremen 20081\nHow many lots will be sold by the end of the festival?\n\nviertel <- read_csv(\"data/Viertelfest.csv\")\nviertel |> ggplot(aes(`Schätzung`)) + geom_histogram() + geom_vline(xintercept = 10788, color = \"green\") + \n geom_vline(xintercept = mean(viertel$Schätzung), color = \"red\") + geom_vline(xintercept = median(viertel$Schätzung), color = \"blue\") + geom_vline(xintercept = Mode(viertel$Schätzung), color = \"purple\")\n\n\n\n\n1226 estimates, the maximal value is 29530000!\nWe should filter out the highest values for the histogram…\nData collected as additional guessing game at the Lottery “Haste mal ’nen Euro?”, data provided by Jan Lorenz https://docs.google.com/spreadsheets/d/1HiYhUrYrsbeybJ10mwsae_hQCawZlUQFOOZzcugXzgA/edit#gid=0"
+  },
+  {
+    "objectID": "W7.html#viertelfest-bremen-2008-1",
+    "href": "W7.html#viertelfest-bremen-2008-1",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Viertelfest Bremen 2008",
+    "text": "Viertelfest Bremen 2008\nHow many lots will be sold by the end of the festival?\n\nviertel <- read_csv(\"data/Viertelfest.csv\")\nviertel |> filter(Schätzung<100000) |> ggplot(aes(`Schätzung`)) + geom_histogram(binwidth = 500) + geom_vline(xintercept = 10788, color = \"green\") + \n geom_vline(xintercept = mean(viertel$Schätzung), color = \"red\") + geom_vline(xintercept = median(viertel$Schätzung), color = \"blue\") + geom_vline(xintercept = Mode(viertel$Schätzung), color = \"purple\") + geom_vline(xintercept = exp(mean(log(viertel$Schätzung))), color = \"orange\")\n\n\n1226 estimates, true value 1198, mean 53163.9, median 9843, mode 10000,\ngeometric mean 10510.1"
+  },
+  {
+    "objectID": "W7.html#log_10-transformation-viertelfest",
+    "href": "W7.html#log_10-transformation-viertelfest",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "\\(\\log_{10}\\) transformation Viertelfest",
+    "text": "\\(\\log_{10}\\) transformation Viertelfest\n\nviertel |> mutate(log10Est = log10(Schätzung)) |> ggplot(aes(log10Est)) + geom_histogram(binwidth = 0.05) + geom_vline(xintercept = log10(10788), color = \"green\") + \n geom_vline(xintercept = log10(mean(viertel$Schätzung)), color = \"red\") + geom_vline(xintercept = log10(median(viertel$Schätzung)), color = \"blue\") + geom_vline(xintercept = log10(Mode(viertel$Schätzung)), color = \"purple\") + geom_vline(xintercept = mean(log10(viertel$Schätzung)), color = \"orange\")\n\n\n1226 estimates, true value 1198, mean 53163.9, median 9843, mode 10000,\ngeometric mean 10510.1"
+  },
+  {
+    "objectID": "W7.html#wisdom-of-the-crowd",
+    "href": "W7.html#wisdom-of-the-crowd",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Wisdom of the crowd",
+    "text": "Wisdom of the crowd\n\n\nIn Galton’s sample the different measures do not make a big difference\nIn the Viertelfest data the arithmetic mean performs very bad!\nThe mean is vulnerable to extreme values. Galton on the mean as a democratic aggregation function: “The mean gives voting power to the cranks in proportion to their crankiness.”\nThe mode tends to be on focal values as round numbers (10,000). In Galton’s data this is not so pronounced beause estimators used several units which Galton had to convert.\nHow to choose a measure?\n\nBy the nature of the estimate problem? Is the scale mostly clear? (Are we in the hundreds, thousands, ten thousands, …)\nBy the nature of the distribution?\nThere is no real insurance against a systematic bias in the population."
+  },
+  {
+    "objectID": "W7.html#standardization-with-shift-scale-transformation",
+    "href": "W7.html#standardization-with-shift-scale-transformation",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Standardization with shift-scale transformation",
+    "text": "Standardization with shift-scale transformation\nVariables are standardized by subtracting their mean and then dividing by their standard deviations.\nA value from a standardized variable is called a standard score or z-score.\n\\(z_i = \\frac{x_i - \\mu}{\\sigma}\\)\nwhere \\(\\mu\\) is the mean and \\(\\sigma\\) the standard deviation of \\(x_1,\\dots,x_n\\)."
+  },
+  {
+    "objectID": "W7.html#notes-on-measures-of-dispersion",
+    "href": "W7.html#notes-on-measures-of-dispersion",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Notes on measures of dispersion",
+    "text": "Notes on measures of dispersion\n\nWhen observations have a unit (e.g., meters), then the standard deviation has the same unit, while variance has the square unit (e.g., square meters)"
+  },
+  {
+    "objectID": "W7.html#examples-of-measures-of-dispersion",
+    "href": "W7.html#examples-of-measures-of-dispersion",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Examples of measures of dispersion",
+    "text": "Examples of measures of dispersion\n\n\n\nvar(galton$Estimate)\n\n[1] 5415.013\n\nsd(galton$Estimate)\n\n[1] 73.58677\n\nmad(galton$Estimate)\n\n[1] 51.891\n\nrange(galton$Estimate)\n\n[1]  896 1516\n\ndiff(range(galton$Estimate))\n\n[1] 620\n\n\n\n\nvar(viertel$Schätzung)\n\n[1] 719774887849\n\nsd(viertel$Schätzung)\n\n[1] 848395.5\n\nmad(viertel$Schätzung)\n\n[1] 8771.803\n\nrange(viertel$Schätzung)\n\n[1]      120 29530000\n\ndiff(range(viertel$Schätzung))\n\n[1] 29529880\n\n\n\n\n\n\nVariance (and standard deviation) in statistics is usually computed with \\(\\frac{1}{n-1}\\) instead of \\(\\frac{1}{n}\\) to provide an unbiased estimator of the potentially underlying population variance. We omit more detail here."
+  },
+  {
+    "objectID": "W7.html#quantile-and-interquartile-range",
+    "href": "W7.html#quantile-and-interquartile-range",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Quantile and interquartile range",
+    "text": "Quantile and interquartile range"
+  },
+  {
+    "objectID": "W7.html#quantiles",
+    "href": "W7.html#quantiles",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Quantiles",
+    "text": "Quantiles\nCut points specifying intervals which contain equal amounts of values of the distribution.\n\\(q\\)-quantiles divide into \\(q\\) intervals covering all values.\nThe quantiles are the cut points: For \\(q\\) intervals there are \\(q-1\\) cut points of interest.\n\nThe one 2-quantile is the median.\nThe three 4-quantiles are called quartiles. The second quartile is the median.\n100-quantiles are called percentiles\n\n\n\nWe omit problems of estimating quantiles from a sample where the number of estimates does not fit to a desired partion of equal size here."
+  },
+  {
+    "objectID": "W7.html#interquartile-range",
+    "href": "W7.html#interquartile-range",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Interquartile range",
+    "text": "Interquartile range\nThe difference between the 1st and the 3rd quartile.\n\nA very common measure of dispersion.\n\nExamples:\n\n# Min, 3 Quartiles, Max\nIQR(galton$Estimate)\n\n[1] 73.5\n\nsd(galton$Estimate) # for comparison\n\n[1] 73.58677\n\nIQR(viertel$Schätzung)\n\n[1] 15000\n\nsd(viertel$Schätzung)\n\n[1] 848395.5"
+  },
+  {
+    "objectID": "W7.html#quantile-quantile-plot",
+    "href": "W7.html#quantile-quantile-plot",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "quantile-quantile-plot",
+    "text": "quantile-quantile-plot"
+  },
+  {
+    "objectID": "W7.html#standardization-1",
+    "href": "W7.html#standardization-1",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Standardization",
+    "text": "Standardization"
+  },
+  {
+    "objectID": "W7.html#examples-of-quantiles",
+    "href": "W7.html#examples-of-quantiles",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Examples of quantiles",
+    "text": "Examples of quantiles\n\n# Min, 3 Quartiles, Max\nquantile(galton$Estimate, prob = seq(0, 1, by = 0.25))\n\n    0%    25%    50%    75%   100% \n 896.0 1162.5 1208.0 1236.0 1516.0 \n\nquantile(viertel$Schätzung, prob = seq(0, 1, by = 0.25))\n\n      0%      25%      50%      75%     100% \n     120     5000     9843    20000 29530000 \n\n\nInterpretation: What does the value at 25% mean?\n\nThe 25% of all values are lower than the value. 75% are larger."
+  },
+  {
+    "objectID": "W7.html#values-summary-of-a-numerical-vector-in-r",
+    "href": "W7.html#values-summary-of-a-numerical-vector-in-r",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "6 values summary of a numerical vector in R",
+    "text": "6 values summary of a numerical vector in R\n\n\n\nsummary(galton)\n\n    Estimate   \n Min.   : 896  \n 1st Qu.:1162  \n Median :1208  \n Mean   :1197  \n 3rd Qu.:1236  \n Max.   :1516  \n\n\n\n\nsummary(viertel)\n\n  Date Time           Losnummer        Schätzung       \n Length:1226        Min.   :    61   Min.   :     120  \n Class :character   1st Qu.:  6972   1st Qu.:    5000  \n Mode  :character   Median : 13426   Median :    9843  \n                    Mean   : 12255   Mean   :   53164  \n                    3rd Qu.: 16327   3rd Qu.:   20000  \n                    Max.   :199780   Max.   :29530000  \n\n\n\n\nIt also works for data frames.\n\nlibrary(palmerpenguins)\nsummary(penguins)\n\n      species          island    bill_length_mm  bill_depth_mm  \n Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  \n Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  \n Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  \n                                 Mean   :43.92   Mean   :17.15  \n                                 3rd Qu.:48.50   3rd Qu.:18.70  \n                                 Max.   :59.60   Max.   :21.50  \n                                 NA's   :2       NA's   :2      \n flipper_length_mm  body_mass_g       sex           year     \n Min.   :172.0     Min.   :2700   female:165   Min.   :2007  \n 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  \n Median :197.0     Median :4050   NA's  : 11   Median :2008  \n Mean   :200.9     Mean   :4202                Mean   :2008  \n 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  \n Max.   :231.0     Max.   :6300                Max.   :2009  \n NA's   :2         NA's   :2"
+  },
+  {
+    "objectID": "W7.html#boxplots",
+    "href": "W7.html#boxplots",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Boxplots",
+    "text": "Boxplots\nA condensed visualization of a distribution showing location, spread, skewness and outliers.\n\ngalton |> ggplot(aes(x = Estimate)) + geom_boxplot()\n\n\n\nThe box shows the median in the middle and the other two quartiles as their borders.\nWhiskers: From above the upper quartile, a distance of 1.5 times the IQR is measured out and a whisker is drawn up to the largest observed data point from the dataset that falls within this distance. Similarly, for the lower quartile.\nWhiskers must end at an observed data point! (So lengths can differ.)\nAll other values outside of box and whiskers are shown as points and often called outliers. (There may be none.)"
+  },
+  {
+    "objectID": "W7.html#summary-of-a-numerical-vector-in-r",
+    "href": "W7.html#summary-of-a-numerical-vector-in-r",
+    "title": "W#6 Math: Descriptive statistics, Calculus, Derivative and Antiderivative",
+    "section": "Summary of a numerical vector in R",
+    "text": "Summary of a numerical vector in R\n\n\n\nsummary(galton$Estimate)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    896    1162    1208    1197    1236    1516 \n\n\n\n\nsummary(viertel$Schätzung)\n\n    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. \n     120     5000     9843    53164    20000 29530000 \n\n\n\n\nIt also works for data frames.\n\nlibrary(palmerpenguins)\nsummary(penguins)\n\n      species          island    bill_length_mm  bill_depth_mm  \n Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  \n Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  \n Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  \n                                 Mean   :43.92   Mean   :17.15  \n                                 3rd Qu.:48.50   3rd Qu.:18.70  \n                                 Max.   :59.60   Max.   :21.50  \n                                 NA's   :2       NA's   :2      \n flipper_length_mm  body_mass_g       sex           year     \n Min.   :172.0     Min.   :2700   female:165   Min.   :2007  \n 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  \n Median :197.0     Median :4050   NA's  : 11   Median :2008  \n Mean   :200.9     Mean   :4202                Mean   :2008  \n 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  \n Max.   :231.0     Max.   :6300                Max.   :2009  \n NA's   :2         NA's   :2"
+  },
+  {
+    "objectID": "W7.html#wisdom-of-the-crowd-1",
+    "href": "W7.html#wisdom-of-the-crowd-1",
+    "title": "W#6 Math: Descriptive statistics, Calculus, Derivative and Antiderivative",
+    "section": "Wisdom of the crowd",
+    "text": "Wisdom of the crowd\n\n\nIn Galton’s sample the different measures do not make a big difference\nIn the Viertelfest data the arithmetic mean performs very bad!\nThe mean is vulnerable to extreme values. Galton on the mean as a democratic aggregation function: “The mean gives voting power to the cranks in proportion to their crankiness.”\nThe mode tends to be on focal values as round numbers (10,000). In Galton’s data this is not so pronounced beause estimators used several units which Galton had to convert.\nHow to choose a measure?\n\nBy the nature of the estimate problem? Is the scale mostly clear? (Are we in the hundreds, thousands, ten thousands, …)\nBy the nature of the distribution?\nThere is no real insurance against a systematic bias in the population."
+  },
+  {
+    "objectID": "W7.html#si-model",
+    "href": "W7.html#si-model",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "SI model",
+    "text": "SI model\nToday we only treat the SI part of the model.\n\nPeople who are susceptible can become infected through contact with infectious.\nPeople who are infectious stay infectious\n\nThe parameter \\(\\beta\\) is the average number of contacts per unit time multiplied with the probability that an infection happens during such a contact.\nTwo compartments:\n\\(S(t)\\) is the number of susceptible people at time \\(t\\).\n\\(I(t)\\) is the number of infected people at time \\(t\\).\nIt always holds \\(S(t) + I(t) = N\\). (The total population is constant.)"
+  },
+  {
+    "objectID": "W7.html#numerical-integration",
+    "href": "W7.html#numerical-integration",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Numerical Integration",
+    "text": "Numerical Integration\nLet us first do numerical integration of this ordinary differential equation(using Euler’s method)."
+  },
+  {
+    "objectID": "W7.html#simulation",
+    "href": "W7.html#simulation",
+    "title": "W#6 Math: Basic statistics (mean, median, standard deviation, interquartile range), Logarithms and Exponentials, Calculus, Derivative and Antiderivative",
+    "section": "Simulation",
+    "text": "Simulation\n\n\n# A tibble: 75 × 2\n    time infected\n   <int>    <dbl>\n 1     1   0.0001\n 2     2   0.0001\n 3     3   0.0001\n 4     4   0.0002\n 5     5   0.0003\n 6     6   0.0004\n 7     7   0.0004\n 8     8   0.0006\n 9     9   0.0007\n10    10   0.0009\n# … with 65 more rows\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W7.html#how-many-infections-per-time",
+    "href": "W7.html#how-many-infections-per-time",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "How many infections per time?",
+    "text": "How many infections per time?\nThe change of the number of infectious\n\\[\\frac{dI}{dt} = \\underbrace{\\beta}_\\text{infection prob.} \\cdot \\underbrace{\\frac{S}{N}}_\\text{frac. of $S$ still there} \\cdot \\underbrace{\\frac{I}{N}}_\\text{frac. $I$ to meet} \\cdot N = \\frac{\\beta\\cdot S\\cdot I}{N}\\]\nwhere \\(dI\\) is the change of \\(I\\) (the newly infected here) and \\(dt\\) the time interval.\nInterpretation: The newly infected are from the fraction of susceptible times the probability that they meet an infected times the infection probability times the total number of individuals.\nUsing \\(S = N - I\\) we rewrite\n\\[\\frac{dI}{dt} = \\frac{\\beta (N-I)I}{N}\\]"
+  },
+  {
+    "objectID": "W7.html#si-model-numerical-integration",
+    "href": "W7.html#si-model-numerical-integration",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "SI-model: Numerical integration",
+    "text": "SI-model: Numerical integration\nAnother way of solution using, e.g., using Euler’s method.\nWe compute the solution step-by-step using small increments of, e.g. \\(dt = 0.5\\).\n\n\nN <- 10000\nI0 <- 1\ndI <- function(I,N,b) b*I*(N - I)/N\nbeta <- 0.3\ndt <- 0.5 # time increment, supposed to be infinitesimally small\ntmax <- 75\nt <- seq(0,tmax,dt) # this is the vector of timesteps\nIt <- I0 # this will become the vector of the number infected I(t) over time\nfor (i in 2:length(t)) { # We iterate over the vector of time steps and incrementally compute It\n  It[i] = It[i-1] + dt * dI(It[i-1], N, beta) # This is called Euler's method\n}\ntibble(t, It) |> ggplot(aes(t,It)) + \n geom_function( fun = function(t) N / (1 + (N/I0 - 1)*exp(-beta*t)) ,\n                color = \"red\") + # Analytical solution for comparison\n geom_line() # The numerical solution in black"
+  },
+  {
+    "objectID": "W7.html#si-model-simulation",
+    "href": "W7.html#si-model-simulation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "SI-model: Simulation",
+    "text": "SI-model: Simulation\nAnother more basic solution is direct individual-based simulation.\n\nWe produce a vector of length \\(N\\) with entries representing the state of each individual as \"S\" or \"I\".\nWe model the random infection process in each step of unit time"
+  },
+  {
+    "objectID": "W7.html#ordinary-differential-equation",
+    "href": "W7.html#ordinary-differential-equation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Ordinary differential equation",
+    "text": "Ordinary differential equation\nWe interpret \\(I(t)\\) as a function of time which gives us the number of infectious at each point in time. The change function is now\n\\[\\frac{dI(t)}{dt} = \\frac{\\beta (N-I(t))I(t)}{N}\\]\nand \\(\\frac{dI(t)}{dt}\\) is also called the derivative of \\(I(t)\\)."
+  },
+  {
+    "objectID": "W7.html#derivatives",
+    "href": "W7.html#derivatives",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Derivatives",
+    "text": "Derivatives\n\n\n\nThe derivative of a function is also a function with the same domain.\nMeasures the sensitivity to change of the function output when the input changes (a bit)\nExample from physics: The derivative of the position of a moving object is its speed. The derivative of its speed is its acceleration.\nGraphically: The derivative is the slope of a tangent line of the graph of a function."
+  },
+  {
+    "objectID": "W7.html#differentiation",
+    "href": "W7.html#differentiation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Differentiation",
+    "text": "Differentiation\nis the process to compute the derivative. For parameters \\(a\\) and \\(b\\) and other functions \\(g\\) and \\(h\\), rules of differentiation are\n\n\nFunction \\(f(x)\\)\n\\(a\\cdot x\\)\n\\(b\\)\n\\(x^2,\\ x^{-1} = \\frac{1}{x},\\ x^k\\)\n\\(g(x) + h(x)\\)\n\\(g(x)\\cdot h(x)\\)\n\\(g(h(x))\\)\n\\(e^x,\\ 10^x = e^{\\log(10)x}\\)\n\\(\\log(x)\\)\n\nIts derivative \\(\\frac{df(x)}{dx}\\) or \\(\\frac{d}{dx}f(x)\\) or \\(f'(x)\\)\n\n\\(a\\)\n\n\n\\(0\\)\n\n\n\\(2\\cdot x,\\ -x^{-2} = -\\frac{1}{x^2},\\ k\\cdot x^{k-1}\\)\n\n\n\\(g'(x) + h'(x)\\)\n\n\n\\(g'(x)\\cdot h(x) + g(x)\\cdot h'(x)\\) (product rule)\n\n\n\\(g'(h(x))\\cdot h'(x)\\) (chain rule)\n\n\n\\(e^x,\\ 10^x = \\log(10)\\cdot10^x\\)\n\n\n\\(\\frac{1}{x}\\) (This is a “surprising” relation …)"
+  },
+  {
+    "objectID": "W7.html#differentiation-with-data",
+    "href": "W7.html#differentiation-with-data",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Differentiation with data",
+    "text": "Differentiation with data\nIn empirical data we can compute the increase in a vector with the function diff:\n\n\n[1]  1  2  1  0 -2 -3\n\n\nMore convenient for in a data frame is to use x - lag(x) because the vector has the same length.\n\n\n[1] NA  1  2  1  0 -2 -3"
+  },
+  {
+    "objectID": "W7.html#differential-equation",
+    "href": "W7.html#differential-equation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Differential equation",
+    "text": "Differential equation\nIn a differential equation the unknown is a function!\nWe are looking for a function which derivative is a function of the function itself.\nExample: SI-model\n\\[\\frac{dI(t)}{dt} = \\frac{\\beta (N-I(t))I(t)}{N}\\]\nWhich function \\(I(t)\\) fulfills this equation?\nThe analytical solution1 is\n\\(I(t) = \\frac{N}{1 + (\\frac{N}{I(0)} - 1)e^{-\\beta t}}\\)\nWhich is called the logistic equation.\nNote, we need to specify the initial number of infectious individuals \\(I(0)\\).\nCan you check that this is correct? If you want but can’t, don’t hesitate to ask later."
+  },
+  {
+    "objectID": "W7.html#logistic-equation",
+    "href": "W7.html#logistic-equation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Logistic Equation",
+    "text": "Logistic Equation\n\\(I(t) = \\frac{N}{1 + (\\frac{N}{I(0)} - 1)e^{-\\beta t}}\\)\nPlot the equation for \\(N = 10000\\), \\(I_0 = 1\\), and \\(\\beta = 0.3\\)\n\nN <- 10000\nI0 <- 1\nbeta <- 0.3\nggplot() + \n geom_function( fun = function(t) N / (1 + (N/I0 - 1)*exp(-beta*t)) ) + \n xlim(c(0,75))"
+  },
+  {
+    "objectID": "W7.html#numerical-integration-more-precise-with-small-dt",
+    "href": "W7.html#numerical-integration-more-precise-with-small-dt",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Numerical integration more precise with small \\(dt\\)",
+    "text": "Numerical integration more precise with small \\(dt\\)\nWe compute the solution step-by-step using small increments of, e.g. \\(dt = 0.01\\).\n\n\nN <- 10000\nI0 <- 1\ndI <- function(I,N,b) b*I*(N - I)/N\nbeta <- 0.3\ndt <- 0.01 # time increment, supposed to be infinitesimally small\ntmax <- 75\nt <- seq(0,tmax,dt) # this is the vector of timesteps\nIt <- I0 # this will become the vector of the number infected I(t) over time\nfor (i in 2:length(t)) { # We iterate over the vector of time steps and incrementally compute It\n  It[i] = It[i-1] + dt * dI(It[i-1], N, beta) # This is called Euler's method\n}\ntibble(t, It) |> ggplot(aes(t,It)) + \n geom_function( fun = function(t) N / (1 + (N/I0 - 1)*exp(-beta*t)) ,\n                color = \"red\") + # Analytical solution for comparison\n geom_line() # The numerical solution in black"
+  },
+  {
+    "objectID": "W7.html#three-ways-to-explore-mechanistic-models-.background-coloraquamarine",
+    "href": "W7.html#three-ways-to-explore-mechanistic-models-.background-coloraquamarine",
+    "title": "W#6 Math: Descriptive statistics, Calculus, Derivative and Antiderivative",
+    "section": "Three ways to explore mechanistic models {.background-color:‘aquamarine’}",
+    "text": "Three ways to explore mechanistic models {.background-color:‘aquamarine’}\n\nIndividual-based simulation\n\nWe model every individual explicitly\nSimulation involve random numbers! So simulation runs can be different!\n\nNumerical integration of differential equation\n\nNeeds a more abstract concept of compartments\n\nAnalytical solutions of differential equation\n\noften not possible or not in nice form\n\n\nSuch mechanistic models are typical for natural sciences, but they also make sense for many processes in societies and ecomonies."
+  },
+  {
+    "objectID": "W7.html#wisdom-of-the-crowd-insights",
+    "href": "W7.html#wisdom-of-the-crowd-insights",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Wisdom of the crowd insights",
+    "text": "Wisdom of the crowd insights\n\n\nIn Galton’s sample the different measures do not make a big difference\nIn the Viertelfest data the arithmetic mean performs very bad!\nThe mean is vulnerable to extreme values. Galton on the mean as a democratic aggregation function: “The mean gives voting power to the cranks in proportion to their crankiness.”\nThe mode tends to be on focal values as round numbers (10,000). In Galton’s data this is not so pronounced beause estimators used several units which Galton had to convert.\nHow to choose a measure to aggreagte the wisdom?\n\nBy the nature of the estimate problem? Is the scale mostly clear? (Are we in the hundreds, thousands, ten thousands, …)\nBy the nature of the distribution?\nThere is no real insurance against a systematic bias in the population."
+  },
+  {
+    "objectID": "W7.html#summary-of-numerical-vectors-in-r",
+    "href": "W7.html#summary-of-numerical-vectors-in-r",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Summary of numerical vectors in R",
+    "text": "Summary of numerical vectors in R\n\n\n\nsummary(galton$Estimate)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    896    1162    1208    1197    1236    1516 \n\n\n\n\nsummary(viertel$Schätzung)\n\n    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. \n     120     5000     9843    53164    20000 29530000 \n\n\n\n\nIt also works for data frames.\n\nlibrary(palmerpenguins)\nsummary(penguins)\n\n      species          island    bill_length_mm  bill_depth_mm  \n Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  \n Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  \n Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  \n                                 Mean   :43.92   Mean   :17.15  \n                                 3rd Qu.:48.50   3rd Qu.:18.70  \n                                 Max.   :59.60   Max.   :21.50  \n                                 NA's   :2       NA's   :2      \n flipper_length_mm  body_mass_g       sex           year     \n Min.   :172.0     Min.   :2700   female:165   Min.   :2007  \n 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  \n Median :197.0     Median :4050   NA's  : 11   Median :2008  \n Mean   :200.9     Mean   :4202                Mean   :2008  \n 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  \n Max.   :231.0     Max.   :6300                Max.   :2009  \n NA's   :2         NA's   :2"
+  },
+  {
+    "objectID": "W7.html#covariance",
+    "href": "W7.html#covariance",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Covariance",
+    "text": "Covariance\nGoal: We want to measure the joint variation in a sequences of numerical observations of two variables \\(x_1,\\dots,x_n\\) and \\(y_1, \\dots, y_n\\).\nCovariance \\(\\text{cov}(x,y) = \\frac{1}{n}\\sum_{i=1}^n(x_i - \\mu_x)(y_i - \\mu_y)\\)\nwhere \\(\\mu_x\\) and \\(\\mu_y\\) are the arithmetic means of \\(x\\) and \\(y\\).\nNote: \\(\\text{cov}(x,x) = \\text{Var}(x)\\)"
+  },
+  {
+    "objectID": "W7.html#the-diff-of-our-simulation-output",
+    "href": "W7.html#the-diff-of-our-simulation-output",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "The diff of our simulation output",
+    "text": "The diff of our simulation output\n\ng2 <- sim_output |> \n mutate(derivative_infected = infected - lag(infected)) |> \n ggplot(aes(x = t)) + geom_line(aes(y = derivative_infected))\ng1 <- sim_output |> ggplot(aes(x = t)) + geom_line(aes(y = infected))\ng2\n\n\n\ng1"
+  },
+  {
+    "objectID": "W7.html#nd-derivative-the-change-of-the-change",
+    "href": "W7.html#nd-derivative-the-change-of-the-change",
+    "title": "W#6 Math: Descriptive statistics, Calculus, Derivative and Antiderivative",
+    "section": "2nd derivative: The change of the change",
+    "text": "2nd derivative: The change of the change\n\ng3 <- sim_output |> \n mutate(derivative_infected = infected - lag(infected),\n        derivative2_infected = derivative_infected - lag(derivative_infected)) |> \n ggplot(aes(x = t)) + geom_line(aes(y = derivative2_infected))\ng3\n\n\n\n\nTendency in empirical data\n\nDerivatives of higher order tend to show fluctuation\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W7.html#nd-derivative-change-of-change",
+    "href": "W7.html#nd-derivative-change-of-change",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "2nd derivative: Change of change",
+    "text": "2nd derivative: Change of change\n\ng3 <- sim_output |> \n mutate(derivative_infected = infected - lag(infected),\n        derivative2_infected = derivative_infected - lag(derivative_infected)) |> \n ggplot(aes(x = t)) + geom_line(aes(y = derivative2_infected))\ng3\n\n\nIn empirical data: Derivatives of higher order tend to show fluctuation"
+  },
+  {
+    "objectID": "W7.html#interpretation-of-derivatives-in-si-model",
+    "href": "W7.html#interpretation-of-derivatives-in-si-model",
+    "title": "W#6 Math: Descriptive statistics, Calculus, Derivative and Antiderivative",
+    "section": "Interpretation of derivatives in SI-model",
+    "text": "Interpretation of derivatives in SI-model\n\n\n\n\n\n\n\\(I(t)\\) total number of infected\n\\(I'(t)\\) number of new cases per day (time step)\n\\(I''(t)\\) how the number of new cases has changes compared to yesterday\n\nCan be a good early indicator for the end of a wave.\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W7.html#interpretation-in-si-model",
+    "href": "W7.html#interpretation-in-si-model",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Interpretation in SI-model",
+    "text": "Interpretation in SI-model\n\n\n\\(I(t)\\) total number of infected\n\\(I'(t)\\) number of new cases per day (time step)\n\\(I''(t)\\) how the number of new cases has changes compared to yesterday\n\nCan be a good early indicator for the end of a wave."
+  },
+  {
+    "objectID": "W7.html#integration",
+    "href": "W7.html#integration",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Integration",
+    "text": "Integration\nThe integral of the daily new cases from the beginning to day \\(s\\) is \\(\\int_{-\\infty}^s f(t)dt\\) and represents the total cases at day \\(s\\).\n\nThe integral of a function \\(f\\) up to time \\(s\\) is also called the anti-derivative \\(F(s) = \\int_{-\\infty}^s f(t)dt\\).\nCompute the anti-derivative of data vector with cumsum.\n\n\nx <- c(1,2,4,5,5,3,0)\ncumsum(x)\n\n[1]  1  3  7 12 17 20 20\n\n\n\nEmpirically derivatives tend to become noisy, while integrals tend to become smooth."
+  },
+  {
+    "objectID": "W7.html#fundamental-theorem-of-calculus",
+    "href": "W7.html#fundamental-theorem-of-calculus",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Fundamental theorem of calculus",
+    "text": "Fundamental theorem of calculus\nThe integral of the derivative is the function itself.\nThis is not a proof but shows the idea:\n\nf <- c(1,2,4,5,5,3,0)\nantiderivative <- cumsum(f)\ndiff(c(0, antiderivative)) # We have to put 0 before to regain the full vector\n\n[1] 1 2 4 5 5 3 0\n\nderivative <- diff(f)\ncumsum(c(1,derivative)) # We have to put in the first value (here 1) manually because it was lost during the diff\n\n[1] 1 2 4 5 5 3 0"
+  },
+  {
+    "objectID": "W7.html#correlation",
+    "href": "W7.html#correlation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Correlation",
+    "text": "Correlation\nGoal: We want to measure the linear correlation in a sequences of numerical observations of two variables \\(x_1,\\dots,x_n\\) and \\(y_1, \\dots, y_n\\).\nPearson correlation coefficient \\(r_{xy} = \\frac{\\sum_{i=1}^n(x_i - \\mu_x)(y_i - \\mu_y)}{\\sqrt{\\sum_{i=1}^n(x_i - \\mu_x)}\\sqrt{\\sum_{i=1}^n(y_i - \\mu_y)}}\\)\nNote, \\(r_{xy} = \\frac{\\text{cov}(x,y)}{\\sigma_x\\sigma_y}\\)\nwhere \\(\\sigma_x\\) and \\(\\sigma_y\\) are the standard deviations of \\(x\\) and \\(y\\).\nNote, when \\(x\\) and \\(y\\) are standard scores (each with mean zero and standard deviation one), then \\(\\text{cov}(x,y) = r_{xy}\\).\n\n\nThere are other correlation coefficients which we omit hear."
+  },
+  {
+    "objectID": "W7.html#correlation-and-linear-regression",
+    "href": "W7.html#correlation-and-linear-regression",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Correlation and linear regression",
+    "text": "Correlation and linear regression\n\nlibrary(tidymodels)\nlibrary(palmerpenguins)\nlinear_reg() |> \n    set_engine(\"lm\") |> \n    fit(flipper_length_mm ~ body_mass_g, data = penguins) |> tidy()\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic   p.value\n  <chr>          <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept) 137.      2.00          68.5 5.71e-201\n2 body_mass_g   0.0153  0.000467      32.7 4.37e-107\n\n\n\npenguins_standardized <- penguins |> \n mutate(flipper_length_mm_s = scale(flipper_length_mm)[,1],\n        body_mass_g_s = scale(body_mass_g)[,1])\nlinear_reg() |> \n set_engine(\"lm\") |> \n fit(flipper_length_mm_s ~ body_mass_g_s, data = penguins_standardized) |> tidy()\n\n# A tibble: 2 × 5\n  term           estimate std.error statistic   p.value\n  <chr>             <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept)   -9.33e-16    0.0266 -3.51e-14 1.00e+  0\n2 body_mass_g_s  8.71e- 1    0.0266  3.27e+ 1 4.37e-107\n\n\n\ncor(penguins_standardized$body_mass_g_s,\n    penguins_standardized$flipper_length_mm_s, \n    use = \"pairwise.complete.obs\")\n\n[1] 0.8712018"
+  },
+  {
+    "objectID": "W7.html#questions-on-programming-concepts",
+    "href": "W7.html#questions-on-programming-concepts",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Questions on programming concepts?",
+    "text": "Questions on programming concepts?\nFrom base R:\nrunif random numbers\nsample.int and sample\nfor loops\nif and else ifelse\nFrom purrr:\nmap apply function to lists and collect output"
+  },
+  {
+    "objectID": "W7.html#three-ways-to-explore-mechanistic-models-background-coloraquamarine",
+    "href": "W7.html#three-ways-to-explore-mechanistic-models-background-coloraquamarine",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Three ways to explore mechanistic models {background-color:‘aquamarine’}",
+    "text": "Three ways to explore mechanistic models {background-color:‘aquamarine’}\n\nIndividual-based simulation\n\nWe model every individual explicitly\nSimulation involve random numbers! So simulation runs can be different!\n\nNumerical integration of differential equation\n\nNeeds a more abstract concept of compartments\n\nAnalytical solutions of differential equation\n\noften not possible or not in nice form\n\n\nSuch mechanistic models are typical for natural sciences, but they also make sense for many processes in societies and ecomonies."
+  },
+  {
+    "objectID": "W7.html#properties-of-correlation",
+    "href": "W7.html#properties-of-correlation",
+    "title": "W#7 Descriptive statistics, Calculus",
+    "section": "Properties of correlation",
+    "text": "Properties of correlation\nCorrelation between two vectors \\(x\\) and \\(y\\) is “normalized”.\nThe maximal possible values is \\(r_{xy} = 1\\) (\\(x\\) and \\(y\\) are fully correlated).\nThe minimal values is $r"
+  },
+  {
+    "objectID": "W7.html#interpretation-of-correlation",
+    "href": "W7.html#interpretation-of-correlation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Interpretation of correlation",
+    "text": "Interpretation of correlation\nCorrelation between two vectors \\(x\\) and \\(y\\) is “normalized”.\n\nThe maximal possible values is \\(r_{xy} = 1\\)\n\n\\(x\\) and \\(y\\) are fully correlated\n\nThe minimal values is \\(r_{xy} = -1\\)\n\n\\(x\\) and \\(y\\) are anticorrelated\n\nWhen \\(r_{xy} \\approx 0\\) the variables are uncorrelated\nBecause of the normalization \\(r_{xy} = r_{yx}\\)."
+  },
+  {
+    "objectID": "W7.html#correlation-and-linear-regression-1",
+    "href": "W7.html#correlation-and-linear-regression-1",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Correlation and linear regression",
+    "text": "Correlation and linear regression\nWhen the two variables in the linear regression are standardized (standard scores)\n\nthe intercept is zero\nthe coefficient coincides with the correlation\n\n\n\n\nThe function scale is a function for standardization from base R which delivers a matrix which is unconventional for tidyverse.\nThe function cor is also from base R. It outputs NA whenever one value in one variable is NA. Therefore a methods to use has to be specified. use = \"pairwise.complete.obs\" keeps all values where both variables are not NA."
+  },
+  {
+    "objectID": "W7.html#correlation-analysis-in-exploratory",
+    "href": "W7.html#correlation-analysis-in-exploratory",
+    "title": "W#7 Descriptive statistics, Calculus",
+    "section": "Correlation analysis in exploratory",
+    "text": "Correlation analysis in exploratory"
+  },
+  {
+    "objectID": "W7.html#correlation-in-exploratory-data-analysis",
+    "href": "W7.html#correlation-in-exploratory-data-analysis",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Correlation in exploratory data analysis",
+    "text": "Correlation in exploratory data analysis\nUsing corrr from tidymodels\n\nlibrary(corrr)\ness <- read_csv(\"data/ESS-Data-Wizard-subset-2022-09-17.csv\") \ness_na <- function(x) ifelse(x > 10, NA, x)\ness_sel <- ess |> select(cntry, essround, euftf:stflife) |> \n mutate(across(euftf:stflife, ess_na))\ness_sel |> select(euftf:stflife) |> \n correlate()\n\n# A tibble: 5 × 6\n  term       euftf  gincdif  lrscale  polintr stflife\n  <chr>      <dbl>    <dbl>    <dbl>    <dbl>   <dbl>\n1 euftf   NA        0.00580 -0.0247  -0.0658   0.0788\n2 gincdif  0.00580 NA        0.153   -0.00153  0.132 \n3 lrscale -0.0247   0.153   NA        0.00466  0.113 \n4 polintr -0.0658  -0.00153  0.00466 NA       -0.120 \n5 stflife  0.0788   0.132    0.113   -0.120   NA"
+  },
+  {
+    "objectID": "W7.html#correlation-in-eda",
+    "href": "W7.html#correlation-in-eda",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Correlation in EDA",
+    "text": "Correlation in EDA\n\ness_sel |> filter(cntry == \"DE\", essround == 9) |> \n select(euftf:stflife) |> \n correlate()\n\n# A tibble: 5 × 6\n  term      euftf gincdif lrscale polintr stflife\n  <chr>     <dbl>   <dbl>   <dbl>   <dbl>   <dbl>\n1 euftf   NA      -0.0565 -0.147  -0.136   0.171 \n2 gincdif -0.0565 NA       0.161   0.0671  0.0727\n3 lrscale -0.147   0.161  NA       0.0222  0.0682\n4 polintr -0.136   0.0671  0.0222 NA      -0.104 \n5 stflife  0.171   0.0727  0.0682 -0.104  NA"
+  },
+  {
+    "objectID": "W7.html#correlation-in-eda-1",
+    "href": "W7.html#correlation-in-eda-1",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Correlation in EDA",
+    "text": "Correlation in EDA\nUsing correlate and see from easystats\n\nlibrary(correlation)\nlibrary(see)\nresults <- ess_sel |> filter(cntry == \"DE\", essround == 9) |> \n select(euftf:stflife) |> \n correlation()\nresults %>%\n  summary(redundant = TRUE) %>%\n  plot()"
+  },
+  {
+    "objectID": "W7.html#si-model-logistic-equation",
+    "href": "W7.html#si-model-logistic-equation",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "SI-model: Logistic Equation",
+    "text": "SI-model: Logistic Equation\n\\(I(t) = \\frac{N}{1 + (\\frac{N}{I(0)} - 1)e^{-\\beta t}}\\)\nPlot the equation for \\(N = 10000\\), \\(I_0 = 1\\), and \\(\\beta = 0.3\\)\n\nN <- 10000\nI0 <- 1\nbeta <- 0.3\nggplot() + \n geom_function( fun = function(t) N / (1 + (N/I0 - 1)*exp(-beta*t)) ) + \n xlim(c(0,75))"
+  },
+  {
+    "objectID": "W7.html#three-ways-to-explore-mechanistic-models",
+    "href": "W7.html#three-ways-to-explore-mechanistic-models",
+    "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "section": "Three ways to explore mechanistic models",
+    "text": "Three ways to explore mechanistic models\n\nIndividual-based simulation\n\nWe model every individual explicitly\nSimulation involve random numbers! So simulation runs can be different!\n\nNumerical integration of differential equation\n\nNeeds a more abstract concept of compartments\n\nAnalytical solutions of differential equation\n\noften not possible or not in nice form\n\n\nSuch mechanistic models are typical for natural sciences, but they also make sense for many processes in societies and ecomonies."
+  },
+  {
+    "objectID": "index.html#week-6-oct-6-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model",
+    "href": "index.html#week-6-oct-6-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 6, Oct 6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
+    "text": "Week 6, Oct 6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model\nSlides Week 6\nHomework 03 is due Oct 16."
+  },
+  {
+    "objectID": "index.html#week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models",
+    "href": "index.html#week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models",
+    "title": "Data Science Concepts / Tools",
+    "section": "3.1 Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
+    "text": "3.1 Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models\nSlides Week 7\nHomework 03 is due Oct 16."
   }
 ]

@@ -1041,6 +1041,8 @@ pengmod$fit$coefficients
 
 
 
+
+
 ## Linear model when explanatory variables are categorical {.smaller}
 
 
@@ -1165,7 +1167,7 @@ Maybe we can go after a **mechanistic** explanation here.
 	who |> 
 	ggplot(aes(Date_reported, log10(Cumulative_cases))) + geom_line() + geom_point() +
 	geom_smooth(method = "lm", fullrange = TRUE) +
-	geom_line(data = whofull |> filter(Date_reported < "2020-06-30")) + ylim(c(0,10))
+	geom_line(data = whofull |> filter(Date_reported < "2020-12-31"))# + ylim(c(0,10))
 ```
 
 
