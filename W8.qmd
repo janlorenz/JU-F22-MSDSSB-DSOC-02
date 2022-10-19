@@ -242,25 +242,56 @@ The unknown: **What is the dark figure?**
 **Trend:** Yes! Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend. 
 
 
-## Smoothing
+## Smoothing time series {.smaller}
 
 ```{r}
+#| fig-height: 3
 who |> filter(Date_reported > '2020-02-01', Date_reported < '2020-07-01', 
               Country == "Germany") |>
- mutate(Smooth3 = (New_cases + lag(New_cases) + lag(New_cases,2))/3,
-        Smooth7 = (New_cases + lag(New_cases) + lag(New_cases,2) + lag(New_cases,3) + lag(New_cases,4) + lag(New_cases,5) + lag(New_cases,6))/7,
-        Smooth7 = (New_cases + lag(New_cases) + lag(New_cases,2) + lag(New_cases,3) + lag(New_cases,4) + lag(New_cases,5) + lag(New_cases,6)+ lag(New_cases,7) + lag(New_cases,8) + lag(New_cases,9))/10
-) |> pivot_longer(c(New_cases, Smooth3, Smooth7, Smooth10), names_to = "Smooth",
+ mutate(Smooth03 = (New_cases + lag(New_cases) + lag(New_cases,2))/3,
+        Smooth07 = (New_cases + lag(New_cases) + lag(New_cases,2) + lag(New_cases,3) + lag(New_cases,4) + lag(New_cases,5) + lag(New_cases,6))/7,
+        Smooth10 = (New_cases + lag(New_cases) + lag(New_cases,2) + lag(New_cases,3) + lag(New_cases,4) + lag(New_cases,5) + lag(New_cases,6)+ lag(New_cases,7) + lag(New_cases,8) + lag(New_cases,9))/10,
+        New_r = New_cases,
+        Smooth03_r = zoo::rollmean(New_cases,3, fill = TRUE),
+        Smooth07_r = zoo::rollmean(New_cases,7, fill = TRUE),
+        Smooth10_r =  zoo::rollmean(New_cases,10, fill = TRUE)) |> 
+ pivot_longer(c(New_cases, Smooth03, Smooth07, Smooth10, 
+                New_r, Smooth03_r, Smooth07_r, Smooth10_r), names_to = "Smooth",
                   values_to = "Cases") |> 
+ mutate(smooth = if_else(word(Smooth,2, 2,"_") == "r", "Centered","Lagged", 
+                         missing = "Lagged"), 
+        window = word(Smooth, 1,1,"_") |>  
+         fct_recode("No" = "New", "3 days" = "Smooth03",
+                    "7 days" = "Smooth07", "10 days" = "Smooth10")) |> 
  filter(Date_reported > '2020-03-01', Date_reported < '2020-05-01') |>
- ggplot(aes(Date_reported, Cases, color = Smooth)) + geom_line()
+ ggplot(aes(Date_reported, Cases, color = window)) +
+  geom_line() + facet_wrap(~smooth, nrow=2) + theme_minimal()
 ```
 
 
-Rolling mean
-Lagged mean
+```{r}
+#| echo: true
+#| output-location: column
+x <- c(1, 2, 5, 3, 0)
+x
+```
+```{r}
+#| echo: true
+#| output-location: column
+zoo::rollmean(x, k = 3, na.pad = TRUE) # for centered window
+```
+```{r}
+#| echo: true
+#| output-location: column
+(x + lag(x, n = 1) + lag(x, n = 2))/3 # for lagged window
+```
 
-NO FIGURE
+. . . 
+
+**Centered:** Leaves smoothed data close to real data.   
+**Lagged**: Lags the smoothed data, but can be consistently computed for the newest day
+
+Remember: **Data with weekly seasonality is best smoothed with a weekly window!**
 
 
 ## How Deaths Follow Cases

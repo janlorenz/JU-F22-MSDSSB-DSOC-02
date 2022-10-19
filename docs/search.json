@@ -2860,7 +2860,7 @@
     "href": "W8.html#smoothing",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "Smoothing",
-    "text": "Smoothing\nQuestion: Are there patterns in the timeline of new cases which seem unrelated to the potential spread of the virus in the population? How could we smooth them best?\nRolling mean Lagged mean\nNO FIGURE"
+    "text": "Smoothing\n\nRolling mean Lagged mean\nNO FIGURE"
   },
   {
     "objectID": "W8.html#how-deaths-follow-cases",
@@ -3049,7 +3049,7 @@
     "href": "W8.html#reported-cases-and-real-cases",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "Reported cases and real cases?",
-    "text": "Reported cases and real cases?\nCase numbers are to inform us about real cases. What type of data analysis question is this? (Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic)\n\n\nInferential: “Quantify whether the discovery is likely to hold in a new sample.”\n\nHere: What do reported cases tell us about cases in the whole population?\n\nLimitations\n\nWe cannot test all\nTests are not on a random sample\nMild/asymptomatic cases remain unnoticed even to individuals\n…\n\n\nWhat is the dark figure?"
+    "text": "Reported cases and real cases?\nCase numbers are to inform us about real cases. What type of data analysis question is this? (Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic)\n\n\nInferential: “Quantify whether the discovery is likely to hold in a new sample.”\n\nHere: What do reported cases tell us about cases in the whole population?\n\nLimitations\n\nWe cannot test all\nTests are not on a random sample\nMild/asymptomatic cases remain unnoticed even to individuals\n…\n\n\nThe unknown: What is the dark figure?"
   },
   {
     "objectID": "W8.html#excercise-for-german-cases",
@@ -3063,6 +3063,13 @@
     "href": "W8.html#excercise-for-german-new-case-counts",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "Excercise for German new case counts",
-    "text": "Excercise for German new case counts\n\n\nCan we infer the real incidence (= new cases per 100,000)?\nWhat can we infer about the trend of the real incidence?\n\n\nIncidence: Not really, we would need a either a random sample (then we can infer the fraction of infected), or an idea how to estimate the dark figure.\nTrend: Yes, better. Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend."
+    "text": "Excercise for German new case counts\n\n\nCan we infer the real incidence (= new cases per 100,000)?\nWhat can we infer the trend of the real incidence?\n\n\nIncidence: Not really, we would need a either a random sample (then we can infer the fraction of infected), or an idea how to estimate the dark figure.\nTrend: Yes! Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend."
+  },
+  {
+    "objectID": "W8.html#smoothing-time-series",
+    "href": "W8.html#smoothing-time-series",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Smoothing time series",
+    "text": "Smoothing time series\n\n\n\nx <- c(1, 2, 5, 3, 0)\nx\n\n\n[1] 1 2 5 3 0\n\n\n\n\n\nzoo::rollmean(x, k = 3, na.pad = TRUE) # for centered window\n\n\n[1]       NA 2.666667 3.333333 2.666667       NA\n\n\n\n\n\n(x + lag(x, n = 1) + lag(x, n = 2))/3 # for lagged window\n\n\n[1]       NA       NA 2.666667 3.333333 2.666667\n\n\n\n\nCentered: Leaves smoothed data close to real data.\nLagged: Lags the smoothed data, but can be consistently computed for the newest day\nRemember: Data with weekly seasonality is best smoothed with a weekly window!"
   }
 ]

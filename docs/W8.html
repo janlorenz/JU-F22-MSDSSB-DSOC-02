@@ -537,7 +537,7 @@ What are the data sources of WHO and OWiD?</p>
 <li>…</li>
 </ul></li>
 </ul>
-<p><strong>What is the dark figure?</strong></p>
+<p>The unknown: <strong>What is the dark figure?</strong></p>
 </div>
 </section>
 <section id="excercise-for-german-new-case-counts" class="slide level2 smaller">
@@ -545,18 +545,49 @@ What are the data sources of WHO and OWiD?</p>
 <p><img data-src="img/RKI-corona-dashboard.png" height="250"></p>
 <ul>
 <li>Can we infer the real <em>incidence</em> (= new cases per 100,000)?</li>
-<li>What can we infer about the <em>trend</em> of the real incidence?</li>
+<li>What can we infer the <em>trend</em> of the real incidence?</li>
 </ul>
 <div class="fragment">
 <p><strong>Incidence:</strong> Not really, we would need a either a random sample (then we can infer the fraction of infected), or an idea how to estimate the dark figure.</p>
-<p><strong>Trend:</strong> Yes, better. Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend.</p>
+<p><strong>Trend:</strong> Yes! Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend.</p>
 </div>
 </section>
-<section id="smoothing" class="slide level2">
-<h2>Smoothing</h2>
-<p>Question: Are there patterns in the timeline of new cases which seem unrelated to the potential spread of the virus in the population? How could we smooth them best?</p>
-<p>Rolling mean Lagged mean</p>
-<p>NO FIGURE</p>
+<section id="smoothing-time-series" class="slide level2 smaller">
+<h2>Smoothing time series</h2>
+
+<img data-src="W8_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 5 3 0</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>zoo<span class="sc">::</span><span class="fu">rollmean</span>(x, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">na.pad =</span> <span class="cn">TRUE</span>) <span class="co"># for centered window</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]       NA 2.666667 3.333333 2.666667       NA</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>(x <span class="sc">+</span> <span class="fu">lag</span>(x, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">lag</span>(x, <span class="at">n =</span> <span class="dv">2</span>))<span class="sc">/</span><span class="dv">3</span> <span class="co"># for lagged window</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]       NA       NA 2.666667 3.333333 2.666667</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Centered:</strong> Leaves smoothed data close to real data.<br>
+<strong>Lagged</strong>: Lags the smoothed data, but can be consistently computed for the newest day</p>
+<p>Remember: <strong>Data with weekly seasonality is best smoothed with a weekly window!</strong></p>
+</div>
 </section>
 <section id="how-deaths-follow-cases" class="slide level2">
 <h2>How Deaths Follow Cases</h2>
