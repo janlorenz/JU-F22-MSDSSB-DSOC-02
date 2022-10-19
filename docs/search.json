@@ -2805,5 +2805,236 @@
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Boxplots vs. histograms",
     "text": "Boxplots vs. histograms\n\nBoxplots can not show the patterns of bimodal or multimodal distributions.\n\n\npalmerpenguins::penguins |> ggplot(aes(x = flipper_length_mm)) + geom_boxplot()\n\n\n\n\n\npalmerpenguins::penguins |> ggplot(aes(x = flipper_length_mm)) + geom_histogram(binwidth = 1)"
+  },
+  {
+    "objectID": "W8.html#strange-airports",
+    "href": "W8.html#strange-airports",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Strange Airports",
+    "text": "Strange Airports\n\nlibrary(tidyverse)\nlibrary(nycflights13)\nggplot(data = airports, mapping = aes(x = lon, y = lat)) + geom_point(aes(color = tzone)) \n\n\n\nairports %>% filter(lon >= 0) \n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…"
+  },
+  {
+    "objectID": "W8.html#more-predictors",
+    "href": "W8.html#more-predictors",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "More predictors",
+    "text": "More predictors"
+  },
+  {
+    "objectID": "W8.html#interaction-effects",
+    "href": "W8.html#interaction-effects",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Interaction Effects",
+    "text": "Interaction Effects"
+  },
+  {
+    "objectID": "W8.html#r-squared",
+    "href": "W8.html#r-squared",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "R-squared",
+    "text": "R-squared"
+  },
+  {
+    "objectID": "W8.html#next",
+    "href": "W8.html#next",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Next",
+    "text": "Next\nhttps://datasciencebox.org/course-materials/_slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1"
+  },
+  {
+    "objectID": "W8.html#airport-errors",
+    "href": "W8.html#airport-errors",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Airport errors",
+    "text": "Airport errors\n\n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…\n\n\nCorrect locations (internet research and location of maps):\n\n\n\nDeer Valley Municipal Airport: Phoenix\n33°41′N 112°05′W Missing minus for lon (W)\nDillant Hopkins Airport: New Hampshire\n42°54′N 72°16′W lon-lat switched, minus (W)\nMontgomery Field: San Diego\n32°44′N 117°11″W Missing minus for lon (W)\nEareckson As: Alaska\n52°42′N 174°06′E No error: Too west,it’s east!"
+  },
+  {
+    "objectID": "W8.html#who-vs-owid-data",
+    "href": "W8.html#who-vs-owid-data",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "WHO vs OWiD data",
+    "text": "WHO vs OWiD data\nQuestion: Is the data of OWiD and WHO the same?\n\nNo. \nWhat are the sources?\n\nOWiD documentation refers to have data from CSSE at Johns Hopkins University which document various data sources (e.g., a newspaper from Germany)\nWHO documentation says: “WHO collected the numbers of confirmed COVID-19 cases and deaths through official communications under the International Health Regulations (IHR, 2005), complemented by monitoring the official ministries of health websites and social media accounts.” For Germany this is the Robert-Koch-Institut RKI. OWiD from JHU (also from newspapers does not correct via updates, good for consistency in daily reporting) WHO from national authorities (corrects data, e.g. adding new cases to days already, good for analysis in retrospect)"
+  },
+  {
+    "objectID": "W8.html#smoothing",
+    "href": "W8.html#smoothing",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Smoothing",
+    "text": "Smoothing\nQuestion: Are there patterns in the timeline of new cases which seem unrelated to the potential spread of the virus in the population? How could we smooth them best?\nRolling mean Lagged mean\nNO FIGURE"
+  },
+  {
+    "objectID": "W8.html#how-deaths-follow-cases",
+    "href": "W8.html#how-deaths-follow-cases",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "How Deaths Follow Cases",
+    "text": "How Deaths Follow Cases\nQuestion: How do deaths follow cases?\nFIGURE"
+  },
+  {
+    "objectID": "W8.html#severity-of-the-corona-pandemic-in-countries-related-to-human-development",
+    "href": "W8.html#severity-of-the-corona-pandemic-in-countries-related-to-human-development",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Severity of the corona pandemic in countries related to human development",
+    "text": "Severity of the corona pandemic in countries related to human development\nFIGURE DISCUSS"
+  },
+  {
+    "objectID": "W8.html#what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life",
+    "href": "W8.html#what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "What is the ranking of European countries with respect to of average satisfaction with life?",
+    "text": "What is the ranking of European countries with respect to of average satisfaction with life?"
+  },
+  {
+    "objectID": "W8.html#what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe",
+    "href": "W8.html#what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "What is the relation of the emotional attachment of Europeans to their own country and to Europe?",
+    "text": "What is the relation of the emotional attachment of Europeans to their own country and to Europe?\nlowess vs. loess\nOverplotting\nDot plot and smoothing.\nLinear model.\nUse as case for multidim?"
+  },
+  {
+    "objectID": "W8.html#what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration",
+    "href": "W8.html#what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "What is the relation of the emotional attachment to the own country and the opinion about further of European integration?",
+    "text": "What is the relation of the emotional attachment to the own country and the opinion about further of European integration?"
+  },
+  {
+    "objectID": "W8.html#how-many-observations-are-there-for-each-country-year-combination",
+    "href": "W8.html#how-many-observations-are-there-for-each-country-year-combination",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "How many observations are there for each country-year combination?",
+    "text": "How many observations are there for each country-year combination?\nWeighting"
+  },
+  {
+    "objectID": "W8.html#strange-airports-homework-02",
+    "href": "W8.html#strange-airports-homework-02",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Strange Airports (Homework 02)",
+    "text": "Strange Airports (Homework 02)\n\nlibrary(tidyverse)\nlibrary(nycflights13)\nggplot(data = airports, mapping = aes(x = lon, y = lat)) + geom_point(aes(color = tzone)) \n\n\n\nairports %>% filter(lon >= 0) \n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…"
+  },
+  {
+    "objectID": "W8.html#conclusions-on-data-errors",
+    "href": "W8.html#conclusions-on-data-errors",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Conclusions on data errors",
+    "text": "Conclusions on data errors\n\nIn real-world datasets errors like the 3 airport are quite common.\nErrors of this type are often hard to detect and remain unnoticed.\n\nThis can (but need not) change results drastically!\n\n\n\nConclusions\n\nAlways remain alert for inconsistencies and be ready to check the plausibility of results.\nSkills in exploratory data analysis (EDA) are essential to find errors and explore their nature and implication\nErrors are unpredictable, of diverse types, and often deeply related to the reality the data presents.\n\nOne reason why EDA can not be a fully formalized and automatized process."
+  },
+  {
+    "objectID": "W8.html#same-phenomenon-different-data",
+    "href": "W8.html#same-phenomenon-different-data",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Same phenomenon different data?",
+    "text": "Same phenomenon different data?\nQuestion: Is the data of OWiD and WHO the same?\n\nNo. Why? What are the data sources?\n\nOWiD documentation refers to have data from CSSE at Johns Hopkins University which document various data sources (e.g., a newspaper from Germany)\nWHO documentation says: “WHO collected the numbers of confirmed COVID-19 cases and deaths through official communications under the International Health Regulations (IHR, 2005), complemented by monitoring the official ministries of health websites and social media accounts.” For Germany this is the Robert-Koch-Institut RKI."
+  },
+  {
+    "objectID": "W8.html#good-reasons-for-different-data",
+    "href": "W8.html#good-reasons-for-different-data",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Good reasons for different data?",
+    "text": "Good reasons for different data?\n\nDuring the pandemic daily new case numbers were relevant for decisions about safety measures.\nIn reality, data comes with delays.\n\nExample: Recent new cases in Germany (RKI). Notice many new cases several days ago."
+  },
+  {
+    "objectID": "W8.html#conflict-day-to-day-consistency-and-correctness",
+    "href": "W8.html#conflict-day-to-day-consistency-and-correctness",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Conflict day-to-day consistency and correctness",
+    "text": "Conflict day-to-day consistency and correctness\n\nFixing daily cases is useful to record the numbers on which daily safety decisions are based.\nCorrected cases (which also change data from the past) are better for analysis in retrospect. It reflects the actual pandemic better.\n\nThere are several other reasons of Exercise:"
+  },
+  {
+    "objectID": "index.html#week-8-oct-20",
+    "href": "index.html#week-8-oct-20",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 8, Oct 20:",
+    "text": "Week 8, Oct 20:\nHomework 04 should come. Due Nov 6."
+  },
+  {
+    "objectID": "index.html#week-9-oct-27",
+    "href": "index.html#week-9-oct-27",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 9, Oct 27:",
+    "text": "Week 9, Oct 27:"
+  },
+  {
+    "objectID": "index.html#week-10-nov-3",
+    "href": "index.html#week-10-nov-3",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 10, Nov 3:",
+    "text": "Week 10, Nov 3:\nHomework 04 due in 3 days\nHomework 05 should come. Due Nov 20."
+  },
+  {
+    "objectID": "index.html#week-11-nov-10",
+    "href": "index.html#week-11-nov-10",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 11, Nov 10:",
+    "text": "Week 11, Nov 10:"
+  },
+  {
+    "objectID": "index.html#week-12-nov-17",
+    "href": "index.html#week-12-nov-17",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 12, Nov 17:",
+    "text": "Week 12, Nov 17:\nHomework 05 due in 3 days\nHomework 06 should come. Due Dec 4."
+  },
+  {
+    "objectID": "index.html#week-13-nov-24",
+    "href": "index.html#week-13-nov-24",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 13, Nov 24:",
+    "text": "Week 13, Nov 24:"
+  },
+  {
+    "objectID": "index.html#week-14-dec-1",
+    "href": "index.html#week-14-dec-1",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 14, Dec 1:",
+    "text": "Week 14, Dec 1:\nHomework 06 due in 3 days"
+  },
+  {
+    "objectID": "index.html#exam-data-science-concepts-module",
+    "href": "index.html#exam-data-science-concepts-module",
+    "title": "Data Science Concepts / Tools",
+    "section": "Exam Data Science Concepts module",
+    "text": "Exam Data Science Concepts module\nIn December, will be scheduled officially on campusnet by academic offices."
+  },
+  {
+    "objectID": "W9.html#test-und-training-set",
+    "href": "W9.html#test-und-training-set",
+    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "section": "Test und Training set",
+    "text": "Test und Training set\nCross validation"
+  },
+  {
+    "objectID": "W9.html#decision-trees",
+    "href": "W9.html#decision-trees",
+    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "section": "Decision Trees",
+    "text": "Decision Trees"
+  },
+  {
+    "objectID": "hw-instructions/hw-04-instr.html",
+    "href": "hw-instructions/hw-04-instr.html",
+    "title": "Homework 04",
+    "section": "",
+    "text": "Important\n\n\n\nHomework 04 is due Oct 30. You are encouraged to push sensible intermediate steps before.\nIn this homework you are to continue to do data analysis of the data The goal of this assignment is to do steps of exploratory data analysis (EDA) with the data about corona and the European Social Survey (ESS) from Homework 02."
+  },
+  {
+    "objectID": "hw-instructions/hw-04-instr.html#corona",
+    "href": "hw-instructions/hw-04-instr.html#corona",
+    "title": "Homework 04",
+    "section": "1 Corona",
+    "text": "1 Corona\nContinue to work on your repository corona-ind-USERNAME and make the analysis in R-chunks.\nCreate a new Quarto-document and save it as “Corona_Analysis.qmd”.\n\nCustomize the YAML with the title “Corona Analysis”, your name, and output format being a standalone html-file with embedded resources. Enable code-folding in the output html file.\nWrite a chunk labeled data where you load the tidyverse library and import the data from Our World in Data (OWiD) into a tibble owid and the data from the World Health Organization (WHO) into a tibble called who (use read_csv for both).\nDocument what you did: Write a headline ## Data before the chunk data and briefly describe the two data sources and link the data files.\n\n\n\n\n\n\n\nTip\n\n\n\n\nIn https://github.com/JU-F22-MDSSB-MET-01/corona-ind-janlorenz/blob/main/Download_corona_data.R you find a script which downloads the corona datasets from OWiD and WHO. You can copy this.\nIn https://github.com/JU-F22-MDSSB-MET-01/corona-ind-janlorenz/blob/main/Corona.qmd you find an example for the YAML and the data import chunk.\n\n\n\n\n1.1 Question 1: Is the data of OWiD and WHO the same?\nWrite a new headline ## Differences between OWiD and WHO data, make the following analysis in a chunk, and write an answer to the question. Guide for the analysis:\n\nCreate a joined tibble. This can be done with a chain of pipes |>.\n\nMake a new tibble who_owid where you left join owid to who. Use the combination of the data and the country as the key. To that end you have to identify the corresponding columns in who and owid with the named vector c(\"Date_reported\" = \"date\", \"Country\" = \"location\").\nUse select to select and rename columns in who_owid such that you have columns for Date, Country, New_cases_who, New_cases_owid, Total_cases_who, and Total_cases_owid.\n\nMake a visualization where the new cases in WHO and OWiD appear as two lines. Filter for the time before 2020-07-01 and four countries: Germany, France, India, and a country of your choice (Hint: use %in%). Then facet your visualization by country.\nRepeat the visualization for the comparison of WHO and OWiD data for the total cases.\nBelow the visualizations, explain what is visualizaed and then answer the question based on the visualizations. (Some guiding questions: What are the differences? How severe are the differences on a daily basis and in the long run? What data shows more fluctuations?) Bonus: What is the reason for the difference?\n\n\nFor comparing New_cases_who and New_cases_owid you need a to make the tibble longer (pivot_longer) such that you have one column with a categroical variable specifying the data source and one column with the actual value of the new cases in each data set. Then you can make a ggplot with geom_line where you make two lines by assigning the data source to the color aesthetic.\nFor faceting, use facet_wrap. It is useful to specify that there should be only one column and that scales are specified such that each facet has its own y-axis scale (called free_y).\nThe same advice holds for the visualization of total cases.\n\n\n\n1.2 Question 2: Are there patterns in the timeline of new cases which seem unrelated to the potential spread of the virus in the population? How could we smooth them best?\nWrite a new headline ## Smoothing new cases, make a chunk where you compute three additional columns with smoothed case numbers (see below), make a visualization and explain which is most appropriate to use and why.\n\nComputed a new tibble who_smoothed from who for this question. (There would be no essential difference with owid.) For each day compute the average of the actual day and some days directly before such that each new value is an average of 3, 7, or 10 days. Call the three new columns New_cases_smooth3, New_cases_smooth7, and New_cases_smooth10. The average is the sum of all values divided by the total number of days. Use mutate. For each column use lag several times for each previous day (see ?lag). Don’t forget to group by countries!\nVisualize the timeline for Germany using a time span between 6 and 12 month. Make one panel for New_cases_smooth3, New_cases_smooth7, and New_cases_smooth10 respectively. (Hint: Either use pivot_longer and faceting, or three ggplot objects combined using the package patchwork.)\nAnswer the question. What is the pattern which seems unrelated to the spread of the virus? Which is the most appropriate smoothing, 3, 7, or 10 days and why?\n\n\n\n1.3 Question 3: How do deaths follow cases?\nMake a new headline about this question in your report.\nIn owid, there are variables new_cases_smoothed and new_deaths_smoothed which you can use for convenience to explore this question.\nTo explore the connection between COVID-19 cases and deaths focus on the first wave in Germany. In owid, filter the data for Germany and dates before 2020-07-01. Plot new_cases_smoothed and new_deaths_smoothed in one line plot using color to distinguish both. (Hint: Use pivot_longer.) Now, produce a new variable scaled_lagged_cases where you do a shift-and-scale transformation of new_cases_smoothed: That means you scale down the number of cases by multiplying a factor \\(y\\)(< 1) and you lag the number of cases along the time axis by \\(x\\) days using y * lag(new_cases_smoothed, x).\n\nPlay with numerical values of \\(x\\) and \\(y\\) by plotting scaled_lagged_cases together with new_death_smoothed. Find values for such that both lines overlap as good as possible. Put this visualization into the report.\nDescribe what these “visually calibrated” values of \\(x\\) and \\(y\\) tell us about the relation of cases and deaths of COVID-19?\nRedo the line plot with your calibrated values for all dates in Germany. Describe how the connection between new cases and deaths changes in the course of the pandemic. List potential reasons.\nRepeat this analysis for another country of your choice. To that end find out the time range of the first wave in the country before. Do you get the same \\(x\\) and \\(y\\) by visually calibrating for this country?\n\n\n\n1.4 Question 4: How is the severity of the corona pandemic in countries related to human development?\nMake a new headline about this question in your report.\nHuman development is meant to be measured by the human development index of the United Nations Development Programme. Briefly, describe in the report how the Human Development Index (HDI) is composed.\nUse owid. Make a figure which visualizes each country as a point with human_development_index on the horizontal and total_deaths_per_million on the vertical axis. Filter the values for the date 2022-08-31. Filter out all rows which do not represent countries. (Hint: You can take all rows which have a valid value for continent.) Make the size of dots such that the area is proportional to the population. (Hint: Use the scale_size_area() as an additional layer.) Color the dots by continent.\nDescribe the visible relation of HDI and total corona related deaths per million. Emphasize what you find interesting, and hypothesize about potential reasons for the finding.\n\n\n1.5 Submit your report\nMake sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file and push it to GitHub."
+  },
+  {
+    "objectID": "hw-instructions/hw-04-instr.html#european-social-survey",
+    "href": "hw-instructions/hw-04-instr.html#european-social-survey",
+    "title": "Homework 04",
+    "section": "2 European Social Survey",
+    "text": "2 European Social Survey\nContinue to work on your repository ess-ind-USERNAME and make the analysis in python-chunks. You have to look ESS Data Documentation https://ess-search.nsd.no/.\n\nCreate a new Quarto-document and save it as “ESS-analysis.qmd” (alternatively as “ESS-analysis.ipynb” if you can render html-files similarly from it).\n\n\nCustomize the YAML with the title “European Social Survey Analysis”, your name, and output format being a standalone html-file with embedded resources. Enable code-folding in the output html file.\nWrite a chunk labeled data where you load the tidyverse library and import the dataset you downloaded for Homework 02.\n\nDocument what you did: Write a headline ## Data before the chunk data and briefly describe the data source.\nFor each of the following questions write a fitting headline to structure your report.\n\n\n2.1 Question 1: What is the ranking of European countries with respect to of average satisfaction with life?\n\nCompute the average of stflife for each country-year combination. Make a table with four columns: the country name and the average life satisfaction for the years 2006, 2012, and 2018. Order the table by the values in 2018 and print it nicely in your report.\nTo that end, you must create new variables countryname from the two-character ISO-codes in cntyr (use the library pycountry) and a new variable year.\nBeware: The ESS variables have coded missing values as large numbers like 77 or 88. Find out these values and recode them as NA before computing averages!\n\nDescribe what you find remarkable in the table. (Who is on top? who at the bottom? Any interesting trends? Any geographical patterns?)\n\n\n\n2.2 Question 2: What is the relation of the emotional attachment of Europeans to their own country and to Europe?\nEmotional attachment to Europe may diminish emotional attachment to the country. Test if this is true with the variables atchctr and atcherp. First, look up the wording of the two questions and the answering options and write it into the report.\nBuild two visualizations and put them in the report. Beware: First recode the missing values as NA! (See above.)\n\nA visualization where you first count the number of individuals each combination of valid values of atchctr and atcherp. Then plot each combination as a dot with atchctr on the x-axis, atcherp on the y-axis, and the number of individuals represented by size and color and color of the dot.\nMake a lowess (locally weighted scatterplot smoothing) line of atchctr on the x-axis, atcherp on the y-axis using the function regplot from seaborn.\n\nAnswer the question based on the visualization.\n\n\n2.3 Question 3: What is the relation of the emotional attachment to the own country and the opinion about further of European integration?\nThis is analog to Question 2 with euftf instead of atcherp. First, look up the wording of euftf and the answering options and write it into the report. Beware: First recode the missing values as NA! (See above.)\nBuild two visualizations as above.\nAnswer the question.\n\n\n2.4 Question 4: How many observations are there for each country-year combination?\nCompute the numbers and list them nicely in a table in your report.\nAre the numbers roughly proportional to the population in these countries? Discuss if the answer creates some shortcomings about the answers to Questions 2 and 3. How could these be mitigated?\n\n\n2.5 Question 5: Answer your own exploratory question\nLook up questions behind the variables in the ESS data set, formulate a question, and answer it with summarizing, and visualization."
+  },
+  {
+    "objectID": "index.html#week-14-dec-1-course-review-exam-preparation",
+    "href": "index.html#week-14-dec-1-course-review-exam-preparation",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 14, Dec 1: Course Review, Exam preparation",
+    "text": "Week 14, Dec 1: Course Review, Exam preparation\nHomework 06 due in 3 days"
   }
 ]

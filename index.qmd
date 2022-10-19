@@ -189,6 +189,35 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 **Homework 03 is due Oct 16.**
 
+## Week 8, Oct 20:  {-}
+
+**Homework 04 should come. Due Nov 6.**
+
+## Week 9, Oct 27:  {-}
+
+## Week 10, Nov 3:  {-}
+
+**Homework 04 due in 3 days**  
+**Homework 05 should come. Due Nov 20.**
+
+## Week 11, Nov 10:  {-}
+
+## Week 12, Nov 17:  {-}
+
+**Homework 05 due in 3 days**  
+**Homework 06 should come. Due Dec 4.**
+
+## Week 13, Nov 24:  {-}
+
+## Week 14, Dec 1: Course Review, Exam preparation {-}
+
+**Homework 06 due in 3 days**  
+
+## Exam *Data Science Concepts* module {-}
+
+In December, will be scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices. 
+
+
 
 <!-- 
 Next things: Data Science Box: Scientific studies and confounding, ends with conditional probability and independence
