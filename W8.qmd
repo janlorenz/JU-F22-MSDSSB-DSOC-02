@@ -1,0 +1,334 @@
+---
+title: "W#8 More linear models, Missing Values, Data Questions"
+author: Jan Lorenz
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: false
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+---
+
+```{r}
+#| label: data
+library(tidyverse)
+# If there is no data, or data needs to be updated, first run the script Download_corona_data.R
+owid <- read_csv("data/owid-covid-data.csv", 
+                 col_types = cols( 
+                   iso_code = col_character(),
+                   continent = col_character(),
+                   location = col_character(),
+                   date = col_date(format = ""),
+                   total_cases = col_double(),
+                   new_cases = col_double(),
+                   new_cases_smoothed = col_double(),
+                   total_deaths = col_double(),
+                   new_deaths = col_double(),
+                   new_deaths_smoothed = col_double(),
+                   total_cases_per_million = col_double(),
+                   new_cases_per_million = col_double(),
+                   new_cases_smoothed_per_million = col_double(),
+                   total_deaths_per_million = col_double(),
+                   new_deaths_per_million = col_double(),
+                   new_deaths_smoothed_per_million = col_double(),
+                   reproduction_rate = col_double(),
+                   icu_patients = col_double(),
+                   icu_patients_per_million = col_double(),
+                   hosp_patients = col_double(),
+                   hosp_patients_per_million = col_double(),
+                   weekly_icu_admissions = col_double(),
+                   weekly_icu_admissions_per_million = col_double(),
+                   weekly_hosp_admissions = col_double(),
+                   weekly_hosp_admissions_per_million = col_double(),
+                   total_tests = col_double(),
+                   new_tests = col_double(),
+                   total_tests_per_thousand = col_double(),
+                   new_tests_per_thousand = col_double(),
+                   new_tests_smoothed = col_double(),
+                   new_tests_smoothed_per_thousand = col_double(),
+                   positive_rate = col_double(),
+                   tests_per_case = col_double(),
+                   tests_units = col_character(),
+                   total_vaccinations = col_double(),
+                   people_vaccinated = col_double(),
+                   people_fully_vaccinated = col_double(),
+                   total_boosters = col_double(),
+                   new_vaccinations = col_double(),
+                   new_vaccinations_smoothed = col_double(),
+                   total_vaccinations_per_hundred = col_double(),
+                   people_vaccinated_per_hundred = col_double(),
+                   people_fully_vaccinated_per_hundred = col_double(),
+                   total_boosters_per_hundred = col_double(),
+                   new_vaccinations_smoothed_per_million = col_double(),
+                   new_people_vaccinated_smoothed = col_double(),
+                   new_people_vaccinated_smoothed_per_hundred = col_double(),
+                   stringency_index = col_double(),
+                   population = col_double(),
+                   population_density = col_double(),
+                   median_age = col_double(),
+                   aged_65_older = col_double(),
+                   aged_70_older = col_double(),
+                   gdp_per_capita = col_double(),
+                   extreme_poverty = col_double(),
+                   cardiovasc_death_rate = col_double(),
+                   diabetes_prevalence = col_double(),
+                   female_smokers = col_double(),
+                   male_smokers = col_double(),
+                   handwashing_facilities = col_double(),
+                   hospital_beds_per_thousand = col_double(),
+                   life_expectancy = col_double(),
+                   human_development_index = col_double(),
+                   excess_mortality_cumulative_absolute = col_double(),
+                   excess_mortality_cumulative = col_double(),
+                   excess_mortality = col_double(),
+                   excess_mortality_cumulative_per_million = col_double()
+                 ))
+who <- read_csv("data/WHO-COVID-19-global-data.csv", 
+                col_types = cols(
+                  Date_reported = col_date(format = ""),
+                  Country_code = col_character(),
+                  Country = col_character(),
+                  WHO_region = col_character(),
+                  New_cases = col_double(),
+                  Cumulative_cases = col_double(),
+                  New_deaths = col_double(),
+                  Cumulative_deaths = col_double()
+                ))
+who_owid <- who |>  
+  left_join(owid, by=c("Date_reported" = "date", "Country" = "location")) |> 
+  rename(Date = Date_reported, New_cases_who = New_cases, New_cases_owid = new_cases, 
+         Total_cases_who = Cumulative_cases, Total_cases_owid = total_cases) |> 
+  select (Date, Country, New_cases_who, New_cases_owid, Total_cases_who,
+          Total_cases_owid)
+```
+
+# Errors in data
+
+## Strange Airports (Homework 02) {.smaller}
+
+```{r}
+#| fig-height: 4
+#| echo: true
+library(nycflights13)
+ggplot(data = airports, mapping = aes(x = lon, y = lat)) + geom_point(aes(color = tzone)) 
+```
+
+```{r}
+#| echo: true
+airports %>% filter(lon >= 0) 
+```
+
+
+## Airport errors {.smaller}
+
+```{r}
+airports %>% filter(lon >= 0)
+```
+Correct locations (internet research and location of maps):
+
+:::: {.columns}
+::: {.column width='55%'}
+- Deer Valley Municipal Airport: Phoenix   
+33°41′N 112°05′W [Missing minus for lon (W)]{style='color:red;'}
+- Dillant Hopkins Airport: New Hampshire   
+42°54′N 72°16′W [lon-lat switched, minus (W)]{style='color:red;'}
+- Montgomery Field: San Diego   
+32°44′N 117°11″W [Missing minus for lon (W)]{style='color:red;'}
+- Eareckson As: Alaska    
+52°42′N 174°06′E [No error: Too west,it's east!]{style='color:red;'}
+:::
+
+::: {.column width='45%'}
+![](https://upload.wikimedia.org/wikipedia/commons/e/ef/FedStats_Lat_long.svg)
+:::
+
+::::
+
+## Conclusions on data errors {.smaller}
+
+- In real-world datasets errors like the 3 airport are quite common.
+- Errors of this type are often hard to detect and remain unnoticed. 
+  - This can (but need not) change results drastically!
+
+. . .
+
+Conclusions
+
+- Always remain **alert for inconsistencies** and be ready to check the **plausibility** of results. 
+- Skills in **exploratory data analysis** (EDA) are essential to find errors and explore their nature and implication
+- Errors are unpredictable, of diverse types, and often deeply related to the reality the data presents. 
+  - One reason why EDA can not be a fully formalized and automatized process. 
+
+# Corona questions (Homework 03)
+
+## Same phenomenon different data? {.smaller}
+
+Question: **Is the data of OWiD and WHO the same?**
+
+. . .
+
+
+:::: {.columns}
+
+::: {.column width='40%'}
+No.  
+Why?   
+What are the data sources of WHO and OWiD?  
+:::
+
+::: {.column width='60%'}
+```{r}
+#| fig-height: 4
+who_owid |> 
+  pivot_longer(c("New_cases_who","New_cases_owid"), 
+               names_to = "data_source", 
+               values_to = "new_cases") |> 
+  filter(Date > '2020-02-01', Date < '2020-07-01', Country == "Germany") |> 
+  ggplot(aes(x = Date, y = new_cases, col = data_source)) +
+  geom_line() +
+  facet_wrap(~Country, ncol=1, scales = "free") +
+ theme_minimal(base_size = 24)
+```
+:::
+
+::::
+
+- [OWiD documentation](https://docs.owid.io/projects/covid/en/latest/dataset.html) refers to have data from [CSSE at Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19) which document various data sources (e.g., a newspaper from Germany)
+- [WHO documentation](https://covid19.who.int/data) says: "WHO collected the numbers of confirmed COVID-19 cases and deaths through official communications under the International Health Regulations (IHR, 2005), complemented by monitoring the official ministries of health websites and social media accounts." For Germany this is the Robert-Koch-Institut [RKI](https://github.com/robert-koch-institut/SARS-CoV-2-Infektionen_in_Deutschland). 
+
+## Good reasons for different data? {.smaller}
+
+- During the pandemic daily new case numbers were relevant for decisions about safety measures.
+- In reality, data comes with delays.
+
+Example: Recent new cases in Germany (RKI). Notice many new cases several days ago. 
+![](img/RKI-corona-dashboard.png)
+
+## Conflict day-to-day consistency and correctness {.smaller}
+
+- Fixing daily cases is useful to record the numbers on which daily safety decisions are based. 
+- Corrected cases (which also change data from the past) are better for analysis in retrospect. It reflects the actual pandemic better. 
+
+## Reported cases and real cases? {.smaller}
+
+Case numbers are to inform us about real cases. What type of data analysis question is this? (Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic)
+
+. . . 
+
+- Inferential: "Quantify whether the discovery is likely to hold in a new sample."
+  - Here: What do reported cases tell us about cases in the whole population? 
+- Limitations 
+  - We cannot test all
+  - Tests are not on a random sample
+  - Mild/asymptomatic cases remain unnoticed even to individuals
+  - ...
+  
+The unknown: **What is the dark figure?**
+
+
+## Excercise for German new case counts {.smaller}
+
+![](img/RKI-corona-dashboard.png){height="250"}
+
+- Can we infer the real *incidence* (= new cases per 100,000)?
+- What can we infer the *trend* of the real incidence?
+
+. . .
+
+**Incidence:** Not really, we would need a either a random sample (then we can infer the fraction of infected), or an idea how to estimate the dark figure. 
+
+**Trend:** Yes! Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend. 
+
+
+## Smoothing
+
+```{r}
+who |> filter(Date_reported > '2020-02-01', Date_reported < '2020-07-01', 
+              Country == "Germany") |>
+ mutate(Smooth3 = (New_cases + lag(New_cases) + lag(New_cases,2))/3,
+        Smooth7 = (New_cases + lag(New_cases) + lag(New_cases,2) + lag(New_cases,3) + lag(New_cases,4) + lag(New_cases,5) + lag(New_cases,6))/7,
+        Smooth7 = (New_cases + lag(New_cases) + lag(New_cases,2) + lag(New_cases,3) + lag(New_cases,4) + lag(New_cases,5) + lag(New_cases,6)+ lag(New_cases,7) + lag(New_cases,8) + lag(New_cases,9))/10
+) |> pivot_longer(c(New_cases, Smooth3, Smooth7, Smooth10), names_to = "Smooth",
+                  values_to = "Cases") |> 
+ filter(Date_reported > '2020-03-01', Date_reported < '2020-05-01') |>
+ ggplot(aes(Date_reported, Cases, color = Smooth)) + geom_line()
+```
+
+
+Rolling mean
+Lagged mean
+
+NO FIGURE
+
+
+## How Deaths Follow Cases
+
+Question: How do deaths follow cases?
+
+FIGURE
+
+
+## Severity of the corona pandemic in countries related to human development
+
+FIGURE 
+DISCUSS
+
+# European Social Survey questions (Homework 03)
+
+## What is the ranking of European countries with respect to of average satisfaction with life?
+
+
+## What is the relation of the emotional attachment of Europeans to their own country and to Europe?
+
+
+lowess vs. loess
+
+Overplotting
+
+Dot plot and smoothing. 
+
+Linear model. 
+
+Use as case for multidim? 
+
+
+
+## What is the relation of the emotional attachment to the own country and the opinion about further of European integration?
+
+
+
+
+## How many observations are there for each country-year combination?
+
+Weighting
+
+
+
+
+
+
+
+
+
+
+# More Linear Models
+https://datasciencebox.org/course-materials/_slides/u4-d04-model-multiple-predictors/u4-d04-model-multiple-predictors.html#15
+
+## More predictors
+
+## Interaction Effects
+
+## R-squared
+
+
+## Next 
+https://datasciencebox.org/course-materials/_slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1
+
+
+
+# Student projects
+
+In the same module, we will soon begin working on the individual data science projects of students which is the main examination determining the grade. In these projects students do steps of data analysis and visualization, writing, rendering, and pushing to a repository which should have been learned through the Homework.
+

@@ -2909,7 +2909,7 @@
     "href": "W8.html#strange-airports-homework-02",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "Strange Airports (Homework 02)",
-    "text": "Strange Airports (Homework 02)\n\nlibrary(tidyverse)\nlibrary(nycflights13)\nggplot(data = airports, mapping = aes(x = lon, y = lat)) + geom_point(aes(color = tzone)) \n\n\n\nairports %>% filter(lon >= 0) \n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…"
+    "text": "Strange Airports (Homework 02)\n\nlibrary(nycflights13)\nggplot(data = airports, mapping = aes(x = lon, y = lat)) + geom_point(aes(color = tzone)) \n\n\n\nairports %>% filter(lon >= 0) \n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…"
   },
   {
     "objectID": "W8.html#conclusions-on-data-errors",
@@ -2923,7 +2923,7 @@
     "href": "W8.html#same-phenomenon-different-data",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "Same phenomenon different data?",
-    "text": "Same phenomenon different data?\nQuestion: Is the data of OWiD and WHO the same?\n\nNo. Why? What are the data sources?\n\nOWiD documentation refers to have data from CSSE at Johns Hopkins University which document various data sources (e.g., a newspaper from Germany)\nWHO documentation says: “WHO collected the numbers of confirmed COVID-19 cases and deaths through official communications under the International Health Regulations (IHR, 2005), complemented by monitoring the official ministries of health websites and social media accounts.” For Germany this is the Robert-Koch-Institut RKI."
+    "text": "Same phenomenon different data?\nQuestion: Is the data of OWiD and WHO the same?\n\n\n\nNo.\nWhy?\nWhat are the data sources of WHO and OWiD?\n\n\n\n\n\n\n\n\n\nOWiD documentation refers to have data from CSSE at Johns Hopkins University which document various data sources (e.g., a newspaper from Germany)\nWHO documentation says: “WHO collected the numbers of confirmed COVID-19 cases and deaths through official communications under the International Health Regulations (IHR, 2005), complemented by monitoring the official ministries of health websites and social media accounts.” For Germany this is the Robert-Koch-Institut RKI."
   },
   {
     "objectID": "W8.html#good-reasons-for-different-data",
@@ -2937,7 +2937,7 @@
     "href": "W8.html#conflict-day-to-day-consistency-and-correctness",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "Conflict day-to-day consistency and correctness",
-    "text": "Conflict day-to-day consistency and correctness\n\nFixing daily cases is useful to record the numbers on which daily safety decisions are based.\nCorrected cases (which also change data from the past) are better for analysis in retrospect. It reflects the actual pandemic better.\n\nThere are several other reasons of Exercise:"
+    "text": "Conflict day-to-day consistency and correctness\n\nFixing daily cases is useful to record the numbers on which daily safety decisions are based.\nCorrected cases (which also change data from the past) are better for analysis in retrospect. It reflects the actual pandemic better."
   },
   {
     "objectID": "index.html#week-8-oct-20",
@@ -3036,5 +3036,33 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 14, Dec 1: Course Review, Exam preparation",
     "text": "Week 14, Dec 1: Course Review, Exam preparation\nHomework 06 due in 3 days"
+  },
+  {
+    "objectID": "W8.html#reported-cases-and-the-real-pandemic",
+    "href": "W8.html#reported-cases-and-the-real-pandemic",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Reported cases and the real pandemic",
+    "text": "Reported cases and the real pandemic\n\n\nCase numbers are often used to answer inferrential questions used Exercise:"
+  },
+  {
+    "objectID": "W8.html#reported-cases-and-real-cases",
+    "href": "W8.html#reported-cases-and-real-cases",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Reported cases and real cases?",
+    "text": "Reported cases and real cases?\nCase numbers are to inform us about real cases. What type of data analysis question is this? (Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic)\n\n\nInferential: “Quantify whether the discovery is likely to hold in a new sample.”\n\nHere: What do reported cases tell us about cases in the whole population?\n\nLimitations\n\nWe cannot test all\nTests are not on a random sample\nMild/asymptomatic cases remain unnoticed even to individuals\n…\n\n\nWhat is the dark figure?"
+  },
+  {
+    "objectID": "W8.html#excercise-for-german-cases",
+    "href": "W8.html#excercise-for-german-cases",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Excercise for German cases",
+    "text": "Excercise for German cases\n\n\nWhat can we infer something about the current real incidence (= new cases per 100.000 individuals)?\nWhat can we infer about the trend of the real incidence?"
+  },
+  {
+    "objectID": "W8.html#excercise-for-german-new-case-counts",
+    "href": "W8.html#excercise-for-german-new-case-counts",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Excercise for German new case counts",
+    "text": "Excercise for German new case counts\n\n\nCan we infer the real incidence (= new cases per 100,000)?\nWhat can we infer about the trend of the real incidence?\n\n\nIncidence: Not really, we would need a either a random sample (then we can infer the fraction of infected), or an idea how to estimate the dark figure.\nTrend: Yes, better. Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend."
   }
 ]
