@@ -869,7 +869,7 @@ We should filter out the highest values for the histogram…</p>
 <section id="correlation" class="slide level2 smaller">
 <h2>Correlation</h2>
 <p>Goal: We want to measure the linear correlation in a sequences of numerical observations of two variables <span class="math inline">\(x_1,\dots,x_n\)</span> and <span class="math inline">\(y_1, \dots, y_n\)</span>.</p>
-<p><strong>Pearson correlation coefficient</strong> <span class="math inline">\(r_{xy} = \frac{\sum_{i=1}^n(x_i - \mu_x)(y_i - \mu_y)}{\sqrt{\sum_{i=1}^n(x_i - \mu_x)}\sqrt{\sum_{i=1}^n(y_i - \mu_y)}}\)</span></p>
+<p><strong>Pearson correlation coefficient</strong> <span class="math inline">\(r_{xy} = \frac{\sum_{i=1}^n(x_i - \mu_x)(y_i - \mu_y)}{\sqrt{\sum_{i=1}^n(x_i - \mu_x)^2}\sqrt{\sum_{i=1}^n(y_i - \mu_y)^2}}\)</span></p>
 <p>Note, <span class="math inline">\(r_{xy} = \frac{\text{cov}(x,y)}{\sigma_x\sigma_y}\)</span></p>
 <p>where <span class="math inline">\(\sigma_x\)</span> and <span class="math inline">\(\sigma_y\)</span> are the standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <p>Note, when <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are standard scores (each with mean zero and standard deviation one), then <span class="math inline">\(\text{cov}(x,y) = r_{xy}\)</span>.</p>

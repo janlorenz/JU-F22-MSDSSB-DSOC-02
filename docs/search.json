@@ -2664,7 +2664,7 @@
     "href": "W7.html#correlation",
     "title": "W#7 Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models",
     "section": "Correlation",
-    "text": "Correlation\nGoal: We want to measure the linear correlation in a sequences of numerical observations of two variables \\(x_1,\\dots,x_n\\) and \\(y_1, \\dots, y_n\\).\nPearson correlation coefficient \\(r_{xy} = \\frac{\\sum_{i=1}^n(x_i - \\mu_x)(y_i - \\mu_y)}{\\sqrt{\\sum_{i=1}^n(x_i - \\mu_x)}\\sqrt{\\sum_{i=1}^n(y_i - \\mu_y)}}\\)\nNote, \\(r_{xy} = \\frac{\\text{cov}(x,y)}{\\sigma_x\\sigma_y}\\)\nwhere \\(\\sigma_x\\) and \\(\\sigma_y\\) are the standard deviations of \\(x\\) and \\(y\\).\nNote, when \\(x\\) and \\(y\\) are standard scores (each with mean zero and standard deviation one), then \\(\\text{cov}(x,y) = r_{xy}\\).\n\n\nThere are other correlation coefficients which we omit hear."
+    "text": "Correlation\nGoal: We want to measure the linear correlation in a sequences of numerical observations of two variables \\(x_1,\\dots,x_n\\) and \\(y_1, \\dots, y_n\\).\nPearson correlation coefficient \\(r_{xy} = \\frac{\\sum_{i=1}^n(x_i - \\mu_x)(y_i - \\mu_y)}{\\sqrt{\\sum_{i=1}^n(x_i - \\mu_x)^2}\\sqrt{\\sum_{i=1}^n(y_i - \\mu_y)^2}}\\)\nNote, \\(r_{xy} = \\frac{\\text{cov}(x,y)}{\\sigma_x\\sigma_y}\\)\nwhere \\(\\sigma_x\\) and \\(\\sigma_y\\) are the standard deviations of \\(x\\) and \\(y\\).\nNote, when \\(x\\) and \\(y\\) are standard scores (each with mean zero and standard deviation one), then \\(\\text{cov}(x,y) = r_{xy}\\).\n\n\nThere are other correlation coefficients which we omit hear."
   },
   {
     "objectID": "W7.html#correlation-and-linear-regression",

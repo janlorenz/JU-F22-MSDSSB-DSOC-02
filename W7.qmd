@@ -480,7 +480,7 @@ Note: $\text{cov}(x,x) = \text{Var}(x)$
 Goal: We want to measure the linear correlation in a sequences of numerical observations of two variables $x_1,\dots,x_n$ and $y_1, \dots, y_n$. 
 
 **Pearson correlation coefficient**
-$r_{xy} = \frac{\sum_{i=1}^n(x_i - \mu_x)(y_i - \mu_y)}{\sqrt{\sum_{i=1}^n(x_i - \mu_x)}\sqrt{\sum_{i=1}^n(y_i - \mu_y)}}$ 
+$r_{xy} = \frac{\sum_{i=1}^n(x_i - \mu_x)(y_i - \mu_y)}{\sqrt{\sum_{i=1}^n(x_i - \mu_x)^2}\sqrt{\sum_{i=1}^n(y_i - \mu_y)^2}}$ 
 
 Note, $r_{xy} = \frac{\text{cov}(x,y)}{\sigma_x\sigma_y}$
 
