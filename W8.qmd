@@ -600,7 +600,7 @@ R-squared is also called **coefficient of determination**.
 
 $R^2 = 1 - \frac{SS_\text{res}}{SS_\text{tot}}$
 
-where $SS_\text{res} = \sum_i(y_i - f_i)^2 = \sum_i e_i$ is the *sum of the squared residuals*, and   
+where $SS_\text{res} = \sum_i(y_i - f_i)^2 = \sum_i e_i^2$ is the *sum of the squared residuals*, and   
 $SS_\text{tot} = \sum_i(y_i - \bar y)^2$ the *total sum of squares* which is proportional to the variance of $y$. ($\bar y$ is the mean of $y$.)
 
 $R^2$ is the square of the correlation coefficient, hence the name. (No math on this today.)
