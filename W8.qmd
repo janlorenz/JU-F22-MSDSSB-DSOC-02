@@ -1,5 +1,5 @@
 ---
-title: "W#8 More linear models, Missing Values, Data Questions"
+title: "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation"
 author: Jan Lorenz
 format: 
   revealjs: 
@@ -10,6 +10,9 @@ format:
     logo: img/JACOBS_LOGO_RGB_Internet.jpg
     footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
 ---
+
+
+# Errors in data
 
 ```{r}
 #| label: data
@@ -104,7 +107,6 @@ who_owid <- who |>
           Total_cases_owid)
 ```
 
-# Errors in data
 
 ## Strange Airports (Homework 02) {.smaller}
 
@@ -294,72 +296,435 @@ zoo::rollmean(x, k = 3, na.pad = TRUE) # for centered window
 Remember: **Data with weekly seasonality is best smoothed with a weekly window!**
 
 
-## How Deaths Follow Cases
+## Total death per million and human development
 
-Question: How do deaths follow cases?
+```{r}
+owid |> 
+ group_by(location) |> 
+ filter(date == "2022-08-31", !is.na(human_development_index), 
+        !is.na(total_deaths_per_million), !is.na(continent)) |> 
+ ggplot(aes(x = human_development_index, y = total_deaths_per_million, 
+            color = continent, size = population)) +
+ geom_point() + scale_size_area(max_size = 10) +
+ theme_minimal()
+```
 
-FIGURE
+What findings? Explanations?
 
+# ESS questions (Homework 03)
 
-## Severity of the corona pandemic in countries related to human development
+## Level of measurement {.smaller}
 
-FIGURE 
-DISCUSS
+- *Nominal*: the data can only be categorized
+- *Ordinal*: the data can be categorized and ranked
+- *Interval*: the data can be categorized, ranked, and evenly spaced
+- *Ratio*: the data can be categorized, ranked, evenly spaced, and has a natural zero.
 
-# European Social Survey questions (Homework 03)
+**What is the difference of *level of measurement* and *data type*?**
 
-## What is the ranking of European countries with respect to of average satisfaction with life?
+. . . 
 
+Mainly perspective:
 
-## What is the relation of the emotional attachment of Europeans to their own country and to Europe?
-
-
-lowess vs. loess
-
-Overplotting
-
-Dot plot and smoothing. 
-
-Linear model. 
-
-Use as case for multidim? 
-
-
-
-## What is the relation of the emotional attachment to the own country and the opinion about further of European integration?
-
+- **Level of measurement** is about the variable/the thing which is measured.
+- **Data type** is more about the technical way to store data. 
 
 
+## Scales in surveys/questionaires {.smaller}
 
-## How many observations are there for each country-year combination?
+**Likert scale**: Strongly disagree ... [scale steps] ... Strongly agree  
+**Rating scales**: Extreme statement ... [scale steps] ... Opposite statement
 
-Weighting
+What level of measurement do these questions have?
+
+![](img/ess-atchctr.png){height=350}
+![](img/ess-euftf.png){height=350}
+
+. . . 
+
+*Ordinal* clearly, *interval* assuming scale steps are equal, *ratio* assuming 5 as natural zero
+
+## Dealing with missing values {.smaller}
+
+Coding in the ESS data: 
+
+- Interval data coded numerically 0, 1, ..., 10
+- Missing values with numerical codes 77, 88, 99
+
+What is the reason for missing data? This can be important for inferential questions!
+
+![](img/ess_missing.png){height="100"}
+
+```{r}
+ess_raw <- read_csv("data/ESS-Data-Wizard-subset-2022-09-17.csv",
+                col_types = cols(
+                 name = col_character(),
+                 essround = col_double(),
+                 edition = col_double(),
+                 proddate = col_character(),
+                 idno = col_double(),
+                 cntry = col_character(),
+                 dweight = col_double(),
+                 pspwght = col_double(),
+                 pweight = col_double(),
+                 euftf = col_double(),
+                 gincdif = col_double(),
+                 lrscale = col_double(),
+                 polintr = col_double(),
+                 stflife = col_double(),
+                 trstplc = col_double(),
+                 vote = col_double(),
+                 imueclt = col_double(),
+                 atchctr = col_double(),
+                 atcherp = col_double(),
+                 crmvct = col_double(),
+                 pray = col_double(),
+                 rlgdgr = col_double(),
+                 gndr = col_double(),
+                 age = col_double()
+                ))
+ess <- ess_raw
+```
+
+**For numerical computations these must be filtered out or coded as NA!**
+
+```{r}
+#| echo: true
+ess |> select(euftf) |> 
+ mutate(euftf_na = euftf  |> na_if(77) |> na_if(88) |> na_if(99)) |> 
+ summarize(across(.fns = function(x) mean(x, na.rm = TRUE)))
+```
+
+```{r}
+ess <- ess |> mutate(atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),
+                     atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),
+                     euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99))
+```
+
+<!-- ## What is the ranking of European countries with respect to of average satisfaction with life? -->
+
+## Emotional attachment {.smaller}
+
+Question: What is the relation of the emotional attachment of Europeans to their **own country** and to **Europe**?
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-height: 7
+ess |> 
+ filter(essround == 9) |> 
+ count(atchctr, atcherp) |> 
+ na.omit() |> 
+ ggplot(aes(atchctr, atcherp, 
+            size = n, color = n)) + 
+ geom_point() +
+ geom_smooth(aes(weight = n), 
+             method = 'loess', 
+             formula = 'y ~ x') +
+ scale_color_continuous(type = "viridis") +
+ scale_size_area(max_size = 10) + ylim(c(0,10)) +
+ coord_fixed() + 
+ guides(size = "none") +
+ theme_classic(base_size = 24)
+```
+
+
+::: aside
+Differences between `lowess` used in `seaborn.regplot` and `loess`, the default in `ggplot::geom_smooth`: <https://stats.stackexchange.com/questions/161069/difference-between-loess-and-lowess>
+:::
+
+
+
+## Emotional attachment EU integration {.smaller}
+
+**Question:** What is the relation of the emotional **attachment to the own country** to **attachment to Europe** compared to the attitude about **European integration**?
+
+```{r}
+#| fig-height: 7
+library(patchwork)
+g1 <- ess |> 
+ filter(essround == 9) |> 
+ count(atchctr, atcherp) |> 
+ na.omit() |> 
+ ggplot(aes(atchctr, atcherp, 
+            size = n, color = n)) + 
+ geom_point() +
+ geom_smooth(aes(weight = n), 
+             method = 'loess', 
+             formula = 'y ~ x') +
+ scale_color_continuous(type = "viridis") +
+ scale_size_area(max_size = 10) + ylim(c(0,10)) +
+ coord_fixed() + 
+ labs(title = "Attachment Europe") +
+ guides(size = "none",color = "none") +
+ theme_classic(base_size = 24)
+g2 <- ess |> 
+ filter(essround == 9) |> 
+ count(atchctr, euftf) |> 
+ na.omit() |> 
+ ggplot(aes(atchctr, euftf, 
+            size = n, color = n)) + 
+ geom_point() +
+ geom_smooth(aes(weight = n), 
+             method = 'loess', 
+             formula = 'y ~ x') +
+ scale_color_continuous(type = "viridis") +
+ scale_size_area(max_size = 10) + ylim(c(0,10)) +
+ coord_fixed() + 
+ labs(title = "European Integration") +
+ guides(size = "none",color = "none") +
+ theme_classic(base_size = 24)
+g1 + g2
+```
+
+- Emotional attachment to the own country and Europe is positively related. ("Positive" here means the sign of the correlation. It does not mean "good"!)
+- No compensation like "Emotion must be split between both."
+- Relation of country attachment to EU integration is weak but non-linear. 
+
+## Weighting after `count` {.smaller}
+
+How many rows does the the data frame `ess |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit()` have? 
+
+. . . 
+
+11 times 11 = 121 (when each combination has a non-zero number of cases)
+
+How many observations (not NA) do we have in the data set?
+
+```{r}
+#| echo: true
+ess |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() |> summarize(n = sum(n))
+```
+
+Weighting points correctly is important!
+
+## Three different smooth plots {.smaller}
+
+
+::: {.panel-tabset}
+
+###  A: Counts unweighted
+
+```{r}
+#| echo: true
+#| fig-height: 3
+#| fig-width: 3
+ess |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() |> 
+ ggplot(aes(atchctr, euftf)) + geom_smooth() 
+```
+
+Makes no sense because, just 121 points in a square. 
+
+### B: Counts weighted
+
+```{r}
+#| echo: true
+#| fig-height: 3
+#| fig-width: 3
+ess |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() |> 
+ ggplot(aes(atchctr, euftf, weight = n)) + geom_smooth() 
+```
+
+Makes sense weighted by the counts.
+
+
+### C: Individual cases
+
+```{r}
+#| echo: true
+#| fig-height: 3
+#| fig-width: 3
+ess |> filter(essround == 9) |> 
+ ggplot(aes(atchctr, euftf)) + geom_smooth()
+```
+
+Similar to B. Lower uncertainty! Different y-axis limits!   
+Note, `geom_smooth` uses `stats::loess` for less than 1,000 cases (as before), otherwise (as here) `mgcv::gam()` because it is more efficient computationally. We omit details here. 
+
+:::
+
+
+## Significance of nonlinear relation? {.smaller}
+
+```{r}
+#| echo: false
+#| fig-height: 3
+#| fig-width: 3
+ess |> filter(essround == 9) |> 
+ ggplot(aes(atchctr, euftf)) + geom_smooth()
+```
+
+- Taking into account the real number of cases the uncertainty range indicates that the non-linear relationship is fairly certain, although small in magnitude.
+- Note, we have not looked at uncertainty measures in detail yet. 
+- Main message here: **Low uncertainty and large effect size is not the same!**
+  - In statistics the first is called *significant*. 
+  - In common language the second is often called *significant*. 
+- This dual use of *significant* is a source of confusion in science communication!
+
+
+# Linear models and R-squared
+
+## Linear models {.smaller}
+
+```{r}
+#| echo: true
+library(tidymodels)
+linear_reg() |> set_engine("lm") |> 
+ fit(atcherp ~ atchctr, data = ess) |> tidy()
+```
+
+Interpretation?
+
+. . . 
+
+When `atchctr = 0` the average `atcherp` is 2.62. For an increase of country attachment by one there is an average increase of 0.414 in European attachment. 
+
+. . .
+
+For EU integration attitude. 
+
+```{r}
+#| echo: true
+linear_reg() |> set_engine("lm") |> 
+ fit(euftf ~ atchctr, data = ess) |> tidy()
+```
+
+
+## R-squared of a fitted model {.smaller}
+
+$R^2$ is the percentage of variability in the response explained by the regression model. 
+
+R-squared is also called **coefficient of determination**. 
+
+**Definition**: 
+
+$R^2 = 1 - \frac{SS_\text{res}}{SS_\text{tot}}$
+
+where $SS_\text{res} = \sum_i(y_i - f_i)^2 = \sum_i e_i$ is the *sum of the squared residuals*, and   
+$SS_\text{tot} = \sum_i(y_i - \bar y)^2$ the *total sum of squares* which is proportional to the variance of $y$. ($\bar y$ is the mean of $y$.)
+
+$R^2$ is the square of the correlation coefficient, hence the name. (No math on this today.)
+
+![](https://upload.wikimedia.org/wikipedia/commons/8/86/Coefficient_of_Determination.svg)
+
+
+
+## Linear models R-squared {.smaller}
+
+```{r}
+#| echo: true
+library(tidymodels)
+linear_reg() |> set_engine("lm") |> 
+ fit(atcherp ~ atchctr, data = ess) |>
+ glance()  # glance shows summary statistics of model fit
+```
+
+Interpretation R-square?
+
+. . . 
+
+12.2% of the variance of European emotional attachment can be explained by a linear relation with country emotional attachment. 
+
+. . .
+
+For EU integration attitude. 
+
+```{r}
+#| echo: true
+linear_reg() |> set_engine("lm") |> 
+ fit(euftf ~ atchctr, data = ess) |> 
+ glance()
+```
+
+# Linear models with more predictors
+
+## Linear model with more predictors {.smaller}
+
+```{r}
+#| echo: true
+library(tidymodels)
+linear_reg() |> set_engine("lm") |> 
+    fit(euftf ~ atchctr + atcherp, data = ess) |> tidy()
+```
+
+- Note, that `atchctr` now has a negative coefficient!
+- The tiny bit of positive relation explained by `atchctr` in a one predictor model can better be explained by `atcherp` (which we know is correlated with `atchctr`). 
 
 
 
 
+## Corona deaths vs. Human development {.smaller}
+
+```{r}
+owid |> 
+ group_by(location) |> 
+ filter(date == "2022-08-31", !is.na(human_development_index), 
+        !is.na(total_deaths_per_million), !is.na(continent)) |> 
+ ggplot(aes(x = human_development_index, y = total_deaths_per_million)) +
+ geom_point(aes(color = continent)) + scale_size_area() +
+ geom_smooth(method = "lm") +
+ theme_minimal()
+```
+
+Note: Not weighted by population!
 
 
+## Linear model: Total deaths vs. HDI {.smaller}
+
+```{r}
+#| echo: true
+owid_aug22 <- owid |> 
+ filter(date == "2022-08-31", !is.na(human_development_index), 
+        !is.na(total_deaths_per_million), !is.na(continent))
+linear_reg() |> set_engine("lm") |> 
+    fit(total_deaths_per_million ~ human_development_index, data = owid_aug22) |> tidy()
+```
+
+## Adding a main effect of continents {.smaller}
+
+```{r}
+#| echo: true
+linear_reg() |> set_engine("lm") |> 
+    fit(total_deaths_per_million ~ human_development_index + continent, 
+        data = owid_aug22) |> tidy()
+```
+
+A **main effect** by categorical dummy variables allows for different intercepts per continent. 
+
+## Adding as interaction {.smaller}
+
+```{r}
+#| echo: true
+linear_reg() |> set_engine("lm") |> 
+    fit(total_deaths_per_million ~ human_development_index * continent, 
+        data = owid_aug22) |> tidy()
+```
+
+- Note the `*` for interaction effect!
+- Also main effects for both variables are in as coefficients.
+- Africa has been chosen as reference category (because it is first in the alphabet).
+- An **interaction effect** allows for different slopes for each continent!
 
 
+## Regression lines by continent {.smaller}
+
+```{r}
+owid |> 
+ group_by(location) |> 
+ filter(date == "2022-08-31", !is.na(human_development_index), 
+        !is.na(total_deaths_per_million), !is.na(continent)) |> 
+ ggplot(aes(x = human_development_index, y = total_deaths_per_million, 
+            color = continent)) +
+ geom_point() + scale_size_area() +
+ geom_smooth(method = "lm") +
+ theme_minimal()
+```
+
+The relation between deaths and human development is reverse in Europe. 
 
 
-# More Linear Models
-https://datasciencebox.org/course-materials/_slides/u4-d04-model-multiple-predictors/u4-d04-model-multiple-predictors.html#15
+## Simpson's paradox
 
-## More predictors
+Slopes for all groups can be in the opposite direction of the main effect's slope!
 
-## Interaction Effects
-
-## R-squared
-
-
-## Next 
-https://datasciencebox.org/course-materials/_slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1
-
-
-
-# Student projects
-
-In the same module, we will soon begin working on the individual data science projects of students which is the main examination determining the grade. In these projects students do steps of data analysis and visualization, writing, rendering, and pushing to a repository which should have been learned through the Homework.
-
+![](https://upload.wikimedia.org/wikipedia/commons/f/fb/Simpsons_paradox_-_animation.gif)

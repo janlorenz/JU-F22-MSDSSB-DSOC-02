@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.149">
 
   <meta name="author" content="Jan Lorenz">
-  <title>JU-F22-MSDSSB-DSOC-02 - W#8 More linear models, Missing Values, Data Questions</title>
+  <title>JU-F22-MSDSSB-DSOC-02 - W#8 Homework topics: Typical Data Issues, More linear models and Interpretation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,20 +390,16 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">W#8 More linear models, Missing Values, Data Questions</h1>
+  <h1 class="title">W#8 Homework topics: Typical Data Issues, More linear models and Interpretation</h1>
   <p class="author">Jan Lorenz</p>
 </section>
 
-<section class="slide level2">
-
-<div class="cell">
-
-</div>
-</section>
 <section>
 <section id="errors-in-data" class="title-slide slide level1 center">
 <h1>Errors in data</h1>
+<div class="cell">
 
+</div>
 </section>
 <section id="strange-airports-homework-02" class="slide level2 smaller">
 <h2>Strange Airports (Homework 02)</h2>
@@ -589,65 +585,384 @@ What are the data sources of WHO and OWiD?</p>
 <p>Remember: <strong>Data with weekly seasonality is best smoothed with a weekly window!</strong></p>
 </div>
 </section>
-<section id="how-deaths-follow-cases" class="slide level2">
-<h2>How Deaths Follow Cases</h2>
-<p>Question: How do deaths follow cases?</p>
-<p>FIGURE</p>
-</section>
-<section id="severity-of-the-corona-pandemic-in-countries-related-to-human-development" class="slide level2">
-<h2>Severity of the corona pandemic in countries related to human development</h2>
-<p>FIGURE DISCUSS</p>
+<section id="total-death-per-million-and-human-development" class="slide level2">
+<h2>Total death per million and human development</h2>
+
+<img data-src="W8_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"><p>What findings? Explanations?</p>
 </section></section>
 <section>
-<section id="european-social-survey-questions-homework-03" class="title-slide slide level1 center">
-<h1>European Social Survey questions (Homework 03)</h1>
+<section id="ess-questions-homework-03" class="title-slide slide level1 center">
+<h1>ESS questions (Homework 03)</h1>
 
 </section>
-<section id="what-is-the-ranking-of-european-countries-with-respect-to-of-average-satisfaction-with-life" class="slide level2">
-<h2>What is the ranking of European countries with respect to of average satisfaction with life?</h2>
-</section>
-<section id="what-is-the-relation-of-the-emotional-attachment-of-europeans-to-their-own-country-and-to-europe" class="slide level2">
-<h2>What is the relation of the emotional attachment of Europeans to their own country and to Europe?</h2>
-<p>lowess vs.&nbsp;loess</p>
-<p>Overplotting</p>
-<p>Dot plot and smoothing.</p>
-<p>Linear model.</p>
-<p>Use as case for multidim?</p>
-</section>
-<section id="what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration" class="slide level2">
-<h2>What is the relation of the emotional attachment to the own country and the opinion about further of European integration?</h2>
-</section>
-<section id="how-many-observations-are-there-for-each-country-year-combination" class="slide level2">
-<h2>How many observations are there for each country-year combination?</h2>
-<p>Weighting</p>
-</section></section>
-<section>
-<section id="more-linear-models" class="title-slide slide level1 center">
-<h1>More Linear Models</h1>
-<p>https://datasciencebox.org/course-materials/_slides/u4-d04-model-multiple-predictors/u4-d04-model-multiple-predictors.html#15</p>
-</section>
-<section id="more-predictors" class="slide level2">
-<h2>More predictors</h2>
-</section>
-<section id="interaction-effects" class="slide level2">
-<h2>Interaction Effects</h2>
-</section>
-<section id="r-squared" class="slide level2">
-<h2>R-squared</h2>
-</section>
-<section id="next" class="slide level2">
-<h2>Next</h2>
-<p>https://datasciencebox.org/course-materials/_slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1</p>
-</section></section>
-<section id="student-projects" class="title-slide slide level1 center">
-<h1>Student projects</h1>
-<p>In the same module, we will soon begin working on the individual data science projects of students which is the main examination determining the grade. In these projects students do steps of data analysis and visualization, writing, rendering, and pushing to a repository which should have been learned through the Homework.</p>
-
-
-<img src="img/JACOBS_LOGO_RGB_Internet.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/">JU-F22-MDSSB-DSCO-02: Data Science Concepts</a></p>
+<section id="level-of-measurement" class="slide level2 smaller">
+<h2>Level of measurement</h2>
+<ul>
+<li><em>Nominal</em>: the data can only be categorized</li>
+<li><em>Ordinal</em>: the data can be categorized and ranked</li>
+<li><em>Interval</em>: the data can be categorized, ranked, and evenly spaced</li>
+<li><em>Ratio</em>: the data can be categorized, ranked, evenly spaced, and has a natural zero.</li>
+</ul>
+<p><strong>What is the difference of <em>level of measurement</em> and <em>data type</em>?</strong></p>
+<div class="fragment">
+<p>Mainly perspective:</p>
+<ul>
+<li><strong>Level of measurement</strong> is about the variable/the thing which is measured.</li>
+<li><strong>Data type</strong> is more about the technical way to store data.</li>
+</ul>
 </div>
 </section>
+<section id="scales-in-surveysquestionaires" class="slide level2 smaller">
+<h2>Scales in surveys/questionaires</h2>
+<p><strong>Likert scale</strong>: Strongly disagree … [scale steps] … Strongly agree<br>
+<strong>Rating scales</strong>: Extreme statement … [scale steps] … Opposite statement</p>
+<p>What level of measurement do these questions have?</p>
+<p><img data-src="img/ess-atchctr.png" height="350"> <img data-src="img/ess-euftf.png" height="350"></p>
+<div class="fragment">
+<p><em>Ordinal</em> clearly, <em>interval</em> assuming scale steps are equal, <em>ratio</em> assuming 5 as natural zero</p>
+</div>
+</section>
+<section id="dealing-with-missing-values" class="slide level2 smaller">
+<h2>Dealing with missing values</h2>
+<p>Coding in the ESS data:</p>
+<ul>
+<li>Interval data coded numerically 0, 1, …, 10</li>
+<li>Missing values with numerical codes 77, 88, 99</li>
+</ul>
+<p>What is the reason for missing data? This can be important for inferential questions!</p>
+<p><img data-src="img/ess_missing.png" height="100"></p>
+<div class="cell">
+
+</div>
+<p><strong>For numerical computations these must be filtered out or coded as NA!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>ess <span class="sc">|&gt;</span> <span class="fu">select</span>(euftf) <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a> <span class="fu">mutate</span>(<span class="at">euftf_na =</span> euftf  <span class="sc">|&gt;</span> <span class="fu">na_if</span>(<span class="dv">77</span>) <span class="sc">|&gt;</span> <span class="fu">na_if</span>(<span class="dv">88</span>) <span class="sc">|&gt;</span> <span class="fu">na_if</span>(<span class="dv">99</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a> <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.fns =</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  euftf euftf_na
+  &lt;dbl&gt;    &lt;dbl&gt;
+1  13.7     5.20</code></pre>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<!-- ## What is the ranking of European countries with respect to of average satisfaction with life? -->
+</section>
+<section id="emotional-attachment" class="slide level2 smaller">
+<h2>Emotional attachment</h2>
+<p>Question: What is the relation of the emotional attachment of Europeans to their <strong>own country</strong> and to <strong>Europe</strong>?</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>ess <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a> <span class="fu">filter</span>(essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a> <span class="fu">count</span>(atchctr, atcherp) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(atchctr, atcherp, </span>
+<span id="cb13-6"><a href="#cb13-6"></a>            <span class="at">size =</span> n, <span class="at">color =</span> n)) <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7"></a> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a> <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">weight =</span> n), </span>
+<span id="cb13-9"><a href="#cb13-9"></a>             <span class="at">method =</span> <span class="st">'loess'</span>, </span>
+<span id="cb13-10"><a href="#cb13-10"></a>             <span class="at">formula =</span> <span class="st">'y ~ x'</span>) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a> <span class="fu">scale_color_continuous</span>(<span class="at">type =</span> <span class="st">"viridis"</span>) <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a> <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a> <span class="fu">coord_fixed</span>() <span class="sc">+</span> </span>
+<span id="cb13-14"><a href="#cb13-14"></a> <span class="fu">guides</span>(<span class="at">size =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W8_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Differences between <code>lowess</code> used in <code>seaborn.regplot</code> and <code>loess</code>, the default in <code>ggplot::geom_smooth</code>: <a href="https://stats.stackexchange.com/questions/161069/difference-between-loess-and-lowess" class="uri">https://stats.stackexchange.com/questions/161069/difference-between-loess-and-lowess</a></p>
+</div></aside></section>
+<section id="emotional-attachment-eu-integration" class="slide level2 smaller">
+<h2>Emotional attachment EU integration</h2>
+<p><strong>Question:</strong> What is the relation of the emotional <strong>attachment to the own country</strong> to <strong>attachment to Europe</strong> compared to the attitude about <strong>European integration</strong>?</p>
+
+<img data-src="W8_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"><ul>
+<li>Emotional attachment to the own country and Europe is positively related. (“Positive” here means the sign of the correlation. It does not mean “good”!)</li>
+<li>No compensation like “Emotion must be split between both.”</li>
+<li>Relation of country attachment to EU integration is weak but non-linear.</li>
+</ul>
+</section>
+<section id="weighting-after-count" class="slide level2 smaller">
+<h2>Weighting after <code>count</code></h2>
+<p>How many rows does the the data frame <code>ess |&gt; filter(essround == 9) |&gt; count(atchctr, euftf) |&gt; na.omit()</code> have?</p>
+<div class="fragment">
+<p>11 times 11 = 121 (when each combination has a non-zero number of cases)</p>
+<p>How many observations (not NA) do we have in the data set?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>ess <span class="sc">|&gt;</span> <span class="fu">filter</span>(essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> <span class="fu">count</span>(atchctr, euftf) <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+      n
+  &lt;int&gt;
+1 45552</code></pre>
+</div>
+</div>
+<p>Weighting points correctly is important!</p>
+</div>
+</section>
+<section id="three-different-smooth-plots" class="slide level2 smaller">
+<h2>Three different smooth plots</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">A: Counts unweighted</a></li><li><a href="#tabset-1-2">B: Counts weighted</a></li><li><a href="#tabset-1-3">C: Individual cases</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>ess <span class="sc">|&gt;</span> <span class="fu">filter</span>(essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> <span class="fu">count</span>(atchctr, euftf) <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(atchctr, euftf)) <span class="sc">+</span> <span class="fu">geom_smooth</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W8_files/figure-revealjs/unnamed-chunk-17-1.png" width="288"></p>
+</div>
+</div>
+<p>Makes no sense because, just 121 points in a square.</p>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>ess <span class="sc">|&gt;</span> <span class="fu">filter</span>(essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> <span class="fu">count</span>(atchctr, euftf) <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(atchctr, euftf, <span class="at">weight =</span> n)) <span class="sc">+</span> <span class="fu">geom_smooth</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W8_files/figure-revealjs/unnamed-chunk-18-1.png" width="288"></p>
+</div>
+</div>
+<p>Makes sense weighted by the counts.</p>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>ess <span class="sc">|&gt;</span> <span class="fu">filter</span>(essround <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(atchctr, euftf)) <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W8_files/figure-revealjs/unnamed-chunk-19-1.png" width="288"></p>
+</div>
+</div>
+<p>Similar to B. Lower uncertainty! Different y-axis limits!<br>
+Note, <code>geom_smooth</code> uses <code>stats::loess</code> for less than 1,000 cases (as before), otherwise (as here) <code>mgcv::gam()</code> because it is more efficient computationally. We omit details here.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="significance-of-nonlinear-relation" class="slide level2 smaller">
+<h2>Significance of nonlinear relation?</h2>
+
+<img data-src="W8_files/figure-revealjs/unnamed-chunk-20-1.png" width="288" class="r-stretch"><ul>
+<li>Taking into account the real number of cases the uncertainty range indicates that the non-linear relationship is fairly certain, although small in magnitude.</li>
+<li>Note, we have not looked at uncertainty measures in detail yet.</li>
+<li>Main message here: <strong>Low uncertainty and large effect size is not the same!</strong>
+<ul>
+<li>In statistics the first is called <em>significant</em>.</li>
+<li>In common language the second is often called <em>significant</em>.</li>
+</ul></li>
+<li>This dual use of <em>significant</em> is a source of confusion in science communication!</li>
+</ul>
+</section></section>
+<section>
+<section id="linear-models-and-r-squared" class="title-slide slide level1 center">
+<h1>Linear models and R-squared</h1>
+
+</section>
+<section id="linear-models" class="slide level2 smaller">
+<h2>Linear models</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a> <span class="fu">fit</span>(atcherp <span class="sc">~</span> atchctr, <span class="at">data =</span> ess) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)    2.62    0.0411       63.8       0
+2 atchctr        0.414   0.00504      82.1       0</code></pre>
+</div>
+</div>
+<p>Interpretation?</p>
+<div class="fragment">
+<p>When <code>atchctr = 0</code> the average <code>atcherp</code> is 2.62. For an increase of country attachment by one there is an average increase of 0.414 in European attachment.</p>
+</div>
+<div class="fragment">
+<p>For EU integration attitude.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a> <span class="fu">fit</span>(euftf <span class="sc">~</span> atchctr, <span class="at">data =</span> ess) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic      p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+1 (Intercept)   5.00     0.0481     104.   0           
+2 atchctr       0.0333   0.00589      5.65 0.0000000157</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="r-squared-of-a-fitted-model" class="slide level2 smaller">
+<h2>R-squared of a fitted model</h2>
+<p><span class="math inline">\(R^2\)</span> is the percentage of variability in the response explained by the regression model.</p>
+<p>R-squared is also called <strong>coefficient of determination</strong>.</p>
+<p><strong>Definition</strong>:</p>
+<p><span class="math inline">\(R^2 = 1 - \frac{SS_\text{res}}{SS_\text{tot}}\)</span></p>
+<p>where <span class="math inline">\(SS_\text{res} = \sum_i(y_i - f_i)^2 = \sum_i e_i\)</span> is the <em>sum of the squared residuals</em>, and<br>
+<span class="math inline">\(SS_\text{tot} = \sum_i(y_i - \bar y)^2\)</span> the <em>total sum of squares</em> which is proportional to the variance of <span class="math inline">\(y\)</span>. (<span class="math inline">\(\bar y\)</span> is the mean of <span class="math inline">\(y\)</span>.)</p>
+<p><span class="math inline">\(R^2\)</span> is the square of the correlation coefficient, hence the name. (No math on this today.)</p>
+
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/8/86/Coefficient_of_Determination.svg" class="r-stretch"></section>
+<section id="linear-models-r-squared" class="slide level2 smaller">
+<h2>Linear models R-squared</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a> <span class="fu">fit</span>(atcherp <span class="sc">~</span> atchctr, <span class="at">data =</span> ess) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a> <span class="fu">glance</span>()  <span class="co"># glance shows summary statistics of model fit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.sq…¹ sigma stati…² p.value    df  logLik    AIC    BIC devia…³
+      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1     0.122      0.122  2.45   6747.       0     1 -1.12e5 2.25e5 2.25e5 291696.
+# … with 2 more variables: df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated
+#   variable names ¹​adj.r.squared, ²​statistic, ³​deviance</code></pre>
+</div>
+</div>
+<p>Interpretation R-square?</p>
+<div class="fragment">
+<p>12.2% of the variance of European emotional attachment can be explained by a linear relation with country emotional attachment.</p>
+</div>
+<div class="fragment">
+<p>For EU integration attitude.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a> <span class="fu">fit</span>(euftf <span class="sc">~</span> atchctr, <span class="at">data =</span> ess) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a> <span class="fu">glance</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.sq…¹ sigma stati…² p.value    df  logLik    AIC    BIC devia…³
+      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1  0.000702   0.000680  2.75    32.0 1.57e-8     1 -1.11e5 2.21e5 2.21e5 343473.
+# … with 2 more variables: df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated
+#   variable names ¹​adj.r.squared, ²​statistic, ³​deviance</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="linear-models-with-more-predictors" class="title-slide slide level1 center">
+<h1>Linear models with more predictors</h1>
+
+</section>
+<section id="linear-model-with-more-predictors" class="slide level2 smaller">
+<h2>Linear model with more predictors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>    <span class="fu">fit</span>(euftf <span class="sc">~</span> atchctr <span class="sc">+</span> atcherp, <span class="at">data =</span> ess) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)    4.05    0.0478       84.8 0       
+2 atchctr       -0.114   0.00599     -19.1 1.12e-80
+3 atcherp        0.354   0.00509      69.7 0       </code></pre>
+</div>
+</div>
+<ul>
+<li>Note, that <code>atchctr</code> now has a negative coefficient!</li>
+<li>The tiny bit of positive relation explained by <code>atchctr</code> in a one predictor model can better be explained by <code>atcherp</code> (which we know is correlated with <code>atchctr</code>).</li>
+</ul>
+</section>
+<section id="corona-deaths-vs.-human-development" class="slide level2 smaller">
+<h2>Corona deaths vs.&nbsp;Human development</h2>
+
+<img data-src="W8_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"><p>Note: Not weighted by population!</p>
+</section>
+<section id="linear-model-total-deaths-vs.-hdi" class="slide level2 smaller">
+<h2>Linear model: Total deaths vs.&nbsp;HDI</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>owid_aug22 <span class="ot">&lt;-</span> owid <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a> <span class="fu">filter</span>(date <span class="sc">==</span> <span class="st">"2022-08-31"</span>, <span class="sc">!</span><span class="fu">is.na</span>(human_development_index), </span>
+<span id="cb29-3"><a href="#cb29-3"></a>        <span class="sc">!</span><span class="fu">is.na</span>(total_deaths_per_million), <span class="sc">!</span><span class="fu">is.na</span>(continent))</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-5"><a href="#cb29-5"></a>    <span class="fu">fit</span>(total_deaths_per_million <span class="sc">~</span> human_development_index, <span class="at">data =</span> owid_aug22) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term                    estimate std.error statistic  p.value
+  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)               -2350.      385.     -6.11 5.84e- 9
+2 human_development_index    4917.      522.      9.43 1.71e-17</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-a-main-effect-of-continents" class="slide level2 smaller">
+<h2>Adding a main effect of continents</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2"></a>    <span class="fu">fit</span>(total_deaths_per_million <span class="sc">~</span> human_development_index <span class="sc">+</span> continent, </span>
+<span id="cb31-3"><a href="#cb31-3"></a>        <span class="at">data =</span> owid_aug22) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 5
+  term                    estimate std.error statistic       p.value
+  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+1 (Intercept)               -754.       392.    -1.92  0.0560       
+2 human_development_index   1901.       666.     2.86  0.00480      
+3 continentAsia               58.5      213.     0.274 0.784        
+4 continentEurope           1685.       279.     6.04  0.00000000867
+5 continentNorth America     742.       254.     2.92  0.00397      
+6 continentOceania          -312.       298.    -1.05  0.297        
+7 continentSouth America    1910.       311.     6.15  0.00000000489</code></pre>
+</div>
+</div>
+<p>A <strong>main effect</strong> by categorical dummy variables allows for different intercepts per continent.</p>
+</section>
+<section id="adding-as-interaction" class="slide level2 smaller">
+<h2>Adding as interaction</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2"></a>    <span class="fu">fit</span>(total_deaths_per_million <span class="sc">~</span> human_development_index <span class="sc">*</span> continent, </span>
+<span id="cb33-3"><a href="#cb33-3"></a>        <span class="at">data =</span> owid_aug22) <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 5
+   term                                         estim…¹ std.e…² stati…³  p.value
+   &lt;chr&gt;                                          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+ 1 (Intercept)                                   -1555.    581.  -2.67  8.19e- 3
+ 2 human_development_index                        3329.   1019.   3.27  1.31e- 3
+ 3 continentAsia                                   563.    940.   0.598 5.50e- 1
+ 4 continentEurope                               14759.   1956.   7.55  2.32e-12
+ 5 continentNorth America                        -1346.   1512.  -0.890 3.75e- 1
+ 6 continentOceania                               1125.   1424.   0.790 4.31e- 1
+ 7 continentSouth America                        -4243.   3436.  -1.23  2.19e- 1
+ 8 human_development_index:continentAsia         -1027.   1419.  -0.724 4.70e- 1
+ 9 human_development_index:continentEurope      -15377.   2351.  -6.54  6.40e-10
+10 human_development_index:continentNorth Amer…   2394.   2099.   1.14  2.56e- 1
+11 human_development_index:continentOceania      -2318.   2063.  -1.12  2.63e- 1
+12 human_development_index:continentSouth Amer…   7684.   4543.   1.69  9.25e- 2
+# … with abbreviated variable names ¹​estimate, ²​std.error, ³​statistic</code></pre>
+</div>
+</div>
+<ul>
+<li>Note the <code>*</code> for interaction effect!</li>
+<li>Also main effects for both variables are in as coefficients.</li>
+<li>Africa has been chosen as reference category (because it is first in the alphabet).</li>
+<li>An <strong>interaction effect</strong> allows for different slopes for each continent!</li>
+</ul>
+</section>
+<section id="regression-lines-by-continent" class="slide level2 smaller">
+<h2>Regression lines by continent</h2>
+
+<img data-src="W8_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"><p>The relation between deaths and human development is reverse in Europe.</p>
+</section>
+<section id="simpsons-paradox" class="slide level2">
+<h2>Simpson’s paradox</h2>
+<p>Slopes for all groups can be in the opposite direction of the main effect’s slope!</p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Simpsons_paradox_-_animation.gif"></p>
+
+<p><img src="img/JACOBS_LOGO_RGB_Internet.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/">JU-F22-MDSSB-DSCO-02: Data Science Concepts</a></p>
+</div>
+</section></section>
     </div>
   </div>
 

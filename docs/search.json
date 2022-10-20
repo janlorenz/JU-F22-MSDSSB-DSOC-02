@@ -2844,7 +2844,7 @@
   {
     "objectID": "W8.html#airport-errors",
     "href": "W8.html#airport-errors",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Airport errors",
     "text": "Airport errors\n\n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…\n\n\nCorrect locations (internet research and location of maps):\n\n\n\nDeer Valley Municipal Airport: Phoenix\n33°41′N 112°05′W Missing minus for lon (W)\nDillant Hopkins Airport: New Hampshire\n42°54′N 72°16′W lon-lat switched, minus (W)\nMontgomery Field: San Diego\n32°44′N 117°11″W Missing minus for lon (W)\nEareckson As: Alaska\n52°42′N 174°06′E No error: Too west,it’s east!"
   },
@@ -2867,7 +2867,7 @@
     "href": "W8.html#how-deaths-follow-cases",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "How Deaths Follow Cases",
-    "text": "How Deaths Follow Cases\nQuestion: How do deaths follow cases?\nFIGURE"
+    "text": "How Deaths Follow Cases"
   },
   {
     "objectID": "W8.html#severity-of-the-corona-pandemic-in-countries-related-to-human-development",
@@ -2895,7 +2895,7 @@
     "href": "W8.html#what-is-the-relation-of-the-emotional-attachment-to-the-own-country-and-the-opinion-about-further-of-european-integration",
     "title": "W#8 More linear models, Missing Values, Data Questions",
     "section": "What is the relation of the emotional attachment to the own country and the opinion about further of European integration?",
-    "text": "What is the relation of the emotional attachment to the own country and the opinion about further of European integration?"
+    "text": "What is the relation of the emotional attachment to the own country and the opinion about further of European integration?\nOverplotting\nDot plot and smoothing.\nLinear model.\nUse as case for multidim?\n\n\n\n\nRMSE is sigma"
   },
   {
     "objectID": "W8.html#how-many-observations-are-there-for-each-country-year-combination",
@@ -2907,35 +2907,35 @@
   {
     "objectID": "W8.html#strange-airports-homework-02",
     "href": "W8.html#strange-airports-homework-02",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Strange Airports (Homework 02)",
     "text": "Strange Airports (Homework 02)\n\nlibrary(nycflights13)\nggplot(data = airports, mapping = aes(x = lon, y = lat)) + geom_point(aes(color = tzone)) \n\n\n\nairports %>% filter(lon >= 0) \n\n# A tibble: 4 × 8\n  faa   name                            lat   lon   alt    tz dst   tzone       \n  <chr> <chr>                         <dbl> <dbl> <dbl> <dbl> <chr> <chr>       \n1 DVT   Deer Valley Municipal Airport  33.4 112.   1478     8 A     Asia/Chongq…\n2 EEN   Dillant Hopkins Airport        72.3  42.9   149    -5 A     <NA>        \n3 MYF   Montgomery Field               32.5 118.     17     8 A     Asia/Chongq…\n4 SYA   Eareckson As                   52.7 174.     98    -9 A     America/Anc…"
   },
   {
     "objectID": "W8.html#conclusions-on-data-errors",
     "href": "W8.html#conclusions-on-data-errors",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Conclusions on data errors",
     "text": "Conclusions on data errors\n\nIn real-world datasets errors like the 3 airport are quite common.\nErrors of this type are often hard to detect and remain unnoticed.\n\nThis can (but need not) change results drastically!\n\n\n\nConclusions\n\nAlways remain alert for inconsistencies and be ready to check the plausibility of results.\nSkills in exploratory data analysis (EDA) are essential to find errors and explore their nature and implication\nErrors are unpredictable, of diverse types, and often deeply related to the reality the data presents.\n\nOne reason why EDA can not be a fully formalized and automatized process."
   },
   {
     "objectID": "W8.html#same-phenomenon-different-data",
     "href": "W8.html#same-phenomenon-different-data",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Same phenomenon different data?",
     "text": "Same phenomenon different data?\nQuestion: Is the data of OWiD and WHO the same?\n\n\n\nNo.\nWhy?\nWhat are the data sources of WHO and OWiD?\n\n\n\n\n\n\n\n\n\nOWiD documentation refers to have data from CSSE at Johns Hopkins University which document various data sources (e.g., a newspaper from Germany)\nWHO documentation says: “WHO collected the numbers of confirmed COVID-19 cases and deaths through official communications under the International Health Regulations (IHR, 2005), complemented by monitoring the official ministries of health websites and social media accounts.” For Germany this is the Robert-Koch-Institut RKI."
   },
   {
     "objectID": "W8.html#good-reasons-for-different-data",
     "href": "W8.html#good-reasons-for-different-data",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Good reasons for different data?",
     "text": "Good reasons for different data?\n\nDuring the pandemic daily new case numbers were relevant for decisions about safety measures.\nIn reality, data comes with delays.\n\nExample: Recent new cases in Germany (RKI). Notice many new cases several days ago."
   },
   {
     "objectID": "W8.html#conflict-day-to-day-consistency-and-correctness",
     "href": "W8.html#conflict-day-to-day-consistency-and-correctness",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Conflict day-to-day consistency and correctness",
     "text": "Conflict day-to-day consistency and correctness\n\nFixing daily cases is useful to record the numbers on which daily safety decisions are based.\nCorrected cases (which also change data from the past) are better for analysis in retrospect. It reflects the actual pandemic better."
   },
@@ -3047,7 +3047,7 @@
   {
     "objectID": "W8.html#reported-cases-and-real-cases",
     "href": "W8.html#reported-cases-and-real-cases",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Reported cases and real cases?",
     "text": "Reported cases and real cases?\nCase numbers are to inform us about real cases. What type of data analysis question is this? (Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic)\n\n\nInferential: “Quantify whether the discovery is likely to hold in a new sample.”\n\nHere: What do reported cases tell us about cases in the whole population?\n\nLimitations\n\nWe cannot test all\nTests are not on a random sample\nMild/asymptomatic cases remain unnoticed even to individuals\n…\n\n\nThe unknown: What is the dark figure?"
   },
@@ -3061,15 +3061,288 @@
   {
     "objectID": "W8.html#excercise-for-german-new-case-counts",
     "href": "W8.html#excercise-for-german-new-case-counts",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Excercise for German new case counts",
     "text": "Excercise for German new case counts\n\n\nCan we infer the real incidence (= new cases per 100,000)?\nWhat can we infer the trend of the real incidence?\n\n\nIncidence: Not really, we would need a either a random sample (then we can infer the fraction of infected), or an idea how to estimate the dark figure.\nTrend: Yes! Under the assumptions that reported cases do reflect a relevant part of the pandemic and the limitation remain mostly constant during the observed trend."
   },
   {
     "objectID": "W8.html#smoothing-time-series",
     "href": "W8.html#smoothing-time-series",
-    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
     "section": "Smoothing time series",
     "text": "Smoothing time series\n\n\n\nx <- c(1, 2, 5, 3, 0)\nx\n\n\n[1] 1 2 5 3 0\n\n\n\n\n\nzoo::rollmean(x, k = 3, na.pad = TRUE) # for centered window\n\n\n[1]       NA 2.666667 3.333333 2.666667       NA\n\n\n\n\n\n(x + lag(x, n = 1) + lag(x, n = 2))/3 # for lagged window\n\n\n[1]       NA       NA 2.666667 3.333333 2.666667\n\n\n\n\nCentered: Leaves smoothed data close to real data.\nLagged: Lags the smoothed data, but can be consistently computed for the newest day\nRemember: Data with weekly seasonality is best smoothed with a weekly window!"
+  },
+  {
+    "objectID": "W8.html#total-death-per-million-and-to-human-development",
+    "href": "W8.html#total-death-per-million-and-to-human-development",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Total death per million and to human development",
+    "text": "Total death per million and to human development\n\nWhat findings? Explanations?"
+  },
+  {
+    "objectID": "W8.html#mean-squared-error",
+    "href": "W8.html#mean-squared-error",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Mean squared error",
+    "text": "Mean squared error"
+  },
+  {
+    "objectID": "W8.html#corona-deaths-vs.-human",
+    "href": "W8.html#corona-deaths-vs.-human",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Corona deaths vs. Human",
+    "text": "Corona deaths vs. Human"
+  },
+  {
+    "objectID": "W8.html#total-death-per-million-and-human-development",
+    "href": "W8.html#total-death-per-million-and-human-development",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Total death per million and human development",
+    "text": "Total death per million and human development\n\nWhat findings? Explanations?"
+  },
+  {
+    "objectID": "W8.html#survey-questions-level-of-measurement",
+    "href": "W8.html#survey-questions-level-of-measurement",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Survey questions: Level of measurement",
+    "text": "Survey questions: Level of measurement"
+  },
+  {
+    "objectID": "W8.html#deal-with-nas",
+    "href": "W8.html#deal-with-nas",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Deal with NAs",
+    "text": "Deal with NAs\nCoding in the ESS data:\n\nInterval data coded numerically 0, 1, …, 10\nMissing values with numerical codes 77, 88, 99\n\n\n\n\n\nFor numerical computations these must be filtered out or coded as NA!\n\ness |> select(euftf) |> \n mutate(euftf_na = euftf  |> na_if(77) |> na_if(88) |> na_if(99)) |> \n summarize(across(.fns = function(x) mean(x, na.rm = TRUE)))\n\n# A tibble: 1 × 2\n  euftf euftf_na\n  <dbl>    <dbl>\n1  13.7     5.20"
+  },
+  {
+    "objectID": "W8.html#level-of-measurement",
+    "href": "W8.html#level-of-measurement",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Level of measurement",
+    "text": "Level of measurement\n\nNominal: the data can only be categorized\nOrdinal: the data can be categorized and ranked\nInterval: the data can be categorized, ranked, and evenly spaced\nRatio: the data can be categorized, ranked, evenly spaced, and has a natural zero.\n\nWhat is the difference of level of measurement and data type?\n\nMainly perspective:\n\nLevel of measurement is about the variable/the thing which is measured.\nData type is more about the technical way to store data."
+  },
+  {
+    "objectID": "W8.html#survey-questions",
+    "href": "W8.html#survey-questions",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Survey questions",
+    "text": "Survey questions"
+  },
+  {
+    "objectID": "W8.html#scales-of-surveyquestionaire-questions",
+    "href": "W8.html#scales-of-surveyquestionaire-questions",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Scales of Survey/questionaire questions",
+    "text": "Scales of Survey/questionaire questions\n \nLikert scale: Strongly disagree … [scale steps] … Strongly agree Rating scales: Extreme statement … [scale steps] … Opposite Stament"
+  },
+  {
+    "objectID": "W8.html#scales-in-surveysquestionairs",
+    "href": "W8.html#scales-in-surveysquestionairs",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Scales in surveys/questionairs",
+    "text": "Scales in surveys/questionairs\nLikert scale: Strongly disagree … [scale steps] … Strongly agree\nRating scales: Extreme statement … [scale steps] … Opposite statement\nWhat level of measurement do these questions have?\n \n\nOrdinal for sure, interval if we assume scale steps are equal, ratio if we assume five as the natural zero"
+  },
+  {
+    "objectID": "W8.html#scales-in-surveysquestionair3s",
+    "href": "W8.html#scales-in-surveysquestionair3s",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Scales in surveys/questionair3s",
+    "text": "Scales in surveys/questionair3s\nLikert scale: Strongly disagree … [scale steps] … Strongly agree\nRating scales: Extreme statement … [scale steps] … Opposite statement\nWhat level of measurement do these questions have?\n \n\nOrdinal for sure, interval assuming scale steps are equal, ratio assuming five as natural zero"
+  },
+  {
+    "objectID": "W8.html#scales-in-surveysquestionaires",
+    "href": "W8.html#scales-in-surveysquestionaires",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Scales in surveys/questionaires",
+    "text": "Scales in surveys/questionaires\nLikert scale: Strongly disagree … [scale steps] … Strongly agree\nRating scales: Extreme statement … [scale steps] … Opposite statement\nWhat level of measurement do these questions have?\n \n\nOrdinal clearly, interval assuming scale steps are equal, ratio assuming 5 as natural zero"
+  },
+  {
+    "objectID": "W8.html#emotional-attachment-own-country-vs.-europe",
+    "href": "W8.html#emotional-attachment-own-country-vs.-europe",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Emotional attachment own country vs. Europe",
+    "text": "Emotional attachment own country vs. Europe\nWhat is the relation of the emotional attachment of Europeans to their own country and to Europe?\n\n\ness |> filter(essround == 9) |> \n count(atchctr, atcherp) |> na.omit() |> \n ggplot(aes(atchctr, atcherp, size = n, color = n)) + \n geom_point() +\n geom_smooth(aes(weight=n), \n             method = 'loess', formula = 'y ~ x') +\n scale_color_continuous(type = \"viridis\") +\n scale_size_area() + ylim(c(0,10)) +\n guides(size = \"none\") +\n theme_classic()\n\n\n\n\n\n\nDifferences between lowess used in seaborn.regplot and loess, the default in ggplot::geom_smooth: https://stats.stackexchange.com/questions/161069/difference-between-loess-and-lowess\nOverplotting\nDot plot and smoothing.\nLinear model.\nUse as case for multidim?"
+  },
+  {
+    "objectID": "W8.html#dealing-with-missing-values",
+    "href": "W8.html#dealing-with-missing-values",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Dealing with missing values",
+    "text": "Dealing with missing values\nCoding in the ESS data:\n\nInterval data coded numerically 0, 1, …, 10\nMissing values with numerical codes 77, 88, 99\n\nWhat is the reason for missing data? This can be important for inferential questions!\n\n\n\n\nFor numerical computations these must be filtered out or coded as NA!\n\ness |> select(euftf) |> \n mutate(euftf_na = euftf  |> na_if(77) |> na_if(88) |> na_if(99)) |> \n summarize(across(.fns = function(x) mean(x, na.rm = TRUE)))\n\n# A tibble: 1 × 2\n  euftf euftf_na\n  <dbl>    <dbl>\n1  13.7     5.20"
+  },
+  {
+    "objectID": "W8.html#emotional-attachment",
+    "href": "W8.html#emotional-attachment",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Emotional attachment",
+    "text": "Emotional attachment\nQuestion: What is the relation of the emotional attachment of Europeans to their own country and to Europe?\n\n\ness |> \n filter(essround == 9) |> \n count(atchctr, atcherp) |> \n na.omit() |> \n ggplot(aes(atchctr, atcherp, \n            size = n, color = n)) + \n geom_point() +\n geom_smooth(aes(weight = n), \n             method = 'loess', \n             formula = 'y ~ x') +\n scale_color_continuous(type = \"viridis\") +\n scale_size_area(max_size = 10) + ylim(c(0,10)) +\n coord_fixed() + \n guides(size = \"none\") +\n theme_classic(base_size = 24)\n\n\n\n\n\n\n\n\nDifferences between lowess used in seaborn.regplot and loess, the default in ggplot::geom_smooth: https://stats.stackexchange.com/questions/161069/difference-between-loess-and-lowess"
+  },
+  {
+    "objectID": "W8.html#emotional-attachment-1",
+    "href": "W8.html#emotional-attachment-1",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Emotional attachment",
+    "text": "Emotional attachment\nQuestion: What is the relation of the emotional attachment of Europeans to their own country and to Europe?\n\ng1 <- ess |> \n filter(essround == 9) |> \n count(atchctr, euftf) |> \n na.omit() |> \n ggplot(aes(atchctr, euftf, \n            size = n, color = n)) + \n geom_point() +\n geom_smooth(aes(weight = n), \n             method = 'loess', \n             formula = 'y ~ x') +\n scale_color_continuous(type = \"viridis\") +\n scale_size_area(max_size = 10) + ylim(c(0,10)) +\n coord_fixed() + \n guides(size = \"none\") +\n theme_classic(base_size = 24)"
+  },
+  {
+    "objectID": "W8.html#linear-models",
+    "href": "W8.html#linear-models",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Linear models",
+    "text": "Linear models\n\nlibrary(tidymodels)\nlinear_reg() |> set_engine(\"lm\") |> \n fit(atcherp ~ atchctr, data = ess) |> tidy()\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic p.value\n  <chr>          <dbl>     <dbl>     <dbl>   <dbl>\n1 (Intercept)    2.62    0.0411       63.8       0\n2 atchctr        0.414   0.00504      82.1       0\n\n\nInterpretation?\n\nWhen atchctr = 0 the average atcherp is 2.62. For an increase of country attachment by one there is an average increase of 0.414 in European attachment.\n\n\nFor EU integration attitude.\n\nlinear_reg() |> set_engine(\"lm\") |> \n fit(euftf ~ atchctr, data = ess) |> tidy()\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic      p.value\n  <chr>          <dbl>     <dbl>     <dbl>        <dbl>\n1 (Intercept)   5.00     0.0481     104.   0           \n2 atchctr       0.0333   0.00589      5.65 0.0000000157"
+  },
+  {
+    "objectID": "W8.html#emotional-attachment-eu-integration",
+    "href": "W8.html#emotional-attachment-eu-integration",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Emotional attachment EU integration",
+    "text": "Emotional attachment EU integration\nQuestion: What is the relation of the emotional attachment to the own country to attachment to Europe compared to the attitude about European integration?\n\n\nEmotional attachment to the own country and Europe is positively related. (“Positive” here means the sign of the correlation. It does not mean “good”!)\nNo compensation like “Emotion must be split between both.”\nRelation of country attachment to EU integration is weak but non-linear."
+  },
+  {
+    "objectID": "W8.html#emotional-attachment-2",
+    "href": "W8.html#emotional-attachment-2",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Emotional attachment",
+    "text": "Emotional attachment\nQuestion: What is the relation of the emotional attachment of Europeans to their own country and to Europe?\n\ng1 <- ess |> \n filter(essround == 9) |> \n count(atchctr, euftf) |> \n na.omit() |> \n ggplot(aes(atchctr, euftf, \n            size = n, color = n)) + \n geom_point() +\n geom_smooth(aes(weight = n), \n             method = 'loess', \n             formula = 'y ~ x') +\n scale_color_continuous(type = \"viridis\") +\n scale_size_area(max_size = 10) + ylim(c(0,10)) +\n coord_fixed() + \n guides(size = \"none\") +\n theme_classic(base_size = 24)"
+  },
+  {
+    "objectID": "W8.html#emotional-attachment-eu-integration-1",
+    "href": "W8.html#emotional-attachment-eu-integration-1",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Emotional attachment EU integration",
+    "text": "Emotional attachment EU integration\nQuestion: What is the relation of the emotional attachment to the own country the attitude about European integration?\n\n\n\n\n\nOverplotting\nDot plot and smoothing.\nLinear model.\nUse as case for multidim?\n\n\n\n\n\n\n\n\nRMSE is sigma"
+  },
+  {
+    "objectID": "W8.html#weighting-after-count",
+    "href": "W8.html#weighting-after-count",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Weighting after count",
+    "text": "Weighting after count\nHow many rows does the the data frame ess |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() have?\n\n11 times 11 = 121 (when each combination has a non-zero number of cases)\nHow many observations (not NA) do we have in the data set?\n\ness |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() |> summarize(n = sum(n))\n\n# A tibble: 1 × 1\n      n\n  <int>\n1 45552\n\n\nWeighting points correctly is important!"
+  },
+  {
+    "objectID": "W8.html#three-different-smooth-p",
+    "href": "W8.html#three-different-smooth-p",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Three different smooth p",
+    "text": "Three different smooth p\n\n\ness |> filter(essround == 9) |> \n count(atchctr, euftf) |> na.omit() |> \n ggplot(aes(atchctr, euftf)) + \n geom_smooth() \n\n\n\n\n\n\n\n\ness |> filter(essround == 9) |> \n count(atchctr, euftf) |> na.omit() |> \n ggplot(aes(atchctr, euftf, weight = n)) + \n geom_smooth() \n\n\n\n\n\n\n\n\ness |> \n filter(essround == 9) |> \n ggplot(aes(atchctr, euftf)) +\n geom_smooth()"
+  },
+  {
+    "objectID": "W8.html#more-weights-from-the-survey",
+    "href": "W8.html#more-weights-from-the-survey",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "More weights from the survey",
+    "text": "More weights from the survey\nOverplotting\nDot plot and smoothing.\nLinear model.\nUse as case for multidim?\n\n\n\nRMSE is sigma"
+  },
+  {
+    "objectID": "W8.html#three-different-smooth-plots",
+    "href": "W8.html#three-different-smooth-plots",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Three different smooth plots",
+    "text": "Three different smooth plots\n\nA: Counts unweightedB: Counts weightedC: Individual cases\n\n\n\ness |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() |> \n ggplot(aes(atchctr, euftf)) + geom_smooth() \n\n\n\n\nMakes no sense because, just 121 points in a square.\n\n\n\ness |> filter(essround == 9) |> count(atchctr, euftf) |> na.omit() |> \n ggplot(aes(atchctr, euftf, weight = n)) + geom_smooth() \n\n\n\n\nMakes sense weighted by the counts.\n\n\n\ness |> filter(essround == 9) |> \n ggplot(aes(atchctr, euftf)) + geom_smooth()\n\n\n\n\nSimilar to B. Lower uncertainty! Different y-axis limits!\nNote, geom_smooth uses stats::loess for less than 1,000 cases (as before), otherwise (as here) mgcv::gam() because it is more efficient computationally. We omit details here."
+  },
+  {
+    "objectID": "W8.html#non-linear-relation",
+    "href": "W8.html#non-linear-relation",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Non linear relation",
+    "text": "Non linear relation\n\ness |> filter(essround == 9) |> \n ggplot(aes(atchctr, euftf)) + geom_smooth()\n\n\n\nTaking into account the real number of cases the uncertainty range indicated that the non-linear relationship is fairly certain, although small in magnitude.\nNote, we have not looked at uncertainty measures in detail yet.\nMain message here: Low uncertainty and large effect size is not the same!\n\nIn statistics the first is called significant.\nIn common language the second is often called significant.\n\nThis dual use of significant is source of a lot of confusion in science communication."
+  },
+  {
+    "objectID": "W8.html#significance-of-nonlinear-relation",
+    "href": "W8.html#significance-of-nonlinear-relation",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Significance of nonlinear relation?",
+    "text": "Significance of nonlinear relation?\n\n\nTaking into account the real number of cases the uncertainty range indicates that the non-linear relationship is fairly certain, although small in magnitude.\nNote, we have not looked at uncertainty measures in detail yet.\nMain message here: Low uncertainty and large effect size is not the same!\n\nIn statistics the first is called significant.\nIn common language the second is often called significant.\n\nThis dual use of significant is a source of confusion in science communication!"
+  },
+  {
+    "objectID": "W8.html#r-squared-of-a-fitted-model",
+    "href": "W8.html#r-squared-of-a-fitted-model",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "R-squared of a fitted model",
+    "text": "R-squared of a fitted model\n\\(R^2\\) is the percentage of variability in the response explained by the regression model.\nR-squared is also called coefficient of determination.\nDefinition:\n\\(R^2 = 1 - \\frac{SS_\\text{res}}{SS_\\text{tot}}\\)\nwhere \\(SS_\\text{res} = \\sum_i(y_i - f_i)^2 = \\sum_i e_i\\) is the sum of the squared residuals, and\n\\(SS_\\text{tot} = \\sum_i(y_i - \\bar y)^2\\) the total sum of squares which is proportional to the variance of \\(y\\). (\\(\\bar y\\) is the mean of \\(y\\).)\n\\(R^2\\) is the square of the correlation coefficient, hence the name. (No math on this today.)"
+  },
+  {
+    "objectID": "W8.html#linear-models-r-squared",
+    "href": "W8.html#linear-models-r-squared",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Linear models R-squared",
+    "text": "Linear models R-squared\n\nlibrary(tidymodels)\nlinear_reg() |> set_engine(\"lm\") |> \n fit(atcherp ~ atchctr, data = ess) |>\n glance()  # glance shows summary statistics of model fit\n\n# A tibble: 1 × 12\n  r.squared adj.r.sq…¹ sigma stati…² p.value    df  logLik    AIC    BIC devia…³\n      <dbl>      <dbl> <dbl>   <dbl>   <dbl> <dbl>   <dbl>  <dbl>  <dbl>   <dbl>\n1     0.122      0.122  2.45   6747.       0     1 -1.12e5 2.25e5 2.25e5 291696.\n# … with 2 more variables: df.residual <int>, nobs <int>, and abbreviated\n#   variable names ¹​adj.r.squared, ²​statistic, ³​deviance\n\n\nInterpretation R-square?\n\n12.2% of the variance of European emotional attachment can be explained by a linear relation with country emotional attachment.\n\n\nFor EU integration attitude.\n\nlinear_reg() |> set_engine(\"lm\") |> \n fit(euftf ~ atchctr, data = ess) |> \n glance()\n\n# A tibble: 1 × 12\n  r.squared adj.r.sq…¹ sigma stati…² p.value    df  logLik    AIC    BIC devia…³\n      <dbl>      <dbl> <dbl>   <dbl>   <dbl> <dbl>   <dbl>  <dbl>  <dbl>   <dbl>\n1  0.000702   0.000680  2.75    32.0 1.57e-8     1 -1.11e5 2.21e5 2.21e5 343473.\n# … with 2 more variables: df.residual <int>, nobs <int>, and abbreviated\n#   variable names ¹​adj.r.squared, ²​statistic, ³​deviance"
+  },
+  {
+    "objectID": "W8.html#linear-model-with-more-predictors",
+    "href": "W8.html#linear-model-with-more-predictors",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Linear model with more predictors",
+    "text": "Linear model with more predictors\n\nlibrary(tidymodels)\nlinear_reg() |> set_engine(\"lm\") |> \n    fit(euftf ~ atchctr + atcherp, data = ess) |> tidy()\n\n# A tibble: 3 × 5\n  term        estimate std.error statistic  p.value\n  <chr>          <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)    4.05    0.0478       84.8 0       \n2 atchctr       -0.114   0.00599     -19.1 1.12e-80\n3 atcherp        0.354   0.00509      69.7 0       \n\n\n\nNote, that atchctr now has a negative coefficient!\nThe tiny bit of positive relation explained by atchctr in a one predictor model can better be explained by atcherp (which we know is correlated with atchctr)."
+  },
+  {
+    "objectID": "W8.html#corona-deaths-vs.-human-development",
+    "href": "W8.html#corona-deaths-vs.-human-development",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Corona deaths vs. Human development",
+    "text": "Corona deaths vs. Human development\n\nNote: Not weighted by population!"
+  },
+  {
+    "objectID": "W8.html#linear-model-total-deaths-vs.-hdi",
+    "href": "W8.html#linear-model-total-deaths-vs.-hdi",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Linear model: Total deaths vs. HDI",
+    "text": "Linear model: Total deaths vs. HDI\n\nowid_aug22 <- owid |> \n filter(date == \"2022-08-31\", !is.na(human_development_index), \n        !is.na(total_deaths_per_million), !is.na(continent))\nlinear_reg() |> set_engine(\"lm\") |> \n    fit(total_deaths_per_million ~ human_development_index, data = owid_aug22) |> tidy()\n\n# A tibble: 2 × 5\n  term                    estimate std.error statistic  p.value\n  <chr>                      <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)               -2350.      385.     -6.11 5.84e- 9\n2 human_development_index    4917.      522.      9.43 1.71e-17"
+  },
+  {
+    "objectID": "W8.html#regression-line-by-continent",
+    "href": "W8.html#regression-line-by-continent",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Regression line by continent",
+    "text": "Regression line by continent\n\nNote: Not weighted by population!"
+  },
+  {
+    "objectID": "W8.html#interaction-effect-total-deaths-vs.-hdi",
+    "href": "W8.html#interaction-effect-total-deaths-vs.-hdi",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Interaction effect total deaths vs. HDI",
+    "text": "Interaction effect total deaths vs. HDI\n\nowid_aug22 <- owid |> \n filter(date == \"2022-08-31\", !is.na(human_development_index), \n        !is.na(total_deaths_per_million), !is.na(continent))\nlinear_reg() |> set_engine(\"lm\") |> \n    fit(total_deaths_per_million ~ human_development_index * continent, data = owid_aug22) |> tidy()\n\n# A tibble: 12 × 5\n   term                                         estim…¹ std.e…² stati…³  p.value\n   <chr>                                          <dbl>   <dbl>   <dbl>    <dbl>\n 1 (Intercept)                                   -1555.    581.  -2.67  8.19e- 3\n 2 human_development_index                        3329.   1019.   3.27  1.31e- 3\n 3 continentAsia                                   563.    940.   0.598 5.50e- 1\n 4 continentEurope                               14759.   1956.   7.55  2.32e-12\n 5 continentNorth America                        -1346.   1512.  -0.890 3.75e- 1\n 6 continentOceania                               1125.   1424.   0.790 4.31e- 1\n 7 continentSouth America                        -4243.   3436.  -1.23  2.19e- 1\n 8 human_development_index:continentAsia         -1027.   1419.  -0.724 4.70e- 1\n 9 human_development_index:continentEurope      -15377.   2351.  -6.54  6.40e-10\n10 human_development_index:continentNorth Amer…   2394.   2099.   1.14  2.56e- 1\n11 human_development_index:continentOceania      -2318.   2063.  -1.12  2.63e- 1\n12 human_development_index:continentSouth Amer…   7684.   4543.   1.69  9.25e- 2\n# … with abbreviated variable names ¹​estimate, ²​std.error, ³​statistic"
+  },
+  {
+    "objectID": "W8.html#adding-a-main-effect-of-continents",
+    "href": "W8.html#adding-a-main-effect-of-continents",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Adding a main effect of continents",
+    "text": "Adding a main effect of continents\n\nlinear_reg() |> set_engine(\"lm\") |> \n    fit(total_deaths_per_million ~ human_development_index + continent, \n        data = owid_aug22) |> tidy()\n\n# A tibble: 7 × 5\n  term                    estimate std.error statistic       p.value\n  <chr>                      <dbl>     <dbl>     <dbl>         <dbl>\n1 (Intercept)               -754.       392.    -1.92  0.0560       \n2 human_development_index   1901.       666.     2.86  0.00480      \n3 continentAsia               58.5      213.     0.274 0.784        \n4 continentEurope           1685.       279.     6.04  0.00000000867\n5 continentNorth America     742.       254.     2.92  0.00397      \n6 continentOceania          -312.       298.    -1.05  0.297        \n7 continentSouth America    1910.       311.     6.15  0.00000000489\n\n\nA main effect by categorical dummy variables allows for different intercepts per continent."
+  },
+  {
+    "objectID": "W8.html#adding-an-interaction-effect-of-continents",
+    "href": "W8.html#adding-an-interaction-effect-of-continents",
+    "title": "W#8 More linear models, Missing Values, Data Questions",
+    "section": "Adding an interaction effect of continents",
+    "text": "Adding an interaction effect of continents\n\nlinear_reg() |> set_engine(\"lm\") |> \n    fit(total_deaths_per_million ~ human_development_index * continent, \n        data = owid_aug22) |> tidy()\n\n# A tibble: 12 × 5\n   term                                         estim…¹ std.e…² stati…³  p.value\n   <chr>                                          <dbl>   <dbl>   <dbl>    <dbl>\n 1 (Intercept)                                   -1555.    581.  -2.67  8.19e- 3\n 2 human_development_index                        3329.   1019.   3.27  1.31e- 3\n 3 continentAsia                                   563.    940.   0.598 5.50e- 1\n 4 continentEurope                               14759.   1956.   7.55  2.32e-12\n 5 continentNorth America                        -1346.   1512.  -0.890 3.75e- 1\n 6 continentOceania                               1125.   1424.   0.790 4.31e- 1\n 7 continentSouth America                        -4243.   3436.  -1.23  2.19e- 1\n 8 human_development_index:continentAsia         -1027.   1419.  -0.724 4.70e- 1\n 9 human_development_index:continentEurope      -15377.   2351.  -6.54  6.40e-10\n10 human_development_index:continentNorth Amer…   2394.   2099.   1.14  2.56e- 1\n11 human_development_index:continentOceania      -2318.   2063.  -1.12  2.63e- 1\n12 human_development_index:continentSouth Amer…   7684.   4543.   1.69  9.25e- 2\n# … with abbreviated variable names ¹​estimate, ²​std.error, ³​statistic\n\n\n\nNote the * for interaction effect!\nAlso main effects for both variables are in as coefficients.\nAfrica has been chosen as reference category (because it is first in the alphabet).\nAn interaction effect allows for different slopes for each continent!"
+  },
+  {
+    "objectID": "W8.html#regression-lines-by-continent",
+    "href": "W8.html#regression-lines-by-continent",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Regression lines by continent",
+    "text": "Regression lines by continent\n\nThe relation between deaths and human development is reverse in Europe."
+  },
+  {
+    "objectID": "W8.html#adding-as-interaction",
+    "href": "W8.html#adding-as-interaction",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Adding as interaction",
+    "text": "Adding as interaction\n\nlinear_reg() |> set_engine(\"lm\") |> \n    fit(total_deaths_per_million ~ human_development_index * continent, \n        data = owid_aug22) |> tidy()\n\n# A tibble: 12 × 5\n   term                                         estim…¹ std.e…² stati…³  p.value\n   <chr>                                          <dbl>   <dbl>   <dbl>    <dbl>\n 1 (Intercept)                                   -1555.    581.  -2.67  8.19e- 3\n 2 human_development_index                        3329.   1019.   3.27  1.31e- 3\n 3 continentAsia                                   563.    940.   0.598 5.50e- 1\n 4 continentEurope                               14759.   1956.   7.55  2.32e-12\n 5 continentNorth America                        -1346.   1512.  -0.890 3.75e- 1\n 6 continentOceania                               1125.   1424.   0.790 4.31e- 1\n 7 continentSouth America                        -4243.   3436.  -1.23  2.19e- 1\n 8 human_development_index:continentAsia         -1027.   1419.  -0.724 4.70e- 1\n 9 human_development_index:continentEurope      -15377.   2351.  -6.54  6.40e-10\n10 human_development_index:continentNorth Amer…   2394.   2099.   1.14  2.56e- 1\n11 human_development_index:continentOceania      -2318.   2063.  -1.12  2.63e- 1\n12 human_development_index:continentSouth Amer…   7684.   4543.   1.69  9.25e- 2\n# … with abbreviated variable names ¹​estimate, ²​std.error, ³​statistic\n\n\n\nNote the * for interaction effect!\nAlso main effects for both variables are in as coefficients.\nAfrica has been chosen as reference category (because it is first in the alphabet).\nAn interaction effect allows for different slopes for each continent!"
+  },
+  {
+    "objectID": "W8.html#simpsons-paradox",
+    "href": "W8.html#simpsons-paradox",
+    "title": "W#8 Homework topics: Typical Data Issues, More linear models and Interpretation",
+    "section": "Simpson’s paradox",
+    "text": "Simpson’s paradox\nSlopes for all groups can be in the opposite direction of the main effect’s slope!\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "index.html#week-8-oct-20-homework-discussions-with-topics-errorsdifferencesmissings-in-data-more-linear-models-and-interpretation",
+    "href": "index.html#week-8-oct-20-homework-discussions-with-topics-errorsdifferencesmissings-in-data-more-linear-models-and-interpretation",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 8, Oct 20: Homework discussions with topics: Errors/Differences/Missings in Data, More linear models and Interpretation",
+    "text": "Week 8, Oct 20: Homework discussions with topics: Errors/Differences/Missings in Data, More linear models and Interpretation\nSlides Week 8\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 should come. Due Nov 6."
   }
 ]
