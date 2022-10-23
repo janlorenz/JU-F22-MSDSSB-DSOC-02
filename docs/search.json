@@ -32,7 +32,7 @@
     "href": "index.html#goal",
     "title": "Data Science Concepts / Tools",
     "section": "1.3 Goal",
-    "text": "1.3 Goal\nOur goal in the two modules is to enable you to\n\ncreate and maintain a digital working environment on your computer to do data science\nlearn core concepts in data science, that means\n\nlearn concepts to explore data (visualize, import, wrangle)\nlearn or refresh some mathematics and statistics concepts through the data science lens\nlearn concepts to model and draw conclusions from data (model, infer, predict)\n\nlearn to program in the data science languages R and python, and become able to learn new skills in these independently\ndo a data science project of your own interest\n\nYou can build a good basis for your more and more independent the work in the whole program."
+    "text": "1.3 Goal\nOur goal in the two modules is to enable you to\n\ncreate and maintain a digital working environment on your computer to do data science\nlearn core concepts in data science, that means\n\nlearn concepts to explore data (visualize, import, wrangle)\nlearn or refresh some mathematics and statistics concepts through the data science lens\nlearn concepts to model and draw conclusions from data (model, infer, predict)\n\nlearn to program in the data science languages R and python, and become able to learn new skills in these independently\ndo a data science project of your own interest\n\nYou can build a good basis for your more and more independent work in the whole program."
   },
   {
     "objectID": "index.html#expectations-for-students",
@@ -46,14 +46,14 @@
     "href": "index.html#online-infrastructure",
     "title": "Data Science Concepts / Tools",
     "section": "1.5 Online Infrastructure",
-    "text": "1.5 Online Infrastructure\nCampusnet This is the official registration site. Besides the final grade input for the modules we will not use it in the courses, but you should be able to get back to this site from there once you are lost.\njMoodle An e-learning platform provided by Jacobs University. Log in with your campusnet credentials. Under the Data Science Concepts Course (identifier MDSSB-DSOC-02_f2022_1) we publish information (e.g. survey links) which shall be shared only among participants of the course. (After all this is a public website, although it is not intended to be announced publicly.)\n\n\n\n\n\n\nImportant\n\n\n\nTest to log in and visit the Data Science Concepts course on jMoodle. Be prepared to go there during class!\n\n\nMicrosoft Teams: In MS Teams there is a Team for the course. Teams will be used for hybrid online and in class teaching. It is expected that you come to class in presence if possible. Participation should only be online when abroad or CoViD-isolated at home. The “General” channel can be used for announcements. You can also post there. You can also post to me directly over Teams and hope for a quick answer.\nGitHub: All delivery and submission of homework is via Github. Details in the lecture slides of week 1 and “Homework 01” (on this page)."
+    "text": "1.5 Online Infrastructure\nCampusnet This is the official registration site. Besides the final grade input for the modules we will not use it in the courses, but you should be able to get back to this site from there once you are lost.\njMoodle An e-learning platform provided by Jacobs University. Log in with your campusnet credentials. Under the Data Science Concepts Course (identifier MDSSB-DSOC-02_f2022_1) we publish information (e.g. survey links) which shall be shared only among participants of the course. (After all this is a public website, although it is not intended to be announced publicly.)\n\n\n\n\n\n\nImportant\n\n\n\nTest to log in and visit the Data Science Concepts course on jMoodle. Be prepared to go there during class!\n\n\nMicrosoft Teams: In MS Teams there is a Team for the course. Teams will be used for hybrid online and in class teaching. It is expected that you come to class in presence if possible. Participation should only be online when abroad or CoViD-isolated at home. The “General” channel can be used for announcements. You can also post there. You can also post to me directly over Teams and hope for a quick answer.\nIf possible, recordings are made via Teams and saved in the Teams general channel under Files -> Recordings.\nGitHub: All delivery and submission of homework is via Github. Details in the lecture slides of week 1 and “Homework 01” (on this page)."
   },
   {
     "objectID": "index.html#software",
     "href": "index.html#software",
     "title": "Data Science Concepts / Tools",
     "section": "1.6 Software",
-    "text": "1.6 Software\nWe use a mandatory set of software. Details are in the slides of week 1. Our task with highest priority is to realize that everyone has full installation and functionality on their local machines. All software is freely available software."
+    "text": "1.6 Software\nWe use a mandatory set of software. Details are in the slides of week 1. Our task with highest priority is to realize that everyone has full installation and functionality on their local machines. All software is freely available."
   },
   {
     "objectID": "index.html#grading",
@@ -3386,5 +3386,19 @@
     "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
     "section": "Next",
     "text": "Next\nhttps://datasciencebox.org/course-materials/_slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1"
+  },
+  {
+    "objectID": "index.html#assessment-and-grading",
+    "href": "index.html#assessment-and-grading",
+    "title": "Data Science Concepts / Tools",
+    "section": "1.7 Assessment and Grading",
+    "text": "1.7 Assessment and Grading\nThis will be updated and made more specific later.\nData Science Concepts: Assessment is based on an exam of 120 minutes. It will be scheduled officially on campusnet by academic offices probably in the range around Dec 15.\nData Science Tools: Assessment is based on a team project of approximately 4000-5000 words. As a requirement, enough homework assignment tasks need to be correctly solved. These do not determine the grade, but can improve it."
+  },
+  {
+    "objectID": "index.html#week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation",
+    "href": "index.html#week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 8, Oct 20: Homework topics: Typical Data Issual, More Linear Models and Interpretation",
+    "text": "Week 8, Oct 20: Homework topics: Typical Data Issual, More Linear Models and Interpretation\nTopics:\n\nErrors, Differences, Missings in Data\nMore Linear Models\n\nMore predictors\nMain effects and interaction effects\n\nTo be finished\n\nSlides Week 8\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 should come. Due Nov 6."
   }
 ]
