@@ -44,7 +44,7 @@ Our goal in the two modules is to enable you to
 * learn to program in the data science languages R and python, and become able to learn new skills in these independently
 * do a data science project of your own interest
 
-You can build a good basis for your more and more independent the work in the whole program. 
+You can build a good basis for your more and more independent work in the whole program. 
 
 
 ## Expectations for students
@@ -75,19 +75,22 @@ Test to log in and visit the *Data Science Concepts* course on [*jMoodle*](https
 
 **Microsoft Teams:** In MS Teams there is a Team for the course. Teams will be used for hybrid online and in class teaching. It is expected that you come to class in presence if possible. Participation should only be online when abroad or CoViD-isolated at home. The "General" channel can be used for announcements. You can also post there. You can also post to me directly over Teams and hope for a quick answer.
 
+If possible, **recordings** are made via Teams and saved in the Teams general channel under Files -> Recordings. 
+
 **GitHub:** All delivery and submission of homework is via Github. Details in the lecture slides of week 1 and "Homework 01" (on this page).  
 
 ## Software
 
-We use a mandatory set of software. Details are in the slides of week 1. Our task with highest priority is to realize that everyone has full installation and functionality on their local machines. All software is freely available software.
+We use a mandatory set of software. Details are in the [slides of week 1](https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit?usp=sharring). Our task with highest priority is to realize that everyone has full installation and functionality on their local machines. All software is freely available.
 
-## Grading
+## Assessment and Grading
 
 *This will be updated and made more specific later.*
 
-**Data Science Concepts:** Grading is based on an exam of 120 minutes. 
+**Data Science Concepts:** Assessment is based on an exam of 120 minutes. It will be scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices probably in the range around Dec 15. 
 
-**Data Science Tools:** Grading is based on team project of approximately 4000-5000 words. As a requirement, enough homework assignment tasks need to be correctly solved. These do not determine the grade, but can improve it. See handbook for details. 
+**Data Science Tools:** Assessment is based on a **team project** of approximately 4000-5000 words. As a requirement, enough homework assignment tasks need to be correctly solved. These do not determine the grade, but can improve it. 
+
 
 # Learning Resources
 
@@ -96,7 +99,9 @@ Some week's lectures have readings to review before class. These shall come cont
 A large part of the course will build on or be inspired by material in **Data Science in the Box** <https://datasciencebox.org/> by Mine Çetinkaya-Rundel and the data science education community around. 
 You can also use the website for accompanying self-study on selected topics. 
 
-A core resource for self-learning data science with R is **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics. 
+A core resource for self-learning data science with R is **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics using `tidyverse` tools. 
+
+Just out: **Tidy Modeling with R** <https://www.tmwr.org/> by Max Kuhn and Julia Silge on using `tidymodels`. 
 
 A core resource for data science basics with python is the **Python Data Science Handbook** <https://jakevdp.github.io/PythonDataScienceHandbook/> by Jake VanderPlas. Also there is a good video playlist <https://www.youtube.com/playlist?list=PLWKjhJtqVAbkmRvnFmOd4KhDdlK1oIq23> and a 4-hour "full-course" video <https://youtu.be/rfscVS0vtbw>.
 

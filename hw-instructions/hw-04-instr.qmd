@@ -1,0 +1,155 @@
+---
+title: "Homework 04"
+subtitle: ""
+---
+
+```{r include = FALSE}
+library(tidyverse)
+```
+
+:::{.callout-important}
+**Homework 04 is due Sunday, Nov 6.** When you get stuck, you are encouraged to push intermediate steps before you contact us.    
+**Project teams should be formed by Oct 30.**
+:::
+
+In this homework you are to continue to do data analysis of the data with the data about corona in R and the European Social Survey (ESS) in python. 
+
+## Corona
+
+Continue to work on your repository **corona-ind-USERNAME**.
+
+Continue to work on the Quarto-document "Corona_Analysis.qmd" from Homework 03 and add new headlines and new code chunks for each new question.  
+
+### **Question 5:** Do the cumulative cases reported by the WHO for Germany, France, India and the country of your choice coincide with the cumulative sum of new cases?
+
+- Filter the `who` dataset for the four countries. Group by these countries and compute a new variable called `Total_cases` as the cumulative sum (`cumsum`) of the new cases for each each country. 
+- Now, test if this variable coincides with the variable `Cumulative_cases` which is already present in the dataset. To that end, compute a new variable with the difference of the two time lines and check if the difference is zero in every time step. (You can use `count` on the the difference variable to count different values.)
+- Write down the answer to the question. 
+
+### **Question 6:** What can the visualization of the daily change of new cases in Germany tell us about the evolution of the pandemic?
+
+:::{.callout-tip}
+Download the two datasets (`who` and `owid`) anew to get the most recent values.
+:::
+
+- Use the dataset of the WHO, filter for Germany and all dates after August 15, 2022. 
+- Make a new variable `New_cases_smoothed` where you smooth `New_cases` with a 7-day lagged window. 
+- Create another variable called `Change` which is the difference of in the smoothed new cases with the day before. 
+- Develop two ggplots (see below), one for the smoothed new cases and one for the change. Once you have the code for each plot save each plot as a ggplot object (e.g., `g1` and `g2`) and show them in your rendered document with new cases above the change. (Hint: Use the package `patchwork` and `g1 / g2` to show the two plots.)
+  - Use a bar-chart for both plots. Use `geom_col`. 
+  - For the plot of the change make the bars for negative numbers filled with blue and the bars for positive numbers filled with red. The way to do it is to add two `geom_col`s to the same plot. Both have different `y`-aesthetics but both based on the `Change` variable. In one the negative values are set to zero in the other the positive values. For example you can create such a variable like `ifelse(Change >= 0, Change, 0)`. 
+  - Let us make these plots look nice. Use `+ labs()` to create meaningful axis labels. Use `scale_x_date` to make the x-axis-ticks look nice. For example, use `date_breaks = ...` to specify the main labelled ticks, `data_minor_breaks = ...` for smaller unlabelled ticks, and use `date_labels = ...` to make the labels shorter by omitting the year in the dates. You have to look up the specification in the help of `scale_x_date`. 
+- Describe what the blue and the red regions in the change plot tell us about the recent evolution of corona cases in Germany.
+- From the total case, the new cases and the change of new cases. Which timeline is the derivative an the anti-derivative of which?
+
+### **Question 7:** Which variable explains more variance of total deaths per million, the human development index (HDI) or the median age?
+
+Use the `owid` dataset and filter the rows with data Oct 15, 2022 only and with a valid continent (this should be 223 rows). 
+
+Estimate two linear model with this dataset. Both have `total_death_per_million` as dependent variable.
+
+- Use `human_development_index` as independent variable and save the model object as `mod_hdi`.
+- Use `median_age` as independent variable and save the model object as `mod_age`.
+
+Access, print, and interpret the R-squared of both models (`glance(mod)$r.squared`) in the rendered html. Answer the question. 
+
+
+### **Question 8:** How do the two models improve when the continent is added as an interaction effect?
+
+Estimate two more linear models, `mod_hdicont` and `mod_agecont`, by adding `continent` as an interaction effect to the two models from Question 8 (`human_development_index * continent` and `median_age * continent`). 
+
+- Print the coefficients of `mod_agecont` in tidy form and interpret the coefficient of the intercept, the main effects, and the interaction effects. 
+- Access, print, and interpret the R-squared of both models (`glance(mod)$r.squared`) in the rendered html. 
+
+Access, print, and interpret the R-squared of both models (`glance(mod)$r.squared`) in the rendered html. 
+Answer the question. In which case is the improvement stronger? Why is the improvement different?
+
+### Submit your report
+
+Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. 
+Commit your qmd-file and the rendered html-file. Push to GitHub. 
+
+
+
+## European Social Survey
+
+Continue to work on your repository **ess-ind-USERNAME**. 
+**You have to look ESS Data Documentation <https://ess-search.nsd.no/>.**
+
+Continue to work on the Quarto-document "ESS-analysis.qmd" (alternatively "ESS-analysis.ipynb" if you can render html-files from it) from Homework 03 and add new headlines and new code chunks for each new question. 
+
+### **Question 6:** What are the correlations between life satisfaction, trust in the police, religiosity, emotional attachment to Europe, and social activity?
+
+Filter the `ess` dataset for essround 9 and select the variables `stflife`, `trstplc`, `rlgdgr`, `atcherp`, and `sclact`. 
+
+Compute the correlation matrix and visualize correlation coefficients with color. (Hints will be given in the Data Science Tools with python course.)
+
+Explain the two highest and two lowest correlations. 
+
+
+### **Question 7:** Which variables can explain the variance of life satisfaction in a linear model how well?
+
+With the same dataset compute a linear model where life satisfaction is explained as a linear combination of all other four variables. 
+
+Print and interpret the coefficients. (Look up and report the variable descriptions and their scales at <https://ess-search.nsd.no> for this purpose!)
+
+Which percentage of the variance in life satisfaction can be explained with the model?
+
+### Submit your report
+
+Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. 
+Commit your qmd-file and the rendered html-file. Push to GitHub. 
+
+
+
+## Your own project
+
+The assessment of the Data Science Tools module will be based on a **team project report**. 
+
+### A project report in a nutshell
+
+- You pick a dataset, 
+- do some interesting question-driven data analysis with it, 
+- write up well structured and nicely formatted report about the analysis, and 
+- present it at the end of the semester. 
+
+*More details will come soon.*
+
+### The tasks for this Homework 
+
+- **Team formation** such that a repository at <https://github.com/orgs/JU-F22-MDSSB-MET-01> can be provided. 
+- An initial document in the repository which lists either 
+  - a link and brief description to a data source you want to build your project on, or
+  - a topic and three potential questions on that topic you like to answer within your project report.
+- Ideally, you provide both. 
+- None, of these binds you. It can be changed.
+- It is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures. 
+
+:::{.callout-important}
+## Task 1: Form project teams by Sunday, Oct 30.
+
+- Teams should have two members. 
+- Send your names to Jan Lorenz by email or via Teams. 
+- Teams of three (or more) or individual projects can be permitted on requests providing a reason. 
+:::
+
+:::{.callout-important}
+## Task 2: Start a document and list data source/topic and draft questions
+
+- You need your repository in <https://github.com/orgs/JU-F22-MDSSB-MET-01> to submit it. Please form your team early and inform us such that it can be created. 
+- Start a quarto markdown document in the repository. The text can be brief at this stage. 
+:::
+
+### Where to find data?
+
+This up to you. Some entry points are:
+
+- Google Dataset Search <https://datasetsearch.research.google.com/>  
+- Tidy Tuesday <https://github.com/rfordatascience/tidytuesday>
+- Awesome public datasets <https://github.com/awesomedata/awesome-public-datasets>
+- Kaggle datasets <https://www.kaggle.com/datasets>
+- Jan and Martin can provide ideas for data about polarization in Europe (based on ESS), a voting advice application for German elections, census data about Bremen's districts. 
+
+If you have a specific topic in mind which can be approached with data but haven't found a good dataset yet, you can also provide the topic and the questions which interest you only at this stage. 
+
+  
