@@ -82,7 +82,10 @@ Continue to work on the Quarto-document "ESS-analysis.qmd" (alternatively "ESS-a
 
 Filter the `ess` dataset for essround 9 and select the variables `stflife`, `trstplc`, `rlgdgr`, `atcherp`, and `sclact`. 
 
-Compute the correlation matrix and visualize correlation coefficients with color. (Hints will be given in the Data Science Tools with python course.)
+Compute the correlation matrix and visualize correlation coefficients with color. 
+
+For calculating the correlation of a dataframe use `.corr()` which returns the correlation matrix.
+Visualizing a value with a certain color is called heatmap. Use your created correlation matrix in the seaborn function `sns.heatmap()`. Look up the function and vary the parameters for better visibility.
 
 Explain the two highest and two lowest correlations. 
 
@@ -92,6 +95,14 @@ Explain the two highest and two lowest correlations.
 With the same dataset compute a linear model where life satisfaction is explained as a linear combination of all other four variables. 
 
 Print and interpret the coefficients. (Look up and report the variable descriptions and their scales at <https://ess-search.nsd.no> for this purpose!)
+
+There are many python packages that include linear models. For similarity with R we use the (`statsmodel` package)[https://www.statsmodels.org/stable/index.html].
+
+```{.python}
+import statsmodel.api as sm
+```
+
+The default model within statsmodel does not have an intercept defined. Therefore, add a constant to the  predictors with `sm.add_constant()`. Now apply the `sm.OLS()` to your data with the predictors and dependent variable inside the function. The results of your regression are summarized by applying and printing the `results.summary()` function.
 
 Which percentage of the variance in life satisfaction can be explained with the model?
 

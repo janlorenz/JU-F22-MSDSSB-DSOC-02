@@ -1430,49 +1430,49 @@
   {
     "objectID": "W9.html#how-many-observations-are-there-for-each-country-year-combination",
     "href": "W9.html#how-many-observations-are-there-for-each-country-year-combination",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "How many observations are there for each country-year combination?",
     "text": "How many observations are there for each country-year combination?\nWeighting"
   },
   {
     "objectID": "W9.html#more-weights-from-the-survey",
     "href": "W9.html#more-weights-from-the-survey",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "More weights from the survey",
     "text": "More weights from the survey"
   },
   {
     "objectID": "W9.html#mean-squared-error",
     "href": "W9.html#mean-squared-error",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "Mean squared error",
     "text": "Mean squared error"
   },
   {
     "objectID": "W9.html#how-deaths-follow-cases",
     "href": "W9.html#how-deaths-follow-cases",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "How Deaths Follow Cases",
     "text": "How Deaths Follow Cases"
   },
   {
     "objectID": "W9.html#next",
     "href": "W9.html#next",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "Next",
     "text": "Next\nhttps://datasciencebox.org/course-materials/_slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1"
   },
   {
     "objectID": "W9.html#test-und-training-set",
     "href": "W9.html#test-und-training-set",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "Test und Training set",
     "text": "Test und Training set\nCross validation"
   },
   {
     "objectID": "W9.html#decision-trees",
     "href": "W9.html#decision-trees",
-    "title": "W#8 Math: Basic statistics (mean, median, standard deviation, interquartile range), Calculus, Derivative and Antiderivative, Linear Models",
+    "title": "W#9 Logisitc Regression",
     "section": "Decision Trees",
     "text": "Decision Trees"
   },
@@ -1789,7 +1789,7 @@
     "href": "hw-instructions/hw-04-instr.html#european-social-survey",
     "title": "Homework 04",
     "section": "2 European Social Survey",
-    "text": "2 European Social Survey\nContinue to work on your repository ess-ind-USERNAME. You have to look ESS Data Documentation https://ess-search.nsd.no/.\nContinue to work on the Quarto-document “ESS-analysis.qmd” (alternatively “ESS-analysis.ipynb” if you can render html-files from it) from Homework 03 and add new headlines and new code chunks for each new question.\n\n2.1 Question 6: What are the correlations between life satisfaction, trust in the police, religiosity, emotional attachment to Europe, and social activity?\nFilter the ess dataset for essround 9 and select the variables stflife, trstplc, rlgdgr, atcherp, and sclact.\nCompute the correlation matrix and visualize correlation coefficients with color. (Hints will be given in the Data Science Tools with python course.)\nExplain the two highest and two lowest correlations.\n\n\n2.2 Question 7: Which variables can explain the variance of life satisfaction in a linear model how well?\nWith the same dataset compute a linear model where life satisfaction is explained as a linear combination of all other four variables.\nPrint and interpret the coefficients. (Look up and report the variable descriptions and their scales at https://ess-search.nsd.no for this purpose!)\nWhich percentage of the variance in life satisfaction can be explained with the model?\n\n\n2.3 Submit your report\nMake sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file. Push to GitHub."
+    "text": "2 European Social Survey\nContinue to work on your repository ess-ind-USERNAME. You have to look ESS Data Documentation https://ess-search.nsd.no/.\nContinue to work on the Quarto-document “ESS-analysis.qmd” (alternatively “ESS-analysis.ipynb” if you can render html-files from it) from Homework 03 and add new headlines and new code chunks for each new question.\n\n2.1 Question 6: What are the correlations between life satisfaction, trust in the police, religiosity, emotional attachment to Europe, and social activity?\nFilter the ess dataset for essround 9 and select the variables stflife, trstplc, rlgdgr, atcherp, and sclact.\nCompute the correlation matrix and visualize correlation coefficients with color.\nFor calculating the correlation of a dataframe use .corr() which returns the correlation matrix. Visualizing a value with a certain color is called heatmap. Use your created correlation matrix in the seaborn function sns.heatmap(). Look up the function and vary the parameters for better visibility.\nExplain the two highest and two lowest correlations.\n\n\n2.2 Question 7: Which variables can explain the variance of life satisfaction in a linear model how well?\nWith the same dataset compute a linear model where life satisfaction is explained as a linear combination of all other four variables.\nPrint and interpret the coefficients. (Look up and report the variable descriptions and their scales at https://ess-search.nsd.no for this purpose!)\nThere are many python packages that include linear models. For similarity with R we use the (statsmodel package)[https://www.statsmodels.org/stable/index.html].\nimport statsmodel.api as sm\nThe default model within statsmodel does not have an intercept defined. Therefore, add a constant to the predictors with sm.add_constant(). Now apply the sm.OLS() to your data with the predictors and dependent variable inside the function. The results of your regression are summarized by applying and printing the results.summary() function.\nWhich percentage of the variance in life satisfaction can be explained with the model?\n\n\n2.3 Submit your report\nMake sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file. Push to GitHub."
   },
   {
     "objectID": "hw-instructions/hw-04-instr.html#your-own-project",
@@ -1937,5 +1937,19 @@
     "title": "Homework 03",
     "section": "2 European Social Survey",
     "text": "2 European Social Survey\nContinue to work on your repository ess-ind-USERNAME and make the analysis in python-chunks. You have to look ESS Data Documentation https://ess-search.nsd.no/.\n\nCreate a new Quarto-document and save it as “ESS-analysis.qmd” (alternatively as “ESS-analysis.ipynb” if you can render html-files similarly from it).\n\n\nCustomize the YAML with the title “European Social Survey Analysis”, your name, and output format being a standalone html-file with embedded resources. Enable code-folding in the output html file.\nWrite a chunk labeled data where you load the tidyverse library and import the dataset you downloaded for Homework 02.\n\nDocument what you did: Write a headline ## Data before the chunk data and briefly describe the data source.\nFor each of the following questions write a fitting headline to structure your report.\n\n\n2.1 Question 1: What is the ranking of European countries with respect to of average satisfaction with life?\n\nCompute the average of stflife for each country-year combination. Make a table with four columns: the country name and the average life satisfaction for the years 2006, 2012, and 2018. Order the table by the values in 2018 and print it nicely in your report.\nTo that end, you must create new variables countryname from the two-character ISO-codes in cntyr (use the library pycountry) and a new variable year.\nBeware: The ESS variables have coded missing values as large numbers like 77 or 88. Find out these values and recode them as NA before computing averages!\n\nDescribe what you find remarkable in the table. (Who is on top? who at the bottom? Any interesting trends? Any geographical patterns?)\n\n\n\n2.2 Question 2: What is the relation of the emotional attachment of Europeans to their own country and to Europe?\nEmotional attachment to Europe may diminish emotional attachment to the country. Test if this is true with the variables atchctr and atcherp. First, look up the wording of the two questions and the answering options and write it into the report.\nBuild two visualizations and put them in the report. Beware: First recode the missing values as NA! (See above.)\n\nA visualization where you first count the number of individuals each combination of valid values of atchctr and atcherp. Then plot each combination as a dot with atchctr on the x-axis, atcherp on the y-axis, and the number of individuals represented by size and color and color of the dot.\nMake a lowess (locally weighted scatterplot smoothing) line of atchctr on the x-axis, atcherp on the y-axis using the function regplot from seaborn.\n\nAnswer the question based on the visualization.\n\n\n2.3 Question 3: What is the relation of the emotional attachment to the own country and the opinion about further of European integration?\nThis is analog to Question 2 with euftf instead of atcherp. First, look up the wording of euftf and the answering options and write it into the report. Beware: First recode the missing values as NA! (See above.)\nBuild two visualizations as above.\nAnswer the question.\n\n\n2.4 Question 4: How many observations are there for each country-year combination?\nCompute the numbers and list them nicely in a table in your report.\nAre the numbers roughly proportional to the population in these countries? Discuss if the answer creates some shortcomings about the answers to Questions 2 and 3. How could these be mitigated?\n\n\n2.5 Question 5: Answer your own exploratory question\nLook up questions behind the variables in the ESS data set, formulate a question, and answer it with summarizing, and visualization."
+  },
+  {
+    "objectID": "W9.html#precision-and-recall",
+    "href": "W9.html#precision-and-recall",
+    "title": "W#9 Logisitc Regression",
+    "section": "Precision and Recall",
+    "text": "Precision and Recall"
+  },
+  {
+    "objectID": "W9.html#receiver-operating-characteristic",
+    "href": "W9.html#receiver-operating-characteristic",
+    "title": "W#9 Logisitc Regression",
+    "section": "Receiver operating characteristic",
+    "text": "Receiver operating characteristic"
   }
 ]
