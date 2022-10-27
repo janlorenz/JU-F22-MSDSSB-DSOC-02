@@ -546,7 +546,7 @@ glimpse(test_data)
 
 # Workflow of Modeling
 
-## Fit a model to the training dataset
+## Fit a model to the training dataset {.smaller}
 
 ```{r}
 #| echo: true
@@ -721,7 +721,7 @@ email_pred
   
 . . . 
 
-odds > 1, log-odds > 0
+Answers: odds > 1, log-odds > 0
 
 ## Another look {.smaller}
 
