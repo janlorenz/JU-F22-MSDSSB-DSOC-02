@@ -793,7 +793,7 @@ email_rec <- recipe(
 summary(email_rec) |> print(n = 21)
 ```
 
-This only works with *meta-data* (columns names and types) so far! 
+The object `email_rec` only includes *meta-data* (columns names and types)! 
 
 
 
@@ -863,6 +863,8 @@ email_rec <- recipe(
  step_zv(all_predictors())
 email_rec
 ```
+
+The object `email_rec` only includes *meta-data* of the data frame it shall work on (a formula, columns names and types)!
 
 # Building workflows
 

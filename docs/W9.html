@@ -1073,7 +1073,7 @@ $ number       &lt;fct&gt; big, small, small, big, small, none, small, small, sm
 <h1>Workflow of Modeling</h1>
 
 </section>
-<section id="fit-a-model-to-the-training-dataset" class="slide level2">
+<section id="fit-a-model-to-the-training-dataset" class="slide level2 smaller">
 <h2>Fit a model to the training dataset</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>email_fit <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">|&gt;</span></span>
@@ -1305,7 +1305,7 @@ Residual Deviance: 1447     AIC: 1485</code></pre>
 </ul></li>
 </ul>
 <div class="fragment">
-<p>odds &gt; 1, log-odds &gt; 0</p>
+<p>Answers: odds &gt; 1, log-odds &gt; 0</p>
 </div>
 </section>
 <section id="another-look" class="slide level2 smaller">
@@ -1432,7 +1432,7 @@ Residual Deviance: 1447     AIC: 1485</code></pre>
 21 spam         nominal outcome   original</code></pre>
 </div>
 </div>
-<p>This only works with <em>meta-data</em> (columns names and types) so far!</p>
+<p>The object <code>email_rec</code> only includes <em>meta-data</em> (columns names and types)!</p>
 </section>
 <section id="remove-certain-variables" class="slide level2 smaller">
 <h2>Remove certain variables</h2>
@@ -1577,6 +1577,7 @@ Dummy variables from all_nominal(), -all_outcomes()
 Zero variance filter on all_predictors()</code></pre>
 </div>
 </div>
+<p>The object <code>email_rec</code> only includes <em>meta-data</em> of the data frame it shall work on (a formula, columns names and types)!</p>
 </section></section>
 <section>
 <section id="building-workflows" class="title-slide slide level1 center">
