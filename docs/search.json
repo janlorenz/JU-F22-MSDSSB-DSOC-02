@@ -1951,5 +1951,530 @@
     "title": "W#9 Logisitc Regression",
     "section": "Receiver operating characteristic",
     "text": "Receiver operating characteristic"
+  },
+  {
+    "objectID": "W9.html#recap-linear-models",
+    "href": "W9.html#recap-linear-models",
+    "title": "W#9 Logisitc Regression",
+    "section": "Recap linear models",
+    "text": "Recap linear models\nWe had linear models \\(y_i = \\beta_0 + \\beta_1x_1 + \\dots + \\beta_nx_n\\) with\nResponse (dependent) variable \\(y\\): Numeric\nPredictor (independent) variables \\(x_1,\\dots,x_n\\): Numeric or Binary (0 or 1)\n\nWhen a variable is categorical: We dummify it to \\(m-1\\) binary (dummy) variables (\\(m\\) is the number of categories)\n\nNote: In computer science dummifying is called one-hot encoding.\n\nWhen a variable has ordered categories (ordinal level of measurement): We may transform to a numerical variable assuming comparison of numerical distances between categories are interpretable."
+  },
+  {
+    "objectID": "W9.html#interaction-effects",
+    "href": "W9.html#interaction-effects",
+    "title": "W#9 Logisitc Regression",
+    "section": "Interaction effects",
+    "text": "Interaction effects\nAdding products of variables in the linear model \\(y_i = \\beta_0 + \\beta_1x_1 + \\beta_2x_2 + \\beta_{3}x_1x_2 + \\dots\\).\nFor \\(x_1\\) and \\(x_2\\) being dummy variables this is for example"
+  },
+  {
+    "objectID": "W9.html#recap-interaction-effects",
+    "href": "W9.html#recap-interaction-effects",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Recap: Interaction effects",
+    "text": "Recap: Interaction effects\nAdding products of variables in the linear model \\(y_i = \\beta_0 + \\beta_1x_1 + \\beta_2x_2 + \\beta_{3}x_1x_2 + \\dots\\).\nFor \\(x_1\\) and \\(x_2\\) being dummy variables this is for example\n\n\n\n\n\ngndr_f\nhas_kids\ngndr_f_x_has_kids\n\n\n\n\n0\n1\n0\n\n\n1\n0\n0\n\n\n1\n1\n1\n\n\n0\n0\n0\n\n\n\n\n\nCheck:\n\nWhat are the reference categories? Being male without kids.\nEstimating model on life satisfaction. How would we see if being a mother/father increases life satisfaction more? positiv/negative coefficient `gndr_f_x_has_kids"
+  },
+  {
+    "objectID": "W9.html#what-if-response-is-binary",
+    "href": "W9.html#what-if-response-is-binary",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "What if response is binary?",
+    "text": "What if response is binary?\n\nExample: Spam filter for emails\n\n\nlibrary(openintro)\nlibrary(tidyverse)\nglimpse(email)\n\nRows: 3,921\nColumns: 21\n$ spam         <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ to_multiple  <fct> 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ from         <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ cc           <int> 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2, 1, 0, 2, 0, …\n$ sent_email   <fct> 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, …\n$ time         <dttm> 2012-01-01 07:16:41, 2012-01-01 08:03:59, 2012-01-01 17:…\n$ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ attach       <dbl> 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ dollar       <dbl> 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, …\n$ winner       <fct> no, no, no, no, no, no, no, no, no, no, no, no, no, no, n…\n$ inherit      <dbl> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ password     <dbl> 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, …\n$ num_char     <dbl> 11.370, 10.504, 7.773, 13.256, 1.231, 1.091, 4.837, 7.421…\n$ line_breaks  <int> 202, 202, 192, 255, 29, 25, 193, 237, 69, 68, 25, 79, 191…\n$ format       <fct> 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, …\n$ re_subj      <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, …\n$ exclaim_subj <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, …\n$ urgent_subj  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ exclaim_mess <dbl> 0, 1, 6, 48, 1, 1, 1, 18, 1, 0, 2, 1, 0, 10, 4, 10, 20, 0…\n$ number       <fct> big, small, small, small, none, none, big, small, small, …"
+  },
+  {
+    "objectID": "W9.html#variables",
+    "href": "W9.html#variables",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Variables",
+    "text": "Variables\n?email shows all variable descriptions. For example:\n\nspam Indicator for whether the email was spam.\nfrom Whether the message was listed as from anyone (this is usually set by default for regular outgoing email).\ncc Number of people cc’ed.\ntime Time at which email was sent.\nattach The number of attached files.\ndollar The number of times a dollar sign or the word “dollar” appeared in the email.\nnum_char The number of characters in the email, in thousands.\nre_subj Whether the subject started with “Re:”, “RE:”, “re:”, or “rE:”\n\n\n\nThe development, extraction, or discovery of such variables is called feature engineering, feature extraction or feature discovery. Usually, a combination of domain knowledge and data science skill is needed to do this."
+  },
+  {
+    "objectID": "W9.html#multinomial",
+    "href": "W9.html#multinomial",
+    "title": "W#9 Logisitc Regression",
+    "section": "Multinomial",
+    "text": "Multinomial\n\n\nWe will not cover other categorical variables than binary ones here. However, many of the probabilistic concepts transfer."
+  },
+  {
+    "objectID": "W9.html#does",
+    "href": "W9.html#does",
+    "title": "W#9 Logisitc Regression",
+    "section": "Does",
+    "text": "Does\n\nemail |> ggplot(aes(x = num_char, y = spam)) + geom_boxplot()"
+  },
+  {
+    "objectID": "W9.html#data-exploration",
+    "href": "W9.html#data-exploration",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Data exploration",
+    "text": "Data exploration\nWould you expect spam to be longer or shorter?\n\n\nemail |> ggplot(aes(x = num_char, y = spam)) + geom_boxplot()\n\n\n\n\n\n\nWould you expect spam subject to start with “Re:” or the like?\n\n\n\nemail |> ggplot(aes(y = re_subj, fill = spam)) + geom_bar()"
+  },
+  {
+    "objectID": "W9.html#modeling",
+    "href": "W9.html#modeling",
+    "title": "W#9 Logisitc Regression",
+    "section": "Modeling",
+    "text": "Modeling\nBoth seem to give some signal.\nHow can we model the relationship?\nWe focus first on just num_char:\n\nemail |> ggplot(aes(x = num_char, y = as.numeric(spam)-1)) + geom_point() + geom_smooth(method = \"lm\")\n\n\n\nlibrary(tidymodels) \nlinear_reg() |> fit(as.numeric(spam)-1 ~ num_char, data = email)\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = as.numeric(spam) - 1 ~ num_char, data = data)\n\nCoefficients:\n(Intercept)     num_char  \n   0.118214    -0.002299"
+  },
+  {
+    "objectID": "W9.html#linear-models",
+    "href": "W9.html#linear-models",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Linear models?",
+    "text": "Linear models?\nBoth seem to give some signal. How can we model the relationship?\nWe focus first on just num_char:\n\nemail |> ggplot(aes(x = num_char, y = as.numeric(spam)-1)) + geom_point(alpha = 0.2) + geom_smooth(method = \"lm\")\n\n\n\nlibrary(tidymodels) \nlinear_reg() |> fit(as.numeric(spam)-1 ~ num_char, data = email)\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = as.numeric(spam) - 1 ~ num_char, data = data)\n\nCoefficients:\n(Intercept)     num_char  \n   0.118214    -0.002299  \n\n\nWe would like to have a better concept!"
+  },
+  {
+    "objectID": "W9.html#a-probabilistic-concept",
+    "href": "W9.html#a-probabilistic-concept",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "A probabilistic concept",
+    "text": "A probabilistic concept\n\nWe treat each outcome (spam and not) as successes and failures arising from separate Bernoulli trials\n\nBernoulli trial: a random experiment with exactly two possible outcomes, success and failure, in which the probability of success is the same every time the experiment is conducted\n\n\n\n\nEach email is treated as Bernoulli trial with separate probability of success\n\n\\[ y_i ∼ \\text{Bernoulli}(p_i) \\]\n\n\n\nWe use the predictor variables to model the Bernoulli parameter \\(p_i\\)\n\n\n\n\nNow we conceptualized a continuous response, but still a linear model does not fit perfectly for \\(p_i\\) (since a probability is between 0 and 1).\nHowever, we can transform the linear model to have the appropriate range."
+  },
+  {
+    "objectID": "W9.html#generalized-linear-models",
+    "href": "W9.html#generalized-linear-models",
+    "title": "W#9 Logisitc Regression",
+    "section": "Generalized linear models",
+    "text": "Generalized linear models\n\nThis is a very general way of addressing many problems in regression and the resulting models are called generalized linear models (GLMs)\n\n. . . - Logistic regression is just one example"
+  },
+  {
+    "objectID": "W9.html#three-characteristics-of-glms",
+    "href": "W9.html#three-characteristics-of-glms",
+    "title": "W#9 Logisitc Regression",
+    "section": "Three characteristics of GLMs",
+    "text": "Three characteristics of GLMs\nAll GLMs have the following three characteristics:\n\nA probability distribution describing a generative model for the outcome variable\n\n. . . 2. A linear model: \\[\\eta = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_k X_k\\]\n. . . 3. A link function that relates the linear model to the parameter of the outcome distribution\nclass: middle"
+  },
+  {
+    "objectID": "W9.html#logistic-regression-1",
+    "href": "W9.html#logistic-regression-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Logistic regression",
+    "text": "Logistic regression\n\nLogistic regression is a GLM used to model a binary categorical outcome using numerical and categorical predictors.\nThe distribution is the Bernoulli distribution.\nAs link function connecting \\(\\eta_i\\) to \\(p_i\\) we use the logit function.\n\n\n\nLogit function: \\(\\text{logit}: [0,1] \\to \\mathbb{R}\\)\n\n\\[\\text{logit}(p) = \\log\\left(\\frac{p}{1-p}\\right)\\]\n\n\\(\\frac{p}{1-p}\\) is called the odds of a success which happens with probability \\(p\\).\nExample: Roll a six with a die has \\(p=1/6\\). Thus, the odds are \\(\\frac{1/6}{5/6} = 1/5\\). Sometimes written as 1:5. “The odds of success are one to five.”"
+  },
+  {
+    "objectID": "W9.html#logit-function-visualised",
+    "href": "W9.html#logit-function-visualised",
+    "title": "W#9 Logisitc Regression",
+    "section": "Logit function, visualised",
+    "text": "Logit function, visualised\n\nggplot() + \n geom_function(fun = function(x) log(x/(1-x)), xlim=c(0.001,0.999), n = 500) + \n geom_function(fun = function(x) 1/(1 + exp(-x)), color = \"red\") +\n scale_x_continuous(breaks = seq(-5,5,1), limits = c(-5,5)) +\n scale_y_continuous(breaks = seq(-5,5,1), limits = c(-5,5)) +\n coord_fixed() + theme_minimal(base_size = 24) + labs(x = \"x\")"
+  },
+  {
+    "objectID": "W9.html#properties-of-the-logit",
+    "href": "W9.html#properties-of-the-logit",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Properties of the logit",
+    "text": "Properties of the logit\n\nLogit takes values between 0 and 1 and returns values between \\(-\\infty\\) and \\(\\infty\\)\nThe inverse of the logit function if the logistic function (mapping values from \\(-\\infty\\) and \\(\\infty\\) to values between 0 and 1): \\[\\text{logit}^{-1}(x) = \\text{logistic}(x) = \\frac{e^x}{1+e^x} = \\frac{1}{1+e^{-x}}\\]\nLogit can be interpreted as the log odds of a success – more on this later.\n\n\n\n\nThe logistic function is the solution of the differential equation \\(\\frac{d}{dx}f(x) = f(x)(1-f(x))\\) which also appears in the SI-model of epidemics (and other models of exponential growth with saturation).\nGood exercises to check your math skills:\n\nShow that \\(\\text{logit}^{-1}(x) = \\text{logistic}(x)\\) or the other way round.\nTransform \\(\\frac{e^x}{1+e^x}\\) into \\(\\frac{1}{1+e^{-x}}\\).\nCheck that \\(\\text{logistic}(x)\\) is a solution to \\(\\frac{d}{dx}f(x) = f(x)(1-f(x))\\).\n\nYou can request hints from me when you get stuck."
+  },
+  {
+    "objectID": "W9.html#the-logistic-regression-model",
+    "href": "W9.html#the-logistic-regression-model",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "The logistic regression model",
+    "text": "The logistic regression model\n\nBased on the three GLM criteria we have\n\n\\(y_i \\sim \\text{Bernoulli}(p_i)\\)\n\\(\\eta_i = \\beta_0+\\beta_1 x_{1,i} + \\cdots + \\beta_n x_{n,i}\\)\n\\(\\text{logit}(p_i) = \\eta_i\\)\n\n\n\n\nFrom which we get\n\n\\[p_i = \\frac{e^{\\beta_0+\\beta_1 x_{1,i} + \\cdots + \\beta_k x_{k,i}}}{1 + e^{\\beta_0+\\beta_1 x_{1,i} + \\cdots + \\beta_k x_{k,i}}}\\]"
+  },
+  {
+    "objectID": "W9.html#characterising-glms",
+    "href": "W9.html#characterising-glms",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Characterising GLMs",
+    "text": "Characterising GLMs\n\nGeneralized linear models (GLMs) are a way of addressing many problems in regression\nLogistic regression is one example\n\nAll GLMs have the following three characteristics:\n\nA probability distribution as a generative model for the outcome variable \\(y_i \\sim \\text{Distribution}(\\text{parameter})\\)\n\n\n\nA linear model \\(\\eta = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_k X_k\\)\nwhere \\(\\eta\\) is related to a mean parameter of the distribution by the …\n\n\n\n\nLink function that relates the linear model to the parameter of the outcome distribution."
+  },
+  {
+    "objectID": "W9.html#logit-and-logistic-function",
+    "href": "W9.html#logit-and-logistic-function",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Logit and logistic function",
+    "text": "Logit and logistic function\n\nggplot() + \n geom_function(fun = function(x) log(x/(1-x)), xlim=c(0.001,0.999), n = 500) + \n geom_function(fun = function(x) 1/(1 + exp(-x)), color = \"red\") +\n scale_x_continuous(breaks = seq(-5,5,1), limits = c(-5,5)) +\n scale_y_continuous(breaks = seq(-5,5,1), limits = c(-5,5)) +\n coord_fixed() + theme_minimal(base_size = 24) + labs(x = \"x\")"
+  },
+  {
+    "objectID": "W9.html#recap-linear-models-1",
+    "href": "W9.html#recap-linear-models-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Recap linear models",
+    "text": "Recap linear models\nWe had linear models \\(y_i = \\beta_0 + \\beta_1x_1 + \\dots + \\beta_nx_n\\) with\nResponse (dependent) variable \\(y\\): Numeric\nPredictor (independent) variables \\(x_1,\\dots,x_n\\): Numeric or Binary (0 or 1)\n\nWhen a variable is categorical: We dummify it to \\(m-1\\) binary (dummy) variables (\\(m\\) is the number of categories)\n\nNote: In computer science dummifying is called one-hot encoding.\n\nWhen a variable has ordered categories (ordinal level of measurement): We may transform to a numerical variable assuming comparison of numerical distances between categories are interpretable."
+  },
+  {
+    "objectID": "W9.html#modeling-spam",
+    "href": "W9.html#modeling-spam",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Modeling spam",
+    "text": "Modeling spam\nWith tidymodels we fit a GLM in the same way as a linear model except we\n\nspecify the model with logistic_reg()\nuse \"glm\" instead of \"lm\" as the engine\ndefine family = \"binomial\" for the link function to be used in the model\n\n\nspam_fit <- logistic_reg() |>\n  set_engine(\"glm\") |>\n  fit(spam ~ num_char, data = email, family = \"binomial\")\ntidy(spam_fit)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic   p.value\n  <chr>          <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept)  -1.80     0.0716     -25.1  2.04e-139\n2 num_char     -0.0621   0.00801     -7.75 9.50e- 15\n\n\n\n\n\nThe family is binomial because the Bernoulli distribution is a special case of the binomial distribution \\(\\text{Binomial}(n,p)\\) with \\(n=1\\).\nThe binomial distribution specifies the probability to have \\(k\\) successes in \\(n\\) Bernoulli trials with the same success probability \\(p\\)."
+  },
+  {
+    "objectID": "W9.html#spam-model",
+    "href": "W9.html#spam-model",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Spam model",
+    "text": "Spam model\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic   p.value\n  <chr>          <dbl>     <dbl>     <dbl>     <dbl>\n1 (Intercept)  -1.80     0.0716     -25.1  2.04e-139\n2 num_char     -0.0621   0.00801     -7.75 9.50e- 15\n\n\nModel: \\[\\log\\left(\\frac{p}{1-p}\\right) = -1.80-0.0621\\cdot \\text{num_char}\\]"
+  },
+  {
+    "objectID": "W9.html#predicted-probability-examples",
+    "href": "W9.html#predicted-probability-examples",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Predicted probability: Examples",
+    "text": "Predicted probability: Examples\nWe can compute the predicted probability that an email with 2000 character is spam as follows:\n\\[\\log\\left(\\frac{p}{1-p}\\right) = -1.80-0.0621\\cdot 2 = -1.9242\\]\n(Note: num_char is in thousands.)\n\\[\\frac{p}{1-p} = e^{-1.9242} = 0.15 \\Rightarrow p = 0.15 \\cdot (1 - p)\\]\n\\[p = 0.15 - 0.15\\cdot p \\Rightarrow 1.15\\cdot p = 0.15\\]\n\\[p = 0.15 / 1.15 = 0.13\\]"
+  },
+  {
+    "objectID": "W9.html#predicted-probability",
+    "href": "W9.html#predicted-probability",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Predicted probability",
+    "text": "Predicted probability\n\nlogistic <- function(t) 1/(1+exp(-t))\npreds <- tibble(x=c(2,15,40), y = logistic(-1.80-0.0621*x))\nemail |> ggplot(aes(x = num_char, y = as.numeric(spam)-1)) + \n geom_point(alpha = 0.2) + \n geom_function(fun = function(x) logistic(-1.80-0.0621*x),color=\"red\") +\n geom_point(data = preds, mapping = aes(x,y), color = \"blue\", size = 3)\n\n\nSpam probability 2,000 characters: 0.1273939\nSpam probability 15,000 characters: 0.06114\nSpam probability 40,000 characters: 0.0135999"
+  },
+  {
+    "objectID": "W9.html#false-positive-and-negative",
+    "href": "W9.html#false-positive-and-negative",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "False positive and negative",
+    "text": "False positive and negative\n\n\n\n\n\n\n\n\n\nEmail labelled spam\nEmail labelled not spam\n\n\n\n\nEmail is spam\nTrue positive\nFalse negative (Type 2 error)\n\n\nEmail is not spam\nFalse positive (Type 1 error)\nTrue negative"
+  },
+  {
+    "objectID": "W9.html#sensitivity-and-specificity-1",
+    "href": "W9.html#sensitivity-and-specificity-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Sensitivity and specificity",
+    "text": "Sensitivity and specificity\n\nSensitivity is the true positive rate: TP / (TP + FN)\nSpecificity is the true negative rate: TN / (TN + FP)\nFor spam:\nSensitivity: Fraction of emails labelled as spam among all emails which are spam.\nSpecificity: Fraction of emails labelled as not spam among all emails which are not spam.\n\nIf you were designing a spam filter, would you want sensitivity and specificity to be high or low? What are the trade-offs associated with each decision?"
+  },
+  {
+    "objectID": "W9.html#another-example",
+    "href": "W9.html#another-example",
+    "title": "W#9 Logisitc Regression",
+    "section": "Another example",
+    "text": "Another example\ndata(“PimaIndiansDiabetes2”)"
+  },
+  {
+    "objectID": "W9.html#maximum-likelihood",
+    "href": "W9.html#maximum-likelihood",
+    "title": "W#9 Logisitc Regression",
+    "section": "Maximum Likelihood",
+    "text": "Maximum Likelihood\nSee “More probability” for Logistic Regression."
+  },
+  {
+    "objectID": "W9.html#another-example-penguins",
+    "href": "W9.html#another-example-penguins",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Another example: Penguins",
+    "text": "Another example: Penguins\n\nlibrary(palmerpenguins)\nsex_fit <- logistic_reg() |>\n  set_engine(\"glm\") |>\n  fit(sex ~ body_mass_g, data = na.omit(penguins), family = \"binomial\")\ntidy(sex_fit)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  <chr>          <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept) -5.16     0.724        -7.13 1.03e-12\n2 body_mass_g  0.00124  0.000173      7.18 7.10e-13\n\n\n\nna.omit(penguins) |> ggplot(aes(x = body_mass_g, y = sex)) + \n geom_point(alpha = 0.2) + \n geom_function(fun = function(x) logistic(-5.16+0.00124*x) + 1,color=\"red\") +\n xlim(c(2000,7000))"
+  },
+  {
+    "objectID": "W9.html#another-view-sensitivity-and-specifity",
+    "href": "W9.html#another-view-sensitivity-and-specifity",
+    "title": "W#9 Logisitc Regression",
+    "section": "Another view: Sensitivity and specifity",
+    "text": "Another view: Sensitivity and specifity"
+  },
+  {
+    "objectID": "W9.html#another-view",
+    "href": "W9.html#another-view",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Another view",
+    "text": "Another view"
+  },
+  {
+    "objectID": "W9.html#covid-19-tests",
+    "href": "W9.html#covid-19-tests",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "COVID-19 tests",
+    "text": "COVID-19 tests\nWhat is the sensitivity of a test?\n\nProbability to have COVID-19 when the test is positive.\n\n\nWhat is the specificity of a test?\n\n\nProbability to not have COVID-19 when the test is negativity.\nOften the sensitivity is around 90% and the specifity is aroung 99%. What does that mean?"
+  },
+  {
+    "objectID": "W9.html#goal-building-a-spam-filter",
+    "href": "W9.html#goal-building-a-spam-filter",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Goal: Building a spam filter",
+    "text": "Goal: Building a spam filter\n\nData: Set of emails and we know if each email is spam/not and other features\nUse logistic regression to predict the probability that an incoming email is spam\nUse model selection to pick the model with the best predictive performance\n\n\n\nBuilding a model to predict the probability that an email is spam is only half of the battle! We also need a decision rule about which emails get flagged as spam (e.g. what probability should we use as out cutoff?)\n\n\n\n\nA simple approach: choose a single threshold probability and any email that exceeds that probability is flagged as spam"
+  },
+  {
+    "objectID": "W9.html#emails-use-all-predictors",
+    "href": "W9.html#emails-use-all-predictors",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Emails: Use all predictors",
+    "text": "Emails: Use all predictors\n\nlogistic_reg() |>\n  set_engine(\"glm\") |>\n  fit(spam ~ ., data = email, family = \"binomial\") |>\n  tidy() |> print(n = 22)\n\nWarning: glm.fit: fitted probabilities numerically 0 or 1 occurred\n\n\n# A tibble: 22 × 5\n   term         estimate std.error statistic  p.value\n   <chr>           <dbl>     <dbl>     <dbl>    <dbl>\n 1 (Intercept)  -9.09e+1   9.80e+3  -0.00928 9.93e- 1\n 2 to_multiple1 -2.68e+0   3.27e-1  -8.21    2.25e-16\n 3 from1        -2.19e+1   9.80e+3  -0.00224 9.98e- 1\n 4 cc            1.88e-2   2.20e-2   0.855   3.93e- 1\n 5 sent_email1  -2.07e+1   3.87e+2  -0.0536  9.57e- 1\n 6 time          8.48e-8   2.85e-8   2.98    2.92e- 3\n 7 image        -1.78e+0   5.95e-1  -3.00    2.73e- 3\n 8 attach        7.35e-1   1.44e-1   5.09    3.61e- 7\n 9 dollar       -6.85e-2   2.64e-2  -2.59    9.64e- 3\n10 winneryes     2.07e+0   3.65e-1   5.67    1.41e- 8\n11 inherit       3.15e-1   1.56e-1   2.02    4.32e- 2\n12 viagra        2.84e+0   2.22e+3   0.00128 9.99e- 1\n13 password     -8.54e-1   2.97e-1  -2.88    4.03e- 3\n14 num_char      5.06e-2   2.38e-2   2.13    3.35e- 2\n15 line_breaks  -5.49e-3   1.35e-3  -4.06    4.91e- 5\n16 format1      -6.14e-1   1.49e-1  -4.14    3.53e- 5\n17 re_subj1     -1.64e+0   3.86e-1  -4.25    2.16e- 5\n18 exclaim_subj  1.42e-1   2.43e-1   0.585   5.58e- 1\n19 urgent_subj1  3.88e+0   1.32e+0   2.95    3.18e- 3\n20 exclaim_mess  1.08e-2   1.81e-3   5.98    2.23e- 9\n21 numbersmall  -1.19e+0   1.54e-1  -7.74    9.62e-15\n22 numberbig    -2.95e-1   2.20e-1  -1.34    1.79e- 1\n\n\n\n\nWe treat the warning later."
+  },
+  {
+    "objectID": "W9.html#the-prediction-task",
+    "href": "W9.html#the-prediction-task",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "The prediction task",
+    "text": "The prediction task\n\nThe mechanics of prediction is easy:\n\nPlug in values of predictors to the model equation\nCalculate the predicted value of the response variable, \\(\\hat{y}\\)\n\n\n\n\nGetting it right is harder\n\nThere is no guarantee the model estimates you have are correct\nOr that your model will perform as well with new data as it did with your sample data"
+  },
+  {
+    "objectID": "W9.html#overfitting",
+    "href": "W9.html#overfitting",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Overfitting",
+    "text": "Overfitting\n\n\n\n\n\n\n\nThis is simulated data."
+  },
+  {
+    "objectID": "W9.html#spending-our-data",
+    "href": "W9.html#spending-our-data",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Spending our data",
+    "text": "Spending our data\n\nSeveral steps to create a useful model: parameter estimation, model selection, performance assessment, etc.\nDoing all of this on the entire data we have available can lead to overfitting.\n\nSolution: We subsets our data for different tasks, as opposed to allocating all data to parameter estimation (as we have done so far)."
+  },
+  {
+    "objectID": "W9.html#splitting-data-1",
+    "href": "W9.html#splitting-data-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Splitting data",
+    "text": "Splitting data\n\nTraining set:\n\nSandbox for model building\nSpend most of your time using the training set to develop the model\nMajority of the data (usually 80%)\n\nTesting set:\n\nHeld in reserve to determine efficacy of one or two chosen models\nCritical to look at it once, otherwise it becomes part of the modeling process\nRemainder of the data (usually 20%)"
+  },
+  {
+    "objectID": "W9.html#performing-the-split",
+    "href": "W9.html#performing-the-split",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Performing the split",
+    "text": "Performing the split\n\n# Fix random numbers by setting the seed \n# Enables analysis to be reproducible when random numbers are used \nset.seed(1116)\n\n# Put 80% of the data into the training set \nemail_split <- initial_split(email, prop = 0.80)\n\n# Create data frames for the two sets:\ntrain_data <- training(email_split)\ntest_data  <- testing(email_split)"
+  },
+  {
+    "objectID": "W9.html#peek-at-the-split",
+    "href": "W9.html#peek-at-the-split",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Peek at the split",
+    "text": "Peek at the split\n\n\n\nglimpse(train_data)\n\nRows: 3,136\nColumns: 21\n$ spam         <fct> 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ to_multiple  <fct> 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, …\n$ from         <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ cc           <int> 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0,…\n$ sent_email   <fct> 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, …\n$ time         <dttm> 2012-01-25 23:46:55, 2012-01-03 06:28:28, 2012-02-04 17:…\n$ image        <dbl> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ attach       <dbl> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ dollar       <dbl> 10, 0, 0, 0, 0, 0, 13, 0, 0, 0, 2, 0, 0, 0, 14, 0, 0, 0, …\n$ winner       <fct> no, no, no, no, no, no, no, yes, no, no, no, no, no, no, …\n$ inherit      <dbl> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ password     <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, …\n$ num_char     <dbl> 23.308, 1.162, 4.732, 42.238, 1.228, 25.599, 16.764, 10.7…\n$ line_breaks  <int> 477, 2, 127, 712, 30, 674, 367, 226, 98, 671, 46, 192, 67…\n$ format       <fct> 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, …\n$ re_subj      <fct> 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, …\n$ exclaim_subj <dbl> 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, …\n$ urgent_subj  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ exclaim_mess <dbl> 12, 0, 2, 2, 2, 31, 2, 0, 0, 1, 0, 1, 2, 0, 2, 0, 11, 1, …\n$ number       <fct> small, none, big, big, small, small, small, small, small,…\n\n\n\n\nglimpse(test_data)\n\nRows: 785\nColumns: 21\n$ spam         <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ to_multiple  <fct> 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, …\n$ from         <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ cc           <int> 0, 1, 0, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, …\n$ sent_email   <fct> 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, …\n$ time         <dttm> 2012-01-01 18:55:06, 2012-01-01 20:38:32, 2012-01-02 06:…\n$ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, …\n$ attach       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, …\n$ dollar       <dbl> 0, 0, 5, 0, 0, 0, 0, 5, 4, 0, 0, 0, 21, 0, 0, 2, 9, 0, 0,…\n$ winner       <fct> no, no, no, no, no, no, no, no, no, no, no, no, no, no, n…\n$ inherit      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ password     <dbl> 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, …\n$ num_char     <dbl> 4.837, 15.075, 18.037, 45.842, 11.438, 1.482, 14.431, 0.9…\n$ line_breaks  <int> 193, 354, 345, 881, 125, 24, 296, 13, 192, 14, 32, 30, 55…\n$ format       <fct> 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, …\n$ re_subj      <fct> 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, …\n$ exclaim_subj <dbl> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ urgent_subj  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ exclaim_mess <dbl> 1, 10, 20, 5, 2, 0, 0, 0, 6, 0, 0, 1, 3, 0, 4, 0, 1, 0, 1…\n$ number       <fct> big, small, small, big, small, none, small, small, small,…"
+  },
+  {
+    "objectID": "W9.html#interpretation-of-coefficients",
+    "href": "W9.html#interpretation-of-coefficients",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Interpretation of coefficients",
+    "text": "Interpretation of coefficients\n\\[\\log\\left(\\frac{p}{1-p}\\right) = -1.80-0.0621\\cdot \\text{num_char}\\]\nWhat does an increase by thousand characters (num_char + 1) imply?\n\nLet us assume the predicted probability of an email is \\(p_0\\). Then an increase of num_char by one implied that the log-odds become\n\\[\\log\\left(\\frac{p_0}{1-p_0}\\right) - 0.0621 = \\log\\left(\\frac{p_0}{1-p_0}\\right) - \\log(e^{0.0621})\\]\n\\[ = \\log\\left(\\frac{p_0}{1-p_0}\\right) + \\log(\\frac{1}{e^{0.0621}}) = \\log\\left(\\frac{p_0}{1-p_0} \\frac{1}{e^{0.0621}}\\right) = \\log\\left(\\frac{p_0}{1-p_0} 0.94\\right)\\]\nThat means the odds of being spam decrease by 6%."
+  },
+  {
+    "objectID": "W9.html#confusion-matrix",
+    "href": "W9.html#confusion-matrix",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Confusion matrix",
+    "text": "Confusion matrix\nMore general: Confusion matrix of statistical classification:"
+  },
+  {
+    "objectID": "W9.html#fit-a-model-to-the-training-dataset",
+    "href": "W9.html#fit-a-model-to-the-training-dataset",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Fit a model to the training dataset",
+    "text": "Fit a model to the training dataset\n\nemail_fit <- logistic_reg() |>\n  set_engine(\"glm\") |>\n  fit(spam ~ ., data = train_data, family = \"binomial\")\n\nWarning: glm.fit: fitted probabilities numerically 0 or 1 occurred\n\n\nWe get a warning and should explore the reasons for 0 or 1 probability."
+  },
+  {
+    "objectID": "W9.html#look-at-categorical-predictors",
+    "href": "W9.html#look-at-categorical-predictors",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Look at categorical predictors",
+    "text": "Look at categorical predictors\n\nCloser look at from and sent_email."
+  },
+  {
+    "objectID": "W9.html#counting-cases",
+    "href": "W9.html#counting-cases",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Counting cases",
+    "text": "Counting cases\n\n\nfrom: Whether the message was listed as from anyone (this is usually set by default for regular outgoing email).\n\ntrain_data |> count(spam, from)\n\n# A tibble: 3 × 3\n  spam  from      n\n  <fct> <fct> <int>\n1 0     1      2837\n2 1     0         3\n3 1     1       296\n\n\nNo non-spam mails without from.\n\nsent_mail: Indicator for whether the sender had been sent an email from the receiver in the last 30 days.\n\ntrain_data |> count(spam, sent_email)\n\n# A tibble: 3 × 3\n  spam  sent_email     n\n  <fct> <fct>      <int>\n1 0     0           1972\n2 0     1            865\n3 1     0            299\n\n\nNo spam mails with sent_email.\n\n\n\nThere is incomplete separation in the data for those variables.\nThat mean we have a sure prediction probabilities (0 or 1). (That is the warning. Also, these variables have the highest coefficients.)\nThis is not what we assume about reality. Maybe our sample is too small to see it.\nTherefore we exclude these variables."
+  },
+  {
+    "objectID": "W9.html#look-at-numerical-variables",
+    "href": "W9.html#look-at-numerical-variables",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Look at numerical variables",
+    "text": "Look at numerical variables\n\n\ntrain_data |>\n group_by(spam) |>\n select(where(is.numeric)) |> \n pivot_longer(-spam) |> \n group_by(name, spam) |> \n summarize(mean = mean(value), sd = sd(value)) |> \n print(n = 22)\n\n\n# A tibble: 22 × 4\n# Groups:   name [11]\n   name         spam       mean       sd\n   <chr>        <fct>     <dbl>    <dbl>\n 1 attach       0       0.124     0.775 \n 2 attach       1       0.227     0.620 \n 3 cc           0       0.393     2.62  \n 4 cc           1       0.388     3.25  \n 5 dollar       0       1.56      5.33  \n 6 dollar       1       0.779     3.01  \n 7 exclaim_mess 0       6.68     50.2   \n 8 exclaim_mess 1       8.75     88.4   \n 9 exclaim_subj 0       0.0783    0.269 \n10 exclaim_subj 1       0.0769    0.267 \n11 image        0       0.0536    0.503 \n12 image        1       0.00334   0.0578\n13 inherit      0       0.0352    0.216 \n14 inherit      1       0.0702    0.554 \n15 line_breaks  0     247.      326.    \n16 line_breaks  1     108.      321.    \n17 num_char     0      11.4      14.9   \n18 num_char     1       5.63     15.7   \n19 password     0       0.112     0.938 \n20 password     1       0.0201    0.182 \n21 viagra       0       0         0     \n22 viagra       1       0.0268    0.463 \n\n\n\nviagra has no mentions in non-spam emails.\n\nWe should exclude this variable for the same reason."
+  },
+  {
+    "objectID": "W9.html#fit-a-model-to-the-training-dataset-1",
+    "href": "W9.html#fit-a-model-to-the-training-dataset-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Fit a model to the training dataset",
+    "text": "Fit a model to the training dataset\n\nemail_fit <- logistic_reg() |>\n  set_engine(\"glm\") |>\n  fit(spam ~ . - from - sent_email - viagra, data = train_data, family = \"binomial\") \n\nWarning: glm.fit: fitted probabilities numerically 0 or 1 occurred\n\nemail_fit\n\nparsnip model object\n\n\nCall:  stats::glm(formula = spam ~ . - from - sent_email - viagra, family = stats::binomial, \n    data = data)\n\nCoefficients:\n (Intercept)  to_multiple1            cc          time         image  \n  -9.867e+01    -2.505e+00     1.944e-02     7.396e-08    -2.854e+00  \n      attach        dollar     winneryes       inherit      password  \n   5.070e-01    -6.440e-02     2.170e+00     4.499e-01    -7.065e-01  \n    num_char   line_breaks       format1      re_subj1  exclaim_subj  \n   5.870e-02    -5.420e-03    -9.017e-01    -2.995e+00     1.002e-01  \nurgent_subj1  exclaim_mess   numbersmall     numberbig  \n   3.572e+00     1.009e-02    -8.518e-01    -1.329e-01  \n\nDegrees of Freedom: 3135 Total (i.e. Null);  3117 Residual\nNull Deviance:      1974 \nResidual Deviance: 1447     AIC: 1485\n\n\nWe still get a warning, but without very high coefficients. Check later."
+  },
+  {
+    "objectID": "W9.html#predict-outcome-on-the-testing-dataset",
+    "href": "W9.html#predict-outcome-on-the-testing-dataset",
+    "title": "W#9 Logisitc Regression",
+    "section": "Predict outcome on the testing dataset",
+    "text": "Predict outcome on the testing dataset\nPredicting the raw values (log-odds)\n\npredict(email_fit, test_data, type = \"raw\") |> head()\n\n        1         2         3         4         5         6 \n-4.942500 -6.312226 -3.938487 -6.688992 -4.399541 -1.587700 \n\n\nPredicting probabilities\n\npredict(email_fit, test_data, type = \"prob\") |> head()\n\n# A tibble: 6 × 2\n  .pred_0 .pred_1\n    <dbl>   <dbl>\n1   0.993 0.00709\n2   0.998 0.00181\n3   0.981 0.0191 \n4   0.999 0.00124\n5   0.988 0.0121 \n6   0.830 0.170  \n\n\nPredicting spam\n\npredict(email_fit, test_data) # That is the default with type = \"class\"\n\n# A tibble: 785 × 1\n   .pred_class\n   <fct>      \n 1 0          \n 2 0          \n 3 0          \n 4 0          \n 5 0          \n 6 0          \n 7 0          \n 8 0          \n 9 0          \n10 0          \n# … with 775 more rows"
+  },
+  {
+    "objectID": "W9.html#predict-probabilities-on-the-testing-dataset",
+    "href": "W9.html#predict-probabilities-on-the-testing-dataset",
+    "title": "W#9 Logisitc Regression",
+    "section": "Predict probabilities on the testing dataset",
+    "text": "Predict probabilities on the testing dataset\n\n\n# A tibble: 785 × 4\n   .pred_0 .pred_1 spam  time               \n     <dbl>   <dbl> <fct> <dttm>             \n 1   0.993 0.00709 0     2012-01-01 18:55:06\n 2   0.998 0.00181 0     2012-01-01 20:38:32\n 3   0.981 0.0191  0     2012-01-02 06:42:16\n 4   0.999 0.00124 0     2012-01-02 16:12:51\n 5   0.988 0.0121  0     2012-01-02 17:45:36\n 6   0.830 0.170   0     2012-01-02 22:55:03\n 7   0.959 0.0410  0     2012-01-03 02:07:17\n 8   0.861 0.139   0     2012-01-03 06:41:35\n 9   0.938 0.0617  0     2012-01-03 17:02:35\n10   0.902 0.0983  0     2012-01-03 12:14:51\n# … with 775 more rows"
+  },
+  {
+    "objectID": "W9.html#predict-with-the-testing-dataset",
+    "href": "W9.html#predict-with-the-testing-dataset",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Predict with the testing dataset",
+    "text": "Predict with the testing dataset\nPredicting the raw values (log-odds)\n\npredict(email_fit, test_data, type = \"raw\") |> head() # head prints the first values\n\n        1         2         3         4         5         6 \n-4.942500 -6.312226 -3.938487 -6.688992 -4.399541 -1.587700 \n\n\n\n\nPredicting probabilities\n\npredict(email_fit, test_data, type = \"prob\") |> head()\n\n# A tibble: 6 × 2\n  .pred_0 .pred_1\n    <dbl>   <dbl>\n1   0.993 0.00709\n2   0.998 0.00181\n3   0.981 0.0191 \n4   0.999 0.00124\n5   0.988 0.0121 \n6   0.830 0.170  \n\n\n\nPredicting spam (default)\n\npredict(email_fit, test_data) # Would be type = \"class\"\n\n# A tibble: 785 × 1\n   .pred_class\n   <fct>      \n 1 0          \n 2 0          \n 3 0          \n 4 0          \n 5 0          \n 6 0          \n 7 0          \n 8 0          \n 9 0          \n10 0          \n# … with 775 more rows"
+  },
+  {
+    "objectID": "W9.html#relate-back-to-the-model-concept",
+    "href": "W9.html#relate-back-to-the-model-concept",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Relate back to the model concept",
+    "text": "Relate back to the model concept\n\n\nemail_pred <- \n predict(email_fit, test_data, type = \"prob\") |>\n select(spam_prob = .pred_1) |> \n mutate(spam_logodds = \n         predict(email_fit, test_data, type = \"raw\"), \n        spam_odds = exp(spam_logodds)) |> \n bind_cols(predict(email_fit, test_data)) |> \n # Append real data\n bind_cols(test_data |> select(spam)) \nemail_pred\n\n\n# A tibble: 785 × 5\n   spam_prob spam_logodds spam_odds .pred_class spam \n       <dbl>        <dbl>     <dbl> <fct>       <fct>\n 1   0.00709        -4.94   0.00714 0           0    \n 2   0.00181        -6.31   0.00181 0           0    \n 3   0.0191         -3.94   0.0195  0           0    \n 4   0.00124        -6.69   0.00124 0           0    \n 5   0.0121         -4.40   0.0123  0           0    \n 6   0.170          -1.59   0.204   0           0    \n 7   0.0410         -3.15   0.0427  0           0    \n 8   0.139          -1.83   0.161   0           0    \n 9   0.0617         -2.72   0.0657  0           0    \n10   0.0983         -2.22   0.109   0           0    \n# … with 775 more rows\n\n\n\n\nThe raw predictions are the log-odds.\nFrom which we can compute the odds.\nFrom which the probability is computed. Here it is done by predict.\nThe .pred_class prediction is when the probability > 0.5.\n\nWhat does it mean for the odds and the log-odds?\n\n\n\nodds > 1, log-odds > 0"
+  },
+  {
+    "objectID": "W9.html#another-look",
+    "href": "W9.html#another-look",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Another look",
+    "text": "Another look\n\nemail_pred |> arrange(desc(spam_prob)) |> print(n = 20)\n\n# A tibble: 785 × 5\n   spam_prob spam_logodds spam_odds .pred_class spam \n       <dbl>        <dbl>     <dbl> <fct>       <fct>\n 1     0.903       2.23       9.29  1           1    \n 2     0.833       1.60       4.98  1           0    \n 3     0.825       1.55       4.71  1           1    \n 4     0.733       1.01       2.75  1           1    \n 5     0.683       0.766      2.15  1           1    \n 6     0.626       0.517      1.68  1           1    \n 7     0.614       0.464      1.59  1           0    \n 8     0.597       0.392      1.48  1           1    \n 9     0.538       0.153      1.17  1           1    \n10     0.537       0.148      1.16  1           0    \n11     0.510       0.0404     1.04  1           0    \n12     0.491      -0.0345     0.966 0           0    \n13     0.490      -0.0407     0.960 0           0    \n14     0.489      -0.0453     0.956 0           1    \n15     0.483      -0.0698     0.933 0           1    \n16     0.473      -0.107      0.899 0           0    \n17     0.463      -0.150      0.861 0           0    \n18     0.457      -0.174      0.840 0           0    \n19     0.447      -0.212      0.809 0           0    \n20     0.447      -0.214      0.808 0           1    \n# … with 765 more rows\n\n\nWe see false positives and false negatives."
+  },
+  {
+    "objectID": "W9.html#evaluate-the-performance",
+    "href": "W9.html#evaluate-the-performance",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Evaluate the performance",
+    "text": "Evaluate the performance\nReceiver operating characteristic (ROC) curve1 which plots true positive rate (sensitivity) vs. false positive rate (1 - specificity)\n\nemail_pred |> roc_curve(\n    truth = spam, estimate = spam_prob,\n    event_level = \"second\" # this adjusts the location above the diagonal\n  ) |> autoplot()\n\n\n\n\nOriginally developed for operators of military radar receivers, hence the odd name."
+  },
+  {
+    "objectID": "W9.html#evaluate-the-performance-1",
+    "href": "W9.html#evaluate-the-performance-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Evaluate the performance",
+    "text": "Evaluate the performance\nFind the area under the curve.\nIn calculus language: \\(\\int_0^1 \\text{TPR}(\\text{FPR}) d\\text{FPR}\\) where TPR = True Positive Rate and FPR = False Positive Rate.\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.857"
+  },
+  {
+    "objectID": "W9.html#feature-engineering-1",
+    "href": "W9.html#feature-engineering-1",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Feature engineering",
+    "text": "Feature engineering\n\nWe prefer simple models when possible, but parsimony does not mean sacrificing accuracy (or predictive performance) in the interest of simplicity\nVariables that go into the model and how they are represented are critical to the success of the model\nFeature engineering is getting creative with our predictors in an effort to make them more useful for our model (to increase its predictive performance)"
+  },
+  {
+    "objectID": "W9.html#modeling-workflow-revisited",
+    "href": "W9.html#modeling-workflow-revisited",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Modeling workflow, revisited",
+    "text": "Modeling workflow, revisited\n\nCreate a recipe for feature engineering steps to be applied to the training data\n\nThe tidymodels way (similar to ways in python).\n\nFit the model to the training data after these steps have been applied\nUsing the model estimates from the training data, predict outcomes for the test data\nEvaluate the performance of the model on the test data"
+  },
+  {
+    "objectID": "W9.html#initiate-a-recipe",
+    "href": "W9.html#initiate-a-recipe",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Initiate a recipe",
+    "text": "Initiate a recipe\n\nemail_rec <- recipe(\n spam ~ .,          # formula\n data = train_data  # data to use for cataloguing names and types of variables\n)\nsummary(email_rec) |> print(n = 21)\n\n# A tibble: 21 × 4\n   variable     type    role      source  \n   <chr>        <chr>   <chr>     <chr>   \n 1 to_multiple  nominal predictor original\n 2 from         nominal predictor original\n 3 cc           numeric predictor original\n 4 sent_email   nominal predictor original\n 5 time         date    predictor original\n 6 image        numeric predictor original\n 7 attach       numeric predictor original\n 8 dollar       numeric predictor original\n 9 winner       nominal predictor original\n10 inherit      numeric predictor original\n11 viagra       numeric predictor original\n12 password     numeric predictor original\n13 num_char     numeric predictor original\n14 line_breaks  numeric predictor original\n15 format       nominal predictor original\n16 re_subj      nominal predictor original\n17 exclaim_subj numeric predictor original\n18 urgent_subj  nominal predictor original\n19 exclaim_mess numeric predictor original\n20 number       nominal predictor original\n21 spam         nominal outcome   original\n\n\nThis only works with meta-data (columns names and types) so far!"
+  },
+  {
+    "objectID": "W9.html#remove-certain-variables",
+    "href": "W9.html#remove-certain-variables",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Remove certain variables",
+    "text": "Remove certain variables\n\nemail_rec |>\n  step_rm(from, sent_email, viagra)\n\nRecipe\n\nInputs:\n\n      role #variables\n   outcome          1\n predictor         20\n\nOperations:\n\nVariables removed from, sent_email, viagra"
+  },
+  {
+    "objectID": "W9.html#feature-engineer-date",
+    "href": "W9.html#feature-engineer-date",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Feature engineer date",
+    "text": "Feature engineer date\n\nThe date-time may not be such an interesting predictor.\n\nIt could only bring in a general trend over time\n\nOften decomposing the date to the month or the day of the week (dow) is more interesting.\n\nstep_date can easily extract these\n\n\n\nemail_rec |>\n step_rm(from, sent_email, viagra) |> \n step_date(time, features = c(\"dow\", \"month\")) |>\n step_rm(time)\n\nRecipe\n\nInputs:\n\n      role #variables\n   outcome          1\n predictor         20\n\nOperations:\n\nVariables removed from, sent_email, viagra\nDate features from time\nVariables removed time"
+  },
+  {
+    "objectID": "W9.html#create-dummy-variables",
+    "href": "W9.html#create-dummy-variables",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Create dummy variables",
+    "text": "Create dummy variables\n\nUse helper functions like all_nominal or all_outcomes from tidymodels for column selection.\n\n\nemail_rec |>\n step_rm(from, sent_email, viagra) |> \n step_date(time, features = c(\"dow\", \"month\")) |>\n step_rm(time) |> \n step_dummy(all_nominal(), -all_outcomes()) \n\nRecipe\n\nInputs:\n\n      role #variables\n   outcome          1\n predictor         20\n\nOperations:\n\nVariables removed from, sent_email, viagra\nDate features from time\nVariables removed time\nDummy variables from all_nominal(), -all_outcomes()"
+  },
+  {
+    "objectID": "W9.html#remove-zero-variance-variables",
+    "href": "W9.html#remove-zero-variance-variables",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Remove zero variance variables",
+    "text": "Remove zero variance variables\nVariables that contain only a single value.\n\nemail_rec |>\n step_rm(from, sent_email, viagra) |> \n step_date(time, features = c(\"dow\", \"month\")) |>\n step_rm(time) |> \n step_dummy(all_nominal(), -all_outcomes()) |> \n step_zv(all_predictors())\n\nRecipe\n\nInputs:\n\n      role #variables\n   outcome          1\n predictor         20\n\nOperations:\n\nVariables removed from, sent_email, viagra\nDate features from time\nVariables removed time\nDummy variables from all_nominal(), -all_outcomes()\nZero variance filter on all_predictors()"
+  },
+  {
+    "objectID": "W9.html#full-recipe",
+    "href": "W9.html#full-recipe",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Full recipe",
+    "text": "Full recipe\n\nemail_rec <- recipe(\n spam ~ .,          # formula\n data = train_data  # data to use for cataloguing names and types of variables\n) |>\n step_rm(from, sent_email, viagra) |> \n step_date(time, features = c(\"dow\", \"month\")) |>\n step_rm(time) |> \n step_dummy(all_nominal(), -all_outcomes()) |> \n step_zv(all_predictors())\nemail_rec\n\nRecipe\n\nInputs:\n\n      role #variables\n   outcome          1\n predictor         20\n\nOperations:\n\nVariables removed from, sent_email, viagra\nDate features from time\nVariables removed time\nDummy variables from all_nominal(), -all_outcomes()\nZero variance filter on all_predictors()"
+  },
+  {
+    "objectID": "W9.html#define-model",
+    "href": "W9.html#define-model",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Define model",
+    "text": "Define model\n\nemail_mod <- logistic_reg() |> \n  set_engine(\"glm\")\n\nemail_mod\n\nLogistic Regression Model Specification (classification)\n\nComputational engine: glm"
+  },
+  {
+    "objectID": "W9.html#define-workflow",
+    "href": "W9.html#define-workflow",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Define workflow",
+    "text": "Define workflow\nWorkflows bring together models and recipes so that they can be easily applied to both the training and test data.\n\nemail_wflow <- workflow() |> \n  add_model(email_mod) |> \n  add_recipe(email_rec)\nemail_wflow\n\n══ Workflow ════════════════════════════════════════════════════════════════════\nPreprocessor: Recipe\nModel: logistic_reg()\n\n── Preprocessor ────────────────────────────────────────────────────────────────\n5 Recipe Steps\n\n• step_rm()\n• step_date()\n• step_rm()\n• step_dummy()\n• step_zv()\n\n── Model ───────────────────────────────────────────────────────────────────────\nLogistic Regression Model Specification (classification)\n\nComputational engine: glm"
+  },
+  {
+    "objectID": "W9.html#fit-model-to-training-data",
+    "href": "W9.html#fit-model-to-training-data",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Fit model to training data",
+    "text": "Fit model to training data\n\nemail_fit <- email_wflow |> \n  fit(data = train_data)\n\ntidy(email_fit) |> print(n = 27)\n\n# A tibble: 27 × 5\n   term            estimate std.error statistic  p.value\n   <chr>              <dbl>     <dbl>     <dbl>    <dbl>\n 1 (Intercept)     -0.651     0.254     -2.57   1.03e- 2\n 2 cc               0.0214    0.0229     0.936  3.49e- 1\n 3 image           -2.99      1.31      -2.28   2.28e- 2\n 4 attach           0.512     0.116      4.41   1.03e- 5\n 5 dollar          -0.0651    0.0307    -2.12   3.40e- 2\n 6 inherit          0.440     0.205      2.15   3.14e- 2\n 7 password        -0.723     0.302     -2.39   1.67e- 2\n 8 num_char         0.0585    0.0240     2.43   1.50e- 2\n 9 line_breaks     -0.00548   0.00139   -3.94   8.24e- 5\n10 exclaim_subj     0.0998    0.268      0.373  7.09e- 1\n11 exclaim_mess     0.0103    0.00198    5.20   2.02e- 7\n12 to_multiple_X1  -2.56      0.339     -7.56   4.11e-14\n13 winner_yes       2.24      0.430      5.21   1.90e- 7\n14 format_X1       -0.953     0.157     -6.06   1.38e- 9\n15 re_subj_X1      -3.00      0.444     -6.76   1.39e-11\n16 urgent_subj_X1   3.69      1.15       3.20   1.37e- 3\n17 number_small    -0.840     0.162     -5.20   1.98e- 7\n18 number_big      -0.0915    0.244     -0.375  7.07e- 1\n19 time_dow_Mo     -0.326     0.303     -1.08   2.82e- 1\n20 time_dow_Di      0.0813    0.275      0.296  7.67e- 1\n21 time_dow_Mi     -0.260     0.275     -0.946  3.44e- 1\n22 time_dow_Do     -0.220     0.279     -0.788  4.31e- 1\n23 time_dow_Fr     -0.0612    0.275     -0.223  8.24e- 1\n24 time_dow_Sa      0.0646    0.292      0.221  8.25e- 1\n25 time_month_Feb   0.760     0.178      4.26   2.03e- 5\n26 time_month_Mär   0.506     0.178      2.85   4.40e- 3\n27 time_month_Apr -12.0     394.        -0.0306 9.76e- 1"
+  },
+  {
+    "objectID": "W9.html#make-predictions-for-test-data",
+    "href": "W9.html#make-predictions-for-test-data",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Make predictions for test data",
+    "text": "Make predictions for test data\n\nemail_pred <- predict(email_fit, test_data, type = \"prob\") |> \n  bind_cols(test_data) \n\nemail_pred\n\n# A tibble: 785 × 23\n   .pred_0  .pred_1 spam  to_mul…¹ from     cc sent_…² time                image\n     <dbl>    <dbl> <fct> <fct>    <fct> <int> <fct>   <dttm>              <dbl>\n 1   0.993 0.00653  0     1        1         0 1       2012-01-01 18:55:06     0\n 2   0.998 0.00169  0     0        1         1 1       2012-01-01 20:38:32     0\n 3   0.987 0.0127   0     0        1         0 0       2012-01-02 06:42:16     0\n 4   0.999 0.000825 0     0        1         1 0       2012-01-02 16:12:51     0\n 5   0.991 0.00876  0     0        1         4 0       2012-01-02 17:45:36     0\n 6   0.878 0.122    0     0        1         0 0       2012-01-02 22:55:03     0\n 7   0.959 0.0414   0     0        1         0 0       2012-01-03 02:07:17     0\n 8   0.852 0.148    0     0        1         0 0       2012-01-03 06:41:35     0\n 9   0.938 0.0619   0     0        1         0 0       2012-01-03 17:02:35     0\n10   0.896 0.104    0     0        1         0 0       2012-01-03 12:14:51     0\n# … with 775 more rows, 14 more variables: attach <dbl>, dollar <dbl>,\n#   winner <fct>, inherit <dbl>, viagra <dbl>, password <dbl>, num_char <dbl>,\n#   line_breaks <int>, format <fct>, re_subj <fct>, exclaim_subj <dbl>,\n#   urgent_subj <fct>, exclaim_mess <dbl>, number <fct>, and abbreviated\n#   variable names ¹​to_multiple, ²​sent_email"
+  },
+  {
+    "objectID": "W9.html#evaluate-the-performance-2",
+    "href": "W9.html#evaluate-the-performance-2",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Evaluate the performance",
+    "text": "Evaluate the performance\n\nemail_pred |>\n  roc_curve(\n    truth = spam,\n    .pred_1,\n    event_level = \"second\"\n  ) |>\n  autoplot()"
+  },
+  {
+    "objectID": "W9.html#evaluate-the-performance-3",
+    "href": "W9.html#evaluate-the-performance-3",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Evaluate the performance",
+    "text": "Evaluate the performance\n\nemail_pred |>\n  roc_auc(\n    truth = spam,\n    .pred_1,\n    event_level = \"second\"\n  )\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.860\n\n\nThis is at least slightly better than our former model (without the feature engineering workflow), which had AUC = 0.857."
+  },
+  {
+    "objectID": "W9.html#cutoff-probability-0.5",
+    "href": "W9.html#cutoff-probability-0.5",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Cutoff probability: 0.5",
+    "text": "Cutoff probability: 0.5\nSuppose we decide to label an email as spam if the model predicts the probability of spam to be more than 0.5. (That is the default.)\nConfusion matrix:\n\ncutoff_prob <- 0.5\nemail_pred |>\n  mutate(\n    spam      = if_else(spam == 1, \"Email is spam\", \"Email is not spam\"),\n    spam_pred = if_else(.pred_1 > cutoff_prob, \"Email labelled spam\", \"Email labelled not spam\")\n    ) |>\n  count(spam_pred, spam) |>\n  pivot_wider(names_from = spam, values_from = n) |>\n  knitr::kable(col.names = c(\"\", \"Email is not spam\", \"Email is spam\"))\n\n\n\n\n\nEmail is not spam\nEmail is spam\n\n\n\n\nEmail labelled not spam\n707\n54\n\n\nEmail labelled spam\n10\n14\n\n\n\n\n\nSensitivity: 14/(14+54) = 0.206\nSpecificity: 707/(707+10) = 0.986"
+  },
+  {
+    "objectID": "W9.html#cutoff-probability-0.25",
+    "href": "W9.html#cutoff-probability-0.25",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Cutoff probability: 0.25",
+    "text": "Cutoff probability: 0.25\nSuppose we decide to label an email as spam if the model predicts the probability of spam to be more than 0.25.\nConfusion matrix:\n\n\n\n\n\n\nEmail is not spam\nEmail is spam\n\n\n\n\nEmail labelled not spam\n656\n36\n\n\nEmail labelled spam\n61\n32\n\n\n\n\n\nSensitivity: 32/(32+36) = 0.471\nSpecificity: 656/(656 + 61) = 0.915"
+  },
+  {
+    "objectID": "W9.html#cutoff-probability-0.75",
+    "href": "W9.html#cutoff-probability-0.75",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Cutoff probability: 0.75",
+    "text": "Cutoff probability: 0.75\nSuppose we decide to label an email as spam if the model predicts the probability of spam to be more than 0.75.\nConfusion matrix:\n\n\n\n\n\n\nEmail is not spam\nEmail is spam\n\n\n\n\nEmail labelled not spam\n716\n65\n\n\nEmail labelled spam\n1\n3\n\n\n\n\n\nSensitivity: 3/(3+65) = 0.044\nSpecificity: 716/(716+1) = 0.999"
+  },
+  {
+    "objectID": "W9.html#check-our-very-first-model",
+    "href": "W9.html#check-our-very-first-model",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Check our very first model",
+    "text": "Check our very first model\nWe make a new simple recipe and draw workflow and fitting re-using the same specified logisitc regression model email_mod.\n\nsimple_email_rec <- recipe(\n spam ~ num_char,          # formula\n data = train_data  # data to use for cataloguing names and types of variables\n)\nsimple_email_pred <- \n workflow() |> \n add_model(email_mod) |> \n add_recipe(simple_email_rec) |> \n fit(data = train_data) |> \n predict(test_data, type = \"prob\") |> \n bind_cols(test_data |> select(spam,num_char,time)) \nsimple_email_pred \n\n# A tibble: 785 × 5\n   .pred_0 .pred_1 spam  num_char time               \n     <dbl>   <dbl> <fct>    <dbl> <dttm>             \n 1   0.889  0.111  0        4.84  2012-01-01 18:55:06\n 2   0.936  0.0644 0       15.1   2012-01-01 20:38:32\n 3   0.945  0.0547 0       18.0   2012-01-02 06:42:16\n 4   0.989  0.0113 0       45.8   2012-01-02 16:12:51\n 5   0.922  0.0784 0       11.4   2012-01-02 17:45:36\n 6   0.868  0.132  0        1.48  2012-01-02 22:55:03\n 7   0.933  0.0667 0       14.4   2012-01-03 02:07:17\n 8   0.864  0.136  0        0.978 2012-01-03 06:41:35\n 9   0.905  0.0953 0        7.79  2012-01-03 17:02:35\n10   0.864  0.136  0        0.978 2012-01-03 12:14:51\n# … with 775 more rows"
+  },
+  {
+    "objectID": "W9.html#evaluate-the-performance-4",
+    "href": "W9.html#evaluate-the-performance-4",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Evaluate the performance",
+    "text": "Evaluate the performance\n\nsimple_email_pred |> roc_curve(\n    truth = spam, estimate = .pred_1,\n    event_level = \"second\" # this adjusts the location above the diagonal\n  ) |> autoplot()\n\n\n\n\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.753\n\n\nConclusion: It is not as good compare to AUC 0.86\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W9.html#multinomial-response-variable",
+    "href": "W9.html#multinomial-response-variable",
+    "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
+    "section": "Multinomial response variable?",
+    "text": "Multinomial response variable?\n\nWe will not cover other categorical variables than binary ones here.\nHowever, many of the probabilistic concepts transfer."
+  },
+  {
+    "objectID": "index.html#week-9-oct-27-classification-problems-logisitc-regression-prediction",
+    "href": "index.html#week-9-oct-27-classification-problems-logisitc-regression-prediction",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction",
+    "text": "Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction\nSlides Week 9\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 due in 10 days."
   }
 ]

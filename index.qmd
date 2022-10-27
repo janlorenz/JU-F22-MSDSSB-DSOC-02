@@ -209,7 +209,12 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 **Homework 04 should come. Due Nov 6.**
 
-## Week 9, Oct 27:  {-}
+## Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction {-}
+
+[Slides Week 9](W9.qmd)  
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
+
+**Homework 04 due in 10 days.**
 
 ## Week 10, Nov 3:  {-}
 
