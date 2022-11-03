@@ -2461,7 +2461,7 @@
     "href": "W9.html#evaluate-the-performance-4",
     "title": "W#9 Classification Problems, Logisitc Regression, Prediction",
     "section": "Evaluate the performance",
-    "text": "Evaluate the performance\n\nsimple_email_pred |> roc_curve(\n    truth = spam, estimate = .pred_1,\n    event_level = \"second\" # this adjusts the location above the diagonal\n  ) |> autoplot()\n\n\n\n\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.753\n\n\nConclusion: It is not as good compare to AUC 0.86\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+    "text": "Evaluate the performance\n\nsimple_email_pred |> roc_curve(\n    truth = spam, estimate = .pred_1,\n    event_level = \"second\" # this adjusts the location above the diagonal\n  ) |> autoplot()\n\n\n\n\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.753\n\n\nConclusion: It is not as good compared to AUC 0.86\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   },
   {
     "objectID": "W9.html#multinomial-response-variable",
