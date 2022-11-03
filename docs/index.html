@@ -154,7 +154,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software"><span class="toc-section-number">1.6</span>  Software</a></li>
   <li><a href="#assessment-and-grading" id="toc-assessment-and-grading" class="nav-link" data-scroll-target="#assessment-and-grading"><span class="toc-section-number">1.7</span>  Assessment and Grading</a></li>
   </ul></li>
-  <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources"><span class="toc-section-number">2</span>  Learning Resources</a></li>
+  <li><a href="#learning-resources" id="toc-learning-resources" class="nav-link" data-scroll-target="#learning-resources"><span class="toc-section-number">2</span>  Learning Resources</a>
+  <ul class="collapse">
+  <li><a href="#core-resources" id="toc-core-resources" class="nav-link" data-scroll-target="#core-resources"><span class="toc-section-number">2.1</span>  Core resources</a></li>
+  <li><a href="#mathematics" id="toc-mathematics" class="nav-link" data-scroll-target="#mathematics"><span class="toc-section-number">2.2</span>  Mathematics</a></li>
+  </ul></li>
   <li><a href="#course-material-and-schedule" id="toc-course-material-and-schedule" class="nav-link" data-scroll-target="#course-material-and-schedule"><span class="toc-section-number">3</span>  Course Material and Schedule</a>
   <ul class="collapse">
   <li><a href="#week-1-sep-1-what-is-data-science-course-organization-toolkit" id="toc-week-1-sep-1-what-is-data-science-course-organization-toolkit" class="nav-link" data-scroll-target="#week-1-sep-1-what-is-data-science-course-organization-toolkit">Week 1, Sep 1: What is Data Science? Course organization, toolkit</a></li>
@@ -164,9 +168,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#week-5-sep-29-more-under-the-hood-relational-data-exploratory-data-analysis" id="toc-week-5-sep-29-more-under-the-hood-relational-data-exploratory-data-analysis" class="nav-link" data-scroll-target="#week-5-sep-29-more-under-the-hood-relational-data-exploratory-data-analysis">Week 5, Sep 29: More under the hood, Relational Data, Exploratory Data Analysis</a></li>
   <li><a href="#week-6-oct-6-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model" id="toc-week-6-oct-6-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model" class="nav-link" data-scroll-target="#week-6-oct-6-functions-logarithms-and-exponentials-modeling-fitting-a-linear-model">Week 6, Oct 6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model</a></li>
   <li><a href="#week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models" id="toc-week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models" class="nav-link" data-scroll-target="#week-7-oct-13-descriptive-statistics-wisdom-of-crowds-calculus-epidemic-models">Week 7, Oct 13: Descriptive statistics, Wisdom of Crowds, Calculus, Epidemic Models</a></li>
-  <li><a href="#week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation" id="toc-week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation" class="nav-link" data-scroll-target="#week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation">Week 8, Oct 20: Homework topics: Typical Data Issual, More Linear Models and Interpretation</a></li>
+  <li><a href="#week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation" id="toc-week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation" class="nav-link" data-scroll-target="#week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation">Week 8, Oct 20: Homework topics: Typical Data Issues, More Linear Models and Interpretation</a></li>
   <li><a href="#week-9-oct-27-classification-problems-logisitc-regression-prediction" id="toc-week-9-oct-27-classification-problems-logisitc-regression-prediction" class="nav-link" data-scroll-target="#week-9-oct-27-classification-problems-logisitc-regression-prediction">Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction</a></li>
-  <li><a href="#week-10-nov-3" id="toc-week-10-nov-3" class="nav-link" data-scroll-target="#week-10-nov-3">Week 10, Nov 3:</a></li>
+  <li><a href="#week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability" id="toc-week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability" class="nav-link" data-scroll-target="#week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability">Week 10, Nov 3: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability</a></li>
   <li><a href="#week-11-nov-10" id="toc-week-11-nov-10" class="nav-link" data-scroll-target="#week-11-nov-10">Week 11, Nov 10:</a></li>
   <li><a href="#week-12-nov-17" id="toc-week-12-nov-17" class="nav-link" data-scroll-target="#week-12-nov-17">Week 12, Nov 17:</a></li>
   <li><a href="#week-13-nov-24" id="toc-week-13-nov-24" class="nav-link" data-scroll-target="#week-13-nov-24">Week 13, Nov 24:</a></li>
@@ -302,11 +306,16 @@ Important
 </section>
 <section id="learning-resources" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Learning Resources</h1>
-<p>Some week’s lectures have readings to review before class. These shall come continuously updated in the schedule below. Check the schedule regularly.</p>
+<section id="core-resources" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="core-resources"><span class="header-section-number">2.1</span> Core resources</h2>
 <p>A large part of the course will build on or be inspired by material in <strong>Data Science in the Box</strong> <a href="https://datasciencebox.org/" class="uri">https://datasciencebox.org/</a> by Mine Çetinkaya-Rundel and the data science education community around. You can also use the website for accompanying self-study on selected topics.</p>
-<p>A core resource for self-learning data science with R is <strong>R for Data Science</strong> <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics using <code>tidyverse</code> tools.</p>
-<p>Just out: <strong>Tidy Modeling with R</strong> <a href="https://www.tmwr.org/" class="uri">https://www.tmwr.org/</a> by Max Kuhn and Julia Silge on using <code>tidymodels</code>.</p>
+<p>A core resource for self-learning data science with R is <strong>R for Data Science</strong> <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics using <code>tidyverse</code> tools. Just out: <strong>Tidy Modeling with R</strong> <a href="https://www.tmwr.org/" class="uri">https://www.tmwr.org/</a> by Max Kuhn and Julia Silge on using <code>tidymodels</code>.</p>
 <p>A core resource for data science basics with python is the <strong>Python Data Science Handbook</strong> <a href="https://jakevdp.github.io/PythonDataScienceHandbook/" class="uri">https://jakevdp.github.io/PythonDataScienceHandbook/</a> by Jake VanderPlas. Also there is a good video playlist <a href="https://www.youtube.com/playlist?list=PLWKjhJtqVAbkmRvnFmOd4KhDdlK1oIq23" class="uri">https://www.youtube.com/playlist?list=PLWKjhJtqVAbkmRvnFmOd4KhDdlK1oIq23</a> and a 4-hour “full-course” video <a href="https://youtu.be/rfscVS0vtbw" class="uri">https://youtu.be/rfscVS0vtbw</a>.</p>
+</section>
+<section id="mathematics" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="mathematics"><span class="header-section-number">2.2</span> Mathematics</h2>
+<p>Some helpful YouTube videos for those recaping maths:</p>
+<p>How to read math https://www.youtube.com/watch?v=Kp2bYWRQylk</p>
 <p><strong>Data Visualization</strong></p>
 <p><em>ggplot2: Elegant Graphics for Data Analysis</em> <a href="https://ggplot2-book.org" class="uri">https://ggplot2-book.org</a> is a resource on understanding the logic of ggplot better.</p>
 <p>Websites on how to decide for what visualization to choose:<br>
@@ -315,6 +324,7 @@ Important
 <p><em>The number of freely available learning resources is increasing rapidly.</em></p>
 <p><em>Everyone has a different learning style and a different background. Thus, different material may be most helpful.</em></p>
 <p><em>This list shall be extended. Good self-study resources for data science with python, mathematics, statistics, data visualization, etc. shall be added here. Contact me if you find something useful to share. Ideally, with a short description when it may be most helpful.</em></p>
+</section>
 </section>
 <section id="course-material-and-schedule" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Course Material and Schedule</h1>
@@ -374,8 +384,8 @@ Download instructions: <a href="https://quarto.org/docs/presentations/revealjs/p
 Download instructions: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf" class="uri">https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf</a></p>
 <p><strong>Homework 03 is due Oct 16.</strong></p>
 </section>
-<section id="week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="week-8-oct-20-homework-topics-typical-data-issual-more-linear-models-and-interpretation">Week 8, Oct 20: Homework topics: Typical Data Issual, More Linear Models and Interpretation</h2>
+<section id="week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation">Week 8, Oct 20: Homework topics: Typical Data Issues, More Linear Models and Interpretation</h2>
 <p>Topics:</p>
 <ul>
 <li>Errors, Differences, Missings in Data</li>
@@ -396,8 +406,10 @@ Download instructions: <a href="https://quarto.org/docs/presentations/revealjs/p
 Download instructions: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf" class="uri">https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf</a></p>
 <p><strong>Homework 04 due in 10 days.</strong></p>
 </section>
-<section id="week-10-nov-3" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="week-10-nov-3">Week 10, Nov 3:</h2>
+<section id="week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability">Week 10, Nov 3: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability</h2>
+<p><a href="./W10.html">Slides Week 10</a><br>
+Download instructions: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf" class="uri">https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf</a></p>
 <p><strong>Homework 04 due in 3 days</strong><br>
 <strong>Homework 05 should come. Due Nov 20.</strong></p>
 </section>

@@ -1,0 +1,1113 @@
+---
+title: "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability"
+author: Jan Lorenz
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: false
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+---
+
+# Linear Model for Attitudes on European Integration
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(openintro)
+owid <- read_csv("data/owid-covid-data.csv", 
+                 col_types = cols( 
+                   iso_code = col_character(),
+                   continent = col_character(),
+                   location = col_character(),
+                   date = col_date(format = ""),
+                   total_cases = col_double(),
+                   new_cases = col_double(),
+                   new_cases_smoothed = col_double(),
+                   total_deaths = col_double(),
+                   new_deaths = col_double(),
+                   new_deaths_smoothed = col_double(),
+                   total_cases_per_million = col_double(),
+                   new_cases_per_million = col_double(),
+                   new_cases_smoothed_per_million = col_double(),
+                   total_deaths_per_million = col_double(),
+                   new_deaths_per_million = col_double(),
+                   new_deaths_smoothed_per_million = col_double(),
+                   reproduction_rate = col_double(),
+                   icu_patients = col_double(),
+                   icu_patients_per_million = col_double(),
+                   hosp_patients = col_double(),
+                   hosp_patients_per_million = col_double(),
+                   weekly_icu_admissions = col_double(),
+                   weekly_icu_admissions_per_million = col_double(),
+                   weekly_hosp_admissions = col_double(),
+                   weekly_hosp_admissions_per_million = col_double(),
+                   total_tests = col_double(),
+                   new_tests = col_double(),
+                   total_tests_per_thousand = col_double(),
+                   new_tests_per_thousand = col_double(),
+                   new_tests_smoothed = col_double(),
+                   new_tests_smoothed_per_thousand = col_double(),
+                   positive_rate = col_double(),
+                   tests_per_case = col_double(),
+                   tests_units = col_character(),
+                   total_vaccinations = col_double(),
+                   people_vaccinated = col_double(),
+                   people_fully_vaccinated = col_double(),
+                   total_boosters = col_double(),
+                   new_vaccinations = col_double(),
+                   new_vaccinations_smoothed = col_double(),
+                   total_vaccinations_per_hundred = col_double(),
+                   people_vaccinated_per_hundred = col_double(),
+                   people_fully_vaccinated_per_hundred = col_double(),
+                   total_boosters_per_hundred = col_double(),
+                   new_vaccinations_smoothed_per_million = col_double(),
+                   new_people_vaccinated_smoothed = col_double(),
+                   new_people_vaccinated_smoothed_per_hundred = col_double(),
+                   stringency_index = col_double(),
+                   population = col_double(),
+                   population_density = col_double(),
+                   median_age = col_double(),
+                   aged_65_older = col_double(),
+                   aged_70_older = col_double(),
+                   gdp_per_capita = col_double(),
+                   extreme_poverty = col_double(),
+                   cardiovasc_death_rate = col_double(),
+                   diabetes_prevalence = col_double(),
+                   female_smokers = col_double(),
+                   male_smokers = col_double(),
+                   handwashing_facilities = col_double(),
+                   hospital_beds_per_thousand = col_double(),
+                   life_expectancy = col_double(),
+                   human_development_index = col_double(),
+                   excess_mortality_cumulative_absolute = col_double(),
+                   excess_mortality_cumulative = col_double(),
+                   excess_mortality = col_double(),
+                   excess_mortality_cumulative_per_million = col_double()
+                 ))
+who <- read_csv("data/WHO-COVID-19-global-data.csv", 
+                col_types = cols(
+                  Date_reported = col_date(format = ""),
+                  Country_code = col_character(),
+                  Country = col_character(),
+                  WHO_region = col_character(),
+                  New_cases = col_double(),
+                  Cumulative_cases = col_double(),
+                  New_deaths = col_double(),
+                  Cumulative_deaths = col_double()
+                ))
+who_owid <- who |>  
+  left_join(owid, by=c("Date_reported" = "date", "Country" = "location")) |> 
+  rename(Date = Date_reported, New_cases_who = New_cases, New_cases_owid = new_cases, 
+         Total_cases_who = Cumulative_cases, Total_cases_owid = total_cases) |> 
+  select (Date, Country, New_cases_who, New_cases_owid, Total_cases_who,
+          Total_cases_owid)
+owid_aug22 <- owid |> 
+ filter(date == "2022-08-31", !is.na(human_development_index), 
+        !is.na(total_deaths_per_million), !is.na(continent))
+ess_raw <- read_csv("data/ESS-Data-Wizard-subset-2022-09-17.csv",
+                col_types = cols(
+                 name = col_character(),
+                 essround = col_double(),
+                 edition = col_double(),
+                 proddate = col_character(),
+                 idno = col_double(),
+                 cntry = col_character(),
+                 dweight = col_double(),
+                 pspwght = col_double(),
+                 pweight = col_double(),
+                 euftf = col_double(),
+                 gincdif = col_double(),
+                 lrscale = col_double(),
+                 polintr = col_double(),
+                 stflife = col_double(),
+                 trstplc = col_double(),
+                 vote = col_double(),
+                 imueclt = col_double(),
+                 atchctr = col_double(),
+                 atcherp = col_double(),
+                 crmvct = col_double(),
+                 pray = col_double(),
+                 rlgdgr = col_double(),
+                 gndr = col_double(),
+                 age = col_double()
+                ))
+ess <- ess_raw |> filter(essround == 9) |> 
+ mutate(atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),
+        atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),
+        euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99), 
+        lrscale = lrscale |> na_if(77) |> na_if(88) |> na_if(99), 
+        imueclt = imueclt |> na_if(77) |> na_if(88) |> na_if(99))
+```
+
+
+## Model purpose: Predict EU attitudes {.smaller}
+
+```{r}
+#| echo: true
+ess <- ess_raw |> filter(essround == 9) |> 
+ select(cntry, euftf, atchctr, atcherp, imueclt, lrscale) |> 
+ mutate(euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99), 
+        atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),
+        atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),
+        imueclt = imueclt |> na_if(77) |> na_if(88) |> na_if(99),
+        lrscale = lrscale |> na_if(77) |> na_if(88) |> na_if(99))
+```
+
+For the ESS dataset 
+
+- we filter for people from round 9 (2018)
+- select 5 attitude variabels and `ntry` with `r ess$cntry |> unique() |> length()` countries: `r ess$cntry |> unique()`
+- recode `NA`'s properly for five variables:   
+**euftf:** European Union: European unification go further (=10) or gone too far (=0)   
+**atchctr:** How emotionally attached to [country] (0 to 10)   
+**atcherp:** How emotionally attached to Europe (0 to 10)   
+**imueclt:** Country's cultural life undermined (=0) or enriched (=10) by immigrants  
+**lrscale:** Placement on left (=0) right (=10) scale
+
+## Model 1, 2, and 3 {.smaller}
+:::: {.columns}
+
+::: {.column width='50%'}
+- Create an initial split with 80% training data
+- Create a linear model `ess_mod`
+- Create three recipes
+  - `ess_rec1` without using the country variable
+  - `ess_rec2` with main effects for all `r ess$cntry |> unique() |> length()` countries
+  - `ess_rec3` with additional interaction effects for all `r ess$cntry |> unique() |> length()` countries
+- Create the workflow 
+- Fit 3 models by adding the 3 recipes
+:::
+
+::: {.column width='50%'}
+```{r}
+#| echo: true
+set.seed(7)
+ess_split <- initial_split(ess, prop = 0.80)
+ess_train <- training(ess_split)
+ess_test <- testing(ess_split)
+
+ess_model <- linear_reg() |> set_engine("lm")
+ess_rec1 <- ess_train |> 
+ recipe(euftf ~ .) |> 
+ step_rm(cntry)
+ess_rec2 <- ess_train |> 
+ recipe(euftf ~ .) |> 
+ step_dummy(cntry)
+ess_rec3 <- ess_train |> 
+ recipe(euftf ~ .) |> 
+ step_dummy(cntry) |> 
+ step_interact(~starts_with("cntry"):c(atchctr,atcherp,imueclt,lrscale))
+
+ess_wflow <- workflow() |> 
+ add_model(ess_model)
+
+ess_fit1 <- ess_wflow |> 
+ add_recipe(ess_rec1) |> 
+ fit(ess_train)
+ess_fit2 <- ess_wflow |> 
+ add_recipe(ess_rec2) |> 
+ fit(ess_train)
+ess_fit3 <- ess_wflow |> 
+ add_recipe(ess_rec3) |> 
+ fit(ess_train)
+```
+:::
+
+::::
+
+
+## Model fits  {.smaller}
+
+:::: {.columns}
+
+::: {.column width='33%'}
+```{r}
+#| echo: true
+tidy(ess_fit1) |> select(term, estimate) |> print(n = 33)
+```
+:::
+
+::: {.column width='33%'}
+```{r}
+#| echo: true
+tidy(ess_fit2)  |> select(term, estimate) |> print(n = 33)
+```
+:::
+
+::: {.column width='33%'}
+```{r}
+#| echo: true
+tidy(ess_fit3)  |> select(term, estimate) |> print(n = 145)
+```
+:::
+
+::::
+
+Note: We omit std.error, p-values and so on in the display here because they are usually small in this large dataset, and we will not look at them now. 
+
+
+## Recap: Interpreting interaction effects {.smaller}
+
+In Model 3 the reference country is Austria (AT) therefore the intercept and main coefficient are valid for Austria and all interaction coefficients have to be added to these to be interpreted. 
+
+Cross check: A linear model with the data filtered for Austria only without a country effect:
+
+```{r}
+#| echo: true
+ess_train |> 
+ filter(cntry=="AT") |> 
+ select(-cntry) |> 
+ lm(formula = euftf ~ . ) |> 
+ tidy()
+```
+
+The coefficients are identical to the full model with all interaction effects.
+
+## Make predictions for training data {.smaller}
+
+```{r}
+#| echo: true
+ess_train_pred1 <- predict(ess_fit1, ess_train) |> 
+ bind_cols(ess_train |> select(euftf, everything()))
+ess_train_pred1
+```
+
+Note:
+
+- We can make predictions when the response in `NA`
+- We cannot make predictions when on predictor is `NA`
+
+
+## Make predictions for training data {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%'}
+```{r}
+#| echo: true
+ess_train_pred2 <- predict(ess_fit2, ess_train) |> 
+ bind_cols(ess_train |> select(euftf, everything()))
+ess_train_pred2
+```
+:::
+
+::: {.column width='50%'}
+```{r}
+#| echo: true
+ess_train_pred3 <- predict(ess_fit3, ess_train) |> 
+ bind_cols(ess_train |> select(euftf, everything()))
+ess_train_pred3
+```
+:::
+
+::::
+
+# Model performance
+
+## R-squared {.smaller}
+
+Recap R-squared: Percentage of variability in `euftf` explained by the model
+
+```{r}
+#| echo: true
+#| output-location: column
+rsq(ess_train_pred1, 
+     truth = euftf, 
+     estimate = .pred)
+```
+```{r}
+#| echo: true
+#| output-location: column
+rsq(ess_train_pred2, 
+     truth = euftf, 
+     estimate = .pred)
+```
+```{r}
+#| echo: true
+#| output-location: column
+rsq(ess_train_pred3, 
+     truth = euftf, 
+     estimate = .pred)
+```
+
+Which model is better in prediction?
+
+
+## Root mean squared error (RMSE) {.smaller}
+
+RMSE is an alternative measure of performance.
+
+$$\text{RMSE} = \sqrt{\frac{1}{n}\sum_{i = 1}^n (y_i - \hat{y}_i)^2}$$
+
+where $\hat{y}_i$ is the predicted value and $y_i$ the true value.   
+(The name RMSE pretty much describes what the measure does.)
+
+```{r}
+#| echo: true
+#| output-location: column
+rmse(ess_train_pred1, 
+     truth = euftf, 
+     estimate = .pred)
+```
+```{r}
+#| echo: true
+#| output-location: column
+rmse(ess_train_pred2, 
+     truth = euftf, 
+     estimate = .pred)
+```
+```{r}
+#| echo: true
+#| output-location: column
+rmse(ess_train_pred3, 
+     truth = euftf, 
+     estimate = .pred)
+```
+
+Should we prefer larger or lower RMSE? 
+
+## Interpreting RMSE {.smaller}
+
+In contrast to R-squared, RMSE can only be interpreted with knowledge about the range and of the response variable.
+
+The values of `euftf` range from 0 to 10 
+
+```{r}
+#| fig-height: 3
+library(patchwork)
+e1 <- ess_train |> filter(!is.na(euftf)) |>  ggplot(aes(x=euftf)) + geom_bar() + theme_minimal() + scale_x_continuous(breaks=seq(0,10,1), minor_breaks = NULL) +
+ labs(title = "Counts of true values")
+e2 <- ess_train_pred3 |> filter(!is.na(.pred)) |>  ggplot(aes(x=.pred)) + geom_histogram(binwidth = 0.1) + theme_minimal() + scale_x_continuous(breaks=seq(0,10,1), minor_breaks = NULL) +
+ labs(title = "Histogram of predicted values for Model 3")
+e1 + e2
+```
+
+The RMSE of `r rmse(ess_train_pred3,truth = euftf,estimate = .pred)$.estimate` shows how much predicted values deviate from the true value on average. 
+
+
+## Make predictions for testing data
+
+```{r}
+#| echo: true
+ess_test_pred3 <- predict(ess_fit3, ess_test) |> 
+ bind_cols(ess_test |> select(euftf, everything()))
+ess_test_pred3
+```
+
+
+## Training vs. testing data prediction {.smaller}
+
+```{r}
+ess_test_pred1 <- predict(ess_fit1, ess_test) |> 
+ bind_cols(ess_test |> select(euftf, everything()))
+ess_test_pred2 <- predict(ess_fit2, ess_test) |> 
+ bind_cols(ess_test |> select(euftf, everything()))
+tibble(Model = c(1,1,2,2,3,3), Metric = rep(c("R-squared","RMSE"),3), Train = 
+        c( rsq(ess_train_pred1,truth=euftf, estimate = .pred)$.estimate,
+          rmse(ess_train_pred1,truth=euftf, estimate = .pred)$.estimate,
+           rsq(ess_train_pred2,truth=euftf, estimate = .pred)$.estimate,
+          rmse(ess_train_pred2,truth=euftf, estimate = .pred)$.estimate,
+           rsq(ess_train_pred3,truth=euftf, estimate = .pred)$.estimate,
+          rmse(ess_train_pred3,truth=euftf, estimate = .pred)$.estimate
+          ), Test = 
+        c( rsq(ess_test_pred1,truth=euftf, estimate = .pred)$.estimate,
+          rmse(ess_test_pred1,truth=euftf, estimate = .pred)$.estimate,
+           rsq(ess_test_pred2,truth=euftf, estimate = .pred)$.estimate,
+          rmse(ess_test_pred2,truth=euftf, estimate = .pred)$.estimate,
+           rsq(ess_test_pred3,truth=euftf, estimate = .pred)$.estimate,
+          rmse(ess_test_pred3,truth=euftf, estimate = .pred)$.estimate
+          )
+        ) |> mutate(Train = round(Train,digits=3),
+                    Test = round(Test,digits=3))|> knitr::kable()
+```
+
+- R-squared is a little lower in the test data, RMSE a bit higher (both mean lower performance)
+- Often, metrics are worse for the testing data, as here. 
+- However, in it can also be the other way round by chance.
+
+## How to evaluate performance on training data only? {.smaller}
+
+- Model performance changes with the random selection of the training data. How can we then reliably compare models?
+- Anyway, the training data is not a good source for model performance. It is not an independent piece of information. Predicting the training data only reveals what the model already "knows". 
+- Also, we should save the testing data only for the final validation, so we should not use it systematically to compare models. 
+
+A solution: **Cross validation**
+
+# Cross validation 
+Large part of the content adapted from <http://datasciencebox.org>.
+
+
+## Cross validation
+
+More specifically, **$v$-fold cross validation**:
+
+- Shuffle your data and make a partition with $v$ parts
+  - Recall from set theory: A **partition** is a division of a set into mutually disjoint parts which union cover the whole set. Here applied to observations (rows) in a data frame.
+- Use 1 part for validation, and the remaining $v-1$ parts for training
+- Repeat $v$ times
+
+## Cross validation
+
+![](img/cross-validation.png)
+
+
+## Split data into folds {.smaller}
+
+We split the ess data into ten parts.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+```{r}
+#| echo: true
+folds <- vfold_cv(ess_train, v = 10)
+folds
+```
+:::
+
+::: {.column width='50%'}
+![](img/cross-validation.png)
+:::
+
+::::
+
+## Fit resamples {.smaller}
+
+We use the workflow (model plus formula and recipe) we have on the `folds` with `fit_resamples`.  
+
+```{r}
+#| echo: true
+#| cache: true
+ess_fit3_rs <- ess_wflow |> add_recipe(ess_rec3) |> 
+ fit_resamples(folds)
+ess_fit3_rs
+```
+
+This computes a set of performance metrics for each folds. For linear models the defaults are R-squared and RMSE. 
+
+## Collect the metrics
+
+```{r}
+#| echo: true
+ess_fit3_rs |> collect_metrics()
+```
+
+These values are indeed closer to the values we got for the test data.
+
+## Deeper look into the metrics {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%'}
+```{r}
+#| echo: true
+ess_fit3_rs |> collect_metrics(summarize = FALSE)
+```
+:::
+
+::: {.column width='50%'}
+```{r}
+ess_fit3_rs |> collect_metrics(summarize = FALSE) |> 
+ select(id, metric = .metric, .estimate) |> 
+ pivot_wider(names_from = "metric", values_from = ".estimate") |> 
+ knitr::kable()
+```
+
+:::
+
+::::
+
+## Cross validation for logistic regression {.smaller}
+
+Take 2 simple models predicting the sex of penguins.
+
+```{r}
+#| echo: true
+library(palmerpenguins)
+penguins <- na.omit(penguins)
+set.seed(9999)
+peng_split <- initial_split(penguins, prob = 0.8)
+peng_train <- training(peng_split)
+peng_test <- testing(peng_split)
+peng_folds <- vfold_cv(peng_train, v = 5)
+
+peng_rec1 <- peng_train |> 
+ recipe(sex ~ flipper_length_mm + body_mass_g, family = "binomial")
+peng_rec2 <- peng_train |> 
+ recipe(sex ~ bill_depth_mm + bill_length_mm, family = "binomial")  
+peng_mod <- logistic_reg() |> set_engine("glm")
+peng_wflow1 <- workflow() |> add_model(peng_mod) |> add_recipe(peng_rec1)
+peng_wflow2 <- workflow() |> add_model(peng_mod) |> add_recipe(peng_rec2)
+
+peng_fit1 <- peng_wflow1 |> fit(peng_train)
+peng_fit2 <- peng_wflow2 |> fit(peng_train)
+```
+
+:::: {.columns}
+
+::: {.column width='50%'}
+```{r}
+peng_fit1 |> tidy()
+```
+
+:::
+
+::: {.column width='50%'}
+```{r}
+peng_fit2 |> tidy()
+```
+:::
+
+::::
+
+## Cross validation for logistic regression
+
+```{r}
+#| echo: true
+peng_fit1_rs <- peng_wflow1 |> fit_resamples(peng_folds)
+peng_fit2_rs <- peng_wflow2 |> fit_resamples(peng_folds)
+peng_fit1_rs |> collect_metrics()
+peng_fit2_rs |> collect_metrics()
+```
+
+- For the logistic regression has two performacne measures as default: **AUC** (area under the ROC-curve) and **accuracy**. 
+- The model using the two variables about their bills performs better than the model using body mass and flipper length. 
+
+
+
+## Accuracy for classifiers {.smaller}
+
+All metrics for binary classifiers derive from the *confusion matrix*. 
+
+![](img/confusion_small.png)
+
+**Accuracy** is the fraction of correct predictions: (TP + TN) / (TP + FP + FN + TN)
+
+- Accuracy is a good overall performance measure but it does not specify if errors are false positives or false negatives. 
+- For logistic regression: 
+  - Accuracy relies on a decision for a threshold (default 50%) and has an easy direct interpretation.
+  - AUC is the area under the ROC-curve. It is derived sweeping over all possible thresholds. 
+
+Recall:  
+**Sensitivity** is the *true positive rate*: TP / (TP + FN)  
+**Specificity** is the *true negative rate*: TN / (TN + FP)
+
+
+## Comparison of metrics {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%'}
+Flipper length, body mass
+```{r}
+#| echo: true
+peng_fit1_rs |> collect_metrics(summarize = FALSE) |> arrange(.metric)
+peng_test_pred1 <- predict(peng_fit1, new_data = peng_test, type = "prob") |> 
+ mutate(.pred_class_0.5 = if_else(.pred_female > 0.5, "female", "male") |> factor(),
+        .pred_class_0.45 = if_else(.pred_female > 0.45, "female", "male") |> factor(),
+        .pred_class_0.55 = if_else(.pred_female > 0.55, "female", "male") |> factor()
+        ) |> 
+ bind_cols(peng_test |> select(sex, everything())) 
+peng_test_pred1 |> roc_auc(truth = sex, estimate = .pred_female)
+peng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.5)
+peng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.55)
+peng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.45)
+peng_test_pred1 |> select(1:6)
+```
+:::
+
+::: {.column width='50%'}
+Bill length and depth
+
+```{r}
+#| echo: true
+peng_fit2_rs |> collect_metrics(summarize = FALSE) |> arrange(.metric)
+peng_test_pred2 <- predict(peng_fit2, new_data = peng_test, type = "prob") |> 
+ mutate(.pred_class_0.5 = if_else(.pred_female > 0.5, "female", "male") |> factor(),
+        .pred_class_0.45 = if_else(.pred_female > 0.45, "female", "male") |> factor(),
+        .pred_class_0.55 = if_else(.pred_female > 0.55, "female", "male") |> factor()
+        ) |> 
+ bind_cols(peng_test |> select(sex, everything())) 
+peng_test_pred2 |> roc_auc(truth = sex, estimate = .pred_female)
+peng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.5)
+peng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.55)
+peng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.45)
+peng_test_pred2 |> select(1:6)
+```
+:::
+
+::::
+
+
+# The wisdom of the crowd, "Diversity!", and the Bias-Variance-Decomposition
+
+## Galton's data {.smaller}
+
+*What is the weight of the meat of this ox?*
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+library(readxl)
+galton <- read_excel("data/galton_data.xlsx")
+galton |> ggplot(aes(Estimate)) + geom_histogram(binwidth = 5) + geom_vline(xintercept = 1198, color = "green") + 
+ geom_vline(xintercept = mean(galton$Estimate), color = "red")
+```
+
+`r nrow(galton)` estimates, [true value]{style="color:green;"} 1198, [mean]{style="color:red;"} `r round(mean((galton$Estimate)), digits=1)`
+
+::: aside
+We focus on the arithmetic mean as aggregation function for the wisdom of the crowd here. 
+:::
+
+
+## RMSE Galton's data
+
+Describe the estimation game as a predictive model:
+
+- All estimates are made to predict the same value: the truth.
+- The truth is the same for all here. 
+
+```{r}
+#| echo: true
+rmse_galton <- galton |> 
+ mutate(truth = 1198) |>
+ rmse(truth = truth, estimate = Estimate)
+rmse_galton
+```
+
+## MSE, Variance, and Bias of estimates {.smaller}
+
+Let us look at the following measures
+
+- $\text{MSE} = \text{RMSE}^2 = \frac{1}{n}\sum_{i = 1}^n (y_i - \hat{y}_i)^2$ where $y_i = \text{truth}$ here for all $i$
+  
+- $\text{Variance} = \frac{1}{n}\sum_{i = 1}^n (y_i - \bar{y})^2$ where $\bar{y}$ is the mean, so the aggregated Wisdom of Crowd estimate here
+
+- $\text{Bias-squared} = (\bar{y} - \hat{y})^2$ which is the square difference between truth and mean estimate. 
+
+There a mathematical relation (good math excerise to check):
+
+$$\text{MSE} = \text{Bias-squared} + \text{Variance}$$
+
+## Testing for Galton's data {.smaller}
+
+$$\text{MSE} = \text{Bias-squared} + \text{Variance}$$
+
+```{r}
+#| echo: true
+MSE <- (rmse_galton$.estimate)^2 
+MSE
+Variance <- var(galton$Estimate)*(nrow(galton)-1)/nrow(galton)
+Variance
+# Note, we had to correct for the divisor (n-1) in the classical statistical definition
+# to get the sample variance instead of the estimate for the population variance
+Bias_squared <- (mean(galton$Estimate) - 1198)^2
+Bias_squared
+
+Bias_squared + Variance
+```
+
+::: aside
+Such nice mathematical properties are probably one reason why these squared measures are so popular. 
+:::
+
+
+## The diversity prediction theorem^[Notion from: Page, S. E. (2007). The Difference: How the Power of Diversity Creates Better Groups, Firms, Schools, and Societies. Princeton University Press.] {.smaller}
+
+- *MSE* is a measure the average **individuals error**
+- *Bias-squared* is a measure the **collective error**
+- *Variance* is a measure for the **diversity** of estimates around the mean
+
+The mathematical relation $$\text{MSE} = \text{Bias-squared} + \text{Variance}$$ can be formulated as 
+
+**Collective error = Individual error - Diversity**
+
+Interpretation: *The higher the diversity the lower the collective error!*
+
+
+## Why is this message a bit suggestive?
+
+The mathematical relation $$\text{MSE} = \text{Bias-squared} + \text{Variance}$$ can be formulated as 
+
+**Collective error = Individual error - Diversity**
+
+Interpretation: *The higher the diversity the lower the collective error!*
+
+. . . 
+
+- $\text{MSE}$ and $\text{Variance}$ are not independent! 
+- Activities to increase diversity (Variance) typically also increase the average individual error (MSE).
+- For example, if we just add more random estimates with same mean but wild variance to our sample we increase both and do not gain any decrease of the collective error.
+
+
+## Accuracy for numerical estimate {.smaller}
+
+- For binary classifiers **accuracy** has a simple definition: Fraction of correct classifications. 
+  - It can be further informed by other more specific measures taken from the confusion matrix (sensitivity, specificity)
+
+How about numerical estimators?   
+For example outcomes of estimation games, or linear regression models. 
+
+- Accuracy is for example measured by (R)MSE
+- $\text{MSE} = \text{Bias-squared} + \text{Variance}$ shows us that we can make a  
+**bias-variance decomposition**
+- That means some part of the error is a systematic (the bias) and another part due to random variation (the variance).
+- Learn more about the bias-variance tradeoff in statistical learning independently!
+
+
+## 2-d Accuracy: Trueness and Precision {.smaller}
+
+According to ISO 5725-1 Standard: *Accuracy (trueness and precision) of measurement methods and results - Part 1: General principles and definitions.* there are two dimension of accuracy of numerical measurement. 
+
+![](https://upload.wikimedia.org/wikipedia/commons/9/92/Accuracy_%28trueness_and_precision%29.svg) ![](img/accuracy_trueness_precision.png){height="300px"}
+
+
+
+## What is a wise crowd? {.smaller}
+
+Assume the dots are estimates. **Which is a wise crowd?**
+
+![](img/accuracy_trueness_precision.png){height="300px"}
+
+. . . 
+
+- Of course, high trueness and high precision! But, ...
+- Focusing on the **crowd** being wise instead of its **individuals**: High trueness, low precision. 
+
+
+# Hypothesis testing
+Large part of the content adapted from <http://datasciencebox.org>.
+
+
+## Organ donors {.smaller}
+
+People providing an organ for donation sometimes seek the help of a special "medical consultant". These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant's clients. 
+
+One consultant tried to attract patients by noting that the average complication rate for liver donor surgeries in the US is about 10%, but her clients have only had 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).
+
+## Data {.smaller}
+
+```{r}
+#| echo: true
+organ_donor <- tibble(
+  outcome = c(rep("complication", 3), rep("no complication", 59))
+)
+```
+
+```{r }
+#| echo: true
+organ_donor |>
+  count(outcome)
+```
+
+
+## Parameter vs. statistic {.smaller}
+
+A **parameter** for a hypothesis test is the "true" value of interest. We typically estimate the parameter using a **sample statistic** as a **point estimate**.
+
+$p$: true rate of complication, here 0.1 (10% complication rate in US)
+
+$\hat{p}$: rate of complication in the sample = $\frac{3}{62}$ = 
+`r round(3/62, 3)`
+
+
+## Correlation vs. causation  {.smaller}
+
+**Is it possible to assess the consultant's claim using the data?**
+
+No. The claim is: There is a causal connection, but the data are observational.
+For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate (for example).
+
+While it is not possible to assess the causal claim, it is still possible to test for an association using these data. For this question we ask, **could the low complication rate of $\hat{p}$ = `r round(3/62, 3)` be due to chance?**
+
+
+
+## Two claims
+
+- **Null hypothesis:** "There is nothing going on"
+
+Complication rate for this consultant is no different than the US average of 10%
+
+- **Alternative hypothesis:** "There is something going on"
+
+Complication rate for this consultant is **lower** than the US average of 10%
+
+
+## Hypothesis testing as a court trial {.smaller}
+
+- **Null hypothesis**, $H_0$: Defendant is innocent
+- **Alternative hypothesis**, $H_A$: Defendant is guilty
+
+
+- **Present the evidence:** Collect data
+
+- **Judge the evidence:** "Could these data plausibly have happened by chance if the null hypothesis were true?"
+    * Yes: Fail to reject $H_0$
+    * No: Reject $H_0$
+    
+
+## Hypothesis testing framework {.smaller}
+
+- Start with a null hypothesis, $H_0$, that represents the status quo
+
+- Set an alternative hypothesis, $H_A$, that represents the research question, i.e. what we are testing for
+
+- Conduct a hypothesis test under the assumption that the null hypothesis is true and calculate a **p-value**.    
+**Definition:** *Probability of observed or more extreme outcome given that the null hypothesis is true.*
+    - if the test results suggest that the data do not provide convincing evidence for the alternative hypothesis, stick with the null hypothesis
+    - if they do, then reject the null hypothesis in favor of the alternative
+
+
+## Setting the hypotheses {.smaller}
+
+Which of the following is the correct set of hypotheses for the claim that the consultant has lower complication rates?
+
+(a) $H_0: p = 0.10$; $H_A: p \ne 0.10$ 
+
+(b) $H_0: p = 0.10$; $H_A: p > 0.10$ 
+
+(c) $H_0: p = 0.10$; $H_A: p < 0.10$ 
+
+(d) $H_0: \hat{p} = 0.10$; $H_A: \hat{p} \ne 0.10$ 
+
+(e) $H_0: \hat{p} = 0.10$; $H_A: \hat{p} > 0.10$ 
+
+(f) $H_0: \hat{p} = 0.10$; $H_A: \hat{p} < 0.10$ 
+
+. . . 
+
+Correct is c. Hypotheses are be about the true rate of complication $p$ not the observed ones $\hat{p}$
+
+
+## Simulating the null distribution {.smaller}
+
+Since $H_0: p = 0.10$, we need to simulate a null distribution where the probability of success (complication) for each trial (patient) is 0.10.
+
+**How should we simulate the null distribution for this study using a bag of chips?**
+
+- How many chips? [62]{.fragment style='color:red;'}
+- How many colors? [2]{.fragment style='color:red;'}
+- What should colors represent? ["complication", "no complication"]{.fragment style='color:red;'}
+- How many draws?  [62]{.fragment style='color:red;'}
+- With replacement or without replacement? [With replacement]{.fragment style='color:red;'}
+
+When sampling from the null distribution, what would be the expected proportion of "complications"?  [0.1]{.fragment  style='color:red;'}
+
+
+## Simulation! {.smaller}
+
+```{r}
+#| echo: true
+set.seed(1234)
+outcomes <- c("complication", "no complication")
+sim1 <- sample(outcomes, size = 62, prob = c(0.1, 0.9), replace = TRUE)
+sim1
+sum(sim1 == "complication")/62
+```
+
+Oh OK, this was is pretty close to the consultant's rate. But maybe it was a rare event?
+
+## More simulation! {.smaller}
+
+```{r}
+#| echo: true
+one_sim <- function() sample(outcomes, size = 62, prob = c(0.1, 0.9), replace = TRUE)
+
+sum(one_sim() == "complication")/62
+sum(one_sim() == "complication")/62
+sum(one_sim() == "complication")/62
+sum(one_sim() == "complication")/62
+sum(one_sim() == "complication")/62
+sum(one_sim() == "complication")/62
+sum(one_sim() == "complication")/62
+```
+
+
+## Automating with `tidymodels`^[Of course, you can also do it in your own way without packages.] {.smaller}
+
+
+:::: {.columns}
+
+::: {.column width='40%'}
+```{r}
+#| echo: true
+organ_donor
+```
+:::
+
+::: {.column width='60%'}
+```{r}
+#| echo: true
+null_dist <- organ_donor |>
+  specify(response = outcome, success = "complication") |>
+  hypothesize(null = "point", 
+              p = c("complication" = 0.10, "no complication" = 0.90)) |> 
+  generate(reps = 100, type = "draw") |> 
+  calculate(stat = "prop")
+null_dist
+```
+:::
+
+::::
+
+
+
+## Visualizing the null distribution {.smaller}
+
+```{r}
+#| echo: true
+ggplot(data = null_dist, mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 0.01) +
+  labs(title = "Null distribution")
+```
+
+
+---
+
+## Calculating the p-value, visually {.smaller}
+
+What is the p-value: *How often was the simulated sample proportion at least as extreme as the observed sample proportion?*
+
+```{r echo=FALSE, out.width="50%"}
+ggplot(data = null_dist, mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 0.01) +
+  labs(title = "Null distribution")  +
+ geom_vline(xintercept = 3/62, color = "red")
+```
+
+
+## Calculating the p-value, directly
+
+```{r}
+#| echo: true
+null_dist |>
+ summarise(p_value = sum(stat < 3/62)/n())
+```
+
+This is the fraction of simulations where the p-value was below `r 3/62`. 
+
+
+## Significance level  {.smaller}
+
+- A **significance level** $\alpha$ is a threshold we make up to make our judgment about the plausibility of the null hypothesis being true given the observed data. 
+
+- We often use $\alpha = 0.05 = 5\%$ as the cutoff for whether the p-value is low enough that the data are unlikely to have come from the null model. 
+
+- If p-value < $\alpha$, reject $H_0$ in favor of $H_A$: The data provide convincing evidence for the alternative hypothesis.
+
+- If p-value > $\alpha$, fail to reject $H_0$ in favor of $H_A$: The data do not provide convincing evidence for the alternative hypothesis.
+
+**What is the conclusion of the hypothesis test?**
+
+Since the p-value is greater than the significance level, we fail to reject the null hypothesis. 
+These data do not provide convincing evidence that this consultant incurs a lower complication rate than the 10% overall US complication rate.
+
+## 100 simulations is not sufficient {.smaller}
+
+- We simulate 15,000 times to get an accurate distribution.
+
+```{r}
+#| echo: true
+null_dist <- organ_donor |>
+  specify(response = outcome, success = "complication") |>
+  hypothesize(null = "point", 
+              p = c("complication" = 0.10, "no complication" = 0.90)) |> 
+  generate(reps = 15000, type = "simulate") |> 
+  calculate(stat = "prop")
+ggplot(data = null_dist, mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 0.01) +
+  geom_vline(xintercept = 3/62, color = "red")
+```
+
+
+## Our more robust p-value 
+
+For the null distribution with 15,000 simulations
+
+```{r}
+#| echo: true
+null_dist |>
+  filter(stat <= 3/62) |>
+  summarise(p_value = n()/nrow(null_dist))
+```
+
+Oh OK, our fist p-value was much more borderline in favor of the alternative hypothesis.
+
+
+## xkcd on p-values {.smaller}
+
+:::: {.columns}
+
+::: {.column width='60%'}
+[![](https://imgs.xkcd.com/comics/p_values_2x.png){height="500px"}](https://xkcd.com/1478/)
+[![](https://imgs.xkcd.com/comics/significant.png){height="500px"}](https://xkcd.com/882/)
+:::
+
+::: {.column width='40%'}
+:::{.fragment}
+- Significance levels are fairly arbitrary. Sometimes they are used (wrongly) as definitive judgments
+- They can even be used to do *p-hacking*: Searching for "significant" effects in observational data
+- In parts of science it has become a "gamed" performance metric.
+- The p-value syas nothing about effect size!
+:::
+:::
+
+::::
+
+# Math: Probability {background-color="yellow"}
+
+## Probability Topics for Data Science {.smaller}
+
+Some concepts and topics
+
+:::{.incremental}
+  * The concept of probability form the mathematical perspective.
+  * What is the difference between probability theory and statistics?
+  * What are probabilistic events, probability functions and random variables.
+  * How do random variables relate to data?
+  * Probabilistic simulations. For example bootstrapping. 
+  * Conditional probabilities and their relation to the confusion matrix.
+  * Continuous random variables and some theoretical distributions.
+  * The central limit theorem.
+  * What is the difference between probability theory and statistics?
+:::
+
+## What is probability {.smaller}
+
+::: {.incremental}
+  - The systematic and rigorous treatment of uncertainty.
+  - We have a certain intuition of probability visible in sentences like:
+    - "That's not very probable."
+    - "That is likely."
+    - "I don't have a prior for that."
+  - We can call it a **model for uncertainty**: A simplified but formalized way to think about uncertain events.
+  - The model of probability is one of the most successful mathematical models. It is used in many domains. 
+:::
+
+## Two different flavors {.smaller}
+
+  * Model for uncertainty as *subjective* or  *objective* probability of an uncertain event. 
+  * They are also called *Bayesian* vs. *Frequentist* interpretation of probability.     * They differ in the way of reasoning, the interpretation what is random, and in terminology. 
+  
+## Objective interpretation {.smaller}
+
+ Probability is *relative frequency* in the limit of indefinite sampling. It is the long run behavior of non-deterministic outcomes. 
+ 
+ * If we flip the same coin several times the relative frequency of the number of HEADS converges to the probability of HEADS. 
+ * If we draw people at random the relative frequency of people with heights between 1.70m and 1.75m converges to the probability that a person is in this range. 
+ * In this frequentist philosophy the parameters of the population we sample from is fixed and the data is a random selection. 
+ 
+## Subjective interpretation {.smaller}
+ 
+Probability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet. 
+
+ * If say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent. 
+ * We can make up similar bets for the heights of randomly drawn drawn people. 
+ * In Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities. 
+
+[The objective and subjective views are not mutually exclusive and it is not important to take a side.]{style='color:red;'}
+

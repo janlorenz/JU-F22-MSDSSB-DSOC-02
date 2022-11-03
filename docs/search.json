@@ -2476,5 +2476,544 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction",
     "text": "Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction\nSlides Week 9\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 due in 10 days."
+  },
+  {
+    "objectID": "W10.html#model-1-predict-eu-attitudes",
+    "href": "W10.html#model-1-predict-eu-attitudes",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing",
+    "section": "Model 1: Predict EU attitudes",
+    "text": "Model 1: Predict EU attitudes\n\ness <- ess_raw |> filter(essround == 9) |> \n select(cntry, euftf, atchctr, atcherp, imueclt, lrscale) |> \n mutate(euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99), \n        atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),\n        atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),\n        imueclt = imueclt |> na_if(77) |> na_if(88) |> na_if(99),\n        lrscale = lrscale |> na_if(77) |> na_if(88) |> na_if(99))\n\nFor the ESS dataset\n\nwe filter for people from round 9 (2018)\nselect 5 attitude variabels and ntry with 29 countries: AT, BE, BG, CH, CY, CZ, DE, DK, EE, ES, FI, FR, GB, HR, HU, IE, IS, IT, LT, LV, ME, NL, NO, PL, PT, RS, SE, SI, SK\nrecode NA’s properly for five variables:\neuftf: European Union: European unification go further (=10) or gone too far (=0)\natchctr: How emotionally attached to [country] (0 to 10)\natcherp: How emotionally attached to Europe (0 to 10)\nimueclt: Country’s cultural life undermined (=0) or enriched (=10) by immigrants\nlrscale: Placement on left (=0) right (=10) scale"
+  },
+  {
+    "objectID": "W10.html#model-1.a-1.b-and-1.c",
+    "href": "W10.html#model-1.a-1.b-and-1.c",
+    "title": "W#10: Cross validation",
+    "section": "Model 1.a, 1.b, and 1.c",
+    "text": "Model 1.a, 1.b, and 1.c\n\nCreate an initial split with 80% training data\nCreate three recipes\n\ness_rec1 without using the country variable\ness_rec2 with main effects for all 29 countries\ness_rec3 with additional interaction effects for all 29 countries\n\n\n\ness_split <- initial_split(ess, prop = 0.80)\ness_train <- training(ess_split)\ness_test <- testing(ess_split)\n\ness_model <- linear_reg() |> set_engine(\"lm\")\ness_rec1 <- ess_train |> \n recipe(euftf ~ .) |> \n step_rm(cntry)\ness_rec2 <- ess_train |> \n recipe(euftf ~ .)\ness_rec3 <- ess_train |> \n recipe(euftf ~ .) |> \n step_dummy(all_nominal()) |> \n step_interact(~starts_with(\"cntry\"):c(atchctr,atcherp,imueclt,lrscale))\n\ness_wflow <- workflow() |> \n add_model(ess_model)\n\ness_fit1 <- ess_wflow |> \n add_recipe(ess_rec1) |> \n fit(ess_train)\ness_fit2 <- ess_wflow |> \n add_recipe(ess_rec2) |> \n fit(ess_train)\ness_fit3 <- ess_wflow |> \n add_recipe(ess_rec3) |> \n fit(ess_train)"
+  },
+  {
+    "objectID": "W10.html#model-1-fits",
+    "href": "W10.html#model-1-fits",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing",
+    "section": "Model 1: Fits",
+    "text": "Model 1: Fits\n\n\n\ntidy(ess_fit1) |> select(term, estimate) |> print(n = 33)\n\n# A tibble: 5 × 2\n  term        estimate\n  <chr>          <dbl>\n1 (Intercept)   2.92  \n2 atchctr      -0.0952\n3 atcherp       0.285 \n4 imueclt       0.287 \n5 lrscale      -0.0401\n\n\n\n\ntidy(ess_fit2)  |> select(term, estimate) |> print(n = 33)\n\n# A tibble: 33 × 2\n   term        estimate\n   <chr>          <dbl>\n 1 (Intercept)  2.10   \n 2 atchctr     -0.101  \n 3 atcherp      0.294  \n 4 imueclt      0.299  \n 5 lrscale     -0.0196 \n 6 cntry_BE     0.747  \n 7 cntry_BG     1.20   \n 8 cntry_CH    -0.0476 \n 9 cntry_CY     1.39   \n10 cntry_CZ     0.184  \n11 cntry_DE     1.32   \n12 cntry_DK     1.01   \n13 cntry_EE     0.532  \n14 cntry_ES     1.14   \n15 cntry_FI     0.00996\n16 cntry_FR     0.743  \n17 cntry_GB    -0.0705 \n18 cntry_HR     0.729  \n19 cntry_HU     0.216  \n20 cntry_IE     0.294  \n21 cntry_IS     0.0371 \n22 cntry_IT     0.593  \n23 cntry_LT     2.15   \n24 cntry_LV     0.426  \n25 cntry_ME     2.41   \n26 cntry_NL     0.600  \n27 cntry_NO    -0.170  \n28 cntry_PL     1.19   \n29 cntry_PT     1.42   \n30 cntry_RS     1.21   \n31 cntry_SE    -0.0761 \n32 cntry_SI     1.53   \n33 cntry_SK     0.178  \n\n\n\n\ntidy(ess_fit3)  |> select(term, estimate) |> print(n = 145)\n\n# A tibble: 145 × 2\n    term               estimate\n    <chr>                 <dbl>\n  1 (Intercept)         2.65   \n  2 atchctr            -0.135  \n  3 atcherp             0.259  \n  4 imueclt             0.412  \n  5 lrscale            -0.141  \n  6 cntry_BE            0.0202 \n  7 cntry_BG           -0.264  \n  8 cntry_CH            1.70   \n  9 cntry_CY            0.242  \n 10 cntry_CZ           -0.914  \n 11 cntry_DE            0.248  \n 12 cntry_DK            0.637  \n 13 cntry_EE           -0.709  \n 14 cntry_ES            1.15   \n 15 cntry_FI            0.143  \n 16 cntry_FR            0.136  \n 17 cntry_GB            0.486  \n 18 cntry_HR            0.177  \n 19 cntry_HU           -0.190  \n 20 cntry_IE            0.186  \n 21 cntry_IS            0.881  \n 22 cntry_IT           -0.582  \n 23 cntry_LT            0.925  \n 24 cntry_LV           -1.60   \n 25 cntry_ME            0.542  \n 26 cntry_NL           -0.804  \n 27 cntry_NO            0.763  \n 28 cntry_PL            2.24   \n 29 cntry_PT            2.18   \n 30 cntry_RS            0.220  \n 31 cntry_SE           -0.507  \n 32 cntry_SI            1.19   \n 33 cntry_SK           -0.604  \n 34 cntry_BE_x_atchctr -0.0249 \n 35 cntry_BE_x_atcherp  0.128  \n 36 cntry_BE_x_imueclt -0.130  \n 37 cntry_BE_x_lrscale  0.148  \n 38 cntry_BG_x_atchctr  0.220  \n 39 cntry_BG_x_atcherp -0.0614 \n 40 cntry_BG_x_imueclt -0.159  \n 41 cntry_BG_x_lrscale  0.151  \n 42 cntry_CH_x_atchctr -0.0286 \n 43 cntry_CH_x_atcherp  0.0194 \n 44 cntry_CH_x_imueclt -0.197  \n 45 cntry_CH_x_lrscale -0.106  \n 46 cntry_CY_x_atchctr  0.0956 \n 47 cntry_CY_x_atcherp  0.0496 \n 48 cntry_CY_x_imueclt -0.336  \n 49 cntry_CY_x_lrscale  0.300  \n 50 cntry_CZ_x_atchctr -0.0375 \n 51 cntry_CZ_x_atcherp -0.0267 \n 52 cntry_CZ_x_imueclt  0.0735 \n 53 cntry_CZ_x_lrscale  0.273  \n 54 cntry_DE_x_atchctr  0.0299 \n 55 cntry_DE_x_atcherp  0.159  \n 56 cntry_DE_x_imueclt -0.127  \n 57 cntry_DE_x_lrscale  0.0836 \n 58 cntry_DK_x_atchctr -0.0884 \n 59 cntry_DK_x_atcherp  0.0752 \n 60 cntry_DK_x_imueclt  0.0109 \n 61 cntry_DK_x_lrscale  0.0970 \n 62 cntry_EE_x_atchctr  0.0895 \n 63 cntry_EE_x_atcherp  0.0464 \n 64 cntry_EE_x_imueclt -0.137  \n 65 cntry_EE_x_lrscale  0.180  \n 66 cntry_ES_x_atchctr  0.0735 \n 67 cntry_ES_x_atcherp -0.0706 \n 68 cntry_ES_x_imueclt -0.0704 \n 69 cntry_ES_x_lrscale  0.0210 \n 70 cntry_FI_x_atchctr -0.106  \n 71 cntry_FI_x_atcherp  0.0602 \n 72 cntry_FI_x_imueclt -0.104  \n 73 cntry_FI_x_lrscale  0.176  \n 74 cntry_FR_x_atchctr -0.0254 \n 75 cntry_FR_x_atcherp  0.185  \n 76 cntry_FR_x_imueclt -0.195  \n 77 cntry_FR_x_lrscale  0.139  \n 78 cntry_GB_x_atchctr -0.0968 \n 79 cntry_GB_x_atcherp  0.161  \n 80 cntry_GB_x_imueclt -0.196  \n 81 cntry_GB_x_lrscale  0.0630 \n 82 cntry_HR_x_atchctr  0.145  \n 83 cntry_HR_x_atcherp -0.0138 \n 84 cntry_HR_x_imueclt -0.213  \n 85 cntry_HR_x_lrscale  0.120  \n 86 cntry_HU_x_atchctr  0.0531 \n 87 cntry_HU_x_atcherp -0.0656 \n 88 cntry_HU_x_imueclt -0.0588 \n 89 cntry_HU_x_lrscale  0.160  \n 90 cntry_IE_x_atchctr  0.0630 \n 91 cntry_IE_x_atcherp -0.0230 \n 92 cntry_IE_x_imueclt -0.138  \n 93 cntry_IE_x_lrscale  0.0874 \n 94 cntry_IS_x_atchctr -0.186  \n 95 cntry_IS_x_atcherp  0.111  \n 96 cntry_IS_x_imueclt -0.0756 \n 97 cntry_IS_x_lrscale  0.0596 \n 98 cntry_IT_x_atchctr  0.0381 \n 99 cntry_IT_x_atcherp -0.0405 \n100 cntry_IT_x_imueclt  0.114  \n101 cntry_IT_x_lrscale  0.111  \n102 cntry_LT_x_atchctr  0.145  \n103 cntry_LT_x_atcherp -0.113  \n104 cntry_LT_x_imueclt -0.0917 \n105 cntry_LT_x_lrscale  0.219  \n106 cntry_LV_x_atchctr  0.130  \n107 cntry_LV_x_atcherp -0.0431 \n108 cntry_LV_x_imueclt -0.161  \n109 cntry_LV_x_lrscale  0.365  \n110 cntry_ME_x_atchctr  0.198  \n111 cntry_ME_x_atcherp  0.136  \n112 cntry_ME_x_imueclt -0.179  \n113 cntry_ME_x_lrscale  0.0701 \n114 cntry_NL_x_atchctr  0.0416 \n115 cntry_NL_x_atcherp  0.138  \n116 cntry_NL_x_imueclt -0.130  \n117 cntry_NL_x_lrscale  0.182  \n118 cntry_NO_x_atchctr -0.0643 \n119 cntry_NO_x_atcherp -0.0283 \n120 cntry_NO_x_imueclt -0.202  \n121 cntry_NO_x_lrscale  0.187  \n122 cntry_PL_x_atchctr -0.00472\n123 cntry_PL_x_atcherp  0.0737 \n124 cntry_PL_x_imueclt -0.231  \n125 cntry_PL_x_lrscale -0.0290 \n126 cntry_PT_x_atchctr  0.0377 \n127 cntry_PT_x_atcherp -0.114  \n128 cntry_PT_x_imueclt -0.178  \n129 cntry_PT_x_lrscale  0.126  \n130 cntry_RS_x_atchctr  0.139  \n131 cntry_RS_x_atcherp  0.0996 \n132 cntry_RS_x_imueclt -0.285  \n133 cntry_RS_x_lrscale  0.167  \n134 cntry_SE_x_atchctr  0.0493 \n135 cntry_SE_x_atcherp -0.00505\n136 cntry_SE_x_imueclt -0.138  \n137 cntry_SE_x_lrscale  0.160  \n138 cntry_SI_x_atchctr  0.199  \n139 cntry_SI_x_atcherp -0.165  \n140 cntry_SI_x_imueclt -0.256  \n141 cntry_SI_x_lrscale  0.204  \n142 cntry_SK_x_atchctr  0.0955 \n143 cntry_SK_x_atcherp -0.0549 \n144 cntry_SK_x_imueclt -0.0424 \n145 cntry_SK_x_lrscale  0.137  \n\n\n\n\nNote: We omit std.error, p-values and so on in the display here because they are usually small in this large dataset, and we will not look at them now."
+  },
+  {
+    "objectID": "W10.html#recap-interpreting-with-interaction-effects",
+    "href": "W10.html#recap-interpreting-with-interaction-effects",
+    "title": "W#10: Cross validation",
+    "section": "Recap interpreting with interaction effects",
+    "text": "Recap interpreting with interaction effects\n\ness_train |> \n filter(cntry==\"AT\") |> \n select(-cntry) |> \n lm(formula = euftf ~ . ) |> \n tidy()\n\n# A tibble: 5 × 5\n  term        estimate std.error statistic  p.value\n  <chr>          <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)    2.92     0.377       7.74 1.68e-14\n2 atchctr       -0.176    0.0369     -4.77 1.98e- 6\n3 atcherp        0.276    0.0309      8.95 9.16e-19\n4 imueclt        0.402    0.0274     14.6  8.05e-46\n5 lrscale       -0.135    0.0354     -3.82 1.36e- 4"
+  },
+  {
+    "objectID": "W10.html#ne",
+    "href": "W10.html#ne",
+    "title": "W#10: Cross validation",
+    "section": "Ne",
+    "text": "Ne\n\n\n# A tibble: 785 × 2\n   .pred_0   .pred_1\n     <dbl>     <dbl>\n 1   0.931 0.0688   \n 2   0.996 0.00444  \n 3   0.994 0.00555  \n 4   0.914 0.0856   \n 5   0.775 0.225    \n 6   0.670 0.330    \n 7   1.00  0.000330 \n 8   1.00  0.0000793\n 9   0.997 0.00339  \n10   0.900 0.0995   \n# … with 775 more rows\n\n\n\n\n#  10-fold cross-validation \n# A tibble: 10 × 2\n   splits           id    \n   <list>           <chr> \n 1 <split [169/19]> Fold01\n 2 <split [169/19]> Fold02\n 3 <split [169/19]> Fold03\n 4 <split [169/19]> Fold04\n 5 <split [169/19]> Fold05\n 6 <split [169/19]> Fold06\n 7 <split [169/19]> Fold07\n 8 <split [169/19]> Fold08\n 9 <split [170/18]> Fold09\n10 <split [170/18]> Fold10\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W10.html#model-1.1-1.2-and-1.3",
+    "href": "W10.html#model-1.1-1.2-and-1.3",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing",
+    "section": "Model 1.1, 1.2, and 1.3",
+    "text": "Model 1.1, 1.2, and 1.3\n\n\n\nCreate an initial split with 80% training data\nCreate a linear model ess_mod\nCreate three recipes\n\ness_rec1 without using the country variable\ness_rec2 with main effects for all 29 countries\ness_rec3 with additional interaction effects for all 29 countries\n\nCreate the workflow\nFit 3 models by adding the 3 recipes\n\n\n\nset.seed(7)\ness_split <- initial_split(ess, prop = 0.80)\ness_train <- training(ess_split)\ness_test <- testing(ess_split)\n\ness_model <- linear_reg() |> set_engine(\"lm\")\ness_rec1 <- ess_train |> \n recipe(euftf ~ .) |> \n step_rm(cntry)\ness_rec2 <- ess_train |> \n recipe(euftf ~ .) |> \n step_dummy(cntry)\ness_rec3 <- ess_train |> \n recipe(euftf ~ .) |> \n step_dummy(cntry) |> \n step_interact(~starts_with(\"cntry\"):c(atchctr,atcherp,imueclt,lrscale))\n\ness_wflow <- workflow() |> \n add_model(ess_model)\n\ness_fit1 <- ess_wflow |> \n add_recipe(ess_rec1) |> \n fit(ess_train)\ness_fit2 <- ess_wflow |> \n add_recipe(ess_rec2) |> \n fit(ess_train)\ness_fit3 <- ess_wflow |> \n add_recipe(ess_rec3) |> \n fit(ess_train)"
+  },
+  {
+    "objectID": "W10.html#recap-interpreting-interaction-effects",
+    "href": "W10.html#recap-interpreting-interaction-effects",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Recap: Interpreting interaction effects",
+    "text": "Recap: Interpreting interaction effects\nIn Model 3 the reference country is Austria (AT) therefore the intercept and main coefficient are valid for Austria and all interaction coefficients have to be added to these to be interpreted.\nCross check: A linear model with the data filtered for Austria only without a country effect:\n\ness_train |> \n filter(cntry==\"AT\") |> \n select(-cntry) |> \n lm(formula = euftf ~ . ) |> \n tidy()\n\n# A tibble: 5 × 5\n  term        estimate std.error statistic  p.value\n  <chr>          <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)    2.65     0.364       7.28 5.06e-13\n2 atchctr       -0.135    0.0353     -3.83 1.34e- 4\n3 atcherp        0.259    0.0296      8.76 4.51e-18\n4 imueclt        0.412    0.0268     15.3  6.49e-50\n5 lrscale       -0.141    0.0338     -4.16 3.34e- 5\n\n\nThe coefficients are identical to the full model with all interaction effects."
+  },
+  {
+    "objectID": "W10.html#make-predictions-for-test-data",
+    "href": "W10.html#make-predictions-for-test-data",
+    "title": "W#10: Cross validation",
+    "section": "Make predictions for test data",
+    "text": "Make predictions for test data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W10.html#make-predictions-for-training-data",
+    "href": "W10.html#make-predictions-for-training-data",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Make predictions for training data",
+    "text": "Make predictions for training data\n\ness_train_pred1 <- predict(ess_fit1, ess_train) |> \n bind_cols(ess_train |> select(euftf, everything()))\ness_train_pred1\n\n# A tibble: 39,615 × 7\n   .pred euftf cntry atchctr atcherp imueclt lrscale\n   <dbl> <dbl> <chr>   <dbl>   <dbl>   <dbl>   <dbl>\n 1  5.27     3 HR          8       7       5       8\n 2  4.93     6 BG          6       5       5       7\n 3 NA        3 IE         10       9       3      NA\n 4 NA       NA EE         10      10       6      NA\n 5  5.20    NA BG         10       7       5       5\n 6  5.67     8 BG          9       6       8      10\n 7  5.52     3 AT         10      10       3       4\n 8  7.22     3 FR          9       8      10       0\n 9  4.17     1 FI          8       5       3       7\n10  4.47     4 BG         10       7       3       9\n# … with 39,605 more rows\n\n\nNote:\n\nWe can make predictions when the response in NA\nWe cannot make predictions when on predictor is NA"
+  },
+  {
+    "objectID": "W10.html#make-predictions-for-training-data-1",
+    "href": "W10.html#make-predictions-for-training-data-1",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Make predictions for training data",
+    "text": "Make predictions for training data\n\n\n\ness_train_pred2 <- predict(ess_fit2, ess_train) |> \n bind_cols(ess_train |> select(euftf, everything()))\ness_train_pred2\n\n# A tibble: 39,615 × 7\n   .pred euftf cntry atchctr atcherp imueclt lrscale\n   <dbl> <dbl> <chr>   <dbl>   <dbl>   <dbl>   <dbl>\n 1  5.42     3 HR          8       7       5       8\n 2  5.53     6 BG          6       5       5       7\n 3 NA        3 IE         10       9       3      NA\n 4 NA       NA EE         10      10       6      NA\n 5  5.75    NA BG         10       7       5       5\n 6  6.36     8 BG          9       6       8      10\n 7  4.86     3 AT         10      10       3       4\n 8  7.28     3 FR          9       8      10       0\n 9  3.54     1 FI          8       5       3       7\n10  5.08     4 BG         10       7       3       9\n# … with 39,605 more rows\n\n\n\n\ness_train_pred3 <- predict(ess_fit3, ess_train) |> \n bind_cols(ess_train |> select(euftf, everything()))\ness_train_pred3\n\n# A tibble: 39,615 × 7\n   .pred euftf cntry atchctr atcherp imueclt lrscale\n   <dbl> <dbl> <chr>   <dbl>   <dbl>   <dbl>   <dbl>\n 1  5.45     3 HR          8       7       5       8\n 2  5.22     6 BG          6       5       5       7\n 3 NA        3 IE         10       9       3      NA\n 4 NA       NA EE         10      10       6      NA\n 5  5.94    NA BG         10       7       5       5\n 6  6.47     8 BG          9       6       8      10\n 7  4.56     3 AT         10      10       3       4\n 8  7.06     3 FR          9       8      10       0\n 9  3.63     1 FI          8       5       3       7\n10  5.47     4 BG         10       7       3       9\n# … with 39,605 more rows"
+  },
+  {
+    "objectID": "W10.html#r-squared",
+    "href": "W10.html#r-squared",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "R-squared",
+    "text": "R-squared\nRecap R-squared: Percentage of variability in euftf explained by the model\n\n\nrsq(ess_train_pred1, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rsq     standard       0.178\n\n\n\n\n\nrsq(ess_train_pred2, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rsq     standard       0.230\n\n\n\n\n\nrsq(ess_train_pred3, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rsq     standard       0.253\n\n\n\nWhich model is better in prediction?"
+  },
+  {
+    "objectID": "W10.html#root-mean-squared-error-rmse",
+    "href": "W10.html#root-mean-squared-error-rmse",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Root mean squared error (RMSE)",
+    "text": "Root mean squared error (RMSE)\nRMSE is an alternative measure of performance.\n\\[\\text{RMSE} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2}\\]\nwhere \\(\\hat{y}_i\\) is the predicted value and \\(y_i\\) the true value.\n(The name RMSE pretty much describes what the measure does.)\n\n\nrmse(ess_train_pred1, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.44\n\n\n\n\n\nrmse(ess_train_pred2, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.36\n\n\n\n\n\nrmse(ess_train_pred3, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.32\n\n\n\nShould we prefer larger or lower RMSE?"
+  },
+  {
+    "objectID": "W10.html#interpreting-rmse",
+    "href": "W10.html#interpreting-rmse",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Interpreting RMSE",
+    "text": "Interpreting RMSE\nIn contrast to R-squared, RMSE can only be interpreted with knowledge about the range and of the response variable.\nThe values of euftf range from 0 to 10\n\nThe RMSE of 2.3244529 shows how much predicted values deviate from the true value on average."
+  },
+  {
+    "objectID": "W10.html#make-predictions-for-testing-data",
+    "href": "W10.html#make-predictions-for-testing-data",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Make predictions for testing data",
+    "text": "Make predictions for testing data\n\ness_test_pred3 <- predict(ess_fit3, ess_test) |> \n bind_cols(ess_test |> select(euftf, everything()))\ness_test_pred3\n\n# A tibble: 9,904 × 7\n   .pred euftf cntry atchctr atcherp imueclt lrscale\n   <dbl> <dbl> <chr>   <dbl>   <dbl>   <dbl>   <dbl>\n 1  3.93     5 AT          9       6       4       5\n 2 NA        2 AT         10       3       7      NA\n 3  4.49     4 AT          5       5       4       3\n 4  2.56     3 AT          8       6       0       4\n 5  7.73    10 AT         10      10      10       2\n 6  6.66     8 AT          5       7       8       3\n 7  2.87     2 AT         10       4       3       5\n 8  3.43     5 AT         10       3       5       5\n 9  7.19    10 AT          7       9       8       1\n10  3.24     8 AT         10       6       3       6\n# … with 9,894 more rows"
+  },
+  {
+    "objectID": "W10.html#training-vs.-testing-data-prediction",
+    "href": "W10.html#training-vs.-testing-data-prediction",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Training vs. testing data prediction",
+    "text": "Training vs. testing data prediction\n\n\n\n\n\nModel\nMetric\nTrain\nTest\n\n\n\n\n1\nR-squared\n0.178\n0.169\n\n\n1\nRMSE\n2.440\n2.451\n\n\n2\nR-squared\n0.230\n0.216\n\n\n2\nRMSE\n2.360\n2.381\n\n\n3\nR-squared\n0.253\n0.242\n\n\n3\nRMSE\n2.324\n2.340\n\n\n\n\n\n\nR-squared is a little lower in the test data, RMSE a bit higher (both mean lower performance)\nOften, metrics are worse for the testing data, as here.\nHowever, in it can also be the other way round by chance."
+  },
+  {
+    "objectID": "W10.html#how-to-evaluate-performance-on-training-data",
+    "href": "W10.html#how-to-evaluate-performance-on-training-data",
+    "title": "W#10: Cross validation",
+    "section": "How to evaluate performance on training data?",
+    "text": "How to evaluate performance on training data?\n\nModel performance changes with the random selection of the training data. How can we then reliably compare models?\nAnyway, the training data is not a good source for model performance. It is not an independent piece of information. Predicting the training data only reveals what the model already “knows”.\nAlso, we should save the testing data only for the final validation, so we should not use it systematically to compare models.\n\nA solution: Cross validation"
+  },
+  {
+    "objectID": "W10.html#cross-validation-1",
+    "href": "W10.html#cross-validation-1",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Cross validation",
+    "text": "Cross validation\nMore specifically, \\(v\\)-fold cross validation:\n\nShuffle your data and make a partition with \\(v\\) parts\n\nRecall from set theory: A partition is a division of a set into mutually disjoint parts which union cover the whole set. Here applied to observations (rows) in a data frame.\n\nUse 1 part for validation, and the remaining \\(v-1\\) parts for training\nRepeat \\(v\\) times"
+  },
+  {
+    "objectID": "W10.html#split-data-into-folds",
+    "href": "W10.html#split-data-into-folds",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Split data into folds",
+    "text": "Split data into folds\nWe split the ess data into ten parts.\n\n\n\nfolds <- vfold_cv(ess_train, v = 10)\nfolds\n\n#  10-fold cross-validation \n# A tibble: 10 × 2\n   splits               id    \n   <list>               <chr> \n 1 <split [35653/3962]> Fold01\n 2 <split [35653/3962]> Fold02\n 3 <split [35653/3962]> Fold03\n 4 <split [35653/3962]> Fold04\n 5 <split [35653/3962]> Fold05\n 6 <split [35654/3961]> Fold06\n 7 <split [35654/3961]> Fold07\n 8 <split [35654/3961]> Fold08\n 9 <split [35654/3961]> Fold09\n10 <split [35654/3961]> Fold10"
+  },
+  {
+    "objectID": "W10.html#cross-validation-2",
+    "href": "W10.html#cross-validation-2",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Cross validation",
+    "text": "Cross validation"
+  },
+  {
+    "objectID": "W10.html#fit-resamples",
+    "href": "W10.html#fit-resamples",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Fit resamples",
+    "text": "Fit resamples\nWe use the workflow (model plus formula and recipe) we have on the folds with fit_resamples.\n\ness_fit3_rs <- ess_wflow |> add_recipe(ess_rec3) |> \n fit_resamples(folds)\ness_fit3_rs\n\n# Resampling results\n# 10-fold cross-validation \n# A tibble: 10 × 4\n   splits               id     .metrics         .notes          \n   <list>               <chr>  <list>           <list>          \n 1 <split [35653/3962]> Fold01 <tibble [2 × 4]> <tibble [0 × 3]>\n 2 <split [35653/3962]> Fold02 <tibble [2 × 4]> <tibble [0 × 3]>\n 3 <split [35653/3962]> Fold03 <tibble [2 × 4]> <tibble [0 × 3]>\n 4 <split [35653/3962]> Fold04 <tibble [2 × 4]> <tibble [0 × 3]>\n 5 <split [35653/3962]> Fold05 <tibble [2 × 4]> <tibble [0 × 3]>\n 6 <split [35654/3961]> Fold06 <tibble [2 × 4]> <tibble [0 × 3]>\n 7 <split [35654/3961]> Fold07 <tibble [2 × 4]> <tibble [0 × 3]>\n 8 <split [35654/3961]> Fold08 <tibble [2 × 4]> <tibble [0 × 3]>\n 9 <split [35654/3961]> Fold09 <tibble [2 × 4]> <tibble [0 × 3]>\n10 <split [35654/3961]> Fold10 <tibble [2 × 4]> <tibble [0 × 3]>\n\n\nThis computes a set of performance metrics for each folds. For linear models the defaults are R-squared and RMSE."
+  },
+  {
+    "objectID": "W10.html#collect-the-metrics",
+    "href": "W10.html#collect-the-metrics",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Collect the metrics",
+    "text": "Collect the metrics\n\ness_fit3_rs |> collect_metrics()\n\n# A tibble: 2 × 6\n  .metric .estimator  mean     n std_err .config             \n  <chr>   <chr>      <dbl> <int>   <dbl> <chr>               \n1 rmse    standard   2.34     10 0.00794 Preprocessor1_Model1\n2 rsq     standard   0.245    10 0.00667 Preprocessor1_Model1\n\n\nThese values are indeed closer to the values we got for the test data."
+  },
+  {
+    "objectID": "W10.html#deeper-look-into-the-metrics",
+    "href": "W10.html#deeper-look-into-the-metrics",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Deeper look into the metrics",
+    "text": "Deeper look into the metrics\n\n\n\ness_fit3_rs |> collect_metrics(summarize = FALSE)\n\n# A tibble: 20 × 5\n   id     .metric .estimator .estimate .config             \n   <chr>  <chr>   <chr>          <dbl> <chr>               \n 1 Fold01 rmse    standard       2.29  Preprocessor1_Model1\n 2 Fold01 rsq     standard       0.278 Preprocessor1_Model1\n 3 Fold02 rmse    standard       2.35  Preprocessor1_Model1\n 4 Fold02 rsq     standard       0.238 Preprocessor1_Model1\n 5 Fold03 rmse    standard       2.33  Preprocessor1_Model1\n 6 Fold03 rsq     standard       0.258 Preprocessor1_Model1\n 7 Fold04 rmse    standard       2.38  Preprocessor1_Model1\n 8 Fold04 rsq     standard       0.249 Preprocessor1_Model1\n 9 Fold05 rmse    standard       2.34  Preprocessor1_Model1\n10 Fold05 rsq     standard       0.250 Preprocessor1_Model1\n11 Fold06 rmse    standard       2.32  Preprocessor1_Model1\n12 Fold06 rsq     standard       0.261 Preprocessor1_Model1\n13 Fold07 rmse    standard       2.36  Preprocessor1_Model1\n14 Fold07 rsq     standard       0.215 Preprocessor1_Model1\n15 Fold08 rmse    standard       2.35  Preprocessor1_Model1\n16 Fold08 rsq     standard       0.214 Preprocessor1_Model1\n17 Fold09 rmse    standard       2.33  Preprocessor1_Model1\n18 Fold09 rsq     standard       0.257 Preprocessor1_Model1\n19 Fold10 rmse    standard       2.35  Preprocessor1_Model1\n20 Fold10 rsq     standard       0.226 Preprocessor1_Model1\n\n\n\n\n\n\n\n\nid\nrmse\nrsq\n\n\n\n\nFold01\n2.286402\n0.2780252\n\n\nFold02\n2.352520\n0.2378150\n\n\nFold03\n2.334960\n0.2579689\n\n\nFold04\n2.376705\n0.2491427\n\n\nFold05\n2.338995\n0.2503009\n\n\nFold06\n2.315747\n0.2607719\n\n\nFold07\n2.362725\n0.2147322\n\n\nFold08\n2.347958\n0.2137093\n\n\nFold09\n2.331361\n0.2568661\n\n\nFold10\n2.345771\n0.2258870"
+  },
+  {
+    "objectID": "W10.html#cross-validation-for-logistic-regression",
+    "href": "W10.html#cross-validation-for-logistic-regression",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Cross validation for logistic regression",
+    "text": "Cross validation for logistic regression\nTake 2 simple models predicting the sex of penguins.\n\nlibrary(palmerpenguins)\npenguins <- na.omit(penguins)\nset.seed(9999)\npeng_split <- initial_split(penguins, prob = 0.8)\npeng_train <- training(peng_split)\npeng_test <- testing(peng_split)\npeng_folds <- vfold_cv(peng_train, v = 5)\n\npeng_rec1 <- peng_train |> \n recipe(sex ~ flipper_length_mm + body_mass_g, family = \"binomial\")\npeng_rec2 <- peng_train |> \n recipe(sex ~ bill_depth_mm + bill_length_mm, family = \"binomial\")  \npeng_mod <- logistic_reg() |> set_engine(\"glm\")\npeng_wflow1 <- workflow() |> add_model(peng_mod) |> add_recipe(peng_rec1)\npeng_wflow2 <- workflow() |> add_model(peng_mod) |> add_recipe(peng_rec2)\n\npeng_fit1 <- peng_wflow1 |> fit(peng_train)\npeng_fit2 <- peng_wflow2 |> fit(peng_train)\n\n\n\n\n\n# A tibble: 3 × 5\n  term              estimate std.error statistic  p.value\n  <chr>                <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)        8.72     3.02          2.89 3.90e- 3\n2 flipper_length_mm -0.0988   0.0225       -4.38 1.16e- 5\n3 body_mass_g        0.00267  0.000437      6.12 9.59e-10\n\n\n\n\n\n# A tibble: 3 × 5\n  term           estimate std.error statistic  p.value\n  <chr>             <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)     -24.4      3.29       -7.40 1.33e-13\n2 bill_depth_mm     0.791    0.111       7.13 1.01e-12\n3 bill_length_mm    0.249    0.0407      6.13 8.97e-10"
+  },
+  {
+    "objectID": "W10.html#accuracy",
+    "href": "W10.html#accuracy",
+    "title": "W#10: Cross validation",
+    "section": "Accuracy",
+    "text": "Accuracy\n\nAccuracy is the fraction of correct predictions: (TP + TN) / (TP + FP + FN + TN)\nRecall:\nSensitivity is the true positive rate: TP / (TP + FN)\nSpecificity is the true negative rate: TN / (TN + FP)"
+  },
+  {
+    "objectID": "W10.html#how-to-evaluate-performance-on-training-data-only",
+    "href": "W10.html#how-to-evaluate-performance-on-training-data-only",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "How to evaluate performance on training data only?",
+    "text": "How to evaluate performance on training data only?\n\nModel performance changes with the random selection of the training data. How can we then reliably compare models?\nAnyway, the training data is not a good source for model performance. It is not an independent piece of information. Predicting the training data only reveals what the model already “knows”.\nAlso, we should save the testing data only for the final validation, so we should not use it systematically to compare models.\n\nA solution: Cross validation"
+  },
+  {
+    "objectID": "W10.html#cross-validation-for-logistic-regression-1",
+    "href": "W10.html#cross-validation-for-logistic-regression-1",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Cross validation for logistic regression",
+    "text": "Cross validation for logistic regression\n\npeng_fit1_rs <- peng_wflow1 |> fit_resamples(peng_folds)\npeng_fit2_rs <- peng_wflow2 |> fit_resamples(peng_folds)\npeng_fit1_rs |> collect_metrics()\n\n# A tibble: 2 × 6\n  .metric  .estimator  mean     n std_err .config             \n  <chr>    <chr>      <dbl> <int>   <dbl> <chr>               \n1 accuracy binary     0.654     5  0.0298 Preprocessor1_Model1\n2 roc_auc  binary     0.755     5  0.0268 Preprocessor1_Model1\n\npeng_fit2_rs |> collect_metrics()\n\n# A tibble: 2 × 6\n  .metric  .estimator  mean     n std_err .config             \n  <chr>    <chr>      <dbl> <int>   <dbl> <chr>               \n1 accuracy binary     0.783     5  0.0240 Preprocessor1_Model1\n2 roc_auc  binary     0.857     5  0.0123 Preprocessor1_Model1\n\n\n\nFor the logistic regression has two performacne measures as default: AUC (area under the ROC-curve) and accuracy.\nThe model using the two variables about their bills performs better than the model using body mass and flipper length."
+  },
+  {
+    "objectID": "W10.html#accuracy-for-classifiers",
+    "href": "W10.html#accuracy-for-classifiers",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Accuracy for classifiers",
+    "text": "Accuracy for classifiers\nAll metrics for binary classifiers derive from the confusion matrix.\n\nAccuracy is the fraction of correct predictions: (TP + TN) / (TP + FP + FN + TN)\n\nAccuracy is a good overall performance measure but it does not specify if errors are false positives or false negatives.\nFor logistic regression:\n\nAccuracy relies on a decision for a threshold (default 50%) and has an easy direct interpretation.\nAUC is the area under the ROC-curve. It is derived sweeping over all possible thresholds.\n\n\nRecall:\nSensitivity is the true positive rate: TP / (TP + FN)\nSpecificity is the true negative rate: TN / (TN + FP)"
+  },
+  {
+    "objectID": "W10.html#comparison-of-metrics",
+    "href": "W10.html#comparison-of-metrics",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Comparison of metrics",
+    "text": "Comparison of metrics\n\n\nFlipper length, body mass\n\npeng_fit1_rs |> collect_metrics(summarize = FALSE) |> arrange(.metric)\n\n# A tibble: 10 × 5\n   id    .metric  .estimator .estimate .config             \n   <chr> <chr>    <chr>          <dbl> <chr>               \n 1 Fold1 accuracy binary         0.76  Preprocessor1_Model1\n 2 Fold2 accuracy binary         0.6   Preprocessor1_Model1\n 3 Fold3 accuracy binary         0.62  Preprocessor1_Model1\n 4 Fold4 accuracy binary         0.68  Preprocessor1_Model1\n 5 Fold5 accuracy binary         0.612 Preprocessor1_Model1\n 6 Fold1 roc_auc  binary         0.851 Preprocessor1_Model1\n 7 Fold2 roc_auc  binary         0.689 Preprocessor1_Model1\n 8 Fold3 roc_auc  binary         0.745 Preprocessor1_Model1\n 9 Fold4 roc_auc  binary         0.728 Preprocessor1_Model1\n10 Fold5 roc_auc  binary         0.761 Preprocessor1_Model1\n\npeng_test_pred1 <- predict(peng_fit1, new_data = peng_test, type = \"prob\") |> \n mutate(.pred_class_0.5 = if_else(.pred_female > 0.5, \"female\", \"male\") |> factor(),\n        .pred_class_0.45 = if_else(.pred_female > 0.45, \"female\", \"male\") |> factor(),\n        .pred_class_0.55 = if_else(.pred_female > 0.55, \"female\", \"male\") |> factor()\n        ) |> \n bind_cols(peng_test |> select(sex, everything())) \npeng_test_pred1 |> roc_auc(truth = sex, estimate = .pred_female)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.830\n\npeng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.5)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy binary         0.774\n\npeng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.55)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy binary         0.726\n\npeng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.45)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy binary         0.821\n\npeng_test_pred1 |> select(1:6)\n\n# A tibble: 84 × 6\n   .pred_female .pred_male .pred_class_0.5 .pred_class_0.45 .pred_class_…¹ sex  \n          <dbl>      <dbl> <fct>           <fct>            <fct>          <fct>\n 1       0.756       0.244 female          female           female         fema…\n 2       0.373       0.627 male            male             male           fema…\n 3       0.286       0.714 male            male             male           male \n 4       0.352       0.648 male            male             male           fema…\n 5       0.365       0.635 male            male             male           male \n 6       0.451       0.549 male            female           male           fema…\n 7       0.0491      0.951 male            male             male           male \n 8       0.700       0.300 female          female           female         fema…\n 9       0.532       0.468 female          female           male           male \n10       0.824       0.176 female          female           female         fema…\n# … with 74 more rows, and abbreviated variable name ¹​.pred_class_0.55\n\n\n\nBill length and depth\n\npeng_fit2_rs |> collect_metrics(summarize = FALSE) |> arrange(.metric)\n\n# A tibble: 10 × 5\n   id    .metric  .estimator .estimate .config             \n   <chr> <chr>    <chr>          <dbl> <chr>               \n 1 Fold1 accuracy binary         0.8   Preprocessor1_Model1\n 2 Fold2 accuracy binary         0.86  Preprocessor1_Model1\n 3 Fold3 accuracy binary         0.78  Preprocessor1_Model1\n 4 Fold4 accuracy binary         0.76  Preprocessor1_Model1\n 5 Fold5 accuracy binary         0.714 Preprocessor1_Model1\n 6 Fold1 roc_auc  binary         0.851 Preprocessor1_Model1\n 7 Fold2 roc_auc  binary         0.889 Preprocessor1_Model1\n 8 Fold3 roc_auc  binary         0.881 Preprocessor1_Model1\n 9 Fold4 roc_auc  binary         0.840 Preprocessor1_Model1\n10 Fold5 roc_auc  binary         0.825 Preprocessor1_Model1\n\npeng_test_pred2 <- predict(peng_fit2, new_data = peng_test, type = \"prob\") |> \n mutate(.pred_class_0.5 = if_else(.pred_female > 0.5, \"female\", \"male\") |> factor(),\n        .pred_class_0.45 = if_else(.pred_female > 0.45, \"female\", \"male\") |> factor(),\n        .pred_class_0.55 = if_else(.pred_female > 0.55, \"female\", \"male\") |> factor()\n        ) |> \n bind_cols(peng_test |> select(sex, everything())) \npeng_test_pred2 |> roc_auc(truth = sex, estimate = .pred_female)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 roc_auc binary         0.839\n\npeng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.5)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy binary         0.738\n\npeng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.55)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy binary         0.774\n\npeng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.45)\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  <chr>    <chr>          <dbl>\n1 accuracy binary          0.75\n\npeng_test_pred2 |> select(1:6)\n\n# A tibble: 84 × 6\n   .pred_female .pred_male .pred_class_0.5 .pred_class_0.45 .pred_class_…¹ sex  \n          <dbl>      <dbl> <fct>           <fct>            <fct>          <fct>\n 1        0.487      0.513 male            female           male           fema…\n 2        0.642      0.358 female          female           female         fema…\n 3        0.278      0.722 male            male             male           male \n 4        0.614      0.386 female          female           female         fema…\n 5        0.543      0.457 female          female           male           male \n 6        0.556      0.444 female          female           female         fema…\n 7        0.339      0.661 male            male             male           male \n 8        0.736      0.264 female          female           female         fema…\n 9        0.410      0.590 male            male             male           male \n10        0.855      0.145 female          female           female         fema…\n# … with 74 more rows, and abbreviated variable name ¹​.pred_class_0.55"
+  },
+  {
+    "objectID": "W10.html#galtons-data",
+    "href": "W10.html#galtons-data",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Galton’s data",
+    "text": "Galton’s data\nWhat is the weight of the meat of this ox?\n\nlibrary(readxl)\ngalton <- read_excel(\"data/galton_data.xlsx\")\ngalton |> ggplot(aes(Estimate)) + geom_histogram(binwidth = 5) + geom_vline(xintercept = 1198, color = \"green\") + \n geom_vline(xintercept = mean(galton$Estimate), color = \"red\")\n\n\n\n\n787 estimates, true value 1198, mean 1196.7\n\n\nWe focus on the arithmetic mean as aggregation function for the wisdom of the crowd here."
+  },
+  {
+    "objectID": "W10.html#rmse-galtons-data",
+    "href": "W10.html#rmse-galtons-data",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "RMSE Galton’s data",
+    "text": "RMSE Galton’s data\nDescribe the estimation game as a predictive model:\n\nAll estimates are made to predict the same value: the truth.\nThe truth is the same for all here.\n\n\nrmse_galton <- galton |> \n mutate(truth = 1198) |>\n rmse(truth = truth, estimate = Estimate)\nrmse_galton\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        73.6"
+  },
+  {
+    "objectID": "W10.html#the-diversity-prediction-theorem",
+    "href": "W10.html#the-diversity-prediction-theorem",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "The diversity prediction theorem1",
+    "text": "The diversity prediction theorem1\n\nMSE is a measure the average individuals error\nBias-squared is a measure the collective error\nVariance is a measure for the diversity of estimates around the mean\n\nThe mathematical relation \\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\] can be formulated as\nCollective error = Individual error - Diversity\nInterpretation: The higher the diversity the lower the collective error!\nNotion from: Page, S. E. (2007). The Difference: How the Power of Diversity Creates Better Groups, Firms, Schools, and Societies. Princeton University Press."
+  },
+  {
+    "objectID": "W10.html#mse-variance-and-bias-of-estimates",
+    "href": "W10.html#mse-variance-and-bias-of-estimates",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "MSE, Variance, and Bias of estimates",
+    "text": "MSE, Variance, and Bias of estimates\nLet us look at the following measures\n\n\\(\\text{MSE} = \\text{RMSE}^2 = \\frac{1}{n}\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2\\) where \\(y_i = \\text{truth}\\) here for all \\(i\\)\n\\(\\text{Variance} = \\frac{1}{n}\\sum_{i = 1}^n (y_i - \\bar{y})^2\\) where \\(\\bar{y}\\) is the mean, so the aggregated Wisdom of Crowd estimate here\n\\(\\text{Bias-squared} = (\\bar{y} - \\hat{y})^2\\) which is the square difference between truth and mean estimate.\n\nThere a mathematical relation (good math excerise to check):\n\\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\]"
+  },
+  {
+    "objectID": "W10.html#testing-for-galtons-data",
+    "href": "W10.html#testing-for-galtons-data",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Testing for Galton’s data",
+    "text": "Testing for Galton’s data\n\\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\]\n\nMSE <- (rmse_galton$.estimate)^2 \nMSE\n\n[1] 5409.795\n\nVariance <- var(galton$Estimate)*(nrow(galton)-1)/nrow(galton)\nVariance\n\n[1] 5408.132\n\n# Note, we had to correct for the divisor (n-1) in the classical statistical definition\n# to get the sample variance instead of the estimate for the population variance\nBias_squared <- (mean(galton$Estimate) - 1198)^2\nBias_squared\n\n[1] 1.663346\n\nBias_squared + Variance\n\n[1] 5409.795\n\n\n\n\nSuch nice mathematical properties are probably one reason why these squared measures are so popular."
+  },
+  {
+    "objectID": "W10.html#why-is-this-message-a-bit-suggestive",
+    "href": "W10.html#why-is-this-message-a-bit-suggestive",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Why is this message a bit suggestive?",
+    "text": "Why is this message a bit suggestive?\nThe mathematical relation \\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\] can be formulated as\nCollective error = Individual error - Diversity\nInterpretation: The higher the diversity the lower the collective error!\n\n\n\\(\\text{MSE}\\) and \\(\\text{Variance}\\) are not independent!\nActivities to increase diversity (Variance) typically also increase the average individual error (MSE).\nFor example, if we just add more random estimates with same mean but wild variance to our sample we increase both and do not gain any decrease of the collective error."
+  },
+  {
+    "objectID": "W10.html#accuracy-for-numerical-estimate",
+    "href": "W10.html#accuracy-for-numerical-estimate",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Accuracy for numerical estimate",
+    "text": "Accuracy for numerical estimate\n\nFor binary classifiers accuracy has a simple definition: Fraction of correct classifications.\n\nIt can be further informed by other more specific measures taken from the confusion matrix (sensitivity, specificity)\n\n\nHow about numerical estimators?\nFor example outcomes of estimation games, or linear regression models.\n\nAccuracy is for example measured by (R)MSE\n\\(\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\) shows us that we can make a\nbias-variance decomposition\nThat means some part of the error is a systematic (the bias) and another part due to random variation (the variance).\nLearn more about the bias-variance tradeoff in statistical learning independently!"
+  },
+  {
+    "objectID": "W10.html#d-accuracy-trueness-and-precision",
+    "href": "W10.html#d-accuracy-trueness-and-precision",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "2-d Accuracy: Trueness and Precision",
+    "text": "2-d Accuracy: Trueness and Precision\nAccording to ISO 5725-1 Standard: Accuracy (trueness and precision) of measurement methods and results - Part 1: General principles and definitions. there are two dimension of accuracy of numerical measurement."
+  },
+  {
+    "objectID": "W10.html#section",
+    "href": "W10.html#section",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing",
+    "section": "",
+    "text": "JU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W10.html#what-is-a-wise-crowd",
+    "href": "W10.html#what-is-a-wise-crowd",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "What is a wise crowd?",
+    "text": "What is a wise crowd?\nAssume the dots are estimates. Which is a wise crowd?\n\n\n\nOf course, high trueness and high precision! But, …\nFocusing on the crowd being wise instead of its individuals: High trueness, low precision."
+  },
+  {
+    "objectID": "W10.html#organ-donors",
+    "href": "W10.html#organ-donors",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Organ donors",
+    "text": "Organ donors\nPeople providing an organ for donation sometimes seek the help of a special “medical consultant”. These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant’s clients.\nOne consultant tried to attract patients by noting that the average complication rate for liver donor surgeries in the US is about 10%, but her clients have only had 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!)."
+  },
+  {
+    "objectID": "W10.html#data",
+    "href": "W10.html#data",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Data",
+    "text": "Data\n\norgan_donor <- tibble(\n  outcome = c(rep(\"complication\", 3), rep(\"no complication\", 59))\n)\n\n\norgan_donor |>\n  count(outcome)\n\n# A tibble: 2 × 2\n  outcome             n\n  <chr>           <int>\n1 complication        3\n2 no complication    59"
+  },
+  {
+    "objectID": "W10.html#parameter-vs.-statistic",
+    "href": "W10.html#parameter-vs.-statistic",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Parameter vs. statistic",
+    "text": "Parameter vs. statistic\nA parameter for a hypothesis test is the “true” value of interest. We typically estimate the parameter using a sample statistic as a point estimate.\n\\(p\\): true rate of complication, here 0.1 (10% complication rate in US)\n\\(\\hat{p}\\): rate of complication in the sample = \\(\\frac{3}{62}\\) = 0.048"
+  },
+  {
+    "objectID": "W10.html#correlation-vs.-causation",
+    "href": "W10.html#correlation-vs.-causation",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Correlation vs. causation",
+    "text": "Correlation vs. causation\nIs it possible to assess the consultant’s claim using the data?\nNo. The claim is: There is a causal connection, but the data are observational. For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate (for example).\nWhile it is not possible to assess the causal claim, it is still possible to test for an association using these data. For this question we ask, could the low complication rate of \\(\\hat{p}\\) = 0.048 be due to chance?"
+  },
+  {
+    "objectID": "W10.html#two-claims",
+    "href": "W10.html#two-claims",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Two claims",
+    "text": "Two claims\n\nNull hypothesis: “There is nothing going on”\n\nComplication rate for this consultant is no different than the US average of 10%\n\nAlternative hypothesis: “There is something going on”\n\nComplication rate for this consultant is lower than the US average of 10%"
+  },
+  {
+    "objectID": "W10.html#hypothesis-testing-as-a-court-trial",
+    "href": "W10.html#hypothesis-testing-as-a-court-trial",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Hypothesis testing as a court trial",
+    "text": "Hypothesis testing as a court trial\n\nNull hypothesis, \\(H_0\\): Defendant is innocent\nAlternative hypothesis, \\(H_A\\): Defendant is guilty\nPresent the evidence: Collect data\nJudge the evidence: “Could these data plausibly have happened by chance if the null hypothesis were true?”\n\nYes: Fail to reject \\(H_0\\)\nNo: Reject \\(H_0\\)"
+  },
+  {
+    "objectID": "W10.html#hypothesis-testing-framework",
+    "href": "W10.html#hypothesis-testing-framework",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Hypothesis testing framework",
+    "text": "Hypothesis testing framework\n\nStart with a null hypothesis, \\(H_0\\), that represents the status quo\nSet an alternative hypothesis, \\(H_A\\), that represents the research question, i.e. what we are testing for\nConduct a hypothesis test under the assumption that the null hypothesis is true and calculate a p-value.\nDefinition: Probability of observed or more extreme outcome given that the null hypothesis is true.\n\nif the test results suggest that the data do not provide convincing evidence for the alternative hypothesis, stick with the null hypothesis\nif they do, then reject the null hypothesis in favor of the alternative"
+  },
+  {
+    "objectID": "W10.html#setting-the-hypotheses",
+    "href": "W10.html#setting-the-hypotheses",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Setting the hypotheses",
+    "text": "Setting the hypotheses\nWhich of the following is the correct set of hypotheses for the claim that the consultant has lower complication rates?\n\n\\(H_0: p = 0.10\\); \\(H_A: p \\ne 0.10\\)\n\\(H_0: p = 0.10\\); \\(H_A: p > 0.10\\)\n\\(H_0: p = 0.10\\); \\(H_A: p < 0.10\\)\n\\(H_0: \\hat{p} = 0.10\\); \\(H_A: \\hat{p} \\ne 0.10\\)\n\\(H_0: \\hat{p} = 0.10\\); \\(H_A: \\hat{p} > 0.10\\)\n\\(H_0: \\hat{p} = 0.10\\); \\(H_A: \\hat{p} < 0.10\\)\n\n\nCorrect is c. Hypotheses are be about the true rate of complication \\(p\\) not the observed ones \\(\\hat{p}\\)"
+  },
+  {
+    "objectID": "W10.html#simulating-the-null-distribution",
+    "href": "W10.html#simulating-the-null-distribution",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Simulating the null distribution",
+    "text": "Simulating the null distribution\nSince \\(H_0: p = 0.10\\), we need to simulate a null distribution where the probability of success (complication) for each trial (patient) is 0.10.\nHow should we simulate the null distribution for this study using a bag of chips?\n\nHow many chips? 62\nHow many colors? 2\nWhat should colors represent? “complication”, “no complication”\nHow many draws? 62\nWith replacement or without replacement? With replacement\n\nWhen sampling from the null distribution, what would be the expected proportion of “complications”? 0.1"
+  },
+  {
+    "objectID": "W10.html#what-do-we-expect",
+    "href": "W10.html#what-do-we-expect",
+    "title": "W#10: Cross validation",
+    "section": "What do we expect?",
+    "text": "What do we expect?\n.question[ When sampling from the null distribution, what is the expected proportion of success (complications)?]"
+  },
+  {
+    "objectID": "W10.html#simulation",
+    "href": "W10.html#simulation",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Simulation!",
+    "text": "Simulation!\n\nset.seed(1234)\noutcomes <- c(\"complication\", \"no complication\")\nsim1 <- sample(outcomes, size = 62, prob = c(0.1, 0.9), replace = TRUE)\nsim1\n\n [1] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n [5] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n [9] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[13] \"no complication\" \"complication\"    \"no complication\" \"no complication\"\n[17] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[21] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[25] \"no complication\" \"no complication\" \"no complication\" \"complication\"   \n[29] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[33] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[37] \"no complication\" \"no complication\" \"complication\"    \"no complication\"\n[41] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[45] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[49] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[53] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[57] \"no complication\" \"no complication\" \"no complication\" \"no complication\"\n[61] \"no complication\" \"no complication\"\n\nsum(sim1 == \"complication\")/62\n\n[1] 0.0483871\n\n\nOh OK, this was is pretty close to the consultant’s rate. But maybe it was a rare event?"
+  },
+  {
+    "objectID": "W10.html#more-simulation",
+    "href": "W10.html#more-simulation",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "More simulation!",
+    "text": "More simulation!\n\none_sim <- function() sample(outcomes, size = 62, prob = c(0.1, 0.9), replace = TRUE)\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.1290323\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.1290323\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.09677419\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.09677419\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.1774194\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.1129032\n\nsum(one_sim() == \"complication\")/62\n\n[1] 0.1129032"
+  },
+  {
+    "objectID": "W10.html#automating-with-tidymodels",
+    "href": "W10.html#automating-with-tidymodels",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Automating with tidymodels1",
+    "text": "Automating with tidymodels1\n\n\n\norgan_donor\n\n# A tibble: 62 × 1\n   outcome        \n   <chr>          \n 1 complication   \n 2 complication   \n 3 complication   \n 4 no complication\n 5 no complication\n 6 no complication\n 7 no complication\n 8 no complication\n 9 no complication\n10 no complication\n# … with 52 more rows\n\n\n\n\nnull_dist <- organ_donor |>\n  specify(response = outcome, success = \"complication\") |>\n  hypothesize(null = \"point\", \n              p = c(\"complication\" = 0.10, \"no complication\" = 0.90)) |> \n  generate(reps = 100, type = \"draw\") |> \n  calculate(stat = \"prop\")\nnull_dist\n\nResponse: outcome (factor)\nNull Hypothesis: point\n# A tibble: 100 × 2\n   replicate   stat\n   <fct>      <dbl>\n 1 1         0.129 \n 2 2         0.0806\n 3 3         0.161 \n 4 4         0.145 \n 5 5         0.0484\n 6 6         0.145 \n 7 7         0.161 \n 8 8         0.129 \n 9 9         0.145 \n10 10        0.0968\n# … with 90 more rows\n\n\n\n\nOf course, you can also do it in your own way without packages."
+  },
+  {
+    "objectID": "W10.html#visualizing-the-null-distribution",
+    "href": "W10.html#visualizing-the-null-distribution",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Visualizing the null distribution",
+    "text": "Visualizing the null distribution\n\nggplot(data = null_dist, mapping = aes(x = stat)) +\n  geom_histogram(binwidth = 0.01) +\n  labs(title = \"Null distribution\")"
+  },
+  {
+    "objectID": "W10.html#calculating-the-p-value-visually",
+    "href": "W10.html#calculating-the-p-value-visually",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Calculating the p-value, visually",
+    "text": "Calculating the p-value, visually\nWhat is the p-value: How often was the simulated sample proportion at least as extreme as the observed sample proportion?"
+  },
+  {
+    "objectID": "W10.html#calculating-the-p-value-directly",
+    "href": "W10.html#calculating-the-p-value-directly",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Calculating the p-value, directly",
+    "text": "Calculating the p-value, directly\n\nnull_dist |>\n summarise(p_value = sum(stat < 3/62)/n())\n\n# A tibble: 1 × 1\n  p_value\n    <dbl>\n1    0.03\n\n\nThis is the fraction of simulations where the p-value was below 0.0483871."
+  },
+  {
+    "objectID": "W10.html#significance-level",
+    "href": "W10.html#significance-level",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Significance level",
+    "text": "Significance level\n\nA significance level \\(\\alpha\\) is a threshold we make up to make our judgment about the plausibility of the null hypothesis being true given the observed data.\nWe often use \\(\\alpha = 0.05 = 5\\%\\) as the cutoff for whether the p-value is low enough that the data are unlikely to have come from the null model.\nIf p-value < \\(\\alpha\\), reject \\(H_0\\) in favor of \\(H_A\\): The data provide convincing evidence for the alternative hypothesis.\nIf p-value > \\(\\alpha\\), fail to reject \\(H_0\\) in favor of \\(H_A\\): The data do not provide convincing evidence for the alternative hypothesis.\n\nWhat is the conclusion of the hypothesis test?\nSince the p-value is greater than the significance level, we fail to reject the null hypothesis. These data do not provide convincing evidence that this consultant incurs a lower complication rate than the 10% overall US complication rate."
+  },
+  {
+    "objectID": "W10.html#conclusion",
+    "href": "W10.html#conclusion",
+    "title": "W#10: Cross validation",
+    "section": "Conclusion",
+    "text": "Conclusion\n.question[ What is the conclusion of the hypothesis test?]\n–\nSince the p-value is greater than the significance level, we fail to reject the null hypothesis. These data do not provide convincing evidence that this consultant incurs a lower complication rate than 10% (overall US complication rate)."
+  },
+  {
+    "objectID": "W10.html#lets-get-real",
+    "href": "W10.html#lets-get-real",
+    "title": "W#10: Cross validation",
+    "section": "Let’s get real",
+    "text": "Let’s get real\n\n100 simulations is not sufficient\nWe usually simulate around 15,000 times to get an accurate distribution, but we’ll do 1,000 here for efficiency."
+  },
+  {
+    "objectID": "W10.html#run-the-test",
+    "href": "W10.html#run-the-test",
+    "title": "W#10: Cross validation",
+    "section": "Run the test",
+    "text": "Run the test\n.small[\n\n\n\n]"
+  },
+  {
+    "objectID": "W10.html#visualize-and-calculate",
+    "href": "W10.html#visualize-and-calculate",
+    "title": "W#10: Cross validation",
+    "section": "Visualize and calculate",
+    "text": "Visualize and calculate\n.small[\n\n\n\n]\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W10.html#simulations-is-not-sufficient",
+    "href": "W10.html#simulations-is-not-sufficient",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "100 simulations is not sufficient",
+    "text": "100 simulations is not sufficient\n\nWe simulate 15,000 times to get an accurate distribution.\n\n\nnull_dist <- organ_donor |>\n  specify(response = outcome, success = \"complication\") |>\n  hypothesize(null = \"point\", \n              p = c(\"complication\" = 0.10, \"no complication\" = 0.90)) |> \n  generate(reps = 15000, type = \"simulate\") |> \n  calculate(stat = \"prop\")\nggplot(data = null_dist, mapping = aes(x = stat)) +\n  geom_histogram(binwidth = 0.01) +\n  geom_vline(xintercept = 3/62, color = \"red\")"
+  },
+  {
+    "objectID": "W10.html#xkcd-on-p-values",
+    "href": "W10.html#xkcd-on-p-values",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "xkcd on p-values",
+    "text": "xkcd on p-values\n\n\n \n\n\n\nSignificance levels are fairly arbitrary. Sometimes they are used (wrongly) as definitive judgments\nThey can even be used to do p-hacking: Searching for “significant” effects in observational data\nIn parts of science it has become a “gamed” performance metric.\nThe p-value syas nothing about effect size!"
+  },
+  {
+    "objectID": "W10.html#our-more-robust-p-value",
+    "href": "W10.html#our-more-robust-p-value",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Our more robust p-value",
+    "text": "Our more robust p-value\nFor the null distribution with 15,000 simulations\n\nnull_dist |>\n  filter(stat <= 3/62) |>\n  summarise(p_value = n()/nrow(null_dist))\n\n# A tibble: 1 × 1\n  p_value\n    <dbl>\n1   0.122\n\n\nOh OK, our fist p-value was much more borderline in favor of the alternative hypothesis."
+  },
+  {
+    "objectID": "W10.html#model-purpose-predict-eu-attitudes",
+    "href": "W10.html#model-purpose-predict-eu-attitudes",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Model purpose: Predict EU attitudes",
+    "text": "Model purpose: Predict EU attitudes\n\ness <- ess_raw |> filter(essround == 9) |> \n select(cntry, euftf, atchctr, atcherp, imueclt, lrscale) |> \n mutate(euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99), \n        atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),\n        atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),\n        imueclt = imueclt |> na_if(77) |> na_if(88) |> na_if(99),\n        lrscale = lrscale |> na_if(77) |> na_if(88) |> na_if(99))\n\nFor the ESS dataset\n\nwe filter for people from round 9 (2018)\nselect 5 attitude variabels and ntry with 29 countries: AT, BE, BG, CH, CY, CZ, DE, DK, EE, ES, FI, FR, GB, HR, HU, IE, IS, IT, LT, LV, ME, NL, NO, PL, PT, RS, SE, SI, SK\nrecode NA’s properly for five variables:\neuftf: European Union: European unification go further (=10) or gone too far (=0)\natchctr: How emotionally attached to [country] (0 to 10)\natcherp: How emotionally attached to Europe (0 to 10)\nimueclt: Country’s cultural life undermined (=0) or enriched (=10) by immigrants\nlrscale: Placement on left (=0) right (=10) scale"
+  },
+  {
+    "objectID": "W10.html#model-1-2-and-3",
+    "href": "W10.html#model-1-2-and-3",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Model 1, 2, and 3",
+    "text": "Model 1, 2, and 3\n\n\n\nCreate an initial split with 80% training data\nCreate a linear model ess_mod\nCreate three recipes\n\ness_rec1 without using the country variable\ness_rec2 with main effects for all 29 countries\ness_rec3 with additional interaction effects for all 29 countries\n\nCreate the workflow\nFit 3 models by adding the 3 recipes\n\n\n\nset.seed(7)\ness_split <- initial_split(ess, prop = 0.80)\ness_train <- training(ess_split)\ness_test <- testing(ess_split)\n\ness_model <- linear_reg() |> set_engine(\"lm\")\ness_rec1 <- ess_train |> \n recipe(euftf ~ .) |> \n step_rm(cntry)\ness_rec2 <- ess_train |> \n recipe(euftf ~ .) |> \n step_dummy(cntry)\ness_rec3 <- ess_train |> \n recipe(euftf ~ .) |> \n step_dummy(cntry) |> \n step_interact(~starts_with(\"cntry\"):c(atchctr,atcherp,imueclt,lrscale))\n\ness_wflow <- workflow() |> \n add_model(ess_model)\n\ness_fit1 <- ess_wflow |> \n add_recipe(ess_rec1) |> \n fit(ess_train)\ness_fit2 <- ess_wflow |> \n add_recipe(ess_rec2) |> \n fit(ess_train)\ness_fit3 <- ess_wflow |> \n add_recipe(ess_rec3) |> \n fit(ess_train)"
+  },
+  {
+    "objectID": "W10.html#model-fits",
+    "href": "W10.html#model-fits",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Model fits",
+    "text": "Model fits\n\n\n\ntidy(ess_fit1) |> select(term, estimate) |> print(n = 33)\n\n# A tibble: 5 × 2\n  term        estimate\n  <chr>          <dbl>\n1 (Intercept)   2.92  \n2 atchctr      -0.0952\n3 atcherp       0.285 \n4 imueclt       0.287 \n5 lrscale      -0.0401\n\n\n\n\ntidy(ess_fit2)  |> select(term, estimate) |> print(n = 33)\n\n# A tibble: 33 × 2\n   term        estimate\n   <chr>          <dbl>\n 1 (Intercept)  2.10   \n 2 atchctr     -0.101  \n 3 atcherp      0.294  \n 4 imueclt      0.299  \n 5 lrscale     -0.0196 \n 6 cntry_BE     0.747  \n 7 cntry_BG     1.20   \n 8 cntry_CH    -0.0476 \n 9 cntry_CY     1.39   \n10 cntry_CZ     0.184  \n11 cntry_DE     1.32   \n12 cntry_DK     1.01   \n13 cntry_EE     0.532  \n14 cntry_ES     1.14   \n15 cntry_FI     0.00996\n16 cntry_FR     0.743  \n17 cntry_GB    -0.0705 \n18 cntry_HR     0.729  \n19 cntry_HU     0.216  \n20 cntry_IE     0.294  \n21 cntry_IS     0.0371 \n22 cntry_IT     0.593  \n23 cntry_LT     2.15   \n24 cntry_LV     0.426  \n25 cntry_ME     2.41   \n26 cntry_NL     0.600  \n27 cntry_NO    -0.170  \n28 cntry_PL     1.19   \n29 cntry_PT     1.42   \n30 cntry_RS     1.21   \n31 cntry_SE    -0.0761 \n32 cntry_SI     1.53   \n33 cntry_SK     0.178  \n\n\n\n\ntidy(ess_fit3)  |> select(term, estimate) |> print(n = 145)\n\n# A tibble: 145 × 2\n    term               estimate\n    <chr>                 <dbl>\n  1 (Intercept)         2.65   \n  2 atchctr            -0.135  \n  3 atcherp             0.259  \n  4 imueclt             0.412  \n  5 lrscale            -0.141  \n  6 cntry_BE            0.0202 \n  7 cntry_BG           -0.264  \n  8 cntry_CH            1.70   \n  9 cntry_CY            0.242  \n 10 cntry_CZ           -0.914  \n 11 cntry_DE            0.248  \n 12 cntry_DK            0.637  \n 13 cntry_EE           -0.709  \n 14 cntry_ES            1.15   \n 15 cntry_FI            0.143  \n 16 cntry_FR            0.136  \n 17 cntry_GB            0.486  \n 18 cntry_HR            0.177  \n 19 cntry_HU           -0.190  \n 20 cntry_IE            0.186  \n 21 cntry_IS            0.881  \n 22 cntry_IT           -0.582  \n 23 cntry_LT            0.925  \n 24 cntry_LV           -1.60   \n 25 cntry_ME            0.542  \n 26 cntry_NL           -0.804  \n 27 cntry_NO            0.763  \n 28 cntry_PL            2.24   \n 29 cntry_PT            2.18   \n 30 cntry_RS            0.220  \n 31 cntry_SE           -0.507  \n 32 cntry_SI            1.19   \n 33 cntry_SK           -0.604  \n 34 cntry_BE_x_atchctr -0.0249 \n 35 cntry_BE_x_atcherp  0.128  \n 36 cntry_BE_x_imueclt -0.130  \n 37 cntry_BE_x_lrscale  0.148  \n 38 cntry_BG_x_atchctr  0.220  \n 39 cntry_BG_x_atcherp -0.0614 \n 40 cntry_BG_x_imueclt -0.159  \n 41 cntry_BG_x_lrscale  0.151  \n 42 cntry_CH_x_atchctr -0.0286 \n 43 cntry_CH_x_atcherp  0.0194 \n 44 cntry_CH_x_imueclt -0.197  \n 45 cntry_CH_x_lrscale -0.106  \n 46 cntry_CY_x_atchctr  0.0956 \n 47 cntry_CY_x_atcherp  0.0496 \n 48 cntry_CY_x_imueclt -0.336  \n 49 cntry_CY_x_lrscale  0.300  \n 50 cntry_CZ_x_atchctr -0.0375 \n 51 cntry_CZ_x_atcherp -0.0267 \n 52 cntry_CZ_x_imueclt  0.0735 \n 53 cntry_CZ_x_lrscale  0.273  \n 54 cntry_DE_x_atchctr  0.0299 \n 55 cntry_DE_x_atcherp  0.159  \n 56 cntry_DE_x_imueclt -0.127  \n 57 cntry_DE_x_lrscale  0.0836 \n 58 cntry_DK_x_atchctr -0.0884 \n 59 cntry_DK_x_atcherp  0.0752 \n 60 cntry_DK_x_imueclt  0.0109 \n 61 cntry_DK_x_lrscale  0.0970 \n 62 cntry_EE_x_atchctr  0.0895 \n 63 cntry_EE_x_atcherp  0.0464 \n 64 cntry_EE_x_imueclt -0.137  \n 65 cntry_EE_x_lrscale  0.180  \n 66 cntry_ES_x_atchctr  0.0735 \n 67 cntry_ES_x_atcherp -0.0706 \n 68 cntry_ES_x_imueclt -0.0704 \n 69 cntry_ES_x_lrscale  0.0210 \n 70 cntry_FI_x_atchctr -0.106  \n 71 cntry_FI_x_atcherp  0.0602 \n 72 cntry_FI_x_imueclt -0.104  \n 73 cntry_FI_x_lrscale  0.176  \n 74 cntry_FR_x_atchctr -0.0254 \n 75 cntry_FR_x_atcherp  0.185  \n 76 cntry_FR_x_imueclt -0.195  \n 77 cntry_FR_x_lrscale  0.139  \n 78 cntry_GB_x_atchctr -0.0968 \n 79 cntry_GB_x_atcherp  0.161  \n 80 cntry_GB_x_imueclt -0.196  \n 81 cntry_GB_x_lrscale  0.0630 \n 82 cntry_HR_x_atchctr  0.145  \n 83 cntry_HR_x_atcherp -0.0138 \n 84 cntry_HR_x_imueclt -0.213  \n 85 cntry_HR_x_lrscale  0.120  \n 86 cntry_HU_x_atchctr  0.0531 \n 87 cntry_HU_x_atcherp -0.0656 \n 88 cntry_HU_x_imueclt -0.0588 \n 89 cntry_HU_x_lrscale  0.160  \n 90 cntry_IE_x_atchctr  0.0630 \n 91 cntry_IE_x_atcherp -0.0230 \n 92 cntry_IE_x_imueclt -0.138  \n 93 cntry_IE_x_lrscale  0.0874 \n 94 cntry_IS_x_atchctr -0.186  \n 95 cntry_IS_x_atcherp  0.111  \n 96 cntry_IS_x_imueclt -0.0756 \n 97 cntry_IS_x_lrscale  0.0596 \n 98 cntry_IT_x_atchctr  0.0381 \n 99 cntry_IT_x_atcherp -0.0405 \n100 cntry_IT_x_imueclt  0.114  \n101 cntry_IT_x_lrscale  0.111  \n102 cntry_LT_x_atchctr  0.145  \n103 cntry_LT_x_atcherp -0.113  \n104 cntry_LT_x_imueclt -0.0917 \n105 cntry_LT_x_lrscale  0.219  \n106 cntry_LV_x_atchctr  0.130  \n107 cntry_LV_x_atcherp -0.0431 \n108 cntry_LV_x_imueclt -0.161  \n109 cntry_LV_x_lrscale  0.365  \n110 cntry_ME_x_atchctr  0.198  \n111 cntry_ME_x_atcherp  0.136  \n112 cntry_ME_x_imueclt -0.179  \n113 cntry_ME_x_lrscale  0.0701 \n114 cntry_NL_x_atchctr  0.0416 \n115 cntry_NL_x_atcherp  0.138  \n116 cntry_NL_x_imueclt -0.130  \n117 cntry_NL_x_lrscale  0.182  \n118 cntry_NO_x_atchctr -0.0643 \n119 cntry_NO_x_atcherp -0.0283 \n120 cntry_NO_x_imueclt -0.202  \n121 cntry_NO_x_lrscale  0.187  \n122 cntry_PL_x_atchctr -0.00472\n123 cntry_PL_x_atcherp  0.0737 \n124 cntry_PL_x_imueclt -0.231  \n125 cntry_PL_x_lrscale -0.0290 \n126 cntry_PT_x_atchctr  0.0377 \n127 cntry_PT_x_atcherp -0.114  \n128 cntry_PT_x_imueclt -0.178  \n129 cntry_PT_x_lrscale  0.126  \n130 cntry_RS_x_atchctr  0.139  \n131 cntry_RS_x_atcherp  0.0996 \n132 cntry_RS_x_imueclt -0.285  \n133 cntry_RS_x_lrscale  0.167  \n134 cntry_SE_x_atchctr  0.0493 \n135 cntry_SE_x_atcherp -0.00505\n136 cntry_SE_x_imueclt -0.138  \n137 cntry_SE_x_lrscale  0.160  \n138 cntry_SI_x_atchctr  0.199  \n139 cntry_SI_x_atcherp -0.165  \n140 cntry_SI_x_imueclt -0.256  \n141 cntry_SI_x_lrscale  0.204  \n142 cntry_SK_x_atchctr  0.0955 \n143 cntry_SK_x_atcherp -0.0549 \n144 cntry_SK_x_imueclt -0.0424 \n145 cntry_SK_x_lrscale  0.137  \n\n\n\n\nNote: We omit std.error, p-values and so on in the display here because they are usually small in this large dataset, and we will not look at them now."
+  },
+  {
+    "objectID": "W10.html#some-probability-topics-for-data-science",
+    "href": "W10.html#some-probability-topics-for-data-science",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing",
+    "section": "Some Probability Topics for Data Science",
+    "text": "Some Probability Topics for Data Science\n\nThe concept of probability form the mathematical perspective.\nWhat is the difference between probability theory and statistics?\nMake precise what are probabilistic events, a probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions to link the theory with the practical treatment.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W10.html#probability-topics-for-data-science",
+    "href": "W10.html#probability-topics-for-data-science",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Probability Topics for Data Science",
+    "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat is the difference between probability theory and statistics?\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?"
+  },
+  {
+    "objectID": "W10.html#what-is-probability",
+    "href": "W10.html#what-is-probability",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "What is probability",
+    "text": "What is probability\n\n\nThe systematic and rigorous treatment of uncertainty.\nWe have a certain intuition of probability visible in sentences like:\n\n“That’s not very probable.”\n“That is likely.”\n“I don’t have a prior for that.”\n\nWe can call it a model for uncertainty: A simplified but formalized way to think about uncertain events.\nThe model of probability is one of the most successful mathematical models. It is used in many domains."
+  },
+  {
+    "objectID": "W10.html#two-different-flavors",
+    "href": "W10.html#two-different-flavors",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Two different flavors",
+    "text": "Two different flavors\n\nModel for uncertainty as subjective or objective probability of an uncertain event.\nThey are also called Bayesian vs. Frequentist interpretation of probability. * They differ in the way of reasoning, the interpretation what is random, and in terminology."
+  },
+  {
+    "objectID": "W10.html#objective-interpretation-of-probability",
+    "href": "W10.html#objective-interpretation-of-probability",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Objective interpretation of probability",
+    "text": "Objective interpretation of probability\nThe objective interpretation of probability is relative frequency in the limit of indefinite sampling. It is the long run behavior of non-deterministic outcomes.\n\nIf we flip the same coin several times the relative frequency of the number of HEADS converges to the probability of HEADS.\nIf we draw people at random the relative frequency of people with heights between 1.70m and 1.75m converges to the probability that a person is in this range.\nIn this frequentist philosophy the parameters of the population we sample from is fixed and the data is a random selection."
+  },
+  {
+    "objectID": "W10.html#subjective-interpretation-of-probability",
+    "href": "W10.html#subjective-interpretation-of-probability",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Subjective interpretation of probability",
+    "text": "Subjective interpretation of probability\nThe subjective interpretation of probability is the belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet.\n\nIf say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent.\nWe can make up similar bets for the heights of randomly drawn drawn people.\nIn Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities.\n\nThe objective and subjective views are not mutually exclusive and it is not important to take a side.\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W10.html#objective-interpretation",
+    "href": "W10.html#objective-interpretation",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Objective interpretation",
+    "text": "Objective interpretation\nProbability is relative frequency in the limit of indefinite sampling. It is the long run behavior of non-deterministic outcomes.\n\nIf we flip the same coin several times the relative frequency of the number of HEADS converges to the probability of HEADS.\nIf we draw people at random the relative frequency of people with heights between 1.70m and 1.75m converges to the probability that a person is in this range.\nIn this frequentist philosophy the parameters of the population we sample from is fixed and the data is a random selection."
+  },
+  {
+    "objectID": "W10.html#subjective-interpretation",
+    "href": "W10.html#subjective-interpretation",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Subjective interpretation",
+    "text": "Subjective interpretation\nProbability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet.\n\nIf say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent.\nWe can make up similar bets for the heights of randomly drawn drawn people.\nIn Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities.\n\nThe objective and subjective views are not mutually exclusive and it is not important to take a side.\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "index.html#core-resources",
+    "href": "index.html#core-resources",
+    "title": "Data Science Concepts / Tools",
+    "section": "2.1 Core resources",
+    "text": "2.1 Core resources\nA large part of the course will build on or be inspired by material in Data Science in the Box https://datasciencebox.org/ by Mine Çetinkaya-Rundel and the data science education community around. You can also use the website for accompanying self-study on selected topics.\nA core resource for self-learning data science with R is R for Data Science https://r4ds.had.co.nz/ by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics using tidyverse tools. Just out: Tidy Modeling with R https://www.tmwr.org/ by Max Kuhn and Julia Silge on using tidymodels.\nA core resource for data science basics with python is the Python Data Science Handbook https://jakevdp.github.io/PythonDataScienceHandbook/ by Jake VanderPlas. Also there is a good video playlist https://www.youtube.com/playlist?list=PLWKjhJtqVAbkmRvnFmOd4KhDdlK1oIq23 and a 4-hour “full-course” video https://youtu.be/rfscVS0vtbw."
+  },
+  {
+    "objectID": "index.html#mathematics",
+    "href": "index.html#mathematics",
+    "title": "Data Science Concepts / Tools",
+    "section": "2.2 Mathematics",
+    "text": "2.2 Mathematics\nSome helpful YouTube videos for those recaping maths:\nHow to read math https://www.youtube.com/watch?v=Kp2bYWRQylk\nData Visualization\nggplot2: Elegant Graphics for Data Analysis https://ggplot2-book.org is a resource on understanding the logic of ggplot better.\nWebsites on how to decide for what visualization to choose:\nhttps://www.data-to-viz.com/\nhttps://datavizcatalogue.com/search.html\nThe number of freely available learning resources is increasing rapidly.\nEveryone has a different learning style and a different background. Thus, different material may be most helpful.\nThis list shall be extended. Good self-study resources for data science with python, mathematics, statistics, data visualization, etc. shall be added here. Contact me if you find something useful to share. Ideally, with a short description when it may be most helpful."
+  },
+  {
+    "objectID": "index.html#week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation",
+    "href": "index.html#week-8-oct-20-homework-topics-typical-data-issues-more-linear-models-and-interpretation",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 8, Oct 20: Homework topics: Typical Data Issues, More Linear Models and Interpretation",
+    "text": "Week 8, Oct 20: Homework topics: Typical Data Issues, More Linear Models and Interpretation\nTopics:\n\nErrors, Differences, Missings in Data\nMore Linear Models\n\nMore predictors\nMain effects and interaction effects\n\nTo be finished\n\nSlides Week 8\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 should come. Due Nov 6."
+  },
+  {
+    "objectID": "index.html#week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability",
+    "href": "index.html#week-10-nov-3-performance-metrics-cross-validation-hypothesis-testing-math-probability",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 10, Nov 3: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "text": "Week 10, Nov 3: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability\nSlides Week 10\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 due in 3 days\nHomework 05 should come. Due Nov 20."
   }
 ]

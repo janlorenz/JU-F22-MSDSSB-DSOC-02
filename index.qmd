@@ -94,18 +94,21 @@ We use a mandatory set of software. Details are in the [slides of week 1](https:
 
 # Learning Resources
 
-Some week's lectures have readings to review before class. These shall come continuously updated in the schedule below. Check the schedule regularly. 
+## Core resources
 
 A large part of the course will build on or be inspired by material in **Data Science in the Box** <https://datasciencebox.org/> by Mine Çetinkaya-Rundel and the data science education community around. 
 You can also use the website for accompanying self-study on selected topics. 
 
 A core resource for self-learning data science with R is **R for Data Science** <https://r4ds.had.co.nz/> by Hadley Wickham and the R data science community around. This is a valuable resource for self-studying particular topics using `tidyverse` tools. 
-
 Just out: **Tidy Modeling with R** <https://www.tmwr.org/> by Max Kuhn and Julia Silge on using `tidymodels`. 
 
 A core resource for data science basics with python is the **Python Data Science Handbook** <https://jakevdp.github.io/PythonDataScienceHandbook/> by Jake VanderPlas. Also there is a good video playlist <https://www.youtube.com/playlist?list=PLWKjhJtqVAbkmRvnFmOd4KhDdlK1oIq23> and a 4-hour "full-course" video <https://youtu.be/rfscVS0vtbw>.
 
+## Mathematics
 
+Some helpful YouTube videos for those recaping maths:
+
+How to read math https://www.youtube.com/watch?v=Kp2bYWRQylk
 
 **Data Visualization**
 
@@ -194,7 +197,7 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 **Homework 03 is due Oct 16.**
 
-## Week 8, Oct 20: Homework topics: Typical Data Issual, More Linear Models and Interpretation {-}
+## Week 8, Oct 20: Homework topics: Typical Data Issues, More Linear Models and Interpretation {-}
 
 Topics: 
 
@@ -216,7 +219,10 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 **Homework 04 due in 10 days.**
 
-## Week 10, Nov 3:  {-}
+## Week 10, Nov 3: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability {-}
+
+[Slides Week 10](W10.qmd)  
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
 **Homework 04 due in 3 days**  
 **Homework 05 should come. Due Nov 20.**
