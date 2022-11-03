@@ -454,7 +454,7 @@
 <p>Check:</p>
 <ul>
 <li>What are the reference categories? <span class="fragment"><em>Being male without kids.</em></span></li>
-<li>Estimating model on life satisfaction. How would we see if being a mother/father increases life satisfaction more? <span class="fragment"><em>positiv/negative coefficient `gndr_f_x_has_kids</em></span></li>
+<li>Estimating model on life satisfaction. How would we see if being a mother/father increases life satisfaction more? <span class="fragment"><em>positiv/negative coefficient <code>gndr_f_x_has_kids</code></em></span></li>
 </ul>
 </section></section>
 <section>
@@ -836,17 +836,24 @@ Spam probability 40,000 characters: 0.0135999</p>
 <img data-src="img/confusion_small.png" class="r-stretch"></section>
 <section id="sensitivity-and-specificity-1" class="slide level2 smaller">
 <h2>Sensitivity and specificity</h2>
-
-<img data-src="img/confusion_small.png" class="r-stretch"><p><strong>Sensitivity</strong> is the <em>true positive rate</em>: TP / (TP + FN)<br>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="img/confusion_small.png"></p>
+</div><div class="column" style="width:60%;">
+<p><strong>Sensitivity</strong> is the <em>true positive rate</em>: TP / (TP + FN)<br>
 <strong>Specificity</strong> is the <em>true negative rate</em>: TN / (TN + FP)</p>
+</div>
+</div>
 <p>For spam:</p>
-<p>Sensitivity: Fraction of emails <em>labelled as</em> spam among all emails which <em>are</em> spam.</p>
-<p>Specificity: Fraction of emails <em>labelled as not</em> spam among all emails which <em>are not</em> spam.</p>
+<p>Sensitivity: Fraction of emails <em>labelled as</em> spam among all emails which <em>are</em> spam.<br>
+Low sensitivity <span class="math inline">\(\to\)</span> More false negatives <span class="math inline">\(\to\)</span> More spam in you inbox!</p>
+<p>Specificity: Fraction of emails <em>labelled as not</em> spam among all emails which <em>are not</em> spam.<br>
+Low specificity <span class="math inline">\(\to\)</span> More false positives <span class="math inline">\(\to\)</span> More relevant emails in spam folder!</p>
 <div class="fragment">
 <p>If you were designing a spam filter, would you want sensitivity and specificity to be high or low? What are the trade-offs associated with each decision?</p>
 </div>
 </section>
-<section id="covid-19-tests" class="slide level2">
+<section id="covid-19-tests" class="slide level2 smaller">
 <h2>COVID-19 tests</h2>
 <p><em>What is the sensitivity of a test?</em></p>
 <div class="fragment">
@@ -856,8 +863,14 @@ Spam probability 40,000 characters: 0.0135999</p>
 <p><em>What is the specificity of a test?</em></p>
 </div>
 <div class="fragment">
-<p>Probability to not have COVID-19 when the test is negativity.</p>
-<p>Often the sensitivity is around 90% and the specifity is aroung 99%. What does that mean?</p>
+<p>Probability to not have COVID-19 when the test is negative.</p>
+<p>Often the sensitivity is around 90% and the specificity is around 99%. What does that mean?</p>
+</div>
+<div class="fragment">
+<ul>
+<li>When you test negative you can be more sure that you don’t have it, than you can be sure that you have it when your test is positive.</li>
+<li>However, in a larger population of testing individuals with high prevalence also 99% specificity implies a large fraction of false negatives!</li>
+</ul>
 </div>
 </section>
 <section id="another-view" class="slide level2">
@@ -1073,7 +1086,7 @@ $ number       &lt;fct&gt; big, small, small, big, small, none, small, small, sm
 <h1>Workflow of Modeling</h1>
 
 </section>
-<section id="fit-a-model-to-the-training-dataset" class="slide level2 smaller">
+<section id="fit-a-model-to-the-training-dataset" class="slide level2">
 <h2>Fit a model to the training dataset</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>email_fit <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">|&gt;</span></span>
@@ -1084,7 +1097,14 @@ $ number       &lt;fct&gt; big, small, small, big, small, none, small, small, sm
 </div>
 </div>
 <p>We get a warning and should explore the reasons for 0 or 1 probability.</p>
-</section>
+
+<aside><div>
+<ul>
+<li>A deeper looking into the predicted probabilities (not shown here) shows that 4 cases are predicted to be spam with 100% probability, as well as 864 cases are predicted to be not spam with 100% probability.</li>
+<li>Note: The <code>dplyr</code> function <code>near</code> was used to assess if predicted probabilities were one.</li>
+<li>This is usually undesirable. Hence the warning.</li>
+</ul>
+</div></aside></section>
 <section id="look-at-categorical-predictors" class="slide level2">
 <h2>Look at categorical predictors</h2>
 
@@ -1177,7 +1197,7 @@ $ number       &lt;fct&gt; big, small, small, big, small, none, small, small, sm
 <li>We should exclude this variable for the same reason.</li>
 </ul>
 </section>
-<section id="fit-a-model-to-the-training-dataset-1" class="slide level2">
+<section id="fit-a-model-to-the-training-dataset-1" class="slide level2 smaller">
 <h2>Fit a model to the training dataset</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>email_fit <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">|&gt;</span></span>
@@ -1209,8 +1229,11 @@ Null Deviance:      1974
 Residual Deviance: 1447     AIC: 1485</code></pre>
 </div>
 </div>
-<p>We still get a warning, but without very high coefficients. Check later.</p>
-</section>
+<p>We still get a warning, but without very high coefficients.</p>
+
+<aside><div>
+<p>A deeper analysis shows that now only two cases are predicted not spam with 100% probability.</p>
+</div></aside></section>
 <section id="predict-with-the-testing-dataset" class="slide level2 smaller">
 <h2>Predict with the testing dataset</h2>
 <p>Predicting the raw values (log-odds)</p>

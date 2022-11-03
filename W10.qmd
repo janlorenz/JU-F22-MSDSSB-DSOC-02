@@ -17,96 +17,6 @@ format:
 library(tidyverse)
 library(tidymodels)
 library(openintro)
-owid <- read_csv("data/owid-covid-data.csv", 
-                 col_types = cols( 
-                   iso_code = col_character(),
-                   continent = col_character(),
-                   location = col_character(),
-                   date = col_date(format = ""),
-                   total_cases = col_double(),
-                   new_cases = col_double(),
-                   new_cases_smoothed = col_double(),
-                   total_deaths = col_double(),
-                   new_deaths = col_double(),
-                   new_deaths_smoothed = col_double(),
-                   total_cases_per_million = col_double(),
-                   new_cases_per_million = col_double(),
-                   new_cases_smoothed_per_million = col_double(),
-                   total_deaths_per_million = col_double(),
-                   new_deaths_per_million = col_double(),
-                   new_deaths_smoothed_per_million = col_double(),
-                   reproduction_rate = col_double(),
-                   icu_patients = col_double(),
-                   icu_patients_per_million = col_double(),
-                   hosp_patients = col_double(),
-                   hosp_patients_per_million = col_double(),
-                   weekly_icu_admissions = col_double(),
-                   weekly_icu_admissions_per_million = col_double(),
-                   weekly_hosp_admissions = col_double(),
-                   weekly_hosp_admissions_per_million = col_double(),
-                   total_tests = col_double(),
-                   new_tests = col_double(),
-                   total_tests_per_thousand = col_double(),
-                   new_tests_per_thousand = col_double(),
-                   new_tests_smoothed = col_double(),
-                   new_tests_smoothed_per_thousand = col_double(),
-                   positive_rate = col_double(),
-                   tests_per_case = col_double(),
-                   tests_units = col_character(),
-                   total_vaccinations = col_double(),
-                   people_vaccinated = col_double(),
-                   people_fully_vaccinated = col_double(),
-                   total_boosters = col_double(),
-                   new_vaccinations = col_double(),
-                   new_vaccinations_smoothed = col_double(),
-                   total_vaccinations_per_hundred = col_double(),
-                   people_vaccinated_per_hundred = col_double(),
-                   people_fully_vaccinated_per_hundred = col_double(),
-                   total_boosters_per_hundred = col_double(),
-                   new_vaccinations_smoothed_per_million = col_double(),
-                   new_people_vaccinated_smoothed = col_double(),
-                   new_people_vaccinated_smoothed_per_hundred = col_double(),
-                   stringency_index = col_double(),
-                   population = col_double(),
-                   population_density = col_double(),
-                   median_age = col_double(),
-                   aged_65_older = col_double(),
-                   aged_70_older = col_double(),
-                   gdp_per_capita = col_double(),
-                   extreme_poverty = col_double(),
-                   cardiovasc_death_rate = col_double(),
-                   diabetes_prevalence = col_double(),
-                   female_smokers = col_double(),
-                   male_smokers = col_double(),
-                   handwashing_facilities = col_double(),
-                   hospital_beds_per_thousand = col_double(),
-                   life_expectancy = col_double(),
-                   human_development_index = col_double(),
-                   excess_mortality_cumulative_absolute = col_double(),
-                   excess_mortality_cumulative = col_double(),
-                   excess_mortality = col_double(),
-                   excess_mortality_cumulative_per_million = col_double()
-                 ))
-who <- read_csv("data/WHO-COVID-19-global-data.csv", 
-                col_types = cols(
-                  Date_reported = col_date(format = ""),
-                  Country_code = col_character(),
-                  Country = col_character(),
-                  WHO_region = col_character(),
-                  New_cases = col_double(),
-                  Cumulative_cases = col_double(),
-                  New_deaths = col_double(),
-                  Cumulative_deaths = col_double()
-                ))
-who_owid <- who |>  
-  left_join(owid, by=c("Date_reported" = "date", "Country" = "location")) |> 
-  rename(Date = Date_reported, New_cases_who = New_cases, New_cases_owid = new_cases, 
-         Total_cases_who = Cumulative_cases, Total_cases_owid = total_cases) |> 
-  select (Date, Country, New_cases_who, New_cases_owid, Total_cases_who,
-          Total_cases_owid)
-owid_aug22 <- owid |> 
- filter(date == "2022-08-31", !is.na(human_development_index), 
-        !is.na(total_deaths_per_million), !is.na(continent))
 ess_raw <- read_csv("data/ESS-Data-Wizard-subset-2022-09-17.csv",
                 col_types = cols(
                  name = col_character(),
@@ -159,7 +69,7 @@ ess <- ess_raw |> filter(essround == 9) |>
 For the ESS dataset 
 
 - we filter for people from round 9 (2018)
-- select 5 attitude variabels and `ntry` with `r ess$cntry |> unique() |> length()` countries: `r ess$cntry |> unique()`
+- select 5 attitude variables and `cntry` with `r ess$cntry |> unique() |> length()` countries: `r ess$cntry |> unique()`
 - recode `NA`'s properly for five variables:   
 **euftf:** European Union: European unification go further (=10) or gone too far (=0)   
 **atchctr:** How emotionally attached to [country] (0 to 10)   
@@ -563,7 +473,7 @@ peng_fit2 |> tidy()
 
 ::::
 
-## Cross validation for logistic regression
+## Cross validation for logistic regression {.smaller}
 
 ```{r}
 #| echo: true
@@ -573,25 +483,34 @@ peng_fit1_rs |> collect_metrics()
 peng_fit2_rs |> collect_metrics()
 ```
 
-- For the logistic regression has two performacne measures as default: **AUC** (area under the ROC-curve) and **accuracy**. 
-- The model using the two variables about their bills performs better than the model using body mass and flipper length. 
+- For the logistic regression `fit_resamples` has two performance measures per default: **AUC** (area under the ROC-curve) and **accuracy**. 
+- The model using the two variables about penguin bills performs better than the model using body mass and flipper length. 
 
 
 
 ## Accuracy for classifiers {.smaller}
 
-All metrics for binary classifiers derive from the *confusion matrix*. 
+:::: {.columns}
 
-![](img/confusion_small.png)
-
-**Accuracy** is the fraction of correct predictions: (TP + TN) / (TP + FP + FN + TN)
+::: {.column width='60%'}
+**Accuracy** is the fraction of correct predictions:   
+(TP + TN) / (TP + FP + FN + TN)
 
 - Accuracy is a good overall performance measure but it does not specify if errors are false positives or false negatives. 
-- For logistic regression: 
-  - Accuracy relies on a decision for a threshold (default 50%) and has an easy direct interpretation.
-  - AUC is the area under the ROC-curve. It is derived sweeping over all possible thresholds. 
 
-Recall:  
+For logistic regression: 
+:::
+
+::: {.column width='40%'}
+![](img/confusion_small.png)
+:::
+
+::::
+
+- Accuracy relies a decision threshold (default 50%). It has an easy interpretation.
+- AUC is the area under the ROC-curve sweeping over all possible thresholds. 
+
+Recall:    
 **Sensitivity** is the *true positive rate*: TP / (TP + FN)  
 **Specificity** is the *true negative rate*: TN / (TN + FP)
 
@@ -604,7 +523,7 @@ Recall:
 Flipper length, body mass
 ```{r}
 #| echo: true
-peng_fit1_rs |> collect_metrics(summarize = FALSE) |> arrange(.metric)
+peng_fit1_rs |> collect_metrics(summarize = FALSE) |> select(-.config) |> arrange(.metric)
 peng_test_pred1 <- predict(peng_fit1, new_data = peng_test, type = "prob") |> 
  mutate(.pred_class_0.5 = if_else(.pred_female > 0.5, "female", "male") |> factor(),
         .pred_class_0.45 = if_else(.pred_female > 0.45, "female", "male") |> factor(),
@@ -612,10 +531,6 @@ peng_test_pred1 <- predict(peng_fit1, new_data = peng_test, type = "prob") |>
         ) |> 
  bind_cols(peng_test |> select(sex, everything())) 
 peng_test_pred1 |> roc_auc(truth = sex, estimate = .pred_female)
-peng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.5)
-peng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.55)
-peng_test_pred1 |> accuracy(truth = sex, estimate = .pred_class_0.45)
-peng_test_pred1 |> select(1:6)
 ```
 :::
 
@@ -624,7 +539,7 @@ Bill length and depth
 
 ```{r}
 #| echo: true
-peng_fit2_rs |> collect_metrics(summarize = FALSE) |> arrange(.metric)
+peng_fit2_rs |> collect_metrics(summarize = FALSE) |> select(-.config) |> arrange(.metric)
 peng_test_pred2 <- predict(peng_fit2, new_data = peng_test, type = "prob") |> 
  mutate(.pred_class_0.5 = if_else(.pred_female > 0.5, "female", "male") |> factor(),
         .pred_class_0.45 = if_else(.pred_female > 0.45, "female", "male") |> factor(),
@@ -632,14 +547,52 @@ peng_test_pred2 <- predict(peng_fit2, new_data = peng_test, type = "prob") |>
         ) |> 
  bind_cols(peng_test |> select(sex, everything())) 
 peng_test_pred2 |> roc_auc(truth = sex, estimate = .pred_female)
-peng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.5)
-peng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.55)
-peng_test_pred2 |> accuracy(truth = sex, estimate = .pred_class_0.45)
-peng_test_pred2 |> select(1:6)
 ```
 :::
 
 ::::
+
+
+## Comparison of metrics {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%'}
+Flipper length, body mass
+```{r}
+#| echo: true
+peng_test_pred1 |> 
+ accuracy(truth = sex, estimate = .pred_class_0.5)
+peng_test_pred1 |> 
+ accuracy(truth = sex, estimate = .pred_class_0.55)
+peng_test_pred1 |> 
+ accuracy(truth = sex, estimate = .pred_class_0.45)
+```
+:::
+
+::: {.column width='50%'}
+Bill length and depth
+
+```{r}
+#| echo: true
+peng_test_pred2 |> 
+ accuracy(truth = sex, estimate = .pred_class_0.5)
+peng_test_pred2 |> 
+ accuracy(truth = sex, estimate = .pred_class_0.55)
+peng_test_pred2 |> 
+ accuracy(truth = sex, estimate = .pred_class_0.45)
+```
+:::
+
+::::
+
+## Overview of predictions {.smaller}
+
+Bill length and depth
+```{r}
+#| echo: true
+peng_test_pred2 |> select(1:6)
+```
 
 
 # The wisdom of the crowd, "Diversity!", and the Bias-Variance-Decomposition
@@ -729,7 +682,7 @@ The mathematical relation $$\text{MSE} = \text{Bias-squared} + \text{Variance}$$
 Interpretation: *The higher the diversity the lower the collective error!*
 
 
-## Why is this message a bit suggestive?
+## Why is this message a bit suggestive? {.smaller}
 
 The mathematical relation $$\text{MSE} = \text{Bias-squared} + \text{Variance}$$ can be formulated as 
 
@@ -889,10 +842,10 @@ Since $H_0: p = 0.10$, we need to simulate a null distribution where the probabi
 
 **How should we simulate the null distribution for this study using a bag of chips?**
 
-- How many chips? [62]{.fragment style='color:red;'}
+- How many chips? [For example 10 which makes 10% choices possible]{.fragment style='color:red;'}
 - How many colors? [2]{.fragment style='color:red;'}
 - What should colors represent? ["complication", "no complication"]{.fragment style='color:red;'}
-- How many draws?  [62]{.fragment style='color:red;'}
+- How many draws?  [62 as the data]{.fragment style='color:red;'}
 - With replacement or without replacement? [With replacement]{.fragment style='color:red;'}
 
 When sampling from the null distribution, what would be the expected proportion of "complications"?  [0.1]{.fragment  style='color:red;'}
@@ -942,6 +895,7 @@ organ_donor
 ::: {.column width='60%'}
 ```{r}
 #| echo: true
+set.seed(10)
 null_dist <- organ_donor |>
   specify(response = outcome, success = "complication") |>
   hypothesize(null = "point", 
@@ -966,8 +920,6 @@ ggplot(data = null_dist, mapping = aes(x = stat)) +
 ```
 
 
----
-
 ## Calculating the p-value, visually {.smaller}
 
 What is the p-value: *How often was the simulated sample proportion at least as extreme as the observed sample proportion?*
@@ -985,7 +937,7 @@ ggplot(data = null_dist, mapping = aes(x = stat)) +
 ```{r}
 #| echo: true
 null_dist |>
- summarise(p_value = sum(stat < 3/62)/n())
+ summarise(p_value = sum(stat <= 3/62)/n())
 ```
 
 This is the fraction of simulations where the p-value was below `r 3/62`. 
@@ -1106,7 +1058,7 @@ Some concepts and topics
 Probability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet. 
 
  * If say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent. 
- * We can make up similar bets for the heights of randomly drawn drawn people. 
+ * We can make up similar bets for the heights of randomly drawn people. 
  * In Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities. 
 
 [The objective and subjective views are not mutually exclusive and it is not important to take a side.]{style='color:red;'}

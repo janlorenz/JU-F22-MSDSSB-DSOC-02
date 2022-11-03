@@ -415,7 +415,7 @@
 <p>For the ESS dataset</p>
 <ul>
 <li>we filter for people from round 9 (2018)</li>
-<li>select 5 attitude variabels and <code>ntry</code> with 29 countries: AT, BE, BG, CH, CY, CZ, DE, DK, EE, ES, FI, FR, GB, HR, HU, IE, IS, IT, LT, LV, ME, NL, NO, PL, PT, RS, SE, SI, SK</li>
+<li>select 5 attitude variables and <code>cntry</code> with 29 countries: AT, BE, BG, CH, CY, CZ, DE, DK, EE, ES, FI, FR, GB, HR, HU, IE, IS, IT, LT, LV, ME, NL, NO, PL, PT, RS, SE, SI, SK</li>
 <li>recode <code>NA</code>’s properly for five variables:<br>
 <strong>euftf:</strong> European Union: European unification go further (=10) or gone too far (=0)<br>
 <strong>atchctr:</strong> How emotionally attached to [country] (0 to 10)<br>
@@ -1238,7 +1238,7 @@
 </div>
 </div>
 </section>
-<section id="cross-validation-for-logistic-regression-1" class="slide level2">
+<section id="cross-validation-for-logistic-regression-1" class="slide level2 smaller">
 <h2>Cross validation for logistic regression</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>peng_fit1_rs <span class="ot">&lt;-</span> peng_wflow1 <span class="sc">|&gt;</span> <span class="fu">fit_resamples</span>(peng_folds)</span>
@@ -1261,22 +1261,27 @@
 </div>
 </div>
 <ul>
-<li>For the logistic regression has two performacne measures as default: <strong>AUC</strong> (area under the ROC-curve) and <strong>accuracy</strong>.</li>
-<li>The model using the two variables about their bills performs better than the model using body mass and flipper length.</li>
+<li>For the logistic regression <code>fit_resamples</code> has two performance measures per default: <strong>AUC</strong> (area under the ROC-curve) and <strong>accuracy</strong>.</li>
+<li>The model using the two variables about penguin bills performs better than the model using body mass and flipper length.</li>
 </ul>
 </section>
 <section id="accuracy-for-classifiers" class="slide level2 smaller">
 <h2>Accuracy for classifiers</h2>
-<p>All metrics for binary classifiers derive from the <em>confusion matrix</em>.</p>
-
-<img data-src="img/confusion_small.png" class="r-stretch"><p><strong>Accuracy</strong> is the fraction of correct predictions: (TP + TN) / (TP + FP + FN + TN)</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>Accuracy</strong> is the fraction of correct predictions:<br>
+(TP + TN) / (TP + FP + FN + TN)</p>
 <ul>
 <li>Accuracy is a good overall performance measure but it does not specify if errors are false positives or false negatives.</li>
-<li>For logistic regression:
+</ul>
+<p>For logistic regression:</p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/confusion_small.png"></p>
+</div>
+</div>
 <ul>
-<li>Accuracy relies on a decision for a threshold (default 50%) and has an easy direct interpretation.</li>
-<li>AUC is the area under the ROC-curve. It is derived sweeping over all possible thresholds.</li>
-</ul></li>
+<li>Accuracy relies a decision threshold (default 50%). It has an easy interpretation.</li>
+<li>AUC is the area under the ROC-curve sweeping over all possible thresholds.</li>
 </ul>
 <p>Recall:<br>
 <strong>Sensitivity</strong> is the <em>true positive rate</em>: TP / (TP + FN)<br>
@@ -1288,21 +1293,21 @@
 <div class="column" style="width:50%;">
 <p>Flipper length, body mass</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>peng_fit1_rs <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>peng_fit1_rs <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>.config) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   id    .metric  .estimator .estimate .config             
-   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
- 1 Fold1 accuracy binary         0.76  Preprocessor1_Model1
- 2 Fold2 accuracy binary         0.6   Preprocessor1_Model1
- 3 Fold3 accuracy binary         0.62  Preprocessor1_Model1
- 4 Fold4 accuracy binary         0.68  Preprocessor1_Model1
- 5 Fold5 accuracy binary         0.612 Preprocessor1_Model1
- 6 Fold1 roc_auc  binary         0.851 Preprocessor1_Model1
- 7 Fold2 roc_auc  binary         0.689 Preprocessor1_Model1
- 8 Fold3 roc_auc  binary         0.745 Preprocessor1_Model1
- 9 Fold4 roc_auc  binary         0.728 Preprocessor1_Model1
-10 Fold5 roc_auc  binary         0.761 Preprocessor1_Model1</code></pre>
+<pre><code># A tibble: 10 × 4
+   id    .metric  .estimator .estimate
+   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+ 1 Fold1 accuracy binary         0.76 
+ 2 Fold2 accuracy binary         0.6  
+ 3 Fold3 accuracy binary         0.62 
+ 4 Fold4 accuracy binary         0.68 
+ 5 Fold5 accuracy binary         0.612
+ 6 Fold1 roc_auc  binary         0.851
+ 7 Fold2 roc_auc  binary         0.689
+ 8 Fold3 roc_auc  binary         0.745
+ 9 Fold4 roc_auc  binary         0.728
+10 Fold5 roc_auc  binary         0.761</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>peng_test_pred1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(peng_fit1, <span class="at">new_data =</span> peng_test, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb48-2"><a href="#cb48-2"></a> <span class="fu">mutate</span>(<span class="at">.pred_class_0.5 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
@@ -1317,99 +1322,110 @@
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
 1 roc_auc binary         0.830</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  .metric  .estimator .estimate
-  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.774</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.55</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  .metric  .estimator .estimate
-  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.726</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  .metric  .estimator .estimate
-  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.821</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 84 × 6
-   .pred_female .pred_male .pred_class_0.5 .pred_class_0.45 .pred_class_…¹ sex  
-          &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;           &lt;fct&gt;            &lt;fct&gt;          &lt;fct&gt;
- 1       0.756       0.244 female          female           female         fema…
- 2       0.373       0.627 male            male             male           fema…
- 3       0.286       0.714 male            male             male           male 
- 4       0.352       0.648 male            male             male           fema…
- 5       0.365       0.635 male            male             male           male 
- 6       0.451       0.549 male            female           male           fema…
- 7       0.0491      0.951 male            male             male           male 
- 8       0.700       0.300 female          female           female         fema…
- 9       0.532       0.468 female          female           male           male 
-10       0.824       0.176 female          female           female         fema…
-# … with 74 more rows, and abbreviated variable name ¹​.pred_class_0.55</code></pre>
-</div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Bill length and depth</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>peng_fit2_rs <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>peng_fit2_rs <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>.config) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   id    .metric  .estimator .estimate .config             
-   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
- 1 Fold1 accuracy binary         0.8   Preprocessor1_Model1
- 2 Fold2 accuracy binary         0.86  Preprocessor1_Model1
- 3 Fold3 accuracy binary         0.78  Preprocessor1_Model1
- 4 Fold4 accuracy binary         0.76  Preprocessor1_Model1
- 5 Fold5 accuracy binary         0.714 Preprocessor1_Model1
- 6 Fold1 roc_auc  binary         0.851 Preprocessor1_Model1
- 7 Fold2 roc_auc  binary         0.889 Preprocessor1_Model1
- 8 Fold3 roc_auc  binary         0.881 Preprocessor1_Model1
- 9 Fold4 roc_auc  binary         0.840 Preprocessor1_Model1
-10 Fold5 roc_auc  binary         0.825 Preprocessor1_Model1</code></pre>
+<pre><code># A tibble: 10 × 4
+   id    .metric  .estimator .estimate
+   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+ 1 Fold1 accuracy binary         0.8  
+ 2 Fold2 accuracy binary         0.86 
+ 3 Fold3 accuracy binary         0.78 
+ 4 Fold4 accuracy binary         0.76 
+ 5 Fold5 accuracy binary         0.714
+ 6 Fold1 roc_auc  binary         0.851
+ 7 Fold2 roc_auc  binary         0.889
+ 8 Fold3 roc_auc  binary         0.881
+ 9 Fold4 roc_auc  binary         0.840
+10 Fold5 roc_auc  binary         0.825</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>peng_test_pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(peng_fit2, <span class="at">new_data =</span> peng_test, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb60-2"><a href="#cb60-2"></a> <span class="fu">mutate</span>(<span class="at">.pred_class_0.5 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb60-3"><a href="#cb60-3"></a>        <span class="at">.pred_class_0.45 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.45</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb60-4"><a href="#cb60-4"></a>        <span class="at">.pred_class_0.55 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.55</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>()</span>
-<span id="cb60-5"><a href="#cb60-5"></a>        ) <span class="sc">|&gt;</span> </span>
-<span id="cb60-6"><a href="#cb60-6"></a> <span class="fu">bind_cols</span>(peng_test <span class="sc">|&gt;</span> <span class="fu">select</span>(sex, <span class="fu">everything</span>())) </span>
-<span id="cb60-7"><a href="#cb60-7"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">roc_auc</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_female)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>peng_test_pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(peng_fit2, <span class="at">new_data =</span> peng_test, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb52-2"><a href="#cb52-2"></a> <span class="fu">mutate</span>(<span class="at">.pred_class_0.5 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb52-3"><a href="#cb52-3"></a>        <span class="at">.pred_class_0.45 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.45</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb52-4"><a href="#cb52-4"></a>        <span class="at">.pred_class_0.55 =</span> <span class="fu">if_else</span>(.pred_female <span class="sc">&gt;</span> <span class="fl">0.55</span>, <span class="st">"female"</span>, <span class="st">"male"</span>) <span class="sc">|&gt;</span> <span class="fu">factor</span>()</span>
+<span id="cb52-5"><a href="#cb52-5"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb52-6"><a href="#cb52-6"></a> <span class="fu">bind_cols</span>(peng_test <span class="sc">|&gt;</span> <span class="fu">select</span>(sex, <span class="fu">everything</span>())) </span>
+<span id="cb52-7"><a href="#cb52-7"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">roc_auc</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_female)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
 1 roc_auc binary         0.839</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  .metric  .estimator .estimate
-  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.738</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.55</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="comparison-of-metrics-1" class="slide level2 smaller">
+<h2>Comparison of metrics</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Flipper length, body mass</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> </span>
+<span id="cb54-2"><a href="#cb54-2"></a> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric  .estimator .estimate
   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
 1 accuracy binary         0.774</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> </span>
+<span id="cb56-2"><a href="#cb56-2"></a> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.55</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.726</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>peng_test_pred1 <span class="sc">|&gt;</span> </span>
+<span id="cb58-2"><a href="#cb58-2"></a> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.821</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Bill length and depth</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> </span>
+<span id="cb60-2"><a href="#cb60-2"></a> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.738</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> </span>
+<span id="cb62-2"><a href="#cb62-2"></a> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.55</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.774</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> </span>
+<span id="cb64-2"><a href="#cb64-2"></a> <span class="fu">accuracy</span>(<span class="at">truth =</span> sex, <span class="at">estimate =</span> .pred_class_0<span class="fl">.45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric  .estimator .estimate
   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
 1 accuracy binary          0.75</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="overview-of-predictions" class="slide level2 smaller">
+<h2>Overview of predictions</h2>
+<p>Bill length and depth</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>peng_test_pred2 <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 84 × 6
    .pred_female .pred_male .pred_class_0.5 .pred_class_0.45 .pred_class_…¹ sex  
@@ -1427,8 +1443,6 @@
 # … with 74 more rows, and abbreviated variable name ¹​.pred_class_0.55</code></pre>
 </div>
 </div>
-</div>
-</div>
 </section></section>
 <section>
 <section id="the-wisdom-of-the-crowd-diversity-and-the-bias-variance-decomposition" class="title-slide slide level1 center">
@@ -1439,12 +1453,12 @@
 <h2>Galton’s data</h2>
 <p><em>What is the weight of the meat of this ox?</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb70-2"><a href="#cb70-2"></a>galton <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/galton_data.xlsx"</span>)</span>
-<span id="cb70-3"><a href="#cb70-3"></a>galton <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Estimate)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1198</span>, <span class="at">color =</span> <span class="st">"green"</span>) <span class="sc">+</span> </span>
-<span id="cb70-4"><a href="#cb70-4"></a> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(galton<span class="sc">$</span>Estimate), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb68-2"><a href="#cb68-2"></a>galton <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/galton_data.xlsx"</span>)</span>
+<span id="cb68-3"><a href="#cb68-3"></a>galton <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Estimate)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1198</span>, <span class="at">color =</span> <span class="st">"green"</span>) <span class="sc">+</span> </span>
+<span id="cb68-4"><a href="#cb68-4"></a> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(galton<span class="sc">$</span>Estimate), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="W10_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><img data-src="W10_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
 </div>
 </div>
 <p>787 estimates, <span style="color:green;">true value</span> 1198, <span style="color:red;">mean</span> 1196.7</p>
@@ -1460,10 +1474,10 @@
 <li>The truth is the same for all here.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>rmse_galton <span class="ot">&lt;-</span> galton <span class="sc">|&gt;</span> </span>
-<span id="cb71-2"><a href="#cb71-2"></a> <span class="fu">mutate</span>(<span class="at">truth =</span> <span class="dv">1198</span>) <span class="sc">|&gt;</span></span>
-<span id="cb71-3"><a href="#cb71-3"></a> <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> Estimate)</span>
-<span id="cb71-4"><a href="#cb71-4"></a>rmse_galton</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>rmse_galton <span class="ot">&lt;-</span> galton <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a> <span class="fu">mutate</span>(<span class="at">truth =</span> <span class="dv">1198</span>) <span class="sc">|&gt;</span></span>
+<span id="cb69-3"><a href="#cb69-3"></a> <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> Estimate)</span>
+<span id="cb69-4"><a href="#cb69-4"></a>rmse_galton</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
@@ -1487,24 +1501,24 @@
 <h2>Testing for Galton’s data</h2>
 <p><span class="math display">\[\text{MSE} = \text{Bias-squared} + \text{Variance}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>MSE <span class="ot">&lt;-</span> (rmse_galton<span class="sc">$</span>.estimate)<span class="sc">^</span><span class="dv">2</span> </span>
-<span id="cb73-2"><a href="#cb73-2"></a>MSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>MSE <span class="ot">&lt;-</span> (rmse_galton<span class="sc">$</span>.estimate)<span class="sc">^</span><span class="dv">2</span> </span>
+<span id="cb71-2"><a href="#cb71-2"></a>MSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5409.795</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>Variance <span class="ot">&lt;-</span> <span class="fu">var</span>(galton<span class="sc">$</span>Estimate)<span class="sc">*</span>(<span class="fu">nrow</span>(galton)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">nrow</span>(galton)</span>
-<span id="cb75-2"><a href="#cb75-2"></a>Variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>Variance <span class="ot">&lt;-</span> <span class="fu">var</span>(galton<span class="sc">$</span>Estimate)<span class="sc">*</span>(<span class="fu">nrow</span>(galton)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">nrow</span>(galton)</span>
+<span id="cb73-2"><a href="#cb73-2"></a>Variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5408.132</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># Note, we had to correct for the divisor (n-1) in the classical statistical definition</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a><span class="co"># to get the sample variance instead of the estimate for the population variance</span></span>
-<span id="cb77-3"><a href="#cb77-3"></a>Bias_squared <span class="ot">&lt;-</span> (<span class="fu">mean</span>(galton<span class="sc">$</span>Estimate) <span class="sc">-</span> <span class="dv">1198</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb77-4"><a href="#cb77-4"></a>Bias_squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># Note, we had to correct for the divisor (n-1) in the classical statistical definition</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a><span class="co"># to get the sample variance instead of the estimate for the population variance</span></span>
+<span id="cb75-3"><a href="#cb75-3"></a>Bias_squared <span class="ot">&lt;-</span> (<span class="fu">mean</span>(galton<span class="sc">$</span>Estimate) <span class="sc">-</span> <span class="dv">1198</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb75-4"><a href="#cb75-4"></a>Bias_squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.663346</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>Bias_squared <span class="sc">+</span> Variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>Bias_squared <span class="sc">+</span> Variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5409.795</code></pre>
 </div>
@@ -1524,7 +1538,7 @@
 <p><strong>Collective error = Individual error - Diversity</strong></p>
 <p>Interpretation: <em>The higher the diversity the lower the collective error!</em></p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Notion from: Page, S. E. (2007). The Difference: How the Power of Diversity Creates Better Groups, Firms, Schools, and Societies. Princeton University Press.</p></li></ol></aside></section>
-<section id="why-is-this-message-a-bit-suggestive" class="slide level2">
+<section id="why-is-this-message-a-bit-suggestive" class="slide level2 smaller">
 <h2>Why is this message a bit suggestive?</h2>
 <p>The mathematical relation <span class="math display">\[\text{MSE} = \text{Bias-squared} + \text{Variance}\]</span> can be formulated as</p>
 <p><strong>Collective error = Individual error - Diversity</strong></p>
@@ -1584,13 +1598,13 @@ For example outcomes of estimation games, or linear regression models.</p>
 <section id="data" class="slide level2 smaller">
 <h2>Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>organ_donor <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb81-2"><a href="#cb81-2"></a>  <span class="at">outcome =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"complication"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"no complication"</span>, <span class="dv">59</span>))</span>
-<span id="cb81-3"><a href="#cb81-3"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>organ_donor <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb79-2"><a href="#cb79-2"></a>  <span class="at">outcome =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"complication"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"no complication"</span>, <span class="dv">59</span>))</span>
+<span id="cb79-3"><a href="#cb79-3"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>organ_donor <span class="sc">|&gt;</span></span>
-<span id="cb82-2"><a href="#cb82-2"></a>  <span class="fu">count</span>(outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>organ_donor <span class="sc">|&gt;</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">count</span>(outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   outcome             n
@@ -1669,10 +1683,10 @@ For example outcomes of estimation games, or linear regression models.</p>
 <p>Since <span class="math inline">\(H_0: p = 0.10\)</span>, we need to simulate a null distribution where the probability of success (complication) for each trial (patient) is 0.10.</p>
 <p><strong>How should we simulate the null distribution for this study using a bag of chips?</strong></p>
 <ul>
-<li>How many chips? <span class="fragment" style="color:red;">62</span></li>
+<li>How many chips? <span class="fragment" style="color:red;">For example 10 which makes 10% choices possible</span></li>
 <li>How many colors? <span class="fragment" style="color:red;">2</span></li>
 <li>What should colors represent? <span class="fragment" style="color:red;">“complication”, “no complication”</span></li>
-<li>How many draws? <span class="fragment" style="color:red;">62</span></li>
+<li>How many draws? <span class="fragment" style="color:red;">62 as the data</span></li>
 <li>With replacement or without replacement? <span class="fragment" style="color:red;">With replacement</span></li>
 </ul>
 <p>When sampling from the null distribution, what would be the expected proportion of “complications”? <span class="fragment" style="color:red;">0.1</span></p>
@@ -1680,10 +1694,10 @@ For example outcomes of estimation games, or linear regression models.</p>
 <section id="simulation" class="slide level2 smaller">
 <h2>Simulation!</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb84-2"><a href="#cb84-2"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"complication"</span>, <span class="st">"no complication"</span>)</span>
-<span id="cb84-3"><a href="#cb84-3"></a>sim1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(outcomes, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb84-4"><a href="#cb84-4"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb82-2"><a href="#cb82-2"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"complication"</span>, <span class="st">"no complication"</span>)</span>
+<span id="cb82-3"><a href="#cb82-3"></a>sim1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(outcomes, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb82-4"><a href="#cb82-4"></a>sim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "no complication" "no complication" "no complication" "no complication"
  [5] "no complication" "no complication" "no complication" "no complication"
@@ -1702,7 +1716,7 @@ For example outcomes of estimation games, or linear regression models.</p>
 [57] "no complication" "no complication" "no complication" "no complication"
 [61] "no complication" "no complication"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">sum</span>(sim1 <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">sum</span>(sim1 <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0483871</code></pre>
 </div>
@@ -1712,15 +1726,19 @@ For example outcomes of estimation games, or linear regression models.</p>
 <section id="more-simulation" class="slide level2 smaller">
 <h2>More simulation!</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>one_sim <span class="ot">&lt;-</span> <span class="cf">function</span>() <span class="fu">sample</span>(outcomes, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb88-2"><a href="#cb88-2"></a></span>
-<span id="cb88-3"><a href="#cb88-3"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>one_sim <span class="ot">&lt;-</span> <span class="cf">function</span>() <span class="fu">sample</span>(outcomes, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb86-2"><a href="#cb86-2"></a></span>
+<span id="cb86-3"><a href="#cb86-3"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1290323</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1290323</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1290323</code></pre>
+<pre><code>[1] 0.09677419</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1728,17 +1746,13 @@ For example outcomes of estimation games, or linear regression models.</p>
 </div>
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.09677419</code></pre>
+<pre><code>[1] 0.1774194</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1774194</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1129032</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">sum</span>(<span class="fu">one_sim</span>() <span class="sc">==</span> <span class="st">"complication"</span>)<span class="sc">/</span><span class="dv">62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1129032</code></pre>
 </div>
@@ -1749,7 +1763,7 @@ For example outcomes of estimation games, or linear regression models.</p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>organ_donor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>organ_donor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 62 × 1
    outcome        
@@ -1769,28 +1783,29 @@ For example outcomes of estimation games, or linear regression models.</p>
 </div>
 </div><div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a>null_dist <span class="ot">&lt;-</span> organ_donor <span class="sc">|&gt;</span></span>
-<span id="cb104-2"><a href="#cb104-2"></a>  <span class="fu">specify</span>(<span class="at">response =</span> outcome, <span class="at">success =</span> <span class="st">"complication"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb104-3"><a href="#cb104-3"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"point"</span>, </span>
-<span id="cb104-4"><a href="#cb104-4"></a>              <span class="at">p =</span> <span class="fu">c</span>(<span class="st">"complication"</span> <span class="ot">=</span> <span class="fl">0.10</span>, <span class="st">"no complication"</span> <span class="ot">=</span> <span class="fl">0.90</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb104-5"><a href="#cb104-5"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">100</span>, <span class="at">type =</span> <span class="st">"draw"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb104-6"><a href="#cb104-6"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"prop"</span>)</span>
-<span id="cb104-7"><a href="#cb104-7"></a>null_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb102-2"><a href="#cb102-2"></a>null_dist <span class="ot">&lt;-</span> organ_donor <span class="sc">|&gt;</span></span>
+<span id="cb102-3"><a href="#cb102-3"></a>  <span class="fu">specify</span>(<span class="at">response =</span> outcome, <span class="at">success =</span> <span class="st">"complication"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb102-4"><a href="#cb102-4"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"point"</span>, </span>
+<span id="cb102-5"><a href="#cb102-5"></a>              <span class="at">p =</span> <span class="fu">c</span>(<span class="st">"complication"</span> <span class="ot">=</span> <span class="fl">0.10</span>, <span class="st">"no complication"</span> <span class="ot">=</span> <span class="fl">0.90</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb102-6"><a href="#cb102-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">100</span>, <span class="at">type =</span> <span class="st">"draw"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb102-7"><a href="#cb102-7"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"prop"</span>)</span>
+<span id="cb102-8"><a href="#cb102-8"></a>null_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response: outcome (factor)
 Null Hypothesis: point
 # A tibble: 100 × 2
    replicate   stat
    &lt;fct&gt;      &lt;dbl&gt;
- 1 1         0.129 
- 2 2         0.0806
- 3 3         0.161 
- 4 4         0.145 
- 5 5         0.0484
- 6 6         0.145 
- 7 7         0.161 
+ 1 1         0.0323
+ 2 2         0.0645
+ 3 3         0.0968
+ 4 4         0.0161
+ 5 5         0.161 
+ 6 6         0.0968
+ 7 7         0.0645
  8 8         0.129 
- 9 9         0.145 
+ 9 9         0.161 
 10 10        0.0968
 # … with 90 more rows</code></pre>
 </div>
@@ -1801,27 +1816,27 @@ Null Hypothesis: point
 <section id="visualizing-the-null-distribution" class="slide level2 smaller">
 <h2>Visualizing the null distribution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_dist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb106-2"><a href="#cb106-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
-<span id="cb106-3"><a href="#cb106-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Null distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_dist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb104-2"><a href="#cb104-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb104-3"><a href="#cb104-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Null distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W10_files/figure-revealjs/unnamed-chunk-40-1.png" width="960" class="r-stretch"></section>
+<img data-src="W10_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" class="r-stretch"></section>
 <section id="calculating-the-p-value-visually" class="slide level2 smaller">
 <h2>Calculating the p-value, visually</h2>
 <p>What is the p-value: <em>How often was the simulated sample proportion at least as extreme as the observed sample proportion?</em></p>
 
-<img data-src="W10_files/figure-revealjs/unnamed-chunk-41-1.png" style="width:50.0%" class="r-stretch"></section>
+<img data-src="W10_files/figure-revealjs/unnamed-chunk-44-1.png" style="width:50.0%" class="r-stretch"></section>
 <section id="calculating-the-p-value-directly" class="slide level2">
 <h2>Calculating the p-value, directly</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a>null_dist <span class="sc">|&gt;</span></span>
-<span id="cb107-2"><a href="#cb107-2"></a> <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">sum</span>(stat <span class="sc">&lt;</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">62</span>)<span class="sc">/</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a>null_dist <span class="sc">|&gt;</span></span>
+<span id="cb105-2"><a href="#cb105-2"></a> <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">sum</span>(stat <span class="sc">&lt;=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">62</span>)<span class="sc">/</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1    0.03</code></pre>
+1    0.13</code></pre>
 </div>
 </div>
 <p>This is the fraction of simulations where the p-value was below 0.0483871.</p>
@@ -1843,30 +1858,30 @@ Null Hypothesis: point
 <li>We simulate 15,000 times to get an accurate distribution.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a>null_dist <span class="ot">&lt;-</span> organ_donor <span class="sc">|&gt;</span></span>
-<span id="cb109-2"><a href="#cb109-2"></a>  <span class="fu">specify</span>(<span class="at">response =</span> outcome, <span class="at">success =</span> <span class="st">"complication"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb109-3"><a href="#cb109-3"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"point"</span>, </span>
-<span id="cb109-4"><a href="#cb109-4"></a>              <span class="at">p =</span> <span class="fu">c</span>(<span class="st">"complication"</span> <span class="ot">=</span> <span class="fl">0.10</span>, <span class="st">"no complication"</span> <span class="ot">=</span> <span class="fl">0.90</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb109-5"><a href="#cb109-5"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">15000</span>, <span class="at">type =</span> <span class="st">"simulate"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb109-6"><a href="#cb109-6"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"prop"</span>)</span>
-<span id="cb109-7"><a href="#cb109-7"></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_dist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb109-8"><a href="#cb109-8"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
-<span id="cb109-9"><a href="#cb109-9"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">62</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a>null_dist <span class="ot">&lt;-</span> organ_donor <span class="sc">|&gt;</span></span>
+<span id="cb107-2"><a href="#cb107-2"></a>  <span class="fu">specify</span>(<span class="at">response =</span> outcome, <span class="at">success =</span> <span class="st">"complication"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb107-3"><a href="#cb107-3"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"point"</span>, </span>
+<span id="cb107-4"><a href="#cb107-4"></a>              <span class="at">p =</span> <span class="fu">c</span>(<span class="st">"complication"</span> <span class="ot">=</span> <span class="fl">0.10</span>, <span class="st">"no complication"</span> <span class="ot">=</span> <span class="fl">0.90</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb107-5"><a href="#cb107-5"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">15000</span>, <span class="at">type =</span> <span class="st">"simulate"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb107-6"><a href="#cb107-6"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"prop"</span>)</span>
+<span id="cb107-7"><a href="#cb107-7"></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_dist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb107-8"><a href="#cb107-8"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb107-9"><a href="#cb107-9"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">62</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="W10_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" class="r-stretch"></section>
+<img data-src="W10_files/figure-revealjs/unnamed-chunk-46-1.png" width="960" class="r-stretch"></section>
 <section id="our-more-robust-p-value" class="slide level2">
 <h2>Our more robust p-value</h2>
 <p>For the null distribution with 15,000 simulations</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>null_dist <span class="sc">|&gt;</span></span>
-<span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">filter</span>(stat <span class="sc">&lt;=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">62</span>) <span class="sc">|&gt;</span></span>
-<span id="cb110-3"><a href="#cb110-3"></a>  <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(null_dist))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>null_dist <span class="sc">|&gt;</span></span>
+<span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">filter</span>(stat <span class="sc">&lt;=</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">62</span>) <span class="sc">|&gt;</span></span>
+<span id="cb108-3"><a href="#cb108-3"></a>  <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(null_dist))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1   0.122</code></pre>
+1   0.125</code></pre>
 </div>
 </div>
 <p>Oh OK, our fist p-value was much more borderline in favor of the alternative hypothesis.</p>
@@ -1947,7 +1962,7 @@ Null Hypothesis: point
 <p>Probability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet.</p>
 <ul>
 <li>If say we flip a coin, we can offer a person a bet for HEADS, e.g.&nbsp;you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent.</li>
-<li>We can make up similar bets for the heights of randomly drawn drawn people.</li>
+<li>We can make up similar bets for the heights of randomly drawn people.</li>
 <li>In Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities.</li>
 </ul>
 <p><span style="color:red;">The objective and subjective views are not mutually exclusive and it is not important to take a side.</span></p>

@@ -45,7 +45,7 @@ tibble(gndr_f = c(0,1,1,0), has_kids = c(1,0,1,0)) |>
 Check:
 
 - What are the reference categories? [*Being male without kids.*]{.fragment}
-- Estimating model on life satisfaction. How would we see if being a mother/father increases life satisfaction more? [*positiv/negative coefficient `gndr_f_x_has_kids*]{.fragment}
+- Estimating model on life satisfaction. How would we see if being a mother/father increases life satisfaction more? [*positiv/negative coefficient `gndr_f_x_has_kids`*]{.fragment}
 
 # Predicting Categorical Data
 
@@ -365,16 +365,27 @@ of statistical classification:
 
 ## Sensitivity and specificity {.smaller}
 
-![](img/confusion_small.png)
+:::: {.columns}
 
+::: {.column width='40%'}
+![](img/confusion_small.png)
+:::
+
+::: {.column width='60%'}
 **Sensitivity** is the *true positive rate*: TP / (TP + FN)  
 **Specificity** is the *true negative rate*: TN / (TN + FP)
+:::
+
+::::
+
 
 For spam: 
 
-Sensitivity: Fraction of emails *labelled as* spam among all emails which *are* spam.
+Sensitivity: Fraction of emails *labelled as* spam among all emails which *are* spam.  
+Low sensitivity $\to$ More false negatives $\to$ More spam in you inbox!
 
-Specificity: Fraction of emails *labelled as not* spam among all emails which *are not* spam.
+Specificity: Fraction of emails *labelled as not* spam among all emails which *are not* spam.  
+Low specificity $\to$ More false positives $\to$ More relevant emails in spam folder!
 
 . . .
 
@@ -382,7 +393,7 @@ If you were designing a spam filter, would you want sensitivity and specificity 
 What are the trade-offs associated with each decision? 
 
 
-## COVID-19 tests
+## COVID-19 tests {.smaller}
 
 *What is the sensitivity of a test?*
 
@@ -396,10 +407,14 @@ Probability to have COVID-19 when the test is positive.
 
 . . . 
 
-Probability to not have COVID-19 when the test is negativity.
+Probability to not have COVID-19 when the test is negative.
 
-Often the sensitivity is around 90% and the specifity is aroung 99%. What does that mean?
+Often the sensitivity is around 90% and the specificity is around 99%. What does that mean?  
 
+. . .
+
+- When you test negative you can be more sure that you don't have it, than you can be sure that you have it when your test is positive. 
+- However, in a larger population of testing individuals with high prevalence also 99% specificity implies a large fraction of false negatives!
 
 ## Another view
 
@@ -546,7 +561,7 @@ glimpse(test_data)
 
 # Workflow of Modeling
 
-## Fit a model to the training dataset {.smaller}
+## Fit a model to the training dataset 
 
 ```{r}
 #| echo: true
@@ -557,6 +572,13 @@ email_fit <- logistic_reg() |>
 ```
 
 We get a warning and should explore the reasons for 0 or 1 probability. 
+
+
+::: aside
+- A deeper looking into the predicted probabilities (not shown here) shows that 4 cases are predicted to be spam with 100% probability, as well as 864 cases are predicted to be not spam with 100% probability. 
+- Note: The `dplyr` function `near` was used to assess if predicted probabilities were one. 
+- This is usually undesirable. Hence the warning. 
+:::
 
 ## Look at categorical predictors
 
@@ -653,7 +675,7 @@ train_data |>
 - We should exclude this variable for the same reason. 
 
 
-## Fit a model to the training dataset
+## Fit a model to the training dataset {.smaller}
 
 ```{r}
 #| echo: true
@@ -664,7 +686,12 @@ email_fit <- logistic_reg() |>
 email_fit
 ```
 
-We still get a warning, but without very high coefficients. Check later. 
+We still get a warning, but without very high coefficients. 
+
+::: aside
+A deeper analysis shows that now only two cases are predicted not spam with 100% probability. 
+:::
+
 
 
 ## Predict with the testing dataset {.smaller}
@@ -1053,7 +1080,7 @@ simple_email_pred |>
   )
 ```
 
-**Conclusion:** It is not as good compare to AUC 0.86
+**Conclusion:** It is not as good compared to AUC 0.86
 
 
 
