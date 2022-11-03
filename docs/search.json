@@ -2853,7 +2853,7 @@
     "href": "W10.html#calculating-the-p-value-directly",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Calculating the p-value, directly",
-    "text": "Calculating the p-value, directly\n\nnull_dist |>\n summarise(p_value = sum(stat <= 3/62)/n())\n\n# A tibble: 1 × 1\n  p_value\n    <dbl>\n1    0.13\n\n\nThis is the fraction of simulations where the p-value was below 0.0483871."
+    "text": "Calculating the p-value, directly\n\nnull_dist |>\n summarise(p_value = sum(stat <= 3/62)/n())\n\n# A tibble: 1 × 1\n  p_value\n    <dbl>\n1    0.13\n\n\nThis is the fraction of simulations where complications was equal or below 0.0483871."
   },
   {
     "objectID": "W10.html#significance-level",

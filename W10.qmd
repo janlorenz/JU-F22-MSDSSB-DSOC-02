@@ -940,7 +940,7 @@ null_dist |>
  summarise(p_value = sum(stat <= 3/62)/n())
 ```
 
-This is the fraction of simulations where the p-value was below `r 3/62`. 
+This is the fraction of simulations where complications was equal or below `r 3/62`. 
 
 
 ## Significance level  {.smaller}
