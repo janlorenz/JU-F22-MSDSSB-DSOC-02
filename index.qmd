@@ -77,7 +77,7 @@ Test to log in and visit the *Data Science Concepts* course on [*jMoodle*](https
 
 If possible, **recordings** are made via Teams and saved in the Teams general channel under Files -> Recordings. 
 
-**GitHub:** All delivery and submission of homework is via Github. Details in the lecture slides of week 1 and "Homework 01" (on this page).  
+**GitHub:** All delivery and submission of homework and the final exam is via individual repositories on Github in the GitHub organization <https://github.com/JU-F22-MDSSB-MET-01>. Details are in the lecture [slides of week 1](https://docs.google.com/presentation/d/1GyEClkRDo5aOKuHeOZxgvz2uqo_x5t-c1CQ-ksGXTq0/edit?usp=sharing) and [Homework 01](hw-instructions/hw-01-instr.qmd) on this page.  
 
 ## Software
 
@@ -85,11 +85,20 @@ We use a mandatory set of software. Details are in the [slides of week 1](https:
 
 ## Assessment and Grading
 
-*This will be updated and made more specific later.*
+### Data Science Concepts Module
 
-**Data Science Concepts:** Assessment is based on an exam of 120 minutes. It will be scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices probably in the range around Dec 15. 
+Assessment is based on an exam of 120 minutes. It is scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices for **Dec 15, 12:30-14:30**. 
 
-**Data Science Tools:** Assessment is based on a **team project** of approximately 4000-5000 words. As a requirement, enough homework assignment tasks need to be correctly solved. These do not determine the grade, but can improve it. 
+The exam will be open-book and take-home exam. It will be delivered individually via GitHub through the organization <https://github.com/JU-F22-MDSSB-MET-01> as the Homework. 
+
+### Data Science Tools Module
+
+Assessment is based on a **team project** of approximately 4000-5000 words. Which are delivered in personalized repositories in the GitHub organization <https://github.com/JU-F22-MDSSB-MET-01>.
+
+Additionally, the handbook list a *requirement* to pass the module and a *bonus* option to increase the grade by 0.33 (while making the best grade is also possible with a great project report without the bonus). 
+
+- **Requirement:**  Half of the homework assignment tasks need to be correctly solved. These do not determine the grade. We will check this after the deadline for the last homework passed at the end of classes. 
+- **Bonus:** The individual repositories about Corona **hw-ind-corona-USERNAME** and the ESS **hw-ind-ess-USERNAME** shall be cleaned from not necessary files. All analysis the qmd-Document should be complete and the questions should be answered in a consistent way. The rendered html document should look well formatted and should be readable as a report independent from the instructions. 
 
 
 # Learning Resources

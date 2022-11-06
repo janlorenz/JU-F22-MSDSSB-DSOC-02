@@ -1,0 +1,152 @@
+---
+title: "Homework 05"
+subtitle: ""
+---
+
+```{r include = FALSE}
+library(tidyverse)
+```
+
+:::{.callout-important}
+**Homework 05 is due Sunday, Nov 20.** When you get stuck, you are encouraged to push intermediate steps, and contact us.    
+:::
+
+In this homework you are to continue to do data analysis with data from the European Social Survey (ESS) in python, and with the `nycflight13` in R.  
+
+
+## European Social Survey
+
+Continue to work on your repository **ess-ind-USERNAME**. 
+**ESS Data Documentation is here <https://ess-search.nsd.no/>.**
+
+Continue to work on the Quarto-document "ESS-analysis.qmd" (alternatively "ESS-analysis.ipynb" if you can render html-files from it) from Homework 03 and add new headlines and new code chunks for each new question. 
+
+## **Question 8:** How well can life satisfaction predict voting behavior?
+ 
+Like in our last tools session you should repeat the build of a logistic regression model using both `statsmodels`  and `sklearn` packages. We want to predict voters with their satisfaction with life. We start simple and try to modify and enhance the model afterwards.
+ 
+1. Clean the data set, so you remove all values above 10.
+2. Rearrange the values from the vote columns. The default data from ESS is 1=voter and 2=non-voter. Modify to: 0= non-voter , 1=voter. 
+3. Create a model with `vote ~ stflife`
+4. Use `sklearn`, `statsmodel.api` (mind: Intercept), or the `statsmodel.formula.api`
+5. Plot the logistic regression function of the model, either build the function from scratch with numpy or use `expit` in `scipy.special`.
+ 
+Describe in text what we can see in the function and what does it say about the predictions?
+
+Plot the crosstab (`pd.crosstab(..)`) as an barplot as validation.
+ 
+## **Question 9:** How can we improve the prediction of voters?
+ 
+Now we want to enhance the model with many variables `'polintr','euftf','stflife', 'trstplc', 'imueclt', 'atchctr'`. Also we want to use a training data set and a test data set.
+ 
+Write a short sentence why we use a split of training and test data. 
+ 
+- Look up the range for `polintr` to clean the data set.
+- Create a train and a test data set with `train_test_split` from `sklearn.model_selection`.
+- Train the model (Train data set) and then test it (Test data set). Use the `predict` function on the model.
+- Print out the coefficients, accuracy, and the confusion matrix (`metrics` from `sklearn`)
+ 
+Describe what the model is predicting?
+ 
+### **Question 9.1**: How do country variables change the prediction?
+ 
+Now we integrate countries in the model. We go back to the model in Question 1 `vote ~ stflife` but add the country values.
+ 
+- Split the data in a training and a test set that includes the Country column.
+- Create a simple model with `statsmodel.formula.api`.
+- Fit the model and print the confusion matrix
+- Save the coefficients for later. 
+ 
+### **Question 9.2:** As Question 9.1 but with `sklearn`
+
+For comparison:
+ 
+- Create dummy variables `pd.get_dummies()` for the country column (Attention: after cleaning the data)
+- Use `pd.concat(..,axis=1)` to attach the `stflife` and `vote` variables back to the country dummies data set.
+- Split the training and test data set.
+- Create a `LogisticRegression` model from `sklearn.linear_model` and fit the data to it.
+- Print the confusion matrix
+ 
+- Describe how do both models (9.1 and 9.2) perform. What are the differences? If there are differences, where do they come from?
+ 
+- Finally create 2 horizontal bar plots (`matplotlib.pyplot.barh`) with the coefficients from Question 9.1 and 9.2 and compare them.
+ 
+### Submit the new version of your report
+
+Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file. Push to GitHub. 
+
+
+
+## New York City Flights 2013
+
+Use your coding and modelling skills to create a model to predict flight delays with `nycflights2013` in R. You find hints in the codebase of the "Data Science Tools with R" course. 
+
+To that end, continue to work in the repository **hw-02-ind-USERNAME** on the file "hw-02-R.qmd". 
+
+First make some modifications to the file:
+
+- In the YAML (header of the file) change the title to "Homework 02/05 - New York City Flights 2013"
+- At the end of the file make a new main headline "# Predicting flight delays". Test if the file renders to html nicely. Write all you analysis below, and structure your report with second order headlines "## YOUR HEADLINE". 
+
+
+### Data Preparation
+Create a  big data set from the data frames in the New York City flights package.
+Join the data sets so that you get as little missing values as possible. (Use `inner_join()`.)
+
+Rename the variables so that you can distinguish them in the final data set.
+(Ignore the airport data set though, we don't need it.)
+
+Create a dummy variable for the arrival delay being bigger than 15 minutes. This will be the response in the analysis below.
+
+Create factors for weekdays and months.
+
+Convert all character variables into factors, and drop factors with more than 100 observations for faster computation.
+
+Eliminate variables with more than 10,000 missing values, and eliminate observations with missing values. (Use `na.omit()`.)
+
+
+### Split the dataset
+
+Split the dataset into the training set (60% of observations) and a test set (40% of observations).
+
+
+### Exploratory analysis
+
+In this stage, make an informed selection of eight predictor variables.
+Select 8 predictor variables that you think have an impact on flight delays, and formulate expectations about how they may influence flight delays.
+
+Then, take a random sample of 10,000 observations from the training dataset to conduct exploratory analysis.
+
+Make plots that show the connection between `arr_delay`, or the dummy variable you created, and the potential predictors.
+
+Think about and document whether you want to change one predictor after looking at the plots.
+
+
+### Model development
+
+Train your model on the training dataset imitating a simple algorithm called forward selection.
+
+Fit one model with a single predictor for all eight variables selected respectively. Use the code from the slides, and save each of the eight models as an object.
+
+Compare the models in one integrated table, and use AIC or BIC as the main performance criterion. The lower the value of the criterion, the better the performance of the model.
+
+Select the best model with a single predictor, and test the remaining seven variables as the second predictor. Again, choose the model that performs best, and try the remaining six variables as predictor number three. Continue until there are no further decreases in AIC or BIC.
+
+(AIC and BIC are somewhat similar to adjusted R-squared in linear regression: They point at the performance of the model in describing the dataset, while punishing model complexity to avoid overfitting. BIC has a stricter penalty for complexity than AIC, and this will lead to models with fewer predictors.)
+
+Once you found the best-performing model, interpret the coefficients against the background of your previous expectations.
+
+
+### Prediction
+
+Use the best-performing model to predict delays of 15 minutes or more in the test data set.
+ 
+Create the confusion matrix.
+
+Calculate accuracy, sensitivity, and specificity; interpret the values.
+Create the ROC plot and interpret it. 
+
+
+### Submit your report
+
+Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file. Push to GitHub. 

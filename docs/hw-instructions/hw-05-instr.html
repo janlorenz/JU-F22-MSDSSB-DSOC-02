@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.149">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>JU-F22-MSDSSB-DSOC-02 - Homework 05</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">JU-F22-MSDSSB-DSOC-02</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../late.html">Info for late coming students</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Homework 05</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-01-instr.html" class="sidebar-item-text sidebar-link">Homework 01</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-02-instr.html" class="sidebar-item-text sidebar-link">Homework 02</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-02-py-instruction.html" class="sidebar-item-text sidebar-link">Additional python instruction Homework 02</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-03-instr.html" class="sidebar-item-text sidebar-link">Homework 03</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-03-py-instruction.html" class="sidebar-item-text sidebar-link">Additional Python Instruction Homework 03</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-04-instr.html" class="sidebar-item-text sidebar-link">Homework 04</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw-instructions/hw-05-instr.html" class="sidebar-item-text sidebar-link active">Homework 05</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#european-social-survey" id="toc-european-social-survey" class="nav-link active" data-scroll-target="#european-social-survey"><span class="toc-section-number">1</span>  European Social Survey</a></li>
+  <li><a href="#question-8-how-well-can-life-satisfaction-predict-voting-behavior" id="toc-question-8-how-well-can-life-satisfaction-predict-voting-behavior" class="nav-link" data-scroll-target="#question-8-how-well-can-life-satisfaction-predict-voting-behavior"><span class="toc-section-number">2</span>  <strong>Question 8:</strong> How well can life satisfaction predict voting behavior?</a></li>
+  <li><a href="#question-9-how-can-we-improve-the-prediction-of-voters" id="toc-question-9-how-can-we-improve-the-prediction-of-voters" class="nav-link" data-scroll-target="#question-9-how-can-we-improve-the-prediction-of-voters"><span class="toc-section-number">3</span>  <strong>Question 9:</strong> How can we improve the prediction of voters?</a>
+  <ul class="collapse">
+  <li><a href="#question-9.1-how-do-country-variables-change-the-prediction" id="toc-question-9.1-how-do-country-variables-change-the-prediction" class="nav-link" data-scroll-target="#question-9.1-how-do-country-variables-change-the-prediction"><span class="toc-section-number">3.1</span>  <strong>Question 9.1</strong>: How do country variables change the prediction?</a></li>
+  <li><a href="#question-9.2-as-question-9.1-but-with-sklearn" id="toc-question-9.2-as-question-9.1-but-with-sklearn" class="nav-link" data-scroll-target="#question-9.2-as-question-9.1-but-with-sklearn"><span class="toc-section-number">3.2</span>  <strong>Question 9.2:</strong> As Question 9.1 but with <code>sklearn</code></a></li>
+  <li><a href="#submit-the-new-version-of-your-report" id="toc-submit-the-new-version-of-your-report" class="nav-link" data-scroll-target="#submit-the-new-version-of-your-report"><span class="toc-section-number">3.3</span>  Submit the new version of your report</a></li>
+  </ul></li>
+  <li><a href="#new-york-city-flights-2013" id="toc-new-york-city-flights-2013" class="nav-link" data-scroll-target="#new-york-city-flights-2013"><span class="toc-section-number">4</span>  New York City Flights 2013</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="toc-section-number">4.1</span>  Data Preparation</a></li>
+  <li><a href="#split-the-dataset" id="toc-split-the-dataset" class="nav-link" data-scroll-target="#split-the-dataset"><span class="toc-section-number">4.2</span>  Split the dataset</a></li>
+  <li><a href="#exploratory-analysis" id="toc-exploratory-analysis" class="nav-link" data-scroll-target="#exploratory-analysis"><span class="toc-section-number">4.3</span>  Exploratory analysis</a></li>
+  <li><a href="#model-development" id="toc-model-development" class="nav-link" data-scroll-target="#model-development"><span class="toc-section-number">4.4</span>  Model development</a></li>
+  <li><a href="#prediction" id="toc-prediction" class="nav-link" data-scroll-target="#prediction"><span class="toc-section-number">4.5</span>  Prediction</a></li>
+  <li><a href="#submit-your-report" id="toc-submit-your-report" class="nav-link" data-scroll-target="#submit-your-report"><span class="toc-section-number">4.6</span>  Submit your report</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Homework 05</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Homework 05 is due Sunday, Nov 20.</strong> When you get stuck, you are encouraged to push intermediate steps, and contact us.</p>
+</div>
+</div>
+<p>In this homework you are to continue to do data analysis with data from the European Social Survey (ESS) in python, and with the <code>nycflight13</code> in R.</p>
+<section id="european-social-survey" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="european-social-survey"><span class="header-section-number">1</span> European Social Survey</h2>
+<p>Continue to work on your repository <strong>ess-ind-USERNAME</strong>. <strong>ESS Data Documentation is here <a href="https://ess-search.nsd.no/" class="uri">https://ess-search.nsd.no/</a>.</strong></p>
+<p>Continue to work on the Quarto-document “ESS-analysis.qmd” (alternatively “ESS-analysis.ipynb” if you can render html-files from it) from Homework 03 and add new headlines and new code chunks for each new question.</p>
+</section>
+<section id="question-8-how-well-can-life-satisfaction-predict-voting-behavior" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="question-8-how-well-can-life-satisfaction-predict-voting-behavior"><span class="header-section-number">2</span> <strong>Question 8:</strong> How well can life satisfaction predict voting behavior?</h2>
+<p>Like in our last tools session you should repeat the build of a logistic regression model using both <code>statsmodels</code> and <code>sklearn</code> packages. We want to predict voters with their satisfaction with life. We start simple and try to modify and enhance the model afterwards.</p>
+<ol type="1">
+<li>Clean the data set, so you remove all values above 10.</li>
+<li>Rearrange the values from the vote columns. The default data from ESS is 1=voter and 2=non-voter. Modify to: 0= non-voter , 1=voter.</li>
+<li>Create a model with <code>vote ~ stflife</code></li>
+<li>Use <code>sklearn</code>, <code>statsmodel.api</code> (mind: Intercept), or the <code>statsmodel.formula.api</code></li>
+<li>Plot the logistic regression function of the model, either build the function from scratch with numpy or use <code>expit</code> in <code>scipy.special</code>.</li>
+</ol>
+<p>Describe in text what we can see in the function and what does it say about the predictions?</p>
+<p>Plot the crosstab (<code>pd.crosstab(..)</code>) as an barplot as validation.</p>
+</section>
+<section id="question-9-how-can-we-improve-the-prediction-of-voters" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="question-9-how-can-we-improve-the-prediction-of-voters"><span class="header-section-number">3</span> <strong>Question 9:</strong> How can we improve the prediction of voters?</h2>
+<p>Now we want to enhance the model with many variables <code>'polintr','euftf','stflife', 'trstplc', 'imueclt', 'atchctr'</code>. Also we want to use a training data set and a test data set.</p>
+<p>Write a short sentence why we use a split of training and test data.</p>
+<ul>
+<li>Look up the range for <code>polintr</code> to clean the data set.</li>
+<li>Create a train and a test data set with <code>train_test_split</code> from <code>sklearn.model_selection</code>.</li>
+<li>Train the model (Train data set) and then test it (Test data set). Use the <code>predict</code> function on the model.</li>
+<li>Print out the coefficients, accuracy, and the confusion matrix (<code>metrics</code> from <code>sklearn</code>)</li>
+</ul>
+<p>Describe what the model is predicting?</p>
+<section id="question-9.1-how-do-country-variables-change-the-prediction" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="question-9.1-how-do-country-variables-change-the-prediction"><span class="header-section-number">3.1</span> <strong>Question 9.1</strong>: How do country variables change the prediction?</h3>
+<p>Now we integrate countries in the model. We go back to the model in Question 1 <code>vote ~ stflife</code> but add the country values.</p>
+<ul>
+<li>Split the data in a training and a test set that includes the Country column.</li>
+<li>Create a simple model with <code>statsmodel.formula.api</code>.</li>
+<li>Fit the model and print the confusion matrix</li>
+<li>Save the coefficients for later.</li>
+</ul>
+</section>
+<section id="question-9.2-as-question-9.1-but-with-sklearn" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="question-9.2-as-question-9.1-but-with-sklearn"><span class="header-section-number">3.2</span> <strong>Question 9.2:</strong> As Question 9.1 but with <code>sklearn</code></h3>
+<p>For comparison:</p>
+<ul>
+<li><p>Create dummy variables <code>pd.get_dummies()</code> for the country column (Attention: after cleaning the data)</p></li>
+<li><p>Use <code>pd.concat(..,axis=1)</code> to attach the <code>stflife</code> and <code>vote</code> variables back to the country dummies data set.</p></li>
+<li><p>Split the training and test data set.</p></li>
+<li><p>Create a <code>LogisticRegression</code> model from <code>sklearn.linear_model</code> and fit the data to it.</p></li>
+<li><p>Print the confusion matrix</p></li>
+<li><p>Describe how do both models (9.1 and 9.2) perform. What are the differences? If there are differences, where do they come from?</p></li>
+<li><p>Finally create 2 horizontal bar plots (<code>matplotlib.pyplot.barh</code>) with the coefficients from Question 9.1 and 9.2 and compare them.</p></li>
+</ul>
+</section>
+<section id="submit-the-new-version-of-your-report" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="submit-the-new-version-of-your-report"><span class="header-section-number">3.3</span> Submit the new version of your report</h3>
+<p>Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file. Push to GitHub.</p>
+</section>
+</section>
+<section id="new-york-city-flights-2013" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="new-york-city-flights-2013"><span class="header-section-number">4</span> New York City Flights 2013</h2>
+<p>Use your coding and modelling skills to create a model to predict flight delays with <code>nycflights2013</code> in R. You find hints in the codebase of the “Data Science Tools with R” course.</p>
+<p>To that end, continue to work in the repository <strong>hw-02-ind-USERNAME</strong> on the file “hw-02-R.qmd”.</p>
+<p>First make some modifications to the file:</p>
+<ul>
+<li>In the YAML (header of the file) change the title to “Homework 02/05 - New York City Flights 2013”</li>
+<li>At the end of the file make a new main headline “# Predicting flight delays”. Test if the file renders to html nicely. Write all you analysis below, and structure your report with second order headlines “## YOUR HEADLINE”.</li>
+</ul>
+<section id="data-preparation" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">4.1</span> Data Preparation</h3>
+<p>Create a big data set from the data frames in the New York City flights package. Join the data sets so that you get as little missing values as possible. (Use <code>inner_join()</code>.)</p>
+<p>Rename the variables so that you can distinguish them in the final data set. (Ignore the airport data set though, we don’t need it.)</p>
+<p>Create a dummy variable for the arrival delay being bigger than 15 minutes. This will be the response in the analysis below.</p>
+<p>Create factors for weekdays and months.</p>
+<p>Convert all character variables into factors, and drop factors with more than 100 observations for faster computation.</p>
+<p>Eliminate variables with more than 10,000 missing values, and eliminate observations with missing values. (Use <code>na.omit()</code>.)</p>
+</section>
+<section id="split-the-dataset" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="split-the-dataset"><span class="header-section-number">4.2</span> Split the dataset</h3>
+<p>Split the dataset into the training set (60% of observations) and a test set (40% of observations).</p>
+</section>
+<section id="exploratory-analysis" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="exploratory-analysis"><span class="header-section-number">4.3</span> Exploratory analysis</h3>
+<p>In this stage, make an informed selection of eight predictor variables. Select 8 predictor variables that you think have an impact on flight delays, and formulate expectations about how they may influence flight delays.</p>
+<p>Then, take a random sample of 10,000 observations from the training dataset to conduct exploratory analysis.</p>
+<p>Make plots that show the connection between <code>arr_delay</code>, or the dummy variable you created, and the potential predictors.</p>
+<p>Think about and document whether you want to change one predictor after looking at the plots.</p>
+</section>
+<section id="model-development" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="model-development"><span class="header-section-number">4.4</span> Model development</h3>
+<p>Train your model on the training dataset imitating a simple algorithm called forward selection.</p>
+<p>Fit one model with a single predictor for all eight variables selected respectively. Use the code from the slides, and save each of the eight models as an object.</p>
+<p>Compare the models in one integrated table, and use AIC or BIC as the main performance criterion. The lower the value of the criterion, the better the performance of the model.</p>
+<p>Select the best model with a single predictor, and test the remaining seven variables as the second predictor. Again, choose the model that performs best, and try the remaining six variables as predictor number three. Continue until there are no further decreases in AIC or BIC.</p>
+<p>(AIC and BIC are somewhat similar to adjusted R-squared in linear regression: They point at the performance of the model in describing the dataset, while punishing model complexity to avoid overfitting. BIC has a stricter penalty for complexity than AIC, and this will lead to models with fewer predictors.)</p>
+<p>Once you found the best-performing model, interpret the coefficients against the background of your previous expectations.</p>
+</section>
+<section id="prediction" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="prediction"><span class="header-section-number">4.5</span> Prediction</h3>
+<p>Use the best-performing model to predict delays of 15 minutes or more in the test data set.</p>
+<p>Create the confusion matrix.</p>
+<p>Calculate accuracy, sensitivity, and specificity; interpret the values. Create the ROC plot and interpret it.</p>
+</section>
+<section id="submit-your-report" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="submit-your-report"><span class="header-section-number">4.6</span> Submit your report</h3>
+<p>Make sure that your rendered html file reads nicely as a report. Polish the formatting if necessary. Commit your qmd-file and the rendered html-file. Push to GitHub.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
