@@ -119,7 +119,7 @@ Some helpful YouTube videos for those recaping maths:
 
 How to read math https://www.youtube.com/watch?v=Kp2bYWRQylk
 
-**Data Visualization**
+## Data Visualization
 
 *ggplot2: Elegant Graphics for Data Analysis* <https://ggplot2-book.org> is a resource on understanding the logic of ggplot better. 
 
