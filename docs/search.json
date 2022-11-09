@@ -3139,8 +3139,8 @@
     "objectID": "W11.html#hw-04-task-1-form-project-teams",
     "href": "W11.html#hw-04-task-1-form-project-teams",
     "title": "W#11: Data Analysis Projects, Probability",
-    "section": "HW 04: Task 1: Form Project Teams",
-    "text": "HW 04: Task 1: Form Project Teams\nTeam formation is complete."
+    "section": "HW 04 Task 1: Form Project Teams",
+    "text": "HW 04 Task 1: Form Project Teams\n✔️ Team formation is mostly complete\n8 repositories are created in\nhttps://github.com/orgs/JU-F22-MDSSB-MET-01/.\nYou are to deliver your project reports in these repositories."
   },
   {
     "objectID": "W11.html#from-homework-04",
@@ -3183,5 +3183,68 @@
     "title": "W#11: Data Analysis Projects, Probability",
     "section": "Subjective interpretation",
     "text": "Subjective interpretation\nProbability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet.\n\nIf say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent.\nWe can make up similar bets for the heights of randomly drawn people.\nIn Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities.\n\nThe objective and subjective views are not mutually exclusive and it is not important to take a side.\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W11.html#hw-04-task-2-start-a-document-and-list-data-sourcetopic-and-draft-questions",
+    "href": "W11.html#hw-04-task-2-start-a-document-and-list-data-sourcetopic-and-draft-questions",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "HW 04 Task 2: Start a document and list data source/topic and draft questions",
+    "text": "HW 04 Task 2: Start a document and list data source/topic and draft questions\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n❌ Only two teams pushed a document to the repository. No quarto draft yet."
+  },
+  {
+    "objectID": "W11.html#ok-lets-do-it-a-bit-more-directive-now",
+    "href": "W11.html#ok-lets-do-it-a-bit-more-directive-now",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "OK, let’s do it a bit more directive now",
+    "text": "OK, let’s do it a bit more directive now"
+  },
+  {
+    "objectID": "W11.html#hw-04-task-2",
+    "href": "W11.html#hw-04-task-2",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "HW 04 Task 2",
+    "text": "HW 04 Task 2\nStart a document and list data source/topic and draft questions\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n❌ Only two teams pushed a document to the repository. No quarto draft yet."
+  },
+  {
+    "objectID": "W11.html#ok-lets-do-it-together-now",
+    "href": "W11.html#ok-lets-do-it-together-now",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "OK, let’s do it together now",
+    "text": "OK, let’s do it together now\nPlan:\n\nWe clone project repositories now\nWe go through a push and pull cycle\nWe create and solve a merge conflict"
+  },
+  {
+    "objectID": "W11.html#git-pull",
+    "href": "W11.html#git-pull",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "git pull",
+    "text": "git pull"
+  },
+  {
+    "objectID": "W11.html#step-1-git-clone-your-project-teamname-repo-url",
+    "href": "W11.html#step-1-git-clone-your-project-teamname-repo-url",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Step 1: git clone your project-TEAMname repo url",
+    "text": "Step 1: git clone your project-TEAMname repo url\n\nGo to: https://github.com/orgs/JU-F22-MDSSB-MET-01/\nFind your project repository\nCopy the URL"
+  },
+  {
+    "objectID": "W11.html#step-2",
+    "href": "W11.html#step-2",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Step 2:",
+    "text": "Step 2:\n\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
+  },
+  {
+    "objectID": "W11.html#step-1-git-clone-project-teamname",
+    "href": "W11.html#step-1-git-clone-project-teamname",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Step 1: git clone project-TEAMname",
+    "text": "Step 1: git clone project-TEAMname\n\nGo to: https://github.com/orgs/JU-F22-MDSSB-MET-01/\nFind your project repository project-TEAMname\nCopy the URL\n\nGo to RStudio\n\nNew Project > Form Version Control > Git > Paste your URL\nThe project is created but empty in most cases"
+  },
+  {
+    "objectID": "W11.html#step-2-copy-the-template-file",
+    "href": "W11.html#step-2-copy-the-template-file",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Step 2: Copy the template file",
+    "text": "Step 2: Copy the template file\n\nGo to: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE\nClick on the file report.qmd\nClick on “Raw” to see only the file content itself. Usually this also happens in the browser.\nSelect “Save as” from your browser’s menu and save the file in the just created project folder on your computer: YOURPATH/project-TEAMname/\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
   }
 ]
