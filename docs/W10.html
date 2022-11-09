@@ -1532,14 +1532,14 @@
 <pre><code>[1] 5409.795</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>Variance <span class="ot">&lt;-</span> <span class="fu">var</span>(galton<span class="sc">$</span>Estimate)<span class="sc">*</span>(<span class="fu">nrow</span>(galton)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">nrow</span>(galton)</span>
-<span id="cb73-2"><a href="#cb73-2"></a>Variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="co"># Note, we had to correct for the divisor (n-1) in the classical statistical definition</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a><span class="co"># to get the sample variance instead of the estimate for the population variance</span></span>
+<span id="cb73-4"><a href="#cb73-4"></a>Variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5408.132</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># Note, we had to correct for the divisor (n-1) in the classical statistical definition</span></span>
-<span id="cb75-2"><a href="#cb75-2"></a><span class="co"># to get the sample variance instead of the estimate for the population variance</span></span>
-<span id="cb75-3"><a href="#cb75-3"></a>Bias_squared <span class="ot">&lt;-</span> (<span class="fu">mean</span>(galton<span class="sc">$</span>Estimate) <span class="sc">-</span> <span class="dv">1198</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb75-4"><a href="#cb75-4"></a>Bias_squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>Bias_squared <span class="ot">&lt;-</span> (<span class="fu">mean</span>(galton<span class="sc">$</span>Estimate) <span class="sc">-</span> <span class="dv">1198</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a>Bias_squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.663346</code></pre>
 </div>
@@ -1591,7 +1591,7 @@ For example outcomes of estimation games, or linear regression models.</p>
 <li><span class="math inline">\(\text{MSE} = \text{Bias-squared} + \text{Variance}\)</span> shows us that we can make a<br>
 <strong>bias-variance decomposition</strong></li>
 <li>That means some part of the error is a systematic (the bias) and another part due to random variation (the variance).</li>
-<li>Learn more about the bias-variance tradeoff in statistical learning independently!</li>
+<li>Learn more about the bias-variance tradeoff in statistical learning independently! It is an important concept to understand predictive models.</li>
 </ul>
 </section>
 <section id="d-accuracy-trueness-and-precision" class="slide level2 smaller">

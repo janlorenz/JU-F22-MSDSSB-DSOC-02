@@ -684,9 +684,9 @@ $$\text{MSE} = \text{Bias-squared} + \text{Variance}$$
 MSE <- (rmse_galton$.estimate)^2 
 MSE
 Variance <- var(galton$Estimate)*(nrow(galton)-1)/nrow(galton)
-Variance
 # Note, we had to correct for the divisor (n-1) in the classical statistical definition
 # to get the sample variance instead of the estimate for the population variance
+Variance
 Bias_squared <- (mean(galton$Estimate) - 1198)^2
 Bias_squared
 
@@ -738,7 +738,7 @@ For example outcomes of estimation games, or linear regression models.
 - $\text{MSE} = \text{Bias-squared} + \text{Variance}$ shows us that we can make a  
 **bias-variance decomposition**
 - That means some part of the error is a systematic (the bias) and another part due to random variation (the variance).
-- Learn more about the bias-variance tradeoff in statistical learning independently!
+- Learn more about the bias-variance tradeoff in statistical learning independently! It is an important concept to understand predictive models. 
 
 
 ## 2-d Accuracy: Trueness and Precision {.smaller}

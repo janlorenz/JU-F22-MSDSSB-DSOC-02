@@ -801,7 +801,7 @@ Example: <span class="math inline">\((4^3)^2 = 64^2 = 4096 \qquad 4^{3^2} = 4^9 
 <pre><code>function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-&lt;bytecode: 0x560c52ee2d50&gt;
+&lt;bytecode: 0x55bedaea8280&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>c  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -814,7 +814,7 @@ sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x),
 {
     UseMethod("ggplot")
 }
-&lt;bytecode: 0x560c52f161e0&gt;
+&lt;bytecode: 0x55bedae9e280&gt;
 &lt;environment: namespace:ggplot2&gt;</code></pre>
 </div>
 </div>
@@ -1348,7 +1348,9 @@ Descriptive, Exploratory, Inferential, Predictive, Causal, Mechanistic</p>
 <h2>Fitting method: Least squares regression</h2>
 <ul>
 <li>The regression line shall minimize the sum of the squared residuals (or, identically, their mean).</li>
-<li>Mathematically: The residual for case <span class="math inline">\(i\)</span> is <span class="math inline">\(e_i = \hat y_i - y_i\)</span>. Now we want to minimize <span class="math inline">\(\sum_{i=1}^n e_i^2\)</span> (or <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n e_i^2\)</span> the <em>the mean of squared errors</em>).</li>
+<li>Mathematically: The residual for case <span class="math inline">\(i\)</span> is <span class="math inline">\(e_i = \hat y_i - y_i\)</span>.</li>
+<li>Now we want to minimize <span class="math inline">\(\sum_{i=1}^n e_i^2\)</span><br>
+(or equivalently <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n e_i^2\)</span> the <em>the mean of squared errors</em>, which we will look at later).</li>
 </ul>
 </section>
 <section id="visualization-of-residuals" class="slide level2">

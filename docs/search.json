@@ -102,7 +102,7 @@
     "href": "W6.html#function-as-objects-in-r",
     "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
     "section": "Function as objects in R",
-    "text": "Function as objects in R\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code or some information.\n\nsd # This function is written in R\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x560c52ee2d50>\n<environment: namespace:stats>\n\nc  \n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot \n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x560c52f161e0>\n<environment: namespace:ggplot2>"
+    "text": "Function as objects in R\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code or some information.\n\nsd # This function is written in R\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x55bedaea8280>\n<environment: namespace:stats>\n\nc  \n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot \n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x55bedae9e280>\n<environment: namespace:ggplot2>"
   },
   {
     "objectID": "W6.html#functions-in-r",
@@ -305,7 +305,7 @@
     "href": "W6.html#fitting-method-least-squares-regression",
     "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
     "section": "Fitting method: Least squares regression",
-    "text": "Fitting method: Least squares regression\n\nThe regression line shall minimize the sum of the squared residuals (or, identically, their mean).\nMathematically: The residual for case \\(i\\) is \\(e_i = \\hat y_i - y_i\\). Now we want to minimize \\(\\sum_{i=1}^n e_i^2\\) (or \\(\\frac{1}{n}\\sum_{i=1}^n e_i^2\\) the the mean of squared errors)."
+    "text": "Fitting method: Least squares regression\n\nThe regression line shall minimize the sum of the squared residuals (or, identically, their mean).\nMathematically: The residual for case \\(i\\) is \\(e_i = \\hat y_i - y_i\\).\nNow we want to minimize \\(\\sum_{i=1}^n e_i^2\\)\n(or equivalently \\(\\frac{1}{n}\\sum_{i=1}^n e_i^2\\) the the mean of squared errors, which we will look at later)."
   },
   {
     "objectID": "W6.html#visualization-of-residuals",
@@ -2706,7 +2706,7 @@
     "href": "W10.html#testing-for-galtons-data",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Testing for Galton’s data",
-    "text": "Testing for Galton’s data\n\\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\]\n\nMSE <- (rmse_galton$.estimate)^2 \nMSE\n\n[1] 5409.795\n\nVariance <- var(galton$Estimate)*(nrow(galton)-1)/nrow(galton)\nVariance\n\n[1] 5408.132\n\n# Note, we had to correct for the divisor (n-1) in the classical statistical definition\n# to get the sample variance instead of the estimate for the population variance\nBias_squared <- (mean(galton$Estimate) - 1198)^2\nBias_squared\n\n[1] 1.663346\n\nBias_squared + Variance\n\n[1] 5409.795\n\n\n\n\nSuch nice mathematical properties are probably one reason why these squared measures are so popular."
+    "text": "Testing for Galton’s data\n\\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\]\n\nMSE <- (rmse_galton$.estimate)^2 \nMSE\n\n[1] 5409.795\n\nVariance <- var(galton$Estimate)*(nrow(galton)-1)/nrow(galton)\n# Note, we had to correct for the divisor (n-1) in the classical statistical definition\n# to get the sample variance instead of the estimate for the population variance\nVariance\n\n[1] 5408.132\n\nBias_squared <- (mean(galton$Estimate) - 1198)^2\nBias_squared\n\n[1] 1.663346\n\nBias_squared + Variance\n\n[1] 5409.795\n\n\n\n\nSuch nice mathematical properties are probably one reason why these squared measures are so popular."
   },
   {
     "objectID": "W10.html#why-is-this-message-a-bit-suggestive",
@@ -2720,7 +2720,7 @@
     "href": "W10.html#accuracy-for-numerical-estimate",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Accuracy for numerical estimate",
-    "text": "Accuracy for numerical estimate\n\nFor binary classifiers accuracy has a simple definition: Fraction of correct classifications.\n\nIt can be further informed by other more specific measures taken from the confusion matrix (sensitivity, specificity)\n\n\nHow about numerical estimators?\nFor example outcomes of estimation games, or linear regression models.\n\nAccuracy is for example measured by (R)MSE\n\\(\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\) shows us that we can make a\nbias-variance decomposition\nThat means some part of the error is a systematic (the bias) and another part due to random variation (the variance).\nLearn more about the bias-variance tradeoff in statistical learning independently!"
+    "text": "Accuracy for numerical estimate\n\nFor binary classifiers accuracy has a simple definition: Fraction of correct classifications.\n\nIt can be further informed by other more specific measures taken from the confusion matrix (sensitivity, specificity)\n\n\nHow about numerical estimators?\nFor example outcomes of estimation games, or linear regression models.\n\nAccuracy is for example measured by (R)MSE\n\\(\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\) shows us that we can make a\nbias-variance decomposition\nThat means some part of the error is a systematic (the bias) and another part due to random variation (the variance).\nLearn more about the bias-variance tradeoff in statistical learning independently! It is an important concept to understand predictive models."
   },
   {
     "objectID": "W10.html#d-accuracy-trueness-and-precision",
@@ -3113,5 +3113,75 @@
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Regression vs. crowd estimation",
     "text": "Regression vs. crowd estimation\nThe linear regression and the crowd estimation problems are similar but not identical!\n\n\n\n\n\n\n\n\nVariable\nLinear Regression Model\nCrowd estimation\n\n\n\n\n\\(y_i\\)\nData point of response variable\nTrue value, uniform for all estimators \\(y_i = y\\)\n\n\n\\(\\hat{y}_i\\)\nPredicted value \\(\\hat{y}_i=b_0+b_1+x_1+\\dots\\)\nEstimate of one estimator\n\n\n\\(\\bar{y}\\)\nMean of response variable\nMean of estimates\n\n\n\nNote that"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Motivation: What is the question you want to answer and why?\nProject plan: Identify the tasks to be done to answer the question\nData retrieval: Use interfaces and resources to collect all data necessary for the project\nData processing: Select and filter data, normalize or standardize values if appropriate, and compute additional variables if useful\nAnalysis: Perform statistical analyses and visualizations that assess the question\nConclusion: Evaluate answers to the question and their reliability\nCritique: Identify limitations and alternative explanations"
+  },
+  {
+    "objectID": "W11.html#data-science-tools-module",
+    "href": "W11.html#data-science-tools-module",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Data Science Tools Module",
+    "text": "Data Science Tools Module"
+  },
+  {
+    "objectID": "W11.html#a-project-report-in-a-nutshell",
+    "href": "W11.html#a-project-report-in-a-nutshell",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "A project report in a nutshell",
+    "text": "A project report in a nutshell\n\nYou pick a dataset,\ndo some interesting question-driven data analysis with it,\nwrite up a well structured and nicely formatted report about the analysis, and\npresent it at the end of the semester."
+  },
+  {
+    "objectID": "W11.html#hw-04-task-1-form-project-teams",
+    "href": "W11.html#hw-04-task-1-form-project-teams",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "HW 04: Task 1: Form Project Teams",
+    "text": "HW 04: Task 1: Form Project Teams\nTeam formation is complete."
+  },
+  {
+    "objectID": "W11.html#from-homework-04",
+    "href": "W11.html#from-homework-04",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "From Homework 04",
+    "text": "From Homework 04\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n\n\n\n\ness <- ess_raw |> filter(essround == 9) |> \n select(cntry, euftf, atchctr, atcherp, imueclt, lrscale) |> \n mutate(euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99), \n        atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),\n        atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),\n        imueclt = imueclt |> na_if(77) |> na_if(88) |> na_if(99),\n        lrscale = lrscale |> na_if(77) |> na_if(88) |> na_if(99))\n\nlibrary(readxl) galton <- read_excel(“data/galton_data.xlsx”) |> mutate(true_value = 1198)"
+  },
+  {
+    "objectID": "W11.html#probability-topics-for-data-science",
+    "href": "W11.html#probability-topics-for-data-science",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Probability Topics for Data Science",
+    "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat is the difference between probability theory and statistics?\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?"
+  },
+  {
+    "objectID": "W11.html#what-is-probability",
+    "href": "W11.html#what-is-probability",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "What is probability",
+    "text": "What is probability\n\n\nThe systematic and rigorous treatment of uncertainty.\nWe have a certain intuition of probability visible in sentences like:\n\n“That’s not very probable.”\n“That is likely.”\n“I don’t have a prior for that.”\n\nWe can call it a model for uncertainty: A simplified but formalized way to think about uncertain events.\nThe model of probability is one of the most successful mathematical models. It is used in many domains."
+  },
+  {
+    "objectID": "W11.html#two-different-flavors",
+    "href": "W11.html#two-different-flavors",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Two different flavors",
+    "text": "Two different flavors\n\nModel for uncertainty as subjective or objective probability of an uncertain event.\nThey are also called Bayesian vs. Frequentist interpretation of probability. * They differ in the way of reasoning, the interpretation what is random, and in terminology."
+  },
+  {
+    "objectID": "W11.html#objective-interpretation",
+    "href": "W11.html#objective-interpretation",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Objective interpretation",
+    "text": "Objective interpretation\nProbability is relative frequency in the limit of indefinite sampling. It is the long run behavior of non-deterministic outcomes.\n\nIf we flip the same coin several times the relative frequency of the number of HEADS converges to the probability of HEADS.\nIf we draw people at random the relative frequency of people with heights between 1.70m and 1.75m converges to the probability that a person is in this range.\nIn this frequentist philosophy the parameters of the population we sample from is fixed and the data is a random selection."
+  },
+  {
+    "objectID": "W11.html#subjective-interpretation",
+    "href": "W11.html#subjective-interpretation",
+    "title": "W#11: Data Analysis Projects, Probability",
+    "section": "Subjective interpretation",
+    "text": "Subjective interpretation\nProbability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet.\n\nIf say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent.\nWe can make up similar bets for the heights of randomly drawn people.\nIn Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities.\n\nThe objective and subjective views are not mutually exclusive and it is not important to take a side.\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   }
 ]
