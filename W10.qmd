@@ -277,7 +277,19 @@ rmse(ess_train_pred3,
      estimate = .pred)
 ```
 
-Should we prefer larger or lower RMSE? 
+## Should we prefer larger or lower RMSE? {.smaller}
+
+**Lower. The lower the error, the better the model's prediction.**
+
+
+Notes: 
+
+- The common method to fit a linear model is the *ordinary least squares* (OLS) method
+- That means the fitted parameters should deliver the lowest possible sum of squared errors (SSE) between predicted and observed values. 
+- Minimizing the sum of squared errors (SSE) is identical to minimizing the mean of squared errors (MSE) because it only adds the factor $1/n$.
+- Minimizing the mean of squared errors (MSE) is identical to minimizing the root mean of squared errors (RMSE) because the square root is strictly monotone function.
+
+Conclusion: RMSE can be seen as a definition of the OLS optimization goal. 
 
 ## Interpreting RMSE {.smaller}
 
@@ -295,7 +307,7 @@ e2 <- ess_train_pred3 |> filter(!is.na(.pred)) |>  ggplot(aes(x=.pred)) + geom_h
 e1 + e2
 ```
 
-The RMSE of `r rmse(ess_train_pred3,truth = euftf,estimate = .pred)$.estimate` shows how much predicted values deviate from the true value on average. 
+The RMSE of `r rmse(ess_train_pred3,truth = euftf,estimate = .pred)$.estimate` shows how much predicted values deviate from the true value on average. (Taking the squaring of differences and root of the average into account.)
 
 
 ## Make predictions for testing data
@@ -617,32 +629,49 @@ We focus on the arithmetic mean as aggregation function for the wisdom of the cr
 :::
 
 
-## RMSE Galton's data
+## RMSE Galton's data {.smaller}
 
 Describe the estimation game as a predictive model:
 
-- All estimates are made to predict the same value: the truth.
-- The truth is the same for all here. 
+- All *estimates* are made to predict the same value: the truth. 
+  - In contrast to the regression model, the estimate come from people and not from a regression formula.
+- The *truth* is the same for all.
+  - In contrast to the regression model, the truth is one value and not a value for each prediction
 
 ```{r}
 #| echo: true
 rmse_galton <- galton |> 
- mutate(truth = 1198) |>
- rmse(truth = truth, estimate = Estimate)
+ mutate(true_value = 1198) |>
+ rmse(truth = true_value, estimate = Estimate)
 rmse_galton
 ```
 
+<!-- ## Regression vs. crowd estimation {.smaller} -->
+
+<!-- The linear regression and the crowd estimation problems are similar but not identical! -->
+
+<!-- |Variable      | Linear Regression Model                       | Crowd estimation -->
+<!-- |--------------|-----------------------------------------------|-------------------------------------------- -->
+<!-- | $y_i$        | Data point of response variable               | True value, uniform for all estimators $y_i = y$ -->
+<!-- | $\hat{y}_i$  | Predicted value $\hat{y}_i=b_0+b_1+x_1+\dots$ | Estimate of one estimator -->
+<!-- | $\bar{y}$    | Mean of response variable                     | Mean of estimates  -->
+
+
+
 ## MSE, Variance, and Bias of estimates {.smaller}
 
+In a crowd estimation, $n$ estimators delivered the estimates $\hat{y}_1,\dots,\hat{y}_n$. 
 Let us look at the following measures
 
-- $\text{MSE} = \text{RMSE}^2 = \frac{1}{n}\sum_{i = 1}^n (y_i - \hat{y}_i)^2$ where $y_i = \text{truth}$ here for all $i$
+- $\bar{y} = \frac{1}{n}\sum_{i = 1}^n \hat{y}_i^2$ is the mean estimate, it is the aggregated estimate of the crowd
+
+- $\text{MSE} = \text{RMSE}^2 = \frac{1}{n}\sum_{i = 1}^n (\text{truth} - \hat{y}_i)^2$
   
-- $\text{Variance} = \frac{1}{n}\sum_{i = 1}^n (y_i - \bar{y})^2$ where $\bar{y}$ is the mean, so the aggregated Wisdom of Crowd estimate here
+- $\text{Variance} = \frac{1}{n}\sum_{i = 1}^n (\hat{y}_i - \bar{y})^2$ 
 
-- $\text{Bias-squared} = (\bar{y} - \hat{y})^2$ which is the square difference between truth and mean estimate. 
+- $\text{Bias-squared} = (\bar{y} - \text{truth})^2$ which is the square difference between truth and mean estimate. 
 
-There a mathematical relation (good math excerise to check):
+There is a mathematical relation (a math exercise to check):
 
 $$\text{MSE} = \text{Bias-squared} + \text{Variance}$$
 

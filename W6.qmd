@@ -891,7 +891,7 @@ linear_reg() |>
 	set_engine("lm")
 ```
 
-## Step 3: Fit model and estimate parameters
+## Step 3: Fit model and estimate parameters {.smaller}
 
 Only now, the data and the variable selection comes in. 
 
@@ -967,7 +967,9 @@ A typical **inferential** question.
 ## Fitting method: Least squares regression
 
 - The regression line shall minimize the sum of the squared residuals (or, identically, their mean). 
-- Mathematically: The residual for case $i$ is $e_i = \hat y_i - y_i$. Now we want to minimize $\sum_{i=1}^n e_i^2$ (or $\frac{1}{n}\sum_{i=1}^n e_i^2 the *the mean of squared errors*). 
+- Mathematically: The residual for case $i$ is $e_i = \hat y_i - y_i$. 
+- Now we want to minimize $\sum_{i=1}^n e_i^2$   
+(or equivalently $\frac{1}{n}\sum_{i=1}^n e_i^2$ the *the mean of squared errors*, which we will look at later). 
 
 ## Visualization of residuals
 

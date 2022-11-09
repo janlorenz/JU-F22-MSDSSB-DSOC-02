@@ -102,7 +102,7 @@
     "href": "W6.html#function-as-objects-in-r",
     "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
     "section": "Function as objects in R",
-    "text": "Function as objects in R\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code or some information.\n\nsd # This function is written in R\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x55d7fa83ba00>\n<environment: namespace:stats>\n\nc  \n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot \n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x55d7fa947020>\n<environment: namespace:ggplot2>"
+    "text": "Function as objects in R\nfunction is a class of an object in R\n\nclass(c)\n\n[1] \"function\"\n\nclass(ggplot2::ggplot)\n\n[1] \"function\"\n\n\nCalling the function without brackets writes its code or some information.\n\nsd # This function is written in R\n\nfunction (x, na.rm = FALSE) \nsqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), \n    na.rm = na.rm))\n<bytecode: 0x560c52ee2d50>\n<environment: namespace:stats>\n\nc  \n\nfunction (...)  .Primitive(\"c\")\n\nggplot2::ggplot \n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n<bytecode: 0x560c52f161e0>\n<environment: namespace:ggplot2>"
   },
   {
     "objectID": "W6.html#functions-in-r",
@@ -305,7 +305,7 @@
     "href": "W6.html#fitting-method-least-squares-regression",
     "title": "W#6: Functions, Logarithms and Exponentials, Modeling, Fitting a Linear Model",
     "section": "Fitting method: Least squares regression",
-    "text": "Fitting method: Least squares regression\n\nThe regression line shall minimize the sum of the squared residuals (or, identically, their mean).\nMathematically: The residual for case \\(i\\) is \\(e_i = \\hat y_i - y_i\\). Now we want to minimize \\(\\sum_{i=1}^n e_i^2\\) (or $_{i=1}^n e_i^2 the the mean of squared errors)."
+    "text": "Fitting method: Least squares regression\n\nThe regression line shall minimize the sum of the squared residuals (or, identically, their mean).\nMathematically: The residual for case \\(i\\) is \\(e_i = \\hat y_i - y_i\\). Now we want to minimize \\(\\sum_{i=1}^n e_i^2\\) (or \\(\\frac{1}{n}\\sum_{i=1}^n e_i^2\\) the the mean of squared errors)."
   },
   {
     "objectID": "W6.html#visualization-of-residuals",
@@ -2559,14 +2559,14 @@
     "href": "W10.html#root-mean-squared-error-rmse",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Root mean squared error (RMSE)",
-    "text": "Root mean squared error (RMSE)\nRMSE is an alternative measure of performance.\n\\[\\text{RMSE} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2}\\]\nwhere \\(\\hat{y}_i\\) is the predicted value and \\(y_i\\) the true value.\n(The name RMSE pretty much describes what the measure does.)\n\n\nrmse(ess_train_pred1, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.44\n\n\n\n\n\nrmse(ess_train_pred2, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.36\n\n\n\n\n\nrmse(ess_train_pred3, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.32\n\n\n\nShould we prefer larger or lower RMSE?"
+    "text": "Root mean squared error (RMSE)\nRMSE is an alternative measure of performance.\n\\[\\text{RMSE} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2}\\]\nwhere \\(\\hat{y}_i\\) is the predicted value and \\(y_i\\) the true value.\n(The name RMSE pretty much describes what the measure does.)\n\n\nrmse(ess_train_pred1, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.44\n\n\n\n\n\nrmse(ess_train_pred2, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.36\n\n\n\n\n\nrmse(ess_train_pred3, \n     truth = euftf, \n     estimate = .pred)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        2.32"
   },
   {
     "objectID": "W10.html#interpreting-rmse",
     "href": "W10.html#interpreting-rmse",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Interpreting RMSE",
-    "text": "Interpreting RMSE\nIn contrast to R-squared, RMSE can only be interpreted with knowledge about the range and of the response variable.\nThe values of euftf range from 0 to 10\n\nThe RMSE of 2.3244529 shows how much predicted values deviate from the true value on average."
+    "text": "Interpreting RMSE\nIn contrast to R-squared, RMSE can only be interpreted with knowledge about the range and of the response variable.\nThe values of euftf range from 0 to 10\n\nThe RMSE of 2.3244529 shows how much predicted values deviate from the true value on average. (Taking the squaring of differences and root of the average into account.)"
   },
   {
     "objectID": "W10.html#make-predictions-for-testing-data",
@@ -2685,7 +2685,7 @@
     "href": "W10.html#rmse-galtons-data",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "RMSE Galton’s data",
-    "text": "RMSE Galton’s data\nDescribe the estimation game as a predictive model:\n\nAll estimates are made to predict the same value: the truth.\nThe truth is the same for all here.\n\n\nrmse_galton <- galton |> \n mutate(truth = 1198) |>\n rmse(truth = truth, estimate = Estimate)\nrmse_galton\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        73.6"
+    "text": "RMSE Galton’s data\nDescribe the estimation game as a predictive model:\n\nAll estimates are made to predict the same value: the truth.\n\nIn contrast to the regression model, the estimate come from people and not from a regression formula.\n\nThe truth is the same for all.\n\nIn contrast to the regression model, the truth is one value and not a value for each prediction\n\n\n\nrmse_galton <- galton |> \n mutate(true_value = 1198) |>\n rmse(truth = true_value, estimate = Estimate)\nrmse_galton\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  <chr>   <chr>          <dbl>\n1 rmse    standard        73.6"
   },
   {
     "objectID": "W10.html#the-diversity-prediction-theorem",
@@ -2699,7 +2699,7 @@
     "href": "W10.html#mse-variance-and-bias-of-estimates",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "MSE, Variance, and Bias of estimates",
-    "text": "MSE, Variance, and Bias of estimates\nLet us look at the following measures\n\n\\(\\text{MSE} = \\text{RMSE}^2 = \\frac{1}{n}\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2\\) where \\(y_i = \\text{truth}\\) here for all \\(i\\)\n\\(\\text{Variance} = \\frac{1}{n}\\sum_{i = 1}^n (y_i - \\bar{y})^2\\) where \\(\\bar{y}\\) is the mean, so the aggregated Wisdom of Crowd estimate here\n\\(\\text{Bias-squared} = (\\bar{y} - \\hat{y})^2\\) which is the square difference between truth and mean estimate.\n\nThere a mathematical relation (good math excerise to check):\n\\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\]"
+    "text": "MSE, Variance, and Bias of estimates\nIn a crowd estimation, \\(n\\) estimators delivered the estimates \\(\\hat{y}_1,\\dots,\\hat{y}_n\\). Let us look at the following measures\n\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i = 1}^n \\hat{y}_i^2\\) is the mean estimate, it is the aggregated estimate of the crowd\n\\(\\text{MSE} = \\text{RMSE}^2 = \\frac{1}{n}\\sum_{i = 1}^n (\\text{truth} - \\hat{y}_i)^2\\)\n\\(\\text{Variance} = \\frac{1}{n}\\sum_{i = 1}^n (\\hat{y}_i - \\bar{y})^2\\)\n\\(\\text{Bias-squared} = (\\bar{y} - \\text{truth})^2\\) which is the square difference between truth and mean estimate.\n\nThere is a mathematical relation (a math exercise to check):\n\\[\\text{MSE} = \\text{Bias-squared} + \\text{Variance}\\]"
   },
   {
     "objectID": "W10.html#testing-for-galtons-data",
@@ -3099,5 +3099,19 @@
     "title": "Data Science Concepts / Tools",
     "section": "2.3 Data Visualization",
     "text": "2.3 Data Visualization\nggplot2: Elegant Graphics for Data Analysis https://ggplot2-book.org is a resource on understanding the logic of ggplot better.\nWebsites on how to decide for what visualization to choose:\nhttps://www.data-to-viz.com/\nhttps://datavizcatalogue.com/search.html\nThe number of freely available learning resources is increasing rapidly.\nEveryone has a different learning style and a different background. Thus, different material may be most helpful.\nThis list shall be extended. Good self-study resources for data science with python, mathematics, statistics, data visualization, etc. shall be added here. Contact me if you find something useful to share. Ideally, with a short description when it may be most helpful."
+  },
+  {
+    "objectID": "W10.html#should-we-prefer-larger-or-lower-rmse",
+    "href": "W10.html#should-we-prefer-larger-or-lower-rmse",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Should we prefer larger or lower RMSE?",
+    "text": "Should we prefer larger or lower RMSE?\nLower. The lower the error, the better the model’s prediction.\nNotes:\n\nThe common method to fit a linear model is the ordinary least squares (OLS) method\nThat means the fitted parameters should deliver the lowest possible sum of squared errors (SSE) between predicted and observed values.\nMinimizing the sum of squared errors (SSE) is identical to minimizing the mean of squared errors (MSE) because it only adds the factor \\(1/n\\).\nMinimizing the mean of squared errors (MSE) is identical to minimizing the root mean of squared errors (RMSE) because the square root is strictly monotone function.\n\nConclusion: RMSE can be seen as a definition of the OLS optimization goal."
+  },
+  {
+    "objectID": "W10.html#regression-vs.-crowd-estimation",
+    "href": "W10.html#regression-vs.-crowd-estimation",
+    "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
+    "section": "Regression vs. crowd estimation",
+    "text": "Regression vs. crowd estimation\nThe linear regression and the crowd estimation problems are similar but not identical!\n\n\n\n\n\n\n\n\nVariable\nLinear Regression Model\nCrowd estimation\n\n\n\n\n\\(y_i\\)\nData point of response variable\nTrue value, uniform for all estimators \\(y_i = y\\)\n\n\n\\(\\hat{y}_i\\)\nPredicted value \\(\\hat{y}_i=b_0+b_1+x_1+\\dots\\)\nEstimate of one estimator\n\n\n\\(\\bar{y}\\)\nMean of response variable\nMean of estimates\n\n\n\nNote that"
   }
 ]

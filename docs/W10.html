@@ -894,14 +894,25 @@
 </div>
 </div>
 </div>
-<p>Should we prefer larger or lower RMSE?</p>
+</section>
+<section id="should-we-prefer-larger-or-lower-rmse" class="slide level2 smaller">
+<h2>Should we prefer larger or lower RMSE?</h2>
+<p><strong>Lower. The lower the error, the better the model’s prediction.</strong></p>
+<p>Notes:</p>
+<ul>
+<li>The common method to fit a linear model is the <em>ordinary least squares</em> (OLS) method</li>
+<li>That means the fitted parameters should deliver the lowest possible sum of squared errors (SSE) between predicted and observed values.</li>
+<li>Minimizing the sum of squared errors (SSE) is identical to minimizing the mean of squared errors (MSE) because it only adds the factor <span class="math inline">\(1/n\)</span>.</li>
+<li>Minimizing the mean of squared errors (MSE) is identical to minimizing the root mean of squared errors (RMSE) because the square root is strictly monotone function.</li>
+</ul>
+<p>Conclusion: RMSE can be seen as a definition of the OLS optimization goal.</p>
 </section>
 <section id="interpreting-rmse" class="slide level2 smaller">
 <h2>Interpreting RMSE</h2>
 <p>In contrast to R-squared, RMSE can only be interpreted with knowledge about the range and of the response variable.</p>
 <p>The values of <code>euftf</code> range from 0 to 10</p>
 
-<img data-src="W10_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"><p>The RMSE of 2.3244529 shows how much predicted values deviate from the true value on average.</p>
+<img data-src="W10_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"><p>The RMSE of 2.3244529 shows how much predicted values deviate from the true value on average. (Taking the squaring of differences and root of the average into account.)</p>
 </section>
 <section id="make-predictions-for-testing-data" class="slide level2">
 <h2>Make predictions for testing data</h2>
@@ -1466,17 +1477,23 @@
 <aside><div>
 <p>We focus on the arithmetic mean as aggregation function for the wisdom of the crowd here.</p>
 </div></aside></section>
-<section id="rmse-galtons-data" class="slide level2">
+<section id="rmse-galtons-data" class="slide level2 smaller">
 <h2>RMSE Galton’s data</h2>
 <p>Describe the estimation game as a predictive model:</p>
 <ul>
-<li>All estimates are made to predict the same value: the truth.</li>
-<li>The truth is the same for all here.</li>
+<li>All <em>estimates</em> are made to predict the same value: the truth.
+<ul>
+<li>In contrast to the regression model, the estimate come from people and not from a regression formula.</li>
+</ul></li>
+<li>The <em>truth</em> is the same for all.
+<ul>
+<li>In contrast to the regression model, the truth is one value and not a value for each prediction</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>rmse_galton <span class="ot">&lt;-</span> galton <span class="sc">|&gt;</span> </span>
-<span id="cb69-2"><a href="#cb69-2"></a> <span class="fu">mutate</span>(<span class="at">truth =</span> <span class="dv">1198</span>) <span class="sc">|&gt;</span></span>
-<span id="cb69-3"><a href="#cb69-3"></a> <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> Estimate)</span>
+<span id="cb69-2"><a href="#cb69-2"></a> <span class="fu">mutate</span>(<span class="at">true_value =</span> <span class="dv">1198</span>) <span class="sc">|&gt;</span></span>
+<span id="cb69-3"><a href="#cb69-3"></a> <span class="fu">rmse</span>(<span class="at">truth =</span> true_value, <span class="at">estimate =</span> Estimate)</span>
 <span id="cb69-4"><a href="#cb69-4"></a>rmse_galton</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
@@ -1485,16 +1502,24 @@
 1 rmse    standard        73.6</code></pre>
 </div>
 </div>
+<!-- ## Regression vs. crowd estimation {.smaller} -->
+<!-- The linear regression and the crowd estimation problems are similar but not identical! -->
+<!-- |Variable      | Linear Regression Model                       | Crowd estimation -->
+<!-- |--------------|-----------------------------------------------|-------------------------------------------- -->
+<!-- | $y_i$        | Data point of response variable               | True value, uniform for all estimators $y_i = y$ -->
+<!-- | $\hat{y}_i$  | Predicted value $\hat{y}_i=b_0+b_1+x_1+\dots$ | Estimate of one estimator -->
+<!-- | $\bar{y}$    | Mean of response variable                     | Mean of estimates  -->
 </section>
 <section id="mse-variance-and-bias-of-estimates" class="slide level2 smaller">
 <h2>MSE, Variance, and Bias of estimates</h2>
-<p>Let us look at the following measures</p>
+<p>In a crowd estimation, <span class="math inline">\(n\)</span> estimators delivered the estimates <span class="math inline">\(\hat{y}_1,\dots,\hat{y}_n\)</span>. Let us look at the following measures</p>
 <ul>
-<li><p><span class="math inline">\(\text{MSE} = \text{RMSE}^2 = \frac{1}{n}\sum_{i = 1}^n (y_i - \hat{y}_i)^2\)</span> where <span class="math inline">\(y_i = \text{truth}\)</span> here for all <span class="math inline">\(i\)</span></p></li>
-<li><p><span class="math inline">\(\text{Variance} = \frac{1}{n}\sum_{i = 1}^n (y_i - \bar{y})^2\)</span> where <span class="math inline">\(\bar{y}\)</span> is the mean, so the aggregated Wisdom of Crowd estimate here</p></li>
-<li><p><span class="math inline">\(\text{Bias-squared} = (\bar{y} - \hat{y})^2\)</span> which is the square difference between truth and mean estimate.</p></li>
+<li><p><span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i = 1}^n \hat{y}_i^2\)</span> is the mean estimate, it is the aggregated estimate of the crowd</p></li>
+<li><p><span class="math inline">\(\text{MSE} = \text{RMSE}^2 = \frac{1}{n}\sum_{i = 1}^n (\text{truth} - \hat{y}_i)^2\)</span></p></li>
+<li><p><span class="math inline">\(\text{Variance} = \frac{1}{n}\sum_{i = 1}^n (\hat{y}_i - \bar{y})^2\)</span></p></li>
+<li><p><span class="math inline">\(\text{Bias-squared} = (\bar{y} - \text{truth})^2\)</span> which is the square difference between truth and mean estimate.</p></li>
 </ul>
-<p>There a mathematical relation (good math excerise to check):</p>
+<p>There is a mathematical relation (a math exercise to check):</p>
 <p><span class="math display">\[\text{MSE} = \text{Bias-squared} + \text{Variance}\]</span></p>
 </section>
 <section id="testing-for-galtons-data" class="slide level2 smaller">
