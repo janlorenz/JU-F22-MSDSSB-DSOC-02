@@ -1047,7 +1047,6 @@ Some concepts and topics
 
 :::{.incremental}
   * The concept of probability form the mathematical perspective.
-  * What is the difference between probability theory and statistics?
   * What are probabilistic events, probability functions and random variables.
   * How do random variables relate to data?
   * Probabilistic simulations. For example bootstrapping. 

@@ -2944,7 +2944,7 @@
     "href": "W10.html#probability-topics-for-data-science",
     "title": "W#10: Performance Metrics, Cross validation, Hypothesis testing, Math: Probability",
     "section": "Probability Topics for Data Science",
-    "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat is the difference between probability theory and statistics?\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?"
+    "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?"
   },
   {
     "objectID": "W10.html#what-is-probability",
@@ -3124,21 +3124,21 @@
   {
     "objectID": "W11.html#data-science-tools-module",
     "href": "W11.html#data-science-tools-module",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Data Science Tools Module",
     "text": "Data Science Tools Module"
   },
   {
     "objectID": "W11.html#a-project-report-in-a-nutshell",
     "href": "W11.html#a-project-report-in-a-nutshell",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "A project report in a nutshell",
     "text": "A project report in a nutshell\n\nYou pick a dataset,\ndo some interesting question-driven data analysis with it,\nwrite up a well structured and nicely formatted report about the analysis, and\npresent it at the end of the semester."
   },
   {
     "objectID": "W11.html#hw-04-task-1-form-project-teams",
     "href": "W11.html#hw-04-task-1-form-project-teams",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "HW 04 Task 1: Form Project Teams",
     "text": "HW 04 Task 1: Form Project Teams\n✔️ Team formation is mostly complete\n8 repositories are created in\nhttps://github.com/orgs/JU-F22-MDSSB-MET-01/.\nYou are to deliver your project reports in these repositories."
   },
@@ -3152,35 +3152,35 @@
   {
     "objectID": "W11.html#probability-topics-for-data-science",
     "href": "W11.html#probability-topics-for-data-science",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Probability Topics for Data Science",
     "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat is the difference between probability theory and statistics?\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?"
   },
   {
     "objectID": "W11.html#what-is-probability",
     "href": "W11.html#what-is-probability",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "What is probability",
     "text": "What is probability\n\n\nThe systematic and rigorous treatment of uncertainty.\nWe have a certain intuition of probability visible in sentences like:\n\n“That’s not very probable.”\n“That is likely.”\n“I don’t have a prior for that.”\n\nWe can call it a model for uncertainty: A simplified but formalized way to think about uncertain events.\nThe model of probability is one of the most successful mathematical models. It is used in many domains."
   },
   {
     "objectID": "W11.html#two-different-flavors",
     "href": "W11.html#two-different-flavors",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Two different flavors",
     "text": "Two different flavors\n\nModel for uncertainty as subjective or objective probability of an uncertain event.\nThey are also called Bayesian vs. Frequentist interpretation of probability. * They differ in the way of reasoning, the interpretation what is random, and in terminology."
   },
   {
     "objectID": "W11.html#objective-interpretation",
     "href": "W11.html#objective-interpretation",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Objective interpretation",
     "text": "Objective interpretation\nProbability is relative frequency in the limit of indefinite sampling. It is the long run behavior of non-deterministic outcomes.\n\nIf we flip the same coin several times the relative frequency of the number of HEADS converges to the probability of HEADS.\nIf we draw people at random the relative frequency of people with heights between 1.70m and 1.75m converges to the probability that a person is in this range.\nIn this frequentist philosophy the parameters of the population we sample from is fixed and the data is a random selection."
   },
   {
     "objectID": "W11.html#subjective-interpretation",
     "href": "W11.html#subjective-interpretation",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Subjective interpretation",
     "text": "Subjective interpretation\nProbability is a belief a person has about the likelihood that an event occurs. This can be formalized by the condition under which a person would make a bet.\n\nIf say we flip a coin, we can offer a person a bet for HEADS, e.g. you gain 1€ when the outcome is heads and you lose 2€ when it is TAILS. The person would be indifferent between accepting and rejecting the bet if their subjective belief is that HEADS will come two times more likely than TAILS (odds 2:1 or probability 2/3). The subjective probability is the probability where the person is indifferent.\nWe can make up similar bets for the heights of randomly drawn people.\nIn Bayesian philosophy the data we know is fixed but the parameters of the population are random and associated with probabilities.\n\nThe objective and subjective views are not mutually exclusive and it is not important to take a side.\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   },
@@ -3201,16 +3201,16 @@
   {
     "objectID": "W11.html#hw-04-task-2",
     "href": "W11.html#hw-04-task-2",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "HW 04 Task 2",
     "text": "HW 04 Task 2\nStart a document and list data source/topic and draft questions\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n❌ Only two teams pushed a document to the repository. No quarto draft yet."
   },
   {
     "objectID": "W11.html#ok-lets-do-it-together-now",
     "href": "W11.html#ok-lets-do-it-together-now",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "OK, let’s do it together now",
-    "text": "OK, let’s do it together now\nPlan:\n\nWe clone project repositories now\nWe go through a push and pull cycle\nWe create and solve a merge conflict"
+    "text": "OK, let’s do it together now\nPlan:\n\nWe clone project repositories now\nWe go through a push and pull cycle\nWe create and solve a merge conflict\n\nLearning goal:\n\nFirst experiences with collaborative Data Science work with git"
   },
   {
     "objectID": "W11.html#git-pull",
@@ -3236,15 +3236,309 @@
   {
     "objectID": "W11.html#step-1-git-clone-project-teamname",
     "href": "W11.html#step-1-git-clone-project-teamname",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Step 1: git clone project-TEAMname",
     "text": "Step 1: git clone project-TEAMname\n\nGo to: https://github.com/orgs/JU-F22-MDSSB-MET-01/\nFind your project repository project-TEAMname\nCopy the URL\n\nGo to RStudio\n\nNew Project > Form Version Control > Git > Paste your URL\nThe project is created but empty in most cases"
   },
   {
     "objectID": "W11.html#step-2-copy-the-template-file",
     "href": "W11.html#step-2-copy-the-template-file",
-    "title": "W#11: Data Analysis Projects, Probability",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Step 2: Copy the template file",
     "text": "Step 2: Copy the template file\n\nGo to: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE\nClick on the file report.qmd\nClick on “Raw” to see only the file content itself. Usually this also happens in the browser.\nSelect “Save as” from your browser’s menu and save the file in the just created project folder on your computer: YOURPATH/project-TEAMname/\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
+  },
+  {
+    "objectID": "W11.html#step-3-first-team-member-commits-and-pushes",
+    "href": "W11.html#step-3-first-team-member-commits-and-pushes",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 3: First Team member commits and pushes",
+    "text": "Step 3: First Team member commits and pushes\n\nWho is the first team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Poro is the first team member\nAs the first team member in RStudio:\n\nSelect the document report.qmd in the Git pane to perform git add of the file\nDo a git commit in the RStudio interface. Enter “Add report.qmd” as commit message.\nDo git push in the RStudio interface."
+  },
+  {
+    "objectID": "W11.html#step-4-second-and-third-team-member-pulls",
+    "href": "W11.html#step-4-second-and-third-team-member-pulls",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 4: Second (and third) Team member pulls",
+    "text": "Step 4: Second (and third) Team member pulls\n\nWho is the second team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Jan is the second team member\nAs the second team member in RStudio:\n\nDo git push in the RStudio interface."
+  },
+  {
+    "objectID": "W11.html#what-does-git-pull-do",
+    "href": "W11.html#what-does-git-pull-do",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "What does git pull do?",
+    "text": "What does git pull do?\n\nIt first does git fetch which gets the commit from the remote repository (GitHub).\n\nThen it git merges the commit with the latest commit on your local machine.\nWhen we are lucky this works with no problems. (Should be the case with new files.)\n\n\nSource: https://mastodon.social/@allison_horst/109303149552034159"
+  },
+  {
+    "objectID": "W11.html#step-5-now-both-do-independent-changes",
+    "href": "W11.html#step-5-now-both-do-independent-changes",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 5: Now both do independent changes",
+    "text": "Step 5: Now both do independent changes\nGit can merge changes in the same file when there are no conflicts. Let’s try.\n\nThe second team member:\n\nChange the title in the YAML to something meaningful.\nSave, add the file in the Git pane, commit with message “Title”.\nPush.\n\nThe first team member:\n\nAdd your name in the author section of the YAML, save the file.\nPull. This should create an error. Let’s look at it. Get back to your local file.\nAdd the file in the Git pane, commit with message “Author name”.\nPull. This should result in a successful merge where both changes are there:\n\nYour local change of the name\nThe change of the title of your colleague"
+  },
+  {
+    "objectID": "W11.html#step-5-merge-independent-changes",
+    "href": "W11.html#step-5-merge-independent-changes",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 5: Merge independent changes",
+    "text": "Step 5: Merge independent changes\nGit can merge changes in the same file when there are no conflicts. Let’s try.\n\nThe second team member:\n\nChange the title in the YAML to something meaningful.\nSave, add the file in the Git pane, commit with message “Title”.\nPush.\n\nThe first team member:\n\nAdd your name in the author section of the YAML, save the file.\nPull. This should create an error. Let’s look at it. Get back to your local file.\nAdd the file in the Git pane, commit with message “Author name”.\nPull. This should result in a successful merge where both changes are there:\n\nYour local change of the name and the title of your colleague\n\nNow, git add, git commit, and git push.\n\n\nThe second team member: git pull (That should work.)"
+  },
+  {
+    "objectID": "W11.html#step-6-a-merge-conflict",
+    "href": "W11.html#step-6-a-merge-conflict",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 6: A merge conflict",
+    "text": "Step 6: A merge conflict\n\nBoth team members:\n\nChange a word in the title (but different ones)\ngit add and git commit on your local machine.\n\nFirst member: git push\nSecond member:\n\ngit pull. That should result in a conflict. Maybe you are first asked to config git properly, with proposals for three options. Use the default one (merge). Copy the line. Close the dialog and enter the command in the Terminal pane (ATTENTION: Not the console, the terminal right beside.)\nThe conflict should show directly in the file with markings >>>>>, one option of text afterwards, a separator =======, the other option, and <<<<<<<.\nYou have to solve this conflict now!\n\nDecide for an option or make a new text and remove the >>>>>,=====,<<<<<<\ngit add, git commit, and git push"
+  },
+  {
+    "objectID": "W11.html#proposal-of-one-team",
+    "href": "W11.html#proposal-of-one-team",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Proposal of one team",
+    "text": "Proposal of one team\nTitle: Marijuana related Crime\nData: https://www.kaggle.com/datasets/jinbonnie/crime-and-weed\nTopic: Causes and correlations of crimes in the capital of Colorado\nQuestions:\n\nGeographical issues. How much location of the district contribute into crime features (like offense_type and offense_category by neighbourhoods)? Most interestingly we may put it onto the city map and understand does airport nearby help planting weed, do people do it in their flats or rather in countryhouses etc.\nCriminology issues. Relation between MJ and other types of crimes (e. g. are they against property or rather violent?).\nMachine learning problems: classify whether (i) certrain crime is industry or non-industry type and (ii) certain crime is more likely to be a larceny or a burglary.\n\nBONUS Temporal issues of the crimes by type. E. g. do some kinds of crimes tend to be discovered later or to be proved as lasting one with more difficulty? Days of week?\nMore BONUS available in case we’re allowed to pull some data from outside"
+  },
+  {
+    "objectID": "W11.html#project-idea-of-one-team",
+    "href": "W11.html#project-idea-of-one-team",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Project idea of one team",
+    "text": "Project idea of one team\nTitle: Marijuana related Crime\nData: https://www.kaggle.com/datasets/jinbonnie/crime-and-weed\nTopic: Causes and correlations of crimes in the capital of Colorado\nQuestions:\n\nGeographical issues. Does location of the district contribute to crime features (like offense_type and offense_category by neighbourhoods)? We may put it onto the city map and understand: Does airport nearby help planting weed, do people do it in their flats or rather in countryhouses etc.\nCriminology issues. Relation between MJ and other types of crimes (e.g. against property or rather violent).\nMachine learning problems: classify whether (i) certrain crime is industry or non-industry type and (ii) certain crime is more likely to be a larceny or a burglary.\n\nBONUS: Temporal issues of the crimes by type. E.g. do some kinds of crimes tend to be discovered later or to be proved as lasting one with more difficulty? Days of week?\nMore BONUS available in case we’re allowed to pull some data from outside"
+  },
+  {
+    "objectID": "W11.html#another-teams-project-idea",
+    "href": "W11.html#another-teams-project-idea",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Another team’s project idea",
+    "text": "Another team’s project idea\nTitle: The climate crisis as seen in temperature rise across the world\nData: https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data\nQuestions:\n\nHow have temperatures risen across the world since 1750?\nWhich regions, countries and cities have seen the most extreme changes in temperature? (E.g. Which cities have registered the hottest temperatures, what is the impact of temperature rising in the Arctic region?)\nHow are fossil fuel consumption and CO2 emissions correlated to temperature changes in different regions? (Note: We may add an additional dataset on fossil fuel and CO2 data per country for this)\nHow closely does a predictive model based on historical data match the temperatures in subsequent years (2016 onwards)"
+  },
+  {
+    "objectID": "W11.html#my-project",
+    "href": "W11.html#my-project",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "My project",
+    "text": "My project\nQuestion: Do summer school vacations (in Germany) spur or mitigate a pandemic like corona?\nIdea: Summer School vacations differ substantially in time between the 16 Germany federal states. Maybe this helps to isolate a vacation effect from other things like general seasonality.\nDiscuss:\nHypothesis?\nWhat data do I need?\nWhich visualizations would help?\nWhat analysis could I try?"
+  },
+  {
+    "objectID": "W11.html#what-are-good-questions",
+    "href": "W11.html#what-are-good-questions",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "What are good questions?",
+    "text": "What are good questions?\n\nIs the question specific or too broad?\nCan it be answered (or at least approached) with data?\nDoes the question clearly call for one of the different types of data analysis: descriptive, explanatory, inferential, predictive, causal, or mechanistic? (Note: Questions for causal and mechanistic explanations are not the typical choices for a short term data analysis projects. We have not discussed much on these. They should not be central but may be touched.)"
+  },
+  {
+    "objectID": "W11.html#six-types-of-questions",
+    "href": "W11.html#six-types-of-questions",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Six types of questions",
+    "text": "Six types of questions\n\n\n\nDescriptive: summarize a characteristic of data\nExploratory: analyze to see if there are patterns, trends, or relationships between variables (hypothesis generating)\nInferential: analyze patterns, trends, or relationships in representative data from a population\nPredictive: make predictions for individuals or groups of individuals\nCausal: whether changing one factor will change another factor, on average, in a population\nMechanistic: explore “how” as opposed to whether\n\n\n\n\n\n\n\nLeek, Jeffery T., and Roger D. Peng. 2015. “What Is the Question?” Science 347 (6228): 1314–15. https://doi.org/10.1126/science.aaa6146."
+  },
+  {
+    "objectID": "W11.html#data-analysis-flowchart",
+    "href": "W11.html#data-analysis-flowchart",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Data Analysis Flowchart",
+    "text": "Data Analysis Flowchart"
+  },
+  {
+    "objectID": "W11.html#other-teams",
+    "href": "W11.html#other-teams",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Other teams",
+    "text": "Other teams\n\nLet us know your first thought\nWhat were your obstacles?"
+  },
+  {
+    "objectID": "W11.html#different-routes-to-setup-your-project",
+    "href": "W11.html#different-routes-to-setup-your-project",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Different routes to setup your project",
+    "text": "Different routes to setup your project\n\nRandom datasets from the sources mentioned in the homework.\n\nPick a data source (at random) and investigate deeper: What are the cases? What are the variables?\nStart to think about potential exploratory and predictive questions on this. If you feel some curiosity – take it. If not, repeat. Try with at least three datasets.\n\nTopical data search\n\nSelect a topic you are interested in and search for datasets in the sources\nContinue with investigating deeper and thinking about questions as above\n\nQuestion driven\n\nMaybe you have a fairly precise question (Like vacation and corona.)\nThink about out what data you would need\nFind that data (investigation!). Adjust the question when seeing what is available.\n\nDepart from Homework on Corona or ESS (you may download new variables yourself) and develop your own question"
+  },
+  {
+    "objectID": "W11.html#advice",
+    "href": "W11.html#advice",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Advice",
+    "text": "Advice\n\nA manageable dataset: at least 50 cases, good is 10-20 variables with a mix of categorical and numeric\nGo through the visualizations, statistics, and models we had in lectures and homework and think if similar things would be interesting.\nThe goal is not an exhaustive data analysis. Do not calculate every statistic and procedure you have learned for every variable, but rather show that you can ask meaningful questions and answer them with results of data analysis and proficient interpretation and presentation of the results.\nDo NOT blindly do all visualization and all statistic on all variables in the data set! You can do that in your data exploration but that should not go into your report as is.\nYou are invited to use other data analysis and visualization methods (from other courses or packages which you self-learn)! We are happy to give advice if we can.\nA single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate."
+  },
+  {
+    "objectID": "W11_projects.html#data-science-tools-module",
+    "href": "W11_projects.html#data-science-tools-module",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Data Science Tools Module",
+    "text": "Data Science Tools Module"
+  },
+  {
+    "objectID": "W11_projects.html#hw-04-task-1-form-project-teams",
+    "href": "W11_projects.html#hw-04-task-1-form-project-teams",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "HW 04 Task 1: Form Project Teams",
+    "text": "HW 04 Task 1: Form Project Teams\n✔️ Team formation is mostly complete\n8 repositories are created in\nhttps://github.com/orgs/JU-F22-MDSSB-MET-01/.\nYou are to deliver your project reports in these repositories."
+  },
+  {
+    "objectID": "W11_projects.html#hw-04-task-2",
+    "href": "W11_projects.html#hw-04-task-2",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "HW 04 Task 2",
+    "text": "HW 04 Task 2\nStart a document and list data source/topic and draft questions\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n❌ Only two teams pushed a document to the repository. No quarto draft yet."
+  },
+  {
+    "objectID": "W11_projects.html#ok-lets-do-it-together-now",
+    "href": "W11_projects.html#ok-lets-do-it-together-now",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "OK, let’s do it together now",
+    "text": "OK, let’s do it together now\nPlan:\n\nWe clone project repositories now\nWe go through a push and pull cycle\nWe create and solve a merge conflict\n\nLearning goal:\n\nFirst experiences with collaborative Data Science work with git"
+  },
+  {
+    "objectID": "W11_projects.html#step-1-git-clone-project-teamname",
+    "href": "W11_projects.html#step-1-git-clone-project-teamname",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 1: git clone project-TEAMname",
+    "text": "Step 1: git clone project-TEAMname\n\nGo to: https://github.com/orgs/JU-F22-MDSSB-MET-01/\nFind your project repository project-TEAMname\nCopy the URL\n\nGo to RStudio\n\nNew Project > Form Version Control > Git > Paste your URL\nThe project is created but empty in most cases"
+  },
+  {
+    "objectID": "W11_projects.html#step-2-copy-the-template-file",
+    "href": "W11_projects.html#step-2-copy-the-template-file",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 2: Copy the template file",
+    "text": "Step 2: Copy the template file\n\nGo to: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE\nClick on the file report.qmd\nClick on “Raw” to see only the file content itself. Usually this also happens in the browser.\nSelect “Save as” from your browser’s menu and save the file in the just created project folder on your computer: YOURPATH/project-TEAMname/\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
+  },
+  {
+    "objectID": "W11_projects.html#step-3-first-team-member-commits-and-pushes",
+    "href": "W11_projects.html#step-3-first-team-member-commits-and-pushes",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 3: First Team member commits and pushes",
+    "text": "Step 3: First Team member commits and pushes\n\nWho is the first team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Poro is the first team member\nAs the first team member in RStudio:\n\nSelect the document report.qmd in the Git pane to perform git add of the file\nDo a git commit in the RStudio interface. Enter “Add report.qmd” as commit message.\nDo git push in the RStudio interface."
+  },
+  {
+    "objectID": "W11_projects.html#step-4-second-and-third-team-member-pulls",
+    "href": "W11_projects.html#step-4-second-and-third-team-member-pulls",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 4: Second (and third) Team member pulls",
+    "text": "Step 4: Second (and third) Team member pulls\n\nWho is the second team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Jan is the second team member\nAs the second team member in RStudio:\n\nDo git push in the RStudio interface."
+  },
+  {
+    "objectID": "W11_projects.html#what-does-git-pull-do",
+    "href": "W11_projects.html#what-does-git-pull-do",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "What does git pull do?",
+    "text": "What does git pull do?\n\nIt first does git fetch which gets the commit from the remote repository (GitHub).\n\nThen it git merges the commit with the latest commit on your local machine.\nWhen we are lucky this works with no problems. (Should be the case with new files.)\n\n\nSource: https://mastodon.social/@allison_horst/109303149552034159"
+  },
+  {
+    "objectID": "W11_projects.html#step-5-merge-independent-changes",
+    "href": "W11_projects.html#step-5-merge-independent-changes",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 5: Merge independent changes",
+    "text": "Step 5: Merge independent changes\nGit can merge changes in the same file when there are no conflicts. Let’s try.\n\nThe second team member:\n\nChange the title in the YAML to something meaningful.\nSave, add the file in the Git pane, commit with message “Title”. Push.\n\nThe first team member:\n\nAdd your name in the author section of the YAML, save the file.\nPull. (This should create an error. Let’s look at it. Get back to your local file.)\nAdd the file in the Git pane, commit with message “Author name”. Pull.\nThis should result in a successful merge where both changes are there:\nNow, git add, git commit, and git push.\n\n\nThe second team member: git pull (That should work.)"
+  },
+  {
+    "objectID": "W11_projects.html#step-6-a-merge-conflict",
+    "href": "W11_projects.html#step-6-a-merge-conflict",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 6: A merge conflict",
+    "text": "Step 6: A merge conflict\n\nBoth team members:\n\nChange a word in the title (but different ones)\ngit add and git commit on your local machine.\n\nFirst member: git push\nSecond member:\n\ngit pull. That should result in a conflict. Maybe you are first asked to config git properly, with proposals for three options. Use the default one (merge). Copy the line. Close the dialog and enter the command in the Terminal pane (ATTENTION: Not the console, the terminal right beside.)\nThe conflict should show directly in the file with markings >>>>>, one option of text afterwards, a separator =======, the other option, and <<<<<<<.\nYou have to solve this conflict now!\n\nDecide for an option or make a new text and remove the >>>>>,=====,<<<<<<\ngit add, git commit, and git push"
+  },
+  {
+    "objectID": "W11_projects.html#a-project-report-in-a-nutshell",
+    "href": "W11_projects.html#a-project-report-in-a-nutshell",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "A project report in a nutshell",
+    "text": "A project report in a nutshell\n\nYou pick a dataset,\ndo some interesting question-driven data analysis with it,\nwrite up a well structured and nicely formatted report about the analysis, and\npresent it at the end of the semester."
+  },
+  {
+    "objectID": "W11_projects.html#what-are-good-questions",
+    "href": "W11_projects.html#what-are-good-questions",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "What are good questions?",
+    "text": "What are good questions?\n\nIs the question specific or too broad?\nCan it be answered (or at least approached) with data?\nDoes the question clearly call for one of the different types of data analysis: descriptive, explanatory, inferential, predictive, causal, or mechanistic? (Note: Questions for causal and mechanistic explanations are not the typical choices for a short term data analysis projects. We have not discussed much on these. They should not be central but may be touched.)"
+  },
+  {
+    "objectID": "W11_projects.html#six-types-of-questions",
+    "href": "W11_projects.html#six-types-of-questions",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Six types of questions",
+    "text": "Six types of questions\n\n\n\nDescriptive: summarize a characteristic of data\nExploratory: analyze to see if there are patterns, trends, or relationships between variables (hypothesis generating)\nInferential: analyze patterns, trends, or relationships in representative data from a population\nPredictive: make predictions for individuals or groups of individuals\nCausal: whether changing one factor will change another factor, on average, in a population\nMechanistic: explore “how” as opposed to whether\n\n\n\n\n\n\n\nLeek, Jeffery T., and Roger D. Peng. 2015. “What Is the Question?” Science 347 (6228): 1314–15. https://doi.org/10.1126/science.aaa6146."
+  },
+  {
+    "objectID": "W11_projects.html#project-idea-of-one-team",
+    "href": "W11_projects.html#project-idea-of-one-team",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Project idea of one team",
+    "text": "Project idea of one team\nTitle: Marijuana related Crime\nData: https://www.kaggle.com/datasets/jinbonnie/crime-and-weed\nTopic: Causes and correlations of crimes in the capital of Colorado\nQuestions:\n\nGeographical issues. Does location of the district contribute to crime features (like offense_type and offense_category by neighbourhoods)? We may put it onto the city map and understand: Does airport nearby help planting weed, do people do it in their flats or rather in countryhouses etc.\nCriminology issues. Relation between MJ and other types of crimes (e.g. against property or rather violent).\nMachine learning problems: classify whether (i) certrain crime is industry or non-industry type and (ii) certain crime is more likely to be a larceny or a burglary.\n\nBONUS: Temporal issues of the crimes by type. E.g. do some kinds of crimes tend to be discovered later or to be proved as lasting one with more difficulty? Days of week?\nMore BONUS available in case we’re allowed to pull some data from outside"
+  },
+  {
+    "objectID": "W11_projects.html#another-teams-project-idea",
+    "href": "W11_projects.html#another-teams-project-idea",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Another team’s project idea",
+    "text": "Another team’s project idea\nTitle: The climate crisis as seen in temperature rise across the world\nData: https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data\nQuestions:\n\nHow have temperatures risen across the world since 1750?\nWhich regions, countries and cities have seen the most extreme changes in temperature? (E.g. Which cities have registered the hottest temperatures, what is the impact of temperature rising in the Arctic region?)\nHow are fossil fuel consumption and CO2 emissions correlated to temperature changes in different regions? (Note: We may add an additional dataset on fossil fuel and CO2 data per country for this)\nHow closely does a predictive model based on historical data match the temperatures in subsequent years (2016 onwards)"
+  },
+  {
+    "objectID": "W11_projects.html#my-project",
+    "href": "W11_projects.html#my-project",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "My project",
+    "text": "My project\nQuestion: Do summer school vacations (in Germany) spur or mitigate a pandemic like corona?\nIdea: Summer School vacations differ substantially in time between the 16 Germany federal states. Maybe this helps to isolate a vacation effect from other things like general seasonality.\nDiscuss:\nHypothesis?\nWhat data do I need?\nWhich visualizations would help?\nWhat analysis could I try?"
+  },
+  {
+    "objectID": "W11_projects.html#other-teams",
+    "href": "W11_projects.html#other-teams",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Other teams",
+    "text": "Other teams\n\nLet us know your first thought\nWhat were your obstacles?"
+  },
+  {
+    "objectID": "W11_projects.html#different-routes-to-setup-your-project",
+    "href": "W11_projects.html#different-routes-to-setup-your-project",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Different routes to setup your project",
+    "text": "Different routes to setup your project\n\nRandom datasets from the sources mentioned in the homework.\n\n\nPick a data source (at random) and investigate deeper: What are the cases? What are the variables?\nStart to think about potential exploratory and predictive questions on this. If you feel some curiosity – take it. If not, repeat. Try with at least three datasets.\n\n\nTopical data search\n\n\nSelect a topic you are interested in and search for datasets in the sources\nContinue with investigating deeper and thinking about questions as above"
+  },
+  {
+    "objectID": "W11_projects.html#advice",
+    "href": "W11_projects.html#advice",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Advice",
+    "text": "Advice\n\nA manageable dataset: at least 50 cases, good is 10-20 variables with a mix of categorical and numeric\nGo through the visualizations, statistics, and models we had in lectures and homework and think if similar things would be interesting.\nThe goal is not an exhaustive data analysis. Do not calculate every statistic and procedure you have learned for every variable, but rather show that you can ask meaningful questions and answer them with results of data analysis and proficient interpretation and presentation of the results.\nDo NOT blindly do all visualization and all statistic on all variables in the data set! You do that in your data exploration but that should not go into your report as is.\nA single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate."
+  },
+  {
+    "objectID": "W11_projects.html#probability-topics-for-data-science",
+    "href": "W11_projects.html#probability-topics-for-data-science",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Probability Topics for Data Science",
+    "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W11_projects.html#potential-questions",
+    "href": "W11_projects.html#potential-questions",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Potential questions",
+    "text": "Potential questions\n\nDo we need to stick to methods and visualizations treated in lectures?\n\nNo, you are invited to use other data analysis and visualization methods (from other courses or packages which you self-learn)! We are happy to give advice if we can.\n\nAre we only allowed to use one dataset?\n\nNo, you can also merge data from different sources. This is a more challenging project because the data wrangling work would be a bit more. If your question calls for it we encourage you to use another data source. The additional effort will be recognized.\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W11_projects.html#different-routes-to-setup-your-project-1",
+    "href": "W11_projects.html#different-routes-to-setup-your-project-1",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Different routes to setup your project",
+    "text": "Different routes to setup your project\n\nQuestion driven\n\n\nMaybe you have a fairly precise question (Like vacation and corona.)\nThink about out what data you would need\nFind that data (investigation!). Adjust the question when seeing what is available.\n\n\nDepart from Homework on Corona or ESS (you may download new variables yourself) and develop your own question"
+  },
+  {
+    "objectID": "W11_projects.html#step-6-create-a-merge-conflict",
+    "href": "W11_projects.html#step-6-create-a-merge-conflict",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 6: Create a merge conflict",
+    "text": "Step 6: Create a merge conflict\n\nBoth team members:\n\nChange a word in the title (but different ones)\ngit add and git commit on your local machine.\n\nFirst member: git push\nSecond member:\n\ngit pull. That should result in a conflict. Maybe you are first asked to config git properly, with proposals for three options. Use the default one (merge). Copy the line. Close the dialog and enter the command in the Terminal pane (ATTENTION: Not the console, the terminal right beside.)\nThe conflict should show directly in the file with markings >>>>>, one option of text afterwards, a separator =======, the other option, and <<<<<<<."
+  },
+  {
+    "objectID": "W11_projects.html#step-7-solve-the-conflict",
+    "href": "W11_projects.html#step-7-solve-the-conflict",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 7: Solve the conflict",
+    "text": "Step 7: Solve the conflict\n\nThe second member\n\nYou have to solve this conflict now!\nSolve is by editing the text\nDecide for an option or make a new text\nThereby, remove the >>>>>,=====,<<<<<<\nWhen you are done: git add, git commit, and git push"
+  },
+  {
+    "objectID": "index.html#week-11-nov-10-data-analysis-projects-collaborative-git",
+    "href": "index.html#week-11-nov-10-data-analysis-projects-collaborative-git",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git",
+    "text": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git\nSession 1: Slides Week 11 Projects\nThese slides are a main reference for your data science project.\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf"
   }
 ]

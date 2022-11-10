@@ -236,7 +236,13 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 **Homework 04 due in 3 days**  
 **Homework 05 should come. Due Nov 20.**
 
-## Week 11, Nov 10:  {-}
+## Week 11, Nov 10: Data Analysis Projects, Collaborative Git {-}
+
+
+Session 1: [Slides Week 11 Projects](W11_projects.qmd)  
+[These slides are a main reference for your data science project.]{style='color:red;'}  
+
+Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
 ## Week 12, Nov 17:  {-}
 
