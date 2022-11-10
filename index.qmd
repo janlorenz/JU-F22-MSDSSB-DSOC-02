@@ -241,6 +241,7 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 Session 1: [Slides Week 11 Projects](W11_projects.qmd)  
 [These slides are a main reference for your data science project.]{style='color:red;'}  
+[Slides Week 11](W11.qmd)  
 
 Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 

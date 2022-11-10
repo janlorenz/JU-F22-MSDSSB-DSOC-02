@@ -3152,9 +3152,9 @@
   {
     "objectID": "W11.html#probability-topics-for-data-science",
     "href": "W11.html#probability-topics-for-data-science",
-    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "title": "W#11: Probability",
     "section": "Probability Topics for Data Science",
-    "text": "Probability Topics for Data Science\nSome concepts and topics\n\n\nThe concept of probability form the mathematical perspective.\nWhat is the difference between probability theory and statistics?\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\nProbabilistic simulations. For example bootstrapping.\nConditional probabilities and their relation to the confusion matrix.\nContinuous random variables and some theoretical distributions.\nThe central limit theorem.\nWhat is the difference between probability theory and statistics?"
+    "text": "Probability Topics for Data Science\nToday concepts and topics\n\nThe concept of probability form the mathematical perspective.\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\n(Binomial distribution)"
   },
   {
     "objectID": "W11.html#what-is-probability",
@@ -3539,6 +3539,153 @@
     "href": "index.html#week-11-nov-10-data-analysis-projects-collaborative-git",
     "title": "Data Science Concepts / Tools",
     "section": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git",
-    "text": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git\nSession 1: Slides Week 11 Projects\nThese slides are a main reference for your data science project.\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf"
+    "text": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git\nSession 1: Slides Week 11 Projects\nThese slides are a main reference for your data science project.\nSlides Week 11\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf"
+  },
+  {
+    "objectID": "W11.html#example-events-for-one-coin-toss",
+    "href": "W11.html#example-events-for-one-coin-toss",
+    "title": "W#11: Probability",
+    "section": "Example events for one coin toss",
+    "text": "Example events for one coin toss\n\nThe set with one atomic event is a subset \\(\\{H\\} \\subset \\{H,T\\}\\).\nAlso the sample space \\(S = \\{H,T\\} \\subset \\{H,T\\}\\) is an event. It is called the sure event.\nAlso the empty set \\(\\{\\} = \\emptyset \\subset \\{H,T\\}\\) is an event. It is called the impossible event.\nIn interpretation, the event \\(\\{H,T\\}\\) means: The coin comes up HEAD or TAIL.\nThe empty set is interpreted as the event that it comes up neither HEADS nor TAILS."
+  },
+  {
+    "objectID": "W11.html#example-events-for-two-or-three-coin-tosses",
+    "href": "W11.html#example-events-for-two-or-three-coin-tosses",
+    "title": "W#11: Probability",
+    "section": "Example events for two or three coin tosses",
+    "text": "Example events for two or three coin tosses\n\nThe event \\({HH, TH}\\) means “The first toss comes up HEAD or TAIL and the second is HEADS.”\n\nThe event \\({HT, TH, HH}\\) means that “We have HEAD once or twice and it does not matter what coins.”\nThe event \\({TT, HH}\\) means “Both coins show the same side.”\n\nQuiz questions for three coin tosses:\n\nWhat is the event “The coins show one HEAD”? \\(\\{HTT, THT, TTH\\}\\)\nWhat is the event “The first and the third coin are not HEAD? \\(\\{THT, TTT\\}\\)\nHow many atomic events exist? \\(2^3=8\\)\n\n\nFor selecting a random person:\nThe event \\(\\{2,5,6\\}\\) means that the selected person is either 2, 5, or 6.\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W11.html#more-example",
+    "href": "W11.html#more-example",
+    "title": "W#11: Probability",
+    "section": "More example",
+    "text": "More example\n\nThe set with one atomic event is a subset \\(\\{H\\} \\subset \\{H,T\\}\\).\nAlso the sample space \\(S = \\{H,T\\} \\subset \\{H,T\\}\\) is an event. It is called the sure event.\nAlso the empty set \\(\\{\\} = \\emptyset \\subset \\{H,T\\}\\) is an event. It is called the impossible event.\nIn interpretation, the event \\(\\{H,T\\}\\) means: The coin comes up HEAD or TAIL.\nThe empty set is interpreted as the event that it comes up neither HEADS nor TAILS."
+  },
+  {
+    "objectID": "W11.html#more-example-events",
+    "href": "W11.html#more-example-events",
+    "title": "W#11: Probability",
+    "section": "More example events",
+    "text": "More example events\n\n2 coin tosses: The event \\({HH, TH}\\) means “The first toss comes up HEAD or TAIL and the second is HEADS.”\n\nThe event \\({HT, TH, HH}\\) means that “We have HEAD once or twice and it does not matter what coins.”\nThe event \\({TT, HH}\\) means “Both coins show the same side.”\n\nQuiz questions for three coin tosses:\n\nWhat is the event “The coins show one HEAD”? \\(\\{HTT, THT, TTH\\}\\)\nWhat is the event “The first and the third coin are not HEAD? \\(\\{THT, TTT\\}\\)\nHow many atomic events exist? \\(2^3=8\\)\n\n\nFor selecting a random person:\nThe event \\(\\{2,5,6\\}\\) means that the selected person is either 2, 5, or 6."
+  },
+  {
+    "objectID": "W11.html#the-set-of-all-events",
+    "href": "W11.html#the-set-of-all-events",
+    "title": "W#11: Probability",
+    "section": "The set of all events",
+    "text": "The set of all events\nThe collection of all events is called a sigma-algebra. (This is a mathematical term which linguistic meaning we do not analyze deeper here.)\nDefinition: A sigma-algebra \\(\\mathcal{F}(S)\\) is a collection of subsets of a sample space \\(S\\) when it has the following properties\n\nThe empty set (the impossible event) is part of it \\(\\emptyset \\in \\mathcal{F}(S)\\)\nWhen \\(A \\in \\mathcal{F}(S)\\) then its complement \\(A^c \\in \\mathcal{F}(S)\\). That means: For any event \\(A\\) also its opposite \\(A^c = S \\setminus A\\) (read \\(S\\) minus the elements of \\(A\\)) is an event.\n\\(\\mathcal{F}(S)\\) is closed under the countable set union of its members. That means if \\(A_1,A_2,A_3, \\dots \\in \\mathcal{F}(S)\\) the \\(\\bigcup_{i}^\\infty A_i = A_1 \\cup A_2 \\cup A_3 \\cup \\dots \\in \\mathcal{F}(S)\\). The mathematical technicality is not central here. Import is: The sigma-algebra is the set of all possible events and this is large / more complex then one may naively think."
+  },
+  {
+    "objectID": "W11.html#the-power-set",
+    "href": "W11.html#the-power-set",
+    "title": "W#11: Probability",
+    "section": "The power set",
+    "text": "The power set\n\n\n\nA sigma-algebra \\(\\mathcal{F}(S)\\) is a subset of the set of all subsets (also called power set) of the sample space sometimes denoted \\(\\mathcal{P}(S)\\) or \\(2^S\\).\nThe notation \\(2^S\\) matches the fact that the power set of a set with \\(n\\) elements has \\(2^n\\) elements.\n\n\n\nExample powerset of a three element set."
+  },
+  {
+    "objectID": "W11.html#example-for-the-set-of-all-events",
+    "href": "W11.html#example-for-the-set-of-all-events",
+    "title": "W#11: Probability",
+    "section": "Example for the set of all events",
+    "text": "Example for the set of all events\n\nFor 3 coin tosses: How many events exist? \\(2^3=8\\) atomic events \\(\\to\\) \\(2^8=256\\) event\nHow is it for four coin tosses? \\(2^{(2^4)} = 65536\\)\nWe select two out of five people at random (without replacement). How many atomic events? How many events?\n\n\nThis can be computed by “n choose k” \\({n \\choose k} =\\frac{n!}{(n-k)!k!}\\). Here: \\({5\\choose 2}\\).\n\nchoose(5,2)\n\n[1] 10\n\n\nThus there are \\(2^{10} = 1024\\) event.\nExample event: “Person 1 is among the selected.” = \\(\\{12, 21, 13, 31, 14, 41, 15, 51\\}\\)\nThese are typical problems of combinatorics, the theory of counting, which is basic for many probability models. We do not go deeper into it here."
+  },
+  {
+    "objectID": "W11.html#probability-function",
+    "href": "W11.html#probability-function",
+    "title": "W#11: Probability",
+    "section": "Probability function",
+    "text": "Probability function\nDefinition: For a collection of events (in a sigma-algebra \\(\\mathcal{F}(S)\\)) a function \\(\\text{Pr}: \\mathcal{F}(S) \\to \\mathbb{R}\\) is a probability function when\n\nThe probability of any event is between 0 and 1: \\(0\\leq \\text{Pr}(A) \\leq 1\\). (So, actually a probability function is a function \\(\\text{Pr}: \\mathcal{F}(S) \\to [0,1]\\).)\nThe probability of the event coinciding with the whole sample space (the sure event) is 1: \\(\\text{Pr}(S) = 1\\).\nFor events \\(A_1, A_2, \\dots, A_n \\in \\mathcal{F}(S)\\) which are pairwise disjoint we can sum up their probabilities:\n\\[\\text{Pr}(A_1 \\cup A_2\\cup\\dots\\cup A_n) = \\text{Pr}(A_1) + \\text{Pr}(A_2) + \\dots + \\text{Pr}(A_n) \\]\n\nThis captures the essence of how we think about probabilities mathematically. Most important: We can only easily add probabilities when they do not share atomic events."
+  },
+  {
+    "objectID": "W11.html#some-basic-probability-rules",
+    "href": "W11.html#some-basic-probability-rules",
+    "title": "W#11: Probability",
+    "section": "Some basic probability rules",
+    "text": "Some basic probability rules\n\nWe can compute the probabilities of all events by summing the probabilities of the atomic events in it. So, the probabilities of the atomic events are building blocks for the whole probability function.\n\\(\\text{Pr}(\\emptyset) = 0\\)\nFor any events \\(A,B \\subset S\\) it holds\n\n\\(\\text{Pr}(A \\cup B) = \\text{Pr}(A) + \\text{Pr}(B) - \\text{Pr}(A \\cap B)\\)\n\\(\\text{Pr}(A \\cap B) = \\text{Pr}(A) + \\text{Pr}(B) - \\text{Pr}(A \\cup B)\\)\n\\(\\text{Pr}(A^c) = 1 - \\text{Pr}(A)\\)\n\n\nRecap from the motivation of logistic regression: When the probability of an event is \\(A\\) is \\(\\text{Pr}(A)=p\\), then its odds (in favor of the event) are \\(\\frac{p}{1-p}\\). The logistic regression model “raw” predictions are log-odds \\(\\log\\frac{p}{1-p}\\)."
+  },
+  {
+    "objectID": "W11.html#sample-space-atomic-events-events",
+    "href": "W11.html#sample-space-atomic-events-events",
+    "title": "W#11: Probability",
+    "section": "Sample space, atomic events, events",
+    "text": "Sample space, atomic events, events\nIn the following, we say \\(S\\) is the sample space which is a set of atomic events.\nExample for sample spaces:\n\nFor a coin toss the atomic events are \\(H\\) (for HEADS) and \\(T\\) for TAILS, and the sample space is \\(S = \\{H,T\\}\\).\n\nFor the selection of one person of a group of \\(N\\) individuals labeled \\(1,\\dots,N\\), the sample space is \\(S = \\{1,\\dots,N\\}\\).\nFor two successive coin tosses the atomic events are \\(HH\\), \\(HT\\), \\(TH\\), and \\(TT\\). The sample space is \\(\\{HH,HT, TH, TT\\}\\). Important: The atomic events for two coin tosses tare not \\(H\\) and \\(T\\).\n\nAn event \\(A\\) is a subset of the sample space \\(A \\subset S\\).\nImportant: Note the difference of atomic events and events."
+  },
+  {
+    "objectID": "W11.html#random-variable",
+    "href": "W11.html#random-variable",
+    "title": "W#11: Probability",
+    "section": "Random variable",
+    "text": "Random variable\n\nA random variable is a numerical function where values come with probabilities.\nIn some statistical model, we consider variables in a data frame as random variables, for example the response variable in a generalized linear model.\n\nFormally, a random variable is\n\na function \\(X: S \\to \\mathbb{R}\\)\nwhich assigns a value to each atomic event in the sample space.\n\nTogether with a probability function \\(\\text{Pr}: \\mathcal{F}(S)\\to [0,1]\\) probabilities can be assigned to values of the random variable (see the probability mass function in two slides)."
+  },
+  {
+    "objectID": "W11.html#probability-mass-function",
+    "href": "W11.html#probability-mass-function",
+    "title": "W#11: Probability",
+    "section": "Probability mass function",
+    "text": "Probability mass function\nFor a random variable \\(X\\) and a probability function \\(\\text{Pr}\\) the probability mass function \\(f_X: \\mathbb{R} \\to [0,1]\\) is defined as \\(f_X(x) = \\text{Pr}(X=x)\\), where \\(\\text{Pr}(X=x)\\) is an abbreviation for \\(\\text{Pr}(\\{a\\in S\\text{ for which } X(a) = x\\})\\).\nExample:\n\nTwo coin tosses \\(S = \\{HH, HT, TH, TT\\}\\)\n\nWe define \\(X\\) to be the number of heads: \\(X(HH) = 2\\), \\(X(TH) = 1\\), \\(X(HT) = 1\\), and \\(X(TT) = 0\\).\n\nWe assume the probability function \\(\\text{Pr}\\) assigns for each atomic event a probability of 0.25.\nThen the probability mass function is \\[\\begin{align} f_X(0) = & \\text{Pr}(X=0) = \\text{Pr}(\\{TT\\}) & = 0.25 \\\\\nf_X(1) = & \\text{Pr}(X=1) = \\text{Pr}(\\{HT,TH\\}) & = 0.25 + 0.25 = 0.5 \\\\\nf_X(2) = &\\text{Pr}(X=2) = \\text{Pr}(\\{HH\\}) & = 0.25\\end{align}\\]\n\n\nFor all \\(x\\not\\in \\{0,1,2\\}\\) it is obviously \\(f_X(x) = 0\\).\n\n\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W11.html#examples-of-random-variables",
+    "href": "W11.html#examples-of-random-variables",
+    "title": "W#11: Probability",
+    "section": "Examples of random variables",
+    "text": "Examples of random variables\n\n\nFor two coin tosses a random variable can be the number of HEADS. In this case each atomic event is mapped to a number: Either 0, 1, or 2.\nFor 62 randomly selected organ donations a random variable can be the number of complications. Each atomic event is mapped to an integer from 0 to 62. (Note, an atomic event are 62 randomly selected organ donations. So, the set of events is \\(2^62 \\approx 4.61\\cdot 10^18\\).)\nIn the palmer penguins dataset we can consider a variable, e.g. flipper length, to be a random variable. The atomic event would be the random selection of a penguin and the random variable is its flipper length. So we map each penguin to its flipper length."
+  },
+  {
+    "objectID": "W11.html#probability-mass-function-pmf",
+    "href": "W11.html#probability-mass-function-pmf",
+    "title": "W#11: Probability",
+    "section": "Probability mass function (pmf)",
+    "text": "Probability mass function (pmf)\nFor\n\na random variable \\(X\\) and\na probability function \\(\\text{Pr}\\)\n\nthe probability mass function \\(f_X: \\mathbb{R} \\to [0,1]\\) is defined as\n\\[f_X(x) = \\text{Pr}(X=x),\\]\nwhere \\(\\text{Pr}(X=x)\\) is an abbreviation for \\(\\text{Pr}(\\{a\\in S\\text{ for which } X(a) = x\\})\\)."
+  },
+  {
+    "objectID": "W11.html#example-pmf-for-2-coin-tosses",
+    "href": "W11.html#example-pmf-for-2-coin-tosses",
+    "title": "W#11: Probability",
+    "section": "Example pmf for 2 coin tosses",
+    "text": "Example pmf for 2 coin tosses\nTwo coin tosses \\(S = \\{HH, HT, TH, TT\\}\\)\n\nWe define \\(X\\) to be the number of heads:\n\\(X(HH) = 2\\), \\(X(TH) = 1\\), \\(X(HT) = 1\\), and \\(X(TT) = 0\\).\n\nWe assume the probability function \\(\\text{Pr}\\) assigns for each atomic event a probability of 0.25.\nThen the probability mass function is \\[\\begin{align} f_X(0) = & \\text{Pr}(X=0) = \\text{Pr}(\\{TT\\}) & = 0.25 \\\\\nf_X(1) = & \\text{Pr}(X=1) = \\text{Pr}(\\{HT,TH\\}) & = 0.25 + 0.25 = 0.5 \\\\\nf_X(2) = &\\text{Pr}(X=2) = \\text{Pr}(\\{HH\\}) & = 0.25\\end{align}\\]\nNote that \\(\\text{Pr}(\\{HT,TH\\}) = \\text{Pr}(\\{HT\\}) + \\text{Pr}(\\{HT\\})\\) by adding the probabilities of the atomic events.\nFor all \\(x\\) which are not 0, 1, or 2 it is obviously \\(f_X(x) = 0\\)."
+  },
+  {
+    "objectID": "W11.html#binomial-distribution",
+    "href": "W11.html#binomial-distribution",
+    "title": "W#11: Probability",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\nThe number of HEADS in several coin tosses and the number of complications in randomly selected organ donations are examples of random variable which have a binomial distribution.\nDefinition: The binomial distribution with parameters \\(n\\) and \\(p\\) is the number of successes in a sequence of \\(n\\) independent Bernoulli trials which each delivers a success with probability \\(p\\) and a failure with probability \\((1-p)\\).\n\nThe default model for the number of successes drawn from a sample of size \\(n\\) drawn from a population of size \\(N\\) with replacement.\nWhen \\(N\\) is much larger than \\(n\\) it is also a good approximation for drawing without replacement."
+  },
+  {
+    "objectID": "W11.html#binomial-probability-mass-function",
+    "href": "W11.html#binomial-probability-mass-function",
+    "title": "W#11: Probability",
+    "section": "Binomial probability mass function",
+    "text": "Binomial probability mass function\n\\[f(k,n,p) = \\Pr(k;n,p) = \\Pr(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}\\]\nwhere \\(k\\) is the number of successes, \\(n\\) is the number of Bernoulli trials, and \\(p\\) the success probability.\nProbability to have exactly 3 complications in 62 randomly selected organ donations with complication probability \\(p=0.1\\) is\n\n# x represents k, and size represents n\ndbinom(x = 3, size = 62, prob = 0.1)\n\n[1] 0.07551437\n\n\nThe probability to have 3 complications or less can be computed as\n\ndbinom(3, 62, 0.1) + dbinom(2, 62, 0.1) + dbinom(1, 62, 0.1) + dbinom(0, 62, 0.1)\n\n[1] 0.1209787\n\n\n\nThis was the p-value we computed with simulation for the hypothesis testing example."
+  },
+  {
+    "objectID": "W11.html#distribution-functions-are-vectorized",
+    "href": "W11.html#distribution-functions-are-vectorized",
+    "title": "W#11: Probability",
+    "section": "Distribution functions are vectorized!",
+    "text": "Distribution functions are vectorized!\nThis is the probability mass function\n\n\ntibble(x = 0:62) |> \n mutate(pr = dbinom(x, size = 62, prob = 0.1)) |> \n ggplot(aes(x, pr)) + geom_col()\n\n\n\n\n\n\n\n\ntibble(samplesize = 0:62) |> \n mutate(pr = dbinom(3, size = samplesize, prob = 0.1)) |> \n ggplot(aes(samplesize, pr)) + geom_col()\n\n\n\n\n\n\n\n\ntibble(probs = seq(0,1,0.01)) |> \n mutate(pr = dbinom(3, size = 62, prob = probs)) |> \n ggplot(aes(probs, pr)) + geom_col()"
+  },
+  {
+    "objectID": "W11.html#plotting",
+    "href": "W11.html#plotting",
+    "title": "W#11: Probability",
+    "section": "Plotting",
+    "text": "Plotting"
+  },
+  {
+    "objectID": "W11.html#general-sysematic-of-functions-for-distributions-in-r",
+    "href": "W11.html#general-sysematic-of-functions-for-distributions-in-r",
+    "title": "W#11: Probability",
+    "section": "General sysematic of functions for distributions in R",
+    "text": "General sysematic of functions for distributions in R"
+  },
+  {
+    "objectID": "W11.html#calculus",
+    "href": "W11.html#calculus",
+    "title": "W#11: Probability",
+    "section": "Calculus",
+    "text": "Calculus\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   }
 ]

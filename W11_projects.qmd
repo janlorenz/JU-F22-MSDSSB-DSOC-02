@@ -1,0 +1,269 @@
+---
+title: "W#11: Data Analysis Projects, Collaborative Git"
+author: Jan Lorenz
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: false
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+---
+
+# Towards Your Data Science Projects 
+
+## Data Science Tools Module
+
+## HW 04 Task 1: Form Project Teams
+
+✔️ [Team formation is mostly complete ]{style='color:blue;'}
+
+8 repositories are created in   
+<https://github.com/orgs/JU-F22-MDSSB-MET-01/>.
+
+**You are to deliver your project reports in these repositories.**
+
+## HW 04 Task 2 {.smaller}
+
+### Start a document and list data source/topic and draft questions
+
+- An initial document in the repository which lists either 
+  - a link and brief description to a data source you want to build your project on, or
+  - a topic and three potential questions on that topic you like to answer within your project report.
+- Ideally, you provide both. 
+- None, of these binds you. It can be changed.
+- It is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures. 
+
+❌ [Only two teams pushed a document to the repository. No quarto draft yet.]{style='color:red;'}
+
+## OK, let's do it together now
+
+Plan:
+
+- We clone project repositories now
+- We go through a push and pull cycle 
+- We create and solve a merge conflict
+
+Learning goal: 
+
+- First experiences with collaborative Data Science work with `git`
+
+# Collaborative Work with Git
+
+## Step 1: git clone *project-TEAMname* {.smaller}
+
+- Go to: <https://github.com/orgs/JU-F22-MDSSB-MET-01/>
+- Find your project repository `project-TEAMname`
+- Copy the URL   
+  ![](hw-instructions/img/clone-repo-link.png){height=150}
+- Go to RStudio
+  - New Project > Form Version Control > Git > Paste your URL
+  - The project is created but empty in most cases
+
+
+## Step 2: Copy the template file {.smaller}
+
+- Go to: <https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE>
+- Click on the file `report.qmd`
+- Click on "Raw" to see only the file content itself. Usually this also happens in the browser. 
+- Select "Save as" from your browser's menu and save the file in the just created project folder on your computer: `YOURPATH/project-TEAMname/`
+
+- copy a template quarto file there
+- one team member commits and pushes the file 
+- the other pulls the latest commits
+
+## Step 3: First Team member commits and pushes {.smaller}
+
+- Who is the first team member? The first one mentioned in the TEAMname.  
+  **Example:** In the project `project-PoroJan` *Poro* is the first team member
+
+- As the first team member in RStudio:
+  - Select the document `report.qmd` in the Git pane to perform `git add` of the file
+  - Do a `git commit` in the RStudio interface. Enter "Add report.qmd" as commit message. 
+  - Do `git push` in the RStudio interface. 
+  
+  
+## Step 4: Second (and third) Team member pulls {.smaller}
+
+- Who is the second team member? The first one mentioned in the TEAMname.  
+  **Example:** In the project `project-PoroJan` *Jan* is the second team member
+
+- As the second team member in RStudio:
+  - Do `git push` in the RStudio interface. 
+
+## What does `git pull` do? {.smaller}
+
+- It first does `git fetch` which gets the commit from the remote repository (GitHub).  
+- Then it `git merge`s the commit with the latest commit on your local machine. 
+- When we are lucky this works with no problems. (Should be the case with new files.)
+
+![](https://files.mastodon.social/media_attachments/files/109/303/119/338/776/592/original/662a5e803a5e6c21.png)
+
+Source: <https://mastodon.social/@allison_horst/109303149552034159>
+
+
+## Step 5: Merge independent changes {.smaller}
+
+[Git can merge changes in the same file when there are no conflicts.]{style='color:blue;'} Let's try. 
+
+- The second team member:
+  - Change the title in the YAML to something meaningful. 
+  - Save, add the file in the Git pane, commit with message "Title". **Push.**
+- The first team member:
+  - Add your name in the author section of the YAML, save the file. 
+  - **Pull.** (This should create an error. Let's look at it. Get back to your local file.)
+  - Add the file in the Git pane, commit with message "Author name". **Pull.**
+  - This should result in a successful merge where both changes are there:
+  - Now, `git add`, `git commit`, and `git push`.  
+- The second team member: `git pull` (That should work.)
+
+## Step 6: Create a merge conflict {.smaller}
+
+- Both team members: 
+  - Change a word in the title (but different ones)
+  - `git add`  and `git commit` on your local machine. 
+- First member: `git push`
+- Second member: 
+  - `git pull`. That should result in a conflict. Maybe you are first asked to config git properly, with proposals for three options. Use the default one (merge). Copy the line. Close the dialog and enter the command in the Terminal pane (ATTENTION: Not the console, the terminal right beside.)
+  - The conflict should show directly in the file with markings `>>>>>`, one option of text afterwards, a separator `=======`, the other option, and `<<<<<<<`. 
+
+## Step 7: Solve the conflict {.smaller}
+
+- The second member
+  - You have to solve this conflict now!
+  - Solve is by editing the text
+  - Decide for an option or make a new text
+  - Thereby, remove the `>>>>>`,`=====`,`<<<<<<`
+  - When you are done: `git add`, `git commit`, and `git push`
+    
+    
+# Data Science Projects
+
+## A project report in a nutshell
+
+- You pick a dataset, 
+- do some interesting question-driven data analysis with it, 
+- write up a well structured and nicely formatted report about the analysis, and 
+- present it at the end of the semester. 
+
+## What are good questions?
+
+- Is the question specific or too broad?
+- Can it be answered (or at least approached) with data?
+- Does the question clearly call for one of the different types of data analysis: descriptive, explanatory, inferential, predictive, causal, or mechanistic? (Note: Questions for causal and mechanistic explanations are not the typical choices for a short term data analysis projects. We have not discussed much on these. They should not be central but may be touched.)
+
+
+## Six types of questions {.smaller}
+
+:::: {.columns}
+
+::: {.column width='60%'}
+1.  **Descriptive:** summarize a characteristic of  data
+2.  **Exploratory:** analyze to see if there are patterns, trends, or relationships between variables (hypothesis generating)
+3.  **Inferential:** analyze patterns, trends, or relationships in representative data from a population
+4.  **Predictive:** make predictions for individuals or groups of individuals
+5.  **Causal:** whether changing one factor will change another factor, on average, in a population
+6.  **Mechanistic:** explore "how" as opposed to whether
+:::
+
+::: {.column width='40%'}
+![](img/DataAnalysisFlowChart_LeekPeng.jpeg)
+:::
+
+::::
+
+:::{.aside}
+Leek, Jeffery T., and Roger D. Peng. 2015. “What Is the Question?” Science 347 (6228): 1314–15. <https://doi.org/10.1126/science.aaa6146>.
+:::
+
+
+## Project idea of one team {.smaller}
+
+**Title:** Marijuana related Crime
+
+**Data:** <https://www.kaggle.com/datasets/jinbonnie/crime-and-weed>
+
+**Topic:** Causes and correlations of crimes in the capital of Colorado
+
+1. Geographical issues. Does location of the district contribute to crime features (like offense_type and offense_category by neighbourhoods)? We may put it onto the city map and understand: Does airport nearby help planting weed, do people do it in their flats or rather in countryhouses etc.
+
+2. Criminology issues. Relation between MJ and other types of crimes (e.g. against property or rather violent).
+
+3. Machine learning problems: classify whether (i) certrain crime is industry or non-industry type and (ii) certain crime is more likely to be a larceny or a burglary.
+
+BONUS: Temporal issues of the crimes by type. E.g. do some kinds of crimes tend to be discovered later or to be proved as lasting one with more difficulty? Days of week?
+
+## Another team's project idea {.smaller}
+
+**Title:** The climate crisis as seen in temperature rise across the world
+
+**Data:** <https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data>
+
+
+**Questions:** 
+
+1. How have temperatures risen across the world since 1750?
+2. Which regions, countries and cities have seen the most extreme changes in temperature? (E.g. Which cities have registered the hottest temperatures, what is the impact of temperature rising in the Arctic region?)
+3. How are fossil fuel consumption and CO2 emissions correlated to temperature changes in different regions? (Note: We may add an additional dataset on fossil fuel and CO2 data per country for this)
+4. How closely does a predictive model based on historical data match the temperatures in subsequent years (2016 onwards)
+
+
+## My project {.smaller}
+
+**Question:** Do summer school vacations (in Germany) spur or mitigate a pandemic like corona? 
+
+**Idea:** Summer School vacations differ substantially in time between the 16 Germany federal states. Maybe this helps to isolate a vacation effect from other things like general seasonality. 
+
+Discuss:
+
+**Hypothesis?**
+
+**What data do I need?**
+
+**Which visualizations would help?**
+
+**What analysis could I try?**
+
+## Other teams
+
+- Let us know your first thought
+- What were your obstacles?
+
+
+## Different routes to setup your project {.smaller}
+
+1. **Random datasets** from the sources mentioned in the homework.
+  - Pick a data source (at random) and investigate deeper: What are the cases? What are the variables? 
+  - Start to think about potential *exploratory* and *predictive* questions on this. If you feel some curiosity -- take it. If not, repeat. Try with at least three datasets. 
+2. **Topical data search**
+  - Select a topic you are interested in and search for datasets in the sources
+  - Continue with investigating deeper and thinking about questions as above
+
+## Different routes to setup your project {.smaller}
+
+3. **Question driven**
+  - Maybe you have a fairly precise question (Like vacation and corona.)
+  - Think about out what data you would need
+  - Find that data (investigation!). Adjust the question when seeing what is available.
+4. **Depart from Homework** on Corona or ESS (you may download new variables yourself) and develop your own question
+  
+## Advice {.smaller}
+
+- A manageable dataset: at least 50 cases, good is 10-20 variables with a mix of categorical and numeric
+- Go through the visualizations, statistics, and models we had in lectures and homework and think if similar things would be interesting.
+- The goal is not an exhaustive data analysis. Do not calculate every statistic and procedure you have learned for every variable, but rather show that you can ask meaningful questions and answer them with results of data analysis and proficient interpretation and presentation of the results. 
+- Do NOT blindly do all visualization and all statistic on all variables in the data set! You do that in your data exploration but that should not go into your report as is.
+- A single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate. 
+
+## Potential questions {.smaller}
+
+- Do we need to stick to methods and visualizations treated in lectures?
+  - No, you are invited to use other data analysis and visualization methods (from other courses or packages which you self-learn)! We are happy to give advice if we can.
+- Are we only allowed to use one dataset?
+  - No, you can also merge data from different sources. This is a more challenging project because the data wrangling work would be a bit more. If your question calls for it we encourage you to use another data source. The additional effort will be recognized. 
+
+
+
+
+
