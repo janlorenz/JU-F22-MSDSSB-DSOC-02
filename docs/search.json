@@ -3750,5 +3750,19 @@
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Advice: Collaborative work with git",
     "text": "Advice: Collaborative work with git\n\nWhenever you start a work session: First pull to see if there is anything new. That way you reduce the need for merges.\nInform your colleagues when you pushed new commits.\nCoordinate the work, e.g. discuss who works on what part and maybe when. However, git allows to also work without fully coordination and in parallel.\nWhen you finish your work session, end with a pushing a nice commit. That means. The file should render. You made comments when there are loose ends.\nYou can also use the issues section of the GitHub repository for things to do.\nNote: When you work on different parts of the file, be aware that also a successful merge can create problems. Example: Your colleague changed the data import, while you worked on graphics. Maybe after the merge the imported data is not what you need for your chunk. Then coordinate.\n\nCommit and push often. This avoids that potential merge conflicts become large."
+  },
+  {
+    "objectID": "index.html#last-data-science-tools-sessions-dec-8",
+    "href": "index.html#last-data-science-tools-sessions-dec-8",
+    "title": "Data Science Concepts / Tools",
+    "section": "Last Data Science Tools Sessions, Dec 8",
+    "text": "Last Data Science Tools Sessions, Dec 8\n9:45 - 12:30 in the regular rooms.\nInformal project presentations\n\nEach project team presents their report and the main insights.\nThere is no need to prepare additional slides, we can look at the visualization on the html-page of the report.\nEach presentation should be 5-15 minutes, and allow for short questions or feedback.\nThe presentation is not graded.\nThe final version of the report can be improved afterwards."
+  },
+  {
+    "objectID": "index.html#exam-data-science-concepts-module-dec-15",
+    "href": "index.html#exam-data-science-concepts-module-dec-15",
+    "title": "Data Science Concepts / Tools",
+    "section": "Exam Data Science Concepts module, Dec 15",
+    "text": "Exam Data Science Concepts module, Dec 15\nScheduled officially on campusnet by academic offices."
   }
 ]

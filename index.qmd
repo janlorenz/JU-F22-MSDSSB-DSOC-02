@@ -257,11 +257,22 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 **Homework 06 due in 3 days**  
 
+## Last *Data Science Tools* Sessions, Dec 8 {-}
+
+9:45 - 12:30 in the regular rooms. 
+
+**Informal project presentations**
+
+- Each project team presents their report and the main insights. 
+- There is no need to prepare additional slides, we can look at the visualization on the html-page of the report. 
+- Each presentation should be 5-15 minutes, and allow for short questions or feedback. 
+- The presentation is not graded. 
+- The final version of the report can be improved afterwards. 
 
 
-## Exam *Data Science Concepts* module {-}
+## Exam *Data Science Concepts* module, Dec 15 {-}
 
-In December, will be scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices. 
+Scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices.
 
 
 
