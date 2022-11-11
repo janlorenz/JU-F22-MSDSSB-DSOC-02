@@ -635,46 +635,88 @@ f_X(2) = &amp;\text{Pr}(X=2) = \text{Pr}(\{HH\}) &amp; = 0.25\end{align}\]</span
 </section>
 <section id="distribution-functions-are-vectorized" class="slide level2 smaller">
 <h2>Distribution functions are vectorized!</h2>
-<p>This is the probability mass function</p>
+<p>Compute the p-value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">62</span>, <span class="fl">0.1</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1209787</code></pre>
+</div>
+</div>
+<p>Plotting the probability mass function</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">62</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="W11_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</div>
-</div>
-</div>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">tibble</span>(<span class="at">samplesize =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">62</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> samplesize, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(samplesize, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># What is this?</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">62</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <p><img data-src="W11_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
 </div>
 </div>
+</section>
+<section id="other-plots-of-binomial-mass-function" class="slide level2">
+<h2>Other plots of binomial mass function</h2>
+<p>Changing the sample size:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">tibble</span>(<span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> probs)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a href="#cb9-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(probs, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">tibble</span>(<span class="at">samplesize =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">62</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> samplesize, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(samplesize, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <p><img data-src="W11_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 </div>
-</section>
-<section id="plotting" class="slide level2">
-<h2>Plotting</h2>
+<p>Changing the success probability:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tibble</span>(<span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> probs)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(probs, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W11_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</div>
+</div>
+</div>
 </section>
 <section id="general-sysematic-of-functions-for-distributions-in-r" class="slide level2">
 <h2>General sysematic of functions for distributions in R</h2>
+<p>In R we usually have 4 function for each distribution like: <code>dbinom</code>, <code>pbinom</code>, <code>qbinom</code>, and <code>rbinom</code></p>
+<ul>
+<li>The mass function (or density function, more on this later)</li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">tibble</span>(<span class="at">x =</span> x) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W11_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<ul>
+<li>The distribution function, or cumulative probability function</li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">tibble</span>(<span class="at">x =</span> x) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W11_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<p><em>To continue.</em></p>
 </section>
 <section id="calculus" class="slide level2">
 <h2>Calculus</h2>

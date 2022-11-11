@@ -1404,7 +1404,7 @@
     "href": "index.html#week-12-nov-17",
     "title": "Data Science Concepts / Tools",
     "section": "Week 12, Nov 17:",
-    "text": "Week 12, Nov 17:\nHomework 05 due in 3 days\nHomework 06 should come. Due Dec 4."
+    "text": "Week 12, Nov 17:\n\nHomework 05 due in 3 days\nHomework 06 should come. Due Dec 4."
   },
   {
     "objectID": "index.html#week-13-nov-24",
@@ -3371,63 +3371,63 @@
     "href": "W11_projects.html#hw-04-task-1-form-project-teams",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "HW 04 Task 1: Form Project Teams",
-    "text": "HW 04 Task 1: Form Project Teams\n✔️ Team formation is mostly complete\n8 repositories are created in\nhttps://github.com/orgs/JU-F22-MDSSB-MET-01/.\nYou are to deliver your project reports in these repositories."
+    "text": "HW 04 Task 1: Form Project Teams\n✔️ Team formation is mostly complete\n8 repositories are created in\nhttps://github.com/orgs/JU-F22-MDSSB-MET-01/.\nYou are to deliver your project reports in your repository."
   },
   {
     "objectID": "W11_projects.html#hw-04-task-2",
     "href": "W11_projects.html#hw-04-task-2",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
-    "section": "HW 04 Task 2",
-    "text": "HW 04 Task 2\nStart a document and list data source/topic and draft questions\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n❌ Only two teams pushed a document to the repository. No quarto draft yet."
+    "section": "HW 04 Task 2:",
+    "text": "HW 04 Task 2:\nStart a document and list data source/topic and draft questions\n\nAn initial document in the repository which lists either\n\na link and brief description to a data source you want to build your project on, or\na topic and three potential questions on that topic you like to answer within your project report.\n\nIdeally, you provide both.\nNone, of these binds you. It can be changed.\nIt is possible to build on either ESS or Corona data. If you want to do this, make sure to find new questions not those covered in Homework or Lectures.\n\n❌ Only two teams pushed a document to the repository. No quarto draft yet."
   },
   {
     "objectID": "W11_projects.html#ok-lets-do-it-together-now",
     "href": "W11_projects.html#ok-lets-do-it-together-now",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "OK, let’s do it together now",
-    "text": "OK, let’s do it together now\nPlan:\n\nWe clone project repositories now\nWe go through a push and pull cycle\nWe create and solve a merge conflict\n\nLearning goal:\n\nFirst experiences with collaborative Data Science work with git"
+    "text": "OK, let’s do it together now\nThere is a template quarto file here: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE/blob/main/report.qmd\nPlan:\n\nWe clone project repositories now and add the template\nWe go through a push and pull cycle\nWe create and solve a merge conflict\n\nLearning goal:\n\nFirst experiences with collaborative data science work with git"
   },
   {
     "objectID": "W11_projects.html#step-1-git-clone-project-teamname",
     "href": "W11_projects.html#step-1-git-clone-project-teamname",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Step 1: git clone project-TEAMname",
-    "text": "Step 1: git clone project-TEAMname\n\nGo to: https://github.com/orgs/JU-F22-MDSSB-MET-01/\nFind your project repository project-TEAMname\nCopy the URL\n\nGo to RStudio\n\nNew Project > Form Version Control > Git > Paste your URL\nThe project is created but empty in most cases"
+    "text": "Step 1: git clone project-TEAMname\n\nGo to: https://github.com/orgs/JU-F22-MDSSB-MET-01/\nFind your project repository project-TEAMname\nCopy the URL\n\nGo to RStudio\n\nNew Project > Form Version Control > Git > Paste your URL\nThe project is created, but it is empty"
   },
   {
     "objectID": "W11_projects.html#step-2-copy-the-template-file",
     "href": "W11_projects.html#step-2-copy-the-template-file",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Step 2: Copy the template file",
-    "text": "Step 2: Copy the template file\n\nGo to: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE\nClick on the file report.qmd\nClick on “Raw” to see only the file content itself. Usually this also happens in the browser.\nSelect “Save as” from your browser’s menu and save the file in the just created project folder on your computer: YOURPATH/project-TEAMname/\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
+    "text": "Step 2: Copy the template file\nOnly the first team member needs to do the following:\n\nWho is the first team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Poro is the first team member\n\nThe first team member copies the template file to project folder locally.\n\nGo to: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE\nClick on the file report.qmd\nClick on “Raw” to see the file content only. Usually, this happens in the browser.\nSelect “Save as” from your browser’s menu and save the file in the project folder on your computer: YOURPATH/project-TEAMname/\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
   },
   {
     "objectID": "W11_projects.html#step-3-first-team-member-commits-and-pushes",
     "href": "W11_projects.html#step-3-first-team-member-commits-and-pushes",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Step 3: First Team member commits and pushes",
-    "text": "Step 3: First Team member commits and pushes\n\nWho is the first team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Poro is the first team member\nAs the first team member in RStudio:\n\nSelect the document report.qmd in the Git pane to perform git add of the file\nDo a git commit in the RStudio interface. Enter “Add report.qmd” as commit message.\nDo git push in the RStudio interface."
+    "text": "Step 3: First Team member commits and pushes\nNow the first team member propagates the template file to the others.\n\nAs the first team member in RStudio:\n\nSelect the document report.qmd in the Git pane to perform git add of the file\nDo a git commit in the RStudio interface. Enter “Add report.qmd” as commit message.\nDo git push in the RStudio interface."
   },
   {
     "objectID": "W11_projects.html#step-4-second-and-third-team-member-pulls",
     "href": "W11_projects.html#step-4-second-and-third-team-member-pulls",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
-    "section": "Step 4: Second (and third) Team member pulls",
-    "text": "Step 4: Second (and third) Team member pulls\n\nWho is the second team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Jan is the second team member\nAs the second team member in RStudio:\n\nDo git push in the RStudio interface."
+    "section": "Step 4: Second (and third) team member pulls",
+    "text": "Step 4: Second (and third) team member pulls\n\nWho is the second team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Jan is the second team member\nAs the second team member in RStudio:\n\nDo git pull in the RStudio interface."
   },
   {
     "objectID": "W11_projects.html#what-does-git-pull-do",
     "href": "W11_projects.html#what-does-git-pull-do",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "What does git pull do?",
-    "text": "What does git pull do?\n\nIt first does git fetch which gets the commit from the remote repository (GitHub).\n\nThen it git merges the commit with the latest commit on your local machine.\nWhen we are lucky this works with no problems. (Should be the case with new files.)\n\n\nSource: https://mastodon.social/@allison_horst/109303149552034159"
+    "text": "What does git pull do?\n\nIt first does git fetch which gets the commit from the remote repository (GitHub) to the local machine.\n\nThen it git merges the commit with the latest commit on your local machine.\nWhen we are lucky this works with no problems. (Should be the case with new files.)\n\n\nSource: https://mastodon.social/@allison_horst/109303149552034159"
   },
   {
     "objectID": "W11_projects.html#step-5-merge-independent-changes",
     "href": "W11_projects.html#step-5-merge-independent-changes",
     "title": "W#11: Data Analysis Projects, Collaborative Git",
     "section": "Step 5: Merge independent changes",
-    "text": "Step 5: Merge independent changes\nGit can merge changes in the same file when there are no conflicts. Let’s try.\n\nThe second team member:\n\nChange the title in the YAML to something meaningful.\nSave, add the file in the Git pane, commit with message “Title”. Push.\n\nThe first team member:\n\nAdd your name in the author section of the YAML, save the file.\nPull. (This should create an error. Let’s look at it. Get back to your local file.)\nAdd the file in the Git pane, commit with message “Author name”. Pull.\nThis should result in a successful merge where both changes are there:\nNow, git add, git commit, and git push.\n\n\nThe second team member: git pull (That should work.)"
+    "text": "Step 5: Merge independent changes\nGit can merge changes in the same file when there are no conflicts. Let’s try.\n\nThe second team member:\n\nChange the title in the YAML to something meaningful.\nSave, add the file in the Git pane, commit with message “Title”, push.\n\nThe first team member:\n\nAdd your name in the author section of the YAML, save the file, add the file in the Git pane and make a commit.\nTry to push. You should receive an error. Read it carefully, often it tells you what to do. Here: Do git pull first. You cannot push because remotely there is a newer commit (the one your colleague just made).\nPull.\nThis should result in message about a successfull auto-merge. Check that both changes are there. If you receive several hints instead, first read the next slide!"
   },
   {
     "objectID": "W11_projects.html#step-6-a-merge-conflict",
@@ -3539,7 +3539,7 @@
     "href": "index.html#week-11-nov-10-data-analysis-projects-collaborative-git",
     "title": "Data Science Concepts / Tools",
     "section": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git",
-    "text": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git\nSession 1: Slides Week 11 Projects\nThese slides are a main reference for your data science project.\nSlides Week 11\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf"
+    "text": "Week 11, Nov 10: Data Analysis Projects, Collaborative Git\nSlides Week 11 Projects\nThese slides are a main reference for your data science project.\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf"
   },
   {
     "objectID": "W11.html#example-events-for-one-coin-toss",
@@ -3665,7 +3665,7 @@
     "href": "W11.html#distribution-functions-are-vectorized",
     "title": "W#11: Probability",
     "section": "Distribution functions are vectorized!",
-    "text": "Distribution functions are vectorized!\nThis is the probability mass function\n\n\ntibble(x = 0:62) |> \n mutate(pr = dbinom(x, size = 62, prob = 0.1)) |> \n ggplot(aes(x, pr)) + geom_col()\n\n\n\n\n\n\n\n\ntibble(samplesize = 0:62) |> \n mutate(pr = dbinom(3, size = samplesize, prob = 0.1)) |> \n ggplot(aes(samplesize, pr)) + geom_col()\n\n\n\n\n\n\n\n\ntibble(probs = seq(0,1,0.01)) |> \n mutate(pr = dbinom(3, size = 62, prob = probs)) |> \n ggplot(aes(probs, pr)) + geom_col()"
+    "text": "Distribution functions are vectorized!\nCompute the p-value:\n\ndbinom(0:3, 62, 0.1) |> sum()\n\n[1] 0.1209787\n\n\nPlotting the probability mass function\n\n\n# What is this?\ntibble(x = 0:62) |> \n mutate(pr = dbinom(x, size = 62, prob = 0.1)) |> \n ggplot(aes(x, pr)) + geom_col() + theme_minimal(base_size = 24)"
   },
   {
     "objectID": "W11.html#plotting",
@@ -3679,7 +3679,7 @@
     "href": "W11.html#general-sysematic-of-functions-for-distributions-in-r",
     "title": "W#11: Probability",
     "section": "General sysematic of functions for distributions in R",
-    "text": "General sysematic of functions for distributions in R"
+    "text": "General sysematic of functions for distributions in R\nIn R we usually have 4 function for each distribution like: dbinom, pbinom, qbinom, and rbinom\n\nThe mass function (or density function, more on this later)\n\n\n\nx <- 0:10\ntibble(x = x) |> \n mutate(pr = dbinom(x, size = 10, prob = 0.5)) |> \n ggplot(aes(x, pr)) + geom_col() + theme_minimal(base_size = 24)\n\n\n\n\n\n\n\nThe distribution function, or cumulative probability function\n\n\n\nx <- 0:10\ntibble(x = x) |> \n mutate(pr = pbinom(x, size = 10, prob = 0.5)) |> \n ggplot(aes(x, pr)) + geom_col() + theme_minimal(base_size = 24)\n\n\n\n\n\n\nTo continue."
   },
   {
     "objectID": "W11.html#calculus",
@@ -3687,5 +3687,68 @@
     "title": "W#11: Probability",
     "section": "Calculus",
     "text": "Calculus\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
+  },
+  {
+    "objectID": "W11.html#other-plots-of-binomial-mass-function",
+    "href": "W11.html#other-plots-of-binomial-mass-function",
+    "title": "W#11: Probability",
+    "section": "Other plots of binomial mass function",
+    "text": "Other plots of binomial mass function\nChanging the sample size:\n\n\ntibble(samplesize = 0:62) |> \n mutate(pr = dbinom(3, size = samplesize, prob = 0.1)) |> \n ggplot(aes(samplesize, pr)) + geom_col() + theme_minimal(base_size = 24)\n\n\n\n\n\n\nChanging the success probability:\n\n\ntibble(probs = seq(0,1,0.01)) |> \n mutate(pr = dbinom(3, size = 62, prob = probs)) |> \n ggplot(aes(probs, pr)) + geom_col() + theme_minimal(base_size = 24)"
+  },
+  {
+    "objectID": "W11_projects.html#step-2-download-the-template-file",
+    "href": "W11_projects.html#step-2-download-the-template-file",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 2: Download the template file",
+    "text": "Step 2: Download the template file\nOnly the first team member needs to do the following: \n\nWho is the first team member? The first one mentioned in the TEAMname.\nExample: In the project project-PoroJan Poro is the first team member\n\nThe first team member copies the template file to project folder locally.\n\nGo to: https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE\nClick on the file report.qmd\nClick on “Raw” to see the file content only. Usually, this happens in the browser.\nSelect “Save as” from your browser’s menu and save the file in the project folder on your computer: YOURPATH/project-TEAMname/\ncopy a template quarto file there\none team member commits and pushes the file\nthe other pulls the latest commits"
+  },
+  {
+    "objectID": "W11_projects.html#git-configuration-for-divergent-branches",
+    "href": "W11_projects.html#git-configuration-for-divergent-branches",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "??? git configuration for divergent branches",
+    "text": "??? git configuration for divergent branches\n\n\nIf you pull for the first time in a local git repository, git may complain like this:\n\nRead that carefully. It advises to configure with git config pull.rebase false as the default version.\n\nHow to do the configuration?\n\nCopy the line git config pull.rebase false and close the window.\nGo to the Terminal pane (not the console, the one besides that). This is a terminal not for R but to speak with the computer in general. Paste the command and press enter. Now you are done and your next git pull should work.\n\n\n\n\n\nWhat is a branch and what a rebase? These are features of git well worth to learn but not now. Learn at http://happygitwithr.com"
+  },
+  {
+    "objectID": "W11_projects.html#step-6-push-and-pull-the-other-way-round",
+    "href": "W11_projects.html#step-6-push-and-pull-the-other-way-round",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 6: Push and pull the other way round",
+    "text": "Step 6: Push and pull the other way round\n\nThe first member:\n\nThe successful merge creates a new commit, which you can directly push.\nPush.\n\nThe second team member:\n\nPull the changes of your colleague.\n\n\nPractice a bit more pulling and pushing commits and check the merging."
+  },
+  {
+    "objectID": "W11_projects.html#step-7-create-a-merge-conflict",
+    "href": "W11_projects.html#step-7-create-a-merge-conflict",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 7: Create a merge conflict",
+    "text": "Step 7: Create a merge conflict\n\nBoth team members:\n\nChange a word in the title (but different ones)\ngit add and git commit on your local machine.\n\nFirst member: git push\nSecond member:\n\ngit pull. That should result in a conflict. If you receive several hints instead, first read the slide two slides before!\nThe conflict should show directly in the file with markings like this\n\n\n>>>>>>>>\none option of text,\n======== a separator,\nthe other option, and\n<<<<<<<."
+  },
+  {
+    "objectID": "W11_projects.html#step-8-solve-the-conflict",
+    "href": "W11_projects.html#step-8-solve-the-conflict",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Step 8: Solve the conflict",
+    "text": "Step 8: Solve the conflict\n\nThe second member\n\nYou have to solve this conflict now!\nSolve is by editing the text\nDecide for an option or make a new text\nThereby, remove the >>>>>,=====,<<<<<<\nWhen you are done: git add, git commit, and git push.\n\n\nNow you know how to solve merge conflicts. Practice a bit in your team.\nWorking in VSCode: The workflow is very similar because it essentially relies on git not on the editor of choice."
+  },
+  {
+    "objectID": "W11_projects.html#hints-for-working-collaboratively-with-git",
+    "href": "W11_projects.html#hints-for-working-collaboratively-with-git",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Hints for working collaboratively with git",
+    "text": "Hints for working collaboratively with git"
+  },
+  {
+    "objectID": "W11_projects.html#hints-collaborative-work-with-git",
+    "href": "W11_projects.html#hints-collaborative-work-with-git",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Hints: Collaborative work with git",
+    "text": "Hints: Collaborative work with git\n\nWhenever you start a work session: First pull to see if there is anything new. That way you reduce the need for merges.\nInform your colleagues when you pushed new commits.\nCoordinate the work, e.g. discuss who works on what part and maybe when. However, git allows to also work without fully coordination and in parallel.\nWhen you finish your work session, end with a pushing a nice commit. That means. The file should render. You made comments when there are loose ends.\nYou can also use the issues section of the GitHub repository for things to do.\nNote: When you work on different parts of the file, be aware that also a successful merge can create problems. Example: Your colleague changed the data import, while you worked on graphics. Maybe after the merge the imported data is not what you need for your chunk. Then coordinate."
+  },
+  {
+    "objectID": "W11_projects.html#advice-collaborative-work-with-git",
+    "href": "W11_projects.html#advice-collaborative-work-with-git",
+    "title": "W#11: Data Analysis Projects, Collaborative Git",
+    "section": "Advice: Collaborative work with git",
+    "text": "Advice: Collaborative work with git\n\nWhenever you start a work session: First pull to see if there is anything new. That way you reduce the need for merges.\nInform your colleagues when you pushed new commits.\nCoordinate the work, e.g. discuss who works on what part and maybe when. However, git allows to also work without fully coordination and in parallel.\nWhen you finish your work session, end with a pushing a nice commit. That means. The file should render. You made comments when there are loose ends.\nYou can also use the issues section of the GitHub repository for things to do.\nNote: When you work on different parts of the file, be aware that also a successful merge can create problems. Example: Your colleague changed the data import, while you worked on graphics. Maybe after the merge the imported data is not what you need for your chunk. Then coordinate.\n\nCommit and push often. This avoids that potential merge conflicts become large."
   }
 ]

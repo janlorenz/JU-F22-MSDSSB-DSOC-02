@@ -335,18 +335,15 @@
 <h1>Towards Your Data Science Projects</h1>
 
 </section>
-<section id="data-science-tools-module" class="slide level2">
-<h2>Data Science Tools Module</h2>
-</section>
 <section id="hw-04-task-1-form-project-teams" class="slide level2">
 <h2>HW 04 Task 1: Form Project Teams</h2>
 <p>✔️ <span style="color:blue;">Team formation is mostly complete</span></p>
 <p>8 repositories are created in<br>
 <a href="https://github.com/orgs/JU-F22-MDSSB-MET-01/" class="uri">https://github.com/orgs/JU-F22-MDSSB-MET-01/</a>.</p>
-<p><strong>You are to deliver your project reports in these repositories.</strong></p>
+<p><strong>You are to deliver your project reports in your repository.</strong></p>
 </section>
 <section id="hw-04-task-2" class="slide level2 smaller">
-<h2>HW 04 Task 2</h2>
+<h2>HW 04 Task 2:</h2>
 <h3 id="start-a-document-and-list-data-sourcetopic-and-draft-questions">Start a document and list data source/topic and draft questions</h3>
 <ul>
 <li>An initial document in the repository which lists either
@@ -360,17 +357,18 @@
 </ul>
 <p>❌ <span style="color:red;">Only two teams pushed a document to the repository. No quarto draft yet.</span></p>
 </section>
-<section id="ok-lets-do-it-together-now" class="slide level2">
+<section id="ok-lets-do-it-together-now" class="slide level2 smaller">
 <h2>OK, let’s do it together now</h2>
+<p>There is a template quarto file here: <a href="https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE/blob/main/report.qmd" class="uri">https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE/blob/main/report.qmd</a></p>
 <p>Plan:</p>
 <ul>
-<li>We clone project repositories now</li>
+<li>We clone project repositories now and add the template</li>
 <li>We go through a push and pull cycle</li>
 <li>We create and solve a merge conflict</li>
 </ul>
 <p>Learning goal:</p>
 <ul>
-<li>First experiences with collaborative Data Science work with <code>git</code></li>
+<li>First experiences with collaborative data science work with <code>git</code></li>
 </ul>
 </section></section>
 <section>
@@ -388,17 +386,23 @@
 <li>Go to RStudio
 <ul>
 <li>New Project &gt; Form Version Control &gt; Git &gt; Paste your URL</li>
-<li>The project is created but empty in most cases</li>
+<li>The project is created, but it is empty</li>
 </ul></li>
 </ul>
 </section>
-<section id="step-2-copy-the-template-file" class="slide level2 smaller">
-<h2>Step 2: Copy the template file</h2>
+<section id="step-2-download-the-template-file" class="slide level2 smaller">
+<h2>Step 2: Download the template file</h2>
+<p><strong>Only the first team member needs to do the following: </strong></p>
+<ul>
+<li>Who is the first team member? The first one mentioned in the TEAMname.<br>
+<strong>Example:</strong> In the project <code>project-PoroJan</code> <em>Poro</em> is the first team member</li>
+</ul>
+<p>The first team member copies the template file to project folder locally.</p>
 <ul>
 <li><p>Go to: <a href="https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE" class="uri">https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE</a></p></li>
 <li><p>Click on the file <code>report.qmd</code></p></li>
-<li><p>Click on “Raw” to see only the file content itself. Usually this also happens in the browser.</p></li>
-<li><p>Select “Save as” from your browser’s menu and save the file in the just created project folder on your computer: <code>YOURPATH/project-TEAMname/</code></p></li>
+<li><p>Click on “Raw” to see the file content only. Usually, this happens in the browser.</p></li>
+<li><p>Select “Save as” from your browser’s menu and save the file in the project folder on your computer: <code>YOURPATH/project-TEAMname/</code></p></li>
 <li><p>copy a template quarto file there</p></li>
 <li><p>one team member commits and pushes the file</p></li>
 <li><p>the other pulls the latest commits</p></li>
@@ -406,10 +410,9 @@
 </section>
 <section id="step-3-first-team-member-commits-and-pushes" class="slide level2 smaller">
 <h2>Step 3: First Team member commits and pushes</h2>
+<p>Now the first team member propagates the template file to the others.</p>
 <ul>
-<li><p>Who is the first team member? The first one mentioned in the TEAMname.<br>
-<strong>Example:</strong> In the project <code>project-PoroJan</code> <em>Poro</em> is the first team member</p></li>
-<li><p>As the first team member in RStudio:</p>
+<li>As the first team member in RStudio:
 <ul>
 <li>Select the document <code>report.qmd</code> in the Git pane to perform <code>git add</code> of the file</li>
 <li>Do a <code>git commit</code> in the RStudio interface. Enter “Add report.qmd” as commit message.</li>
@@ -418,20 +421,20 @@
 </ul>
 </section>
 <section id="step-4-second-and-third-team-member-pulls" class="slide level2 smaller">
-<h2>Step 4: Second (and third) Team member pulls</h2>
+<h2>Step 4: Second (and third) team member pulls</h2>
 <ul>
 <li><p>Who is the second team member? The first one mentioned in the TEAMname.<br>
 <strong>Example:</strong> In the project <code>project-PoroJan</code> <em>Jan</em> is the second team member</p></li>
 <li><p>As the second team member in RStudio:</p>
 <ul>
-<li>Do <code>git push</code> in the RStudio interface.</li>
+<li>Do <code>git pull</code> in the RStudio interface.</li>
 </ul></li>
 </ul>
 </section>
 <section id="what-does-git-pull-do" class="slide level2 smaller">
 <h2>What does <code>git pull</code> do?</h2>
 <ul>
-<li>It first does <code>git fetch</code> which gets the commit from the remote repository (GitHub).<br>
+<li>It first does <code>git fetch</code> which gets the commit from the remote repository (GitHub) to the local machine.<br>
 </li>
 <li>Then it <code>git merge</code>s the commit with the latest commit on your local machine.</li>
 <li>When we are lucky this works with no problems. (Should be the case with new files.)</li>
@@ -443,25 +446,56 @@
 <h2>Step 5: Merge independent changes</h2>
 <p><span style="color:blue;">Git can merge changes in the same file when there are no conflicts.</span> Let’s try.</p>
 <ul>
-<li>The second team member:
+<li><strong>The second team member:</strong>
 <ul>
 <li>Change the title in the YAML to something meaningful.</li>
-<li>Save, add the file in the Git pane, commit with message “Title”. <strong>Push.</strong></li>
+<li>Save, add the file in the Git pane, commit with message “Title”, <strong>push.</strong></li>
 </ul></li>
-<li>The first team member:
+<li><strong>The first team member:</strong>
 <ul>
-<li>Add your name in the author section of the YAML, save the file.</li>
-<li><strong>Pull.</strong> (This should create an error. Let’s look at it. Get back to your local file.)</li>
-<li>Add the file in the Git pane, commit with message “Author name”. <strong>Pull.</strong></li>
-<li>This should result in a successful merge where both changes are there:</li>
-<li>Now, <code>git add</code>, <code>git commit</code>, and <code>git push</code>.<br>
-</li>
+<li>Add your name in the author section of the YAML, save the file, add the file in the Git pane and make a commit.</li>
+<li>Try to <strong>push</strong>. You should receive an error. Read it carefully, often it tells you what to do. Here: Do <code>git pull</code> first. You cannot push because remotely there is a newer commit (the one your colleague just made).</li>
+<li><strong>Pull.</strong></li>
+<li>This should result in message about a <strong>successfull auto-merge</strong>. Check that <strong>both</strong> changes are there. <em>If you receive several hints instead, first read the next slide!</em></li>
 </ul></li>
-<li>The second team member: <code>git pull</code> (That should work.)</li>
 </ul>
 </section>
-<section id="step-6-create-a-merge-conflict" class="slide level2 smaller">
-<h2>Step 6: Create a merge conflict</h2>
+<section id="git-configuration-for-divergent-branches" class="slide level2 smaller">
+<h2>??? <code>git</code> configuration for divergent branches</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>If you pull for the first time in a local git repository, git may complain like this:</p>
+<p><img data-src="img/gitconfigrebase_rstudio.png" height="200"></p>
+<p>Read that carefully. It advises to configure with <code>git config pull.rebase false</code> as the default version.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>How to do the configuration?</strong></p>
+<ul>
+<li>Copy the line <code>git config pull.rebase false</code> and close the window.</li>
+<li>Go to the Terminal pane (not the console, the one besides that). This is a terminal not for R but to speak with the computer in general. Paste the command and press enter. Now you are done and your next <code>git pull</code> should work.</li>
+</ul>
+</div>
+</div>
+
+<aside><div>
+<p>What is a <em>branch</em> and what a <em>rebase</em>? These are features of git well worth to learn but not now. Learn at <a href="http://happygitwithr.com" class="uri">http://happygitwithr.com</a></p>
+</div></aside></section>
+<section id="step-6-push-and-pull-the-other-way-round" class="slide level2 smaller">
+<h2>Step 6: Push and pull the other way round</h2>
+<ul>
+<li><strong>The first member:</strong>
+<ul>
+<li>The successful merge creates a new commit, which you can directly push.</li>
+<li><strong>Push.</strong></li>
+</ul></li>
+<li><strong>The second team member:</strong>
+<ul>
+<li><strong>Pull</strong> the changes of your colleague.</li>
+</ul></li>
+</ul>
+<p>Practice a bit more pulling and pushing commits and check the merging.</p>
+</section>
+<section id="step-7-create-a-merge-conflict" class="slide level2 smaller">
+<h2>Step 7: Create a merge conflict</h2>
 <ul>
 <li>Both team members:
 <ul>
@@ -471,13 +505,18 @@
 <li>First member: <code>git push</code></li>
 <li>Second member:
 <ul>
-<li><code>git pull</code>. That should result in a conflict. Maybe you are first asked to config git properly, with proposals for three options. Use the default one (merge). Copy the line. Close the dialog and enter the command in the Terminal pane (ATTENTION: Not the console, the terminal right beside.)</li>
-<li>The conflict should show directly in the file with markings <code>&gt;&gt;&gt;&gt;&gt;</code>, one option of text afterwards, a separator <code>=======</code>, the other option, and <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>.</li>
+<li><code>git pull</code>. That should result in a conflict. <em>If you receive several hints instead, first read the slide two slides before!</em></li>
+<li>The conflict should show directly in the file with markings like this</li>
 </ul></li>
 </ul>
+<p><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code><br>
+one option of text,<br>
+<code>========</code> a separator,<br>
+the other option, and<br>
+<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>.</p>
 </section>
-<section id="step-7-solve-the-conflict" class="slide level2 smaller">
-<h2>Step 7: Solve the conflict</h2>
+<section id="step-8-solve-the-conflict" class="slide level2 smaller">
+<h2>Step 8: Solve the conflict</h2>
 <ul>
 <li>The second member
 <ul>
@@ -485,8 +524,23 @@
 <li>Solve is by editing the text</li>
 <li>Decide for an option or make a new text</li>
 <li>Thereby, remove the <code>&gt;&gt;&gt;&gt;&gt;</code>,<code>=====</code>,<code>&lt;&lt;&lt;&lt;&lt;&lt;</code></li>
-<li>When you are done: <code>git add</code>, <code>git commit</code>, and <code>git push</code></li>
+<li>When you are done: <code>git add</code>, <code>git commit</code>, and <code>git push</code>.</li>
 </ul></li>
+</ul>
+<p>Now you know how to solve merge conflicts. Practice a bit in your team.</p>
+<p><strong>Working in VSCode:</strong> The workflow is very similar because it essentially relies on git not on the editor of choice.</p>
+</section>
+<section id="advice-collaborative-work-with-git" class="slide level2 smaller">
+<h2>Advice: Collaborative work with git</h2>
+<ul>
+<li>Whenever you start a work session: First <strong>pull</strong> to see if there is anything new. That way you reduce the need for merges.</li>
+<li>Inform your colleagues when you pushed new commits.</li>
+<li>Coordinate the work, e.g.&nbsp;discuss who works on what part and maybe when. However, git allows to also work without fully coordination and in parallel.</li>
+<li>When you finish your work session, end with a pushing a <em>nice</em> commit. That means. The file should render. You made comments when there are loose ends.</li>
+<li>You can also use the <em>issues</em> section of the GitHub repository for things to do.</li>
+<li>Note: When you work on different parts of the file, be aware that also a successful merge can create problems. Example: Your colleague changed the data import, while you worked on graphics. Maybe after the merge the imported data is not what you need for your chunk. Then coordinate.<br>
+</li>
+<li>Commit and push often. This avoids that potential merge conflicts become large.</li>
 </ul>
 </section></section>
 <section>

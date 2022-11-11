@@ -13,8 +13,6 @@ format:
 
 # Towards Your Data Science Projects 
 
-## Data Science Tools Module
-
 ## HW 04 Task 1: Form Project Teams
 
 ✔️ [Team formation is mostly complete ]{style='color:blue;'}
@@ -22,9 +20,9 @@ format:
 8 repositories are created in   
 <https://github.com/orgs/JU-F22-MDSSB-MET-01/>.
 
-**You are to deliver your project reports in these repositories.**
+**You are to deliver your project reports in your repository.**
 
-## HW 04 Task 2 {.smaller}
+## HW 04 Task 2: {.smaller}
 
 ### Start a document and list data source/topic and draft questions
 
@@ -37,17 +35,19 @@ format:
 
 ❌ [Only two teams pushed a document to the repository. No quarto draft yet.]{style='color:red;'}
 
-## OK, let's do it together now
+## OK, let's do it together now {.smaller}
+
+There is a template quarto file here: <https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE/blob/main/report.qmd>
 
 Plan:
 
-- We clone project repositories now
+- We clone project repositories now and add the template
 - We go through a push and pull cycle 
 - We create and solve a merge conflict
 
 Learning goal: 
 
-- First experiences with collaborative Data Science work with `git`
+- First experiences with collaborative data science work with `git`
 
 # Collaborative Work with Git
 
@@ -59,15 +59,22 @@ Learning goal:
   ![](hw-instructions/img/clone-repo-link.png){height=150}
 - Go to RStudio
   - New Project > Form Version Control > Git > Paste your URL
-  - The project is created but empty in most cases
+  - The project is created, but it is empty
 
 
-## Step 2: Copy the template file {.smaller}
+## Step 2: Download the template file {.smaller}
+
+**Only the first team member needs to do the following: **
+
+- Who is the first team member? The first one mentioned in the TEAMname.  
+  **Example:** In the project `project-PoroJan` *Poro* is the first team member
+
+The first team member copies the template file to project folder locally. 
 
 - Go to: <https://github.com/JU-F22-MDSSB-MET-01/project-TEMPLATE>
 - Click on the file `report.qmd`
-- Click on "Raw" to see only the file content itself. Usually this also happens in the browser. 
-- Select "Save as" from your browser's menu and save the file in the just created project folder on your computer: `YOURPATH/project-TEAMname/`
+- Click on "Raw" to see the file content only. Usually, this happens in the browser. 
+- Select "Save as" from your browser's menu and save the file in the  project folder on your computer: `YOURPATH/project-TEAMname/`
 
 - copy a template quarto file there
 - one team member commits and pushes the file 
@@ -75,8 +82,7 @@ Learning goal:
 
 ## Step 3: First Team member commits and pushes {.smaller}
 
-- Who is the first team member? The first one mentioned in the TEAMname.  
-  **Example:** In the project `project-PoroJan` *Poro* is the first team member
+Now the first team member propagates the template file to the others. 
 
 - As the first team member in RStudio:
   - Select the document `report.qmd` in the Git pane to perform `git add` of the file
@@ -84,17 +90,17 @@ Learning goal:
   - Do `git push` in the RStudio interface. 
   
   
-## Step 4: Second (and third) Team member pulls {.smaller}
+## Step 4: Second (and third) team member pulls {.smaller}
 
 - Who is the second team member? The first one mentioned in the TEAMname.  
   **Example:** In the project `project-PoroJan` *Jan* is the second team member
 
 - As the second team member in RStudio:
-  - Do `git push` in the RStudio interface. 
+  - Do `git pull` in the RStudio interface. 
 
 ## What does `git pull` do? {.smaller}
 
-- It first does `git fetch` which gets the commit from the remote repository (GitHub).  
+- It first does `git fetch` which gets the commit from the remote repository (GitHub) to the local machine.  
 - Then it `git merge`s the commit with the latest commit on your local machine. 
 - When we are lucky this works with no problems. (Should be the case with new files.)
 
@@ -107,36 +113,99 @@ Source: <https://mastodon.social/@allison_horst/109303149552034159>
 
 [Git can merge changes in the same file when there are no conflicts.]{style='color:blue;'} Let's try. 
 
-- The second team member:
+- **The second team member:**
   - Change the title in the YAML to something meaningful. 
-  - Save, add the file in the Git pane, commit with message "Title". **Push.**
-- The first team member:
-  - Add your name in the author section of the YAML, save the file. 
-  - **Pull.** (This should create an error. Let's look at it. Get back to your local file.)
-  - Add the file in the Git pane, commit with message "Author name". **Pull.**
-  - This should result in a successful merge where both changes are there:
-  - Now, `git add`, `git commit`, and `git push`.  
-- The second team member: `git pull` (That should work.)
+  - Save, add the file in the Git pane, commit with message "Title", **push.**
+- **The first team member:**
+  - Add your name in the author section of the YAML, save the file, add the file in the Git pane and make a commit. 
+  - Try to **push**. You should receive an error. Read it carefully, often it tells you what to do. Here: Do `git pull` first. You cannot push because remotely there is a newer commit (the one your colleague just made).
+  - **Pull.** 
+  - This should result in message about a **successfull auto-merge**. Check that  **both** changes are there.
+  *If you receive several hints instead, first read the next slide!*
 
-## Step 6: Create a merge conflict {.smaller}
+
+
+## ??? `git` configuration for divergent branches {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%'}
+If you pull for the first time in a local git repository, git may complain like this: 
+
+![](img/gitconfigrebase_rstudio.png){height=200}
+
+Read that carefully. It advises to configure with `git config pull.rebase false` as the default version. 
+:::
+
+::: {.column width='50%'}
+
+
+**How to do the configuration?**
+
+- Copy the line `git config pull.rebase false` and close the window.
+- Go to the Terminal pane (not the console, the one besides that). This is a terminal not for R but to speak with the computer in general. Paste the command and press enter. Now you are done and your next `git pull` should work.
+:::
+
+::::
+
+:::{.aside}
+What is a *branch* and what a *rebase*? These are features of git well worth to learn but not now. Learn at <http://happygitwithr.com>
+:::
+
+
+## Step 6: Push and pull the other way round {.smaller}
+
+- **The first member:**
+  - The successful merge creates a new commit, which you can directly push. 
+  - **Push.**
+- **The second team member:** 
+  - **Pull** the changes of your colleague. 
+  
+Practice a bit more pulling and pushing commits and check the merging. 
+
+
+## Step 7: Create a merge conflict {.smaller}
 
 - Both team members: 
   - Change a word in the title (but different ones)
   - `git add`  and `git commit` on your local machine. 
 - First member: `git push`
 - Second member: 
-  - `git pull`. That should result in a conflict. Maybe you are first asked to config git properly, with proposals for three options. Use the default one (merge). Copy the line. Close the dialog and enter the command in the Terminal pane (ATTENTION: Not the console, the terminal right beside.)
-  - The conflict should show directly in the file with markings `>>>>>`, one option of text afterwards, a separator `=======`, the other option, and `<<<<<<<`. 
+  - `git pull`. That should result in a conflict. *If you receive several hints instead, first read the slide two slides before!*
+  - The conflict should show directly in the file with markings like this
+  
+`>>>>>>>>`   
+one option of text,   
+`========` a separator,    
+the other option, and     
+`<<<<<<<`. 
 
-## Step 7: Solve the conflict {.smaller}
+## Step 8: Solve the conflict {.smaller}
 
 - The second member
   - You have to solve this conflict now!
   - Solve is by editing the text
   - Decide for an option or make a new text
   - Thereby, remove the `>>>>>`,`=====`,`<<<<<<`
-  - When you are done: `git add`, `git commit`, and `git push`
+  - When you are done: `git add`, `git commit`, and `git push`. 
+  
+  
+Now you know how to solve merge conflicts. Practice a bit in your team. 
+
+**Working in VSCode:** The workflow is very similar because it essentially relies on git not on the editor of choice. 
     
+## Advice: Collaborative work with git {.smaller}
+
+- Whenever you start a work session: First **pull** to see if there is anything new. That way you reduce the need for merges. 
+- Inform your colleagues when you pushed new commits. 
+- Coordinate the work, e.g. discuss who works on what part and maybe when. However, git allows to also work without fully coordination and in parallel. 
+- When you finish your work session, end with a pushing a *nice* commit. That means. The file should render. You made comments when there are loose ends. 
+- You can also use the *issues* section of the GitHub repository for things to do. 
+- Note: When you work on different parts of the file, be aware that also a successful merge can create problems. Example: Your colleague changed the data import, while you worked on graphics. Maybe after the merge the imported data is not what you need for your chunk. Then coordinate.  
+- Commit and push often. This avoids that potential merge conflicts become large. 
+
+
+
     
 # Data Science Projects
 
