@@ -246,7 +246,7 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 ## Week 12, Nov 17:  {-}
 
-<!-- [Slides Week 11](W11.qmd)  -->
+[Slides Week 12](W12.qmd)
 
 **Homework 05 due in 3 days**  
 **Homework 06 should come. Due Dec 4.**

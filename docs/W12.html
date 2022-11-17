@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.269">
+
+  <meta name="author" content="Jan Lorenz">
+  <title>JU-F22-MSDSSB-DSOC-02 - W#12: Probability</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">W#12: Probability</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jan Lorenz 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="math-probability" class="title-slide slide level1 center" data-background-color="yellow">
+<h1>Math: Probability</h1>
+<div class="cell">
+
+</div>
+</section>
+<section id="probability-topics-for-data-science" class="slide level2 smaller">
+<h2>Probability Topics for Data Science</h2>
+<p>Today concepts and topics</p>
+<ul>
+<li>The concept of probability form the mathematical perspective.</li>
+<li>What are probabilistic events, probability functions and random variables.</li>
+<li>How do random variables relate to data?</li>
+<li>(Binomial distribution)</li>
+</ul>
+</section></section>
+<section>
+<section id="events-as-subsets-of-a-sample-space" class="title-slide slide level1 center">
+<h1>Events as subsets of a sample space</h1>
+
+</section>
+<section id="sample-space-atomic-events-events" class="slide level2 smaller">
+<h2>Sample space, atomic events, events</h2>
+<p>In the following, we say <span class="math inline">\(S\)</span> is the <strong>sample space</strong> which is a set of <strong>atomic events</strong>.</p>
+<p>Example for sample spaces:</p>
+<ul>
+<li>For a coin toss the atomic events are <span class="math inline">\(H\)</span> (for HEADS) and <span class="math inline">\(T\)</span> for TAILS, and the sample space is <span class="math inline">\(S = \{H,T\}\)</span>.<br>
+</li>
+<li>For the selection of one person of a group of <span class="math inline">\(N\)</span> individuals labeled <span class="math inline">\(1,\dots,N\)</span>, the sample space is <span class="math inline">\(S = \{1,\dots,N\}\)</span>.</li>
+<li>For two successive coin tosses the atomic events are <span class="math inline">\(HH\)</span>, <span class="math inline">\(HT\)</span>, <span class="math inline">\(TH\)</span>, and <span class="math inline">\(TT\)</span>. The sample space is <span class="math inline">\(\{HH,HT, TH, TT\}\)</span>. <strong>Important:</strong> The atomic events for two coin tosses tare <em>not</em> <span class="math inline">\(H\)</span> and <span class="math inline">\(T\)</span>.</li>
+</ul>
+<p>An <strong>event</strong> <span class="math inline">\(A\)</span> is a <em>subset</em> of the sample space <span class="math inline">\(A \subset S\)</span>.</p>
+<p><span style="color:red;">Important: Note the difference of <em>atomic events</em> and <em>events</em>.</span></p>
+</section>
+<section id="example-events-for-one-coin-toss" class="slide level2 smaller">
+<h2>Example events for one coin toss</h2>
+<ul>
+<li>The set with one atomic event is a subset <span class="math inline">\(\{H\} \subset \{H,T\}\)</span>.</li>
+<li>Also the sample space <span class="math inline">\(S = \{H,T\} \subset \{H,T\}\)</span> is an event. It is called the <em>sure event</em>.</li>
+<li>Also the empty set <span class="math inline">\(\{\} = \emptyset \subset \{H,T\}\)</span> is an event. It is called the <em>impossible event</em>.</li>
+<li>In interpretation, the event <span class="math inline">\(\{H,T\}\)</span> means: The coin comes up HEAD <em>or</em> TAIL.</li>
+<li>The empty set is interpreted as the event that it comes up <em>neither</em> HEADS <em>nor</em> TAILS.</li>
+</ul>
+</section>
+<section id="more-example-events" class="slide level2 smaller">
+<h2>More example events</h2>
+<ul>
+<li>2 coin tosses: The event <span class="math inline">\({HH, TH}\)</span> means “The first toss comes up HEAD or TAIL and the second is HEADS.”<br>
+</li>
+<li>The event <span class="math inline">\({HT, TH, HH}\)</span> means that “We have HEAD once or twice and it does not matter what coins.”</li>
+<li>The event <span class="math inline">\({TT, HH}\)</span> means “Both coins show the same side.”</li>
+</ul>
+<p><strong>Quiz questions for three coin tosses:</strong></p>
+<ul>
+<li>What is the event “The coins show one HEAD”? <span class="fragment"><span class="math inline">\(\{HTT, THT, TTH\}\)</span></span></li>
+<li>What is the event “The first and the third coin are not HEAD? <span class="fragment"><span class="math inline">\(\{THT, TTT\}\)</span></span></li>
+<li>How many <em>atomic events</em> exist? <span class="fragment"><span class="math inline">\(2^3=8\)</span></span></li>
+</ul>
+<div class="fragment">
+<p><strong>For selecting one random person:</strong><br>
+The event <span class="math inline">\(\{2,5,6\}\)</span> means that the selected person is <em>either</em> 2, 5, or 6. (Not all three people which is a different random variable!)</p>
+</div>
+</section></section>
+<section>
+<section id="the-set-of-all-events-and-the-probability-function" class="title-slide slide level1 center">
+<h1>The set of all events and the probability function</h1>
+
+</section>
+<section id="the-set-of-all-events" class="slide level2 smaller">
+<h2>The set of all events</h2>
+<p>The <strong>collection of all events</strong> is called a sigma-algebra. (This is a mathematical term which linguistic meaning we do not analyze deeper here.)</p>
+<p><strong>Definition:</strong> A <strong>sigma-algebra</strong> <span class="math inline">\(\mathcal{F}(S)\)</span> is a collection of subsets of a sample space <span class="math inline">\(S\)</span> when it has the following properties</p>
+<ol type="i">
+<li>The empty set (the impossible event) is part of it <span class="math inline">\(\emptyset \in \mathcal{F}(S)\)</span></li>
+<li>When <span class="math inline">\(A \in \mathcal{F}(S)\)</span> then its complement <span class="math inline">\(A^c \in \mathcal{F}(S)\)</span>. That means: For any event <span class="math inline">\(A\)</span> also its opposite <span class="math inline">\(A^c = S \setminus A\)</span> (read <span class="math inline">\(S\)</span> minus the elements of <span class="math inline">\(A\)</span>) is an event.</li>
+<li><span class="math inline">\(\mathcal{F}(S)\)</span> is closed under the countable set union of its members. That means if <span class="math inline">\(A_1,A_2,A_3, \dots \in \mathcal{F}(S)\)</span> the <span class="math inline">\(\bigcup_{i}^\infty A_i = A_1 \cup A_2 \cup A_3 \cup \dots \in \mathcal{F}(S)\)</span>.</li>
+</ol>
+<p><span style="color:blue;">The mathematical technicality is not central here. Important is: The sigma-algebra is the set of all possible events and this is usually larger / more complex then one may naively think.</span></p>
+</section>
+<section id="the-power-set" class="slide level2 smaller">
+<h2>The power set</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>A sigma-algebra <span class="math inline">\(\mathcal{F}(S)\)</span> is a subset of the <strong>set of all subsets</strong> (also called <strong>power set</strong>) of the sample space sometimes denoted <span class="math inline">\(\mathcal{P}(S)\)</span> or <span class="math inline">\(2^S\)</span>.</li>
+<li>The notation <span class="math inline">\(2^S\)</span> matches the fact that the power set of a set with <span class="math inline">\(n\)</span> elements has <span class="math inline">\(2^n\)</span> elements.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Hasse_diagram_of_powerset_of_3.svg"></p>
+<p>Example powerset of a three element set.</p>
+</div>
+</div>
+</section>
+<section id="example-for-the-set-of-all-events" class="slide level2 smaller">
+<h2>Example for the set of all events</h2>
+<ul>
+<li>For 3 coin tosses: How many events exist? <span class="fragment"><span class="math inline">\(2^3=8\)</span> atomic events <span class="math inline">\(\to\)</span> <span class="math inline">\(2^8=256\)</span> event</span></li>
+<li>How is it for four coin tosses? <span class="fragment"><span class="math inline">\(2^{(2^4)} = 65536\)</span></span></li>
+<li>We select two out of five people at random (without replacement). How many atomic events? How many events?</li>
+</ul>
+<div class="fragment">
+<p>The number of atomic events can be computed by “n choose k” <span class="math inline">\({n \choose k} =\frac{n!}{(n-k)!k!}\)</span>. Here: <span class="math inline">\({5\choose 2}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">choose</span>(<span class="dv">5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>Thus there are <span class="math inline">\(2^{10} = 1024\)</span> event.</p>
+<p>Example event: “Person 1 is among the selected.” = <span class="math inline">\(\{12, 21, 13, 31, 14, 41, 15, 51\}\)</span></p>
+<p><span style="color:blue;">These are typical problems of <em>combinatorics</em>, the <strong>theory of counting</strong>, which is basic for many probability models. We do not go deeper into it here.</span></p>
+</div>
+</section>
+<section id="probability-function" class="slide level2 smaller">
+<h2>Probability function</h2>
+<p><strong>Definition:</strong> For a collection of events (in a sigma-algebra <span class="math inline">\(\mathcal{F}(S)\)</span>) a function <span class="math inline">\(\text{Pr}: \mathcal{F}(S) \to \mathbb{R}\)</span> is a <strong>probability function</strong> when</p>
+<ol type="i">
+<li>The probability of any event is between 0 and 1: <span class="math inline">\(0\leq \text{Pr}(A) \leq 1\)</span>. (So, actually a probability function is a function <span class="math inline">\(\text{Pr}: \mathcal{F}(S) \to [0,1]\)</span>.)</li>
+<li>The probability of the event coinciding with the whole sample space (the sure event) is 1: <span class="math inline">\(\text{Pr}(S) = 1\)</span>.</li>
+<li>For events <span class="math inline">\(A_1, A_2, \dots, A_n \in \mathcal{F}(S)\)</span> which are <em>pairwise disjoint</em> we can sum up their probabilities:<br>
+<span class="math display">\[\text{Pr}(A_1 \cup A_2\cup\dots\cup A_n) = \text{Pr}(A_1) + \text{Pr}(A_2) + \dots + \text{Pr}(A_n) \]</span></li>
+</ol>
+<p><span style="color:blue;">This captures the essence of how we think about probabilities mathematically. Most important: We can only easily add probabilities when they do not share atomic events.</span></p>
+</section>
+<section id="some-basic-probability-rules" class="slide level2 smaller">
+<h2>Some basic probability rules</h2>
+<ul>
+<li>We can compute the probabilities of all events by summing the probabilities of the atomic events in it. So, the probabilities of the atomic events are building blocks for the whole probability function.</li>
+<li><span class="math inline">\(\text{Pr}(\emptyset) = 0\)</span></li>
+<li>For any events <span class="math inline">\(A,B \subset S\)</span> it holds
+<ul>
+<li><span class="math inline">\(\text{Pr}(A \cup B) = \text{Pr}(A) + \text{Pr}(B) - \text{Pr}(A \cap B)\)</span></li>
+<li><span class="math inline">\(\text{Pr}(A \cap B) = \text{Pr}(A) + \text{Pr}(B) - \text{Pr}(A \cup B)\)</span></li>
+<li><span class="math inline">\(\text{Pr}(A^c) = 1 - \text{Pr}(A)\)</span></li>
+</ul></li>
+</ul>
+<p><strong>Recap from the motivation of logistic regression:</strong> When the probability of an event is <span class="math inline">\(A\)</span> is <span class="math inline">\(\text{Pr}(A)=p\)</span>, then its <strong>odds</strong> (in favor of the event) are <span class="math inline">\(\frac{p}{1-p}\)</span>. The logistic regression model “raw” predictions are <strong>log-odds</strong> <span class="math inline">\(\log\frac{p}{1-p}\)</span>.</p>
+</section></section>
+<section>
+<section id="random-variables-to-assign-number-to-atomic-events" class="title-slide slide level1 center">
+<h1>Random variables to assign number to atomic events</h1>
+
+</section>
+<section id="random-variable" class="slide level2 smaller">
+<h2>Random variable</h2>
+<ul>
+<li>A random variable is a numerical function where values come with probabilities.</li>
+<li>In some statistical model, we consider variables in a data frame as <em>random variables</em>, for example the response variable in a generalized linear model.</li>
+</ul>
+<p>Formally, a <strong>random variable</strong> is</p>
+<ul>
+<li>a function <span class="math inline">\(X: S \to \mathbb{R}\)</span></li>
+<li>which assigns a value to each atomic event in the sample space.</li>
+</ul>
+<p>Together with a probability function <span class="math inline">\(\text{Pr}: \mathcal{F}(S)\to [0,1]\)</span> probabilities can be assigned to values of the random variable (see the <em>probability mass function</em> in two slides).</p>
+</section>
+<section id="examples-of-random-variables" class="slide level2 smaller">
+<h2>Examples of random variables</h2>
+<div>
+<ul>
+<li class="fragment">For two coin tosses a random variable can be <strong>the number of HEADS</strong>. In this case, each atomic event is mapped to a number: Either 0, 1, or 2.</li>
+<li class="fragment">For 62 randomly selected organ donations a random variable can be <strong>the number of complications</strong>. Each atomic event is mapped to an integer from 0 to 62. (Note, an atomic event are 62 randomly selected organ donations. So, the set of events is <span class="math inline">\(2^62 \approx 4.61\cdot 10^{18}\)</span>.)</li>
+<li class="fragment">In the palmer penguins dataset we can consider a variable, e.g.&nbsp;flipper length, to be a random variable. The atomic event would be the random selection of a penguin and the random variable is its flipper length. So we map each penguin to its flipper length.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span style="color:blue;">A random variable is a way to look at a <em>numerical</em> aspect of a sample space. It often <em>simplfies</em> because many atomic events may be mapped to the same number.</span></p>
+</div>
+</section>
+<section id="probability-mass-function-pmf" class="slide level2 smaller">
+<h2>Probability mass function (pmf)</h2>
+<p>For</p>
+<ul>
+<li>a <em>random variable</em> <span class="math inline">\(X\)</span> and</li>
+<li>a <em>probability function</em> <span class="math inline">\(\text{Pr}\)</span></li>
+</ul>
+<p>the <strong>probability mass function</strong> <span class="math inline">\(f_X: \mathbb{R} \to [0,1]\)</span> is defined as</p>
+<p><span class="math display">\[f_X(x) = \text{Pr}(X=x),\]</span></p>
+<p>where <span class="math inline">\(\text{Pr}(X=x)\)</span> is an abbreviation for <span class="math inline">\(\text{Pr}(\{a\in S\text{ for which } X(a) = x\})\)</span>.</p>
+</section>
+<section id="example-pmf-for-2-coin-tosses" class="slide level2 smaller">
+<h2>Example pmf for 2 coin tosses</h2>
+<p>Two coin tosses <span class="math inline">\(S = \{HH, HT, TH, TT\}\)</span></p>
+<ul>
+<li>We define <span class="math inline">\(X\)</span> to be the number of heads:<br>
+<span class="math inline">\(X(HH) = 2\)</span>, <span class="math inline">\(X(TH) = 1\)</span>, <span class="math inline">\(X(HT) = 1\)</span>, and <span class="math inline">\(X(TT) = 0\)</span>.<br>
+</li>
+<li>We assume the probability function <span class="math inline">\(\text{Pr}\)</span> assigns for each atomic event a probability of 0.25.</li>
+<li>Then the probability mass function is <span class="math display">\[\begin{align} f_X(0) = &amp; \text{Pr}(X=0) = \text{Pr}(\{TT\}) &amp; = 0.25 \\
+f_X(1) = &amp; \text{Pr}(X=1) = \text{Pr}(\{HT,TH\}) &amp; = 0.25 + 0.25 = 0.5 \\
+f_X(2) = &amp;\text{Pr}(X=2) = \text{Pr}(\{HH\}) &amp; = 0.25\end{align}\]</span></li>
+<li>Note that <span class="math inline">\(\text{Pr}(\{HT,TH\}) = \text{Pr}(\{HT\}) + \text{Pr}(\{HT\})\)</span> by adding the probabilities of the atomic events.</li>
+<li>For all <span class="math inline">\(x\)</span> which are not 0, 1, or 2 it is obviously <span class="math inline">\(f_X(x) = 0\)</span>.</li>
+</ul>
+<!-- In a data frame `D` with $m$ cases, we can consider a variable `"varname"` (of type numeric) as a random variable with -->
+<!-- $X: \{1,2,\dots,m\} \to \mathbb{R}$ and $X(i) =$`D[i,"varname"]`.   -->
+<!-- Let us consider for that data frame that $X$ is the height of $m$ people measured very precisely. Then, the probability of a certain height, e.g. 1.6782, is $\text{Pr}(X=1.6782) = \frac{1}{m}$ as for any other height. This is not very interesting. More interesting is the probability that the height is between 1.6 and 1.7. Of course, these values can be computed for a data frame. Mathematically, we like to have a formal treatment for such continuous random variables. To that end, we will generalize the probability mass function to a *probability density function* later.  -->
+</section>
+<section id="example-roll-two-dice" class="slide level2 smaller">
+<h2>Example: Roll two dice 🎲 🎲</h2>
+<p><strong>Random variable:</strong> The sum of both dice.</p>
+<div class="fragment">
+<p><strong>Events:</strong> All 36 combinations of rolls 11, 12, 13, 14, 15, 16, 21, 22, 23, 24, 25, 26, 31, 32, 33, 34, 35, 36, 41, 42, 43, 44, 45, 46, 51, 52, 53, 54, 55, 56, 61, 62, 63, 64, 65, 66<br>
+<em>Attention, these are not 2-digit numbers!</em> 11 does not mean eleven but 1 and 1.</p>
+</div>
+<div class="fragment">
+<p><strong>Possible values of the random variable: </strong> 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 (These are numbers.)</p>
+</div>
+<div class="fragment">
+<p><strong>Probability mass function:</strong> (Assuming each number has probability of <span class="math inline">\(\frac{1}{6}\)</span> for each die.)</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\text{Pr}(2) = \text{Pr}(12) = \frac{1}{36}\)</span><br>
+<span class="math inline">\(\text{Pr}(3) = \text{Pr}(11) = \frac{2}{36}\)</span><br>
+<span class="math inline">\(\text{Pr}(4) = \text{Pr}(10) = \frac{3}{36}\)</span><br>
+<span class="math inline">\(\text{Pr}(5) = \text{Pr}(9) = \frac{4}{36}\)</span><br>
+<span class="math inline">\(\text{Pr}(6) = \text{Pr}(8) = \frac{5}{36}\)</span><br>
+<span class="math inline">\(\text{Pr}(7) = \frac{6}{36}\)</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">tibble</span>(<span class="at">Value =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">pmf=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">0</span>)<span class="sc">/</span><span class="dv">36</span>,<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Value,pmf)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="binomial-distribution" class="title-slide slide level1 center">
+<h1>Binomial distribution</h1>
+
+</section>
+<section id="binomial-distribution-1" class="slide level2 smaller">
+<h2>Binomial distribution</h2>
+<p>The number of HEADS in several coin tosses and the number of complications in randomly selected organ donations are examples of random variable which have a <strong>binomial distribution</strong>.</p>
+<div class="fragment">
+<p>Definition: The <strong>binomial distribution</strong> with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> is the number of successes in a sequence of <span class="math inline">\(n\)</span> independent <em>Bernoulli trials</em> which each delivers a <em>success</em> with probability <span class="math inline">\(p\)</span> and a <em>failure</em> with probability <span class="math inline">\((1-p)\)</span>.</p>
+<ul>
+<li>The default model for the number of successes drawn from a sample of size <span class="math inline">\(n\)</span> drawn from a population of size <span class="math inline">\(N\)</span> with replacement.</li>
+<li>When <span class="math inline">\(N\)</span> is much larger than <span class="math inline">\(n\)</span> it is also a good approximation for drawing without replacement.</li>
+</ul>
+</div>
+</section>
+<section id="binomial-probability-mass-function" class="slide level2 smaller">
+<h2>Binomial probability mass function</h2>
+<p><span class="math display">\[f(k,n,p) = \Pr(k;n,p) = \Pr(X = k) = \binom{n}{k}p^k(1-p)^{n-k}\]</span></p>
+<p>where <span class="math inline">\(k\)</span> is the number of successes, <span class="math inline">\(n\)</span> is the number of Bernoulli trials, and <span class="math inline">\(p\)</span> the success probability.</p>
+<p>Probability to have <em>exactly</em> 3 complications in 62 randomly selected organ donations with complication probability <span class="math inline">\(p=0.1\)</span> is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># x represents k, and size represents n</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07551437</code></pre>
+</div>
+</div>
+<p>The probability to have 3 complications <em>or less</em> can be computed as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="dv">62</span>, <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="dv">62</span>, <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">1</span>, <span class="dv">62</span>, <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">0</span>, <span class="dv">62</span>, <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1209787</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><span style="color:blue;">This was the p-value we computed with simulation for the hypothesis testing example.</span></p>
+</div>
+</section>
+<section id="distribution-functions-are-vectorized" class="slide level2 smaller">
+<h2>Distribution functions are vectorized!</h2>
+<p>Compute the p-value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">62</span>, <span class="fl">0.1</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1209787</code></pre>
+</div>
+</div>
+<p>Plotting the probability mass function</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">62</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4"></a> <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="other-plots-of-binomial-mass-function" class="slide level2 smaller">
+<h2>Other plots of binomial mass function</h2>
+<p>Changing the sample size:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">tibble</span>(<span class="at">samplesize =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">62</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> samplesize, <span class="at">prob =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(samplesize, pr)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4"></a> <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb11-5"><a href="#cb11-5"></a> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<p><span style="color:blue;">The probability of 3 successes is most likely for samples sizes around 30. Sensible?</span></p>
+<div class="fragment">
+<p>Changing the success probability:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">tibble</span>(<span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.3</span>,<span class="fl">0.01</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> probs)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(probs, pr)) <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4"></a> <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb12-5"><a href="#cb12-5"></a> <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.3</span>,<span class="fl">0.05</span>)) <span class="sc">+</span> </span>
+<span id="cb12-6"><a href="#cb12-6"></a> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<p><span style="color:blue;">The probability of 3 successes is most likely for success probabilities around 0.05.</span></p>
+</div>
+</section>
+<section id="expected-value-discrete-rv" class="slide level2 smaller">
+<h2>Expected value discrete RV</h2>
+<p>A <strong>discrete random variable</strong> takes only a <em>finite</em> (or at least discrete) set of values.</p>
+<p>For <span class="math inline">\(X: S \to \mathbb{R}\)</span>, when <span class="math inline">\(S\)</span> is finite, there is naturally only a set of values <span class="math inline">\(x_1,\dots,x_k\in\mathbb{R}\)</span> which <span class="math inline">\(X\)</span> can be. We call their probabilities <span class="math inline">\(p_1,\dots,p_k\)</span> with <span class="math inline">\(p_i = \text{Pr}(X=x_i) = \text{Pr}(\{a \in S \text{ for which } X(a) = x_i \})\)</span>.<br>
+(The probability of all other values in <span class="math inline">\(\mathbb{R}\)</span> is zero.).</p>
+<p>The <strong>expected value</strong> of <span class="math inline">\(X\)</span> is <span class="math inline">\(E(X) = \sum_{i=1}^k p_i x_i = p_1x_1 + \dots + p_kx_k.\)</span></p>
+<p><strong>Examples:</strong> <span class="math inline">\(X\)</span> is a die roll 🎲. <span class="math inline">\(E(X) = 1\cdot\frac{1}{6} + 2\cdot\frac{1}{6} + 3\cdot\frac{1}{6} + 4\cdot\frac{1}{6} + 5\cdot\frac{1}{6} + 6\cdot\frac{1}{6} = \frac{21}{6} = 3.5\)</span><br>
+<span class="math inline">\(X\)</span> sum of two die rolls 🎲🎲.</p>
+<p>$E(X) = 2 + 3 + 4 + 5 + 6 + 7 + 8 + $<br>
+$ + 9 + 10 + 11 + 12 = 7$</p>
+</section>
+<section id="expected-value-binomial-distribution" class="slide level2 smaller">
+<h2>Expected value binomial distribution</h2>
+<p>For <span class="math inline">\(X \in \text{Binom}(n,p)\)</span> (read “<span class="math inline">\(X\)</span> has a binomial distribution with samplesize <span class="math inline">\(n\)</span> and success probability <span class="math inline">\(p\)</span>”)</p>
+<p>The expected value of <span class="math inline">\(X\)</span> is by definition</p>
+<p><span class="math display">\[E(X) = \underbrace{\sum_{k = 0}^n k}_{\text{sum over successes}} \cdot \underbrace{\binom{n}{k}p^k(1-p)^{n-k}}_{\text{probability of successes}}\]</span></p>
+<p>Computation shows that <span class="math inline">\(E(X) = p\cdot n\)</span>.</p>
+<p><strong>Example:</strong> For <span class="math inline">\(n = 62\)</span> organ donations with complication probability <span class="math inline">\(p=0.1\)</span>, the expected number of complications is <span class="math inline">\(E(X) = 6.2\)</span>.</p>
+</section></section>
+<section>
+<section id="distribution-functions" class="title-slide slide level1 center">
+<h1>Distribution Functions</h1>
+
+</section>
+<section id="general-systematic-of-functions-for-distributions-in-r" class="slide level2 smaller">
+<h2>General systematic of functions for distributions in R</h2>
+<p>In R we usually have 4 function for each distribution: The <code>d</code>, <code>p</code>, <code>q</code>, and <code>r</code> version. For the binomial distribution:</p>
+<ul>
+<li><p><code>dbinom</code> the density function (more on the name later)</p></li>
+<li><p><code>pbinom</code> distribution function</p></li>
+<li><p><code>qbinom</code> the quantile function, and</p></li>
+<li><p><code>rbinom</code> random number generator.</p></li>
+</ul>
+</section>
+<section id="probability-mass-function-d" class="slide level2 smaller">
+<h2>Probability mass function <code>d</code></h2>
+<ul>
+<li>The <strong>mass function</strong> (or <em>density function</em>, more on this later) <code>dbinom</code></li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">tibble</span>(<span class="at">x =</span> x) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<p><span style="color:blue;">Gives the probability for the number <span class="math inline">\(x\)</span>: <span class="math inline">\(\text{Pr}(X = x)\)</span> or <span class="math inline">\(f_X(x)\)</span>.</span></p>
+</section>
+<section id="distribution-function-p" class="slide level2 smaller">
+<h2>Distribution function <code>p</code></h2>
+<ul>
+<li>The <strong>distribution function</strong>, or cumulative probability function <code>pbinom</code></li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">tibble</span>(<span class="at">x =</span> x) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a> <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, pr)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<p><span style="color:blue;">Gives the probability that the random variable is less or equal to <span class="math inline">\(x\)</span>:<br>
+<span class="math inline">\(\text{Pr}(X \leq x)\)</span>.</span></p>
+</section>
+<section id="quantile-function-q" class="slide level2 smaller">
+<h2>Quantile function <code>q</code></h2>
+<ul>
+<li>The <strong>quantile function</strong>, <code>qbinom</code> with argument <span class="math inline">\(p\)</span> representing the fraction of lowest values of <span class="math inline">\(X\)</span> among all values for which we want the <span class="math inline">\(x\)</span> value for.</li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>probs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">tibble</span>(<span class="at">p =</span> probs) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a> <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">qbinom</span>(p, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(p, x)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<p><span style="color:blue;">A point <span class="math inline">\((p,x)\)</span> means: When we want a <span class="math inline">\(p\)</span>-fraction of the probability mass, we need all events with values lower or equal to <span class="math inline">\(x\)</span>.</span></p>
+</section>
+<section id="calculus-relations" class="slide level2 smaller">
+<h2>Calculus relations</h2>
+<ul>
+<li><p>Quantile, distribution and mass function all carry the <em>full information</em> about the distribution of a random variable <span class="math inline">\(X\)</span>.</p></li>
+<li><p>The <em>mass function</em> is the <strong>derivative</strong> of the <em>distribution function</em>.<br>
+(The <em>distribution function</em> is the anti-derivative of the <em>mass function</em>.)</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">pbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03125 0.18750 0.50000 0.81250 0.96875 1.00000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Next comes its derivative (have to append a 0 before first)</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">pbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> <span class="fu">append</span>(<span class="dv">0</span>, <span class="at">after =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">diff</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03125 0.15625 0.31250 0.31250 0.15625 0.03125</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03125 0.15625 0.31250 0.31250 0.15625 0.03125</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Next comes its anti-derivative</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> <span class="fu">cumsum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03125 0.18750 0.50000 0.81250 0.96875 1.00000</code></pre>
+</div>
+</div>
+</section>
+<section id="more-calculus-relations" class="slide level2 smaller">
+<h2>More calculus relations</h2>
+<ul>
+<li>The quantile function is the inverse of the distribution function.</li>
+<li>We plot the inverse function by interchanging the <code>x</code> and <code>y</code> aesthetic.</li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>probs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>q <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">p =</span> probs) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">qbinom</span>(p, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) </span>
+<span id="cb24-4"><a href="#cb24-4"></a>p <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> x) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) </span>
+<span id="cb24-5"><a href="#cb24-5"></a>q_plot <span class="ot">&lt;-</span> q <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(p, x)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb24-6"><a href="#cb24-6"></a>qinv_plot <span class="ot">&lt;-</span> q <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, p)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb24-7"><a href="#cb24-7"></a>p_plot <span class="ot">&lt;-</span> p <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, p)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span>
+<span id="cb24-8"><a href="#cb24-8"></a>pinv_plot <span class="ot">&lt;-</span> p <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(p, x)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">orientation =</span> <span class="st">"y"</span>)</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb24-10"><a href="#cb24-10"></a>(q_plot <span class="sc">|</span> p_plot) <span class="sc">/</span> (pinv_plot <span class="sc">|</span> qinv_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="random-number-generator-r" class="slide level2 smaller">
+<h2>Random number generator <code>r</code></h2>
+<ul>
+<li>Random binomial numbers are drawn with <code>rbinom</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 10 random binomial numbers for 62 trials with success probability 0.1</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">rbinom</span>(<span class="dv">10</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  7  6  6  7  6 13  6  6  5  6</code></pre>
+</div>
+</div>
+<ul>
+<li>We can reproduce the null distribution from hypothesis testing with 62 organ donations and 10% complication probability this way.
+<ul>
+<li>We produce 100,000 random consultants</li>
+<li>Then we compute the fraction of which have 3 or less complications</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>s <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100000</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">sum</span>(s<span class="sc">&lt;=</span><span class="dv">3</span>)<span class="sc">/</span><span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.12038</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Two other samples</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">sum</span>(<span class="fu">rbinom</span>(<span class="dv">100000</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)<span class="sc">&lt;=</span><span class="dv">3</span>)<span class="sc">/</span><span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.11918</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">sum</span>(<span class="fu">rbinom</span>(<span class="dv">100000</span>, <span class="at">size =</span> <span class="dv">62</span>, <span class="at">prob =</span> <span class="fl">0.1</span>)<span class="sc">&lt;=</span><span class="dv">3</span>)<span class="sc">/</span><span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.12034</code></pre>
+</div>
+</div>
+</section>
+<section id="empircal-distributions" class="slide level2 smaller">
+<h2>Empircal distributions</h2>
+<div class="cell">
+
+</div>
+<ul>
+<li><span class="math inline">\(X\)</span>: select a random person from Europe (in 2018, willing to answer survey) and ask its attitude towards the European union from 0 to 10</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>What is the distribution of the answer?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>eu <span class="ot">&lt;-</span> ess <span class="sc">|&gt;</span> <span class="fu">select</span>(euftf) <span class="sc">|&gt;</span> <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2"></a> <span class="fu">count</span>(euftf) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">prob =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) </span>
+<span id="cb33-3"><a href="#cb33-3"></a>eu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 3
+   euftf     n   prob
+   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;
+ 1     0  3361 0.0736
+ 2     1  1787 0.0391
+ 3     2  2830 0.0620
+ 4     3  3586 0.0786
+ 5     4  3739 0.0819
+ 6     5 10286 0.225 
+ 7     6  4589 0.101 
+ 8     7  5165 0.113 
+ 9     8  4692 0.103 
+10     9  1786 0.0391
+11    10  3826 0.0838</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>Mass function and distribution function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>eu_mass <span class="ot">&lt;-</span> eu <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(euftf, prob)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span>
+<span id="cb35-2"><a href="#cb35-2"></a>eu_distr <span class="ot">&lt;-</span> eu <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">cumprob =</span> <span class="fu">cumsum</span>(prob)) <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(euftf, cumprob)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span>
+<span id="cb35-4"><a href="#cb35-4"></a>eu_mass <span class="sc">|</span> eu_distr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-could-be-next" class="slide level2">
+<h2>What could be next?</h2>
+<ul>
+<li>Continuous distribution function
+<ul>
+<li>Theoretical and empirical</li>
+</ul></li>
+<li>The central limit theorem and why it is important empirically</li>
+<li>Independence of probabilistic events</li>
+<li>Conditional probability and the confusion matrix</li>
+<li>Markov chains</li>
+</ul>
+<!-- # The 3 problems: Regression, Classification, Clustering -->
+</section></section>
+<section>
+<section id="principal-component-analysis-pca" class="title-slide slide level1 center">
+<h1>Principal component analysis (PCA)</h1>
+
+</section>
+<section id="pca-description" class="slide level2 smaller">
+<h2>PCA Description</h2>
+<p>Principle component analysis</p>
+<ul>
+<li>is a <strong>dimensionality-reduction</strong> technique, that means it can be used to reduce the number of variables</li>
+<li>computes new variables (the <strong>principal components</strong>) which represent the data in a different way</li>
+<li>transforms the data <strong>linearly</strong> to a new coordinate system where most of the variation in the data can be described with fewer variables than the original data</li>
+<li>can be seen as <em>unsupervised learning</em> technique because there is no response variable. (Response variable are often produced/supervised by humans for training, e.g., a spam dummy.)</li>
+</ul>
+<p><strong>Today:</strong> Quick walk through how to use and interpret it.</p>
+<!-- ## PCA Application -->
+</section>
+<section id="other-data-of-owid-corona-data" class="slide level2 smaller">
+<h2>“Other” data of OWiD Corona data</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<ul>
+<li>Select the variables listed as <em>Others</em> in the <a href="https://github.com/owid/covid-19-data/tree/master/public/data">OWiD corona data documentation</a></li>
+<li>Remove those which have many <code>NA</code>s</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>owid <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/owid-covid-data.csv"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2"></a>owid_inds <span class="ot">&lt;-</span> owid <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3"></a> <span class="co"># Filter for one day and remove rows where continent is NA</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a> <span class="co"># These are rows with data for continents or world regions</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a> <span class="fu">filter</span>(date <span class="sc">==</span> <span class="st">"2022-10-01"</span>, <span class="sc">!</span><span class="fu">is.na</span>(continent)) <span class="sc">|&gt;</span> </span>
+<span id="cb36-6"><a href="#cb36-6"></a> <span class="co"># These are the "Other" variables</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a> <span class="fu">select</span>(iso_code, continent, location, </span>
+<span id="cb36-8"><a href="#cb36-8"></a>        population<span class="sc">:</span>human_development_index) <span class="sc">|&gt;</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a> <span class="co"># We remove the ones with many NA's</span></span>
+<span id="cb36-10"><a href="#cb36-10"></a> <span class="fu">select</span>(<span class="sc">-</span>handwashing_facilities, <span class="sc">-</span>male_smokers, </span>
+<span id="cb36-11"><a href="#cb36-11"></a>        <span class="sc">-</span> female_smokers, <span class="sc">-</span>extreme_poverty) <span class="sc">|&gt;</span> </span>
+<span id="cb36-12"><a href="#cb36-12"></a> <span class="fu">drop_na</span>()</span>
+<span id="cb36-13"><a href="#cb36-13"></a>owid_inds <span class="sc">|&gt;</span> <span class="fu">count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  continent         n
+  &lt;chr&gt;         &lt;int&gt;
+1 Africa           39
+2 Asia             42
+3 Europe           39
+4 North America    20
+5 Oceania           6
+6 South America    12</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<p>We have 158 countries and 11 numeric variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">names</span>(owid_inds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "iso_code"                   "continent"                 
+ [3] "location"                   "population"                
+ [5] "population_density"         "median_age"                
+ [7] "aged_65_older"              "aged_70_older"             
+ [9] "gdp_per_capita"             "cardiovasc_death_rate"     
+[11] "diabetes_prevalence"        "hospital_beds_per_thousand"
+[13] "life_expectancy"            "human_development_index"   </code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-variables" class="slide level2 smaller">
+<h2>Two Variables</h2>
+<p>Example for the new axes.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</div>
+</div>
+
+<aside><div>
+<p>The two arrows show the two eigenvectors of the covariance matrix of the two variables scaled by the square root of the corresponding eigenvalues, and shifted so their origins are at the means of both variables.</p>
+</div></aside></section>
+<section id="computation-in-r" class="slide level2 smaller">
+<h2>Computation in R</h2>
+<p>The basic function is base-R’s <code>prcomp</code> (there is an older <code>princomp</code> which is not advisable to use).</p>
+<p>These 3 commands all deliver identical results for <code>prcomp</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># prcomp can take a formula with no response variable as 1st argument</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>P <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(<span class="sc">~</span> median_age <span class="sc">+</span> life_expectancy, <span class="at">data=</span> owid_inds)</span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="co"># prcomp can take a data frame with all numerical vectors as 1st argument</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a>P <span class="ot">&lt;-</span> owid_inds <span class="sc">|&gt;</span> <span class="fu">select</span>(median_age, life_expectancy) <span class="sc">|&gt;</span> <span class="fu">prcomp</span>()</span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="co"># This is an example using the formula placeholder "." for 'take all</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="co"># and the pipe's placeholder "_" which one uses when the output should be </span></span>
+<span id="cb40-7"><a href="#cb40-7"></a><span class="co"># piped to an argument other than the 1st</span></span>
+<span id="cb40-8"><a href="#cb40-8"></a>P <span class="ot">&lt;-</span> owid_inds <span class="sc">|&gt;</span> <span class="fu">select</span>(median_age, life_expectancy) <span class="sc">|&gt;</span> <span class="fu">prcomp</span>(<span class="sc">~</span> ., <span class="at">data=</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>The standard output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard deviations (1, .., p=2):
+[1] 10.69296  2.95809
+
+Rotation (n x k) = (2 x 2):
+                      PC1        PC2
+median_age      0.8091382  0.5876184
+life_expectancy 0.5876184 -0.8091382</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>The summary output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">summary</span>(P)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                           PC1     PC2
+Standard deviation     10.6930 2.95809
+Proportion of Variance  0.9289 0.07109
+Cumulative Proportion   0.9289 1.00000</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-prcomp-object" class="slide level2 smaller">
+<h2>The <code>prcomp</code> object</h2>
+<p>Includes 4 different related entities.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>The <strong>standard deviations</strong> related to each principal component.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>P<span class="sc">$</span>sdev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.69296  2.95809</code></pre>
+</div>
+</div>
+<p>The matrix of variable <strong>loadings</strong>. (It is also the matrix which rotates the original data vectors.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>P<span class="sc">$</span>rotation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      PC1        PC2
+median_age      0.8091382  0.5876184
+life_expectancy 0.5876184 -0.8091382</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>The means for each original variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>P<span class="sc">$</span>center</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     median_age life_expectancy 
+       31.15823        73.57741 </code></pre>
+</div>
+</div>
+<p>Note, there are also standard deviations of original variables in <code>$scale</code> when this is set to be used.</p>
+<p>The centered (scaled, if set) and rotated data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>P<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             PC1         PC2
+1   -15.30147798 -0.30158529
+2     8.46967981 -0.01934856
+3     0.27527455 -3.88170827
+4     2.78495581 -2.23213257
+5     2.41746174 -2.06645786
+6     4.56375002  1.44493027
+7    11.25046735 -4.01861358
+8    15.39339097  1.33826834
+9     0.66547151  1.19688861
+10    2.74344303  1.56895631
+11    3.18635423 -2.27431439
+12   -3.54022934 -1.35069463
+13   10.29045200  0.53669877
+14    8.10950037  4.39071615
+15   13.34251723 -0.26236181
+16   -4.37020966 -4.46229111
+17  -16.93776248  2.29190137
+18   -3.12614815 -0.04891248
+19   -5.87404744 -1.71082388
+20   11.42328837  3.57162574
+21   -6.67861938  0.07776886
+22    3.24786441 -0.48704930
+23    2.34605999 -1.11724672
+24   11.82248935  6.76586095
+25  -18.02037585  1.74049561
+26  -18.10128967  1.68173378
+27   -6.70529480 -0.22585660
+28  -18.39505599  4.29856418
+29   13.48895662 -1.14471974
+30   -4.76750699 -2.72397157
+31  -22.33121139  8.86767576
+32    7.31198595 -2.84986882
+33    8.06063011  1.73515374
+34    3.02452659 -2.39183806
+35  -14.14471452  1.16878824
+36    5.91429898 -3.98849568
+37   13.27749971  3.57109260
+38    9.31944327 -2.38070454
+39   13.23408329  2.43962673
+40   13.31812495  0.62211827
+41   -8.45956818  1.84938433
+42   -2.58376417 -2.49754876
+43   -0.45747329 -4.57451459
+44   -5.67290445 -2.15797206
+45   -3.03035412 -1.88260370
+46  -15.80534846  6.85901626
+47  -13.85952988 -1.09586840
+48   12.37252460  2.60490418
+49  -15.68152626  5.15690932
+50  -13.29042762 -1.02861793
+51   -5.67641179  3.46274744
+52   14.31618860  0.09869783
+53   14.10959178 -0.97825052
+54  -10.69666185  1.01571059
+55  -17.82510905  1.30143881
+56    6.21550849  4.27584778
+57   17.05009523  2.80094774
+58  -13.72522235  1.78240564
+59   16.53294823  1.30072809
+60   -2.11451419 -0.08048350
+61   -6.25743781 -5.43736541
+62  -16.87582996  2.54697854
+63   -6.08601239  0.11265381
+64  -11.17711330  3.71942404
+65   -4.06917156 -5.04699279
+66   11.84595123  4.52123414
+67   10.50055615 -4.00707238
+68   -4.69555434  1.43141323
+69   -2.59500849  0.41096866
+70    2.82790704 -1.78074007
+71  -10.77812658 -4.14764718
+72   11.22789301 -2.62610131
+73    5.06757765 -7.92793256
+74   19.38298293  1.80093025
+75    0.72013226 -0.58016293
+76   20.28385695  1.07098094
+77   -5.87954413 -5.44718170
+78   -0.43840629 -0.34630735
+79  -13.06983814 -0.99200808
+80   -9.49927316 -0.46289021
+81    3.18052090 -0.05396172
+82   -5.18108013 -1.13341907
+83   -8.79273555  0.60636402
+84   11.31620717  6.10157310
+85    3.09816863 -4.36520494
+86  -15.24495644  0.64165663
+87   -2.13848412 -0.72819134
+88   11.36862762  5.34867729
+89   12.00765033 -1.99802605
+90  -13.19370320 -1.50216242
+91  -16.04098955 -0.13418567
+92    0.49949992 -2.82903407
+93  -20.32523538  2.87209737
+94   14.35685668 -0.63801521
+95    5.88052317  2.52479529
+96   -0.63823938 -2.28346164
+97    4.22661012  5.14255609
+98   -4.24849920  1.49654154
+99    8.36665685  1.99447523
+100   0.56232000 -3.42607145
+101 -18.36842342  2.38992835
+102  -5.45400436  4.00738947
+103  -6.62666413 -1.35520031
+104  14.85726268  0.03436403
+105  10.57470625 -3.08810461
+106  -2.59145830 -2.99748955
+107 -19.54962201 -0.40822638
+108   7.73202903  2.86834452
+109  12.09579308 -2.11939679
+110   2.14576170 -3.73447438
+111  -9.90291188  0.60344735
+112   1.71857540 -4.84803258
+113  -3.37392111 -3.28148244
+114   0.19300798 -3.76842892
+115  -6.20040822 -1.60178884
+116  11.63842401  2.08413905
+117  17.14952515  1.98332087
+118   4.50938307 -4.94698996
+119  11.03457271  4.95777153
+120   6.24446705  5.76757879
+121   4.56869580  0.07669216
+122  -0.09619205  1.22461257
+123 -11.95340613 -4.74163201
+124   1.51252948 -0.82038499
+125   3.97524412  3.10618305
+126  14.99736068 -1.51997588
+127  10.45367524  2.69444253
+128  15.34502876  1.57504058
+129  -8.72053195 -5.61948425
+130  -8.67330823  5.37709112
+131  15.45980409 -0.45496597
+132  17.47043209  0.35018930
+133   4.37972753 -1.02453034
+134 -14.12936912 -0.04359145
+135  -2.37577176  0.61961970
+136  13.38272012 -1.67914822
+137  15.65777638 -1.23810515
+138  -7.81416124 -2.61307574
+139 -15.65950282 -1.34019889
+140   9.33445203  2.36362626
+141 -13.04278322 -4.43283183
+142 -16.88124094  3.23514328
+143  -8.73494696 -3.04695782
+144   4.03988214  3.01717785
+145   3.08240087 -1.62063733
+146   2.77409099 -3.06806436
+147 -17.93950488 -0.41300384
+148   7.39535433  7.24604370
+149   4.88055588 -1.88433903
+150  12.35121731 -0.59914731
+151   8.88283060 -0.07771314
+152   6.13991994 -0.89560137
+153  -3.48506054 -0.23541152
+154  -2.63795972 -0.04042384
+155   2.23758320 -0.62751947
+156 -13.16791532 -0.34642241
+157 -16.58206363 -0.06985186
+158 -16.45498504  2.98855475</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pca-as-exploratory-data-analysis" class="slide level2 smaller">
+<h2>PCA as Exploratory Data Analysis</h2>
+<p>Suppose we do a PCA with all 158 countries (rows) and all 11 numeric variables.</p>
+<ul>
+<li><em>How long will the vector of standard deviations be?</em> <span class="fragment">11</span><br>
+</li>
+<li><em>What dimensions will the rotation matrix have?</em> <span class="fragment">11 x 11</span><br>
+</li>
+<li><em>What dimensions will the rotated data frame have?</em> <span class="fragment">158 x 11</span></li>
+</ul>
+<div class="fragment">
+<p>When we do a PCA for exploration there are 3 things to look at:</p>
+<ol type="1">
+<li>The data in PC coordinates - the centered (scaled, if set) and rotated data.<br>
+</li>
+<li>The rotation matrix - the variable loadings.</li>
+<li>The variance explained by each PC - based on the standard deviations.</li>
+</ol>
+</div>
+</section>
+<section id="all-variables" class="slide level2 smaller">
+<h2>All variables</h2>
+<p>Now, with <code>scale = TRUE</code> (recommended). Data will be centered and scaled (a.k.a. standardized) first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>owid_PCA <span class="ot">&lt;-</span> owid_inds <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>iso_code, <span class="sc">-</span>continent, <span class="sc">-</span>location) <span class="sc">|&gt;</span> </span>
+<span id="cb53-2"><a href="#cb53-2"></a> <span class="fu">prcomp</span>(<span class="sc">~</span> ., <span class="at">data =</span> _, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-3"><a href="#cb53-3"></a>owid_PCA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard deviations (1, .., p=11):
+ [1] 2.34241265 1.22235717 1.03373351 0.99489682 0.92287148 0.66475775
+ [7] 0.58432716 0.45329540 0.25966139 0.21927321 0.06713354
+
+Rotation (n x k) = (11 x 11):
+                                    PC1         PC2         PC3          PC4
+population                  0.008865647 -0.03734342  0.47595823  0.870416239
+population_density         -0.074719077 -0.46044638 -0.10288680  0.046602918
+median_age                 -0.409689271  0.06447942  0.12973022 -0.004468196
+aged_65_older              -0.390007415  0.24159016 -0.02468961  0.056783114
+aged_70_older              -0.385548522  0.26731058 -0.03864289  0.046944080
+gdp_per_capita             -0.307869646 -0.34923225 -0.10326975 -0.049084375
+cardiovasc_death_rate       0.203402666  0.30746105  0.55758803 -0.314193965
+diabetes_prevalence        -0.015935611 -0.52365806  0.58702717 -0.310745215
+hospital_beds_per_thousand -0.281461985  0.34868645  0.26585730 -0.180587716
+life_expectancy            -0.385997705 -0.16628186  0.03523644 -0.001063976
+human_development_index    -0.401390496 -0.11256612  0.07650908 -0.066730340
+                                   PC5        PC6          PC7         PC8
+population                  0.01039838 -0.1088643 -0.009530076 -0.01188854
+population_density          0.85694114  0.1686582 -0.030330909  0.05784099
+median_age                  0.02964348  0.1083349  0.151566064 -0.04089755
+aged_65_older               0.06392873  0.3010299  0.133281270 -0.30838406
+aged_70_older               0.04970870  0.2883236  0.134769694 -0.32266678
+gdp_per_capita             -0.04210924 -0.7155301  0.255572328 -0.38998232
+cardiovasc_death_rate       0.30899782 -0.1596115  0.556827122  0.11586467
+diabetes_prevalence        -0.24595405  0.3128238 -0.194418712 -0.28853159
+hospital_beds_per_thousand  0.24614720 -0.3347129 -0.712831766  0.04133735
+life_expectancy            -0.15876730  0.1057214  0.114444482  0.64382282
+human_development_index    -0.12068739 -0.1252574  0.075440136  0.36145260
+                                   PC9        PC10         PC11
+population                 -0.01568443  0.04316042  0.008103028
+population_density          0.01930238  0.04356815  0.017850825
+median_age                  0.43211922 -0.76462456  0.050093900
+aged_65_older              -0.12286262  0.19597621 -0.724308013
+aged_70_older              -0.18333355  0.25044108  0.687015497
+gdp_per_capita             -0.19559611 -0.02457951 -0.012540620
+cardiovasc_death_rate      -0.07816501  0.06233211 -0.006416554
+diabetes_prevalence        -0.04883139  0.05032474  0.006819981
+hospital_beds_per_thousand -0.11397971 -0.01992701 -0.007573789
+life_expectancy            -0.58309459 -0.13429476 -0.009463395
+human_development_index     0.60349415  0.53386017  0.010100958</code></pre>
+</div>
+</div>
+</section>
+<section id="data-in-pc-coordinates" class="slide level2 smaller">
+<h2>Data in PC coordinates</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<ul>
+<li>Start plotting PC1 against PC2. By default these are the most important ones. Drill deeper later.</li>
+<li>Use the function <code>augment</code> to append the original data. Here used to draw labels and color by continent.</li>
+<li>Note: <code>augment</code> also created the variables names like <code>.fittedPC1</code></li>
+</ul>
+</div><div class="column" style="width:65%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>plotdata <span class="ot">&lt;-</span> owid_PCA <span class="sc">|&gt;</span> parsnip<span class="sc">::</span><span class="fu">augment</span>(owid_inds)</span>
+<span id="cb55-2"><a href="#cb55-2"></a>plotdata <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fittedPC1, .fittedPC2, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3"></a> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb55-4"><a href="#cb55-4"></a> <span class="fu">geom_text</span>(<span class="at">data =</span> plotdata <span class="sc">|&gt;</span> </span>
+<span id="cb55-5"><a href="#cb55-5"></a>            <span class="fu">filter</span>(.fittedPC2<span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">3</span> <span class="sc">|</span> .fittedPC1<span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">5</span> <span class="sc">|</span> .fittedPC1<span class="sc">&gt;</span><span class="dv">4</span>), </span>
+<span id="cb55-6"><a href="#cb55-6"></a>           <span class="at">mapping =</span> <span class="fu">aes</span>(.fittedPC1, .fittedPC2, <span class="at">label =</span> iso_code),</span>
+<span id="cb55-7"><a href="#cb55-7"></a>           <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb55-8"><a href="#cb55-8"></a> <span class="fu">coord_fixed</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="W12_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-loadings" class="slide level2 smaller">
+<h2>Variable loadings</h2>
+<ul>
+<li>The rows of the rotation matrix shows how the original variables <em>load</em> on the principle components.</li>
+<li>We can try to interpret these loadings and give names to components.</li>
+<li><code>tidy</code> extracts the rotation matrix in long format with a <code>PC</code>, a <code>column</code> (for the original variable name), and a <code>value</code> variable .</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>owid_PCA <span class="sc">|&gt;</span> parsnip<span class="sc">::</span><span class="fu">tidy</span>(<span class="at">matrix =</span> <span class="st">"rotation"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb56-2"><a href="#cb56-2"></a> <span class="fu">filter</span>(PC<span class="sc">&lt;=</span><span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb56-3"><a href="#cb56-3"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(value, column, <span class="at">fill=</span>value)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb56-4"><a href="#cb56-4"></a> <span class="fu">facet_wrap</span>(<span class="sc">~</span>PC, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
+<section id="variance-explained" class="slide level2 smaller">
+<h2>Variance explained</h2>
+<ul>
+<li>Principle components are by default sorted by importance.</li>
+<li>The squares of the standard deviation for each component gives its variances and variances have to sum up to the number of variables (in the standardized case).</li>
+<li>This way the <code>tidy</code> command creates a variable <code>percent</code> which gives the fraction of the total variance explained by each component.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>owid_PCA <span class="sc">|&gt;</span> <span class="fu">tidy</span>(<span class="at">matrix =</span> <span class="st">"eigenvalues"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb57-2"><a href="#cb57-2"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(PC, percent)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"></section>
+<section id="interpretations-1" class="slide level2 smaller">
+<h2>Interpretations (1)</h2>
+
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"><ul>
+<li>The first component explains almost 50% of the variance. So most emphasize should be on this.</li>
+<li>To reach more than 75% of the total variance the first four components are needed.</li>
+<li>After the fifth component the added explained variance drops substantially. This is another typical reason to cut off the rest.</li>
+<li>Taking the five components explains 89.9% of the variance of the original 11 variables!</li>
+</ul>
+</section>
+<section id="interpretations-2" class="slide level2 smaller">
+<h2>Interpretations (2)</h2>
+
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"><ol type="1">
+<li>To score high on PC1 a country needs to be poor, and having few old people.</li>
+<li>PC2 characterizes countries with low population density low diabetes prevalence and low gdp, but a high number of hospital beds, and cardiovascular deaths.</li>
+<li>PC3 characterizes countries with high diabetes prevalence and cardiovascular deaths, but also with large population.</li>
+<li>PC4 focuses mostly on population.</li>
+<li>PC5 mostly on population density.</li>
+</ol>
+</section>
+<section id="interpretations-3" class="slide level2 smaller">
+<h2>Interpretations (3)</h2>
+
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"><ul>
+<li>To score high on PC1 a country needs to be poor, and having few old people.</li>
+<li>PC2 characterizes countries with low population density low diabetes prevalence and low gdp, but a high number of hospital beds, and cardiovascular deaths.</li>
+</ul>
+</section>
+<section id="interpretations-4" class="slide level2 smaller">
+<h2>Interpretations (4)</h2>
+
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"><ul>
+<li>To score high on PC1 a country needs to be poor, and having few old people.</li>
+<li>PC3 characterizes countries with high diabetes prevalence and cardiovascular deaths, but also with large population.</li>
+</ul>
+</section>
+<section id="interpretations-5" class="slide level2 smaller">
+<h2>Interpretations (5)</h2>
+
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-38-1.png" width="960" class="r-stretch"><ul>
+<li>PC2 characterizes countries with low population density low diabetes prevalence and low gdp, but a high number of hospital beds, and cardiovascular deaths.</li>
+<li>PC3 characterizes countries with high diabetes prevalence and cardiovascular deaths, but also with large population.</li>
+</ul>
+</section>
+<section id="interpretations-6" class="slide level2 smaller">
+<h2>Interpretations (6)</h2>
+
+<img data-src="W12_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"><ul>
+<li>PC4 focuses mostly on population.</li>
+<li>PC5 mostly on population density.</li>
+</ul>
+</section>
+<section id="apply-pca" class="slide level2 smaller">
+<h2>Apply PCA</h2>
+<ul>
+<li>Besides standardization, PCA may benefit by <strong>preprocessing</strong> steps of <strong>data transformation</strong> with variables with skew distributions (log, square-root, or Box-Cox transformation). This may result in less outliers.</li>
+<li>PCA is a often a useful step of <strong>exploratory data analysis</strong> when you have a large number of numerical variables to show the empirical <em>dimensionality</em> of the data and its structure</li>
+<li>Limitation: PCA is only sensitive for linear relation ships (no U-shaped) or the like</li>
+<li>The can be used <strong>as predictors</strong> in a model instead of the raw variables.</li>
+</ul>
+</section>
+<section id="properties-and-relations-of-pca" class="slide level2 smaller">
+<h2>Properties and relations of PCA</h2>
+<ul>
+<li>The principal components (the columns of the rotation matrix) are maximally <em>uncorrelated</em> (actually they are even <em>orthogonal</em>).</li>
+<li>This also holds for the columns of the rotated data.</li>
+<li>The total variances of all prinicipal components sum up to the number of variables (when variables are standardized)</li>
+<li>The PCA is unique. All principle components together are a complete representation of the data. (Unlike other technique of dimensionality reduction which may rely on starting values, random factors, or tuning parameters)</li>
+<li>A technique similar in spirit is <em>factor analysis</em> (e.g.&nbsp;<code>factanal</code>). It is more theory based as it requires to specify to the theoriezed number of factors up front.</li>
+</ul>
+
+
+<img src="img/JACOBS_LOGO_RGB_Internet.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><a href="https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/">JU-F22-MDSSB-DSCO-02: Data Science Concepts</a></p>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
