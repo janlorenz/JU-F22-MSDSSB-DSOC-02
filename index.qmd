@@ -244,7 +244,7 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>
 
-## Week 12, Nov 17:  {-}
+## Week 12, Nov 17: Probability, Principal Component Analysis  {-}
 
 [Slides Week 12](W12.qmd)
 

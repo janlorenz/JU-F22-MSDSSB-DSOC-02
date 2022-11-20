@@ -3768,91 +3768,91 @@
   {
     "objectID": "W12.html#probability-topics-for-data-science",
     "href": "W12.html#probability-topics-for-data-science",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Probability Topics for Data Science",
     "text": "Probability Topics for Data Science\nToday concepts and topics\n\nThe concept of probability form the mathematical perspective.\nWhat are probabilistic events, probability functions and random variables.\nHow do random variables relate to data?\n(Binomial distribution)"
   },
   {
     "objectID": "W12.html#sample-space-atomic-events-events",
     "href": "W12.html#sample-space-atomic-events-events",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Sample space, atomic events, events",
     "text": "Sample space, atomic events, events\nIn the following, we say \\(S\\) is the sample space which is a set of atomic events.\nExample for sample spaces:\n\nFor a coin toss the atomic events are \\(H\\) (for HEADS) and \\(T\\) for TAILS, and the sample space is \\(S = \\{H,T\\}\\).\n\nFor the selection of one person of a group of \\(N\\) individuals labeled \\(1,\\dots,N\\), the sample space is \\(S = \\{1,\\dots,N\\}\\).\nFor two successive coin tosses the atomic events are \\(HH\\), \\(HT\\), \\(TH\\), and \\(TT\\). The sample space is \\(\\{HH,HT, TH, TT\\}\\). Important: The atomic events for two coin tosses tare not \\(H\\) and \\(T\\).\n\nAn event \\(A\\) is a subset of the sample space \\(A \\subset S\\).\nImportant: Note the difference of atomic events and events."
   },
   {
     "objectID": "W12.html#example-events-for-one-coin-toss",
     "href": "W12.html#example-events-for-one-coin-toss",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Example events for one coin toss",
     "text": "Example events for one coin toss\n\nThe set with one atomic event is a subset \\(\\{H\\} \\subset \\{H,T\\}\\).\nAlso the sample space \\(S = \\{H,T\\} \\subset \\{H,T\\}\\) is an event. It is called the sure event.\nAlso the empty set \\(\\{\\} = \\emptyset \\subset \\{H,T\\}\\) is an event. It is called the impossible event.\nIn interpretation, the event \\(\\{H,T\\}\\) means: The coin comes up HEAD or TAIL.\nThe empty set is interpreted as the event that it comes up neither HEADS nor TAILS."
   },
   {
     "objectID": "W12.html#more-example-events",
     "href": "W12.html#more-example-events",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "More example events",
     "text": "More example events\n\n2 coin tosses: The event \\(\\{HH, TH\\}\\) means “The first toss comes up HEAD or TAIL and the second is HEADS.”\n\nThe event \\(\\{HT, TH, HH\\}\\) means that “We have HEAD once or twice and it does not matter what coins.”\nThe event \\(\\{TT, HH\\}\\) means “Both coins show the same side.”\n\nQuiz questions for three coin tosses:\n\nWhat is the event “The coins show one HEAD”? \\(\\{HTT, THT, TTH\\}\\)\nWhat is the event “The first and the third coin are not HEAD? \\(\\{THT, TTT\\}\\)\nHow many atomic events exist? \\(2^3=8\\)\n\n\nFor selecting one random person:\nThe event \\(\\{2,5,6\\}\\) means that the selected person is either 2, 5, or 6. (Not all three people which is a different random variable!)"
   },
   {
     "objectID": "W12.html#the-set-of-all-events",
     "href": "W12.html#the-set-of-all-events",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "The set of all events",
     "text": "The set of all events\nThe collection of all events is called a sigma-algebra. (This is a mathematical term which linguistic meaning we do not analyze deeper here.)\nDefinition: A sigma-algebra \\(\\mathcal{F}(S)\\) is a collection of subsets of a sample space \\(S\\) when it has the following properties\n\nThe empty set (the impossible event) is part of it \\(\\emptyset \\in \\mathcal{F}(S)\\)\nWhen \\(A \\in \\mathcal{F}(S)\\) then its complement \\(A^c \\in \\mathcal{F}(S)\\). That means: For any event \\(A\\) also its opposite \\(A^c = S \\setminus A\\) (read \\(S\\) minus the elements of \\(A\\)) is an event.\n\\(\\mathcal{F}(S)\\) is closed under the countable set union of its members. That means if \\(A_1,A_2,A_3, \\dots \\in \\mathcal{F}(S)\\) the \\(\\bigcup_{i}^\\infty A_i = A_1 \\cup A_2 \\cup A_3 \\cup \\dots \\in \\mathcal{F}(S)\\).\n\nThe mathematical technicality is not central here. Important is: The sigma-algebra is the set of all possible events and this is usually larger / more complex then one may naively think."
   },
   {
     "objectID": "W12.html#the-power-set",
     "href": "W12.html#the-power-set",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "The power set",
     "text": "The power set\n\n\n\nA sigma-algebra \\(\\mathcal{F}(S)\\) is a subset of the set of all subsets (also called power set) of the sample space sometimes denoted \\(\\mathcal{P}(S)\\) or \\(2^S\\).\nThe notation \\(2^S\\) matches the fact that the power set of a set with \\(n\\) elements has \\(2^n\\) elements.\n\n\n\nExample powerset of a three element set."
   },
   {
     "objectID": "W12.html#example-for-the-set-of-all-events",
     "href": "W12.html#example-for-the-set-of-all-events",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Example for the set of all events",
     "text": "Example for the set of all events\n\nFor 3 coin tosses: How many events exist? \\(2^3=8\\) atomic events \\(\\to\\) \\(2^8=256\\) event\nHow is it for four coin tosses? \\(2^{(2^4)} = 65536\\)\nWe select two out of five people at random (without replacement). How many atomic events? How many events?\n\n\nAtomic events: 12, 13, 14, 15, 23, 24, 25, 34, 35, 45 (here the order does not matter)\nThe number can be computed by “n choose k” \\({n \\choose k} =\\frac{n!}{(n-k)!k!}\\). Here: \\({5\\choose 2}\\).\n\nchoose(5,2)\n\n[1] 10\n\n\nThus there are \\(2^{10} = 1024\\) events.\nExample event: “Person 1 is among the selected.” = \\(\\{12, 13, 14, 15\\}\\)\nThese are typical problems of combinatorics, the theory of counting, which is basic for many probability models. We do not go deeper into it here."
   },
   {
     "objectID": "W12.html#probability-function",
     "href": "W12.html#probability-function",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Probability function",
     "text": "Probability function\nDefinition: For a collection of events (in a sigma-algebra \\(\\mathcal{F}(S)\\)) a function \\(\\text{Pr}: \\mathcal{F}(S) \\to \\mathbb{R}\\) is a probability function when\n\nThe probability of any event is between 0 and 1: \\(0\\leq \\text{Pr}(A) \\leq 1\\). (So, actually a probability function is a function \\(\\text{Pr}: \\mathcal{F}(S) \\to [0,1]\\).)\nThe probability of the event coinciding with the whole sample space (the sure event) is 1: \\(\\text{Pr}(S) = 1\\).\nFor events \\(A_1, A_2, \\dots, A_n \\in \\mathcal{F}(S)\\) which are pairwise disjoint we can sum up their probabilities:\n\\[\\text{Pr}(A_1 \\cup A_2\\cup\\dots\\cup A_n) = \\text{Pr}(A_1) + \\text{Pr}(A_2) + \\dots + \\text{Pr}(A_n) \\]\n\nThis captures the essence of how we think about probabilities mathematically. Most important: We can only easily add probabilities when they do not share atomic events."
   },
   {
     "objectID": "W12.html#some-basic-probability-rules",
     "href": "W12.html#some-basic-probability-rules",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Some basic probability rules",
     "text": "Some basic probability rules\n\nWe can compute the probabilities of all events by summing the probabilities of the atomic events in it. So, the probabilities of the atomic events are building blocks for the whole probability function.\n\\(\\text{Pr}(\\emptyset) = 0\\)\nFor any events \\(A,B \\subset S\\) it holds\n\n\\(\\text{Pr}(A \\cup B) = \\text{Pr}(A) + \\text{Pr}(B) - \\text{Pr}(A \\cap B)\\)\n\\(\\text{Pr}(A \\cap B) = \\text{Pr}(A) + \\text{Pr}(B) - \\text{Pr}(A \\cup B)\\)\n\\(\\text{Pr}(A^c) = 1 - \\text{Pr}(A)\\)\n\n\nRecap from the motivation of logistic regression: When the probability of an event is \\(A\\) is \\(\\text{Pr}(A)=p\\), then its odds (in favor of the event) are \\(\\frac{p}{1-p}\\). The logistic regression model “raw” predictions are log-odds \\(\\log\\frac{p}{1-p}\\)."
   },
   {
     "objectID": "W12.html#random-variable",
     "href": "W12.html#random-variable",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Random variable",
     "text": "Random variable\n\nA random variable is a numerical function where values come with probabilities.\nIn some statistical model, we consider variables in a data frame as random variables, for example the response variable in a generalized linear model.\n\nFormally, a random variable is\n\na function \\(X: S \\to \\mathbb{R}\\)\nwhich assigns a value to each atomic event in the sample space.\n\nTogether with a probability function \\(\\text{Pr}: \\mathcal{F}(S)\\to [0,1]\\) probabilities can be assigned to values of the random variable (see the probability mass function in two slides)."
   },
   {
     "objectID": "W12.html#examples-of-random-variables",
     "href": "W12.html#examples-of-random-variables",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Examples of random variables",
     "text": "Examples of random variables\n\n\nFor two coin tosses a random variable can be the number of HEADS. In this case, each atomic event is mapped to a number: Either 0, 1, or 2.\nFor 62 randomly selected organ donations a random variable can be the number of complications. Each atomic event is mapped to an integer from 0 to 62. (Note, an atomic event are 62 randomly selected organ donations. So, the set of events is \\(2^{62} \\approx 4.61\\cdot 10^{18}\\).)\nIn the palmer penguins dataset we can consider a variable, e.g. flipper length, to be a random variable. The atomic event would be the random selection of a penguin and the random variable is its flipper length. So we map each penguin to its flipper length.\n\n\n\nA random variable is a way to look at a numerical aspect of a sample space. It often simplfies because many atomic events may be mapped to the same number."
   },
   {
     "objectID": "W12.html#probability-mass-function-pmf",
     "href": "W12.html#probability-mass-function-pmf",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Probability mass function (pmf)",
     "text": "Probability mass function (pmf)\nFor\n\na random variable \\(X\\) and\na probability function \\(\\text{Pr}\\)\n\nthe probability mass function \\(f_X: \\mathbb{R} \\to [0,1]\\) is defined as\n\\[f_X(x) = \\text{Pr}(X=x),\\]\nwhere \\(\\text{Pr}(X=x)\\) is an abbreviation for \\(\\text{Pr}(\\{a\\in S\\text{ for which } X(a) = x\\})\\)."
   },
   {
     "objectID": "W12.html#example-pmf-for-2-coin-tosses",
     "href": "W12.html#example-pmf-for-2-coin-tosses",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Example pmf for 2 coin tosses",
     "text": "Example pmf for 2 coin tosses\nTwo coin tosses \\(S = \\{HH, HT, TH, TT\\}\\)\n\nWe define \\(X\\) to be the number of heads:\n\\(X(HH) = 2\\), \\(X(TH) = 1\\), \\(X(HT) = 1\\), and \\(X(TT) = 0\\).\n\nWe assume the probability function \\(\\text{Pr}\\) assigns for each atomic event a probability of 0.25.\nThen the probability mass function is \\[\\begin{align} f_X(0) = & \\text{Pr}(X=0) = \\text{Pr}(\\{TT\\}) & = 0.25 \\\\\nf_X(1) = & \\text{Pr}(X=1) = \\text{Pr}(\\{HT,TH\\}) & = 0.25 + 0.25 = 0.5 \\\\\nf_X(2) = &\\text{Pr}(X=2) = \\text{Pr}(\\{HH\\}) & = 0.25\\end{align}\\]\nNote that \\(\\text{Pr}(\\{HT,TH\\}) = \\text{Pr}(\\{HT\\}) + \\text{Pr}(\\{HT\\})\\) by adding the probabilities of the atomic events.\nFor all \\(x\\) which are not 0, 1, or 2 it is obviously \\(f_X(x) = 0\\)."
   },
@@ -3866,21 +3866,21 @@
   {
     "objectID": "W12.html#binomial-probability-mass-function",
     "href": "W12.html#binomial-probability-mass-function",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Binomial probability mass function",
     "text": "Binomial probability mass function\n\\[f(k,n,p) = \\Pr(k;n,p) = \\Pr(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}\\]\nwhere \\(k\\) is the number of successes, \\(n\\) is the number of Bernoulli trials, and \\(p\\) the success probability.\nProbability to have exactly 3 complications in 62 randomly selected organ donations with complication probability \\(p=0.1\\) is\n\n# x represents k, and size represents n\ndbinom(x = 3, size = 62, prob = 0.1)\n\n[1] 0.07551437\n\n\nThe probability to have 3 complications or less can be computed as\n\ndbinom(3, 62, 0.1) + dbinom(2, 62, 0.1) + dbinom(1, 62, 0.1) + dbinom(0, 62, 0.1)\n\n[1] 0.1209787\n\n\n\nThis was the p-value we computed with simulation for the hypothesis testing example."
   },
   {
     "objectID": "W12.html#distribution-functions-are-vectorized",
     "href": "W12.html#distribution-functions-are-vectorized",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Distribution functions are vectorized!",
     "text": "Distribution functions are vectorized!\nCompute the p-value:\n\ndbinom(0:3, 62, 0.1) |> sum()\n\n[1] 0.1209787\n\n\nPlotting the probability mass function\n\n\ntibble(x = 0:62) |> \n mutate(pr = dbinom(x, size = 62, prob = 0.1)) |> \n ggplot(aes(x, pr)) + \n geom_col() + \n theme_minimal(base_size = 24)"
   },
   {
     "objectID": "W12.html#other-plots-of-binomial-mass-function",
     "href": "W12.html#other-plots-of-binomial-mass-function",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Other plots of binomial mass function",
     "text": "Other plots of binomial mass function\nChanging the sample size:\n\n\ntibble(samplesize = 0:62) |> \n mutate(pr = dbinom(3, size = samplesize, prob = 0.1)) |> \n ggplot(aes(samplesize, pr)) + \n geom_col() + \n theme_minimal(base_size = 24)\n\n\n\n\n\n\nThe probability of 3 successes is most likely for samples sizes around 30. Sensible?\n\nChanging the success probability:\n\n\ntibble(probs = seq(0,0.3,0.01)) |> \n mutate(pr = dbinom(3, size = 62, prob = probs)) |> \n ggplot(aes(probs, pr)) + \n geom_col() + \n scale_x_continuous(breaks = seq(0,0.3,0.05)) + \n theme_minimal(base_size = 24)\n\n\n\n\n\n\nThe probability of 3 successes is most likely for success probabilities around 0.05."
   },
@@ -3922,7 +3922,7 @@
   {
     "objectID": "W12.html#pca-description",
     "href": "W12.html#pca-description",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "PCA Description",
     "text": "PCA Description\nPrinciple component analysis\n\nis a dimensionality-reduction technique, that means it can be used to reduce the number of variables\ncomputes new variables which represent the data in a different way\ntransforms the data linearly to a new coordinate system where most of the variation in the data can be described with fewer variables than the original data\ncan be seen as unsupervised learning technique because there is no response variable. (Response variable are often produced/supervised by humans for training, e.g., a spam dummy.)\n\nToday: Quick walk through how to use and interpret it."
   },
@@ -3936,63 +3936,63 @@
   {
     "objectID": "W12.html#other-data-of-owid-corona-data",
     "href": "W12.html#other-data-of-owid-corona-data",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "“Other” data of OWiD Corona data",
     "text": "“Other” data of OWiD Corona data\n\n\n\nSelect the variables listed as Others in the OWiD corona data documentation\nRemove those which have many NAs\n\n\nowid <- read_csv(\"data/owid-covid-data.csv\")\nowid_inds <- owid |> \n # Filter for one day and remove rows where continent is NA\n # These are rows with data for continents or world regions\n filter(date == \"2022-10-01\", !is.na(continent)) |> \n # These are the \"Other\" variables\n select(iso_code, continent, location, \n        population:human_development_index) |>\n # We remove the ones with many NA's\n select(-handwashing_facilities, -male_smokers, \n        - female_smokers, -extreme_poverty) |> \n drop_na()\nowid_inds |> count(continent)\n\n# A tibble: 6 × 2\n  continent         n\n  <chr>         <int>\n1 Africa           39\n2 Asia             42\n3 Europe           39\n4 North America    20\n5 Oceania           6\n6 South America    12\n\n\n\nWe have 158 countries and 11 numeric variables.\n\nnames(owid_inds)\n\n [1] \"iso_code\"                   \"continent\"                 \n [3] \"location\"                   \"population\"                \n [5] \"population_density\"         \"median_age\"                \n [7] \"aged_65_older\"              \"aged_70_older\"             \n [9] \"gdp_per_capita\"             \"cardiovasc_death_rate\"     \n[11] \"diabetes_prevalence\"        \"hospital_beds_per_thousand\"\n[13] \"life_expectancy\"            \"human_development_index\""
   },
   {
     "objectID": "W12.html#two-variables",
     "href": "W12.html#two-variables",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Two Variables",
     "text": "Two Variables\nExample for the new axes.\n\n\n\n\n\n\n\nThe two arrows show the two eigenvectors of the covariance matrix of the two variables scaled by the square root of the corresponding eigenvalues, and shifted so their origins are at the means of both variables."
   },
   {
     "objectID": "W12.html#computation-in-r",
     "href": "W12.html#computation-in-r",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Computation in R",
     "text": "Computation in R\nThe basic function is base-R’s prcomp (there is an older princomp which is not advisable to use).\nThese 3 commands all deliver identical results for prcomp\n\n# prcomp can take a formula with no response variable as 1st argument\nP <- prcomp(~ median_age + life_expectancy, data= owid_inds)\n# prcomp can take a data frame with all numerical vectors as 1st argument\nP <- owid_inds |> select(median_age, life_expectancy) |> prcomp()\n# This is an example using the formula placeholder \".\" for 'take all\n# and the pipe's placeholder \"_\" which one uses when the output should be \n# piped to an argument other than the 1st\nP <- owid_inds |> select(median_age, life_expectancy) |> prcomp(~ ., data= _)\n\n\n\nThe standard output\n\nP\n\nStandard deviations (1, .., p=2):\n[1] 10.69296  2.95809\n\nRotation (n x k) = (2 x 2):\n                      PC1        PC2\nmedian_age      0.8091382  0.5876184\nlife_expectancy 0.5876184 -0.8091382\n\n\n\nThe summary output\n\nsummary(P)\n\nImportance of components:\n                           PC1     PC2\nStandard deviation     10.6930 2.95809\nProportion of Variance  0.9289 0.07109\nCumulative Proportion   0.9289 1.00000"
   },
   {
     "objectID": "W12.html#the-prcomp-object",
     "href": "W12.html#the-prcomp-object",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "The prcomp object",
     "text": "The prcomp object\nIncludes 4 different related entities.\n\n\nThe standard deviations related to each principal component.\n\nP$sdev\n\n[1] 10.69296  2.95809\n\n\nThe matrix of variable loadings. (It is also the matrix which rotates the original data vectors.)\n\nP$rotation\n\n                      PC1        PC2\nmedian_age      0.8091382  0.5876184\nlife_expectancy 0.5876184 -0.8091382\n\n\n\nThe means for each original variable.\n\nP$center\n\n     median_age life_expectancy \n       31.15823        73.57741 \n\n\nNote, there are also standard deviations of original variables in $scale when this is set to be used.\nThe centered (scaled, if set) and rotated data.\n\nP$x\n\n             PC1         PC2\n1   -15.30147798 -0.30158529\n2     8.46967981 -0.01934856\n3     0.27527455 -3.88170827\n4     2.78495581 -2.23213257\n5     2.41746174 -2.06645786\n6     4.56375002  1.44493027\n7    11.25046735 -4.01861358\n8    15.39339097  1.33826834\n9     0.66547151  1.19688861\n10    2.74344303  1.56895631\n11    3.18635423 -2.27431439\n12   -3.54022934 -1.35069463\n13   10.29045200  0.53669877\n14    8.10950037  4.39071615\n15   13.34251723 -0.26236181\n16   -4.37020966 -4.46229111\n17  -16.93776248  2.29190137\n18   -3.12614815 -0.04891248\n19   -5.87404744 -1.71082388\n20   11.42328837  3.57162574\n21   -6.67861938  0.07776886\n22    3.24786441 -0.48704930\n23    2.34605999 -1.11724672\n24   11.82248935  6.76586095\n25  -18.02037585  1.74049561\n26  -18.10128967  1.68173378\n27   -6.70529480 -0.22585660\n28  -18.39505599  4.29856418\n29   13.48895662 -1.14471974\n30   -4.76750699 -2.72397157\n31  -22.33121139  8.86767576\n32    7.31198595 -2.84986882\n33    8.06063011  1.73515374\n34    3.02452659 -2.39183806\n35  -14.14471452  1.16878824\n36    5.91429898 -3.98849568\n37   13.27749971  3.57109260\n38    9.31944327 -2.38070454\n39   13.23408329  2.43962673\n40   13.31812495  0.62211827\n41   -8.45956818  1.84938433\n42   -2.58376417 -2.49754876\n43   -0.45747329 -4.57451459\n44   -5.67290445 -2.15797206\n45   -3.03035412 -1.88260370\n46  -15.80534846  6.85901626\n47  -13.85952988 -1.09586840\n48   12.37252460  2.60490418\n49  -15.68152626  5.15690932\n50  -13.29042762 -1.02861793\n51   -5.67641179  3.46274744\n52   14.31618860  0.09869783\n53   14.10959178 -0.97825052\n54  -10.69666185  1.01571059\n55  -17.82510905  1.30143881\n56    6.21550849  4.27584778\n57   17.05009523  2.80094774\n58  -13.72522235  1.78240564\n59   16.53294823  1.30072809\n60   -2.11451419 -0.08048350\n61   -6.25743781 -5.43736541\n62  -16.87582996  2.54697854\n63   -6.08601239  0.11265381\n64  -11.17711330  3.71942404\n65   -4.06917156 -5.04699279\n66   11.84595123  4.52123414\n67   10.50055615 -4.00707238\n68   -4.69555434  1.43141323\n69   -2.59500849  0.41096866\n70    2.82790704 -1.78074007\n71  -10.77812658 -4.14764718\n72   11.22789301 -2.62610131\n73    5.06757765 -7.92793256\n74   19.38298293  1.80093025\n75    0.72013226 -0.58016293\n76   20.28385695  1.07098094\n77   -5.87954413 -5.44718170\n78   -0.43840629 -0.34630735\n79  -13.06983814 -0.99200808\n80   -9.49927316 -0.46289021\n81    3.18052090 -0.05396172\n82   -5.18108013 -1.13341907\n83   -8.79273555  0.60636402\n84   11.31620717  6.10157310\n85    3.09816863 -4.36520494\n86  -15.24495644  0.64165663\n87   -2.13848412 -0.72819134\n88   11.36862762  5.34867729\n89   12.00765033 -1.99802605\n90  -13.19370320 -1.50216242\n91  -16.04098955 -0.13418567\n92    0.49949992 -2.82903407\n93  -20.32523538  2.87209737\n94   14.35685668 -0.63801521\n95    5.88052317  2.52479529\n96   -0.63823938 -2.28346164\n97    4.22661012  5.14255609\n98   -4.24849920  1.49654154\n99    8.36665685  1.99447523\n100   0.56232000 -3.42607145\n101 -18.36842342  2.38992835\n102  -5.45400436  4.00738947\n103  -6.62666413 -1.35520031\n104  14.85726268  0.03436403\n105  10.57470625 -3.08810461\n106  -2.59145830 -2.99748955\n107 -19.54962201 -0.40822638\n108   7.73202903  2.86834452\n109  12.09579308 -2.11939679\n110   2.14576170 -3.73447438\n111  -9.90291188  0.60344735\n112   1.71857540 -4.84803258\n113  -3.37392111 -3.28148244\n114   0.19300798 -3.76842892\n115  -6.20040822 -1.60178884\n116  11.63842401  2.08413905\n117  17.14952515  1.98332087\n118   4.50938307 -4.94698996\n119  11.03457271  4.95777153\n120   6.24446705  5.76757879\n121   4.56869580  0.07669216\n122  -0.09619205  1.22461257\n123 -11.95340613 -4.74163201\n124   1.51252948 -0.82038499\n125   3.97524412  3.10618305\n126  14.99736068 -1.51997588\n127  10.45367524  2.69444253\n128  15.34502876  1.57504058\n129  -8.72053195 -5.61948425\n130  -8.67330823  5.37709112\n131  15.45980409 -0.45496597\n132  17.47043209  0.35018930\n133   4.37972753 -1.02453034\n134 -14.12936912 -0.04359145\n135  -2.37577176  0.61961970\n136  13.38272012 -1.67914822\n137  15.65777638 -1.23810515\n138  -7.81416124 -2.61307574\n139 -15.65950282 -1.34019889\n140   9.33445203  2.36362626\n141 -13.04278322 -4.43283183\n142 -16.88124094  3.23514328\n143  -8.73494696 -3.04695782\n144   4.03988214  3.01717785\n145   3.08240087 -1.62063733\n146   2.77409099 -3.06806436\n147 -17.93950488 -0.41300384\n148   7.39535433  7.24604370\n149   4.88055588 -1.88433903\n150  12.35121731 -0.59914731\n151   8.88283060 -0.07771314\n152   6.13991994 -0.89560137\n153  -3.48506054 -0.23541152\n154  -2.63795972 -0.04042384\n155   2.23758320 -0.62751947\n156 -13.16791532 -0.34642241\n157 -16.58206363 -0.06985186\n158 -16.45498504  2.98855475"
   },
   {
     "objectID": "W12.html#pca-as-exploratory-data-analysis",
     "href": "W12.html#pca-as-exploratory-data-analysis",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "PCA as Exploratory Data Analysis",
     "text": "PCA as Exploratory Data Analysis\nSuppose we do a PCA with all 158 countries (rows) and all 11 numeric variables.\n\nHow long will the vector of standard deviations be? 11\n\nWhat dimensions will the rotation matrix have? 11 x 11\n\nWhat dimensions will the rotated data frame have? 158 x 11\n\n\nWhen we do a PCA for exploration there are 3 things to look at:\n\nThe data in PC coordinates - the centered (scaled, if set) and rotated data.\n\nThe rotation matrix - the variable loadings.\nThe variance explained by each PC - based on the standard deviations."
   },
   {
     "objectID": "W12.html#all-variables",
     "href": "W12.html#all-variables",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "All variables",
     "text": "All variables\nNow, with scale = TRUE (recommended). Data will be centered and scaled (a.k.a. standardized) first.\n\nowid_PCA <- owid_inds |> select(-iso_code, -continent, -location) |> \n prcomp(~ ., data = _, scale = TRUE)\nowid_PCA\n\nStandard deviations (1, .., p=11):\n [1] 2.34241265 1.22235717 1.03373351 0.99489682 0.92287148 0.66475775\n [7] 0.58432716 0.45329540 0.25966139 0.21927321 0.06713354\n\nRotation (n x k) = (11 x 11):\n                                    PC1         PC2         PC3          PC4\npopulation                  0.008865647 -0.03734342  0.47595823  0.870416239\npopulation_density         -0.074719077 -0.46044638 -0.10288680  0.046602918\nmedian_age                 -0.409689271  0.06447942  0.12973022 -0.004468196\naged_65_older              -0.390007415  0.24159016 -0.02468961  0.056783114\naged_70_older              -0.385548522  0.26731058 -0.03864289  0.046944080\ngdp_per_capita             -0.307869646 -0.34923225 -0.10326975 -0.049084375\ncardiovasc_death_rate       0.203402666  0.30746105  0.55758803 -0.314193965\ndiabetes_prevalence        -0.015935611 -0.52365806  0.58702717 -0.310745215\nhospital_beds_per_thousand -0.281461985  0.34868645  0.26585730 -0.180587716\nlife_expectancy            -0.385997705 -0.16628186  0.03523644 -0.001063976\nhuman_development_index    -0.401390496 -0.11256612  0.07650908 -0.066730340\n                                   PC5        PC6          PC7         PC8\npopulation                  0.01039838 -0.1088643 -0.009530076 -0.01188854\npopulation_density          0.85694114  0.1686582 -0.030330909  0.05784099\nmedian_age                  0.02964348  0.1083349  0.151566064 -0.04089755\naged_65_older               0.06392873  0.3010299  0.133281270 -0.30838406\naged_70_older               0.04970870  0.2883236  0.134769694 -0.32266678\ngdp_per_capita             -0.04210924 -0.7155301  0.255572328 -0.38998232\ncardiovasc_death_rate       0.30899782 -0.1596115  0.556827122  0.11586467\ndiabetes_prevalence        -0.24595405  0.3128238 -0.194418712 -0.28853159\nhospital_beds_per_thousand  0.24614720 -0.3347129 -0.712831766  0.04133735\nlife_expectancy            -0.15876730  0.1057214  0.114444482  0.64382282\nhuman_development_index    -0.12068739 -0.1252574  0.075440136  0.36145260\n                                   PC9        PC10         PC11\npopulation                 -0.01568443  0.04316042  0.008103028\npopulation_density          0.01930238  0.04356815  0.017850825\nmedian_age                  0.43211922 -0.76462456  0.050093900\naged_65_older              -0.12286262  0.19597621 -0.724308013\naged_70_older              -0.18333355  0.25044108  0.687015497\ngdp_per_capita             -0.19559611 -0.02457951 -0.012540620\ncardiovasc_death_rate      -0.07816501  0.06233211 -0.006416554\ndiabetes_prevalence        -0.04883139  0.05032474  0.006819981\nhospital_beds_per_thousand -0.11397971 -0.01992701 -0.007573789\nlife_expectancy            -0.58309459 -0.13429476 -0.009463395\nhuman_development_index     0.60349415  0.53386017  0.010100958"
   },
   {
     "objectID": "W12.html#data-in-pc-coordinates",
     "href": "W12.html#data-in-pc-coordinates",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Data in PC coordinates",
     "text": "Data in PC coordinates\n\n\n\nStart plotting PC1 against PC2. By default these are the most important ones. Drill deeper later.\nUse the function augment to append the original data. Here used to draw labels and color by continent.\nNote: augment also created the variables names like .fittedPC1\n\n\n\nplotdata <- owid_PCA |> parsnip::augment(owid_inds)\nplotdata |> ggplot(aes(.fittedPC1, .fittedPC2, color = continent)) +\n geom_point() + \n geom_text(data = plotdata |> \n            filter(.fittedPC2< -3 | .fittedPC1< -5 | .fittedPC1>4), \n           mapping = aes(.fittedPC1, .fittedPC2, label = iso_code),\n           color = \"black\") +\n coord_fixed() + theme_minimal(base_size = 20)"
   },
   {
     "objectID": "W12.html#variable-loadings",
     "href": "W12.html#variable-loadings",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Variable loadings",
     "text": "Variable loadings\n\nThe columns of the rotation matrix shows how the original variables load on the principle components.\nWe can try to interpret these loadings and give names to components.\ntidy extracts the rotation matrix in long format with a PC, a column (for the original variable name), and a value variable .\n\n\nowid_PCA |> parsnip::tidy(matrix = \"rotation\") |> \n filter(PC<=6) |> \n ggplot(aes(value, column, fill=value)) + geom_col() +\n facet_wrap(~PC, nrow = 1)"
   },
   {
     "objectID": "W12.html#variance-explained",
     "href": "W12.html#variance-explained",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Variance explained",
     "text": "Variance explained\n\nPrinciple components are by default sorted by importance.\nThe squares of the standard deviation for each component gives its variances and variances have to sum up to the number of variables (in the standardized case).\nThis way the tidy command creates a variable percent which gives the fraction of the total variance explained by each component.\n\n\nowid_PCA |> tidy(matrix = \"eigenvalues\") |> \n ggplot(aes(PC, percent)) + geom_col()"
   },
@@ -4006,49 +4006,49 @@
   {
     "objectID": "W12.html#interpretations-1",
     "href": "W12.html#interpretations-1",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Interpretations (1)",
     "text": "Interpretations (1)\n\n\nThe first component explains almost 50% of the variance. So most emphasize should be on this.\nTo reach more than 75% of the total variance the first four components are needed.\nAfter the fifth component the added explained variance drops substantially. This is another typical reason to cut off the rest.\nTaking the five components explains 89.9% of the variance of the original 11 variables!"
   },
   {
     "objectID": "W12.html#interpretations-2",
     "href": "W12.html#interpretations-2",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Interpretations (2)",
     "text": "Interpretations (2)\n\n\nTo score high on PC1 a country needs to be poor, and having few old people.\nPC2 characterizes countries with low population density low diabetes prevalence and low gdp, but a high number of hospital beds, and cardiovascular deaths.\nPC3 characterizes countries with high diabetes prevalence and cardiovascular deaths, but also with large population.\nPC4 focuses mostly on population.\nPC5 mostly on population density."
   },
   {
     "objectID": "W12.html#interpretations-3",
     "href": "W12.html#interpretations-3",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Interpretations (3)",
     "text": "Interpretations (3)\n\n\nTo score high on PC1 a country needs to be poor, and having few old people.\nPC2 characterizes countries with low population density low diabetes prevalence and low gdp, but a high number of hospital beds, and cardiovascular deaths."
   },
   {
     "objectID": "W12.html#interpretations-4",
     "href": "W12.html#interpretations-4",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Interpretations (4)",
     "text": "Interpretations (4)\n\n\nTo score high on PC1 a country needs to be poor, and having few old people.\nPC3 characterizes countries with high diabetes prevalence and cardiovascular deaths, but also with large population."
   },
   {
     "objectID": "W12.html#interpretations-5",
     "href": "W12.html#interpretations-5",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Interpretations (5)",
     "text": "Interpretations (5)\n\n\nPC2 characterizes countries with low population density low diabetes prevalence and low gdp, but a high number of hospital beds, and cardiovascular deaths.\nPC3 characterizes countries with high diabetes prevalence and cardiovascular deaths, but also with large population."
   },
   {
     "objectID": "W12.html#interpretations-6",
     "href": "W12.html#interpretations-6",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Interpretations (6)",
     "text": "Interpretations (6)\n\n\nPC4 focuses mostly on population.\nPC5 mostly on population density."
   },
   {
     "objectID": "W12.html#apply-pca",
     "href": "W12.html#apply-pca",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Apply PCA",
     "text": "Apply PCA\n\nBesides standardization, PCA may benefit by preprocessing steps of data transformation with variables with skew distributions (log, square-root, or Box-Cox transformation). This may result in less outliers.\nPCA is a often a useful step of exploratory data analysis when you have a large number of numerical variables to show the empirical dimensionality of the data and its structure\nLimitation: PCA is only sensitive for linear relation ships (no U-shaped) or the like\nThe can be used as predictors in a model instead of the raw variables."
   },
@@ -4062,7 +4062,7 @@
   {
     "objectID": "W12.html#properties-and-relations-of-pca",
     "href": "W12.html#properties-and-relations-of-pca",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Properties and relations of PCA",
     "text": "Properties and relations of PCA\n\nThe principal components (the columns of the rotation matrix) are maximally uncorrelated (actually they are even orthogonal).\nThis also holds for the columns of the rotated data.\nThe total variances of all prinicipal components sum up to the number of variables (when variables are standardized)\nThe PCA is unique. All principle components together are a complete representation of the data. (Unlike other technique of dimensionality reduction which may rely on starting values, random factors, or tuning parameters)\nA technique similar in spirit is factor analysis (e.g. factanal). It is more theory based as it requires to specify to the theoriezed number of factors up front.\n\n\n\n\nJU-F22-MDSSB-DSCO-02: Data Science Concepts"
   },
@@ -4076,7 +4076,7 @@
   {
     "objectID": "W12.html#example-roll-two-dice",
     "href": "W12.html#example-roll-two-dice",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Example: Roll two dice 🎲 🎲",
     "text": "Example: Roll two dice 🎲 🎲\nRandom variable: The sum of both dice.\n\nEvents: All 36 combinations of rolls 1+1, 1+2, 1+3, 1+4, 1+5, 1+6, 2+1, 2+2, 2+3, 2+4, 2+5, 2+6, 3+1, 3+2, 3+3, 3+4, 3+5, 3+6, 4+1, 4+2, 4+3, 4+4, 4+5, 4+6, 5+1, 5+2, 5+3, 5+4, 5+5, 5+6, 6+1, 6+2, 6+3, 6+4, 6+5, 6+6\n\n\nPossible values of the random variable:  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 (These are numbers.)\n\n\nProbability mass function: (Assuming each number has probability of \\(\\frac{1}{6}\\) for each die.)\n\n\n\\(\\text{Pr}(2) = \\text{Pr}(12) = \\frac{1}{36}\\)\n\\(\\text{Pr}(3) = \\text{Pr}(11) = \\frac{2}{36}\\)\n\\(\\text{Pr}(4) = \\text{Pr}(10) = \\frac{3}{36}\\)\n\\(\\text{Pr}(5) = \\text{Pr}(9) = \\frac{4}{36}\\)\n\\(\\text{Pr}(6) = \\text{Pr}(8) = \\frac{5}{36}\\)\n\\(\\text{Pr}(7) = \\frac{6}{36}\\)\n\n\ntibble(Value = 0:15, pmf=c(0,c(0:6,5:0)/36,0,0)) |> \n ggplot(aes(Value,pmf)) + geom_line() + geom_point() +\n theme_minimal(base_size = 20)"
   },
@@ -4090,7 +4090,7 @@
   {
     "objectID": "W12.html#general-systematic-of-functions-for-distributions-in-r",
     "href": "W12.html#general-systematic-of-functions-for-distributions-in-r",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "General systematic of functions for distributions in R",
     "text": "General systematic of functions for distributions in R\nIn R we usually have 4 function for each distribution: The d, p, q, and r version. For the binomial distribution:\n\ndbinom the density function (more on the name later)\npbinom distribution function\nqbinom the quantile function, and\nrbinom random number generator."
   },
@@ -4104,21 +4104,21 @@
   {
     "objectID": "W12.html#expected-value-binomial-distribution",
     "href": "W12.html#expected-value-binomial-distribution",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Expected value binomial distribution",
     "text": "Expected value binomial distribution\nFor \\(X \\sim \\text{Binom}(n,p)\\) (read “\\(X\\) has a binomial distribution with samplesize \\(n\\) and success probability \\(p\\)”)\nThe expected value of \\(X\\) is by definition\n\\[E(X) = \\underbrace{\\sum_{k = 0}^n k}_{\\text{sum over successes}} \\cdot \\underbrace{\\binom{n}{k}p^k(1-p)^{n-k}}_{\\text{probability of successes}}\\]\nComputation shows that \\(E(X) = p\\cdot n\\).\nExample: For \\(n = 62\\) organ donations with complication probability \\(p=0.1\\), the expected number of complications is \\(E(X) = 6.2\\)."
   },
   {
     "objectID": "W12.html#expected-value-discrete-rv",
     "href": "W12.html#expected-value-discrete-rv",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Expected value discrete RV",
     "text": "Expected value discrete RV\nA discrete random variable takes only a finite (or at least discrete) set of values.\nFor \\(X: S \\to \\mathbb{R}\\), when \\(S\\) is finite, there is naturally only a set of values \\(x_1,\\dots,x_k\\in\\mathbb{R}\\) which \\(X\\) can be. We call their probabilities \\(p_1,\\dots,p_k\\) with \\(p_i = \\text{Pr}(X=x_i) = \\text{Pr}(\\{a \\in S \\text{ for which } X(a) = x_i \\})\\).\n(The probability of all other values in \\(\\mathbb{R}\\) is zero.).\nThe expected value of \\(X\\) is \\(E(X) = \\sum_{i=1}^k p_i x_i = p_1x_1 + \\dots + p_kx_k.\\)\nExamples: \\(X\\) is a die roll 🎲. \\(E(X) = 1\\cdot\\frac{1}{6} + 2\\cdot\\frac{1}{6} + 3\\cdot\\frac{1}{6} + 4\\cdot\\frac{1}{6} + 5\\cdot\\frac{1}{6} + 6\\cdot\\frac{1}{6} = \\frac{21}{6} = 3.5\\)\n\\(X\\) sum of two die rolls 🎲🎲.\n\\(E(X) = 2\\cdot\\frac{1}{36} + 3\\cdot\\frac{2}{36} + 4\\cdot\\frac{3}{36} + 5\\cdot\\frac{4}{36} + 6\\cdot\\frac{5}{36} + 7\\cdot\\frac{6}{36} + 8\\cdot\\frac{5}{36} +\\)\n\\(+ 9\\cdot\\frac{4}{36} + 10\\cdot\\frac{3}{36} + 11\\cdot\\frac{2}{36} + 12\\cdot\\frac{1}{36} = 7\\)"
   },
   {
     "objectID": "W12.html#binomial-distribution-1",
     "href": "W12.html#binomial-distribution-1",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Binomial distribution",
     "text": "Binomial distribution\nThe number of HEADS in several coin tosses and the number of complications in randomly selected organ donations are examples of random variable which have a binomial distribution.\n\nDefinition: The binomial distribution with parameters \\(n\\) and \\(p\\) is the number of successes in a sequence of \\(n\\) independent Bernoulli trials which each delivers a success with probability \\(p\\) and a failure with probability \\((1-p)\\).\n\nThe default model for the number of successes drawn from a sample of size \\(n\\) drawn from a population of size \\(N\\) with replacement.\nWhen \\(N\\) is much larger than \\(n\\) it is also a good approximation for drawing without replacement."
   },
@@ -4132,44 +4132,44 @@
   {
     "objectID": "W12.html#probability-mass-function-d",
     "href": "W12.html#probability-mass-function-d",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Probability mass function d",
     "text": "Probability mass function d\n\nThe mass function (or density function, more on this later) dbinom\n\n\n\nx <- 0:10\ntibble(x = x) |> \n mutate(pr = dbinom(x, size = 10, prob = 0.5)) |> \n ggplot(aes(x, pr)) + geom_col() + theme_minimal(base_size = 24)\n\n\n\n\n\n\nGives the probability for the number \\(x\\): \\(\\text{Pr}(X = x)\\) or \\(f_X(x)\\)."
   },
   {
     "objectID": "W12.html#distribution-function-p",
     "href": "W12.html#distribution-function-p",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Distribution function p",
     "text": "Distribution function p\n\nThe distribution function, or cumulative probability function pbinom\n\n\n\nx <- 0:10\ntibble(x = x) |> \n mutate(pr = pbinom(x, size = 10, prob = 0.5)) |> \n ggplot(aes(x, pr)) + geom_col() + theme_minimal(base_size = 24)\n\n\n\n\n\n\nGives the probability that the random variable is less or equal to \\(x\\):\n\\(\\text{Pr}(X \\leq x)\\)."
   },
   {
     "objectID": "W12.html#quantile-function-q",
     "href": "W12.html#quantile-function-q",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Quantile function q",
     "text": "Quantile function q\n\nThe quantile function, qbinom with argument \\(p\\) representing the fraction of lowest values of \\(X\\) among all values for which we want the \\(x\\) value for.\n\n\n\nprobs <- seq(0, 1, by = 0.01)\ntibble(p = probs) |> \n mutate(x = qbinom(p, size = 10, prob = 0.5)) |> \n ggplot(aes(p, x)) + geom_line() + theme_minimal(base_size = 24)\n\n\n\n\n\n\nA point \\((p,x)\\) means: When we want a \\(p\\)-fraction of the probability mass, we need all events with values lower or equal to \\(x\\)."
   },
   {
     "objectID": "W12.html#calculus-relations",
     "href": "W12.html#calculus-relations",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Calculus relations",
     "text": "Calculus relations\n\nQuantile, distribution and mass function all carry the full information about the distribution of a random variable \\(X\\).\nThe mass function is the derivative of the distribution function.\n(The distribution function is the anti-derivative of the mass function.)\n\n\npbinom(0:5, size = 5, prob = 0.5) \n\n[1] 0.03125 0.18750 0.50000 0.81250 0.96875 1.00000\n\n# Next comes its derivative (have to append a 0 before first)\npbinom(0:5, size = 5, prob = 0.5) |> append(0, after = 0) |> diff()\n\n[1] 0.03125 0.15625 0.31250 0.31250 0.15625 0.03125\n\ndbinom(0:5, size = 5, prob = 0.5)\n\n[1] 0.03125 0.15625 0.31250 0.31250 0.15625 0.03125\n\n# Next comes its anti-derivative\ndbinom(0:5, size = 5, prob = 0.5) |> cumsum()\n\n[1] 0.03125 0.18750 0.50000 0.81250 0.96875 1.00000"
   },
   {
     "objectID": "W12.html#more-calculus-relations",
     "href": "W12.html#more-calculus-relations",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "More calculus relations",
     "text": "More calculus relations\n\nThe quantile function is the inverse of the distribution function.\nWe plot the inverse function by interchanging the x and y aesthetic.\n\n\n\nprobs <- seq(0, 1, by = 0.01)\nx <- 0:10\nq <- tibble(p = probs) |> mutate(x = qbinom(p, size = 10, prob = 0.5)) \np <- tibble(x = x) |> mutate(p = pbinom(x, size = 10, prob = 0.5)) \nq_plot <- q |> ggplot(aes(p, x)) + geom_line()\nqinv_plot <- q |> ggplot(aes(x, p)) + geom_line()\np_plot <- p |> ggplot(aes(x, p)) + geom_col()\npinv_plot <- p |> ggplot(aes(p, x)) + geom_col(orientation = \"y\")\nlibrary(patchwork)\n(q_plot | p_plot) / (pinv_plot | qinv_plot)"
   },
   {
     "objectID": "W12.html#random-number-generator-r",
     "href": "W12.html#random-number-generator-r",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Random number generator r",
-    "text": "Random number generator r\n\nRandom binomial numbers are drawn with rbinom\n\n\n# 10 random binomial numbers for 62 trials with success probability 0.1\nrbinom(10, size = 62, prob = 0.1)\n\n [1]  8  4  7  5  7 11  7  5  6  4\n\n\n\nWe can reproduce the null distribution from hypothesis testing with 62 organ donations and 10% complication probability this way.\n\nWe produce 100,000 random consultants\nThen we compute the fraction of which have 3 or less complications\n\n\n\nset.seed(2022)\ns <- rbinom(100000, size = 62, prob = 0.1)\nsum(s<=3)/100000\n\n[1] 0.12038\n\n# Two other samples\nsum(rbinom(100000, size = 62, prob = 0.1)<=3)/100000\n\n[1] 0.11918\n\nsum(rbinom(100000, size = 62, prob = 0.1)<=3)/100000\n\n[1] 0.12034"
+    "text": "Random number generator r\n\nRandom binomial numbers are drawn with rbinom\n\n\n# 10 random binomial numbers for 62 trials with success probability 0.1\nrbinom(10, size = 62, prob = 0.1)\n\n [1] 4 4 3 5 7 6 7 8 5 8\n\n\n\nWe can reproduce the null distribution from hypothesis testing with 62 organ donations and 10% complication probability this way.\n\nWe produce 100,000 random consultants\nThen we compute the fraction of which have 3 or less complications\n\n\n\nset.seed(2022)\ns <- rbinom(100000, size = 62, prob = 0.1)\nsum(s<=3)/100000\n\n[1] 0.12038\n\n# Two other samples\nsum(rbinom(100000, size = 62, prob = 0.1)<=3)/100000\n\n[1] 0.11918\n\nsum(rbinom(100000, size = 62, prob = 0.1)<=3)/100000\n\n[1] 0.12034"
   },
   {
     "objectID": "W12.html#empircal-distributions",
@@ -4181,15 +4181,22 @@
   {
     "objectID": "W12.html#what-could-be-next",
     "href": "W12.html#what-could-be-next",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "What could be next?",
     "text": "What could be next?\n\nContinuous distribution function\n\nTheoretical and empirical\n\nThe central limit theorem and why it is important empirically\nIndependence of probabilistic events\nConditional probability and the confusion matrix\nMarkov chains"
   },
   {
     "objectID": "W12.html#empirical-distributions",
     "href": "W12.html#empirical-distributions",
-    "title": "W#12: Probability",
+    "title": "W#12: Probability, Principal Component Analysis",
     "section": "Empirical distributions",
     "text": "Empirical distributions\n\n\n\n\n\\(X\\): select a random person from Europe (in 2018, willing to answer survey) and ask its attitude towards the European union from 0 to 10\n\n\n\n\nWhat is the distribution of the answer?\n\n\neu <- ess |> select(euftf) |> drop_na() |> \n count(euftf) |> mutate(prob = n/sum(n)) \neu\n\n# A tibble: 11 × 3\n   euftf     n   prob\n   <dbl> <int>  <dbl>\n 1     0  3361 0.0736\n 2     1  1787 0.0391\n 3     2  2830 0.0620\n 4     3  3586 0.0786\n 5     4  3739 0.0819\n 6     5 10286 0.225 \n 7     6  4589 0.101 \n 8     7  5165 0.113 \n 9     8  4692 0.103 \n10     9  1786 0.0391\n11    10  3826 0.0838\n\n\n\nMass function and distribution function\n\neu_mass <- eu |> ggplot(aes(euftf, prob)) + geom_col()\neu_distr <- eu |> mutate(cumprob = cumsum(prob)) |> \n ggplot(aes(euftf, cumprob)) + geom_col()\neu_mass | eu_distr"
+  },
+  {
+    "objectID": "index.html#week-12-nov-17-probability-principal-component-analysis",
+    "href": "index.html#week-12-nov-17-probability-principal-component-analysis",
+    "title": "Data Science Concepts / Tools",
+    "section": "Week 12, Nov 17: Probability, Principal Component Analysis",
+    "text": "Week 12, Nov 17: Probability, Principal Component Analysis\nSlides Week 12\nHomework 05 due in 3 days\nHomework 06 should come. Due Dec 4."
   }
 ]

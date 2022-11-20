@@ -1,5 +1,5 @@
 ---
-title: "W#12: Probability"
+title: "W#12: Probability, Principal Component Analysis"
 author: Jan Lorenz
 format: 
   revealjs: 
