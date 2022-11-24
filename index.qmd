@@ -251,7 +251,9 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 **Homework 05 due in 3 days**  
 **Homework 06 should come. Due Dec 4.**
 
-## Week 13, Nov 24:  {-}
+## Week 13, Nov 24:  Probability distributions, Cluster Analysis {-}
+
+[Slides Week 13](W13.qmd)
 
 ## Week 14, Dec 1: Course Review, Exam preparation {-}
 

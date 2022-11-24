@@ -1,0 +1,1065 @@
+---
+title: "W#13: Probability distributions, Cluster Analysis"
+author: Jan Lorenz
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: false
+    logo: img/JACOBS_LOGO_RGB_Internet.jpg
+    footer: "[JU-F22-MDSSB-DSCO-02: Data Science Concepts](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/)"
+---
+
+
+# Math: Probability {background-color="yellow"}
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(readxl)
+galton <- read_excel("data/galton_data.xlsx") |> mutate(true_value = 1198)
+viertelfest <- read_csv("data/Viertelfest.csv") |> mutate(true_value = 10788)
+owid <- read_csv("data/owid-covid-data.csv")
+owid_inds <- owid |> 
+ # Filter for one day and remove rows where continent is NA
+ # These are rows with data for continents or world regions
+ filter(date == "2022-10-01", !is.na(continent)) |> 
+ # These are the "Other" variables
+ select(iso_code, continent, location, 
+        population:human_development_index) |>
+ # We remove the ones with many NA's
+ select(-handwashing_facilities, -male_smokers, 
+        - female_smokers, -extreme_poverty) |> 
+ drop_na()
+ess_raw <- read_csv("data/ESS-Data-Wizard-subset-2022-09-17.csv",
+                col_types = cols(
+                 name = col_character(),
+                 essround = col_double(),
+                 edition = col_double(),
+                 proddate = col_character(),
+                 idno = col_double(),
+                 cntry = col_character(),
+                 dweight = col_double(),
+                 pspwght = col_double(),
+                 pweight = col_double(),
+                 euftf = col_double(),
+                 gincdif = col_double(),
+                 lrscale = col_double(),
+                 polintr = col_double(),
+                 stflife = col_double(),
+                 trstplc = col_double(),
+                 vote = col_double(),
+                 imueclt = col_double(),
+                 atchctr = col_double(),
+                 atcherp = col_double(),
+                 crmvct = col_double(),
+                 pray = col_double(),
+                 rlgdgr = col_double(),
+                 gndr = col_double(),
+                 age = col_double()
+                ))
+ess <- ess_raw |> filter(essround == 9) |>
+ mutate(atchctr = atchctr |> na_if(77) |> na_if(88) |> na_if(99),
+        atcherp = atcherp |> na_if(77) |> na_if(88) |> na_if(99),
+        euftf = euftf |> na_if(77) |> na_if(88) |> na_if(99),
+        lrscale = lrscale |> na_if(77) |> na_if(88) |> na_if(99),
+        imueclt = imueclt |> na_if(77) |> na_if(88) |> na_if(99))
+```
+
+## Random Variables {.smaller}
+
+- For every random variable we have 
+  - A **sample space** of **atomic events** $S$
+  - A **probability function** $\text{Pr}: \mathcal{F}(S) \to [0,1]$
+- The **random variable** maps atomic events to numbers $X(s) \to \mathbb{R}$.
+- Through the random variable we can assign probabilities to such numbers. 
+
+
+**Discrete random variables** can only take a countable (usually finite) numbers of values. 
+
+**Continuous random variables** can take an uncountable number of values. 
+
+
+## Distribution function {.smaller}
+
+The **distribution function** of a random variable $X$ is 
+
+$$F_X(x) = \text{Pr}(X \leq x)$$
+
+which reads *$F_X(x)$ is the probability of the event that the random variable $X$ has a value less or equal to $x$*. 
+
+Random variables are characterized by their distribution function!
+
+[Let's explore it for discrete and continuous random variables with theoretical and empirical examples.]{style='color:blue;'}
+
+
+##  Theoretical examples {.smaller}
+
+:::: {.columns}
+
+::: {.column width='48%'}
+**Discrete random variable**
+
+**Random atomic event:** 20 (unfair) coin flips with HEADS probability 40%.   
+**Random Variable:** Number of HEADS. 
+
+*Binomial* distribution function
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+ggplot() + 
+ geom_function(fun = pbinom, args = list(size = 20, prob = 0.4)) + 
+ xlim(c(0,20)) + theme_minimal(base_size = 24)
+```
+
+
+:::
+
+::: {.column width='48%'}
+**Continuous random variable**
+
+**Random atomic event:** Point on a ruler of 1 meter length. Each point is equally likely. 
+**Random Variable:** The marking on the ruler in meters (number from 0 to 1). 
+
+*Uniform* distribution function
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+ggplot() + 
+ geom_function(fun = punif) + 
+ xlim(c(-0.5,1.5)) + theme_minimal(base_size = 24)
+```
+:::
+
+::::
+
+[Interpret a point of these graphs.]{style='color:blue;'}
+
+## Empirical examples {.smaller}
+
+
+:::: {.columns}
+
+::: {.column width='48%'}
+**Discrete random variable**
+
+**Random atomic event:** Ask a European about attitude towards the EU.  
+**Random Variable:** The answer on the scale 0 to 10. 
+
+```{r}
+#| echo: true
+#| fig-height: 3.5
+ess |> count(euftf) |> drop_na() |> mutate(freq = n/sum(n)) |>
+ add_row(euftf = -4, freq = 0, .before = TRUE) |> add_row(euftf = 14, freq = 0) |> 
+ ggplot(aes(euftf,cumsum(freq))) + geom_step() + 
+ scale_x_continuous(breaks = 0:10) + theme_minimal(base_size = 24)
+```
+:::
+
+::: {.column width='48%'}
+**Continuous random variable**
+
+**Random atomic event:** A visitors estimates the weight of the meat of an ox.   
+**Random Variable:** The estimated value converted to pounds. 
+
+```{r}
+#| echo: true
+#| fig-height: 3.5
+galton |> mutate(freq = 1/n()) |>  
+ add_row(Estimate = 800, freq = 0, .before = TRUE) |> add_row(Estimate = 1600, freq = 0) |>
+ ggplot(aes(Estimate, cumsum(freq))) + geom_step() +
+ theme_minimal(base_size = 24)
+```
+:::
+
+::::
+
+[Interpret a point of these graphs.]{style='color:blue;'}  
+[Note: Technically, a finite empirical sample still has a discrete distribution, but ... ]{style='color:red;'}
+
+## Distributions based on empirical data {.smaller}
+
+[Empirical data is always finite, so why bother with theoretical continuous distributions?]{style='color:blue;'}
+
+. . .
+
+- Each new data point would usually create a new discrete value. 
+- A discrete view is conceptually (theoretically) unfavorable. 
+- We assume that there is a continuous distribution underlying. 
+
+
+## Probability mass function (pmf) {.smaller}
+
+For discrete random variables the *probability mass function* gives us the probabilities for each number. Mathematically it is 
+
+$f_X(x) = \text{Pr}(X = x)$ while $F_X(x) = \text{Pr}(X \leq x)$
+
+Assume the discrete values with positive probability are $x_1 < x_2 < \dots < x_n$.
+
+Then it is easy to see the the *probability mass function* is the **diff**-function of the *distribution function*. 
+
+$f_X(x_i) = F_X(x_i) - F_X(x_{i-1})$
+
+
+## pmf for empirical examples {.smaller}
+
+:::: {.columns}
+
+::: {.column width='48%'}
+Works well for the **discrete random variable**. 
+
+```{r}
+#| echo: true
+#| fig-height: 3.5
+ess |> count(euftf) |> drop_na() |> mutate(freq = n/sum(n)) |>
+ add_row(euftf = -4, freq = 0, .before = TRUE) |> add_row(euftf = 14, freq = 0) |> 
+ ggplot(aes(euftf,freq)) + geom_col() + 
+ scale_x_continuous(breaks = 0:10) + theme_minimal(base_size = 24)
+```
+:::
+
+::: {.column width='48%'}
+Does not work so well for the **continuous random variable**
+
+```{r}
+#| echo: true
+#| fig-height: 3.5
+galton |> mutate(freq = 1/n()) |>  
+ add_row(Estimate = 800, freq = 0, .before = TRUE) |> add_row(Estimate = 1600, freq = 0) |>
+ ggplot(aes(Estimate, freq)) + geom_col() +
+ theme_minimal(base_size = 24)
+```
+:::
+
+:::
+
+
+## Uniform distribution theoretical vs. samples {.smaller}
+
+:::: {.columns}
+
+The distribution function of a sample of 50 random variables.
+
+::: {.column width='48%'}
+
+Empirical and theoretical distribution function
+
+```{r}
+#| echo: true
+unif <- runif(50) 
+unif_cdf <- tibble(x = unif) %>% 
+  arrange(x) %>% # We sort the data by size
+  mutate(cdf = (1:length(unif))/length(unif)) # cumulative probabilities
+unif_cdf |> ggplot(aes(x, y = cdf)) + geom_step() +
+ geom_function(fun = punif, color = "red")
+```
+:::
+
+::: {.column width='48%'}
+Empirical pmf approached with a histogram with small binwidth.  
+
+```{r}
+unif_cdf|> 
+ ggplot(aes(x)) + geom_histogram(binwidth = 0.005) 
+```
+
+(Note, in a pmf the height of each bin with one observation would be $\frac{1}{50}$!)
+:::
+
+::::
+::::
+
+
+## Normal distribution theoretical vs. samples {.smaller}
+
+:::: {.columns}
+
+The distribution function of a sample of 50 random variables.
+
+::: {.column width='48%'}
+
+Empirical and theoretical distribution function
+
+```{r}
+#| echo: true
+normal <- rnorm(50) 
+normal_cdf <- tibble(x = normal) %>% 
+  arrange(x) %>% # We sort the data by size
+  mutate(cdf = (1:length(normal))/length(normal)) # cumulative probabilities
+normal_cdf |> ggplot(aes(x, y = cdf)) + geom_step() +
+ geom_function(fun = pnorm, color = "red") + xlim(c(-3,3))
+```
+:::
+
+::: {.column width='48%'}
+Empirical pmf approached with a histogram with small binwidth.  
+
+```{r}
+normal_cdf |> 
+ ggplot(aes(x)) + geom_histogram(binwidth = 0.005) 
+```
+
+[This type of pmf does not show the characteristics of the distribution.]{style='color:red;'}
+:::
+
+::::
+::::
+
+## Approach the solution {.smaller}
+
+The theoretical distribution is approached better with 
+
+- larger samples and
+- larger (but not too large) binwidth
+
+. . . 
+
+:::: {.columns}
+
+::: {.column width='48%'}
+
+```{r}
+#| echo: true
+normal <- rnorm(5000) 
+normal_cdf <- tibble(x = normal) %>% 
+  arrange(x) %>% # We sort the data by size
+  mutate(cdf = (1:length(normal))/length(normal)) # cumulative probabilities
+normal_cdf |> ggplot(aes(x, y = cdf)) + geom_step() +
+ geom_function(fun = pnorm, color = "red") + xlim(c(-4,4))
+```
+:::
+
+::: {.column width='48%'}
+```{r}
+#| echo: true
+normal_cdf |> 
+ ggplot(aes(x)) + geom_histogram(binwidth = 0.01) 
+```
+:::
+
+::::
+::::
+
+
+## Solution: Probability density function
+
+- When we have a functional form, the *derivative* of the cdf is the **probability density function** (pdf) $f_X(x) \frac{d}{dx}F_X(x). 
+- Consequently, $F_X(x) = \int_{-\infty}^x f_X(\xi)d\xi$. 
+- $\int_a^bf(x)dx$ is the probability that a value from the random variable $X$ lies between $a$ and $b$: $\text{Pr}(X \geq a & X \leq b)$ or $\text{Pr}(X \in [a,b])$
+
+
+
+# Distribution Functions in R
+
+Identifiers for distributions:  
+`unif` uniform distribution  
+`norm` normal distribution 
+`lnorm` lognormal distribution
+`binom` binomial distribution (Note: This is a discrete distribution.)
+
+##  Normal distribution
+
+```{r}
+#| echo: true
+tibble(x = rnorm(1000)) |> 
+ ggplot(aes(x)) + 
+ geom_histogram(aes(y =..density..), binwidth = 0.1) + 
+ geom_density() + # This is a data-driven ksdensity function (no details here)
+ geom_function(fun = dnorm, color = "red") +
+ xlim(c(-5,5)) 
+# Lognormal distribution
+tibble(x = rlnorm(1000)) |> 
+  ggplot(aes(x)) + geom_histogram(aes(y =..density..), binwidth = 0.1) + geom_density() +
+  geom_function(fun = dlnorm, color = "red") +
+  xlim(c(-1,10)) 
+```
+
+
+## Lognormal distribution
+
+```{r}
+#| echo: true
+tibble(x = rlnorm(1000)) |> 
+  ggplot(aes(x)) + geom_histogram(aes(y =..density..), binwidth = 0.1) + geom_density() +
+  geom_function(fun = dlnorm, color = "red") +
+  xlim(c(-1,10)) 
+```
+
+
+## Distribution parameters {.smaller}
+
+As empirical samples of numbers also theoretical distributions have an **expected value** or **mean** and a **variance** (and a **standard deviation**). In theoretical distributions they often become (related to) parameters of the distribution.
+
+The normal distribution has the parameters `mean` and `sd`
+```{r}
+#| echo: true
+ggplot() + 
+  geom_function(fun = function(x) dnorm(x, mean = 2, sd = 1)) +
+  geom_function(fun = function(x) dnorm(x, mean = -3, sd = 3), color = "red") +
+  geom_function(fun = function(x) dnorm(x, mean = 7, sd = 0.5), color = "blue") +
+  geom_function(fun = function(x) dnorm(x, mean = -1, sd = 6), color = "green") +
+  xlim(-10,10)
+```
+
+
+## Measures of samples 
+
+Here are some examples of mean and standard deviation:
+
+```{r}
+#| echo: true
+x <- rnorm(1000, mean = 2, sd =5)
+mean(x)
+sd(x)
+x <- rnorm(10000, mean = 2, sd =5)
+mean(x)
+sd(x)
+x <- runif(10000)
+mean(x) # This should be 0.5
+sd(x) # This should be 1/sqrt(12) = 0.2886751
+```
+
+## Galtons data
+
+
+```{r}
+#| echo: true
+gal_mean <- mean(galton$Estimate)
+gal_sd <- sd(galton$Estimate)
+galton |> ggplot(aes(Estimate)) + 
+ geom_histogram(aes(y =..density..), binwidth = 5) + 
+ geom_density(color = "blue") +
+ geom_function(fun = dnorm, args = list(mean = gal_mean, sd = gal_sd), color = "red")
+```
+
+A normal distribution fits "OK". 
+
+
+
+## The zoo of distributions
+
+There are many probability distributions (implemented in R or not):  
+<https://en.wikipedia.org/wiki/List_of_probability_distributions>
+
+- More important than knowing many is to learn to extract the idea of the **underlying probabilistic model**.
+  - Example: Binomial distribution as the number of successes in repeated Bernoulli trials.
+
+[What is the underlying model of a normal distribution?]{style='color:blue;'}
+
+# Central Limit Theorem
+
+- Why is the normal distribution so central in theory? 
+- Because of the central limit theorem, which is one of the most important mathematical insights. 
+
+**Central Limit Theorem** (colloquial version) The sum of many independent random variables (which can have various distributions) approaches the normal distribution (for ever larger sums and proper normalization).
+
+## Test with sum of uniform samples
+
+```{r}
+#| echo: true
+n <- 10000
+tibble(X1 = runif(n),X2 = runif(n),X3 = runif(n),X4 = runif(n),X5 = runif(n),
+       X6 = runif(n),X7 = runif(n),X8 = runif(n),X9 = runif(n)) %>% 
+  mutate(S2 = X1 + X2,
+         S5 = X1 + X2 + X3 + X4 + X5,
+         S9 = X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 ) %>% 
+  ggplot() + 
+  geom_histogram(aes(x = S2, y =..density..), binwidth = 0.1, alpha = 0.5) + 
+  geom_histogram(aes(x = S5, y =..density..), binwidth = 0.1, fill = "red", alpha = 0.5) + 
+  geom_histogram(aes(x = S9, y =..density..), binwidth = 0.1, fill = "blue", alpha = 0.5) +   xlim(c(-0.5,9)) 
+```
+
+## Sums of random variables important? {.smaller}
+
+Why are sums of random variables important?
+
+- Sums of random variables are the standard approach linear models  $Y = \beta_0 + \beta_1X_1 + \dots + \beta_nX_n$
+- They appear also in generalized linear models as for the logistic regression. 
+
+**Conclusions:** 
+
+- When the response variable $Y$ is really a sum of several features (which all have relevant/non-zero coefficients) then $Y$ should look normally distributed. 
+- If $Y$ strongly deviates from normality this is a sign that this model is not a really well representation of reality. This does not exclude using a linear model for prediction, but probably these can be improved.
+
+# Cluster Analysis
+
+## Three common problem types {.smaller}
+
+1. **Regression:** We want to *explain/predict* a **numerical** variable.    
+Example: In a linear regression, we model a numerical response variable as a linear combination of predictors and estimate the coefficients with data. 
+2. **Classification:** We want to *explain/predict* a **nominal** (often binary) variable.  
+Example: In a logistic regression, we assume the binary outcomes are realized randomly based on a probability which is a the logistic transformation of a linear combination of predictors and estimate the coefficients with data. 
+3. [**Clustering:**]{style='color:red;'} We want label cases in data. 
+
+**Classification and clustering** are about producing new nominal data. In classification the categories are already know from the training data. Clustering algorithms produces the categories without training data. 
+
+## Statistical learning perspective {.smaller}
+
+- Regression and classification problems are solved by **supervised** algorithms. 
+  - That means they receive *training data* which includes the outcome variable (which is often made by humans) and should perform on new test data. 
+  - *Prediction questions* can be:
+    - What is a house worth?
+    - Which emails are spam?
+- A clustering problems is a problem of **unsupervised** learning. 
+  - The algorithm shall generate labels for the cases as a new variable.  
+  - *Prediction questions* can be:
+    - What different types of customers exist and how can each one be labelled?
+    - Which players in a sport league are similar and how can we label them?
+  
+## Explanatory perspective {.smaller}
+
+- In **regression** and **classification** problems we develop a model explicitly.   
+  - We can take a **confirmatory perspective**: We specify an equation in which we select and transform variables. 
+  - We can derive the equation from *theory* without data an then assess the quality of its explanatory and predictive capacity with data. 
+  - Part of this can by *hypothesis tests* like: We hypothesize that a certain predictor variable has a (positive or negative) effect on the outcome variable. 
+- In **clustering** problems we take a **exploratory perspective**.
+  - We try to uncover structure in an existing data set. 
+
+
+## Cluster analysis and PCA {.smaller}
+
+Solving a clustering problem is also called **cluster analysis**. 
+
+- **Cluster analysis** and **principle component analysis** (PCA) are both extract information from existing rectangular data without specifying predictors and response. 
+  - PCA extracts relations based on linear correlations between numerical **variables** (columns). These principle components can be used to create *new numerical variables* (and thereby reduce the number of variables).
+  - Cluster analysis tries to group **cases** (rows) into clusters such that cases in a cluster a similar. 
+    - When clusters are found they are labelled and a *new nominal variable* in the data set is created. Each cases receives a nominal label to which cluster it belongs. 
+
+## Two clustering methods {.smaller}
+
+Today, we do a quick tour through two methods focusing on 
+
+- the general idea, and
+- how to apply, interpret, and look at the results. 
+
+The two paradigms are 
+ 
+ - centroid based clustering
+ - connectivity based hierarchical clustering
+
+# k-means clustering
+
+
+## Centroid based: k-means clustering {.smaller}
+
+k-means clustering aims to *partition* $n$ observations into $k$ clusters in which 
+each observation belongs to the cluster with the nearest mean (*cluster centers* or *cluster centroid*) serving as a *prototype* of the cluster.
+
+::: {style='color:blue;'}
+**Important** 
+
+- We must specify **how many** ($k$) clusters we want to have.
+- We need a measure of **distance** between cases. How far is one case from each other?
+- A cluster is characterized by its **centroid**. 
+:::
+ 
+ 
+## Measuring distance between cases {.smaller background-color="yellow"} 
+
+Assume we have $m$ numerical variables.  
+$\to$ Every case is a **point** in $m$-dimensional space.
+
+In the following we will use the *Euclidean distance* in $m$ dimensions:
+
+For two points $(x_1, x_2, \dots, x_m)$ and  $(y_1, y_2, \dots, y_m)$ it is 
+
+$$\sqrt{(x_1-y_1)^2 +(x_2-y_2)^2 + \dots + (x_m-y_m)^2}$$
+
+- In $m=2$ or $3$ dimensions it is what we would measure with a ruler. ]
+- Note, the points represents rows in a dataset.
+
+[There are many more useful distance measures! It is a field to constantly learn about. Two visual examples: Manhattan distance, French railway metric]{style='color:green;'}
+
+## k-means algorithm: Start
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/ee71c89f-04e1-48f1-9ebc-350c8c872bf7.jpg?h=6b41c8a833b6137f529d59170ea90533)
+
+::: aside
+From <https://allisonhorst.com/k-means-clustering>
+:::
+
+
+## k-means algorithm: Iteration step 1
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/05cc17da-8ad7-4095-ba40-e0e492f2fd2b_rw_1920.jpg?h=500cfd89f65f6ec23eb6bf47c00bf1a2)
+
+::: aside
+From <https://allisonhorst.com/k-means-clustering>
+:::
+
+
+## k-means algorithm: Iteration step 2
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/caaad9b0-398b-4edb-92b6-25a224ae05bc_rw_1920.jpg?h=bf56b093b88b6b0e435cf2ffcfa91c18)
+
+::: aside
+From <https://allisonhorst.com/k-means-clustering>
+:::
+
+
+
+## Why we need iteration:
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/2f2e8dff-bcb4-4623-a38d-3cc71fba24c3_rw_1920.jpg?h=0fbd4da2938d4f69c91df95c842b942b)
+
+::: aside
+From <https://allisonhorst.com/k-means-clustering>
+:::
+
+
+## Iterate steps 1 and 2
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/f97bc420-d704-4bbe-ad00-28678e9c58cb_rw_1920.jpg?h=1cdfcef8903f8d8be17404ed6bd7aba1)
+
+::: aside
+From <https://allisonhorst.com/k-means-clustering>
+:::
+
+## k-means algorithm: Stop
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/614b8766-c72d-4c8f-9fd3-d738c36b073f.jpg?h=ae43d74e48e4d472a06dbee511e773af)
+
+::: aside
+From <https://allisonhorst.com/k-means-clustering>
+:::
+
+## Calculate k-means clustering in R {.smaller .scrollable}
+
+The OWiD corona country indicator dataset from Week 12:
+
+```{r}
+#| echo: true
+owid_inds
+glimpse(owid_inds)
+```
+
+## Preprocessing Steps {.smaller}
+
+- Automatic Box-Cox-transformation
+- Standardization (shift-scale transformzation by mean and standard deviation)
+
+```{r}
+#| echo: true
+library(tidymodels)
+rec_BoxCox <- owid_inds |> recipe() |> 
+ step_rm(all_nominal()) |> # Transform only the nominal
+ step_BoxCox(all_numeric()) |> # Box-Cox transformation, parameter estimated
+ step_scale(all_numeric()) |> step_center(all_numeric()) # standardization
+# Call prep to calculate tranformed variables
+owid_BoxCox <- rec_BoxCox |> prep(owid_inds)
+owid_BoxCox
+```
+
+## Whats in the `prep`ed object? {.smaller .scrollable}
+
+A lot!
+
+```{r}
+#| echo: true
+glimpse(owid_BoxCox)
+```
+
+
+## Preprocessing in a list in `$steps`  {.smaller .scrollable}
+
+```{r}
+#| echo: true
+glimpse(owid_BoxCox$steps)
+```
+
+## Parameters of Box-Cox {.smaller}
+
+::: {.columns}
+
+::: {.column width='60%' .smaller}
+```{r}
+# Box-Cox transformation was the the second step --> step[[2]]
+owid_BoxCox$steps[[2]]$lambdas
+```
+
+Left-skew $\lambda > 1$, right-skew $\lambda \to 0$
+
+```{r}
+#| fig-height: 2.5
+owid_inds |> select(population_density, life_expectancy) |> 
+ pivot_longer(c(population_density, life_expectancy)) |> 
+ ggplot(aes(value)) + geom_histogram(bins = 50) + facet_wrap(~name, scales = "free")
+```
+
+:::
+
+::: {.column width='40%'}
+```{r}
+#| fig-width: 4
+library(tidyverse)
+pfun <- function(x, p) (x^p-1)/p
+ipfun <- function(x, p) (p*x + 1)^(1/p)
+ggplot() + 
+	geom_function(fun = pfun, args = list(p = 1), color="red", size = 1.5) +
+	geom_function(fun = pfun, args = list(p = 2), color = "red", alpha=0.6) + 
+	geom_function(fun = pfun, args = list(p = 3), color = "red", alpha=0.3) +  
+	geom_function(fun = pfun, args = list(p = 1/2), color = "red3") + 
+	geom_function(fun = pfun, args = list(p = 1/3), color = "red4") + 
+	geom_function(fun = pfun, args = list(p = -1), color = "blue", size = 1.5) +  
+	geom_function(fun = pfun, args = list(p = -1/2), color = "blue3") + 
+	geom_function(fun = pfun, args = list(p = -1/3), color = "blue4") + 
+	geom_function(fun = pfun, args = list(p = -2), color = "blue", alpha=0.6) + 
+	geom_function(fun = pfun, args = list(p = -3), color = "blue", alpha=0.3) + 
+	geom_function(fun = log, color = "black", size = 1.5) + coord_fixed() +
+	xlim(c(0.01,4)) + ylim(c(-2,2)) + 
+	labs(x="x", y = "f(x)", title = "p = -1 (blue), 0 (black), +1 (red)") + 
+	theme(title = element_text(size = 2)) +
+	theme_minimal() 
+```
+:::
+
+:::
+
+## Transformed data in `$template` {.smaller}
+
+Transformed data looks more "normal". 
+
+```{r}
+#| echo: true
+#| fig-height: 2.5
+owid_BoxCoxData <- owid_BoxCox$template
+
+owid_BoxCoxData |> select(population_density, life_expectancy) |> 
+ pivot_longer(c(population_density, life_expectancy)) |> 
+ ggplot(aes(value)) + geom_histogram(bins = 50) + facet_wrap(~name, scales = "free")
+```
+
+## For $k=3$ clusters {.smaller}
+
+- `kmean` from base-R
+- Output: *Cluster means* are the centroids, *Cluster vector* are the labels for the cases, *Within cluster sum of squares by cluster* are performance measures
+- [Warning:]{style='color:red;'} In principle, k-means can results in different clusters for different initial starting positions of clusters. 
+
+```{r}
+#| echo: true
+owid_BoxCoxData |> kmeans(centers = 3)
+```
+
+## How many clusters? {.smaller .scrollable}
+
+- Computer solutions for different numbers of cluster $k$ 
+
+```{r}
+#| echo: true
+kclusts <- tibble(k = 1:9) |>
+  mutate(
+    kclust = map(k, ~kmeans(owid_BoxCoxData, .x)), # kmeans for k=1:9
+    tidied = map(kclust, tidy), # tidy extracts the centroids here 
+    glanced = map(kclust, glance), # 
+    augmented = map(kclust, augment, owid_BoxCoxData)
+  ) # This is large data frame with nested objects as entries. We unnest next
+
+clusters <- kclusts |> unnest(cols = c(tidied))
+clusters
+
+clusterings <- kclusts |> unnest(cols = c(glanced))
+clusterings
+
+assignments <- kclusts |> unnest(cols = c(augmented))
+assignments
+```
+
+
+## Total within sum of squares to decide {.smaller}
+
+```{r}
+#| echo: true
+ggplot(clusterings, aes(k, tot.withinss)) +
+  geom_line() + geom_point()
+```
+
+- From 5 to 6 clusters there is almost no improvement. So, we select $k=5$.
+
+## Visualization: Cluster centroids {.smaller}
+
+```{r}
+#| echo: true
+gclusters <- clusters |> filter(k==5) |> 
+ select(population:human_development_index, cluster) |> 
+ pivot_longer(population:human_development_index) |> 
+ ggplot(aes(value,name)) + geom_col() + facet_grid(~cluster)
+gclusters
+```
+
+## Visualization: Scatter plot {.smaller}
+
+```{r}
+#| echo: true
+library(patchwork) 
+g1 <- assignments |> filter(k==5) |> 
+ ggplot(aes(population_density, life_expectancy, color = .cluster)) +  geom_point()
+g2 <- assignments |> filter(k==5) |> mutate(continent = owid_inds$continent) |> 
+ ggplot(aes(population_density, life_expectancy, color = continent)) +  geom_point()
+g1 | g2
+```
+
+- [Attention:]{style='color:red;'} These are just two out of several variables!
+
+## Visualization: Clusters and continents {.smaller}
+
+```{r}
+#| echo: true
+clustcont <- assignments |> filter(k==5) |> 
+ mutate(continent = owid_inds$continent, location = owid_inds$location) |> 
+ select(.cluster, continent, location) |> arrange(.cluster, continent)
+g1 <- clustcont |> ggplot(aes(.cluster, fill = continent)) + geom_bar()
+g1 | gclusters
+```
+
+## Country list {.smaller .scrollable}
+
+```{r}
+#| echo: true
+clustcont
+```
+
+
+# Hierarchical clustering
+
+## Connectivity based: Hierarchical clustering {.smaller}
+
+Hierarchical clustering seeks to build a *hierarchy* of clusters. 
+
+Here, we use a bottom up approach:
+
+- We start with every case building its own cluster
+- Then we iteratively join clusters which are close to each other to form a cluster
+
+To that end we first build the **distance matrix**. It is a symmetric $n \times n$ matrix where each entry is the **Euclidean distance** between two cases. 
+
+## Hierarchical clustering: Step 1
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/a8deb407-0aac-4eec-bf06-9eff89ec60f4_rw_1920.jpg?h=ba48313c2b9793700c204592c545d366)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+
+## Hierarchical clustering: Step 2
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/23f5ebe7-5108-43d4-8ee3-e21bcc90368c_rw_1920.jpg?h=dfefdbcba3b07bbd3b21847d6989878e)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+## Hierarchical clustering: Step 3
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/8be02f8f-296d-4b8d-9bd1-b05f9b82bd0e_rw_1920.jpg?h=f28b9120a354e7ffebec309fecf6cd42)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+## Hierarchical clustering: Step 4
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/55463c7d-d414-49ac-a229-23420caf6a17_rw_1920.jpg?h=5e9f3867df8550e0b013cf82009f0002)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+
+## Hierarchical clustering: Step 5
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/393b3b7a-47d9-47b7-8e39-61264d37561a_rw_1920.jpg?h=8c22aaae3262f253cb7ca2ab23be3085)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+
+## Hierarchical clustering: Step 6
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/aa0be35e-89c6-4b82-8aba-d261c2c2d061_rw_1920.jpg?h=6a93d982b2832cc53fa3e207fa9243bc)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+
+
+## Hierarchical clustering: Step 7
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/0310beae-ab04-49a8-ab09-ba73d727ed02_rw_1920.jpg?h=65b0e4106a62ecea3476414db247dfdf)
+
+::: aside
+From <https://allisonhorst.com/agglomerative-hierarchical-clustering>
+:::
+
+
+## Calculate hierarchical clustering in R {.smaller}
+
+- First compute the distance matrix
+
+```{r}
+#| echo: true 
+owid_BoxCoxData |> dist(method = "euclidean") 
+```
+
+## Calculate hierarchical clustering in R {.smaller}
+
+- `hclust` from base-R
+
+```{r}
+#| echo: true 
+owid_df <- as.data.frame(owid_BoxCoxData) # base-R data.frame 
+row.names(owid_df) <- owid_inds$iso_code # base-R way to have row names for hclust
+hc_owid <- owid_df |> dist(method = "euclidean") |> hclust()
+hc_owid
+glimpse(hc_owid)
+```
+
+
+## Plot the dendrogram {.smaller}
+
+```{r}
+#| echo: true 
+plot(hc_owid, cex = 0.4) # base-R way of plotting hclust object
+```
+
+## Plot height of hierarchy steps {.smaller}
+
+- Now we start looking at the *height* from the top.
+- Height at $x$ is the Euclidean distance which needs to be bridged to join the closest two clusters from the $x+1$-cluster solution to get the $x$-cluster solution. We should not cut where the increase in height is marginal.
+
+
+```{r}
+#| echo: true 
+tibble(height = hc_owid$height |> tail(10), # last ten values of height
+       num_cluster = 10:1) |> 
+ ggplot(aes(num_cluster,height)) + geom_point() + geom_line()
+```
+
+
+## Dendrogram with cutpoints {.smaller}
+
+```{r}
+#| echo: true 
+plot(hc_owid, cex = 0.4) # base-R way of plotting hclust object
+rect.hclust(hc_owid, k = 3) # base-R way of plotting in an existing plot
+rect.hclust(hc_owid, k = 8)
+```
+
+## Visualization: Clusters and continents {.smaller}
+
+Use `cutree`. 
+
+```{r}
+#| echo: true
+owid_inds |> mutate(hclust3 = cutree(hc_owid, k = 3),
+                    hclust8 = cutree(hc_owid, k = 8)) |> 
+ pivot_longer(c(hclust3,hclust8)) |> 
+ ggplot(aes(value, fill = continent)) + geom_bar() + facet_wrap(~name, scales = "free_x")
+```
+
+
+
+## Countries
+
+```{r}
+#| echo: true
+cutree(hc_owid, k = 3) |> sort()
+```
+
+
+## Comparison with 5 k-means clusters
+
+```{r}
+#| echo: true 
+assignments |> filter(k==5) |> 
+ mutate(continent = owid_inds$continent, location = owid_inds$location,
+        hcluster = cutree(hc_owid, k = 3)) |> 
+ select(continent, location, .cluster, hcluster) |> 
+ ggplot(aes(x = .cluster, fill = factor(hcluster))) + geom_bar()
+```
+
+
+<!-- ## Next -->
+
+<!-- - In some statistical model, we consider variables in a data frame as *random variables*, for example the response variable in a generalized linear model.  -->
+
+<!-- Formally, a **random variable** is -->
+
+<!-- - a function $X: S \to \mathbb{R}$  -->
+<!-- - which assigns a value to each atomic event in the sample space.  -->
+
+<!-- Together with a probability function $\text{Pr}: \mathcal{F}(S)\to [0,1]$ probabilities can be assigned to values of the random variable (see the *probability mass function* in two slides). -->
+
+
+
+<!--   * Probabilistic simulations. For example bootstrapping.  -->
+<!--   Galton or Viertelfest: Quick Bootstrap examples following datascience box -->
+
+
+<!--   * Conditional probabilities and their relation to the confusion matrix. -->
+<!--   Quick difference between independence uncorrelated -->
+<!--   Conditional probability and relation to confusion matrix.  -->
+
+<!--   * Continuous random variables and some theoretical distributions. -->
+<!--   Normal and Lognormal, what do they mean.  -->
+
+<!--   * The central limit theorem. -->
+<!--   Sum of random variables.  -->
+<!--   Products of random variables.  -->
+
+<!--   * What is the difference between probability theory and statistics? -->
+
+
+<!-- Matrices: -->
+
+<!-- - Matrix multiplication -->
+<!-- - Ax = b -->
+<!-- - Ax = lambda x -->
+<!-- - SVD A = QDP -->
+
+
+  
+  
+
+
+
+
+
+<!-- ```{r} -->
+<!-- library(rworldmap) -->
+<!-- w <- assignments |> filter(k==5) |>  -->
+<!--  mutate(iso = owid_inds$iso_code, continent = owid_inds$continent, location = owid_inds$location, -->
+<!--         hcluster = factor(cutree(hc_owid, k = 5))) |>  -->
+<!--  select(iso, hcluster) -->
+<!-- jw <- joinCountryData2Map( w, joinCode = "ISO3", nameJoinColumn = "iso") -->
+<!-- mapCountryData( jw, nameColumnToPlot="hcluster" ) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- ess_sel <- ess |>  -->
+<!--  select(cntry, gndr, atchctr, atcherp, euftf, lrscale, imueclt) |> na.omit()  -->
+<!-- ess_kmeans <- ess_sel |> select(-cntry, - gndr) |> kmeans(center = 5) -->
+<!-- ess_kmeans |> tidy() -->
+
+<!-- ctry <- ess_kmeans |> augment(ess_sel) |> count(.cluster,cntry) |>  -->
+<!--  group_by(cntry) |> mutate(freq = n/sum(n)) |> select(-n) |>  -->
+<!--  pivot_wider(names_from = .cluster, values_from = freq) -->
+
+<!-- ess_kmeans |> augment(ess_sel) -->
+
+<!-- ess_pca <- ess_sel |> select(-cntry, -gndr) |>  -->
+<!--  prcomp(~., data = _ , scale = TRUE) -->
+
+<!-- ess_pca |> augment(ess_sel) -->
+<!-- augment(ess_pca, ess_sel) |> mutate(.cluster = ess_kmeans$cluster) |>  -->
+<!--  ggplot(aes(.fittedPC1, .fittedPC2, color = factor(.cluster))) + geom_point(alpha =  0.1) -->
+<!-- ess_kmeans |> tidy() -->
+<!-- ess_pca -->
+<!-- ``` -->
+
