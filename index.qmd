@@ -249,7 +249,6 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 [Slides Week 12](W12.qmd)
 
 **Homework 05 due in 3 days**  
-**Homework 06 should come. Due Dec 4.**
 
 ## Week 13, Nov 24:  Probability distributions, Cluster Analysis {-}
 
@@ -257,7 +256,9 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 ## Week 14, Dec 1: Course Review, Exam preparation {-}
 
-**Homework 06 due in 3 days**  
+**Homework 06 should come before Thursday. It includes questions similar to what will be asked in the exam of "Data Science Concepts". We can discuss it in class.**
+
+**The deadline of Homework 06 will be the end of the semester. However, it obviously makes sense to do it before the exam. **
 
 ## Last *Data Science Tools* Sessions, Dec 8 {-}
 
@@ -270,6 +271,8 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 - Each presentation should be 5-15 minutes, and allow for short questions or feedback. 
 - The presentation is not graded. 
 - The final version of the report can be improved afterwards. 
+
+**Deadline for the reports is the end of the year Dec, 31. We (the instructors) need to submit the grades by January 9, 2023.**
 
 
 ## Exam *Data Science Concepts* module, Dec 15 {-}

@@ -675,8 +675,8 @@ arrow_style <- arrow(
 )
 pca1 |> tidy(matrix = "rotation") |> 
  pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") |>
- ggplot(aes(PC1*pca1$sdev+rep(mean(owid_inds$median_age),2),
-            PC2*pca1$sdev+rep(mean(owid_inds$life_expectancy,2)))) + 
+ ggplot(aes(x = (PC1*pca1$sdev) + mean(owid_inds$median_age),
+            y = (PC2*pca1$sdev) + mean(owid_inds$life_expectancy))) + 
  geom_point(data = owid_inds,
             mapping = aes(median_age, life_expectancy, color = continent)) + 
  geom_segment(xend=mean(owid_inds$median_age),
@@ -684,6 +684,9 @@ pca1 |> tidy(matrix = "rotation") |>
  coord_fixed() +
  labs(x="Median age",y="Life expectancy")
 ```
+
+
+
 
 ::: aside
 The two arrows show the two eigenvectors of the covariance matrix of the two variables scaled by the square root of the corresponding eigenvalues, and shifted so their origins are at the means of both variables. 
