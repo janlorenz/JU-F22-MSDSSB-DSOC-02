@@ -664,12 +664,6 @@ Example for the new axes.
 #| fig-height: 4
 pca1 <- owid_inds |> select(median_age, life_expectancy) |> 
  prcomp(~., data = _, scale = FALSE)
-# owid_inds |> ggplot(aes(median_age, life_expectancy, color = continent)) +
- # geom_point()
-
-# pca1 |> augment(owid_inds) |>
-#  ggplot(aes(.fittedPC1, .fittedPC2, color = continent)) +
-#  geom_point()
 arrow_style <- arrow(
   angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
 )
@@ -684,9 +678,6 @@ pca1 |> tidy(matrix = "rotation") |>
  coord_fixed() +
  labs(x="Median age",y="Life expectancy")
 ```
-
-
-
 
 ::: aside
 The two arrows show the two eigenvectors of the covariance matrix of the two variables scaled by the square root of the corresponding eigenvalues, and shifted so their origins are at the means of both variables. 

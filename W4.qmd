@@ -504,7 +504,7 @@ python: indexes go from 0 to n-1
 
 R: indexes go from 1 to n
 
-Bew aware!
+Be aware!
 
 There is no correct way. For some use cases one is more *natural* for others the other. 
 

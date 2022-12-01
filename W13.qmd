@@ -346,13 +346,15 @@ normal_cdf |>
 
 ## Solution: Probability density function
 
-- When we have a functional form, the *derivative* of the cdf is the **probability density function** (pdf) $f_X(x) \frac{d}{dx}F_X(x). 
+- When we have a functional form, the *derivative* of the *distribution function* is the **probability density function** (pdf) $f_X(x) \frac{d}{dx}F_X(x)$. 
 - Consequently, $F_X(x) = \int_{-\infty}^x f_X(\xi)d\xi$. 
-- $\int_a^bf(x)dx$ is the probability that a value from the random variable $X$ lies between $a$ and $b$: $\text{Pr}(X \geq a & X \leq b)$ or $\text{Pr}(X \in [a,b])$
+- $\int_a^bf(x)dx$ is the probability that a value from the random variable $X$ lies between $a$ and $b$: $\text{Pr}(X \geq a \ \&\ X \leq b)$ or $\text{Pr}(X \in [a,b])$
+
+The pdf is the analog of the pmf for continuous random variables. 
 
 
 
-# Distribution Functions in R
+## Distribution Functions in R
 
 Identifiers for distributions:  
 `unif` uniform distribution  

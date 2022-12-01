@@ -1,5 +1,5 @@
 ---
-title: "W#9 Classification Problems, Logisitc Regression, Prediction"
+title: "W#9 Classification Problems, Logistic Regression, Prediction"
 author: Jan Lorenz
 format: 
   revealjs: 

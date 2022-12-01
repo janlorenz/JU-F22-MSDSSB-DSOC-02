@@ -95,7 +95,7 @@ The exam will be open-book and take-home exam. It will be delivered individually
 
 Assessment is based on a **team project** of approximately 4000-5000 words. Which are delivered in personalized repositories in the GitHub organization <https://github.com/JU-F22-MDSSB-MET-01>.
 
-Additionally, the handbook list a *requirement* to pass the module and a *bonus* option to increase the grade by 0.33 (while making the best grade is also possible with a great project report without the bonus). 
+Additionally, the handbook lists a *requirement* to pass the module and a *bonus* option to increase the grade by 0.33 (while the best grade is also possible with a great project report without the bonus). 
 
 - **Requirement:**  Half of the homework assignment tasks need to be correctly solved. These do not determine the grade. We will check this after the deadline for the last homework passed at the end of classes. 
 - **Bonus:** The individual repositories about Corona **hw-ind-corona-USERNAME** and the ESS **hw-ind-ess-USERNAME** shall be cleaned from not necessary files. All analysis the qmd-Document should be complete and the questions should be answered in a consistent way. The rendered html document should look well formatted and should be readable as a report independent from the instructions. 
@@ -221,7 +221,7 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 **Homework 04 should come. Due Nov 6.**
 
-## Week 9, Oct 27: Classification Problems, Logisitc Regression, Prediction {-}
+## Week 9, Oct 27: Classification Problems, Logistic Regression, Prediction {-}
 
 [Slides Week 9](W9.qmd)  
 Download instructions: <https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf>

@@ -1,0 +1,33 @@
+---
+title: "Homework 06"
+subtitle: "Exam preparation"
+---
+
+:::{.callout-important}
+Homework 06 is due by the end of the semester.
+**This homework is similarly structured as the final exam will be.**
+However, it has only some example questions and is not a full mock exam, regarding the topics and the number of questions or points. This will change. 
+:::
+
+All information about the homework is provided in your personalized repository in the course's GitHub-organization <https://github.com/JU-F22-MDSSB-MET-01/>. 
+
+Your repository has the name **hw-06-ind-USERNAME**, where USERNAME is the GitHub-username you used for the other homework. 
+
+This would also be the workflow for the exam:
+
+1. Go to your repository's page on GitHub.com in the browser. Read the main instructions in the **README.md**. Leave the page open to check back and to see if the commits you push appear as they should. 
+2. Clone the repository to your local computer. (If anything goes wrong, the instructions for [Homework 01](hw-instructions/hw-01-instr.qmd), Section 2 "Workflow" should help.)
+3. Open the file **hw-06.qmd** in RStudio and Render it with quarto. 
+4. Work in the quarto-file **hw-06.qmd**. Write all the required answers into this file. During your work:
+
+- **Render your file with quarto.** This will create a file **hw-06.html** and shows a preview in RStudio. You can also open the file in your browser to see a larger version. *You should do this repeatedly to check if your file renders well!*
+- **Add, commit, and push.** Add the files **hw-06.qmd** and **hw-06.html** to stage them for a commit. (It is also okay to add all files in the Git pane of RStudio.) Make a commit in which you write a short commit message. Push your commit to GitHub. *You should do this occasionally and check on GitHub.com, if the files are there how they should.*
+
+5. Before the deadline: Submit your solutions with a final rendering with quarto and add/commit/push with git. Submissions by email will be excepted only in case of emergency. 
+
+**Assessment:**
+
+- The normal way of assessment will be that your repository will be cloned and the files in it will be assessed for solutions. 
+- Ideally, only the file **hw-06.html** needs to be looked at. However, also relevant content in the file **hw-06.qmd** may be assessed for points when this accidentally has not made it to the rendered html. 
+
+
