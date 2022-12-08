@@ -93,12 +93,34 @@ The exam will be open-book and take-home exam. It will be delivered individually
 
 ### Data Science Tools Module
 
-Assessment is based on a **team project** of approximately 4000-5000 words. Which are delivered in personalized repositories in the GitHub organization <https://github.com/JU-F22-MDSSB-MET-01>.
+Assessment is based on a **team project** (see below) of approximately 4000-5000 words. Which are delivered in personalized repositories in the GitHub organization <https://github.com/JU-F22-MDSSB-MET-01>.
 
 Additionally, the handbook lists a *requirement* to pass the module and a *bonus* option to increase the grade by 0.33 (while the best grade is also possible with a great project report without the bonus). 
 
 - **Requirement:**  Half of the homework assignment tasks need to be correctly solved. These do not determine the grade. We will check this after the deadline for the last homework passed at the end of classes. 
 - **Bonus:** The individual repositories about Corona **hw-ind-corona-USERNAME** and the ESS **hw-ind-ess-USERNAME** shall be cleaned from not necessary files. All analysis the qmd-Document should be complete and the questions should be answered in a consistent way. The rendered html document should look well formatted and should be readable as a report independent from the instructions. 
+
+
+### Data Science Tools Project Report 
+
+The project report is the graded assessment of the Tools module. 
+
+Important information on the preparation of the Data Science Project Reports is in the Presentation for [Week 11](W11_projects.qmd). Please go through this.
+
+Advice on the structure (Executive Summary, Introduction, Data, Analysis, Conclusion) is in the template you have in your repository. 
+
+Advice: 
+
+- Find a manageable dataset: at least 50 cases, good is 10-20 variables with a mix of categorical and numeric. Deviations are allowed based on your interest and capability. 
+- Go through the visualizations, statistics, and models we had in lectures and homework and think if similar things would be interesting.
+- The goal is **not an exhaustive data analysis**. Do not calculate every statistic and procedure you have learned for every variable, but rather **show that you can ask meaningful questions** and answer them with results of data analysis and proficient interpretation and presentation of the results.
+- Do NOT blindly do all visualization and all statistic on all variables in the data set! You do that in your data exploration but that should not go into your report as is. At some point you have to focus on what is needed to answer your questions. Your report is not a documentation of all your steps. Throw out what is not needed anymore, improve the remaining visualizations, and explain well in the text what you want to communicate.  
+- A single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate.
+
+
+
+
+
 
 
 # Learning Resources

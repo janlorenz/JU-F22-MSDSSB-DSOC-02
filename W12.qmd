@@ -336,7 +336,7 @@ tibble(samplesize = 0:62) |>
  theme_minimal(base_size = 24)
 ```
 
-[The probability of 3 successes is most likely for samples sizes around 30. Sensible?]{style='color:blue;'}
+[The probability of 3 successes is most likely for sample sizes around 30. Sensible?]{style='color:blue;'}
 
 . . . 
 
