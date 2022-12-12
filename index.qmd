@@ -301,11 +301,4 @@ Download instructions: <https://quarto.org/docs/presentations/revealjs/presentin
 
 Scheduled officially on [campusnet](https://campusnet.jacobs-university.de) by academic offices.
 
-
-
-<!-- 
-Next things: Data Science Box: Scientific studies and confounding, ends with conditional probability and independence
-
-
-
--->
+How to get to your exam is described [here](hw-instructions/exam.qmd). 

@@ -3763,7 +3763,7 @@
     "href": "index.html#exam-data-science-concepts-module-dec-15",
     "title": "Data Science Concepts / Tools",
     "section": "Exam Data Science Concepts module, Dec 15",
-    "text": "Exam Data Science Concepts module, Dec 15\nScheduled officially on campusnet by academic offices."
+    "text": "Exam Data Science Concepts module, Dec 15\nScheduled officially on campusnet by academic offices.\nHow to get to your exam is described here."
   },
   {
     "objectID": "W12.html#probability-topics-for-data-science",
@@ -4807,5 +4807,12 @@
     "title": "Data Science Concepts / Tools",
     "section": "Week 9, Oct 27: Classification Problems, Logistic Regression, Prediction",
     "text": "Week 9, Oct 27: Classification Problems, Logistic Regression, Prediction\nSlides Week 9\nDownload instructions: https://quarto.org/docs/presentations/revealjs/presenting.html#print-to-pdf\nHomework 04 due in 10 days."
+  },
+  {
+    "objectID": "hw-instructions/exam.html",
+    "href": "hw-instructions/exam.html",
+    "title": "Exam",
+    "section": "",
+    "text": "All information about the exam is provided in your personalized repository in the course’s GitHub-organization https://github.com/orgs/JU-F22-MDSSB-MET-01/repositories.\nYour repository has the name exam-USERNAME, where USERNAME is the GitHub-username you used for the other homework.\nYou find all instruction in your repository’s README.md which shows on the main page of the repository’s main page on github.com in the browser. Also the exam questions will appear here.\n\n\n\n\n\n\nImportant\n\n\n\nYou can do the technical setup and the academic integrity statement already before the exam. Do this to save time and check if you have all tools (R, RStudio, quarto, git) properly installed."
   }
 ]

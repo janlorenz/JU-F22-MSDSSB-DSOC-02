@@ -23,6 +23,7 @@ website:
         - hw-instructions/hw-04-instr.qmd
         - hw-instructions/hw-05-instr.qmd
         - hw-instructions/hw-06-instr.qmd
+        - hw-instructions/exam.qmd
 
 format:
   html:

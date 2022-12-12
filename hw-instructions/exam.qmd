@@ -1,0 +1,15 @@
+---
+title: "Exam"
+subtitle: "Data Science Concepts"
+---
+
+All information about the exam is provided in your personalized repository in the course's GitHub-organization <https://github.com/orgs/JU-F22-MDSSB-MET-01/repositories>. 
+
+
+Your repository has the name **exam-USERNAME**, where USERNAME is the GitHub-username you used for the other homework. 
+
+You find all instruction in your repository's README.md which shows on the main page of the repository's main page on github.com in the browser. Also the exam questions will appear here. 
+
+:::{.callout-important}
+You can do the technical setup and the academic integrity statement already before the exam. Do this to save time and check if you have all tools (R, RStudio, quarto, git) properly installed. 
+:::
