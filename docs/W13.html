@@ -701,29 +701,29 @@ Jan Lorenz
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span><span class="dv">5</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.135658</code></pre>
+<pre><code>[1] 2.052716</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.949219</code></pre>
+<pre><code>[1] 5.168499</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span><span class="dv">5</span>)</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.042562</code></pre>
+<pre><code>[1] 2.152087</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.040028</code></pre>
+<pre><code>[1] 5.030972</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">mean</span>(x) <span class="co"># This should be 0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5001556</code></pre>
+<pre><code>[1] 0.498831</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">sd</span>(x) <span class="co"># This should be 1/sqrt(12) = 0.2886751</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2897921</code></pre>
+<pre><code>[1] 0.2894013</code></pre>
 </div>
 </div>
 </section>
@@ -1049,7 +1049,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   .. ..$ removals: Named chr [1:3] "iso_code" "continent" "location"
   .. .. ..- attr(*, "names")= chr [1:3] "iso_code" "continent" "location"
   .. ..$ skip    : logi FALSE
-  .. ..$ id      : chr "rm_Bt9xW"
+  .. ..$ id      : chr "rm_0FAc7"
   .. ..- attr(*, "class")= chr [1:2] "step_rm" "step"
   ..$ :List of 8
   .. ..$ terms     :List of 1
@@ -1061,7 +1061,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   .. ..$ limits    : num [1:2] -5 5
   .. ..$ num_unique: num 5
   .. ..$ skip      : logi FALSE
-  .. ..$ id        : chr "BoxCox_UdJK4"
+  .. ..$ id        : chr "BoxCox_zlVX2"
   .. ..- attr(*, "class")= chr [1:2] "step_BoxCox" "step"
   ..$ :List of 9
   .. ..$ terms       :List of 1
@@ -1073,7 +1073,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   .. ..$ factor      : num 1
   .. ..$ na_rm       : logi TRUE
   .. ..$ skip        : logi FALSE
-  .. ..$ id          : chr "scale_6C4oB"
+  .. ..$ id          : chr "scale_2v2pC"
   .. ..$ case_weights: NULL
   .. ..- attr(*, "class")= chr [1:2] "step_scale" "step"
   ..$ :List of 8
@@ -1085,7 +1085,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   .. .. ..- attr(*, "names")= chr [1:11] "population" "population_density" "median_age" "aged_65_older" ...
   .. ..$ na_rm       : logi TRUE
   .. ..$ skip        : logi FALSE
-  .. ..$ id          : chr "center_PWIXy"
+  .. ..$ id          : chr "center_zhOlI"
   .. ..$ case_weights: NULL
   .. ..- attr(*, "class")= chr [1:2] "step_center" "step"
  $ template      : tibble [158 × 11] (S3: tbl_df/tbl/data.frame)
@@ -1182,7 +1182,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   ..$ removals: Named chr [1:3] "iso_code" "continent" "location"
   .. ..- attr(*, "names")= chr [1:3] "iso_code" "continent" "location"
   ..$ skip    : logi FALSE
-  ..$ id      : chr "rm_Bt9xW"
+  ..$ id      : chr "rm_0FAc7"
   ..- attr(*, "class")= chr [1:2] "step_rm" "step"
  $ :List of 8
   ..$ terms     :List of 1
@@ -1196,7 +1196,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   ..$ limits    : num [1:2] -5 5
   ..$ num_unique: num 5
   ..$ skip      : logi FALSE
-  ..$ id        : chr "BoxCox_UdJK4"
+  ..$ id        : chr "BoxCox_zlVX2"
   ..- attr(*, "class")= chr [1:2] "step_BoxCox" "step"
  $ :List of 9
   ..$ terms       :List of 1
@@ -1210,7 +1210,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   ..$ factor      : num 1
   ..$ na_rm       : logi TRUE
   ..$ skip        : logi FALSE
-  ..$ id          : chr "scale_6C4oB"
+  ..$ id          : chr "scale_2v2pC"
   ..$ case_weights: NULL
   ..- attr(*, "class")= chr [1:2] "step_scale" "step"
  $ :List of 8
@@ -1224,7 +1224,7 @@ Centering for population, population_density, median_age, age... [trained]</code
   .. ..- attr(*, "names")= chr [1:11] "population" "population_density" "median_age" "aged_65_older" ...
   ..$ na_rm       : logi TRUE
   ..$ skip        : logi FALSE
-  ..$ id          : chr "center_PWIXy"
+  ..$ id          : chr "center_zhOlI"
   ..$ case_weights: NULL
   ..- attr(*, "class")= chr [1:2] "step_center" "step"</code></pre>
 </div>
@@ -1287,31 +1287,31 @@ hospital_beds_per_thousand            life_expectancy
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>owid_BoxCoxData <span class="sc">|&gt;</span> <span class="fu">kmeans</span>(<span class="at">centers =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>K-means clustering with 3 clusters of sizes 49, 63, 46
+<pre><code>K-means clustering with 3 clusters of sizes 46, 49, 63
 
 Cluster means:
   population population_density  median_age aged_65_older aged_70_older
-1  0.1327702         0.07992665  1.13903095     1.1928251     1.1874508
-2 -0.3498207        -0.12751566 -0.04154558    -0.2086192    -0.2145598
-3  0.3376732         0.08950175 -1.15641620    -0.9849005    -0.9710397
+1  0.3376732         0.08950175 -1.15641620    -0.9849005    -0.9710397
+2  0.1327702         0.07992665  1.13903095     1.1928251     1.1874508
+3 -0.3498207        -0.12751566 -0.04154558    -0.2086192    -0.2145598
   gdp_per_capita cardiovasc_death_rate diabetes_prevalence
-1      0.9087787            -0.6700604          -0.2457741
-2      0.1057045             0.1737642           0.7104584
-3     -1.1128161             0.4757786          -0.7112163
+1     -1.1128161             0.4757786          -0.7112163
+2      0.9087787            -0.6700604          -0.2457741
+3      0.1057045             0.1737642           0.7104584
   hospital_beds_per_thousand life_expectancy human_development_index
-1               8.936399e-01      1.03474178              1.08733894
-2               8.400952e-06      0.04568398              0.04325333
-3              -9.519323e-01     -1.16479213             -1.21749060
+1              -9.519323e-01     -1.16479213             -1.21749060
+2               8.936399e-01      1.03474178              1.08733894
+3               8.400952e-06      0.04568398              0.04325333
 
 Clustering vector:
-  [1] 3 2 2 2 1 2 1 1 2 2 2 3 1 1 1 2 3 2 2 1 2 2 2 1 3 3 3 3 1 3 3 1 1 2 3 2 1
- [38] 1 1 1 3 2 2 2 2 3 3 1 3 3 2 1 1 2 3 2 1 3 1 2 2 3 2 3 3 1 1 3 3 2 3 1 1 1
- [75] 2 1 2 2 3 2 2 2 3 1 2 3 2 1 1 3 3 2 3 1 2 2 2 2 2 2 3 3 3 1 1 2 3 2 1 2 3
-[112] 2 2 2 3 1 1 2 1 1 2 2 3 2 2 1 1 1 2 3 1 1 2 3 2 1 1 3 3 1 3 3 2 2 2 2 3 1
-[149] 2 1 1 1 2 2 2 3 3 3
+  [1] 1 3 3 3 2 3 2 2 3 3 3 1 2 2 2 3 1 3 3 2 3 3 3 2 1 1 1 1 2 1 1 2 2 3 1 3 2
+ [38] 2 2 2 1 3 3 3 3 1 1 2 1 1 3 2 2 3 1 3 2 1 2 3 3 1 3 1 1 2 2 1 1 3 1 2 2 2
+ [75] 3 2 3 3 1 3 3 3 1 2 3 1 3 2 2 1 1 3 1 2 3 3 3 3 3 3 1 1 1 2 2 3 1 3 2 3 1
+[112] 3 3 3 1 2 2 3 2 2 3 3 1 3 3 2 2 2 3 1 2 2 3 1 3 2 2 1 1 2 1 1 3 3 3 3 1 2
+[149] 3 2 2 2 3 3 3 1 1 1
 
 Within cluster sum of squares by cluster:
-[1] 247.6110 384.3323 209.3520
+[1] 209.3520 247.6110 384.3323
  (between_SS / total_SS =  51.3 %)
 
 Available components:
@@ -1342,15 +1342,15 @@ Available components:
        k kclust   population populatio…¹ median_…² aged_65…³ aged_70…⁴ gdp_per…⁵
    &lt;int&gt; &lt;list&gt;        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
  1     1 &lt;kmeans&gt;  -1.29e-16   -5.34e-17  4.41e-16  5.06e-17  3.79e-17 -1.41e-17
- 2     2 &lt;kmeans&gt;  -9.04e- 2    1.57e- 1  8.02e- 1  7.78e- 1  7.65e- 1  6.77e- 1
- 3     2 &lt;kmeans&gt;   9.51e- 2   -1.65e- 1 -8.43e- 1 -8.18e- 1 -8.04e- 1 -7.12e- 1
- 4     3 &lt;kmeans&gt;  -2.87e- 1   -1.07e- 1 -1.44e- 1 -2.92e- 1 -2.92e- 1  5.57e- 2
- 5     3 &lt;kmeans&gt;   1.03e- 1    7.05e- 2  1.13e+ 0  1.19e+ 0  1.18e+ 0  8.95e- 1
- 6     3 &lt;kmeans&gt;   3.93e- 1    1.04e- 1 -1.23e+ 0 -1.03e+ 0 -1.02e+ 0 -1.28e+ 0
- 7     4 &lt;kmeans&gt;   3.93e- 1    1.04e- 1 -1.23e+ 0 -1.03e+ 0 -1.02e+ 0 -1.28e+ 0
- 8     4 &lt;kmeans&gt;  -1.02e- 1   -1.68e- 1  9.93e- 1  1.03e+ 0  1.03e+ 0  3.19e- 1
- 9     4 &lt;kmeans&gt;   1.65e- 1    2.14e- 1  1.15e+ 0  1.22e+ 0  1.21e+ 0  1.16e+ 0
-10     4 &lt;kmeans&gt;  -2.73e- 1   -9.98e- 2 -2.17e- 1 -3.80e- 1 -3.83e- 1  7.21e- 2
+ 2     2 &lt;kmeans&gt;   9.51e- 2   -1.65e- 1 -8.43e- 1 -8.18e- 1 -8.04e- 1 -7.12e- 1
+ 3     2 &lt;kmeans&gt;  -9.04e- 2    1.57e- 1  8.02e- 1  7.78e- 1  7.65e- 1  6.77e- 1
+ 4     3 &lt;kmeans&gt;   1.33e- 1    7.99e- 2  1.14e+ 0  1.19e+ 0  1.19e+ 0  9.09e- 1
+ 5     3 &lt;kmeans&gt;   3.38e- 1    8.95e- 2 -1.16e+ 0 -9.85e- 1 -9.71e- 1 -1.11e+ 0
+ 6     3 &lt;kmeans&gt;  -3.50e- 1   -1.28e- 1 -4.15e- 2 -2.09e- 1 -2.15e- 1  1.06e- 1
+ 7     4 &lt;kmeans&gt;  -5.01e- 1    1.37e- 1  7.58e- 1  7.57e- 1  7.59e- 1  2.81e- 1
+ 8     4 &lt;kmeans&gt;   3.63e- 2   -2.03e- 1 -3.33e- 1 -5.04e- 1 -5.05e- 1 -1.05e- 2
+ 9     4 &lt;kmeans&gt;   2.58e- 1   -1.97e- 2 -1.30e+ 0 -1.08e+ 0 -1.07e+ 0 -1.33e+ 0
+10     4 &lt;kmeans&gt;   1.80e- 1    2.24e- 1  1.16e+ 0  1.22e+ 0  1.21e+ 0  1.14e+ 0
 # … with 35 more rows, 10 more variables: cardiovasc_death_rate &lt;dbl&gt;,
 #   diabetes_prevalence &lt;dbl&gt;, hospital_beds_per_thousand &lt;dbl&gt;,
 #   life_expectancy &lt;dbl&gt;, human_development_index &lt;dbl&gt;, size &lt;int&gt;,
@@ -1366,13 +1366,13 @@ Available components:
   &lt;int&gt; &lt;list&gt;   &lt;list&gt;            &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;list&gt;   
 1     1 &lt;kmeans&gt; &lt;tibble [1 × 14]&gt;  1727        1727.  5.46e-12     1 &lt;tibble&gt; 
 2     2 &lt;kmeans&gt; &lt;tibble [2 × 14]&gt;  1727        1056.  6.71e+ 2     1 &lt;tibble&gt; 
-3     3 &lt;kmeans&gt; &lt;tibble [3 × 14]&gt;  1727         843.  8.84e+ 2     2 &lt;tibble&gt; 
-4     4 &lt;kmeans&gt; &lt;tibble [4 × 14]&gt;  1727         752.  9.75e+ 2     3 &lt;tibble&gt; 
-5     5 &lt;kmeans&gt; &lt;tibble [5 × 14]&gt;  1727         678.  1.05e+ 3     3 &lt;tibble&gt; 
-6     6 &lt;kmeans&gt; &lt;tibble [6 × 14]&gt;  1727         632.  1.10e+ 3     3 &lt;tibble&gt; 
-7     7 &lt;kmeans&gt; &lt;tibble [7 × 14]&gt;  1727         568.  1.16e+ 3     3 &lt;tibble&gt; 
-8     8 &lt;kmeans&gt; &lt;tibble [8 × 14]&gt;  1727         530.  1.20e+ 3     3 &lt;tibble&gt; 
-9     9 &lt;kmeans&gt; &lt;tibble [9 × 14]&gt;  1727         507.  1.22e+ 3     4 &lt;tibble&gt; </code></pre>
+3     3 &lt;kmeans&gt; &lt;tibble [3 × 14]&gt;  1727         841.  8.86e+ 2     3 &lt;tibble&gt; 
+4     4 &lt;kmeans&gt; &lt;tibble [4 × 14]&gt;  1727         753.  9.74e+ 2     3 &lt;tibble&gt; 
+5     5 &lt;kmeans&gt; &lt;tibble [5 × 14]&gt;  1727         674.  1.05e+ 3     3 &lt;tibble&gt; 
+6     6 &lt;kmeans&gt; &lt;tibble [6 × 14]&gt;  1727         605.  1.12e+ 3     4 &lt;tibble&gt; 
+7     7 &lt;kmeans&gt; &lt;tibble [7 × 14]&gt;  1727         566.  1.16e+ 3     3 &lt;tibble&gt; 
+8     8 &lt;kmeans&gt; &lt;tibble [8 × 14]&gt;  1727         515.  1.21e+ 3     4 &lt;tibble&gt; 
+9     9 &lt;kmeans&gt; &lt;tibble [9 × 14]&gt;  1727         514.  1.21e+ 3     3 &lt;tibble&gt; </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>assignments <span class="ot">&lt;-</span> kclusts <span class="sc">|&gt;</span> <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(augmented))</span>
 <span id="cb47-2"><a href="#cb47-2"></a>assignments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1454,16 +1454,16 @@ Available components:
 <pre><code># A tibble: 158 × 3
    .cluster continent location         
    &lt;fct&gt;    &lt;chr&gt;     &lt;chr&gt;            
- 1 1        Africa    Botswana         
- 2 1        Africa    Equatorial Guinea
- 3 1        Africa    Gabon            
- 4 1        Africa    Libya            
- 5 1        Asia      Bahrain          
- 6 1        Asia      Bhutan           
- 7 1        Asia      Brunei           
- 8 1        Asia      Kuwait           
- 9 1        Asia      Kyrgyzstan       
-10 1        Asia      Mongolia         
+ 1 1        Africa    Algeria          
+ 2 1        Africa    Botswana         
+ 3 1        Africa    Cape Verde       
+ 4 1        Africa    Egypt            
+ 5 1        Africa    Equatorial Guinea
+ 6 1        Africa    Gabon            
+ 7 1        Africa    Libya            
+ 8 1        Africa    Morocco          
+ 9 1        Africa    South Africa     
+10 1        Africa    Sudan            
 # … with 148 more rows</code></pre>
 </div>
 </div>
