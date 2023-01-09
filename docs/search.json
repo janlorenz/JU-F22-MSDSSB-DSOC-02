@@ -1271,7 +1271,7 @@
     "href": "index.html",
     "title": "Data Science Concepts / Tools",
     "section": "",
-    "text": "Information for late coming students\n\n\n\nWelcome! You are in the right place to get into the course. There is a lot of material. Here we provide a checklist for late coming students"
+    "text": "Answers for recent questions on Projects\n\n\n\nYou find answers in Questions about Student Projects"
   },
   {
     "objectID": "index.html#modules-data-science-concepts-methods",
@@ -1320,7 +1320,7 @@
     "href": "index.html#assessment-and-grading",
     "title": "Data Science Concepts / Tools",
     "section": "1.7 Assessment and Grading",
-    "text": "1.7 Assessment and Grading\n\n1.7.1 Data Science Concepts Module\nAssessment is based on an exam of 120 minutes. It is scheduled officially on campusnet by academic offices for Dec 15, 12:30-14:30.\nThe exam will be open-book and take-home exam. It will be delivered individually via GitHub through the organization https://github.com/JU-F22-MDSSB-MET-01 as the Homework.\n\n\n1.7.2 Data Science Tools Module\nAssessment is based on a team project (see below) of approximately 4000-5000 words. Which are delivered in personalized repositories in the GitHub organization https://github.com/JU-F22-MDSSB-MET-01.\nAdditionally, the handbook lists a requirement to pass the module and a bonus option to increase the grade by 0.33 (while the best grade is also possible with a great project report without the bonus).\n\nRequirement: Half of the homework assignment tasks need to be correctly solved. These do not determine the grade. We will check this after the deadline for the last homework passed at the end of classes.\nBonus: The individual repositories about Corona hw-ind-corona-USERNAME and the ESS hw-ind-ess-USERNAME shall be cleaned from not necessary files. All analysis the qmd-Document should be complete and the questions should be answered in a consistent way. The rendered html document should look well formatted and should be readable as a report independent from the instructions.\n\n\n\n1.7.3 Data Science Tools Project Report\nThe project report is the graded assessment of the Tools module.\nImportant information on the preparation of the Data Science Project Reports is in the Presentation for Week 11. Please go through this.\nAdvice on the structure (Executive Summary, Introduction, Data, Analysis, Conclusion) is in the template you have in your repository.\nAdvice:\n\nFind a manageable dataset: at least 50 cases, good is 10-20 variables with a mix of categorical and numeric. Deviations are allowed based on your interest and capability.\nGo through the visualizations, statistics, and models we had in lectures and homework and think if similar things would be interesting.\nThe goal is not an exhaustive data analysis. Do not calculate every statistic and procedure you have learned for every variable, but rather show that you can ask meaningful questions and answer them with results of data analysis and proficient interpretation and presentation of the results.\nDo NOT blindly do all visualization and all statistic on all variables in the data set! You do that in your data exploration but that should not go into your report as is. At some point you have to focus on what is needed to answer your questions. Your report is not a documentation of all your steps. Throw out what is not needed anymore, improve the remaining visualizations, and explain well in the text what you want to communicate.\n\nA single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate."
+    "text": "1.7 Assessment and Grading\n\n1.7.1 Data Science Concepts Module\nAssessment is based on an exam of 120 minutes. It is scheduled officially on campusnet by academic offices for Dec 15, 12:30-14:30.\nThe exam will be open-book and take-home exam. It will be delivered individually via GitHub through the organization https://github.com/JU-F22-MDSSB-MET-01 as the Homework.\n\n\n1.7.2 Data Science Tools Module\nAssessment is based on a team project (see below) of approximately 4000-5000 words. Which are delivered in personalized repositories in the GitHub organization https://github.com/JU-F22-MDSSB-MET-01.\nAdditionally, the handbook lists a requirement to pass the module and a bonus option to increase the grade by 0.33 (while the best grade is also possible with a great project report without the bonus).\n\nRequirement: Half of the homework assignment tasks need to be correctly solved. These do not determine the grade. We will check this after the deadline for the last homework passed at the end of classes.\nBonus: The individual repositories about Corona hw-ind-corona-USERNAME and the ESS hw-ind-ess-USERNAME shall be cleaned from not necessary files. All analysis the qmd-Document should be complete and the questions should be answered in a consistent way. The rendered html document should look well formatted and should be readable as a report independent from the instructions.\n\n\n\n1.7.3 Data Science Tools Project Report\nThe project report is the graded assessment of the Tools module.\nImportant information on the preparation of the Data Science Project Reports is in the Presentation for Week 11. Please go through this.\nAdvice on the structure (Executive Summary, Introduction, Data, Analysis, Conclusion) is in the template you have in your repository.\nAdvice:\n\nFind a manageable dataset: at least 50 cases, good is 10-20 variables with a mix of categorical and numeric. Deviations are allowed based on your interest and capability.\nGo through the visualizations, statistics, and models we had in lectures and homework and think if similar things would be interesting.\nThe goal is not an exhaustive data analysis. Do not calculate every statistic and procedure you have learned for every variable, but rather show that you can ask meaningful questions and answer them with results of data analysis and proficient interpretation and presentation of the results.\nDo NOT blindly do all visualization and all statistic on all variables in the data set! You do that in your data exploration but that should not go into your report as is. At some point you have to focus on what is needed to answer your questions. Your report is not a documentation of all your steps. Throw out what is not needed anymore, improve the remaining visualizations, and explain well in the text what you want to communicate.\n\nA single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate.\n\nYou find answers for recent questions in Questions about Student Projects."
   },
   {
     "objectID": "index.html#week-1-sep-1-what-is-data-science-course-organization-toolkit",
@@ -4814,5 +4814,61 @@
     "title": "Exam",
     "section": "",
     "text": "All information about the exam is provided in your personalized repository in the course’s GitHub-organization https://github.com/orgs/JU-F22-MDSSB-MET-01/repositories.\nYour repository has the name exam-USERNAME, where USERNAME is the GitHub-username you used for the other homework.\nYou find all instruction in your repository’s README.md which shows on the main page of the repository’s main page on github.com in the browser. Also the exam questions will appear here.\n\n\n\n\n\n\nImportant\n\n\n\nYou can do the technical setup and the academic integrity statement already before the exam. Do this to save time and check if you have all tools (R, RStudio, quarto, git) properly installed."
+  },
+  {
+    "objectID": "faq-projects.html",
+    "href": "faq-projects.html",
+    "title": "Questions about Student Projects",
+    "section": "",
+    "text": "The guideline for the project report in a nutshell is: You select a dataset and do some questions driven data analysis.\nThe most important advice are the ones already existing. Read them carefully!\n\nThe advice in the syllabus https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/#data-science-tools-project-report.\nThe slides of Week 11 (starting from slide 19) https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/W11_projects.html#/a-project-report-in-a-nutshell.\nIn your repository you find the file report.qmd which is prepared that you can write your report in it. The file gives an outline of the structure and what should be in Sections (Executive Summary, Introduction, Data, Analysis, Conclusion)."
+  },
+  {
+    "objectID": "faq-projects.html#structure-of-the-report-are-we-supposed-to-fill-out-the-template",
+    "href": "faq-projects.html#structure-of-the-report-are-we-supposed-to-fill-out-the-template",
+    "title": "Questions about Student Projects",
+    "section": "1 Structure of the report: Are we supposed to fill out the template?",
+    "text": "1 Structure of the report: Are we supposed to fill out the template?\nThe default way to write the report is to use report.qmd and extend the file such that the rendered html file gives report.html gives a nicely readable and nicely formatted report. The process of writing is however not well summarized by “fill out the template”. Maybe you want to add subsections, or change a headline, or add an appendix with supporting figures which are not essential for the main question. You have to decide where you put which Figure and which text is needed before and after.\nYou are free to explore the possibilities of quarto, e.g., for making Figure captions and cross references to Figures, or for providing footnotes, or references to scientific literature. However, using these features is not required. You could self-learning on https://quarto.org/docs/authoring/, e.g. the Sections in “Scholary Writing”.\nThe basic requirement is\n\na structured text (with headlines on one or two levels: 1., 2., 3. … or sometimes maybe a second level like 3.1, 3.2, 3.3 … if needed),\nwell crafted visualizations positioned at an appropriate place in the text with explanations in the text,\nno code or code output which substantially distracts the reading of the text\n\ntherefore code folding is the default, the reader can expand the code if needed\ncarefully check if you really need raw computation output in the report, the reader does not need to see all your checking of NA’s, data wrangling and so on in detail in the text. Better have the computation in a code chunk without output (or only selected informative output). Summarize the necessary data preparation in text."
+  },
+  {
+    "objectID": "faq-projects.html#do-we-need-to-include-scientific-literatur-scientific-reasoning-behind-our-analysis-build-our-analysis-on-existing-theories",
+    "href": "faq-projects.html#do-we-need-to-include-scientific-literatur-scientific-reasoning-behind-our-analysis-build-our-analysis-on-existing-theories",
+    "title": "Questions about Student Projects",
+    "section": "2 Do we need to include scientific literatur, scientific reasoning behind our analysis, build our analysis on existing theories?",
+    "text": "2 Do we need to include scientific literatur, scientific reasoning behind our analysis, build our analysis on existing theories?\nThe report is not a scientific paper. It depends a bit on you, how much you motivate your question in some theory, or if you motivate them from ad hoc questions. It is not required to include scientific literature, but it is allowed. You should cite sources you use in an appropriate way. We do not provide strict guidelines for this. It is not expected that you provide any literature review. Just report what sources you used."
+  },
+  {
+    "objectID": "faq-projects.html#is-there-a-word-limit-or-minimum-for-this-report",
+    "href": "faq-projects.html#is-there-a-word-limit-or-minimum-for-this-report",
+    "title": "Questions about Student Projects",
+    "section": "3 Is there a word limit or minimum for this report?",
+    "text": "3 Is there a word limit or minimum for this report?\nThe official requirement from the module description is 4000-5000 words. However, we do not require a word count."
+  },
+  {
+    "objectID": "faq-projects.html#are-there-any-formatting-requirements",
+    "href": "faq-projects.html#are-there-any-formatting-requirements",
+    "title": "Questions about Student Projects",
+    "section": "4 Are there any formatting requirements?",
+    "text": "4 Are there any formatting requirements?\nIt is fine to go with the defaults from quarto and the specifications in report.qmd. There are no strict other guidelines."
+  },
+  {
+    "objectID": "faq-projects.html#how-do-we-hand-in-this-project-over-moodle-e-mail-repository",
+    "href": "faq-projects.html#how-do-we-hand-in-this-project-over-moodle-e-mail-repository",
+    "title": "Question on Projects",
+    "section": "5 How do we hand in this project? Over Moodle, e-mail, repository?",
+    "text": "5 How do we hand in this project? Over Moodle, e-mail, repository?\nYou make a final commit in the repository. This should include report.qmd and the rendered report.html version. You are welcome to inform us by email when you are ready. We will start grading shortly after the deadline looking into the repositories."
+  },
+  {
+    "objectID": "faq-projects.html#what-exactly-will-be-graded-the-report-the-coding-the-repository-or-all-of-it",
+    "href": "faq-projects.html#what-exactly-will-be-graded-the-report-the-coding-the-repository-or-all-of-it",
+    "title": "Questions about Student Projects",
+    "section": "6 What exactly will be graded? The report, the coding, the repository, or all of it?",
+    "text": "6 What exactly will be graded? The report, the coding, the repository, or all of it?\nGrading is mostly based on reading the file report.html from the repository. We will assess if there are well motivated questions and how these are approached and answered with data analysis. We do not grade if there are “ground-breaking” findings, but if the analysis is well chosen and well interpreted. When results are inconclusive, it is OK to describe it as such. Though not at the core of grading it is good practice for the final submission to:\n\nremove commented code and commented text in report.qmd\nclean your code, that means for example to remove objects and computations which are not needed for the analysis anymore\nprovide one chunks for one step (e.g. one chunk for reading data, one for data preparation/cleaning, one for each figure, …) and label the chunk with an informative name by #| label: CHUNKNAME\n“clean up” your repository, that means to remove all files which are not necessary for data processing and rendering. Normally, at the end you should only need report.qmd, report.html and your data in “data/”. Sometimes it may be helpful to have a script for data reading and wrangling which produces your working dataset which you read in in report.qmd. It depends on the data if that is useful. So, there can be more files in the repository if necessary, but the more simple and the more structured the better."
+  },
+  {
+    "objectID": "faq-projects.html#how-do-we-hand-in-this-project",
+    "href": "faq-projects.html#how-do-we-hand-in-this-project",
+    "title": "Questions about Student Projects",
+    "section": "5 How do we hand in this project?",
+    "text": "5 How do we hand in this project?\nYou make a final commit in the repository. This should include report.qmd and the rendered report.html. You are welcome to inform us by email when you are ready. We will start grading shortly after the deadline looking into the repositories."
   }
 ]

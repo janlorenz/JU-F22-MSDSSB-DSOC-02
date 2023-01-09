@@ -1,0 +1,62 @@
+---
+title: "Questions about Student Projects"
+---
+
+## General {-}
+
+The guideline for the project report in a nutshell is: *You select a dataset and do some questions driven data analysis.*
+
+The most important advice are the ones already existing. Read them carefully!
+
+- The advice in the syllabus <https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/#data-science-tools-project-report>.
+- The slides of Week 11 (starting from slide 19) <https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/W11_projects.html#/a-project-report-in-a-nutshell>.
+- In your repository you find the file `report.qmd` which is prepared that you can write your report in it. The file gives an outline of the structure and what should be in Sections (Executive Summary, Introduction, Data, Analysis, Conclusion). 
+
+
+
+## Structure of the report: Are we supposed to fill out the template? 
+
+The default way to write the report is to use `report.qmd` and extend the file such that the rendered html file gives `report.html` gives a nicely readable and nicely formatted report. The process of writing is however not well summarized by "fill out the template". Maybe you want to add subsections, or change a headline, or add an appendix with supporting figures which are not essential for the main question. You have to decide where you put which Figure and which text is needed before and after. 
+
+You are free to explore the possibilities of quarto, e.g., for making Figure captions and cross references to Figures, or for providing footnotes, or references to scientific literature. However, using these features is not required. You could self-learning on <https://quarto.org/docs/authoring/>, e.g. the Sections in "Scholary Writing".
+
+The basic requirement is 
+
+- a structured text (with headlines on one or two levels: 1., 2., 3. ... or sometimes maybe a second level like 3.1, 3.2, 3.3 ... if needed), 
+- well crafted visualizations positioned at an appropriate place in the text with explanations in the text, 
+- no code or code output which substantially distracts the reading of the text
+  - therefore code folding is the default, the reader can expand the code if needed
+  - carefully check if you really need raw computation output in the report, the reader does not need to see all your checking of NA's, data wrangling and so on in detail in the text. Better have the computation in a code chunk without output (or only selected informative output). Summarize the necessary data preparation in text. 
+
+## Do we need to include scientific literatur, scientific reasoning behind our analysis, build our analysis on existing theories?
+
+The report is not a scientific paper. It depends a bit on you, how much you motivate your question in some theory, or if you motivate them from ad hoc questions. It is not required to include scientific literature, but it is allowed. 
+You should cite sources you use in an appropriate way. We do not provide strict guidelines for this. It is not expected that you provide any literature review. Just report what sources you used.
+
+## Is there a word limit or minimum for this report?
+
+The official requirement from the module description is 4000-5000 words. However, we do not require a word count. 
+
+
+## Are there any formatting requirements? 
+
+It is fine to go with the defaults from quarto and the specifications in `report.qmd`. There are no strict other guidelines. 
+
+## How do we hand in this project? 
+
+You make a final commit in the repository. This should include `report.qmd` and the rendered `report.html`. You are welcome to inform us by email when you are ready. We will start grading shortly after the deadline looking into the repositories.
+
+## What exactly will be graded? The report, the coding, the repository, or all of it?
+
+Grading is mostly based on reading the file report.html from the repository. We will assess if there are well motivated questions and how these are approached and answered with data analysis. We do not grade if there are "ground-breaking" findings, but if the analysis is well chosen and well interpreted. When results are inconclusive, it is OK to describe it as such.
+Though not at the core of grading it is good practice for the final submission to:
+
+  - remove commented code and commented text in `report.qmd`
+  - clean your code, that means for example to remove objects and computations which are not needed for the analysis anymore
+  - provide one chunks for one step (e.g. one chunk for reading data, one for data preparation/cleaning, one for each figure, ...) and label the chunk with an informative name by `#| label: CHUNKNAME`
+  - "clean up" your repository, that means to remove all files which are not necessary for data processing and rendering. Normally, at the end you should only need report.qmd, report.html and your data in "data/". Sometimes it may be helpful to have a script for data reading and wrangling which produces your working dataset which you read in in report.qmd. It depends on the data if that is useful. So, there can be more files in the repository if necessary, but the more simple and the more structured the better.
+
+
+
+
+

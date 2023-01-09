@@ -3,14 +3,14 @@ title: "Data Science Concepts / Tools"
 ---
 
 ::: callout-important
-## Information for late coming students
-
-Welcome! You are in the right place to get into the course. There is a lot of material. Here we provide a [checklist for late coming students](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/late.html)
+## Answers for recent questions on Projects
+You find answers in [Questions about Student Projects](faq-projects.qmd)
 :::
 
 
 ::: callout-note
-This is a developing syllabus! It will be continuously updated and your main entrance to course material. 
+This is a developing syllabus! It will be continuously updated and your main entrance to course material.   
+Here we provide a [checklist for late coming students](https://janlorenz.github.io/JU-F22-MSDSSB-DSOC-02/late.html)
 :::
 
 # Basic Information 
@@ -117,6 +117,8 @@ Advice:
 - Do NOT blindly do all visualization and all statistic on all variables in the data set! You do that in your data exploration but that should not go into your report as is. At some point you have to focus on what is needed to answer your questions. Your report is not a documentation of all your steps. Throw out what is not needed anymore, improve the remaining visualizations, and explain well in the text what you want to communicate.  
 - A single high quality visualization which shows a point clearly will receive a much higher appreciation than a large number of poor quality visualizations without an explanation what they should communicate.
 
+
+You find answers for recent questions in [Questions about Student Projects](faq-projects.qmd). 
 
 
 

@@ -9,6 +9,7 @@ website:
       - file: index.qmd
         text: Syllabus
       - late.qmd
+      - faq-projects.qmd
       
   sidebar: 
     - title: Homework
