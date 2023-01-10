@@ -35,7 +35,7 @@ You should cite sources you use in an appropriate way. We do not provide strict 
 
 ## Is there a word limit or minimum for this report?
 
-The official requirement from the module description is 4000-5000 words. However, we do not require a word count. 
+The official requirement from the module description is 4000-5000 words. However, we do not require a word count. Shorter reports are fine when they are well crafted. We appreciate more care in the preparation of high quality descriptive and interpretative texts and high quality visualizations than on the length of the text! Long uninformative text to reach a word limit is a minus!
 
 
 ## Are there any formatting requirements? 
@@ -55,8 +55,14 @@ Though not at the core of grading it is good practice for the final submission t
   - clean your code, that means for example to remove objects and computations which are not needed for the analysis anymore
   - provide one chunks for one step (e.g. one chunk for reading data, one for data preparation/cleaning, one for each figure, ...) and label the chunk with an informative name by `#| label: CHUNKNAME`
   - "clean up" your repository, that means to remove all files which are not necessary for data processing and rendering. Normally, at the end you should only need report.qmd, report.html and your data in "data/". Sometimes it may be helpful to have a script for data reading and wrangling which produces your working dataset which you read in in report.qmd. It depends on the data if that is useful. So, there can be more files in the repository if necessary, but the more simple and the more structured the better.
+  
+## My dataset is too large for the GitHub repository!
 
+A potential solution may be this provided by GitHub <https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github>. Another option maybe to save the data you really need, maybe this is smaller. Then you only add this file to the repository and load it in your file. Then briefly describe in the text how this dataset was produced from raw data with a link to the source of the raw data. Additionally, you could also provide an R-script as an independent file which reads the raw data (which the user has to download independently because it is not provided in the repository) and then writes out your smaller working dataset. This last step is optional. 
 
+## An example of a data-analysis project
+
+This is an example by Jan Lorenz on ["The summer break effects on the CoViD-19 pandemic in Germany 2020-2022"](https://janlorenz.github.io/summerbreakcovid). It is written departing from the template `report.qmd`. It has a link to its public GitHub repository. 
 
 
 

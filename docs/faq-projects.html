@@ -172,6 +172,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#are-there-any-formatting-requirements" id="toc-are-there-any-formatting-requirements" class="nav-link" data-scroll-target="#are-there-any-formatting-requirements"><span class="toc-section-number">4</span>  Are there any formatting requirements?</a></li>
   <li><a href="#how-do-we-hand-in-this-project" id="toc-how-do-we-hand-in-this-project" class="nav-link" data-scroll-target="#how-do-we-hand-in-this-project"><span class="toc-section-number">5</span>  How do we hand in this project?</a></li>
   <li><a href="#what-exactly-will-be-graded-the-report-the-coding-the-repository-or-all-of-it" id="toc-what-exactly-will-be-graded-the-report-the-coding-the-repository-or-all-of-it" class="nav-link" data-scroll-target="#what-exactly-will-be-graded-the-report-the-coding-the-repository-or-all-of-it"><span class="toc-section-number">6</span>  What exactly will be graded? The report, the coding, the repository, or all of it?</a></li>
+  <li><a href="#my-dataset-is-too-large-for-the-github-repository" id="toc-my-dataset-is-too-large-for-the-github-repository" class="nav-link" data-scroll-target="#my-dataset-is-too-large-for-the-github-repository"><span class="toc-section-number">7</span>  My dataset is too large for the GitHub repository!</a></li>
+  <li><a href="#an-example-of-a-data-analysis-project" id="toc-an-example-of-a-data-analysis-project" class="nav-link" data-scroll-target="#an-example-of-a-data-analysis-project"><span class="toc-section-number">8</span>  An example of a data-analysis project</a></li>
   </ul>
 </nav>
     </div>
@@ -226,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="is-there-a-word-limit-or-minimum-for-this-report" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="is-there-a-word-limit-or-minimum-for-this-report"><span class="header-section-number">3</span> Is there a word limit or minimum for this report?</h2>
-<p>The official requirement from the module description is 4000-5000 words. However, we do not require a word count.</p>
+<p>The official requirement from the module description is 4000-5000 words. However, we do not require a word count. Shorter reports are fine when they are well crafted. We appreciate more care in the preparation of high quality descriptive and interpretative texts and high quality visualizations than on the length of the text! Long uninformative text to reach a word limit is a minus!</p>
 </section>
 <section id="are-there-any-formatting-requirements" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="are-there-any-formatting-requirements"><span class="header-section-number">4</span> Are there any formatting requirements?</h2>
@@ -245,6 +247,14 @@ ul.task-list li input[type="checkbox"] {
 <li>provide one chunks for one step (e.g.&nbsp;one chunk for reading data, one for data preparation/cleaning, one for each figure, …) and label the chunk with an informative name by <code>#| label: CHUNKNAME</code></li>
 <li>“clean up” your repository, that means to remove all files which are not necessary for data processing and rendering. Normally, at the end you should only need report.qmd, report.html and your data in “data/”. Sometimes it may be helpful to have a script for data reading and wrangling which produces your working dataset which you read in in report.qmd. It depends on the data if that is useful. So, there can be more files in the repository if necessary, but the more simple and the more structured the better.</li>
 </ul>
+</section>
+<section id="my-dataset-is-too-large-for-the-github-repository" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="my-dataset-is-too-large-for-the-github-repository"><span class="header-section-number">7</span> My dataset is too large for the GitHub repository!</h2>
+<p>A potential solution may be this provided by GitHub <a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github" class="uri">https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github</a>. Another option maybe to save the data you really need, maybe this is smaller. Then you only add this file to the repository and load it in your file. Then briefly describe in the text how this dataset was produced from raw data with a link to the source of the raw data. Additionally, you could also provide an R-script as an independent file which reads the raw data (which the user has to download independently because it is not provided in the repository) and then writes out your smaller working dataset. This last step is optional.</p>
+</section>
+<section id="an-example-of-a-data-analysis-project" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="an-example-of-a-data-analysis-project"><span class="header-section-number">8</span> An example of a data-analysis project</h2>
+<p>This is an example by Jan Lorenz on <a href="https://janlorenz.github.io/summerbreakcovid">“The summer break effects on the CoViD-19 pandemic in Germany 2020-2022”</a>. It is written departing from the template <code>report.qmd</code>. It has a link to its public GitHub repository.</p>
 
 
 </section>
