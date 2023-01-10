@@ -62,7 +62,7 @@ A potential solution may be this provided by GitHub <https://docs.github.com/en/
 
 ## An example of a data-analysis project
 
-This is an example by Jan Lorenz on ["The summer break effects on the CoViD-19 pandemic in Germany 2020-2022"](https://janlorenz.github.io/summerbreakcovid). It is written departing from the template `report.qmd`. It has a link to its public GitHub repository. 
+This is an example by Jan Lorenz on ["The summer break effects on the CoViD-19 pandemic in Germany 2020-2022"](https://janlorenz.github.io/summerbreakcovid). It is written departing from the template `report.qmd`. It has a link to its public GitHub repository <https://github.com/janlorenz/summerbreakcovid>. 
 
 
 
